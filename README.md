@@ -29,9 +29,7 @@ This atlas surveys the current state of publicly available, downloadable species
 │   ├── full_mapping.csv    Full traceability: ID, original label, standardized name, group
 │   ├── col_mapping.csv     Catalogue of Life 2025 name mapping (641,763 entries)
 │   └── metadata.csv        Per-tree metadata: filename, group, study, tips, dated
-├── data_provenance.csv     Complete metadata for all 49 datasets
-└── code/
-    └── figures/            R scripts to reproduce all manuscript figures
+└── data_provenance.csv     Complete metadata for all 49 datasets
 ```
 
 ## Standardized tree files
@@ -108,10 +106,6 @@ Match rates: **83.6% of matchable eukaryotic species** mapped to CoL (352K exact
 **Cross-kingdom** (2): eukaryotes (backbone), TimeTree
 
 **Condamine families** (218): tetrapod family-level dated trees from Condamine et al. 2019
-
-## Figure reproduction
-
-R scripts in `code/figures/` reproduce all manuscript figures. They read from `standardized/` and `data_provenance.csv`.
 
 ## Citation
 
