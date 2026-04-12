@@ -34,18 +34,37 @@ This atlas surveys the current state of publicly available, downloadable species
 
 ## Standardized tree files
 
-All trees are distributed in Newick format with **numeric tip labels** (integers 1--641,763). To recover species names, join the numeric labels against `dictionary.csv`:
+All trees are distributed in Newick format with **numeric tip labels** (integers 1--641,763). To recover species names, join the numeric labels against `dictionary.csv`.
+
+### Load any tree directly from GitHub
 
 ```r
 library(ape)
 
-# Read a tree
+load_atlas_tree <- function(name) {
+  base <- "https://raw.githubusercontent.com/franciscorichter/phylo-species-atlas/main"
+  tree <- read.tree(paste0(base, "/standardized/trees/", name, ".nwk"))
+  dict <- read.csv(paste0(base, "/standardized/dictionary.csv"))
+  tree$tip.label <- dict$standardized_name[match(as.integer(tree$tip.label), dict$id)]
+  tree
+}
+
+# Examples
+tree <- load_atlas_tree("mammals")        # Upham et al. 2019 (5,912 species)
+tree <- load_atlas_tree("birds")          # Jetz et al. 2012 (9,993 species)
+tree <- load_atlas_tree("seed_plants")    # Smith & Brown 2018 (356,305 species)
+tree <- load_atlas_tree("condamine_Vangidae")  # Condamine family tree (21 species)
+
+plot(tree)
+```
+
+### Load from a local clone
+
+```r
+library(ape)
+
 tree <- read.tree("standardized/trees/mammals.nwk")
-
-# Load dictionary
 dict <- read.csv("standardized/dictionary.csv")
-
-# Map numeric tips back to species names
 tree$tip.label <- dict$standardized_name[match(as.integer(tree$tip.label), dict$id)]
 ```
 
