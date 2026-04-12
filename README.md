@@ -27,6 +27,7 @@ This atlas surveys the current state of publicly available, downloadable species
 │   ├── trees/              264 Newick files (numeric tip labels)
 │   ├── dictionary.csv      Species dictionary: ID → standardized name (641,763 entries)
 │   ├── full_mapping.csv    Full traceability: ID, original label, standardized name, group
+│   ├── col_mapping.csv     Catalogue of Life 2025 name mapping (641,763 entries)
 │   └── metadata.csv        Per-tree metadata: filename, group, study, tips, dated
 ├── data_provenance.csv     Complete metadata for all 49 datasets
 └── code/
@@ -60,6 +61,22 @@ tree$tip.label <- dict$standardized_name[match(as.integer(tree$tip.label), dict$
 | `standardized_name` | Standardized species label in `Genus_species` format |
 
 Labels were standardized by stripping family/order annotations, voucher codes, and institutional suffixes. GTDB genome accessions (bacteria, archaea) are retained as-is.
+
+## Catalogue of Life mapping
+
+`col_mapping.csv` links each atlas entry to its Catalogue of Life 2025 accepted name:
+
+| Column | Description |
+|--------|-------------|
+| `id` | Dictionary ID |
+| `standardized_name` | Atlas species label |
+| `col_id` | CoL accepted taxon ID (empty if no match) |
+| `col_name` | CoL accepted scientific name |
+| `col_kingdom` | Kingdom from CoL classification |
+| `col_family` | Family from CoL classification |
+| `match_type` | `exact`, `synonym`, `gtdb_only`, `genus_only`, `skip`, or `unmatched` |
+
+Match rates: **83.6% of matchable eukaryotic species** mapped to CoL (352K exact + 58K via synonym resolution). The 143K GTDB prokaryote entries use genome accession IDs not present in CoL.
 
 ## Full mapping
 
