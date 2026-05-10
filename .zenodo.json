@@ -1,0 +1,46 @@
+{
+  "title": "Phylo-Species-Atlas: A Curated Collection of Standardized Empirical Phylogenies Across the Tree of Life",
+  "description": "A curated, standardized collection of 49 empirical phylogenetic datasets covering 47 taxonomic groups across Bacteria, Archaea, and Eukaryota. This collection provides tip-label normalized Newick trees with numeric identifiers, a global species dictionary (637,619 unique standardized labels), full label mappings, and metadata. The underlying trees are permanently archived in their original repositories (Dryad, Figshare, Zenodo, GitHub) as cited in the accompanying publication; this derivative collection enables cross-tree interoperability and standardization. The collection is version-controlled and will be updated as improved phylogenies become available. Releases are tagged via GitHub; users requiring a static snapshot for reproducibility should cite the specific release version and DOI. Companion to: Richter (2026) \"The phylogenetic dark matter: an atlas of empirical trees reveals vast asymmetries in species coverage across the tree of life.\" Systematic Biology.",
+  "creators": [
+    {
+      "name": "Richter, Francisco",
+      "affiliation": "Università della Svizzera italiana (USI), Lugano, Switzerland",
+      "orcid": "0000-0002-0924-4613"
+    }
+  ],
+  "keywords": [
+    "phylogenetic atlas",
+    "tree of life",
+    "species coverage",
+    "biodiversity informatics",
+    "standardization",
+    "macroevolution",
+    "phylogenetic comparative methods",
+    "diversification",
+    "supertree"
+  ],
+  "license": "CC-BY-4.0",
+  "upload_type": "dataset",
+  "publication_date": "2026-05-11",
+  "version": "1.0.0",
+  "language": "eng",
+  "related_identifiers": [
+    {
+      "relation": "isSupplementTo",
+      "identifier": "https://github.com/franciscorichter/phylo-species-atlas",
+      "resource_type": "software",
+      "scheme": "url"
+    }
+  ],
+  "communities": [
+    {"identifier": "phylogenetics"},
+    {"identifier": "biodiversity"}
+  ],
+  "grants": [
+    {
+      "title": "Statistical Frontiers in Dynamic Network Modeling",
+      "funder": "Swiss National Science Foundation",
+      "code": "FNS 240065"
+    }
+  ]
+}

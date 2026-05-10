@@ -1,0 +1,34 @@
+# macOS
+.DS_Store
+
+# R
+.Rhistory
+.RData
+.Rproj.user/
+
+# LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Large data files (keep structure, not content)
+data/derived/
+data/processed/
+*.rds
+*.RData
+
+# Temporary files
+*.tmp
+*.swp
+*~
