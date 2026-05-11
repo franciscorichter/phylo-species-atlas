@@ -23,9 +23,8 @@ preferred-citation:
       given-names: "Francisco"
       orcid: "https://orcid.org/0000-0002-0924-4613"
   year: 2026
-  journal: "Systematic Biology"
-  status: "in-press"
-  notes: "Manuscript submitted to Systematic Biology. Cite the Zenodo DOI for the dataset version used."
+  status: "submitted"
+  notes: "Manuscript under review. A preprint will be posted on bioRxiv concurrent with journal submission. Cite the Zenodo DOI for the dataset version used."
 
 keywords:
   - phylogenetic atlas
@@ -36,4 +35,4 @@ keywords:
   - macroevolution
   - phylogenetic comparative methods
 
-abstract: "A curated, standardized collection of 49 empirical phylogenetic datasets covering 47 taxonomic groups across Bacteria, Archaea, and Eukaryota. Provides tip-label normalized Newick trees with numeric identifiers, a global species dictionary (637,619 unique standardized labels), full label mappings, and metadata. Companion to Richter (2026) Systematic Biology."
+abstract: "A curated, standardized collection of 49 empirical phylogenetic datasets covering 47 taxonomic groups across Bacteria, Archaea, and Eukaryota. Provides tip-label normalized Newick trees with numeric identifiers, a global species dictionary (641,763 unique standardized labels), full label mappings, and metadata. Companion to the manuscript 'The phylogenetic dark matter: an atlas of empirical trees reveals vast asymmetries in species coverage across the tree of life' (Richter, 2026, under review)."
