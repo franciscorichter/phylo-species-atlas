@@ -102,12 +102,7 @@ main {
 }
 
 #overview {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 20px;
-}
-@media (max-width: 1000px) {
-  #overview { grid-template-columns: 1fr; }
+  display: block;
 }
 
 #browser {

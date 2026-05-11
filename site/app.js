@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   renderSummary();
   renderCoveragePlot();
-  renderSizePlot();
   wireFilters();
   applyFilters();
 });
@@ -91,37 +90,6 @@ function renderCoveragePlot() {
     const target = STATE.data.trees.find(t => t.group === point.y);
     if (target) selectTree(target.filename, true);
   });
-}
-
-function renderSizePlot() {
-  const tips = STATE.data.trees.map(t => Math.log10(Math.max(1, t.ntips || 1)));
-
-  const trace = {
-    type: "histogram",
-    x: tips,
-    xbins: { start: 0, end: 6.5, size: 0.25 },
-    marker: { color: "#2a6fbf" },
-    hovertemplate: "%{y} trees<extra></extra>",
-  };
-
-  const container = document.getElementById("size-plot");
-  container.style.height = "320px";
-
-  const layout = {
-    margin: { l: 44, r: 16, t: 8, b: 40 },
-    xaxis: {
-      title: "Tips (log10)",
-      tickvals: [1, 2, 3, 4, 5, 6],
-      ticktext: ["10", "100", "1K", "10K", "100K", "1M"],
-      gridcolor: "#eee",
-    },
-    yaxis: { title: "Trees", gridcolor: "#eee" },
-    paper_bgcolor: "transparent",
-    plot_bgcolor: "transparent",
-    bargap: 0.05,
-  };
-
-  Plotly.newPlot(container, [trace], layout, { displayModeBar: false, responsive: true });
 }
 
 function wireFilters() {
