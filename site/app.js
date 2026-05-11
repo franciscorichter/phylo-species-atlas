@@ -7,10 +7,10 @@ const STATE = {
   selected: null,
   layout: "linear", // or "radial"
   showLabels: false,
-  currentTree: null,
+  currentNewick: null,
 };
 
-const TREES_BASE = "../standardized/trees/"; // served from repo root on Pages
+const TREES_BASE = "../standardized/trees/"; // patched by CI for Pages deploy
 const TIP_RENDER_LIMIT = 5000; // above this, we sample for rendering
 
 const fmt = new Intl.NumberFormat("en-US");
@@ -41,8 +41,7 @@ function renderSummary() {
     ["Undated", s.n_undated],
     ["Total tips", s.total_tips],
   ];
-  const root = document.getElementById("summary-stats");
-  root.innerHTML = items.map(([label, value]) =>
+  document.getElementById("summary-stats").innerHTML = items.map(([label, value]) =>
     `<div class="stat"><span class="value">${fmt.format(value)}</span><span class="label">${label}</span></div>`
   ).join("");
 }
@@ -53,8 +52,6 @@ function renderCoveragePlot() {
 
   const labels = rows.map(r => r.group);
   const values = rows.map(r => r.coverage_pct);
-  const described = rows.map(r => r.described_species);
-  const tips = rows.map(r => r.tips);
   const colors = rows.map(r => r.dated ? "#2a6fbf" : "#c97a2a");
   const customdata = rows.map(r => [r.study, r.year || "", r.tips, r.described_species]);
 
@@ -73,45 +70,45 @@ function renderCoveragePlot() {
       "%{customdata[0]} (%{customdata[1]})<extra></extra>",
   };
 
+  const chartHeight = Math.max(420, labels.length * 18 + 60);
+  const container = document.getElementById("coverage-plot");
+  container.style.height = chartHeight + "px";
+
   const layout = {
-    margin: { l: 130, r: 24, t: 12, b: 36 },
+    margin: { l: 140, r: 24, t: 12, b: 40 },
     xaxis: { title: "Coverage (%)", range: [0, 105], gridcolor: "#eee" },
-    yaxis: { automargin: true, tickfont: { size: 11 } },
-    height: Math.max(420, labels.length * 18),
+    yaxis: { automargin: false, tickfont: { size: 11 }, autorange: "reversed" },
     paper_bgcolor: "transparent",
     plot_bgcolor: "transparent",
     showlegend: false,
   };
 
-  Plotly.newPlot("coverage-plot", [trace], layout, { displayModeBar: false, responsive: true });
+  Plotly.newPlot(container, [trace], layout, { displayModeBar: false, responsive: true });
 
-  document.getElementById("coverage-plot").on("plotly_click", (ev) => {
+  container.on("plotly_click", (ev) => {
     const point = ev.points && ev.points[0];
     if (!point) return;
-    const group = point.y;
-    const target = STATE.data.trees.find(t => t.group === group);
+    const target = STATE.data.trees.find(t => t.group === point.y);
     if (target) selectTree(target.filename, true);
   });
 }
 
 function renderSizePlot() {
-  const trees = STATE.data.trees;
-  const tips = trees.map(t => t.ntips || 0).filter(n => n > 0);
+  const tips = STATE.data.trees.map(t => Math.log10(Math.max(1, t.ntips || 1)));
 
   const trace = {
     type: "histogram",
     x: tips,
-    xbins: { start: 0, end: Math.log10(Math.max(...tips)) + 0.5, size: 0.25 },
+    xbins: { start: 0, end: 6.5, size: 0.25 },
     marker: { color: "#2a6fbf" },
-    hovertemplate: "%{y} trees<br>%{x} tips<extra></extra>",
+    hovertemplate: "%{y} trees<extra></extra>",
   };
 
-  // Transform x to log scale
-  trace.x = tips.map(n => Math.log10(n));
-  trace.hovertemplate = "%{y} trees<extra></extra>";
+  const container = document.getElementById("size-plot");
+  container.style.height = "320px";
 
   const layout = {
-    margin: { l: 40, r: 16, t: 8, b: 36 },
+    margin: { l: 44, r: 16, t: 8, b: 40 },
     xaxis: {
       title: "Tips (log10)",
       tickvals: [1, 2, 3, 4, 5, 6],
@@ -124,7 +121,7 @@ function renderSizePlot() {
     bargap: 0.05,
   };
 
-  Plotly.newPlot("size-plot", [trace], layout, { displayModeBar: false, responsive: true });
+  Plotly.newPlot(container, [trace], layout, { displayModeBar: false, responsive: true });
 }
 
 function wireFilters() {
@@ -216,7 +213,7 @@ async function selectTree(filename, scrollIntoView) {
     ["Coverage", t.coverage_pct != null ? `${t.coverage_pct.toFixed(1)}%` : "—"],
     ["DOI", t.doi ? `<a href="https://doi.org/${t.doi}" target="_blank" rel="noopener">${t.doi}</a>` : "—"],
     ["Source", t.data_source],
-    ["File", `${(t.size_bytes / 1024).toFixed(1)} KB`],
+    ["File", t.size_bytes ? `${(t.size_bytes / 1024).toFixed(1)} KB` : "—"],
   ];
   document.getElementById("detail-meta").innerHTML = fields
     .filter(([_, v]) => v !== null && v !== undefined && v !== "")
@@ -234,7 +231,7 @@ async function loadAndRenderTree(t) {
   const status = document.getElementById("tree-status");
   const container = document.getElementById("tree-container");
   container.innerHTML = "";
-  STATE.currentTree = null;
+  STATE.currentNewick = null;
 
   status.classList.remove("warning");
   status.textContent = `Loading ${t.filename}…`;
@@ -253,7 +250,7 @@ async function loadAndRenderTree(t) {
       status.textContent = `${fmt.format(t.ntips || 0)} tips — full tree shown.`;
     }
 
-    STATE.currentTree = newick;
+    STATE.currentNewick = newick;
     drawTree(newick);
   } catch (e) {
     status.classList.add("warning");
@@ -262,58 +259,173 @@ async function loadAndRenderTree(t) {
 }
 
 function redrawTree() {
-  if (STATE.currentTree) drawTree(STATE.currentTree);
+  if (STATE.currentNewick) drawTree(STATE.currentNewick);
 }
 
+// ---------- Newick parser ----------
+// Produces {name, length, children}. Handles branch lengths, no support values.
+function parseNewick(str) {
+  let i = 0;
+  function parseNode() {
+    const node = { name: "", length: null, children: null };
+    if (str[i] === "(") {
+      i++;
+      node.children = [];
+      while (true) {
+        node.children.push(parseNode());
+        if (str[i] === ",") { i++; continue; }
+        if (str[i] === ")") { i++; break; }
+        throw new Error(`Newick parse error at ${i}: expected , or )`);
+      }
+    }
+    let name = "";
+    while (i < str.length && !",():;".includes(str[i])) {
+      if (str[i] === ":") break;
+      name += str[i++];
+    }
+    node.name = name.trim();
+    if (str[i] === ":") {
+      i++;
+      let len = "";
+      while (i < str.length && !",();".includes(str[i])) len += str[i++];
+      node.length = parseFloat(len);
+    }
+    return node;
+  }
+  // Strip whitespace
+  str = str.replace(/\s/g, "");
+  const root = parseNode();
+  return root;
+}
+
+// ---------- D3 tree renderer ----------
 function drawTree(newick) {
   const container = document.getElementById("tree-container");
   container.innerHTML = "";
 
-  const width = Math.max(640, container.clientWidth - 8);
-  const tree = new phylotree.phylotree(newick);
-  tree.render({
-    container: "#tree-container",
-    "show-scale": false,
-    "align-tips": false,
-    "show-labels": STATE.showLabels,
-    "is-radial": STATE.layout === "radial",
-    "left-right-spacing": "fit-to-size",
-    "top-bottom-spacing": "fit-to-size",
-    width,
-    height: 520,
-    "internal-names": false,
-    selectable: false,
-    "draw-size-bubbles": false,
-  });
-  tree.placenodes();
-  tree.update();
+  let parsed;
+  try { parsed = parseNewick(newick); }
+  catch (e) {
+    container.innerHTML = `<p style="padding:20px;color:#c00">Newick parse error: ${e.message}</p>`;
+    return;
+  }
+
+  const root = d3.hierarchy(parsed, d => d.children);
+  const nLeaves = root.leaves().length;
+
+  const isRadial = STATE.layout === "radial";
+  const w = Math.max(640, container.clientWidth - 4);
+
+  if (isRadial) {
+    drawRadial(root, w);
+  } else {
+    drawLinear(root, w, nLeaves);
+  }
+}
+
+function drawLinear(root, width, nLeaves) {
+  const labelWidth = STATE.showLabels ? 140 : 8;
+  const margin = { top: 12, right: labelWidth, bottom: 12, left: 12 };
+  const innerW = width - margin.left - margin.right;
+  const tipSpacing = Math.max(1.2, Math.min(16, 600 / Math.max(40, nLeaves)));
+  const innerH = Math.max(400, nLeaves * tipSpacing);
+
+  const cluster = d3.cluster()
+    .size([innerH, innerW])
+    .separation(() => 1);
+  cluster(root);
+
+  const svg = d3.select("#tree-container").append("svg")
+    .attr("viewBox", `0 0 ${width} ${innerH + margin.top + margin.bottom}`)
+    .attr("preserveAspectRatio", "xMidYMid meet")
+    .attr("width", "100%")
+    .attr("height", innerH + margin.top + margin.bottom);
+
+  const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+
+  // Step paths: horizontal then vertical (right-angle dendrogram)
+  g.selectAll("path.branch")
+    .data(root.descendants().slice(1))
+    .join("path")
+      .attr("class", "branch")
+      .attr("d", d => `M${d.parent.y},${d.parent.x} V${d.x} H${d.y}`)
+      .attr("fill", "none")
+      .attr("stroke", "#1a1a1a")
+      .attr("stroke-width", 0.8);
+
+  if (STATE.showLabels) {
+    g.selectAll("text.label")
+      .data(root.leaves())
+      .join("text")
+        .attr("class", "label")
+        .attr("x", d => d.y + 4)
+        .attr("y", d => d.x)
+        .attr("dy", "0.32em")
+        .attr("font-size", Math.max(7, Math.min(11, tipSpacing * 0.9)))
+        .attr("fill", "#1a1a1a")
+        .text(d => d.data.name);
+  }
+}
+
+function drawRadial(root, width) {
+  const size = Math.min(width, 720);
+  const radius = size / 2 - (STATE.showLabels ? 80 : 12);
+
+  const cluster = d3.cluster()
+    .size([2 * Math.PI, radius])
+    .separation(() => 1);
+  cluster(root);
+
+  const svg = d3.select("#tree-container").append("svg")
+    .attr("viewBox", `${-size / 2} ${-size / 2} ${size} ${size}`)
+    .attr("preserveAspectRatio", "xMidYMid meet")
+    .attr("width", "100%")
+    .attr("height", size);
+
+  const linkRadial = d3.linkRadial()
+    .angle(d => d.x)
+    .radius(d => d.y);
+
+  svg.append("g")
+    .selectAll("path")
+    .data(root.links())
+    .join("path")
+      .attr("d", linkRadial)
+      .attr("fill", "none")
+      .attr("stroke", "#1a1a1a")
+      .attr("stroke-width", 0.7);
+
+  if (STATE.showLabels) {
+    svg.append("g")
+      .selectAll("text")
+      .data(root.leaves())
+      .join("text")
+        .attr("transform", d => `rotate(${(d.x * 180 / Math.PI) - 90}) translate(${d.y + 4},0)${d.x >= Math.PI ? " rotate(180)" : ""}`)
+        .attr("text-anchor", d => d.x < Math.PI ? "start" : "end")
+        .attr("dy", "0.32em")
+        .attr("font-size", 8)
+        .attr("fill", "#1a1a1a")
+        .text(d => d.data.name);
+  }
 }
 
 // Cheap Newick subsampling: randomly drop tips until we hit `keep`.
-// Re-parses the string, identifying leaf positions, and removes leaves
-// (with surrounding comma/parens cleanup) until target count is reached.
 function sampleNewick(newick, keep) {
-  // Match leaf tokens: a label followed by optional :branchlength,
-  // preceded by '(' or ',' — and NOT followed by '('.
   const tokens = [];
   const re = /([(,])\s*([A-Za-z0-9_.+\-]+)(:[-0-9.eE]+)?(?=[,)])/g;
   let m;
   while ((m = re.exec(newick)) !== null) {
-    tokens.push({ start: m.index + m[1].length, end: m.index + m[0].length, raw: m[0].slice(1) });
+    tokens.push({ start: m.index + m[1].length, end: m.index + m[0].length });
   }
   if (tokens.length <= keep) return { newick, kept: tokens.length };
 
-  // Randomly choose tips to drop
   const dropCount = tokens.length - keep;
   const indices = new Set();
   while (indices.size < dropCount) indices.add(Math.floor(Math.random() * tokens.length));
 
-  // Build new string by removing chosen leaves (and their adjacent comma)
-  // Sort indices descending to splice without shifting earlier offsets.
   const toRemove = [...indices].map(i => tokens[i]).sort((a, b) => b.start - a.start);
   let s = newick;
   for (const t of toRemove) {
-    // Remove `<leaf>` plus a neighboring comma. If preceding char is ',', drop it.
     let start = t.start;
     let end = t.end;
     if (s[start - 1] === ",") start -= 1;

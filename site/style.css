@@ -287,21 +287,7 @@ main {
 }
 #tree-container svg {
   display: block;
-  width: 100%;
-  height: auto;
-}
-#tree-container .node circle {
-  fill: var(--ink);
-  r: 1.5;
-}
-#tree-container .branch {
-  stroke: var(--ink);
-  stroke-width: 1;
-  fill: none;
-}
-#tree-container text {
-  font-size: 10px;
-  fill: var(--ink);
+  max-width: 100%;
 }
 
 footer {
