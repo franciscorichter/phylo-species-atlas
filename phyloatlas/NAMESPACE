@@ -1,0 +1,6 @@
+export(atlas_clear_cache)
+export(atlas_info)
+export(list_trees)
+export(load_atlas_tree)
+importFrom(ape, read.tree)
+importFrom(utils, read.csv)

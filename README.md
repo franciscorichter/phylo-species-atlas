@@ -36,26 +36,37 @@ This atlas surveys the current state of publicly available, downloadable species
 
 All trees are distributed in Newick format with **numeric tip labels** (integers 1--641,763). To recover species names, join the numeric labels against `dictionary.csv`.
 
-### Load any tree directly from GitHub
+### Load any tree from R: the `phyloatlas` package
+
+```r
+# install.packages("pak")
+pak::pkg_install("franciscorichter/phylo-species-atlas/phyloatlas")
+
+library(phyloatlas)
+
+list_trees()                                 # all 264 trees + provenance
+atlas_info("birds")                          # metadata for one tree
+tree <- load_atlas_tree("mammals")           # Upham 2019 (5,912 species)
+tree <- load_atlas_tree("birds")             # McTavish 2025 (10,824 species)
+tree <- load_atlas_tree("seed_plants")       # Smith & Brown 2018 (356,305 species)
+tree <- load_atlas_tree("condamine_Vangidae")# Condamine family tree (21 species)
+plot(tree)
+```
+
+For very large trees, skip the species-name lookup (keeps integer IDs, avoids the 18 MB dictionary download):
+
+```r
+tree <- load_atlas_tree("seed_plants", resolve_labels = FALSE)
+```
+
+See [`phyloatlas/README.md`](phyloatlas/README.md) for the full API. If you'd rather not install a package, the equivalent ~5-line snippet using just `ape` works too:
 
 ```r
 library(ape)
-
-load_atlas_tree <- function(name) {
-  base <- "https://raw.githubusercontent.com/franciscorichter/phylo-species-atlas/main"
-  tree <- read.tree(paste0(base, "/standardized/trees/", name, ".nwk"))
-  dict <- read.csv(paste0(base, "/standardized/dictionary.csv"))
-  tree$tip.label <- dict$standardized_name[match(as.integer(tree$tip.label), dict$id)]
-  tree
-}
-
-# Examples
-tree <- load_atlas_tree("mammals")        # Upham et al. 2019 (5,912 species)
-tree <- load_atlas_tree("birds")          # Jetz et al. 2012 (9,993 species)
-tree <- load_atlas_tree("seed_plants")    # Smith & Brown 2018 (356,305 species)
-tree <- load_atlas_tree("condamine_Vangidae")  # Condamine family tree (21 species)
-
-plot(tree)
+base <- "https://raw.githubusercontent.com/franciscorichter/phylo-species-atlas/main"
+tree <- read.tree(paste0(base, "/standardized/trees/mammals.nwk"))
+dict <- read.csv(paste0(base, "/standardized/dictionary.csv"))
+tree$tip.label <- dict$standardized_name[match(as.integer(tree$tip.label), dict$id)]
 ```
 
 ### Load from a local clone
