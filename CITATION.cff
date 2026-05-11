@@ -2,6 +2,7 @@ cff-version: 1.2.0
 message: "If you use this dataset, please cite both the paper and the specific Zenodo release."
 title: "Phylo-Species-Atlas: A Curated Collection of Standardized Empirical Phylogenies Across the Tree of Life"
 version: 1.0.0
+doi: "10.5281/zenodo.20127158"
 date-released: 2026-05-11
 url: "https://github.com/franciscorichter/phylo-species-atlas"
 repository-code: "https://github.com/franciscorichter/phylo-species-atlas"
