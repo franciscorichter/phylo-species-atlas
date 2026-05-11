@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phylo-Species Atlas — Browser</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/phylotree@1.6.1/dist/phylotree.css">
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/underscore@1.13.6/underscore-umd-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/phylotree@1.6.1/dist/phylotree.min.js"></script>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+</head>
+<body>
+<header>
+  <h1>Phylo-Species Atlas</h1>
+  <p class="tagline">A standardized collection of empirical phylogenies across the tree of life.
+    <a href="https://github.com/franciscorichter/phylo-species-atlas" target="_blank" rel="noopener">GitHub</a> ·
+    <a href="https://franciscorichter.github.io/" target="_blank" rel="noopener">Author</a></p>
+  <div id="summary-stats" class="stats"></div>
+</header>
+
+<main>
+  <section id="overview">
+    <div class="card">
+      <h2>Coverage across groups</h2>
+      <p class="card-sub">Each bar is one dataset. Hover for details. Click a bar to inspect the tree.</p>
+      <div id="coverage-plot" style="height: 460px"></div>
+    </div>
+    <div class="card">
+      <h2>Tips per tree (log)</h2>
+      <p class="card-sub">Distribution of tree sizes across the 264 standardized trees.</p>
+      <div id="size-plot" style="height: 320px"></div>
+    </div>
+  </section>
+
+  <section id="browser">
+    <aside class="panel">
+      <h2>Trees</h2>
+      <div class="filters">
+        <input type="search" id="tree-search" placeholder="Search trees…" autocomplete="off">
+        <label class="check"><input type="checkbox" id="filter-dated"> Dated only</label>
+        <select id="sort-by">
+          <option value="ntips-desc">Largest first</option>
+          <option value="ntips-asc">Smallest first</option>
+          <option value="filename-asc">Name (A→Z)</option>
+          <option value="year-desc">Year (newest)</option>
+        </select>
+      </div>
+      <ul id="tree-list" class="tree-list"></ul>
+    </aside>
+
+    <article class="panel detail">
+      <div id="detail-empty" class="empty">Select a tree on the left to see details.</div>
+      <div id="detail" hidden>
+        <h2 id="detail-name"></h2>
+        <div id="detail-meta" class="meta"></div>
+        <div class="card">
+          <div class="card-header">
+            <h3>Tree viewer</h3>
+            <div class="viewer-controls">
+              <label class="check"><input type="checkbox" id="show-labels"> Show labels</label>
+              <button id="layout-toggle" type="button">Radial</button>
+              <button id="reset-zoom" type="button">Reset zoom</button>
+              <a id="download-newick" class="btn" download>Download .nwk</a>
+            </div>
+          </div>
+          <div id="tree-status" class="tree-status"></div>
+          <div id="tree-container"></div>
+        </div>
+      </div>
+    </article>
+  </section>
+</main>
+
+<footer>
+  <p>Companion to Richter (2026), <em>The phylogenetic dark matter</em>.
+    Data licensed CC-BY 4.0; cite original studies for the underlying trees.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
