@@ -28,19 +28,7 @@
     {
       "relation": "isSupplementTo",
       "identifier": "https://github.com/franciscorichter/phylo-species-atlas",
-      "resource_type": "software",
       "scheme": "url"
-    }
-  ],
-  "communities": [
-    {"identifier": "phylogenetics"},
-    {"identifier": "biodiversity"}
-  ],
-  "grants": [
-    {
-      "title": "Statistical Frontiers in Dynamic Network Modeling",
-      "funder": "Swiss National Science Foundation",
-      "code": "FNS 240065"
     }
   ]
 }

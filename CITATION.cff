@@ -2,12 +2,10 @@ cff-version: 1.2.0
 message: "If you use this dataset, please cite both the paper and the specific Zenodo release."
 title: "Phylo-Species-Atlas: A Curated Collection of Standardized Empirical Phylogenies Across the Tree of Life"
 version: 1.0.0
-doi: "10.5281/zenodo.XXXXXXX"  # Update after first Zenodo release
 date-released: 2026-05-11
 url: "https://github.com/franciscorichter/phylo-species-atlas"
 repository-code: "https://github.com/franciscorichter/phylo-species-atlas"
 license: CC-BY-4.0
-type: dataset
 
 authors:
   - family-names: "Richter"
@@ -23,7 +21,6 @@ preferred-citation:
       given-names: "Francisco"
       orcid: "https://orcid.org/0000-0002-0924-4613"
   year: 2026
-  status: "submitted"
   notes: "Manuscript under review. A preprint will be posted on bioRxiv concurrent with journal submission. Cite the Zenodo DOI for the dataset version used."
 
 keywords:
