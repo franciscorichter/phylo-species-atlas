@@ -126,15 +126,6 @@ Match rates: **83.6% of matchable eukaryotic species** mapped to CoL (352K exact
 
 **Condamine families** (218): tetrapod family-level dated trees from Condamine et al. 2019
 
-## Citation
-
-If you use this atlas, please cite:
-
-```
-Richter, F. (2026). The phylogenetic dark matter: a cross-kingdom atlas of
-species-level tree coverage. [preprint]
-```
-
 ## License
 
 The standardized tree files, dictionary, and metadata are released for academic use. Individual source trees retain the licenses of their original publications. See `data_provenance.csv` for DOIs and original data sources.
