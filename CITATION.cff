@@ -1,0 +1,39 @@
+cff-version: 1.2.0
+message: "If you use this dataset, please cite both the paper and the specific Zenodo release."
+title: "Phylo-Species-Atlas: A Curated Collection of Standardized Empirical Phylogenies Across the Tree of Life"
+version: 1.0.0
+doi: "10.5281/zenodo.XXXXXXX"  # Update after first Zenodo release
+date-released: 2026-05-11
+url: "https://github.com/franciscorichter/phylo-species-atlas"
+repository-code: "https://github.com/franciscorichter/phylo-species-atlas"
+license: CC-BY-4.0
+type: dataset
+
+authors:
+  - family-names: "Richter"
+    given-names: "Francisco"
+    orcid: "https://orcid.org/0000-0002-0924-4613"
+    affiliation: "Università della Svizzera italiana (USI), Lugano, Switzerland"
+
+preferred-citation:
+  type: article
+  title: "The phylogenetic dark matter: an atlas of empirical trees reveals vast asymmetries in species coverage across the tree of life"
+  authors:
+    - family-names: "Richter"
+      given-names: "Francisco"
+      orcid: "https://orcid.org/0000-0002-0924-4613"
+  year: 2026
+  journal: "Systematic Biology"
+  status: "in-press"
+  notes: "Manuscript submitted to Systematic Biology. Cite the Zenodo DOI for the dataset version used."
+
+keywords:
+  - phylogenetic atlas
+  - tree of life
+  - species coverage
+  - biodiversity informatics
+  - standardization
+  - macroevolution
+  - phylogenetic comparative methods
+
+abstract: "A curated, standardized collection of 49 empirical phylogenetic datasets covering 47 taxonomic groups across Bacteria, Archaea, and Eukaryota. Provides tip-label normalized Newick trees with numeric identifiers, a global species dictionary (637,619 unique standardized labels), full label mappings, and metadata. Companion to Richter (2026) Systematic Biology."

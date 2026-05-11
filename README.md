@@ -6,7 +6,7 @@ A curated collection of empirical phylogenetic trees spanning the tree of life, 
 
 This atlas surveys the current state of publicly available, downloadable species-level molecular phylogenies across all major branches of life. It accompanies the paper:
 
-> **The phylogenetic dark matter: a cross-kingdom atlas of species-level tree coverage**
+> **The phylogenetic dark matter: an atlas of empirical trees reveals vast asymmetries in species coverage across the tree of life**
 >
 > Francisco Richter
 
