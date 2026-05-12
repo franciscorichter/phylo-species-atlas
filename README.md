@@ -1,6 +1,6 @@
 # Phylogenetic Species Atlas
 
-A curated collection of empirical phylogenetic trees spanning the tree of life, with a standardized species dictionary linking 641,763 unique species across 264 tree files from 49 independent datasets.
+A curated collection of empirical phylogenetic trees spanning the tree of life, with a standardized species dictionary linking 637,619 unique standardized labels across 264 tree files from 49 independent datasets.
 
 ## Overview
 
@@ -13,7 +13,7 @@ This atlas surveys the current state of publicly available, downloadable species
 ### Key numbers
 
 - **49 datasets** from peer-reviewed studies (2010--2026)
-- **641,763 unique species** in the standardized dictionary
+- **637,619 unique standardized labels** in the standardized dictionary
 - **264 Newick files** with numeric tip labels
 - **~23% of described eukaryotic species** represented
 - Coverage spans vertebrates, arthropods, plants, fungi, protists, bacteria, and archaea
@@ -25,16 +25,16 @@ This atlas surveys the current state of publicly available, downloadable species
 ├── README.md
 ├── standardized/
 │   ├── trees/              264 Newick files (numeric tip labels)
-│   ├── dictionary.csv      Species dictionary: ID → standardized name (641,763 entries)
+│   ├── dictionary.csv      Standardized-label dictionary: ID → standardized name (637,619 entries)
 │   ├── full_mapping.csv    Full traceability: ID, original label, standardized name, group
-│   ├── col_mapping.csv     Catalogue of Life 2025 name mapping (641,763 entries)
+│   ├── col_mapping.csv     Catalogue of Life 2025 name mapping (637,619 entries)
 │   └── metadata.csv        Per-tree metadata: filename, group, study, tips, dated
 └── data_provenance.csv     Complete metadata for all 49 datasets
 ```
 
 ## Standardized tree files
 
-All trees are distributed in Newick format with **numeric tip labels** (integers 1--641,763). To recover species names, join the numeric labels against `dictionary.csv`.
+All trees are distributed in Newick format with **numeric tip labels** (integers 1--637,619). To recover species names, join the numeric labels against `dictionary.csv`.
 
 ### Load any tree from R: the `phyloatlas` package
 
@@ -85,7 +85,7 @@ tree$tip.label <- dict$standardized_name[match(as.integer(tree$tip.label), dict$
 
 | Column | Description |
 |--------|-------------|
-| `id` | Sequential integer (1--641,763) |
+| `id` | Sequential integer (1--637,619) |
 | `standardized_name` | Standardized species label in `Genus_species` format |
 
 Labels were standardized by stripping family/order annotations, voucher codes, and institutional suffixes. GTDB genome accessions (bacteria, archaea) are retained as-is.

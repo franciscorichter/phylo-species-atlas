@@ -1,0 +1,19 @@
+{
+  "created_at": "20260512_012852",
+  "reason": "Archived divergent root standardized/ because data/standardized/ is canonical manuscript archive.",
+  "archived_from": "/Users/pancho/Library/CloudStorage/Dropbox/A2 - Research/08 - Generalizing diversity dependent models in macroevolution/phylo-atlas-checkpoint-2026-04-09/standardized",
+  "canonical_source": "/Users/pancho/Library/CloudStorage/Dropbox/A2 - Research/08 - Generalizing diversity dependent models in macroevolution/phylo-atlas-checkpoint-2026-04-09/data/standardized",
+  "archived_counts": {
+    "dictionary.csv": 641763,
+    "col_mapping.csv": 641763,
+    "full_mapping.csv": 702787,
+    "metadata.csv": 264
+  },
+  "canonical_counts": {
+    "dictionary.csv": 637619,
+    "col_mapping.csv": 637619,
+    "full_mapping.csv": 702787,
+    "metadata.csv": 264
+  },
+  "action": "Moved root standardized/ here, then copied data/standardized/ back to root standardized/ for public GitHub/Zenodo path compatibility."
+}

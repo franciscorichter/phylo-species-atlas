@@ -1,0 +1,50 @@
+{
+  "created_at": "20260512_012954",
+  "reason": "Moved unreferenced paper figure byproducts and clearly legacy/support folders out of active submission/release tree. No files deleted.",
+  "items": [
+    {
+      "source": "paper/figures/figure1_barplot_final.pdf",
+      "archived_to": "archived/legacy_unused_assets_20260512_012954/paper/figures/figure1_barplot_final.pdf"
+    },
+    {
+      "source": "paper/figures/figure1_barplot_final.png",
+      "archived_to": "archived/legacy_unused_assets_20260512_012954/paper/figures/figure1_barplot_final.png"
+    },
+    {
+      "source": "paper/figures/figure_cumulative.png",
+      "archived_to": "archived/legacy_unused_assets_20260512_012954/paper/figures/figure_cumulative.png"
+    },
+    {
+      "source": "paper/figures/figure_dated.pdf",
+      "archived_to": "archived/legacy_unused_assets_20260512_012954/paper/figures/figure_dated.pdf"
+    },
+    {
+      "source": "paper/figures/figure_dated.png",
+      "archived_to": "archived/legacy_unused_assets_20260512_012954/paper/figures/figure_dated.png"
+    },
+    {
+      "source": "paper/figures/figure_nested_circles_original.pdf",
+      "archived_to": "archived/legacy_unused_assets_20260512_012954/paper/figures/figure_nested_circles_original.pdf"
+    },
+    {
+      "source": "paper/figures/figure_nested_circles_original.png",
+      "archived_to": "archived/legacy_unused_assets_20260512_012954/paper/figures/figure_nested_circles_original.png"
+    },
+    {
+      "source": "paper/figures/figure_nested_circles_v2.png",
+      "archived_to": "archived/legacy_unused_assets_20260512_012954/paper/figures/figure_nested_circles_v2.png"
+    },
+    {
+      "source": "code/legacy_scripts",
+      "archived_to": "archived/legacy_unused_assets_20260512_012954/code/legacy_scripts"
+    },
+    {
+      "source": "image",
+      "archived_to": "archived/legacy_unused_assets_20260512_012954/image"
+    },
+    {
+      "source": "condamine_coverage",
+      "archived_to": "archived/legacy_unused_assets_20260512_012954/condamine_coverage"
+    }
+  ]
+}

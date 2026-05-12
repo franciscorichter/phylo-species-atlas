@@ -7,7 +7,7 @@
 ### What's Included
 
 - **standardized/trees/**: 264 Newick files with numeric tip labels
-- **standardized/dictionary.csv**: Global species dictionary (641,763 entries)
+- **standardized/dictionary.csv**: Global standardized-label dictionary (637,619 entries)
 - **standardized/metadata.csv**: Per-tree metadata (group, source, tips, dated status)
 - **standardized/full_mapping.csv**: Original label → standardized name → ID → group
 - **code/**: Curation and standardization scripts
@@ -18,9 +18,9 @@
 |--------|-------|
 | Datasets | 49 |
 | Taxonomic groups | 47 |
-| Unique standardized labels | 641,763 |
-| Eukaryotic species | 498,149 |
-| Prokaryotic genome clusters | 143,614 |
+| Unique standardized labels | 637,619 |
+| Eukaryotic species | 493,978 |
+| Prokaryotic genome clusters | 143,641 |
 | Dated phylogenies | 30 |
 | Undated phylogenies | 19 |
 
