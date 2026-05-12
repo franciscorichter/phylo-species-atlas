@@ -192,7 +192,37 @@ async function selectTree(filename, scrollIntoView) {
   dl.href = TREES_BASE + filename;
   dl.setAttribute("download", filename);
 
+  renderRSnippet(t);
+
   await loadAndRenderTree(t);
+}
+
+function renderRSnippet(t) {
+  const name = t.filename.replace(/\.nwk$/, "");
+  const big = (t.ntips || 0) > 20000;
+  const loadLine = big
+    ? `tree <- load_atlas_tree("${name}", resolve_labels = FALSE)  # ${fmt.format(t.ntips)} tips`
+    : `tree <- load_atlas_tree("${name}")`;
+  const snippet =
+    `# one-time install\n` +
+    `# pak::pkg_install("franciscorichter/phylo-species-atlas/phyloatlas")\n\n` +
+    `library(phyloatlas)\n` +
+    `${loadLine}\n` +
+    `plot(tree, show.tip.label = FALSE)`;
+  const code = document.getElementById("r-snippet");
+  code.textContent = snippet;
+
+  const btn = document.getElementById("copy-r-snippet");
+  btn.textContent = "Copy";
+  btn.onclick = async () => {
+    try {
+      await navigator.clipboard.writeText(snippet);
+      btn.textContent = "Copied";
+      setTimeout(() => { btn.textContent = "Copy"; }, 1500);
+    } catch {
+      btn.textContent = "Copy failed";
+    }
+  };
 }
 
 async function loadAndRenderTree(t) {
