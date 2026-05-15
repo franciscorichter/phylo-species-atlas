@@ -105,6 +105,66 @@ main {
   display: block;
 }
 
+.legend-strip {
+  display: flex;
+  gap: 18px;
+  margin: 0 0 6px;
+  padding: 0 0 8px;
+  font-size: 11.5px;
+  color: var(--muted);
+  border-bottom: 1px solid var(--line);
+}
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.legend-swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  display: inline-block;
+}
+.legend-swatch.dated { background: var(--dated); }
+.legend-swatch.undated { background: var(--undated); }
+
+.methodology {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fbfbfb;
+  font-size: 12.5px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+.methodology summary {
+  cursor: pointer;
+  color: var(--accent);
+  font-weight: 500;
+  list-style: none;
+  outline: none;
+  user-select: none;
+}
+.methodology summary::-webkit-details-marker { display: none; }
+.methodology summary::before {
+  content: "▸";
+  display: inline-block;
+  width: 14px;
+  font-size: 10px;
+  transition: transform 0.15s ease;
+  color: var(--accent);
+}
+.methodology[open] summary::before { transform: rotate(90deg); }
+.methodology[open] summary { margin-bottom: 10px; }
+.methodology ul {
+  margin: 4px 0 0;
+  padding-left: 22px;
+}
+.methodology li { margin-bottom: 8px; }
+.methodology li:last-child { margin-bottom: 0; }
+.methodology strong { color: var(--ink); font-weight: 600; }
+
 #browser {
   display: grid;
   grid-template-columns: 320px 1fr;

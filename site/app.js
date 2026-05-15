@@ -45,6 +45,8 @@ function renderSummary() {
   ).join("");
 }
 
+const FONT_STACK = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif";
+
 function renderCoveragePlot() {
   const rows = STATE.data.coverage;
   if (!rows.length) return;
@@ -52,6 +54,7 @@ function renderCoveragePlot() {
   const labels = rows.map(r => r.group);
   const values = rows.map(r => r.coverage_pct);
   const colors = rows.map(r => r.dated ? "#2a6fbf" : "#c97a2a");
+  const valueText = rows.map(r => `${r.coverage_pct.toFixed(1)}%`);
   const customdata = rows.map(r => [r.study, r.year || "", r.tips, r.described_species]);
 
   const trace = {
@@ -59,27 +62,54 @@ function renderCoveragePlot() {
     orientation: "h",
     x: values,
     y: labels,
-    marker: { color: colors },
+    marker: { color: colors, line: { width: 0 } },
+    text: valueText,
+    textposition: "outside",
+    textfont: { size: 11, color: "#1a1a1a", family: FONT_STACK },
+    cliponaxis: false,
     customdata,
     hovertemplate:
       "<b>%{y}</b><br>" +
       "Coverage: %{x:.1f}%<br>" +
       "Tips: %{customdata[2]:,}<br>" +
       "Described: %{customdata[3]:,}<br>" +
-      "%{customdata[0]} (%{customdata[1]})<extra></extra>",
+      "<i>%{customdata[0]}</i> (%{customdata[1]})<extra></extra>",
   };
 
-  const chartHeight = Math.max(420, labels.length * 18 + 60);
+  const chartHeight = Math.max(480, labels.length * 26 + 80);
   const container = document.getElementById("coverage-plot");
   container.style.height = chartHeight + "px";
 
   const layout = {
-    margin: { l: 140, r: 24, t: 12, b: 40 },
-    xaxis: { title: "Coverage (%)", range: [0, 105], gridcolor: "#eee" },
-    yaxis: { automargin: false, tickfont: { size: 11 }, autorange: "reversed" },
+    margin: { l: 170, r: 70, t: 24, b: 52 },
+    font: { family: FONT_STACK, size: 12, color: "#1a1a1a" },
+    xaxis: {
+      title: { text: "Coverage of described species (%)", font: { size: 12, color: "#6b6b6b" }, standoff: 12 },
+      range: [0, 112],
+      gridcolor: "#eee",
+      zerolinecolor: "#ddd",
+      ticksuffix: "%",
+      tickfont: { size: 11, color: "#6b6b6b" },
+      ticks: "outside",
+      tickcolor: "#ddd",
+    },
+    yaxis: {
+      automargin: false,
+      tickfont: { size: 11.5, color: "#1a1a1a" },
+      autorange: "reversed",
+      ticks: "",
+      ticksuffix: "   ",
+    },
+    bargap: 0.38,
     paper_bgcolor: "transparent",
     plot_bgcolor: "transparent",
     showlegend: false,
+    hoverlabel: {
+      bgcolor: "#fff",
+      bordercolor: "#e5e5e5",
+      font: { size: 12, family: FONT_STACK, color: "#1a1a1a" },
+      align: "left",
+    },
   };
 
   Plotly.newPlot(container, [trace], layout, { displayModeBar: false, responsive: true });
