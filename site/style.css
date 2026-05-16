@@ -279,6 +279,23 @@ main {
   user-select: none;
   margin-top: 4px;
 }
+.tree-list .category-header {
+  padding: 14px 14px 4px;
+  color: #1a1a1a;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-top: 1px solid var(--line);
+  margin-top: 6px;
+  cursor: default;
+  user-select: none;
+  background: #fafbfc;
+}
+.tree-list .category-header:first-child {
+  border-top: none;
+  margin-top: 0;
+}
 .tree-list .partition-header.has-children { cursor: pointer; }
 .tree-list .partition-header.has-children:hover { background: #f6f7f9; }
 .tree-list .partition-header .partition-name { flex: 1; }

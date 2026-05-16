@@ -68,6 +68,10 @@ function sourceLinkHTML(info, fallbackLabel, confidence) {
   return ` <a class="src-link" href="${href}" target="_blank" rel="noopener"${titleAttr}><span class="src-type ${info.type}">${typeTag}</span>${label}${confSuffix}</a>`;
 }
 
+// Macro-category ordering matches the paper's Figure 1 narrative.
+const CATEGORY_ORDER = ["Vertebrates", "Plants", "Arthropods", "Other animals", "Microbes & protists"];
+const CATEGORY_RANK = Object.fromEntries(CATEGORY_ORDER.map((c, i) => [c, i]));
+
 function renderCoveragePlot() {
   const allRows = STATE.data.coverage;
   if (!allRows.length) return;
@@ -77,12 +81,21 @@ function renderCoveragePlot() {
   // Coverage chart shows one bar per partition — the canonical (largest)
   // tree. Sub-clade trees (parrots within Birds, primates within Mammals,
   // etc.) appear only when the user expands the partition in the tree
-  // list on the left.
+  // list on the left. Bars are grouped by macro-category, then by descending
+  // coverage within each category.
   const canonical = allRows.filter(r => r.is_partition_canonical);
-  const rows = mode === "estimated"
-    ? canonical.filter(estimatedAvailable)
-               .slice().sort((a, b) => b.coverage_pct_estimated - a.coverage_pct_estimated)
-    : canonical.slice().sort((a, b) => b.coverage_pct - a.coverage_pct);
+  const valueOf = mode === "estimated"
+    ? (r) => r.coverage_pct_estimated
+    : (r) => r.coverage_pct;
+  const rows = (mode === "estimated"
+      ? canonical.filter(estimatedAvailable)
+      : canonical.slice()
+    ).sort((a, b) => {
+      const ra = CATEGORY_RANK[a.category] ?? 99;
+      const rb = CATEGORY_RANK[b.category] ?? 99;
+      if (ra !== rb) return ra - rb;
+      return (valueOf(b) ?? 0) - (valueOf(a) ?? 0);
+    });
 
   const labels = rows.map(r => r.group);
   const colors = rows.map(r => r.dated ? "#2a6fbf" : "#c97a2a");
@@ -144,7 +157,39 @@ function renderCoveragePlot() {
     ...(errorBars ? { error_x: errorBars } : {}),
   };
 
-  const chartHeight = Math.max(480, labels.length * 26 + 80);
+  // Compute category bands: the first row index of each category, and the
+  // count in that category. These drive the annotations + dividers between
+  // groups so the chart visually echoes the paper's macro grouping.
+  const bands = [];
+  for (let i = 0; i < rows.length; i++) {
+    const cat = rows[i].category || "Other";
+    const last = bands[bands.length - 1];
+    if (!last || last.category !== cat) {
+      bands.push({ category: cat, start: i, end: i });
+    } else {
+      last.end = i;
+    }
+  }
+  const annotations = bands.map(b => ({
+    xref: "paper", yref: "y",
+    x: 0, xanchor: "left",
+    y: rows[b.start].group, yanchor: "bottom",
+    yshift: 18,
+    text: `<b>${b.category.toUpperCase()}</b>`,
+    showarrow: false,
+    font: { family: FONT_STACK, size: 10.5, color: "#8a8a8a" },
+    bgcolor: "rgba(255,255,255,0)",
+  }));
+  // Light divider lines between category bands.
+  const shapes = bands.slice(1).map(b => ({
+    type: "line", xref: "paper", yref: "y",
+    x0: 0, x1: 1,
+    y0: rows[b.start].group, y1: rows[b.start].group,
+    line: { color: "#e4e4e4", width: 1, dash: "dot" },
+    layer: "below",
+  }));
+
+  const chartHeight = Math.max(520, labels.length * 28 + bands.length * 26 + 80);
   const container = document.getElementById("coverage-plot");
   container.style.height = chartHeight + "px";
 
@@ -154,7 +199,9 @@ function renderCoveragePlot() {
     : 112;
 
   const layout = {
-    margin: { l: 170, r: 70, t: 24, b: 52 },
+    margin: { l: 170, r: 70, t: 32, b: 52 },
+    annotations,
+    shapes,
     font: { family: FONT_STACK, size: 12, color: "#1a1a1a" },
     xaxis: {
       title: { text: xTitle, font: { size: 12, color: "#6b6b6b" }, standoff: 12 },
@@ -303,23 +350,27 @@ function renderTreeList() {
       buckets.get(p).push(t);
     }
 
-    // Order partitions: by canonical tips desc; then "Condamine 2019 families"
-    // and "Other" pinned to the bottom.
-    const partitionOrder = Array.from(buckets.keys())
-      .map(p => {
-        const canonical = buckets.get(p).find(t => t.is_partition_canonical)
-                       || buckets.get(p)[0];
-        return { partition: p, canonicalTips: canonical?.ntips || 0 };
-      })
-      .sort((a, b) => {
-        const pinA = a.partition === "Condamine 2019 families" || a.partition === "Other" ? 1 : 0;
-        const pinB = b.partition === "Condamine 2019 families" || b.partition === "Other" ? 1 : 0;
-        if (pinA !== pinB) return pinA - pinB;
-        return b.canonicalTips - a.canonicalTips;
-      })
-      .map(x => x.partition);
+    // Order partitions: by macro category (CATEGORY_ORDER), then by canonical
+    // tips desc within each category. "Condamine 2019 families" and "Other"
+    // are pinned to the bottom of their category.
+    const partitionInfo = Array.from(buckets.keys()).map(p => {
+      const items = buckets.get(p);
+      const canonical = items.find(t => t.is_partition_canonical) || items[0];
+      const category = items.find(t => t.category)?.category || "Other";
+      return { partition: p, canonicalTips: canonical?.ntips || 0, category };
+    });
+    partitionInfo.sort((a, b) => {
+      const ra = CATEGORY_RANK[a.category] ?? 99;
+      const rb = CATEGORY_RANK[b.category] ?? 99;
+      if (ra !== rb) return ra - rb;
+      const pinA = a.partition === "Condamine 2019 families" || a.partition === "Other" ? 1 : 0;
+      const pinB = b.partition === "Condamine 2019 families" || b.partition === "Other" ? 1 : 0;
+      if (pinA !== pinB) return pinA - pinB;
+      return b.canonicalTips - a.canonicalTips;
+    });
 
-    html = partitionOrder.map(partition => {
+    let lastCategory = null;
+    html = partitionInfo.map(({ partition, category }) => {
       const items = buckets.get(partition);
       const canonical = items.find(t => t.is_partition_canonical);
       const subclades = items.filter(t => !t.is_partition_canonical);
@@ -327,6 +378,12 @@ function renderTreeList() {
       const expanded = STATE_EXPANDED.has(partition);
       const chevron = hasSub ? `<span class="chev">${expanded ? "▾" : "▸"}</span>` : `<span class="chev empty"></span>`;
       const countBadge = hasSub ? `<span class="sub-count">+${subclades.length}</span>` : "";
+
+      let categoryRow = "";
+      if (category !== lastCategory) {
+        categoryRow = `<li class="category-header">${category}</li>`;
+        lastCategory = category;
+      }
 
       const headerRow = `<li class="partition-header${hasSub ? ' has-children' : ''}${expanded ? ' open' : ''}" data-partition="${partition}">
         ${chevron}<span class="partition-name">${partition}</span>${countBadge}
@@ -343,7 +400,7 @@ function renderTreeList() {
       if (hasSub && expanded) {
         childRows = subclades.map(t => treeRowHTML(t, { indent: true })).join("");
       }
-      return headerRow + canonicalRow + childRows;
+      return categoryRow + headerRow + canonicalRow + childRows;
     }).join("");
 
     // Append the dark-matter section: partitions with an estimate but no

@@ -174,6 +174,13 @@ def main() -> None:
         # them under one synthetic partition so they collapse cleanly in the UI.
         if not partition and group.startswith("condamine_"):
             partition = "Condamine 2019 families"
+            # Family-level insect trees from Condamine 2019 → Arthropods.
+            if not est:
+                est = {"category": "Arthropods", "estimated_total": None,
+                       "estimated_low": None, "estimated_high": None,
+                       "estimate_source": None, "estimate_confidence": None}
+
+        category = est.get("category") if est else None
 
         is_anchor = bool(est and est.get("estimated_total") and described
                          and described >= 0.5 * est["estimated_total"])
@@ -182,6 +189,7 @@ def main() -> None:
             "group": group,
             "provenance_group": prov_group,
             "partition_group": partition,
+            "category": category,
             "is_partition_anchor": is_anchor,
             "study": study or prov.get("study") or "",
             "ntips": ntips_meta,
@@ -243,6 +251,7 @@ def main() -> None:
                 "group": t["group"],
                 "provenance_group": t["provenance_group"],
                 "partition_group": t["partition_group"],
+                "category": t.get("category"),
                 "study": t["study"],
                 "year": t["year"],
                 "tips": tips,
@@ -279,6 +288,7 @@ def main() -> None:
             "filename": t["filename"],
             "group": t["group"],
             "provenance_group": t["provenance_group"],
+            "category": t.get("category"),
             "study": t["study"],
             "year": t["year"],
             "tips": t["ntips"],
