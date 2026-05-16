@@ -32,3 +32,6 @@ data/processed/
 *.tmp
 *.swp
 *~
+
+# Generated name shards for the web viewer — rebuilt by site/build.py
+standardized/names/

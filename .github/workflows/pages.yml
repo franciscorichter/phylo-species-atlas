@@ -39,10 +39,12 @@ jobs:
           mkdir -p _deploy/standardized
           cp -r site/. _deploy/
           cp -r standardized/trees _deploy/standardized/trees
+          cp -r standardized/names _deploy/standardized/names
           # In local dev the page lives at /site/ and reaches trees via
           # ../standardized/trees/. On Pages the page is the deploy root, so
-          # trees are at ./standardized/trees/ — adjust TREES_BASE accordingly.
+          # trees are at ./standardized/trees/ — adjust TREES_BASE / NAMES_BASE.
           sed -i 's|const TREES_BASE = "\.\./standardized/trees/";|const TREES_BASE = "standardized/trees/";|' _deploy/app.js
+          sed -i 's|const NAMES_BASE = "\.\./standardized/names/";|const NAMES_BASE = "standardized/names/";|' _deploy/app.js
 
       - uses: actions/configure-pages@v5
 

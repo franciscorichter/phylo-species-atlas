@@ -18,6 +18,8 @@ STD = ROOT / "standardized"
 PROVENANCE = ROOT / "data_provenance.csv"
 ESTIMATES = ROOT / "data_estimates.csv"
 SOURCES = ROOT / "data_sources.csv"
+DICTIONARY = STD / "dictionary.csv"
+NAMES_DIR = STD / "names"
 OUT = Path(__file__).resolve().parent / "data.json"
 
 # Map provenance group (dataset-level slug) → partition group in data_estimates.csv
@@ -68,6 +70,43 @@ def parse_float(v) -> float | None:
 
 
 TIP_RE = re.compile(r"[(,]\s*(\d+|[A-Za-z_][\w.]*)")
+
+# Captures numeric tip IDs from a Newick string. Tips appear after '(' or ',',
+# end at ':' or ',' or ')'. This is exact for the standardized trees (all tips
+# are integer IDs from standardized/dictionary.csv).
+TIP_ID_RE = re.compile(r"([(,])(-?\d+)(?=[:,)])")
+
+
+def build_name_shards(metadata: list[dict]) -> int:
+    """Generate one `<filename>.json` per tree with {id: name} for every tip
+    that tree uses. Stored in standardized/names/, loaded on demand by the
+    web viewer to populate hover tooltips with species/specimen names.
+
+    Returns total bytes written (for the summary line).
+    """
+    if not DICTIONARY.exists():
+        print("dictionary.csv missing — skipping name shards", file=sys.stderr)
+        return 0
+    NAMES_DIR.mkdir(exist_ok=True)
+    print("loading dictionary…", file=sys.stderr)
+    name_by_id: dict[str, str] = {}
+    with DICTIONARY.open(newline="", encoding="utf-8") as f:
+        r = csv.DictReader(f)
+        for row in r:
+            name_by_id[row["id"]] = row["standardized_name"]
+    total = 0
+    for row in metadata:
+        filename = row["filename"]
+        tree_path = STD / "trees" / filename
+        if not tree_path.exists():
+            continue
+        text = tree_path.read_text(encoding="utf-8", errors="ignore")
+        ids = {m.group(2) for m in TIP_ID_RE.finditer(text)}
+        shard = {i: name_by_id[i] for i in ids if i in name_by_id}
+        out_path = NAMES_DIR / f"{filename}.json"
+        out_path.write_text(json.dumps(shard, separators=(",", ":"), ensure_ascii=False))
+        total += out_path.stat().st_size
+    return total
 
 
 def count_tips(newick_path: Path) -> int:
@@ -350,6 +389,11 @@ def main() -> None:
     size_kb = OUT.stat().st_size / 1024
     print(f"wrote {OUT.name}: {len(trees)} trees, {len(coverage_rows)} coverage rows, "
           f"{len(unrepresented)} unrepresented lineages, {size_kb:.1f} KB", file=sys.stderr)
+
+    shard_bytes = build_name_shards(metadata)
+    if shard_bytes:
+        print(f"wrote name shards: {len(metadata)} files, {shard_bytes/1024/1024:.1f} MB total",
+              file=sys.stderr)
 
 
 if __name__ == "__main__":

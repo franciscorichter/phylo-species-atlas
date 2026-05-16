@@ -8,12 +8,14 @@ const STATE = {
   layout: "linear", // or "radial"
   showLabels: false,
   currentNewick: null,
+  currentNames: {}, // {id: standardized_name} for the active tree
   coverageMode: "described", // or "estimated"
   query: "",
   datedOnly: false,
 };
 
 const TREES_BASE = "../standardized/trees/"; // patched by CI for Pages deploy
+const NAMES_BASE = "../standardized/names/"; // patched by CI for Pages deploy
 const TIP_RENDER_LIMIT = 5000; // above this, we sample for rendering
 
 const fmt = new Intl.NumberFormat("en-US");
@@ -628,14 +630,23 @@ async function loadAndRenderTree(t) {
   const container = document.getElementById("tree-container");
   container.innerHTML = "";
   STATE.currentNewick = null;
+  STATE.currentNames = {};
 
   status.classList.remove("warning");
   status.textContent = `Loading ${t.filename}…`;
 
   try {
-    const res = await fetch(TREES_BASE + t.filename);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    let newick = await res.text();
+    // Fetch the tree and its name shard in parallel. The shard is optional —
+    // if it 404s or fails, we just fall back to numeric tip IDs.
+    const [treeRes, namesRes] = await Promise.all([
+      fetch(TREES_BASE + t.filename),
+      fetch(NAMES_BASE + t.filename + ".json").catch(() => null),
+    ]);
+    if (!treeRes.ok) throw new Error(`HTTP ${treeRes.status}`);
+    let newick = await treeRes.text();
+    if (namesRes && namesRes.ok) {
+      try { STATE.currentNames = await namesRes.json(); } catch { STATE.currentNames = {}; }
+    }
 
     if ((t.ntips || 0) > TIP_RENDER_LIMIT) {
       const sampled = sampleNewick(newick, TIP_RENDER_LIMIT);
@@ -652,6 +663,13 @@ async function loadAndRenderTree(t) {
     status.classList.add("warning");
     status.textContent = `Could not render: ${e.message}. Use the download link above.`;
   }
+}
+
+// Resolve a tip's numeric ID to its standardized name. Returns the raw label
+// when no shard entry exists.
+function tipDisplayName(rawName) {
+  const n = STATE.currentNames[rawName];
+  return n || rawName;
 }
 
 function redrawTree() {
@@ -749,6 +767,20 @@ function drawLinear(root, width, nLeaves) {
       .attr("stroke", "#1a1a1a")
       .attr("stroke-width", 0.8);
 
+  // Invisible hover targets at each tip so the cursor can pick up species
+  // names even when labels are off. Native SVG <title> drives the tooltip.
+  const tipHit = g.append("g").attr("class", "tip-hits");
+  tipHit.selectAll("circle")
+    .data(root.leaves())
+    .join("circle")
+      .attr("cx", d => d.y)
+      .attr("cy", d => d.x)
+      .attr("r", Math.max(2.5, tipSpacing * 0.6))
+      .attr("fill", "transparent")
+      .style("pointer-events", "all")
+    .append("title")
+      .text(d => tipDisplayName(d.data.name));
+
   if (STATE.showLabels) {
     g.selectAll("text.label")
       .data(root.leaves())
@@ -759,7 +791,9 @@ function drawLinear(root, width, nLeaves) {
         .attr("dy", "0.32em")
         .attr("font-size", Math.max(7, Math.min(11, tipSpacing * 0.9)))
         .attr("fill", "#1a1a1a")
-        .text(d => d.data.name);
+        .text(d => tipDisplayName(d.data.name))
+      .append("title")
+        .text(d => tipDisplayName(d.data.name));
   }
 }
 
@@ -791,6 +825,19 @@ function drawRadial(root, width) {
       .attr("stroke", "#1a1a1a")
       .attr("stroke-width", 0.7);
 
+  // Hover targets — circles at each leaf so users can scrub for names.
+  const hits = svg.append("g").attr("class", "tip-hits");
+  hits.selectAll("circle")
+    .data(root.leaves())
+    .join("circle")
+      .attr("cx", d => Math.cos(d.x - Math.PI / 2) * d.y)
+      .attr("cy", d => Math.sin(d.x - Math.PI / 2) * d.y)
+      .attr("r", 3)
+      .attr("fill", "transparent")
+      .style("pointer-events", "all")
+    .append("title")
+      .text(d => tipDisplayName(d.data.name));
+
   if (STATE.showLabels) {
     svg.append("g")
       .selectAll("text")
@@ -801,7 +848,9 @@ function drawRadial(root, width) {
         .attr("dy", "0.32em")
         .attr("font-size", 8)
         .attr("fill", "#1a1a1a")
-        .text(d => d.data.name);
+        .text(d => tipDisplayName(d.data.name))
+      .append("title")
+        .text(d => tipDisplayName(d.data.name));
   }
 }
 
