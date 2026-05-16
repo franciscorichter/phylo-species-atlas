@@ -1,0 +1,87 @@
+# Turtles — partition metadata for the web app.
+#
+# Derived from the verified subset of audits/partitions/turtles.md and the
+# paper's data_estimates.csv. Note: the estimate-source DOI in the paper's
+# data_sources.csv is broken (404); this info.yaml carries the working
+# replacement (TTWG 2025) without modifying the paper data.
+
+partition: Turtles
+slug: turtles
+category: Vertebrates
+
+# --- Diversity estimate ---
+estimate:
+  # Values from the paper's data_estimates.csv (Turtles row).
+  described: 360
+  low: 360
+  total: 360
+  high: 370
+  confidence: High
+  source:
+    # data_sources.csv cites TTWG 2021 (v9), but its DOI returns 404.
+    # We surface the live TTWG 2025 (v10) edition as the working reference.
+    # Both editions are recorded so the audit trail stays intact.
+    paper_key: TTWG 2021                      # what data_sources.csv currently cites
+    paper_doi: 10.3854/crm.8.000c.checklist.atlas.v9.2021
+    paper_doi_status: broken                  # returns 404 on Crossref and doi.org
+    live_key: TTWG 2025
+    live_doi: 10.3854/crm.10.checklist.atlas.v10.2025
+    live_year: 2025
+    live_cited_value: 364
+    pdf: papers/estimate.pdf                  # TTWG 2025 PDF (40 MB monograph)
+    url: https://iucn-tftsg.org/checklist/
+    note: |
+      Live successor is the IUCN-TFTSG Turtles of the World checklist; the
+      paper-side citation (v9/2021) had a broken DOI and was replaced here by
+      the v10/2025 edition (species count 360 → 364). The 4-species delta is
+      net taxonomic change since 2021.
+
+# --- Canonical tree ---
+tree:
+  file: tree.nwk
+  ntips: 593                                 # 591 turtles + 2 outgroups (paper)
+  unique_ids: 329                            # numeric IDs in the file
+  species_represented: 279                   # paper: 279 of 348 living species
+  coverage_pct_described: 80                 # rounded — paper states 80%
+  dated: true
+  multiple_individuals_per_species: true
+  source:
+    key: Thomson 2021
+    study: Thomson RC, Spinks PQ, Shaffer HB (2021)
+    doi: 10.1073/pnas.2012215118
+    pdf: papers/tree.pdf
+  methods:
+    inference: bayesian
+    software: [MrBayes 3.2, BEAST 1.8.2]
+    data_type: multi-locus
+    n_loci: 15
+    n_genes: 15
+    substitution_model: "HKY per partition (BEAST divergence-time run)"
+    dating_method: "Uncorrelated lognormal relaxed clock; birth-death tree prior"
+    fossil_calibrations: 22
+    support_metric: posterior_probability
+    support_typical: "PP=1 on deep splits; all 14 families monophyletic; 98% of genera represented."
+    divergence_ci_available: true
+    divergence_ci_note: "95% HPD on internal nodes; 100-tree posterior credible set (atlas ships MCC consensus only)."
+    posterior_n: 100
+
+# --- Known issues (surfaced to the web app as caveats) ---
+caveats:
+  - severity: high
+    summary: "Estimate-source DOI in the published-paper data is broken."
+    detail: "data_sources.csv cites TTWG 2021 (10.3854/crm.8.000c.checklist.atlas.v9.2021) which returns 404. Live replacement is TTWG 2025."
+  - severity: medium
+    summary: "Loci/species count in data_provenance.csv methods_brief differs from the paper."
+    detail: "Provenance says '13 loci for 294 species'. Paper reports 15 loci, 279 of 348 living species. Needs reconciliation with the Dryad release used to build the standardized tree."
+  - severity: medium
+    summary: "Multiple individuals per species in the tree."
+    detail: "593 tip positions, 329 unique numeric IDs, ~279 species. Some tips are subspecies (e.g. Terrapene_ornata_luteola) or locality-coded specimens (e.g. Kinosternon_dunni_K38)."
+
+# --- Audit linkage ---
+audit:
+  file: ../../../audits/partitions/turtles.md
+  status: in_progress
+  last_audited: 2026-05-17
+
+# --- Sub-clades ---
+sub_phylos: []                               # no shipped sub-clade trees for turtles

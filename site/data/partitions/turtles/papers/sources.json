@@ -1,0 +1,27 @@
+{
+  "tree": {
+    "file": "tree.pdf",
+    "doi": "10.1073/pnas.2012215118",
+    "study": "Thomson RC, Spinks PQ, Shaffer HB (2021). A global phylogeny of turtles reveals a burst of climate-associated diversification on continental margins. Proceedings of the National Academy of Sciences 118(7):e2012215118.",
+    "year": 2021,
+    "journal": "Proceedings of the National Academy of Sciences",
+    "license": "PNAS license (subscription)",
+    "open_access": false,
+    "url": "https://www.pnas.org/doi/10.1073/pnas.2012215118",
+    "data_url": "https://datadryad.org/dataset/doi:10.5061/dryad.jh9w0vt8w"
+  },
+  "estimate": {
+    "file": "estimate.pdf",
+    "doi": "10.3854/crm.10.checklist.atlas.v10.2025",
+    "doi_paper_data_csv": "10.3854/crm.8.000c.checklist.atlas.v9.2021",
+    "doi_paper_data_csv_status": "broken",
+    "study": "TTWG (Turtle Taxonomy Working Group; Rhodin AGJ, Iverson JB, Fritz U, Gallego-García N, Georges A, Shaffer HB, van Dijk PP) (2025). Turtles of the World: Annotated Checklist and Atlas of Taxonomy, Synonymy, Distribution, and Conservation Status (10th Ed.). Chelonian Research Monographs 10:1-575.",
+    "year": 2025,
+    "journal": "Chelonian Research Monographs",
+    "license": "IUCN-TFTSG (open access)",
+    "open_access": true,
+    "url": "https://iucn-tftsg.org/checklist/",
+    "data_url": "https://iucn-tftsg.org/wp-content/uploads/crm.10.checklist.atlas_.v10.2025.pdf",
+    "note": "This file is the TTWG 2025 (v10) edition (40 MB, 575 pages, 364 species). The 2021 (v9) edition cited in data_sources.csv has a broken DOI."
+  }
+}
