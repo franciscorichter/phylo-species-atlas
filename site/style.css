@@ -340,6 +340,60 @@ main {
 .tree-list .badge.dated { background: var(--dated); }
 .tree-list .badge.undated { background: var(--undated); }
 
+/* Dark-matter / unrepresented lineages */
+.tree-list .partition-header.dark-header {
+  color: var(--muted);
+  margin-top: 12px;
+  border-top: 1px dashed var(--line);
+  padding-top: 12px;
+}
+.tree-list .partition-header.dark-header .partition-name {
+  color: var(--muted);
+}
+.tree-list .dark-cat-header {
+  padding: 6px 18px 4px 36px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #9aa3b0;
+  background: transparent;
+  cursor: default;
+  font-weight: 600;
+}
+.tree-list .tree-item.dark {
+  cursor: default;
+  background: #fbfbfc;
+  color: var(--muted);
+}
+.tree-list .tree-item.dark:hover {
+  background: #fbfbfc;
+}
+.tree-list .tree-item.dark .tree-name {
+  font-weight: 400;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: normal;
+  overflow: visible;
+}
+.tree-list .badge.dark {
+  background: #d3d8e2;
+  outline: 1px dashed #b3bcc8;
+  outline-offset: -2px;
+  background-clip: padding-box;
+}
+.tree-list .tree-item.dark .src-link {
+  font-size: 10.5px;
+  padding: 0 6px 0 0;
+  margin-left: 4px;
+}
+.tree-list .tree-item.dark .src-link .src-type {
+  font-size: 8.5px;
+  padding: 0 4px;
+  line-height: 12px;
+}
+
 .detail {
   padding: 20px 24px 28px;
   min-height: 400px;

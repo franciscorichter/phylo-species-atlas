@@ -345,6 +345,39 @@ function renderTreeList() {
       }
       return headerRow + canonicalRow + childRows;
     }).join("");
+
+    // Append the dark-matter section: partitions with an estimate but no
+    // shipped tree. Collapsible like the other partition headers.
+    const unrepresented = STATE.data.unrepresented || [];
+    if (unrepresented.length) {
+      const SECTION_KEY = "__unrepresented__";
+      const open = STATE_EXPANDED.has(SECTION_KEY);
+      const chev = `<span class="chev">${open ? "▾" : "▸"}</span>`;
+      let body = "";
+      if (open) {
+        // Sub-group by category.
+        const byCat = new Map();
+        for (const u of unrepresented) {
+          const c = u.category || "Other";
+          if (!byCat.has(c)) byCat.set(c, []);
+          byCat.get(c).push(u);
+        }
+        for (const [cat, items] of byCat) {
+          body += `<li class="dark-cat-header">${cat} <span class="sub-count">${items.length}</span></li>`;
+          for (const u of items) {
+            const desc = u.described ? fmt.format(u.described) + " described" : "—";
+            const link = sourceLinkHTML(u.estimate_source_info, u.estimate_source);
+            body += `<li class="tree-item dark child">
+              <span class="tree-name"><span class="badge dark"></span>${u.group}${link}</span>
+              <span class="tree-meta">${desc}</span>
+            </li>`;
+          }
+        }
+      }
+      html += `<li class="partition-header dark-header has-children${open ? ' open' : ''}" data-partition="${SECTION_KEY}">
+        ${chev}<span class="partition-name">Not yet represented</span><span class="sub-count">${unrepresented.length}</span>
+      </li>${body}`;
+    }
   }
 
   ul.innerHTML = html;
@@ -358,6 +391,7 @@ function renderTreeList() {
     });
   });
   ul.querySelectorAll(".tree-item").forEach(li => {
+    if (!li.dataset.filename) return; // dark-matter rows have no tree to load
     li.addEventListener("click", () => selectTree(li.dataset.filename, false));
   });
 }

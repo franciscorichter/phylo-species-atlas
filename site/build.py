@@ -292,6 +292,31 @@ def main() -> None:
             key=lambda x: (not x["is_partition_canonical"], -(x["tips"] or 0))
         )
 
+    # "Not yet represented" lineages — partitions present in data_estimates.csv
+    # but with no shipped tree. These are the paper's dark-matter clades.
+    mapped_partitions = {t["partition_group"] for t in trees if t.get("partition_group")}
+    unrepresented = []
+    for r in estimates_rows:
+        g = r.get("group")
+        if not g or g in mapped_partitions:
+            continue
+        unrepresented.append({
+            "group": g,
+            "category": r.get("category") or None,
+            "described": parse_int(r.get("described")),
+            "estimated_total": parse_int(r.get("estimated_total")),
+            "estimated_low": parse_int(r.get("estimated_low")),
+            "estimated_high": parse_int(r.get("estimated_high")),
+            "estimate_source": r.get("estimate_source") or None,
+            "estimate_source_info": source_info(r.get("estimate_source")),
+            "estimate_confidence": r.get("confidence") or None,
+        })
+    # Stable order: by category then by described count desc.
+    CAT_ORDER = {"Vertebrates": 0, "Plants": 1, "Arthropods": 2, "Other animals": 3,
+                 "Microbes & protists": 4, "Not yet represented": 5}
+    unrepresented.sort(key=lambda x: (CAT_ORDER.get(x["category"], 9),
+                                      -(x["described"] or 0)))
+
     summary = {
         "n_trees": len(trees),
         "n_dated": dated_count,
@@ -302,17 +327,19 @@ def main() -> None:
     }
 
     bundle = {
-        "schema_version": 2,
-        "generated_from": "standardized/metadata.csv + data_provenance.csv + data_estimates.csv",
+        "schema_version": 3,
+        "generated_from": "standardized/metadata.csv + data_provenance.csv + data_estimates.csv + data_sources.csv",
         "summary": summary,
         "trees": trees,
         "coverage": coverage_rows,
         "datasets_by_partition": dict(datasets_by_partition),
+        "unrepresented": unrepresented,
     }
 
     OUT.write_text(json.dumps(bundle, indent=2, ensure_ascii=False))
     size_kb = OUT.stat().st_size / 1024
-    print(f"wrote {OUT.name}: {len(trees)} trees, {len(coverage_rows)} coverage rows, {size_kb:.1f} KB", file=sys.stderr)
+    print(f"wrote {OUT.name}: {len(trees)} trees, {len(coverage_rows)} coverage rows, "
+          f"{len(unrepresented)} unrepresented lineages, {size_kb:.1f} KB", file=sys.stderr)
 
 
 if __name__ == "__main__":
