@@ -83,21 +83,20 @@ function renderCoveragePlot() {
   // Coverage chart shows one bar per partition — the canonical (largest)
   // tree. Sub-clade trees (parrots within Birds, primates within Mammals,
   // etc.) appear only when the user expands the partition in the tree
-  // list on the left. Bars are grouped by macro-category, then by descending
-  // coverage within each category.
+  // list on the left. Bars are grouped by macro-category; within each
+  // category, the row order is fixed across both modes (sorted once by
+  // described coverage desc) so toggling described↔estimated only changes
+  // bar lengths, not positions — letting users compare the two readings.
   const canonical = allRows.filter(r => r.is_partition_canonical);
-  const valueOf = mode === "estimated"
-    ? (r) => r.coverage_pct_estimated
-    : (r) => r.coverage_pct;
-  const rows = (mode === "estimated"
-      ? canonical.filter(estimatedAvailable)
-      : canonical.slice()
-    ).sort((a, b) => {
-      const ra = CATEGORY_RANK[a.category] ?? 99;
-      const rb = CATEGORY_RANK[b.category] ?? 99;
-      if (ra !== rb) return ra - rb;
-      return (valueOf(b) ?? 0) - (valueOf(a) ?? 0);
-    });
+  const baseOrder = canonical.slice().sort((a, b) => {
+    const ra = CATEGORY_RANK[a.category] ?? 99;
+    const rb = CATEGORY_RANK[b.category] ?? 99;
+    if (ra !== rb) return ra - rb;
+    return (b.coverage_pct ?? 0) - (a.coverage_pct ?? 0);
+  });
+  const rows = mode === "estimated"
+    ? baseOrder.filter(estimatedAvailable)
+    : baseOrder;
 
   const labels = rows.map(r => r.group);
   const colors = rows.map(r => r.dated ? "#2a6fbf" : "#c97a2a");
