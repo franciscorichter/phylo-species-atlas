@@ -351,19 +351,19 @@ main {
 }
 
 .dataset-chooser {
-  margin: -6px 0 18px;
-  padding: 10px 14px;
-  background: #fafbfd;
-  border: 1px solid var(--line);
+  margin: -4px 0 18px;
+  padding: 12px 14px;
+  background: linear-gradient(180deg, #f6f9ff 0%, #fbfcff 100%);
+  border: 1px solid #d6e2f5;
   border-radius: 6px;
 }
 .chooser-label {
   font-size: 11.5px;
   color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+  margin-bottom: 10px;
 }
+.chooser-label strong { color: var(--accent); font-weight: 600; }
 .chooser-buttons {
   display: flex;
   gap: 8px;
@@ -374,29 +374,54 @@ main {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 1px;
-  padding: 6px 12px;
+  gap: 2px;
+  padding: 7px 13px;
   background: #fff;
   border: 1px solid var(--line);
   border-radius: 5px;
   cursor: pointer;
   text-align: left;
-  transition: border-color 0.12s ease, background 0.12s ease;
+  transition: border-color 0.12s ease, background 0.12s ease, box-shadow 0.12s ease;
+  min-width: 130px;
 }
 .chooser-btn:hover {
   border-color: var(--accent);
   background: var(--accent-soft);
 }
+.chooser-btn.active {
+  border-color: var(--accent);
+  background: var(--accent);
+  box-shadow: 0 1px 3px rgba(42,111,191,0.25);
+  cursor: default;
+}
+.chooser-btn.active .chooser-name,
+.chooser-btn.active .chooser-meta {
+  color: #fff;
+}
+.chooser-btn.active .chooser-badge.dated { background: #fff; }
+.chooser-btn.active .chooser-badge.undated { background: rgba(255,255,255,0.85); }
 .chooser-name {
-  font-size: 12.5px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 .chooser-meta {
   font-size: 11px;
   color: var(--muted);
   font-variant-numeric: tabular-nums;
 }
+.chooser-badge {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.chooser-badge.dated { background: var(--dated); }
+.chooser-badge.undated { background: var(--undated); }
 
 .viewer-controls {
   display: flex;

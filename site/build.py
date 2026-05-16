@@ -86,11 +86,34 @@ def _est_pct(tips, denominator):
     return min(100.0, round(100.0 * tips / denominator, 1))
 
 
+def find_provenance_match(tree_group: str, tree_ntips, provenance: list[dict]):
+    """Resolve a standardized tree to its data_provenance.csv row.
+
+    Standardized groups are simplified (`birds`) while provenance can have
+    dataset-level rows (`birds_jetz`, `birds_mctavish`). We try exact match
+    first, then prefix-with-underscore variants, preferring the row whose
+    `tips` matches the standardized tree's tip count.
+    """
+    for p in provenance:
+        if p.get("group") == tree_group:
+            return p
+    candidates = [p for p in provenance if (p.get("group") or "").startswith(tree_group + "_")]
+    if not candidates:
+        return None
+    if tree_ntips is not None:
+        for p in candidates:
+            try:
+                if int(p.get("tips") or "") == tree_ntips:
+                    return p
+            except (TypeError, ValueError):
+                pass
+    return candidates[0]
+
+
 def main() -> None:
     metadata = read_csv(STD / "metadata.csv")
     provenance = read_csv(PROVENANCE)
     estimates_rows = read_csv(ESTIMATES) if ESTIMATES.exists() else []
-    prov_by_group = {row["group"]: row for row in provenance}
     estimates_by_partition = {row["group"]: row for row in estimates_rows}
 
     def estimate_for(prov_group: str | None):
@@ -109,22 +132,6 @@ def main() -> None:
             "category": est.get("category") or None,
         }
 
-    # Group provenance rows by their partition so the UI can offer dataset switches.
-    datasets_by_partition: dict[str, list[dict]] = defaultdict(list)
-    for prov_row in provenance:
-        partition = PROVENANCE_TO_PARTITION.get(prov_row.get("group") or "")
-        if not partition:
-            continue
-        datasets_by_partition[partition].append({
-            "group": prov_row["group"],
-            "tree_name": prov_row.get("tree_name") or None,
-            "study": prov_row.get("study") or "",
-            "year": parse_int(prov_row.get("year")),
-            "tips": parse_int(prov_row.get("tips")),
-            "described_species": parse_int(prov_row.get("described_species")),
-            "dated": parse_bool(prov_row.get("dated", "FALSE")),
-        })
-
     trees = []
     by_group_aggregate = defaultdict(lambda: {"trees": 0, "tips": 0})
     dated_count = 0
@@ -140,19 +147,21 @@ def main() -> None:
         tree_path = STD / "trees" / filename
         size_bytes = tree_path.stat().st_size if tree_path.exists() else None
 
-        prov = prov_by_group.get(group, {})
+        prov = find_provenance_match(group, ntips_meta, provenance) or {}
+        prov_group = prov.get("group") or group
         described = parse_int(prov.get("described_species"))
         coverage_pct = parse_float(prov.get("coverage_pct"))
-        partition, est = estimate_for(group)
+        partition, est = estimate_for(prov_group)
 
         is_anchor = bool(est and est.get("estimated_total") and described
                          and described >= 0.5 * est["estimated_total"])
         trees.append({
             "filename": filename,
             "group": group,
+            "provenance_group": prov_group,
             "partition_group": partition,
             "is_partition_anchor": is_anchor,
-            "study": study,
+            "study": study or prov.get("study") or "",
             "ntips": ntips_meta,
             "dated": dated,
             "size_bytes": size_bytes,
@@ -177,26 +186,29 @@ def main() -> None:
     # Sort by tips desc — better default for tree picker
     trees.sort(key=lambda r: (-(r["ntips"] or 0), r["filename"]))
 
-    # Coverage by group, for the bar chart. Use the provenance row when present.
+    # Coverage by tree — one bar per shipped standardized tree that has
+    # described_species and coverage_pct attached from its provenance row.
     coverage_rows = []
-    for prov_row in provenance:
-        described = parse_int(prov_row.get("described_species"))
-        cov = parse_float(prov_row.get("coverage_pct"))
-        tips = parse_int(prov_row.get("tips"))
-        partition, est = estimate_for(prov_row.get("group"))
+    for t in trees:
+        tips = t["ntips"]
+        described = t["described_species"]
+        cov = t["coverage_pct"]
         if described and cov is not None:
             row_out = {
-                "group": prov_row["group"],
-                "partition_group": partition,
-                "tree_name": prov_row.get("tree_name") or None,
-                "study": prov_row.get("study") or "",
-                "year": parse_int(prov_row.get("year")),
+                "filename": t["filename"],
+                "group": t["group"],
+                "provenance_group": t["provenance_group"],
+                "partition_group": t["partition_group"],
+                "study": t["study"],
+                "year": t["year"],
                 "tips": tips,
                 "described_species": described,
-                "described_source": prov_row.get("species_count_source") or None,
+                "described_source": t["described_source"],
                 "coverage_pct": cov,
-                "dated": parse_bool(prov_row.get("dated", "FALSE")),
+                "dated": t["dated"],
+                "is_partition_anchor": t["is_partition_anchor"],
             }
+            est = t["estimate"]
             if est and est.get("estimated_total"):
                 row_out["estimated_total"] = est["estimated_total"]
                 row_out["estimated_low"] = est["estimated_low"]
@@ -206,11 +218,28 @@ def main() -> None:
                 row_out["coverage_pct_estimated"] = _est_pct(tips, est["estimated_total"])
                 row_out["coverage_pct_estimated_low"] = _est_pct(tips, est["estimated_high"])  # high denom = low cov
                 row_out["coverage_pct_estimated_high"] = _est_pct(tips, est["estimated_low"])  # low denom = high cov
-                # Anchor = dataset's described count covers most of the partition's described.
-                # Sub-clade trees (parrots within Birds, primates within Mammals) are not anchors.
-                row_out["is_partition_anchor"] = bool(described and described >= 0.5 * est["estimated_total"])
             coverage_rows.append(row_out)
     coverage_rows.sort(key=lambda r: -r["coverage_pct"])
+
+    # Datasets per partition — sourced from shipped trees, so every entry maps
+    # to a real .nwk the chooser can switch to. (For partitions where the
+    # release ships a single canonical tree but provenance documents multiple
+    # alternative source studies, only the shipped tree appears here.)
+    datasets_by_partition: dict[str, list[dict]] = defaultdict(list)
+    for t in trees:
+        partition = t.get("partition_group")
+        if not partition:
+            continue
+        datasets_by_partition[partition].append({
+            "filename": t["filename"],
+            "group": t["group"],
+            "provenance_group": t["provenance_group"],
+            "study": t["study"],
+            "year": t["year"],
+            "tips": t["ntips"],
+            "dated": t["dated"],
+            "is_partition_anchor": t["is_partition_anchor"],
+        })
 
     summary = {
         "n_trees": len(trees),

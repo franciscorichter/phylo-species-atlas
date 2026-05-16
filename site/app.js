@@ -171,10 +171,8 @@ function renderCoveragePlot() {
     const point = ev.points && ev.points[0];
     if (!point) return;
     const row = rows[point.pointIndex];
-    if (!row || !row.tree_name) return;
-    const target = STATE.data.trees.find(t => t.filename === row.tree_name)
-                || STATE.data.trees.find(t => t.group === row.group);
-    if (target) selectTree(target.filename, true);
+    if (!row || !row.filename) return;
+    selectTree(row.filename, true);
   });
 
   // Update the sub-line copy under the title to match the mode
@@ -340,32 +338,42 @@ function renderDatasetChooser(t) {
   const peers = partition && STATE.data.datasets_by_partition
     ? (STATE.data.datasets_by_partition[partition] || [])
     : [];
-  // For each peer dataset, the corresponding tree file is in STATE.data.trees.
-  // A peer is interesting only if its tree exists and isn't the current tree.
-  const items = peers
-    .map(p => ({ peer: p, tree: STATE.data.trees.find(x => x.filename === p.tree_name) }))
-    .filter(x => x.tree && x.tree.filename !== t.filename);
 
-  if (!partition || items.length === 0) {
+  // Each peer references a shipped tree by filename — resolve directly.
+  const items = peers
+    .map(p => ({ peer: p, tree: STATE.data.trees.find(x => x.filename === p.filename) }))
+    .filter(x => x.tree);
+
+  // If there's no partition or only one dataset, hide — nothing to choose between.
+  if (!partition || items.length <= 1) {
     host.hidden = true;
     host.innerHTML = "";
     return;
   }
   host.hidden = false;
   host.innerHTML = `
-    <div class="chooser-label">Other datasets for <strong>${partition}</strong>:</div>
+    <div class="chooser-label">${items.length} datasets cover <strong>${partition}</strong> &mdash; click to switch:</div>
     <div class="chooser-buttons">
       ${items.map(({ peer, tree }) => {
-        const label = peer.group;
-        const meta = `${peer.tips ? fmt.format(peer.tips) + " tips" : ""}${peer.year ? " · " + peer.year : ""}`;
-        return `<button type="button" class="chooser-btn" data-filename="${tree.filename}">
-          <span class="chooser-name">${label}</span>
+        const isActive = tree.filename === t.filename;
+        const tips = peer.tips ? `${fmt.format(peer.tips)} tips` : "";
+        const year = peer.year ? `${peer.year}` : "";
+        const datedBadge = peer.dated
+          ? `<span class="chooser-badge dated" title="dated"></span>`
+          : `<span class="chooser-badge undated" title="undated"></span>`;
+        const studyShort = (peer.study || "").split(",")[0].split(" et")[0];
+        const meta = [tips, year, studyShort].filter(Boolean).join(" · ");
+        return `<button type="button" class="chooser-btn ${isActive ? "active" : ""}" data-filename="${tree.filename}" aria-pressed="${isActive}">
+          <span class="chooser-name">${datedBadge}${peer.group}</span>
           <span class="chooser-meta">${meta}</span>
         </button>`;
       }).join("")}
     </div>`;
   host.querySelectorAll(".chooser-btn").forEach(btn => {
-    btn.addEventListener("click", () => selectTree(btn.dataset.filename, false));
+    btn.addEventListener("click", () => {
+      if (btn.dataset.filename === STATE.selected) return;
+      selectTree(btn.dataset.filename, false);
+    });
   });
 }
 
