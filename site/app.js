@@ -51,6 +51,23 @@ function renderSummary() {
 
 const FONT_STACK = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif";
 
+function sourceLinkHTML(info, fallbackLabel, confidence) {
+  const label = (info && info.label) || fallbackLabel;
+  if (!label) return "";
+  const confSuffix = confidence ? `, ${confidence.toLowerCase()} conf.` : "";
+  if (!info) return ` <span class="src">${label}${confSuffix}</span>`;
+  const tipBits = [];
+  if (info.citation) tipBits.push(info.citation);
+  if (info.type === "paper" && info.doi) tipBits.push(`DOI: ${info.doi}`);
+  const titleAttr = tipBits.length ? ` title="${tipBits.join(' — ').replace(/"/g, '&quot;')}"` : "";
+  let href = null;
+  if (info.doi) href = `https://doi.org/${info.doi}`;
+  else if (info.url) href = info.url;
+  if (!href) return ` <span class="src"${titleAttr}>${label}${confSuffix}</span>`;
+  const typeTag = info.type === "paper" ? "paper" : "DB";
+  return ` <a class="src-link" href="${href}" target="_blank" rel="noopener"${titleAttr}><span class="src-type ${info.type}">${typeTag}</span>${label}${confSuffix}</a>`;
+}
+
 function renderCoveragePlot() {
   const allRows = STATE.data.coverage;
   if (!allRows.length) return;
@@ -368,11 +385,11 @@ async function selectTree(filename, scrollIntoView) {
 
   const est = t.estimate;
   const describedVal = t.described_species
-    ? `${fmt.format(t.described_species)}${t.described_source ? ` <span class="src">(${t.described_source})</span>` : ""}`
+    ? `${fmt.format(t.described_species)}${sourceLinkHTML(t.described_source_info, t.described_source)}`
     : "—";
   const estimatedVal = est && est.estimated_total
     ? `${fmt.format(est.estimated_total)} <span class="range">(${fmt.format(est.estimated_low || est.estimated_total)}–${fmt.format(est.estimated_high || est.estimated_total)})</span>` +
-      (est.estimate_source ? ` <span class="src">${est.estimate_source}${est.estimate_confidence ? `, ${est.estimate_confidence.toLowerCase()} conf.` : ""}</span>` : "")
+      sourceLinkHTML(t.estimate_source_info, est.estimate_source, est.estimate_confidence)
     : null;
   const covDescribed = t.coverage_pct != null ? `${t.coverage_pct.toFixed(1)}% <span class="src">of described</span>` : "—";
   let covEstimated = null;
@@ -386,10 +403,13 @@ async function selectTree(filename, scrollIntoView) {
     covEstimated = `${main}% <span class="range">(${lo}&ndash;${hi}%)</span> ${subnote}`;
   }
 
+  const treePaperHTML = t.doi
+    ? `<a class="src-link" href="https://doi.org/${t.doi}" target="_blank" rel="noopener" title="${(t.study || "") + (t.year ? " (" + t.year + ")" : "") + (t.journal ? " — " + t.journal : "")}"><span class="src-type paper">paper</span>${(t.study || "").split(",")[0].split(" et")[0] || t.doi}${t.year ? " " + t.year : ""}</a>`
+    : (t.study ? `<span class="src">${t.study}${t.year ? " (" + t.year + ")" : ""}</span>` : "—");
+
   const fields = [
     ["Group", t.group + (t.partition_group && t.partition_group !== t.group ? ` <span class="src">→ ${t.partition_group}</span>` : "")],
-    ["Study", t.study],
-    ["Year", t.year],
+    ["Tree paper", treePaperHTML],
     ["Journal", t.journal],
     ["Tips", fmt.format(t.ntips || 0)],
     ["Dated", t.dated ? "yes" : "no"],
@@ -398,8 +418,7 @@ async function selectTree(filename, scrollIntoView) {
     ["Estimated species", estimatedVal],
     ["Coverage (described)", covDescribed],
     ["Coverage (estimated)", covEstimated],
-    ["DOI", t.doi ? `<a href="https://doi.org/${t.doi}" target="_blank" rel="noopener">${t.doi}</a>` : "—"],
-    ["Source", t.data_source],
+    ["Tree file source", t.data_source],
     ["File", t.size_bytes ? `${(t.size_bytes / 1024).toFixed(1)} KB` : "—"],
   ];
   document.getElementById("detail-meta").innerHTML = fields

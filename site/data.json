@@ -39,6 +39,20 @@
         "estimate_confidence": "Medium",
         "category": "Plants"
       },
+      "described_source_info": {
+        "label": "World Flora Online 2025",
+        "type": "database",
+        "doi": null,
+        "url": "http://www.worldfloraonline.org/",
+        "citation": "World Flora Online (2025 access)."
+      },
+      "estimate_source_info": {
+        "label": "Nic Lughadha 2016",
+        "type": "paper",
+        "doi": "10.11646/phytotaxa.272.1.5",
+        "url": null,
+        "citation": "Nic Lughadha et al. 2016. Counting counts: revised estimates of numbers of accepted species of flowering plants. Phytotaxa 272(1): 82-88."
+      },
       "is_partition_canonical": true
     },
     {
@@ -69,6 +83,20 @@
         "estimate_source": "Curtis 2002",
         "estimate_confidence": "Low",
         "category": "Microbes & protists"
+      },
+      "described_source_info": {
+        "label": "GTDB R10",
+        "type": "database",
+        "doi": null,
+        "url": "https://gtdb.ecogenomic.org/",
+        "citation": "Genome Taxonomy Database (GTDB) release 10."
+      },
+      "estimate_source_info": {
+        "label": "Curtis 2002",
+        "type": "paper",
+        "doi": "10.1073/pnas.142680199",
+        "url": null,
+        "citation": "Curtis et al. 2002. Estimating prokaryotic diversity and its limits. PNAS 99(16): 10494-10499."
       },
       "is_partition_canonical": true
     },
@@ -101,6 +129,20 @@
         "estimate_confidence": "Low",
         "category": "Arthropods"
       },
+      "described_source_info": {
+        "label": "Catalogue of Life 2025",
+        "type": "database",
+        "doi": null,
+        "url": "https://www.catalogueoflife.org/",
+        "citation": "Catalogue of Life (2025 release)."
+      },
+      "estimate_source_info": {
+        "label": "Stork 2018",
+        "type": "paper",
+        "doi": "10.1146/annurev-ento-020117-043348",
+        "url": null,
+        "citation": "Stork 2018. How Many Species of Insects and Other Terrestrial Arthropods Are There on Earth? Annu Rev Entomol 63: 31-45."
+      },
       "is_partition_canonical": true
     },
     {
@@ -125,6 +167,8 @@
       "methods_brief": "Cross-kingdom megatree; not strictly ultrametric",
       "notes": "Recovered from earlier data collection",
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -155,6 +199,20 @@
         "estimate_source": "Mora 2011",
         "estimate_confidence": "Medium",
         "category": "Vertebrates"
+      },
+      "described_source_info": {
+        "label": "Eschmeyer's Catalog",
+        "type": "database",
+        "doi": null,
+        "url": "https://www.calacademy.org/scientists/projects/eschmeyers-catalog-of-fishes",
+        "citation": "Fricke, Eschmeyer & Van der Laan (current). Eschmeyer's Catalog of Fishes. California Academy of Sciences."
+      },
+      "estimate_source_info": {
+        "label": "Mora 2011",
+        "type": "paper",
+        "doi": "10.1371/journal.pbio.1001127",
+        "url": null,
+        "citation": "Mora et al. 2011. How Many Species Are There on Earth and in the Ocean? PLoS Biol 9(8): e1001127."
       },
       "is_partition_canonical": true
     },
@@ -187,6 +245,20 @@
         "estimate_confidence": "High",
         "category": "Vertebrates"
       },
+      "described_source_info": {
+        "label": "IUCN Red List 2025",
+        "type": "database",
+        "doi": null,
+        "url": "https://www.iucnredlist.org/",
+        "citation": "IUCN Red List of Threatened Species (2025 access)."
+      },
+      "estimate_source_info": {
+        "label": "IUCN",
+        "type": "database",
+        "doi": null,
+        "url": "https://www.iucnredlist.org/",
+        "citation": "IUCN Red List of Threatened Species."
+      },
       "is_partition_canonical": true
     },
     {
@@ -217,6 +289,20 @@
         "estimate_source": "Uetz 2025",
         "estimate_confidence": "High",
         "category": "Vertebrates"
+      },
+      "described_source_info": {
+        "label": "Reptile Database 2025",
+        "type": "database",
+        "doi": null,
+        "url": "http://www.reptile-database.org/",
+        "citation": "The Reptile Database (2025 access)."
+      },
+      "estimate_source_info": {
+        "label": "Uetz 2025",
+        "type": "database",
+        "doi": null,
+        "url": "http://www.reptile-database.org/",
+        "citation": "Uetz P. et al. (current). The Reptile Database."
       },
       "is_partition_canonical": true
     },
@@ -249,6 +335,20 @@
         "estimate_confidence": "Medium",
         "category": "Vertebrates"
       },
+      "described_source_info": {
+        "label": "AmphibiaWeb 2025",
+        "type": "database",
+        "doi": null,
+        "url": "https://amphibiaweb.org/",
+        "citation": "AmphibiaWeb (2025 access)."
+      },
+      "estimate_source_info": {
+        "label": "Mora 2011",
+        "type": "paper",
+        "doi": "10.1371/journal.pbio.1001127",
+        "url": null,
+        "citation": "Mora et al. 2011. How Many Species Are There on Earth and in the Ocean? PLoS Biol 9(8): e1001127."
+      },
       "is_partition_canonical": true
     },
     {
@@ -279,6 +379,20 @@
         "estimate_source": "Louca 2019",
         "estimate_confidence": "Low",
         "category": "Microbes & protists"
+      },
+      "described_source_info": {
+        "label": "GTDB R10",
+        "type": "database",
+        "doi": null,
+        "url": "https://gtdb.ecogenomic.org/",
+        "citation": "Genome Taxonomy Database (GTDB) release 10."
+      },
+      "estimate_source_info": {
+        "label": "Louca 2019",
+        "type": "paper",
+        "doi": "10.1371/journal.pbio.3000106",
+        "url": null,
+        "citation": "Louca et al. 2019. A census-based estimate of Earth's bacterial and archaeal diversity. PLoS Biol 17(2): e3000106."
       },
       "is_partition_canonical": true
     },
@@ -311,6 +425,20 @@
         "estimate_confidence": "High",
         "category": "Plants"
       },
+      "described_source_info": {
+        "label": "PPG I",
+        "type": "paper",
+        "doi": "10.1111/jse.12229",
+        "url": null,
+        "citation": "PPG I 2016. A community-derived classification for extant lycophytes and ferns. J Syst Evol 54(6): 563-603."
+      },
+      "estimate_source_info": {
+        "label": "PPG I 2016",
+        "type": "paper",
+        "doi": "10.1111/jse.12229",
+        "url": null,
+        "citation": "PPG I 2016. A community-derived classification for extant lycophytes and ferns. J Syst Evol 54(6): 563-603."
+      },
       "is_partition_canonical": true
     },
     {
@@ -341,6 +469,20 @@
         "estimate_source": "Burgin 2018",
         "estimate_confidence": "High",
         "category": "Vertebrates"
+      },
+      "described_source_info": {
+        "label": "Mammal Diversity Database",
+        "type": "database",
+        "doi": null,
+        "url": "https://www.mammaldiversity.org/",
+        "citation": "Mammal Diversity Database, American Society of Mammalogists."
+      },
+      "estimate_source_info": {
+        "label": "Burgin 2018",
+        "type": "paper",
+        "doi": "10.1093/jmammal/gyx147",
+        "url": null,
+        "citation": "Burgin et al. 2018. How many species of mammals are there? J Mammal 99(1): 1-14."
       },
       "is_partition_canonical": true
     },
@@ -373,6 +515,20 @@
         "estimate_confidence": "Medium",
         "category": "Vertebrates"
       },
+      "described_source_info": {
+        "label": "AmphibiaWeb 2025",
+        "type": "database",
+        "doi": null,
+        "url": "https://amphibiaweb.org/",
+        "citation": "AmphibiaWeb (2025 access)."
+      },
+      "estimate_source_info": {
+        "label": "Mora 2011",
+        "type": "paper",
+        "doi": "10.1371/journal.pbio.1001127",
+        "url": null,
+        "citation": "Mora et al. 2011. How Many Species Are There on Earth and in the Ocean? PLoS Biol 9(8): e1001127."
+      },
       "is_partition_canonical": false
     },
     {
@@ -403,6 +559,20 @@
         "estimate_source": "Stork 2018",
         "estimate_confidence": "Low",
         "category": "Arthropods"
+      },
+      "described_source_info": {
+        "label": "Discover Life",
+        "type": "database",
+        "doi": null,
+        "url": "https://www.discoverlife.org/",
+        "citation": "Discover Life."
+      },
+      "estimate_source_info": {
+        "label": "Stork 2018",
+        "type": "paper",
+        "doi": "10.1146/annurev-ento-020117-043348",
+        "url": null,
+        "citation": "Stork 2018. How Many Species of Insects and Other Terrestrial Arthropods Are There on Earth? Annu Rev Entomol 63: 31-45."
       },
       "is_partition_canonical": false
     },
@@ -435,6 +605,20 @@
         "estimate_confidence": "Medium",
         "category": "Vertebrates"
       },
+      "described_source_info": {
+        "label": "Eschmeyer's Catalog",
+        "type": "database",
+        "doi": null,
+        "url": "https://www.calacademy.org/scientists/projects/eschmeyers-catalog-of-fishes",
+        "citation": "Fricke, Eschmeyer & Van der Laan (current). Eschmeyer's Catalog of Fishes. California Academy of Sciences."
+      },
+      "estimate_source_info": {
+        "label": "Mora 2011",
+        "type": "paper",
+        "doi": "10.1371/journal.pbio.1001127",
+        "url": null,
+        "citation": "Mora et al. 2011. How Many Species Are There on Earth and in the Ocean? PLoS Biol 9(8): e1001127."
+      },
       "is_partition_canonical": false
     },
     {
@@ -465,6 +649,20 @@
         "estimate_source": "Stork 2018",
         "estimate_confidence": "Low",
         "category": "Arthropods"
+      },
+      "described_source_info": {
+        "label": "Catalogue of Life 2025",
+        "type": "database",
+        "doi": null,
+        "url": "https://www.catalogueoflife.org/",
+        "citation": "Catalogue of Life (2025 release)."
+      },
+      "estimate_source_info": {
+        "label": "Stork 2018",
+        "type": "paper",
+        "doi": "10.1146/annurev-ento-020117-043348",
+        "url": null,
+        "citation": "Stork 2018. How Many Species of Insects and Other Terrestrial Arthropods Are There on Earth? Annu Rev Entomol 63: 31-45."
       },
       "is_partition_canonical": false
     },
@@ -497,6 +695,20 @@
         "estimate_confidence": "Low",
         "category": "Microbes & protists"
       },
+      "described_source_info": {
+        "label": "Species Fungorum 2025",
+        "type": "database",
+        "doi": null,
+        "url": "http://www.speciesfungorum.org/",
+        "citation": "Species Fungorum (Royal Botanic Gardens Kew)."
+      },
+      "estimate_source_info": {
+        "label": "Hawksworth 2017",
+        "type": "paper",
+        "doi": "10.1128/microbiolspec.FUNK-0052-2016",
+        "url": null,
+        "citation": "Hawksworth & Lücking 2017. Fungal Diversity Revisited: 2.2 to 3.8 Million Species. Microbiol Spectr 5(4)."
+      },
       "is_partition_canonical": true
     },
     {
@@ -527,6 +739,20 @@
         "estimate_source": "Nic Lughadha 2016",
         "estimate_confidence": "Medium",
         "category": "Plants"
+      },
+      "described_source_info": {
+        "label": "Catalogue of Life 2025",
+        "type": "database",
+        "doi": null,
+        "url": "https://www.catalogueoflife.org/",
+        "citation": "Catalogue of Life (2025 release)."
+      },
+      "estimate_source_info": {
+        "label": "Nic Lughadha 2016",
+        "type": "paper",
+        "doi": "10.11646/phytotaxa.272.1.5",
+        "url": null,
+        "citation": "Nic Lughadha et al. 2016. Counting counts: revised estimates of numbers of accepted species of flowering plants. Phytotaxa 272(1): 82-88."
       },
       "is_partition_canonical": false
     },
@@ -559,6 +785,20 @@
         "estimate_confidence": "Medium",
         "category": "Arthropods"
       },
+      "described_source_info": {
+        "label": "World Spider Catalog 2025",
+        "type": "database",
+        "doi": null,
+        "url": "https://wsc.nmbe.ch/",
+        "citation": "World Spider Catalog (2025 access). Natural History Museum Bern."
+      },
+      "estimate_source_info": {
+        "label": "Agnarsson 2013",
+        "type": "paper",
+        "doi": "10.1146/annurev-ento-120811-153639",
+        "url": null,
+        "citation": "Agnarsson, Coddington & Kuntner 2013. Systematics: Progress in the study of spider diversity and evolution (best-effort)."
+      },
       "is_partition_canonical": true
     },
     {
@@ -589,6 +829,20 @@
         "estimate_source": "Weigmann 2016",
         "estimate_confidence": "High",
         "category": "Vertebrates"
+      },
+      "described_source_info": {
+        "label": "Chondrichthyan Tree of Life",
+        "type": "database",
+        "doi": null,
+        "url": "https://sharksrays.org/",
+        "citation": "Chondrichthyan Tree of Life Project."
+      },
+      "estimate_source_info": {
+        "label": "Weigmann 2016",
+        "type": "paper",
+        "doi": "10.1111/jfb.12874",
+        "url": null,
+        "citation": "Weigmann 2016. Annotated checklist of the living sharks batoids and chimaeras (Chondrichthyes) of the world. J Fish Biol 88(3): 837-1037."
       },
       "is_partition_canonical": true
     },
@@ -621,6 +875,20 @@
         "estimate_confidence": "Medium",
         "category": "Plants"
       },
+      "described_source_info": {
+        "label": "Catalogue of Life 2025",
+        "type": "database",
+        "doi": null,
+        "url": "https://www.catalogueoflife.org/",
+        "citation": "Catalogue of Life (2025 release)."
+      },
+      "estimate_source_info": {
+        "label": "Nic Lughadha 2016",
+        "type": "paper",
+        "doi": "10.11646/phytotaxa.272.1.5",
+        "url": null,
+        "citation": "Nic Lughadha et al. 2016. Counting counts: revised estimates of numbers of accepted species of flowering plants. Phytotaxa 272(1): 82-88."
+      },
       "is_partition_canonical": false
     },
     {
@@ -651,6 +919,14 @@
         "estimate_source": "Nic Lughadha 2016",
         "estimate_confidence": "Medium",
         "category": "Plants"
+      },
+      "described_source_info": null,
+      "estimate_source_info": {
+        "label": "Nic Lughadha 2016",
+        "type": "paper",
+        "doi": "10.11646/phytotaxa.272.1.5",
+        "url": null,
+        "citation": "Nic Lughadha et al. 2016. Counting counts: revised estimates of numbers of accepted species of flowering plants. Phytotaxa 272(1): 82-88."
       },
       "is_partition_canonical": false
     },
@@ -683,6 +959,20 @@
         "estimate_confidence": "Medium",
         "category": "Plants"
       },
+      "described_source_info": {
+        "label": "Catalogue of Life 2025",
+        "type": "database",
+        "doi": null,
+        "url": "https://www.catalogueoflife.org/",
+        "citation": "Catalogue of Life (2025 release)."
+      },
+      "estimate_source_info": {
+        "label": "Nic Lughadha 2016",
+        "type": "paper",
+        "doi": "10.11646/phytotaxa.272.1.5",
+        "url": null,
+        "citation": "Nic Lughadha et al. 2016. Counting counts: revised estimates of numbers of accepted species of flowering plants. Phytotaxa 272(1): 82-88."
+      },
       "is_partition_canonical": false
     },
     {
@@ -713,6 +1003,20 @@
         "estimate_source": "Mora 2011",
         "estimate_confidence": "Medium",
         "category": "Vertebrates"
+      },
+      "described_source_info": {
+        "label": "AmphibiaWeb",
+        "type": "database",
+        "doi": null,
+        "url": "https://amphibiaweb.org/",
+        "citation": "AmphibiaWeb. UC Berkeley."
+      },
+      "estimate_source_info": {
+        "label": "Mora 2011",
+        "type": "paper",
+        "doi": "10.1371/journal.pbio.1001127",
+        "url": null,
+        "citation": "Mora et al. 2011. How Many Species Are There on Earth and in the Ocean? PLoS Biol 9(8): e1001127."
       },
       "is_partition_canonical": false
     },
@@ -745,6 +1049,14 @@
         "estimate_confidence": "Medium",
         "category": "Other animals"
       },
+      "described_source_info": null,
+      "estimate_source_info": {
+        "label": "Appeltans 2012",
+        "type": "paper",
+        "doi": "10.1016/j.cub.2012.09.036",
+        "url": null,
+        "citation": "Appeltans et al. 2012. The Magnitude of Global Marine Species Diversity. Curr Biol 22(23): 2189-2202."
+      },
       "is_partition_canonical": true
     },
     {
@@ -769,6 +1081,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -793,6 +1107,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -824,6 +1140,20 @@
         "estimate_confidence": "High",
         "category": "Vertebrates"
       },
+      "described_source_info": {
+        "label": "Reptile Database 2025",
+        "type": "database",
+        "doi": null,
+        "url": "http://www.reptile-database.org/",
+        "citation": "The Reptile Database (2025 access)."
+      },
+      "estimate_source_info": {
+        "label": "TTWG 2021",
+        "type": "paper",
+        "doi": "10.3854/crm.8.000c.checklist.atlas.v9.2021",
+        "url": null,
+        "citation": "Turtle Taxonomy Working Group 2021. Turtles of the World: Annotated Checklist and Atlas of Taxonomy. Chelonian Research Monographs 8."
+      },
       "is_partition_canonical": true
     },
     {
@@ -848,6 +1178,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -879,6 +1211,20 @@
         "estimate_confidence": "Medium",
         "category": "Plants"
       },
+      "described_source_info": {
+        "label": "Catalogue of Life 2025",
+        "type": "database",
+        "doi": null,
+        "url": "https://www.catalogueoflife.org/",
+        "citation": "Catalogue of Life (2025 release)."
+      },
+      "estimate_source_info": {
+        "label": "CoL 2025",
+        "type": "database",
+        "doi": null,
+        "url": "https://www.catalogueoflife.org/",
+        "citation": "Catalogue of Life (2025 release)."
+      },
       "is_partition_canonical": true
     },
     {
@@ -903,6 +1249,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -933,6 +1281,14 @@
         "estimate_source": "IUCN",
         "estimate_confidence": "High",
         "category": "Vertebrates"
+      },
+      "described_source_info": null,
+      "estimate_source_info": {
+        "label": "IUCN",
+        "type": "database",
+        "doi": null,
+        "url": "https://www.iucnredlist.org/",
+        "citation": "IUCN Red List of Threatened Species."
       },
       "is_partition_canonical": false
     },
@@ -965,6 +1321,14 @@
         "estimate_confidence": "Medium",
         "category": "Plants"
       },
+      "described_source_info": null,
+      "estimate_source_info": {
+        "label": "Nic Lughadha 2016",
+        "type": "paper",
+        "doi": "10.11646/phytotaxa.272.1.5",
+        "url": null,
+        "citation": "Nic Lughadha et al. 2016. Counting counts: revised estimates of numbers of accepted species of flowering plants. Phytotaxa 272(1): 82-88."
+      },
       "is_partition_canonical": false
     },
     {
@@ -989,6 +1353,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -1013,6 +1379,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -1037,6 +1405,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -1061,6 +1431,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -1085,6 +1457,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -1109,6 +1483,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -1133,6 +1509,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -1163,6 +1541,20 @@
         "estimate_source": "Burgin 2018",
         "estimate_confidence": "High",
         "category": "Vertebrates"
+      },
+      "described_source_info": {
+        "label": "IUCN Red List 2025",
+        "type": "database",
+        "doi": null,
+        "url": "https://www.iucnredlist.org/",
+        "citation": "IUCN Red List of Threatened Species (2025 access)."
+      },
+      "estimate_source_info": {
+        "label": "Burgin 2018",
+        "type": "paper",
+        "doi": "10.1093/jmammal/gyx147",
+        "url": null,
+        "citation": "Burgin et al. 2018. How many species of mammals are there? J Mammal 99(1): 1-14."
       },
       "is_partition_canonical": false
     },
@@ -1195,6 +1587,14 @@
         "estimate_confidence": "High",
         "category": "Vertebrates"
       },
+      "described_source_info": null,
+      "estimate_source_info": {
+        "label": "Burgin 2018",
+        "type": "paper",
+        "doi": "10.1093/jmammal/gyx147",
+        "url": null,
+        "citation": "Burgin et al. 2018. How many species of mammals are there? J Mammal 99(1): 1-14."
+      },
       "is_partition_canonical": false
     },
     {
@@ -1226,6 +1626,20 @@
         "estimate_confidence": "Medium",
         "category": "Other animals"
       },
+      "described_source_info": {
+        "label": "WoRMS",
+        "type": "database",
+        "doi": null,
+        "url": "https://www.marinespecies.org/",
+        "citation": "World Register of Marine Species."
+      },
+      "estimate_source_info": {
+        "label": "Appeltans 2012",
+        "type": "paper",
+        "doi": "10.1016/j.cub.2012.09.036",
+        "url": null,
+        "citation": "Appeltans et al. 2012. The Magnitude of Global Marine Species Diversity. Curr Biol 22(23): 2189-2202."
+      },
       "is_partition_canonical": true
     },
     {
@@ -1250,6 +1664,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -1274,6 +1690,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -1298,6 +1716,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -1329,6 +1749,20 @@
         "estimate_confidence": "Medium",
         "category": "Plants"
       },
+      "described_source_info": {
+        "label": "Catalogue of Life 2025",
+        "type": "database",
+        "doi": null,
+        "url": "https://www.catalogueoflife.org/",
+        "citation": "Catalogue of Life (2025 release)."
+      },
+      "estimate_source_info": {
+        "label": "Nic Lughadha 2016",
+        "type": "paper",
+        "doi": "10.11646/phytotaxa.272.1.5",
+        "url": null,
+        "citation": "Nic Lughadha et al. 2016. Counting counts: revised estimates of numbers of accepted species of flowering plants. Phytotaxa 272(1): 82-88."
+      },
       "is_partition_canonical": false
     },
     {
@@ -1353,6 +1787,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -1377,6 +1813,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -1401,6 +1839,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -1425,6 +1865,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -1449,6 +1891,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -1473,6 +1917,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -1497,6 +1943,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -1528,6 +1976,14 @@
         "estimate_confidence": "Low",
         "category": "Arthropods"
       },
+      "described_source_info": null,
+      "estimate_source_info": {
+        "label": "Stork 2018",
+        "type": "paper",
+        "doi": "10.1146/annurev-ento-020117-043348",
+        "url": null,
+        "citation": "Stork 2018. How Many Species of Insects and Other Terrestrial Arthropods Are There on Earth? Annu Rev Entomol 63: 31-45."
+      },
       "is_partition_canonical": false
     },
     {
@@ -1552,6 +2008,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -1576,6 +2034,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -1600,6 +2060,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -1624,6 +2086,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -1648,6 +2112,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -1679,6 +2145,20 @@
         "estimate_confidence": "Low",
         "category": "Other animals"
       },
+      "described_source_info": {
+        "label": "Catalogue of Life 2025",
+        "type": "database",
+        "doi": null,
+        "url": "https://www.catalogueoflife.org/",
+        "citation": "Catalogue of Life (2025 release)."
+      },
+      "estimate_source_info": {
+        "label": "Hodda 2022",
+        "type": "paper",
+        "doi": "10.11646/zootaxa.5114.1.1",
+        "url": null,
+        "citation": "Hodda 2022. Phylum Nematoda: a classification catalogue and index of valid genera. Zootaxa 5114(1): 1-289."
+      },
       "is_partition_canonical": true
     },
     {
@@ -1703,6 +2183,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -1727,6 +2209,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -1751,6 +2235,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -1775,6 +2261,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -1799,6 +2287,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -1823,6 +2313,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -1847,6 +2339,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -1871,6 +2365,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -1895,6 +2391,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -1926,6 +2424,14 @@
         "estimate_confidence": "Low",
         "category": "Arthropods"
       },
+      "described_source_info": null,
+      "estimate_source_info": {
+        "label": "Stork 2018",
+        "type": "paper",
+        "doi": "10.1146/annurev-ento-020117-043348",
+        "url": null,
+        "citation": "Stork 2018. How Many Species of Insects and Other Terrestrial Arthropods Are There on Earth? Annu Rev Entomol 63: 31-45."
+      },
       "is_partition_canonical": false
     },
     {
@@ -1950,6 +2456,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -1974,6 +2482,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -1998,6 +2508,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -2022,6 +2534,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -2046,6 +2560,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -2070,6 +2586,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -2094,6 +2612,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -2125,6 +2645,20 @@
         "estimate_confidence": "Low",
         "category": "Other animals"
       },
+      "described_source_info": {
+        "label": "WoRMS",
+        "type": "database",
+        "doi": null,
+        "url": "https://www.marinespecies.org/",
+        "citation": "World Register of Marine Species."
+      },
+      "estimate_source_info": {
+        "label": "Appeltans 2012",
+        "type": "paper",
+        "doi": "10.1016/j.cub.2012.09.036",
+        "url": null,
+        "citation": "Appeltans et al. 2012. The Magnitude of Global Marine Species Diversity. Curr Biol 22(23): 2189-2202."
+      },
       "is_partition_canonical": true
     },
     {
@@ -2149,6 +2683,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -2173,6 +2709,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -2197,6 +2735,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -2221,6 +2761,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -2245,6 +2787,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -2269,6 +2813,8 @@
       "methods_brief": "100 taxa x 93 mitochondrial proteins, all eukaryotic supergroups",
       "notes": "Backbone rooting of eukaryotic tree of life",
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -2293,6 +2839,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -2317,6 +2865,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -2341,6 +2891,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -2371,6 +2923,20 @@
         "estimate_source": "Appeltans 2012",
         "estimate_confidence": "Low",
         "category": "Arthropods"
+      },
+      "described_source_info": {
+        "label": "WoRMS",
+        "type": "database",
+        "doi": null,
+        "url": "https://www.marinespecies.org/",
+        "citation": "World Register of Marine Species."
+      },
+      "estimate_source_info": {
+        "label": "Appeltans 2012",
+        "type": "paper",
+        "doi": "10.1016/j.cub.2012.09.036",
+        "url": null,
+        "citation": "Appeltans et al. 2012. The Magnitude of Global Marine Species Diversity. Curr Biol 22(23): 2189-2202."
       },
       "is_partition_canonical": true
     },
@@ -2403,6 +2969,20 @@
         "estimate_confidence": "Low",
         "category": "Microbes & protists"
       },
+      "described_source_info": {
+        "label": "AlgaeBase",
+        "type": "database",
+        "doi": null,
+        "url": "https://www.algaebase.org/",
+        "citation": "Guiry & Guiry (current), AlgaeBase."
+      },
+      "estimate_source_info": {
+        "label": "Mann 2013",
+        "type": "paper",
+        "doi": "10.1111/jeu.12047",
+        "url": null,
+        "citation": "Mann & Vanormelingen 2013. An Inordinate Fondness? The Number Distributions and Origins of Diatom Species. J Eukaryot Microbiol 60(4): 414-420."
+      },
       "is_partition_canonical": true
     },
     {
@@ -2427,6 +3007,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -2451,6 +3033,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -2475,6 +3059,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -2499,6 +3085,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -2523,6 +3111,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -2554,6 +3144,20 @@
         "estimate_confidence": "High",
         "category": "Vertebrates"
       },
+      "described_source_info": {
+        "label": "WoRMS",
+        "type": "database",
+        "doi": null,
+        "url": "https://www.marinespecies.org/",
+        "citation": "World Register of Marine Species."
+      },
+      "estimate_source_info": {
+        "label": "Burgin 2018",
+        "type": "paper",
+        "doi": "10.1093/jmammal/gyx147",
+        "url": null,
+        "citation": "Burgin et al. 2018. How many species of mammals are there? J Mammal 99(1): 1-14."
+      },
       "is_partition_canonical": false
     },
     {
@@ -2578,6 +3182,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -2609,6 +3215,14 @@
         "estimate_confidence": "Low",
         "category": "Arthropods"
       },
+      "described_source_info": null,
+      "estimate_source_info": {
+        "label": "Stork 2018",
+        "type": "paper",
+        "doi": "10.1146/annurev-ento-020117-043348",
+        "url": null,
+        "citation": "Stork 2018. How Many Species of Insects and Other Terrestrial Arthropods Are There on Earth? Annu Rev Entomol 63: 31-45."
+      },
       "is_partition_canonical": false
     },
     {
@@ -2633,6 +3247,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -2664,6 +3280,20 @@
         "estimate_confidence": "Medium",
         "category": "Other animals"
       },
+      "described_source_info": {
+        "label": "WoRMS",
+        "type": "database",
+        "doi": null,
+        "url": "https://www.marinespecies.org/",
+        "citation": "World Register of Marine Species."
+      },
+      "estimate_source_info": {
+        "label": "WoRMS",
+        "type": "database",
+        "doi": null,
+        "url": "https://www.marinespecies.org/",
+        "citation": "World Register of Marine Species."
+      },
       "is_partition_canonical": true
     },
     {
@@ -2688,6 +3318,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -2712,6 +3344,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -2736,6 +3370,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -2760,6 +3396,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -2791,6 +3429,20 @@
         "estimate_confidence": "Medium",
         "category": "Other animals"
       },
+      "described_source_info": {
+        "label": "WoRMS",
+        "type": "database",
+        "doi": null,
+        "url": "https://www.marinespecies.org/",
+        "citation": "World Register of Marine Species."
+      },
+      "estimate_source_info": {
+        "label": "Appeltans 2012",
+        "type": "paper",
+        "doi": "10.1016/j.cub.2012.09.036",
+        "url": null,
+        "citation": "Appeltans et al. 2012. The Magnitude of Global Marine Species Diversity. Curr Biol 22(23): 2189-2202."
+      },
       "is_partition_canonical": true
     },
     {
@@ -2815,6 +3467,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -2839,6 +3493,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -2863,6 +3519,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -2887,6 +3545,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -2911,6 +3571,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -2942,6 +3604,20 @@
         "estimate_confidence": "Medium",
         "category": "Other animals"
       },
+      "described_source_info": {
+        "label": "WoRMS",
+        "type": "database",
+        "doi": null,
+        "url": "https://www.marinespecies.org/",
+        "citation": "World Register of Marine Species."
+      },
+      "estimate_source_info": {
+        "label": "Appeltans 2012",
+        "type": "paper",
+        "doi": "10.1016/j.cub.2012.09.036",
+        "url": null,
+        "citation": "Appeltans et al. 2012. The Magnitude of Global Marine Species Diversity. Curr Biol 22(23): 2189-2202."
+      },
       "is_partition_canonical": true
     },
     {
@@ -2966,6 +3642,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -2990,6 +3668,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3014,6 +3694,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3038,6 +3720,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3062,6 +3746,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3086,6 +3772,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3110,6 +3798,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3134,6 +3824,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3158,6 +3850,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3182,6 +3876,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3206,6 +3902,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3230,6 +3928,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3254,6 +3954,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3278,6 +3980,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3302,6 +4006,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3326,6 +4032,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3357,6 +4065,20 @@
         "estimate_confidence": "Low",
         "category": "Other animals"
       },
+      "described_source_info": {
+        "label": "WoRMS",
+        "type": "database",
+        "doi": null,
+        "url": "https://www.marinespecies.org/",
+        "citation": "World Register of Marine Species."
+      },
+      "estimate_source_info": {
+        "label": "Appeltans 2012",
+        "type": "paper",
+        "doi": "10.1016/j.cub.2012.09.036",
+        "url": null,
+        "citation": "Appeltans et al. 2012. The Magnitude of Global Marine Species Diversity. Curr Biol 22(23): 2189-2202."
+      },
       "is_partition_canonical": true
     },
     {
@@ -3381,6 +4103,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3405,6 +4129,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3429,6 +4155,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3453,6 +4181,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3477,6 +4207,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3501,6 +4233,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3525,6 +4259,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3549,6 +4285,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3573,6 +4311,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3597,6 +4337,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3621,6 +4363,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3645,6 +4389,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3669,6 +4415,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3693,6 +4441,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3717,6 +4467,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3741,6 +4493,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3765,6 +4519,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3789,6 +4545,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3813,6 +4571,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3837,6 +4597,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3861,6 +4623,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3885,6 +4649,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3909,6 +4675,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3933,6 +4701,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3957,6 +4727,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -3981,6 +4753,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4005,6 +4779,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4029,6 +4805,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4053,6 +4831,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4077,6 +4857,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4101,6 +4883,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4125,6 +4909,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4149,6 +4935,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4173,6 +4961,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4197,6 +4987,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4221,6 +5013,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4245,6 +5039,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4269,6 +5065,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4293,6 +5091,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4317,6 +5117,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4341,6 +5143,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4365,6 +5169,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4389,6 +5195,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4413,6 +5221,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4437,6 +5247,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4461,6 +5273,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4485,6 +5299,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4509,6 +5325,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4533,6 +5351,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4557,6 +5377,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4581,6 +5403,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4605,6 +5429,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4629,6 +5455,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4653,6 +5481,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4677,6 +5507,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4701,6 +5533,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4725,6 +5559,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4749,6 +5585,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4773,6 +5611,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4797,6 +5637,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4821,6 +5663,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4845,6 +5689,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4869,6 +5715,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4893,6 +5741,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4917,6 +5767,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4941,6 +5793,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4965,6 +5819,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -4989,6 +5845,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5013,6 +5871,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5037,6 +5897,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5061,6 +5923,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5085,6 +5949,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5109,6 +5975,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5133,6 +6001,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5157,6 +6027,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5181,6 +6053,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5205,6 +6079,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5229,6 +6105,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5253,6 +6131,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5277,6 +6157,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5301,6 +6183,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5325,6 +6209,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5349,6 +6235,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5373,6 +6261,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5397,6 +6287,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5421,6 +6313,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5445,6 +6339,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5469,6 +6365,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5493,6 +6391,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5517,6 +6417,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5541,6 +6443,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5565,6 +6469,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5589,6 +6495,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5613,6 +6521,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5637,6 +6547,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5661,6 +6573,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5685,6 +6599,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5709,6 +6625,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5733,6 +6651,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5764,6 +6684,14 @@
         "estimate_confidence": "High",
         "category": "Plants"
       },
+      "described_source_info": null,
+      "estimate_source_info": {
+        "label": "Farjon 2017",
+        "type": "database",
+        "doi": null,
+        "url": "https://www.kew.org/science/our-science/projects/conifer-database",
+        "citation": "Farjon 2017. A Handbook of the World's Conifers. Brill (book)."
+      },
       "is_partition_canonical": true
     },
     {
@@ -5788,6 +6716,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5812,6 +6742,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5836,6 +6768,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5860,6 +6794,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5884,6 +6820,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5908,6 +6846,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5932,6 +6872,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5956,6 +6898,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -5980,6 +6924,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -6004,6 +6950,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -6028,6 +6976,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -6052,6 +7002,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -6076,6 +7028,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -6100,6 +7054,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -6124,6 +7080,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -6148,6 +7106,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -6172,6 +7132,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -6196,6 +7158,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -6220,6 +7184,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -6244,6 +7210,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -6268,6 +7236,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -6292,6 +7262,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -6316,6 +7288,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -6340,6 +7314,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -6364,6 +7340,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -6388,6 +7366,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -6412,6 +7392,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -6436,6 +7418,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -6460,6 +7444,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -6484,6 +7470,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -6508,6 +7496,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -6532,6 +7522,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -6556,6 +7548,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -6580,6 +7574,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -6604,6 +7600,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -6628,6 +7626,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     },
     {
@@ -6652,6 +7652,8 @@
       "methods_brief": null,
       "notes": null,
       "estimate": null,
+      "described_source_info": null,
+      "estimate_source_info": null,
       "is_partition_canonical": false
     }
   ],

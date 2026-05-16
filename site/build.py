@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parent.parent
 STD = ROOT / "standardized"
 PROVENANCE = ROOT / "data_provenance.csv"
 ESTIMATES = ROOT / "data_estimates.csv"
+SOURCES = ROOT / "data_sources.csv"
 OUT = Path(__file__).resolve().parent / "data.json"
 
 # Map provenance group (dataset-level slug) → partition group in data_estimates.csv
@@ -115,6 +116,22 @@ def main() -> None:
     provenance = read_csv(PROVENANCE)
     estimates_rows = read_csv(ESTIMATES) if ESTIMATES.exists() else []
     estimates_by_partition = {row["group"]: row for row in estimates_rows}
+    sources_rows = read_csv(SOURCES) if SOURCES.exists() else []
+    sources_by_key = {row["source_key"]: row for row in sources_rows}
+
+    def source_info(key: str | None):
+        if not key:
+            return None
+        row = sources_by_key.get(key)
+        if not row:
+            return {"label": key, "type": None, "doi": None, "url": None, "citation": None}
+        return {
+            "label": key,
+            "type": row.get("type") or None,
+            "doi": row.get("doi") or None,
+            "url": row.get("url") or None,
+            "citation": row.get("citation") or None,
+        }
 
     def estimate_for(prov_group: str | None):
         partition = PROVENANCE_TO_PARTITION.get(prov_group or "")
@@ -182,6 +199,8 @@ def main() -> None:
             "methods_brief": prov.get("methods_brief") or None,
             "notes": prov.get("notes") or None,
             "estimate": est,
+            "described_source_info": source_info(prov.get("species_count_source")),
+            "estimate_source_info": source_info(est.get("estimate_source")) if est else None,
         })
 
         agg = by_group_aggregate[group]
