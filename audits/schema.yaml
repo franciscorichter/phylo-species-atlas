@@ -1,0 +1,123 @@
+# Partition-audit frontmatter schema.
+#
+# Single source of truth for every field that may appear in the YAML
+# frontmatter of audits/partitions/<slug>.md. The Phase B lint script will
+# validate each audit file against this schema. The Phase D build.py
+# extension will project these fields into data.json for the web app.
+#
+# Field types use a deliberately simple vocabulary:
+#   string         — free text
+#   string?        — string or null
+#   string[]       — list of strings
+#   int / float / bool — primitive
+#   enum: [...]    — string restricted to one of the listed values
+#   date           — ISO 8601 (YYYY-MM-DD)
+#   object         — nested map (see object_schemas below)
+#   object[]       — list of objects (each conforms to a named object_schema)
+
+schema_version: 1
+
+# Required top-level frontmatter keys, in canonical order.
+top_level:
+  partition:        { type: string,  required: true,  doc: "Must match a `group` in data_estimates.csv." }
+  category:         { type: enum,    required: true,  values: [Vertebrates, Plants, Arthropods, "Other animals", "Microbes & protists"] }
+  audit_version:    { type: int,     required: true,  doc: "Integer that bumps on breaking schema changes." }
+  status:           { type: enum,    required: true,  values: [stub, in_progress, verified, shipped, deferred] }
+  last_audited:     { type: date,    required: true }
+  auditor:          { type: string,  required: true }
+
+  estimate_source:    { type: object,   required: true,  schema: estimate_source }
+  canonical_tree:     { type: object,   required: true,  schema: canonical_tree }
+  methods:            { type: object,   required: true,  schema: methods }
+  shipped_subclades:  { type: object[], required: true,  schema: shipped_subclade }
+  candidate_subclades:{ type: object[], required: true,  schema: candidate_subclade }
+  website:            { type: object,   required: true,  schema: website }
+  api_calls:          { type: object[], required: false, schema: api_call }
+
+object_schemas:
+
+  estimate_source:
+    key:                          { type: string }    # joins data_sources.csv source_key
+    doi:                          { type: string? }
+    doi_verified:                 { type: enum, values: [true, false, unchecked] }
+    crossref_match:               { type: enum, values: [true, false, na] }
+    openalex_id:                  { type: string? }
+    year_published:               { type: int? }
+    cited_value:                  { type: int? }
+    newer_authoritative_known:    { type: bool }
+    newer_candidate:              { type: object?, schema: newer_candidate }
+    notes:                        { type: string? }
+
+  canonical_tree:
+    filename:                     { type: string }      # matches standardized/metadata.csv
+    provenance_group:             { type: string }
+    study:                        { type: string }
+    doi:                          { type: string? }
+    doi_verified:                 { type: enum, values: [true, false, unchecked] }
+    crossref_match:               { type: enum, values: [true, false, na] }
+    newer_authoritative_known:    { type: bool }
+    newer_candidate:              { type: object?, schema: newer_candidate }
+
+  newer_candidate:
+    doi:                          { type: string }
+    year:                         { type: int }
+    study:                        { type: string }
+    cited_value:                  { type: int? }
+    recommendation:               { type: enum, values: [switch, watch, ignore] }
+    notes:                        { type: string? }
+
+  methods:
+    inference:                    { type: enum, values: [bayesian, ml, supertree, supermatrix, coalescent, parsimony, distance, mixed, unspecified] }
+    software:                     { type: string[] }    # e.g. [MrBayes, BEAST, RAxML, IQ-TREE, ASTRAL]
+    data_type:                    { type: enum, values: [supermatrix, UCE, transcriptome, mitogenome, plastome, 16S, COI, multi-locus, supertree, mixed, unspecified] }
+    n_loci:                       { type: int? }
+    n_genes:                      { type: int? }
+    total_bp:                     { type: int? }
+    substitution_model:           { type: string? }
+    dated:                        { type: bool }
+    dating_method:                { type: string? }
+    fossil_calibrations:          { type: int? }
+    support_metric:               { type: enum, values: [posterior_probability, bootstrap, sh_alrt, ufboot, jackknife, none, mixed, unspecified] }
+    support_typical:              { type: string? }     # narrative summary
+    divergence_ci_available:      { type: bool }
+    divergence_ci_note:           { type: string? }
+    posterior_n:                  { type: int? }        # Bayesian only
+    bootstrap_n:                  { type: int? }        # ML only
+    methods_url:                  { type: string? }     # optional pointer to a specific section/PDF page
+
+  shipped_subclade:
+    filename:                     { type: string }      # must exist in standardized/metadata.csv
+    study:                        { type: string }
+    taxon:                        { type: string }
+    ntips:                        { type: int? }
+    methods_inherits_parent:      { type: bool }        # true if methods block on parent applies
+
+  candidate_subclade:
+    taxon:                        { type: string }
+    rationale:                    { type: string }
+    candidate_papers:             { type: object[], schema: candidate_paper }
+    download_target:              { type: enum, values: [dryad, treebase, figshare, github, supplementary, mendeley, author_repo, unknown] }
+    recipe_file:                  { type: string? }     # candidates/<slug>.md
+    priority:                     { type: enum, values: [high, medium, low] }
+    status:                       { type: enum, values: [proposed, downloading, staged, shipped, rejected] }
+    notes:                        { type: string? }
+
+  candidate_paper:
+    doi:                          { type: string? }
+    year:                         { type: int }
+    study:                        { type: string }
+    ntips:                        { type: int? }
+    url:                          { type: string? }
+
+  website:
+    surface_methods:              { type: bool }
+    surface_uncertainty:          { type: bool }
+    surface_candidates:           { type: bool }
+    badge:                        { type: enum, values: [stub, in_progress, verified, shipped, needs_update] }
+
+  api_call:
+    service:                      { type: enum, values: [crossref, openalex, semantic_scholar, treebase, dryad] }
+    target:                       { type: string }      # DOI or query
+    ts:                           { type: string }      # ISO 8601 timestamp
+    cache:                        { type: string }      # path under audits/fetched/
+    outcome:                      { type: enum, values: [hit, miss, error] }
