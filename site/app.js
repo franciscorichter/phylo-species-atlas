@@ -9,6 +9,8 @@ const STATE = {
   showLabels: false,
   currentNewick: null,
   coverageMode: "described", // or "estimated"
+  query: "",
+  datedOnly: false,
 };
 
 const TREES_BASE = "../standardized/trees/"; // patched by CI for Pages deploy
@@ -55,13 +57,15 @@ function renderCoveragePlot() {
   const mode = STATE.coverageMode;
   const estimatedAvailable = (r) => r.coverage_pct_estimated != null;
 
-  // In estimated mode, drop sub-clade datasets — their tips compared to the
-  // parent partition's estimated total produce technically-correct but
-  // misleading bars (e.g. "parrots: 3.7% of Birds estimate").
+  // Coverage chart shows one bar per partition — the canonical (largest)
+  // tree. Sub-clade trees (parrots within Birds, primates within Mammals,
+  // etc.) appear only when the user expands the partition in the tree
+  // list on the left.
+  const canonical = allRows.filter(r => r.is_partition_canonical);
   const rows = mode === "estimated"
-    ? allRows.filter(r => estimatedAvailable(r) && r.is_partition_anchor)
-             .slice().sort((a, b) => b.coverage_pct_estimated - a.coverage_pct_estimated)
-    : allRows;
+    ? canonical.filter(estimatedAvailable)
+               .slice().sort((a, b) => b.coverage_pct_estimated - a.coverage_pct_estimated)
+    : canonical.slice().sort((a, b) => b.coverage_pct - a.coverage_pct);
 
   const labels = rows.map(r => r.group);
   const colors = rows.map(r => r.dated ? "#2a6fbf" : "#c97a2a");
@@ -223,12 +227,15 @@ function applyFilters() {
   const q = document.getElementById("tree-search").value.trim().toLowerCase();
   const datedOnly = document.getElementById("filter-dated").checked;
   const sort = document.getElementById("sort-by").value;
+  STATE.query = q;
+  STATE.datedOnly = datedOnly;
 
   let list = STATE.data.trees.slice();
   if (q) {
     list = list.filter(t =>
       (t.filename || "").toLowerCase().includes(q) ||
       (t.group || "").toLowerCase().includes(q) ||
+      (t.partition_group || "").toLowerCase().includes(q) ||
       (t.study || "").toLowerCase().includes(q)
     );
   }
@@ -248,24 +255,104 @@ function applyFilters() {
   renderTreeList();
 }
 
+const STATE_EXPANDED = new Set(); // partitions currently expanded in the sidebar
+
+function treeRowHTML(t, { indent = false } = {}) {
+  const cls = (STATE.selected === t.filename ? "active " : "") + (indent ? "child " : "");
+  const badge = t.dated ? "dated" : "undated";
+  const name = t.filename.replace(/\.nwk$/, "");
+  return `<li data-filename="${t.filename}" class="tree-item ${cls.trim()}">
+    <span class="tree-name"><span class="badge ${badge}"></span>${name}</span>
+    <span class="tree-meta">${fmt.format(t.ntips || 0)}</span>
+  </li>`;
+}
+
 function renderTreeList() {
   const ul = document.getElementById("tree-list");
-  ul.innerHTML = STATE.filtered.map(t => {
-    const cls = STATE.selected === t.filename ? "active" : "";
-    const badge = t.dated ? "dated" : "undated";
-    const name = t.filename.replace(/\.nwk$/, "");
-    return `<li data-filename="${t.filename}" class="${cls}">
-      <span class="tree-name"><span class="badge ${badge}"></span>${name}</span>
-      <span class="tree-meta">${fmt.format(t.ntips || 0)}</span>
-    </li>`;
-  }).join("");
-  ul.querySelectorAll("li").forEach(li => {
+  const list = STATE.filtered;
+  const searching = STATE.query.length > 0 || STATE.datedOnly;
+
+  let html;
+  if (searching) {
+    // Flat view when filtering — every match visible.
+    html = list.map(t => treeRowHTML(t)).join("");
+  } else {
+    // Hierarchical view: partition headers → canonical → sub-clades (collapsed).
+    // Bucket trees by partition; trees without a partition go to an "Other" bucket.
+    const buckets = new Map();
+    for (const t of list) {
+      const p = t.partition_group || "Other";
+      if (!buckets.has(p)) buckets.set(p, []);
+      buckets.get(p).push(t);
+    }
+
+    // Order partitions: by canonical tips desc; then "Condamine 2019 families"
+    // and "Other" pinned to the bottom.
+    const partitionOrder = Array.from(buckets.keys())
+      .map(p => {
+        const canonical = buckets.get(p).find(t => t.is_partition_canonical)
+                       || buckets.get(p)[0];
+        return { partition: p, canonicalTips: canonical?.ntips || 0 };
+      })
+      .sort((a, b) => {
+        const pinA = a.partition === "Condamine 2019 families" || a.partition === "Other" ? 1 : 0;
+        const pinB = b.partition === "Condamine 2019 families" || b.partition === "Other" ? 1 : 0;
+        if (pinA !== pinB) return pinA - pinB;
+        return b.canonicalTips - a.canonicalTips;
+      })
+      .map(x => x.partition);
+
+    html = partitionOrder.map(partition => {
+      const items = buckets.get(partition);
+      const canonical = items.find(t => t.is_partition_canonical);
+      const subclades = items.filter(t => !t.is_partition_canonical);
+      const hasSub = subclades.length > 0;
+      const expanded = STATE_EXPANDED.has(partition);
+      const chevron = hasSub ? `<span class="chev">${expanded ? "▾" : "▸"}</span>` : `<span class="chev empty"></span>`;
+      const countBadge = hasSub ? `<span class="sub-count">+${subclades.length}</span>` : "";
+
+      const headerRow = `<li class="partition-header${hasSub ? ' has-children' : ''}${expanded ? ' open' : ''}" data-partition="${partition}">
+        ${chevron}<span class="partition-name">${partition}</span>${countBadge}
+      </li>`;
+
+      // For partitions without a canonical (e.g. Condamine 218 families), show
+      // children as a generic list under the header. For others, show canonical
+      // immediately; children appear when expanded.
+      let canonicalRow = "";
+      let childRows = "";
+      if (canonical) {
+        canonicalRow = treeRowHTML(canonical);
+      }
+      if (hasSub && expanded) {
+        childRows = subclades.map(t => treeRowHTML(t, { indent: true })).join("");
+      }
+      return headerRow + canonicalRow + childRows;
+    }).join("");
+  }
+
+  ul.innerHTML = html;
+
+  ul.querySelectorAll(".partition-header.has-children").forEach(li => {
+    li.addEventListener("click", () => {
+      const p = li.dataset.partition;
+      if (STATE_EXPANDED.has(p)) STATE_EXPANDED.delete(p);
+      else STATE_EXPANDED.add(p);
+      renderTreeList();
+    });
+  });
+  ul.querySelectorAll(".tree-item").forEach(li => {
     li.addEventListener("click", () => selectTree(li.dataset.filename, false));
   });
 }
 
 async function selectTree(filename, scrollIntoView) {
   STATE.selected = filename;
+  // If the selected tree is a sub-clade, make sure its partition is expanded
+  // so the user can see it in the sidebar.
+  const t0 = STATE.data.trees.find(x => x.filename === filename);
+  if (t0 && t0.partition_group && !t0.is_partition_canonical) {
+    STATE_EXPANDED.add(t0.partition_group);
+  }
   renderTreeList();
   if (scrollIntoView) {
     const li = document.querySelector(`#tree-list li[data-filename="${filename}"]`);
@@ -339,36 +426,49 @@ function renderDatasetChooser(t) {
     ? (STATE.data.datasets_by_partition[partition] || [])
     : [];
 
-  // Each peer references a shipped tree by filename — resolve directly.
   const items = peers
     .map(p => ({ peer: p, tree: STATE.data.trees.find(x => x.filename === p.filename) }))
     .filter(x => x.tree);
 
-  // If there's no partition or only one dataset, hide — nothing to choose between.
+  // Hide when there's no partition or it has only one tree (nothing to switch).
   if (!partition || items.length <= 1) {
     host.hidden = true;
     host.innerHTML = "";
     return;
   }
   host.hidden = false;
+
+  const canonical = items.find(x => x.peer.is_partition_canonical) || items[0];
+  const subclades = items.filter(x => !x.peer.is_partition_canonical);
+
+  const renderBtn = ({ peer, tree }, role) => {
+    const isActive = tree.filename === t.filename;
+    const tips = peer.tips ? `${fmt.format(peer.tips)} tips` : "";
+    const year = peer.year ? `${peer.year}` : "";
+    const datedBadge = peer.dated
+      ? `<span class="chooser-badge dated" title="dated"></span>`
+      : `<span class="chooser-badge undated" title="undated"></span>`;
+    const studyShort = (peer.study || "").split(",")[0].split(" et")[0];
+    const meta = [tips, year, studyShort].filter(Boolean).join(" · ");
+    return `<button type="button" class="chooser-btn ${role} ${isActive ? "active" : ""}" data-filename="${tree.filename}" aria-pressed="${isActive}">
+        <span class="chooser-name">${datedBadge}${peer.group}</span>
+        <span class="chooser-meta">${meta}</span>
+      </button>`;
+  };
+
   host.innerHTML = `
-    <div class="chooser-label">${items.length} datasets cover <strong>${partition}</strong> &mdash; click to switch:</div>
-    <div class="chooser-buttons">
-      ${items.map(({ peer, tree }) => {
-        const isActive = tree.filename === t.filename;
-        const tips = peer.tips ? `${fmt.format(peer.tips)} tips` : "";
-        const year = peer.year ? `${peer.year}` : "";
-        const datedBadge = peer.dated
-          ? `<span class="chooser-badge dated" title="dated"></span>`
-          : `<span class="chooser-badge undated" title="undated"></span>`;
-        const studyShort = (peer.study || "").split(",")[0].split(" et")[0];
-        const meta = [tips, year, studyShort].filter(Boolean).join(" · ");
-        return `<button type="button" class="chooser-btn ${isActive ? "active" : ""}" data-filename="${tree.filename}" aria-pressed="${isActive}">
-          <span class="chooser-name">${datedBadge}${peer.group}</span>
-          <span class="chooser-meta">${meta}</span>
-        </button>`;
-      }).join("")}
-    </div>`;
+    <div class="chooser-label">Partition <strong>${partition}</strong></div>
+    <div class="chooser-tier">
+      <div class="tier-label">Whole-partition tree</div>
+      <div class="chooser-buttons">${renderBtn(canonical, "canonical")}</div>
+    </div>
+    ${subclades.length ? `
+    <div class="chooser-tier">
+      <div class="tier-label">Sub-clade trees <span class="tier-count">${subclades.length}</span></div>
+      <div class="chooser-buttons">${subclades.map(x => renderBtn(x, "subclade")).join("")}</div>
+    </div>` : ""}
+  `;
+
   host.querySelectorAll(".chooser-btn").forEach(btn => {
     btn.addEventListener("click", () => {
       if (btn.dataset.filename === STATE.selected) return;

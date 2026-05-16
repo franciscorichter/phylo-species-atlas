@@ -153,6 +153,11 @@ def main() -> None:
         coverage_pct = parse_float(prov.get("coverage_pct"))
         partition, est = estimate_for(prov_group)
 
+        # Condamine 2019 family trees are 218 small family-level trees — group
+        # them under one synthetic partition so they collapse cleanly in the UI.
+        if not partition and group.startswith("condamine_"):
+            partition = "Condamine 2019 families"
+
         is_anchor = bool(est and est.get("estimated_total") and described
                          and described >= 0.5 * est["estimated_total"])
         trees.append({
@@ -183,6 +188,26 @@ def main() -> None:
         agg["trees"] += 1
         agg["tips"] += ntips_meta or 0
 
+    # Identify the canonical tree per partition: the one with the most tips.
+    # All other trees in that partition are sub-clades (Layer 2).
+    partition_max_tips: dict[str, int] = {}
+    for t in trees:
+        p = t.get("partition_group")
+        if not p:
+            continue
+        n = t.get("ntips") or 0
+        if n > partition_max_tips.get(p, -1):
+            partition_max_tips[p] = n
+    for t in trees:
+        p = t.get("partition_group")
+        n = t.get("ntips") or 0
+        # Condamine 218 family trees are all peer family-level — no one of them
+        # is "the canonical Condamine tree", so leave them all as sub-clades.
+        if p == "Condamine 2019 families":
+            t["is_partition_canonical"] = False
+        else:
+            t["is_partition_canonical"] = bool(p and partition_max_tips.get(p) == n)
+
     # Sort by tips desc — better default for tree picker
     trees.sort(key=lambda r: (-(r["ntips"] or 0), r["filename"]))
 
@@ -207,6 +232,7 @@ def main() -> None:
                 "coverage_pct": cov,
                 "dated": t["dated"],
                 "is_partition_anchor": t["is_partition_anchor"],
+                "is_partition_canonical": t["is_partition_canonical"],
             }
             est = t["estimate"]
             if est and est.get("estimated_total"):
@@ -239,7 +265,13 @@ def main() -> None:
             "tips": t["ntips"],
             "dated": t["dated"],
             "is_partition_anchor": t["is_partition_anchor"],
+            "is_partition_canonical": t["is_partition_canonical"],
         })
+    # Sort each partition's datasets: canonical first, then sub-clades by tips desc.
+    for partition in datasets_by_partition:
+        datasets_by_partition[partition].sort(
+            key=lambda x: (not x["is_partition_canonical"], -(x["tips"] or 0))
+        )
 
     summary = {
         "n_trees": len(trees),
