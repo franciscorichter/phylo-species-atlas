@@ -1,0 +1,7 @@
+# PDFs default out of git — opt in per-file with negation rules below.
+# Most papers in this atlas are paywalled (Springer, Elsevier); CC-BY
+# papers from PLOS / MDPI / eLife / RSPB can be opted in safely.
+**/papers/*.pdf
+
+# Opt-in examples (uncomment and edit when you have a CC-BY PDF to commit):
+# !partitions/mammals/papers/tree.pdf       # Upham 2019 PLOS Biology (CC-BY)

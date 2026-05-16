@@ -1,0 +1,33 @@
+slug: primates
+taxon: Primates
+parent: mammals
+parent_category: Vertebrates
+
+tree:
+  file: tree.nwk
+  ntips: 301
+  dated: true
+  source:
+    key: Arnold 2010
+    study: Arnold C, Matthews LJ, Nunn CL (2010)
+    doi: 10.1002/evan.20251
+    pdf: papers/tree.pdf
+  methods:
+    inference: bayesian
+    software: ["Bayesian inference (paper does not specify suite)"]
+    data_type: multi-locus
+    n_loci: null
+    n_genes: null
+    substitution_model: null
+    dating_method: "Bayesian relaxed clock; calibrations from Springer et al."
+    support_metric: posterior_probability
+    support_typical: null
+    divergence_ci_available: true
+    divergence_ci_note: "100-tree posterior available via 10kTrees download portal."
+    posterior_n: 100
+    note: "Methods block is a placeholder — 10kTrees v3 dataset documentation in Evolutionary Anthropology covers it; needs a detailed read."
+
+species_count:
+  source: IUCN Red List 2025
+  described: 522
+  coverage_pct_described: 57.7

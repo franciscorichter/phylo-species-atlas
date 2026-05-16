@@ -1,0 +1,13 @@
+{
+  "tree": {
+    "file": "tree.pdf",
+    "doi": "10.1002/evan.20251",
+    "study": "Arnold C, Matthews LJ, Nunn CL (2010). The 10kTrees website: A new online resource for primate phylogeny. Evolutionary Anthropology 19(3):114-118.",
+    "year": 2010,
+    "journal": "Evolutionary Anthropology",
+    "license": "Wiley (paywalled)",
+    "open_access": false,
+    "url": "https://onlinelibrary.wiley.com/doi/10.1002/evan.20251",
+    "data_url": "https://10ktrees.nunn-lab.org/"
+  }
+}

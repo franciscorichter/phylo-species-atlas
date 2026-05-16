@@ -1,0 +1,13 @@
+{
+  "tree": {
+    "file": "tree.pdf",
+    "doi": "10.1186/1741-7007-10-12",
+    "study": "Nyakatura K, Bininda-Emonds ORP (2012). Updating the evolutionary history of Carnivora (Mammalia): a new species-level supertree complete with divergence time estimates. BMC Biology 10:12.",
+    "year": 2012,
+    "journal": "BMC Biology",
+    "license": "CC-BY 2.0",
+    "open_access": true,
+    "url": "https://bmcbiol.biomedcentral.com/articles/10.1186/1741-7007-10-12",
+    "data_url": "https://datadryad.org/dataset/doi:10.5061/dryad.r7sqv9sm6"
+  }
+}

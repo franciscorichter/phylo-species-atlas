@@ -1,0 +1,32 @@
+slug: cetaceans
+taxon: Cetacea
+parent: mammals
+parent_category: Vertebrates
+
+tree:
+  file: tree.nwk
+  ntips: 85
+  dated: true
+  source:
+    key: McGowen 2020
+    study: McGowen MR, Tsagkogeorga G, Álvarez-Carretero S, dos Reis M et al. (2020)
+    doi: 10.1093/sysbio/syz068
+    pdf: papers/tree.pdf
+  methods:
+    inference: bayesian
+    software: ["MCMCTree", "BEAST (target-capture analyses)"]
+    data_type: UCE
+    n_loci: null
+    n_genes: null
+    substitution_model: null
+    dating_method: "Target sequence capture; Bayesian molecular clock dating"
+    fossil_calibrations: null
+    support_metric: posterior_probability
+    support_typical: null
+    divergence_ci_available: true
+    divergence_ci_note: "95% HPD intervals reported."
+
+species_count:
+  source: WoRMS
+  described: 92
+  coverage_pct_described: 92.4

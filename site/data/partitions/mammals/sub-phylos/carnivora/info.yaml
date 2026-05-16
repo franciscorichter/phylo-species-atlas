@@ -1,0 +1,34 @@
+slug: carnivora
+taxon: Carnivora
+parent: mammals
+parent_category: Vertebrates
+
+tree:
+  file: tree.nwk
+  ntips: 294
+  dated: true
+  source:
+    key: Nyakatura 2012
+    study: Nyakatura K, Bininda-Emonds ORP (2012)
+    doi: 10.1186/1741-7007-10-12
+    pdf: papers/tree.pdf
+  methods:
+    inference: supertree
+    software: ["Matrix Representation with Parsimony (MRP); custom Perl pipeline"]
+    data_type: supertree
+    n_loci: 74
+    n_genes: null
+    total_bp: 45000
+    substitution_model: null
+    dating_method: "Supertree from 188 source trees combined with 74-gene supermatrix calibration"
+    fossil_calibrations: null
+    support_metric: bootstrap
+    support_typical: null
+    divergence_ci_available: false
+    divergence_ci_note: "Single dated tree; no CIs reported"
+    note: "Supertree includes outgroups (Homo, Rattus, Mus) which are removed during atlas standardization."
+
+species_count:
+  source: provenance (data_provenance.csv)
+  described: 294
+  coverage_pct_described: 100.0

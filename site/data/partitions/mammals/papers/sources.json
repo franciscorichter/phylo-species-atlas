@@ -1,0 +1,22 @@
+{
+  "tree": {
+    "file": "tree.pdf",
+    "doi": "10.1371/journal.pbio.3000494",
+    "study": "Upham NS, Esselstyn JA, Jetz W (2019). Inferring the mammal tree: Species-level sets of phylogenies for questions in ecology, evolution, and conservation. PLOS Biology 17(12):e3000494.",
+    "year": 2019,
+    "journal": "PLOS Biology",
+    "license": "CC-BY 4.0",
+    "open_access": true,
+    "url": "https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.3000494"
+  },
+  "estimate": {
+    "file": "estimate.pdf",
+    "doi": "10.1093/jmammal/gyx147",
+    "study": "Burgin CJ, Colella JP, Kahn PL, Upham NS (2018). How many species of mammals are there? Journal of Mammalogy 99(1):1-14.",
+    "year": 2018,
+    "journal": "Journal of Mammalogy",
+    "license": "Oxford Academic (paywalled)",
+    "open_access": false,
+    "url": "https://academic.oup.com/jmammal/article/99/1/1/4834091"
+  }
+}

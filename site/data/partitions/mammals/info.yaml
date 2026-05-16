@@ -1,0 +1,62 @@
+# Mammals — partition metadata for the web app.
+#
+# Derived from the verified subset of audits/partitions/mammals.md and the
+# paper's data_estimates.csv. The web app reads this file at build time;
+# do not edit by hand once Phase B's `materialize` command exists.
+
+partition: Mammals
+slug: mammals
+category: Vertebrates
+
+# --- Diversity estimate ---
+estimate:
+  described: 6736
+  low: 6736
+  total: 7500
+  high: 7500
+  confidence: High
+  source:
+    key: Burgin 2018
+    doi: 10.1093/jmammal/gyx147
+    pdf: papers/estimate.pdf
+    note: |
+      Live successor is the Mammal Diversity Database (mammaldiversity.org);
+      the published-paper citation is Burgin 2018.
+
+# --- Canonical tree ---
+tree:
+  file: tree.nwk
+  ntips: 5912
+  dated: true
+  source:
+    key: Upham 2019
+    study: Upham NS, Esselstyn JA, Jetz W (2019)
+    doi: 10.1371/journal.pbio.3000494
+    pdf: papers/tree.pdf
+  methods:
+    inference: bayesian
+    software: [MrBayes 3.2.6, RAxML 8.2.3, PartitionFinder 1.1.1]
+    data_type: supermatrix
+    n_loci: 31
+    n_genes: 31
+    total_bp: 39099
+    substitution_model: GTR+G, nine-partition
+    dating_method: "Backbone-and-patch; NDexp (node-dated, exponential priors); also FBD published"
+    fossil_calibrations: null
+    support_metric: posterior_probability
+    support_typical: "Most nodes PP>0.95; explicit weak placements include Atlantogenata root (≈0.53) and Myzopodidae bats."
+    divergence_ci_available: true
+    divergence_ci_note: "95% HPD on every internal node; 10,000-tree posterior credible set published (atlas ships MCC consensus only)."
+    posterior_n: 10000
+
+# --- Audit linkage ---
+audit:
+  file: ../../../audits/partitions/mammals.md
+  status: in_progress
+  last_audited: 2026-05-17
+
+# --- Sub-clades ---
+sub_phylos:
+  - slug: primates
+  - slug: carnivora
+  - slug: cetaceans
