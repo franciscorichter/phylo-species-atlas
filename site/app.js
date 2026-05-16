@@ -8,6 +8,7 @@ const STATE = {
   layout: "linear", // or "radial"
   showLabels: false,
   currentNewick: null,
+  coverageMode: "described", // or "estimated"
 };
 
 const TREES_BASE = "../standardized/trees/"; // patched by CI for Pages deploy
@@ -27,6 +28,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   renderSummary();
   renderCoveragePlot();
+  wireCoverageToggle();
   wireFilters();
   applyFilters();
 });
@@ -48,14 +50,63 @@ function renderSummary() {
 const FONT_STACK = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif";
 
 function renderCoveragePlot() {
-  const rows = STATE.data.coverage;
-  if (!rows.length) return;
+  const allRows = STATE.data.coverage;
+  if (!allRows.length) return;
+  const mode = STATE.coverageMode;
+  const estimatedAvailable = (r) => r.coverage_pct_estimated != null;
+
+  // In estimated mode, drop sub-clade datasets — their tips compared to the
+  // parent partition's estimated total produce technically-correct but
+  // misleading bars (e.g. "parrots: 3.7% of Birds estimate").
+  const rows = mode === "estimated"
+    ? allRows.filter(r => estimatedAvailable(r) && r.is_partition_anchor)
+             .slice().sort((a, b) => b.coverage_pct_estimated - a.coverage_pct_estimated)
+    : allRows;
 
   const labels = rows.map(r => r.group);
-  const values = rows.map(r => r.coverage_pct);
   const colors = rows.map(r => r.dated ? "#2a6fbf" : "#c97a2a");
-  const valueText = rows.map(r => `${r.coverage_pct.toFixed(1)}%`);
-  const customdata = rows.map(r => [r.study, r.year || "", r.tips, r.described_species]);
+
+  let values, valueText, customdata, hovertemplate, errorBars, xTitle;
+
+  if (mode === "estimated") {
+    values = rows.map(r => r.coverage_pct_estimated);
+    valueText = rows.map(r => `${r.coverage_pct_estimated.toFixed(1)}%`);
+    errorBars = {
+      type: "data",
+      symmetric: false,
+      array: rows.map(r => Math.max(0, r.coverage_pct_estimated_high - r.coverage_pct_estimated)),
+      arrayminus: rows.map(r => Math.max(0, r.coverage_pct_estimated - r.coverage_pct_estimated_low)),
+      color: "#999",
+      thickness: 1.2,
+      width: 4,
+    };
+    customdata = rows.map(r => [
+      r.study, r.year || "", r.tips, r.estimated_total, r.estimated_low, r.estimated_high,
+      r.estimate_source || "—", r.estimate_confidence || "—",
+      r.coverage_pct_estimated_low, r.coverage_pct_estimated_high,
+    ]);
+    hovertemplate =
+      "<b>%{y}</b><br>" +
+      "Coverage of estimate: %{x:.1f}% " +
+      "<span style='color:#999'>(%{customdata[8]:.1f}–%{customdata[9]:.1f}%)</span><br>" +
+      "Tips: %{customdata[2]:,}<br>" +
+      "Estimated total: %{customdata[3]:,} (range %{customdata[4]:,}–%{customdata[5]:,})<br>" +
+      "Estimate source: %{customdata[6]} · confidence %{customdata[7]}<br>" +
+      "<i>%{customdata[0]}</i> (%{customdata[1]})<extra></extra>";
+    xTitle = "Coverage of estimated true diversity (%) — error bars = low/high estimate range";
+  } else {
+    values = rows.map(r => r.coverage_pct);
+    valueText = rows.map(r => `${r.coverage_pct.toFixed(1)}%`);
+    errorBars = undefined;
+    customdata = rows.map(r => [r.study, r.year || "", r.tips, r.described_species, r.described_source || "—"]);
+    hovertemplate =
+      "<b>%{y}</b><br>" +
+      "Coverage: %{x:.1f}%<br>" +
+      "Tips: %{customdata[2]:,}<br>" +
+      "Described: %{customdata[3]:,} (source: %{customdata[4]})<br>" +
+      "<i>%{customdata[0]}</i> (%{customdata[1]})<extra></extra>";
+    xTitle = "Coverage of described species (%)";
+  }
 
   const trace = {
     type: "bar",
@@ -68,24 +119,25 @@ function renderCoveragePlot() {
     textfont: { size: 11, color: "#1a1a1a", family: FONT_STACK },
     cliponaxis: false,
     customdata,
-    hovertemplate:
-      "<b>%{y}</b><br>" +
-      "Coverage: %{x:.1f}%<br>" +
-      "Tips: %{customdata[2]:,}<br>" +
-      "Described: %{customdata[3]:,}<br>" +
-      "<i>%{customdata[0]}</i> (%{customdata[1]})<extra></extra>",
+    hovertemplate,
+    ...(errorBars ? { error_x: errorBars } : {}),
   };
 
   const chartHeight = Math.max(480, labels.length * 26 + 80);
   const container = document.getElementById("coverage-plot");
   container.style.height = chartHeight + "px";
 
+  // x-axis range: 0–112 normally; expand for estimated mode if upper error bar pokes past it
+  const maxX = mode === "estimated"
+    ? Math.max(112, Math.ceil(Math.max(...rows.map(r => r.coverage_pct_estimated_high)) / 10) * 10 + 5)
+    : 112;
+
   const layout = {
     margin: { l: 170, r: 70, t: 24, b: 52 },
     font: { family: FONT_STACK, size: 12, color: "#1a1a1a" },
     xaxis: {
-      title: { text: "Coverage of described species (%)", font: { size: 12, color: "#6b6b6b" }, standoff: 12 },
-      range: [0, 112],
+      title: { text: xTitle, font: { size: 12, color: "#6b6b6b" }, standoff: 12 },
+      range: [0, maxX],
       gridcolor: "#eee",
       zerolinecolor: "#ddd",
       ticksuffix: "%",
@@ -112,13 +164,43 @@ function renderCoveragePlot() {
     },
   };
 
+  Plotly.purge(container);
   Plotly.newPlot(container, [trace], layout, { displayModeBar: false, responsive: true });
 
   container.on("plotly_click", (ev) => {
     const point = ev.points && ev.points[0];
     if (!point) return;
-    const target = STATE.data.trees.find(t => t.group === point.y);
+    const row = rows[point.pointIndex];
+    if (!row || !row.tree_name) return;
+    const target = STATE.data.trees.find(t => t.filename === row.tree_name)
+                || STATE.data.trees.find(t => t.group === row.group);
     if (target) selectTree(target.filename, true);
+  });
+
+  // Update the sub-line copy under the title to match the mode
+  const sub = document.getElementById("coverage-sub");
+  if (sub) {
+    if (mode === "estimated") {
+      sub.innerHTML = "Each bar is <strong>one published dataset</strong>. Coverage = tips in tree &divide; <strong>estimated true diversity</strong>. Error bars span the low–high estimate range from the cited source.";
+    } else {
+      sub.innerHTML = "Each bar is <strong>one published dataset</strong>. Coverage = tips in tree &divide; <strong>described</strong> species &times; 100. Click a bar to inspect that tree.";
+    }
+  }
+}
+
+function wireCoverageToggle() {
+  document.querySelectorAll(".toggle-opt").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const mode = btn.dataset.mode;
+      if (mode === STATE.coverageMode) return;
+      STATE.coverageMode = mode;
+      document.querySelectorAll(".toggle-opt").forEach(b => {
+        const on = b.dataset.mode === mode;
+        b.classList.toggle("active", on);
+        b.setAttribute("aria-pressed", on ? "true" : "false");
+      });
+      renderCoveragePlot();
+    });
   });
 }
 
@@ -199,16 +281,38 @@ async function selectTree(filename, scrollIntoView) {
   document.getElementById("detail").hidden = false;
   document.getElementById("detail-name").textContent = t.filename.replace(/\.nwk$/, "");
 
+  const est = t.estimate;
+  const describedVal = t.described_species
+    ? `${fmt.format(t.described_species)}${t.described_source ? ` <span class="src">(${t.described_source})</span>` : ""}`
+    : "—";
+  const estimatedVal = est && est.estimated_total
+    ? `${fmt.format(est.estimated_total)} <span class="range">(${fmt.format(est.estimated_low || est.estimated_total)}–${fmt.format(est.estimated_high || est.estimated_total)})</span>` +
+      (est.estimate_source ? ` <span class="src">${est.estimate_source}${est.estimate_confidence ? `, ${est.estimate_confidence.toLowerCase()} conf.` : ""}</span>` : "")
+    : null;
+  const covDescribed = t.coverage_pct != null ? `${t.coverage_pct.toFixed(1)}% <span class="src">of described</span>` : "—";
+  let covEstimated = null;
+  if (est && est.estimated_total && t.ntips) {
+    const main = (100 * t.ntips / est.estimated_total).toFixed(1);
+    const lo = est.estimated_high ? (100 * t.ntips / est.estimated_high).toFixed(1) : null;
+    const hi = est.estimated_low ? (100 * t.ntips / est.estimated_low).toFixed(1) : null;
+    const subnote = t.is_partition_anchor
+      ? `<span class="src">of ${t.partition_group || "partition"} estimate</span>`
+      : `<span class="src">of ${t.partition_group} estimate &mdash; this tree is a sub-clade of ${t.partition_group}, so the % refers to the whole partition</span>`;
+    covEstimated = `${main}% <span class="range">(${lo}&ndash;${hi}%)</span> ${subnote}`;
+  }
+
   const fields = [
-    ["Group", t.group],
+    ["Group", t.group + (t.partition_group && t.partition_group !== t.group ? ` <span class="src">→ ${t.partition_group}</span>` : "")],
     ["Study", t.study],
     ["Year", t.year],
     ["Journal", t.journal],
     ["Tips", fmt.format(t.ntips || 0)],
     ["Dated", t.dated ? "yes" : "no"],
     ["Crown age", t.crown_ma ? `${t.crown_ma} Ma` : "—"],
-    ["Described species", t.described_species ? fmt.format(t.described_species) : "—"],
-    ["Coverage", t.coverage_pct != null ? `${t.coverage_pct.toFixed(1)}%` : "—"],
+    ["Described species", describedVal],
+    ["Estimated species", estimatedVal],
+    ["Coverage (described)", covDescribed],
+    ["Coverage (estimated)", covEstimated],
     ["DOI", t.doi ? `<a href="https://doi.org/${t.doi}" target="_blank" rel="noopener">${t.doi}</a>` : "—"],
     ["Source", t.data_source],
     ["File", t.size_bytes ? `${(t.size_bytes / 1024).toFixed(1)} KB` : "—"],
@@ -218,6 +322,8 @@ async function selectTree(filename, scrollIntoView) {
     .map(([k, v]) => `<div class="field"><span class="key">${k}</span><span class="val">${v}</span></div>`)
     .join("");
 
+  renderDatasetChooser(t);
+
   const dl = document.getElementById("download-newick");
   dl.href = TREES_BASE + filename;
   dl.setAttribute("download", filename);
@@ -225,6 +331,42 @@ async function selectTree(filename, scrollIntoView) {
   renderRSnippet(t);
 
   await loadAndRenderTree(t);
+}
+
+function renderDatasetChooser(t) {
+  const host = document.getElementById("dataset-chooser");
+  if (!host) return;
+  const partition = t.partition_group;
+  const peers = partition && STATE.data.datasets_by_partition
+    ? (STATE.data.datasets_by_partition[partition] || [])
+    : [];
+  // For each peer dataset, the corresponding tree file is in STATE.data.trees.
+  // A peer is interesting only if its tree exists and isn't the current tree.
+  const items = peers
+    .map(p => ({ peer: p, tree: STATE.data.trees.find(x => x.filename === p.tree_name) }))
+    .filter(x => x.tree && x.tree.filename !== t.filename);
+
+  if (!partition || items.length === 0) {
+    host.hidden = true;
+    host.innerHTML = "";
+    return;
+  }
+  host.hidden = false;
+  host.innerHTML = `
+    <div class="chooser-label">Other datasets for <strong>${partition}</strong>:</div>
+    <div class="chooser-buttons">
+      ${items.map(({ peer, tree }) => {
+        const label = peer.group;
+        const meta = `${peer.tips ? fmt.format(peer.tips) + " tips" : ""}${peer.year ? " · " + peer.year : ""}`;
+        return `<button type="button" class="chooser-btn" data-filename="${tree.filename}">
+          <span class="chooser-name">${label}</span>
+          <span class="chooser-meta">${meta}</span>
+        </button>`;
+      }).join("")}
+    </div>`;
+  host.querySelectorAll(".chooser-btn").forEach(btn => {
+    btn.addEventListener("click", () => selectTree(btn.dataset.filename, false));
+  });
 }
 
 function renderRSnippet(t) {

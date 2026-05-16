@@ -1,0 +1,62 @@
+group,category,estimated_total,described,in_dated_tree,in_undated_tree,estimate_source,estimated_low,estimated_high,confidence
+Amphibians,Vertebrates,15000,8863,7239,0,Mora 2011,10000,20000,Medium
+Birds,Vertebrates,11195,11195,10824,0,IUCN,11195,11400,High
+Crocodilians,Vertebrates,28,27,23,0,IUCN CSG,27,30,High
+Fish,Vertebrates,40000,36000,31516,0,Mora 2011,36000,50000,Medium
+Hagfish,Vertebrates,100,82,33,0,Fernholm 2013,82,120,Medium
+Lampreys,Vertebrates,55,48,46,0,Potter 2015,48,65,High
+Mammals,Vertebrates,6736,6736,5912,0,Burgin 2018,6736,7500,High
+Sharks,Vertebrates,1450,1282,1192,0,Weigmann 2016,1300,1600,High
+Squamates,Vertebrates,12000,11744,9755,0,Uetz 2025,11744,13000,High
+Turtles,Vertebrates,360,360,360,0,TTWG 2021,360,370,High
+Bryophytes,Plants,24000,24000,533,0,CoL 2025,24000,28000,Medium
+Conifers,Plants,640,615,578,0,Farjon 2017,615,680,High
+Ferns,Plants,13500,12000,6234,0,PPG I 2016,12000,15000,High
+Green algae,Plants,22000,11000,0,70,Guiry 2012,13000,30000,Low
+Lycophytes,Plants,1400,1350,300,0,PPG I 2016,1350,1500,High
+Seed plants,Plants,450000,383671,356305,0,Nic Lughadha 2016,400000,500000,Medium
+Crustaceans,Arthropods,150000,77000,0,95,Appeltans 2012,100000,250000,Low
+Insects,Arthropods,5500000,1000000,0,53596,Stork 2018,2600000,7800000,Low
+Myriapods,Arthropods,85000,17000,104,0,Chapman 2009,40000,130000,Low
+Spiders,Arthropods,120000,52249,1456,0,Agnarsson 2013,80000,170000,Medium
+Annelids,Other animals,35000,21000,0,60,Appeltans 2012,21000,50000,Medium
+Bivalves,Other animals,30000,20000,0,73,Appeltans 2012,20000,40000,Medium
+Bryozoa,Other animals,8000,6000,0,720,Appeltans 2012,6000,10000,Medium
+Cephalopods,Other animals,1200,800,81,0,WoRMS,900,1500,Medium
+Cnidaria,Other animals,16000,11800,0,1814,Appeltans 2012,12000,25000,Medium
+Ctenophores,Other animals,300,200,27,0,WoRMS,200,500,Low
+Echinoderms,Other animals,10000,7550,66,0,Appeltans 2012,8000,15000,Medium
+Flatworms,Other animals,100000,20000,83,0,Zhang 2013,44000,200000,Low
+Gastropods,Other animals,100000,65000,0,54,Appeltans 2012,70000,150000,Low
+Nematodes,Other animals,1000000,28537,0,166,Hodda 2022,500000,10000000,Low
+Nemerteans,Other animals,4500,1300,0,80,Kajihara 2008,1300,13500,Low
+Sponges,Other animals,17000,9470,120,0,Appeltans 2012,10000,25000,Low
+Tunicates,Other animals,5100,3145,63,0,Appeltans 2012,3500,7000,Medium
+Amoebozoa,Microbes & protists,10000,2400,0,113,Adl 2007,4000,20000,Low
+Archaea,Microbes & protists,50000,17245,0,6968,Louca 2019,20000,500000,Low
+Bacteria,Microbes & protists,4000000,715230,0,136646,Curtis 2002,800000,10000000,Low
+Brown algae,Microbes & protists,2500,2000,72,0,Guiry 2024,2000,4000,Medium
+Choanoflagellates,Microbes & protists,300,300,0,47,Carr 2008,300,500,Low
+Ciliates,Microbes & protists,40000,4500,105,0,Foissner 2008,20000,100000,Low
+Diatoms,Microbes & protists,100000,20000,0,94,Mann 2013,30000,200000,Low
+Dinoflagellates,Microbes & protists,5000,2300,0,80,Gomez 2012,3000,10000,Low
+Foraminifera,Microbes & protists,12000,9000,339,0,Hayward 2020,9000,15000,Medium
+Fungi,Microbes & protists,3000000,155000,0,1672,Hawksworth 2017,2200000,3800000,Low
+Haptophytes,Microbes & protists,2000,760,40,0,de Vargas 2007,762,4000,Low
+Rotifera,Not yet represented,2200,2200,0,0,Segers 2007,2200,2500,High
+Tardigrada,Not yet represented,2081,1488,0,0,Bartels 2016,1488,3000,Medium
+Acari,Not yet represented,500000,55000,0,0,Zhang 2013,100000,1000000,Low
+Scorpiones,Not yet represented,3500,2700,0,0,Rein 2024,2700,5000,Medium
+Rhodophyta,Not yet represented,10000,7000,0,0,AlgaeBase,7000,15000,Low
+Apicomplexa,Not yet represented,10000,6000,0,0,CoL,6000,20000,Low
+Myxozoa,Not yet represented,4000,2400,0,0,WoRMS,2400,6000,Low
+Euglenozoa,Not yet represented,5000,2000,0,0,CoL,2000,10000,Low
+Cercozoa,Not yet represented,5000,2000,0,0,CoL,2000,10000,Low
+Acanthocephala,Not yet represented,2000,1300,0,0,CoL,1300,3000,Medium
+Chrysophyta,Not yet represented,3000,1200,0,0,AlgaeBase,1200,5000,Low
+Oomycetes,Not yet represented,2000,1000,0,0,CoL,1000,3000,Medium
+Other arachnids,Not yet represented,25000,12000,0,0,CoL,15000,50000,Low
+Other hexapods,Not yet represented,15000,10000,0,0,CoL,10000,25000,Low
+Pycnogonida,Not yet represented,2000,1400,0,0,WoRMS,1400,3000,Medium
+Other Mollusca,Not yet represented,3000,1500,0,0,WoRMS,1500,5000,Medium
+Other phyla,Not yet represented,10000,4300,0,0,CoL,4300,15000,Low
