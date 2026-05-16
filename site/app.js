@@ -170,16 +170,24 @@ function renderCoveragePlot() {
       last.end = i;
     }
   }
-  const annotations = bands.map(b => ({
-    xref: "paper", yref: "y",
-    x: 0, xanchor: "left",
-    y: rows[b.start].group, yanchor: "bottom",
-    yshift: 18,
-    text: `<b>${b.category.toUpperCase()}</b>`,
-    showarrow: false,
-    font: { family: FONT_STACK, size: 10.5, color: "#8a8a8a" },
-    bgcolor: "rgba(255,255,255,0)",
-  }));
+  // Category labels live in the left gutter, anchored to the leftmost edge
+  // of the chart area so they sit to the LEFT of the y-tick labels rather
+  // than over the bars. xshift = -(left margin) pins them flush left.
+  const LEFT_MARGIN = 230;
+  const CATEGORY_GUTTER_PX = LEFT_MARGIN - 80; // 80px reserved for tick labels
+  const annotations = bands.map(b => {
+    const midRow = Math.floor((b.start + b.end) / 2);
+    return {
+      xref: "paper", yref: "y",
+      x: 0, xanchor: "left",
+      xshift: -LEFT_MARGIN + 6,
+      y: rows[midRow].group, yanchor: "middle",
+      text: `<b>${b.category.toUpperCase()}</b>`,
+      showarrow: false,
+      align: "left",
+      font: { family: FONT_STACK, size: 10.5, color: "#7a7a7a" },
+    };
+  });
   // Light divider lines between category bands.
   const shapes = bands.slice(1).map(b => ({
     type: "line", xref: "paper", yref: "y",
@@ -189,7 +197,7 @@ function renderCoveragePlot() {
     layer: "below",
   }));
 
-  const chartHeight = Math.max(520, labels.length * 28 + bands.length * 26 + 80);
+  const chartHeight = Math.max(520, labels.length * 28 + bands.length * 8 + 80);
   const container = document.getElementById("coverage-plot");
   container.style.height = chartHeight + "px";
 
@@ -199,7 +207,7 @@ function renderCoveragePlot() {
     : 112;
 
   const layout = {
-    margin: { l: 170, r: 70, t: 32, b: 52 },
+    margin: { l: LEFT_MARGIN, r: 70, t: 18, b: 52 },
     annotations,
     shapes,
     font: { family: FONT_STACK, size: 12, color: "#1a1a1a" },
