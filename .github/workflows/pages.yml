@@ -7,6 +7,7 @@ on:
       - "site/**"
       - "standardized/**"
       - "data_provenance.csv"
+      - "data_estimates.csv"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
