@@ -57,6 +57,12 @@
         "url": null,
         "citation": "Nic Lughadha et al. 2016. Counting counts: revised estimates of numbers of accepted species of flowering plants. Phytotaxa 272(1): 82-88."
       },
+      "tip_taxonomy": {
+        "unique_ids": 354799,
+        "unique_species": 342466,
+        "subspecies_tips": 2479,
+        "redundancy": 12333
+      },
       "is_partition_canonical": true
     },
     {
@@ -102,6 +108,12 @@
         "doi": "10.1073/pnas.142680199",
         "url": null,
         "citation": "Curtis et al. 2002. Estimating prokaryotic diversity and its limits. PNAS 99(16): 10494-10499."
+      },
+      "tip_taxonomy": {
+        "unique_ids": 136646,
+        "unique_species": 2,
+        "subspecies_tips": 0,
+        "redundancy": 136644
       },
       "is_partition_canonical": true
     },
@@ -149,6 +161,12 @@
         "url": null,
         "citation": "Stork 2018. How Many Species of Insects and Other Terrestrial Arthropods Are There on Earth? Annu Rev Entomol 63: 31-45."
       },
+      "tip_taxonomy": {
+        "unique_ids": 53596,
+        "unique_species": 53596,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": true
     },
     {
@@ -176,6 +194,12 @@
       "estimate": null,
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 50365,
+        "unique_species": 49690,
+        "subspecies_tips": 349,
+        "redundancy": 675
+      },
       "is_partition_canonical": false
     },
     {
@@ -221,6 +245,12 @@
         "doi": "10.1371/journal.pbio.1001127",
         "url": null,
         "citation": "Mora et al. 2011. How Many Species Are There on Earth and in the Ocean? PLoS Biol 9(8): e1001127."
+      },
+      "tip_taxonomy": {
+        "unique_ids": 11638,
+        "unique_species": 11596,
+        "subspecies_tips": 133,
+        "redundancy": 42
       },
       "is_partition_canonical": true
     },
@@ -268,6 +298,12 @@
         "url": "https://www.iucnredlist.org/",
         "citation": "IUCN Red List of Threatened Species."
       },
+      "tip_taxonomy": {
+        "unique_ids": 10824,
+        "unique_species": 10824,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": true
     },
     {
@@ -313,6 +349,12 @@
         "doi": null,
         "url": "http://www.reptile-database.org/",
         "citation": "Uetz P. et al. (current). The Reptile Database."
+      },
+      "tip_taxonomy": {
+        "unique_ids": 9755,
+        "unique_species": 9755,
+        "subspecies_tips": 0,
+        "redundancy": 0
       },
       "is_partition_canonical": true
     },
@@ -360,6 +402,12 @@
         "url": null,
         "citation": "Mora et al. 2011. How Many Species Are There on Earth and in the Ocean? PLoS Biol 9(8): e1001127."
       },
+      "tip_taxonomy": {
+        "unique_ids": 7239,
+        "unique_species": 7239,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": true
     },
     {
@@ -405,6 +453,12 @@
         "doi": "10.1371/journal.pbio.3000106",
         "url": null,
         "citation": "Louca et al. 2019. A census-based estimate of Earth's bacterial and archaeal diversity. PLoS Biol 17(2): e3000106."
+      },
+      "tip_taxonomy": {
+        "unique_ids": 6968,
+        "unique_species": 2,
+        "subspecies_tips": 0,
+        "redundancy": 6966
       },
       "is_partition_canonical": true
     },
@@ -452,6 +506,12 @@
         "url": null,
         "citation": "PPG I 2016. A community-derived classification for extant lycophytes and ferns. J Syst Evol 54(6): 563-603."
       },
+      "tip_taxonomy": {
+        "unique_ids": 6234,
+        "unique_species": 6234,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": true
     },
     {
@@ -497,6 +557,12 @@
         "doi": "10.1093/jmammal/gyx147",
         "url": null,
         "citation": "Burgin et al. 2018. How many species of mammals are there? J Mammal 99(1): 1-14."
+      },
+      "tip_taxonomy": {
+        "unique_ids": 5912,
+        "unique_species": 5912,
+        "subspecies_tips": 1,
+        "redundancy": 0
       },
       "is_partition_canonical": true
     },
@@ -544,6 +610,12 @@
         "url": null,
         "citation": "Mora et al. 2011. How Many Species Are There on Earth and in the Ocean? PLoS Biol 9(8): e1001127."
       },
+      "tip_taxonomy": {
+        "unique_ids": 5326,
+        "unique_species": 5326,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -589,6 +661,12 @@
         "doi": "10.1146/annurev-ento-020117-043348",
         "url": null,
         "citation": "Stork 2018. How Many Species of Insects and Other Terrestrial Arthropods Are There on Earth? Annu Rev Entomol 63: 31-45."
+      },
+      "tip_taxonomy": {
+        "unique_ids": 4586,
+        "unique_species": 4586,
+        "subspecies_tips": 0,
+        "redundancy": 0
       },
       "is_partition_canonical": false
     },
@@ -636,6 +714,12 @@
         "url": null,
         "citation": "Mora et al. 2011. How Many Species Are There on Earth and in the Ocean? PLoS Biol 9(8): e1001127."
       },
+      "tip_taxonomy": {
+        "unique_ids": 3167,
+        "unique_species": 741,
+        "subspecies_tips": 3166,
+        "redundancy": 2426
+      },
       "is_partition_canonical": false
     },
     {
@@ -681,6 +765,12 @@
         "doi": "10.1146/annurev-ento-020117-043348",
         "url": null,
         "citation": "Stork 2018. How Many Species of Insects and Other Terrestrial Arthropods Are There on Earth? Annu Rev Entomol 63: 31-45."
+      },
+      "tip_taxonomy": {
+        "unique_ids": 2258,
+        "unique_species": 2258,
+        "subspecies_tips": 0,
+        "redundancy": 0
       },
       "is_partition_canonical": false
     },
@@ -728,6 +818,12 @@
         "url": null,
         "citation": "Hawksworth & Lücking 2017. Fungal Diversity Revisited: 2.2 to 3.8 Million Species. Microbiol Spectr 5(4)."
       },
+      "tip_taxonomy": {
+        "unique_ids": 1650,
+        "unique_species": 1602,
+        "subspecies_tips": 9,
+        "redundancy": 48
+      },
       "is_partition_canonical": true
     },
     {
@@ -773,6 +869,12 @@
         "doi": "10.11646/phytotaxa.272.1.5",
         "url": null,
         "citation": "Nic Lughadha et al. 2016. Counting counts: revised estimates of numbers of accepted species of flowering plants. Phytotaxa 272(1): 82-88."
+      },
+      "tip_taxonomy": {
+        "unique_ids": 1475,
+        "unique_species": 1475,
+        "subspecies_tips": 7,
+        "redundancy": 0
       },
       "is_partition_canonical": false
     },
@@ -820,6 +922,12 @@
         "url": null,
         "citation": "Agnarsson, Coddington & Kuntner 2013. Systematics: Progress in the study of spider diversity and evolution (best-effort)."
       },
+      "tip_taxonomy": {
+        "unique_ids": 1432,
+        "unique_species": 885,
+        "subspecies_tips": 1206,
+        "redundancy": 547
+      },
       "is_partition_canonical": true
     },
     {
@@ -865,6 +973,12 @@
         "doi": "10.1111/jfb.12874",
         "url": null,
         "citation": "Weigmann 2016. Annotated checklist of the living sharks batoids and chimaeras (Chondrichthyes) of the world. J Fish Biol 88(3): 837-1037."
+      },
+      "tip_taxonomy": {
+        "unique_ids": 1192,
+        "unique_species": 1192,
+        "subspecies_tips": 0,
+        "redundancy": 0
       },
       "is_partition_canonical": true
     },
@@ -912,6 +1026,12 @@
         "url": null,
         "citation": "Nic Lughadha et al. 2016. Counting counts: revised estimates of numbers of accepted species of flowering plants. Phytotaxa 272(1): 82-88."
       },
+      "tip_taxonomy": {
+        "unique_ids": 1153,
+        "unique_species": 1094,
+        "subspecies_tips": 12,
+        "redundancy": 59
+      },
       "is_partition_canonical": false
     },
     {
@@ -951,6 +1071,12 @@
         "doi": "10.11646/phytotaxa.272.1.5",
         "url": null,
         "citation": "Nic Lughadha et al. 2016. Counting counts: revised estimates of numbers of accepted species of flowering plants. Phytotaxa 272(1): 82-88."
+      },
+      "tip_taxonomy": {
+        "unique_ids": 1076,
+        "unique_species": 0,
+        "subspecies_tips": 0,
+        "redundancy": 1076
       },
       "is_partition_canonical": false
     },
@@ -998,6 +1124,12 @@
         "url": null,
         "citation": "Nic Lughadha et al. 2016. Counting counts: revised estimates of numbers of accepted species of flowering plants. Phytotaxa 272(1): 82-88."
       },
+      "tip_taxonomy": {
+        "unique_ids": 1063,
+        "unique_species": 1063,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -1044,6 +1176,12 @@
         "url": null,
         "citation": "Mora et al. 2011. How Many Species Are There on Earth and in the Ocean? PLoS Biol 9(8): e1001127."
       },
+      "tip_taxonomy": {
+        "unique_ids": 796,
+        "unique_species": 796,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -1084,6 +1222,12 @@
         "url": null,
         "citation": "Appeltans et al. 2012. The Magnitude of Global Marine Species Diversity. Curr Biol 22(23): 2189-2202."
       },
+      "tip_taxonomy": {
+        "unique_ids": 720,
+        "unique_species": 517,
+        "subspecies_tips": 110,
+        "redundancy": 203
+      },
       "is_partition_canonical": true
     },
     {
@@ -1118,6 +1262,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 680,
+        "unique_species": 680,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -1152,6 +1302,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 620,
+        "unique_species": 620,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -1198,6 +1354,12 @@
         "url": null,
         "citation": "Turtle Taxonomy Working Group 2021. Turtles of the World: Annotated Checklist and Atlas of Taxonomy. Chelonian Research Monographs 8."
       },
+      "tip_taxonomy": {
+        "unique_ids": 329,
+        "unique_species": 287,
+        "subspecies_tips": 31,
+        "redundancy": 42
+      },
       "is_partition_canonical": true
     },
     {
@@ -1232,6 +1394,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 539,
+        "unique_species": 539,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -1278,6 +1446,12 @@
         "url": "https://www.catalogueoflife.org/",
         "citation": "Catalogue of Life (2025 release)."
       },
+      "tip_taxonomy": {
+        "unique_ids": 533,
+        "unique_species": 2,
+        "subspecies_tips": 0,
+        "redundancy": 531
+      },
       "is_partition_canonical": true
     },
     {
@@ -1312,6 +1486,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 419,
+        "unique_species": 419,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -1351,6 +1531,12 @@
         "doi": null,
         "url": "https://www.iucnredlist.org/",
         "citation": "IUCN Red List of Threatened Species."
+      },
+      "tip_taxonomy": {
+        "unique_ids": 413,
+        "unique_species": 413,
+        "subspecies_tips": 0,
+        "redundancy": 0
       },
       "is_partition_canonical": false
     },
@@ -1392,6 +1578,12 @@
         "url": null,
         "citation": "Nic Lughadha et al. 2016. Counting counts: revised estimates of numbers of accepted species of flowering plants. Phytotaxa 272(1): 82-88."
       },
+      "tip_taxonomy": {
+        "unique_ids": 399,
+        "unique_species": 46,
+        "subspecies_tips": 0,
+        "redundancy": 353
+      },
       "is_partition_canonical": false
     },
     {
@@ -1426,6 +1618,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 386,
+        "unique_species": 386,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -1460,6 +1658,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 370,
+        "unique_species": 370,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -1494,6 +1698,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 334,
+        "unique_species": 334,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -1528,6 +1738,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 330,
+        "unique_species": 330,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -1562,6 +1778,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 329,
+        "unique_species": 329,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -1596,6 +1818,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 306,
+        "unique_species": 306,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -1630,6 +1858,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 302,
+        "unique_species": 302,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -1676,6 +1910,12 @@
         "url": null,
         "citation": "Burgin et al. 2018. How many species of mammals are there? J Mammal 99(1): 1-14."
       },
+      "tip_taxonomy": {
+        "unique_ids": 301,
+        "unique_species": 272,
+        "subspecies_tips": 34,
+        "redundancy": 29
+      },
       "is_partition_canonical": false
     },
     {
@@ -1715,6 +1955,12 @@
         "doi": "10.1093/jmammal/gyx147",
         "url": null,
         "citation": "Burgin et al. 2018. How many species of mammals are there? J Mammal 99(1): 1-14."
+      },
+      "tip_taxonomy": {
+        "unique_ids": 294,
+        "unique_species": 294,
+        "subspecies_tips": 0,
+        "redundancy": 0
       },
       "is_partition_canonical": false
     },
@@ -1762,6 +2008,12 @@
         "url": null,
         "citation": "Appeltans et al. 2012. The Magnitude of Global Marine Species Diversity. Curr Biol 22(23): 2189-2202."
       },
+      "tip_taxonomy": {
+        "unique_ids": 289,
+        "unique_species": 288,
+        "subspecies_tips": 24,
+        "redundancy": 1
+      },
       "is_partition_canonical": true
     },
     {
@@ -1796,6 +2048,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 279,
+        "unique_species": 279,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -1830,6 +2088,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 278,
+        "unique_species": 278,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -1864,6 +2128,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 276,
+        "unique_species": 276,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -1910,6 +2180,12 @@
         "url": null,
         "citation": "Nic Lughadha et al. 2016. Counting counts: revised estimates of numbers of accepted species of flowering plants. Phytotaxa 272(1): 82-88."
       },
+      "tip_taxonomy": {
+        "unique_ids": 256,
+        "unique_species": 254,
+        "subspecies_tips": 7,
+        "redundancy": 2
+      },
       "is_partition_canonical": false
     },
     {
@@ -1944,6 +2220,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 242,
+        "unique_species": 242,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -1978,6 +2260,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 233,
+        "unique_species": 218,
+        "subspecies_tips": 32,
+        "redundancy": 15
+      },
       "is_partition_canonical": false
     },
     {
@@ -2012,6 +2300,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 223,
+        "unique_species": 223,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -2046,6 +2340,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 219,
+        "unique_species": 219,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -2080,6 +2380,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 218,
+        "unique_species": 218,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -2114,6 +2420,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 209,
+        "unique_species": 209,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -2148,6 +2460,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 194,
+        "unique_species": 194,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -2188,6 +2506,12 @@
         "url": null,
         "citation": "Stork 2018. How Many Species of Insects and Other Terrestrial Arthropods Are There on Earth? Annu Rev Entomol 63: 31-45."
       },
+      "tip_taxonomy": {
+        "unique_ids": 192,
+        "unique_species": 192,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -2222,6 +2546,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 191,
+        "unique_species": 191,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -2256,6 +2586,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 177,
+        "unique_species": 177,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -2290,6 +2626,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 176,
+        "unique_species": 176,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -2324,6 +2666,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 174,
+        "unique_species": 174,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -2358,6 +2706,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 170,
+        "unique_species": 170,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -2404,6 +2758,12 @@
         "url": null,
         "citation": "Hodda 2022. Phylum Nematoda: a classification catalogue and index of valid genera. Zootaxa 5114(1): 1-289."
       },
+      "tip_taxonomy": {
+        "unique_ids": 166,
+        "unique_species": 166,
+        "subspecies_tips": 10,
+        "redundancy": 0
+      },
       "is_partition_canonical": true
     },
     {
@@ -2438,6 +2798,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 163,
+        "unique_species": 163,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -2472,6 +2838,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 157,
+        "unique_species": 157,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -2506,6 +2878,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 150,
+        "unique_species": 150,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -2540,6 +2918,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 145,
+        "unique_species": 145,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -2574,6 +2958,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 142,
+        "unique_species": 142,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -2608,6 +2998,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 142,
+        "unique_species": 142,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -2642,6 +3038,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 140,
+        "unique_species": 140,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -2676,6 +3078,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 138,
+        "unique_species": 138,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -2710,6 +3118,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 138,
+        "unique_species": 138,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -2750,6 +3164,12 @@
         "url": null,
         "citation": "Stork 2018. How Many Species of Insects and Other Terrestrial Arthropods Are There on Earth? Annu Rev Entomol 63: 31-45."
       },
+      "tip_taxonomy": {
+        "unique_ids": 138,
+        "unique_species": 138,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -2784,6 +3204,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 127,
+        "unique_species": 127,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -2818,6 +3244,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 127,
+        "unique_species": 127,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -2852,6 +3284,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 127,
+        "unique_species": 127,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -2886,6 +3324,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 125,
+        "unique_species": 125,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -2920,6 +3364,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 124,
+        "unique_species": 124,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -2954,6 +3404,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 120,
+        "unique_species": 120,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -2988,6 +3444,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 120,
+        "unique_species": 120,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -3034,6 +3496,12 @@
         "url": null,
         "citation": "Appeltans et al. 2012. The Magnitude of Global Marine Species Diversity. Curr Biol 22(23): 2189-2202."
       },
+      "tip_taxonomy": {
+        "unique_ids": 119,
+        "unique_species": 94,
+        "subspecies_tips": 105,
+        "redundancy": 25
+      },
       "is_partition_canonical": true
     },
     {
@@ -3068,6 +3536,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 114,
+        "unique_species": 114,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -3102,6 +3576,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 109,
+        "unique_species": 109,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -3136,6 +3616,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 109,
+        "unique_species": 109,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -3170,6 +3656,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 108,
+        "unique_species": 108,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -3204,6 +3696,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 102,
+        "unique_species": 102,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -3231,6 +3729,12 @@
       "estimate": null,
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 100,
+        "unique_species": 37,
+        "subspecies_tips": 0,
+        "redundancy": 63
+      },
       "is_partition_canonical": false
     },
     {
@@ -3265,6 +3769,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 99,
+        "unique_species": 99,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -3299,6 +3809,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 99,
+        "unique_species": 99,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -3333,6 +3849,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 98,
+        "unique_species": 98,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -3378,6 +3900,12 @@
         "doi": "10.1016/j.cub.2012.09.036",
         "url": null,
         "citation": "Appeltans et al. 2012. The Magnitude of Global Marine Species Diversity. Curr Biol 22(23): 2189-2202."
+      },
+      "tip_taxonomy": {
+        "unique_ids": 95,
+        "unique_species": 0,
+        "subspecies_tips": 0,
+        "redundancy": 95
       },
       "is_partition_canonical": true
     },
@@ -3425,6 +3953,12 @@
         "url": null,
         "citation": "Mann & Vanormelingen 2013. An Inordinate Fondness? The Number Distributions and Origins of Diatom Species. J Eukaryot Microbiol 60(4): 414-420."
       },
+      "tip_taxonomy": {
+        "unique_ids": 74,
+        "unique_species": 0,
+        "subspecies_tips": 0,
+        "redundancy": 74
+      },
       "is_partition_canonical": true
     },
     {
@@ -3459,6 +3993,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 91,
+        "unique_species": 91,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -3493,6 +4033,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 91,
+        "unique_species": 91,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -3527,6 +4073,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 89,
+        "unique_species": 89,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -3561,6 +4113,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 88,
+        "unique_species": 88,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -3595,6 +4153,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 87,
+        "unique_species": 87,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -3641,6 +4205,12 @@
         "url": null,
         "citation": "Burgin et al. 2018. How many species of mammals are there? J Mammal 99(1): 1-14."
       },
+      "tip_taxonomy": {
+        "unique_ids": 85,
+        "unique_species": 85,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -3675,6 +4245,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 84,
+        "unique_species": 84,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -3715,6 +4291,12 @@
         "url": null,
         "citation": "Stork 2018. How Many Species of Insects and Other Terrestrial Arthropods Are There on Earth? Annu Rev Entomol 63: 31-45."
       },
+      "tip_taxonomy": {
+        "unique_ids": 83,
+        "unique_species": 82,
+        "subspecies_tips": 0,
+        "redundancy": 1
+      },
       "is_partition_canonical": false
     },
     {
@@ -3749,6 +4331,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 83,
+        "unique_species": 83,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -3795,6 +4383,12 @@
         "url": "https://www.marinespecies.org/",
         "citation": "World Register of Marine Species."
       },
+      "tip_taxonomy": {
+        "unique_ids": 81,
+        "unique_species": 81,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": true
     },
     {
@@ -3829,6 +4423,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 81,
+        "unique_species": 81,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -3863,6 +4463,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 80,
+        "unique_species": 80,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -3897,6 +4503,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 79,
+        "unique_species": 79,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -3931,6 +4543,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 74,
+        "unique_species": 74,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -3977,6 +4595,12 @@
         "url": null,
         "citation": "Appeltans et al. 2012. The Magnitude of Global Marine Species Diversity. Curr Biol 22(23): 2189-2202."
       },
+      "tip_taxonomy": {
+        "unique_ids": 73,
+        "unique_species": 73,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": true
     },
     {
@@ -4011,6 +4635,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 73,
+        "unique_species": 73,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -4045,6 +4675,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 71,
+        "unique_species": 71,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -4079,6 +4715,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 69,
+        "unique_species": 69,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -4113,6 +4755,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 68,
+        "unique_species": 68,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -4147,6 +4795,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 66,
+        "unique_species": 66,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -4193,6 +4847,12 @@
         "url": null,
         "citation": "Appeltans et al. 2012. The Magnitude of Global Marine Species Diversity. Curr Biol 22(23): 2189-2202."
       },
+      "tip_taxonomy": {
+        "unique_ids": 66,
+        "unique_species": 66,
+        "subspecies_tips": 1,
+        "redundancy": 0
+      },
       "is_partition_canonical": true
     },
     {
@@ -4227,6 +4887,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 65,
+        "unique_species": 65,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -4261,6 +4927,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 64,
+        "unique_species": 64,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -4295,6 +4967,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 64,
+        "unique_species": 64,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -4329,6 +5007,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 63,
+        "unique_species": 63,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -4363,6 +5047,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 63,
+        "unique_species": 63,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -4397,6 +5087,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 62,
+        "unique_species": 62,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -4431,6 +5127,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 62,
+        "unique_species": 62,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -4465,6 +5167,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 61,
+        "unique_species": 61,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -4499,6 +5207,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 59,
+        "unique_species": 59,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -4533,6 +5247,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 58,
+        "unique_species": 58,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -4567,6 +5287,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 58,
+        "unique_species": 58,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -4601,6 +5327,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 58,
+        "unique_species": 58,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -4635,6 +5367,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 56,
+        "unique_species": 56,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -4669,6 +5407,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 55,
+        "unique_species": 55,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -4703,6 +5447,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 55,
+        "unique_species": 55,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -4737,6 +5487,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 55,
+        "unique_species": 55,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -4783,6 +5539,12 @@
         "url": null,
         "citation": "Appeltans et al. 2012. The Magnitude of Global Marine Species Diversity. Curr Biol 22(23): 2189-2202."
       },
+      "tip_taxonomy": {
+        "unique_ids": 54,
+        "unique_species": 54,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": true
     },
     {
@@ -4817,6 +5579,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 53,
+        "unique_species": 53,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -4851,6 +5619,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 53,
+        "unique_species": 53,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -4885,6 +5659,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 53,
+        "unique_species": 53,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -4919,6 +5699,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 53,
+        "unique_species": 53,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -4953,6 +5739,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 52,
+        "unique_species": 52,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -4987,6 +5779,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 52,
+        "unique_species": 52,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -5021,6 +5819,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 51,
+        "unique_species": 51,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -5055,6 +5859,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 51,
+        "unique_species": 51,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -5089,6 +5899,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 50,
+        "unique_species": 50,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -5123,6 +5939,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 50,
+        "unique_species": 50,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -5157,6 +5979,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 49,
+        "unique_species": 49,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -5191,6 +6019,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 49,
+        "unique_species": 49,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -5225,6 +6059,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 48,
+        "unique_species": 48,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -5259,6 +6099,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 48,
+        "unique_species": 48,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -5293,6 +6139,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 47,
+        "unique_species": 47,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -5327,6 +6179,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 46,
+        "unique_species": 46,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -5361,6 +6219,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 46,
+        "unique_species": 46,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -5395,6 +6259,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 45,
+        "unique_species": 45,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -5429,6 +6299,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 45,
+        "unique_species": 45,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -5463,6 +6339,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 44,
+        "unique_species": 44,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -5497,6 +6379,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 42,
+        "unique_species": 42,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -5531,6 +6419,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 42,
+        "unique_species": 42,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -5565,6 +6459,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 42,
+        "unique_species": 42,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -5599,6 +6499,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 42,
+        "unique_species": 42,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -5633,6 +6539,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 41,
+        "unique_species": 41,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -5667,6 +6579,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 41,
+        "unique_species": 41,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -5701,6 +6619,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 40,
+        "unique_species": 40,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -5735,6 +6659,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 40,
+        "unique_species": 40,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -5769,6 +6699,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 39,
+        "unique_species": 39,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -5803,6 +6739,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 38,
+        "unique_species": 38,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -5837,6 +6779,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 37,
+        "unique_species": 37,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -5871,6 +6819,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 35,
+        "unique_species": 35,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -5905,6 +6859,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 35,
+        "unique_species": 35,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -5939,6 +6899,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 34,
+        "unique_species": 34,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -5973,6 +6939,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 34,
+        "unique_species": 34,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -6007,6 +6979,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 34,
+        "unique_species": 34,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -6041,6 +7019,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 34,
+        "unique_species": 34,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -6075,6 +7059,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 34,
+        "unique_species": 34,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -6109,6 +7099,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 34,
+        "unique_species": 34,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -6143,6 +7139,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 33,
+        "unique_species": 33,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -6177,6 +7179,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 33,
+        "unique_species": 33,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -6211,6 +7219,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 32,
+        "unique_species": 32,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -6245,6 +7259,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 31,
+        "unique_species": 31,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -6279,6 +7299,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 31,
+        "unique_species": 31,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -6313,6 +7339,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 31,
+        "unique_species": 31,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -6347,6 +7379,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 31,
+        "unique_species": 31,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -6381,6 +7419,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 30,
+        "unique_species": 30,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -6415,6 +7459,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 30,
+        "unique_species": 30,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -6449,6 +7499,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 29,
+        "unique_species": 29,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -6483,6 +7539,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 28,
+        "unique_species": 28,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -6517,6 +7579,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 28,
+        "unique_species": 28,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -6551,6 +7619,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 28,
+        "unique_species": 28,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -6585,6 +7659,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 27,
+        "unique_species": 27,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -6619,6 +7699,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 27,
+        "unique_species": 27,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -6653,6 +7739,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 26,
+        "unique_species": 26,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -6687,6 +7779,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 26,
+        "unique_species": 26,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -6721,6 +7819,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 26,
+        "unique_species": 26,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -6755,6 +7859,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 25,
+        "unique_species": 0,
+        "subspecies_tips": 0,
+        "redundancy": 25
+      },
       "is_partition_canonical": false
     },
     {
@@ -6789,6 +7899,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 25,
+        "unique_species": 25,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -6823,6 +7939,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 25,
+        "unique_species": 25,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -6857,6 +7979,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 24,
+        "unique_species": 24,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -6891,6 +8019,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 24,
+        "unique_species": 24,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -6925,6 +8059,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 24,
+        "unique_species": 24,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -6959,6 +8099,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 23,
+        "unique_species": 23,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -6993,6 +8139,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 23,
+        "unique_species": 23,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -7027,6 +8179,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 23,
+        "unique_species": 23,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -7061,6 +8219,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 22,
+        "unique_species": 22,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -7095,6 +8259,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 22,
+        "unique_species": 22,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -7129,6 +8299,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 22,
+        "unique_species": 22,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -7163,6 +8339,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 21,
+        "unique_species": 21,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -7197,6 +8379,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 21,
+        "unique_species": 21,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -7231,6 +8419,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 21,
+        "unique_species": 21,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -7265,6 +8459,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 21,
+        "unique_species": 21,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -7299,6 +8499,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 20,
+        "unique_species": 20,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -7333,6 +8539,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 20,
+        "unique_species": 20,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -7367,6 +8579,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 20,
+        "unique_species": 20,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -7401,6 +8619,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 20,
+        "unique_species": 20,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -7435,6 +8659,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 20,
+        "unique_species": 20,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -7469,6 +8699,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 19,
+        "unique_species": 19,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -7503,6 +8739,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 19,
+        "unique_species": 19,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -7537,6 +8779,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 19,
+        "unique_species": 19,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -7571,6 +8819,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 19,
+        "unique_species": 19,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -7605,6 +8859,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 19,
+        "unique_species": 19,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -7639,6 +8899,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 18,
+        "unique_species": 18,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -7673,6 +8939,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 18,
+        "unique_species": 18,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -7707,6 +8979,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 18,
+        "unique_species": 18,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -7741,6 +9019,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 18,
+        "unique_species": 18,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -7775,6 +9059,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 18,
+        "unique_species": 18,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -7809,6 +9099,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 18,
+        "unique_species": 18,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -7843,6 +9139,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 17,
+        "unique_species": 17,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -7877,6 +9179,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 17,
+        "unique_species": 17,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -7911,6 +9219,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 17,
+        "unique_species": 17,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -7945,6 +9259,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 17,
+        "unique_species": 17,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -7979,6 +9299,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 16,
+        "unique_species": 16,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -8013,6 +9339,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 16,
+        "unique_species": 16,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -8047,6 +9379,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 16,
+        "unique_species": 16,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -8081,6 +9419,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 16,
+        "unique_species": 16,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -8115,6 +9459,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 16,
+        "unique_species": 16,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -8149,6 +9499,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 16,
+        "unique_species": 16,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -8189,6 +9545,12 @@
         "url": "https://www.kew.org/science/our-science/projects/conifer-database",
         "citation": "Farjon 2017. A Handbook of the World's Conifers. Brill (book)."
       },
+      "tip_taxonomy": {
+        "unique_ids": 16,
+        "unique_species": 0,
+        "subspecies_tips": 0,
+        "redundancy": 16
+      },
       "is_partition_canonical": true
     },
     {
@@ -8223,6 +9585,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 15,
+        "unique_species": 15,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -8257,6 +9625,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 15,
+        "unique_species": 15,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -8291,6 +9665,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 15,
+        "unique_species": 15,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -8325,6 +9705,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 15,
+        "unique_species": 15,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -8359,6 +9745,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 15,
+        "unique_species": 15,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -8393,6 +9785,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 15,
+        "unique_species": 15,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -8427,6 +9825,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 14,
+        "unique_species": 14,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -8461,6 +9865,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 14,
+        "unique_species": 14,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -8495,6 +9905,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 14,
+        "unique_species": 14,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -8529,6 +9945,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 14,
+        "unique_species": 14,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -8563,6 +9985,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 14,
+        "unique_species": 14,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -8597,6 +10025,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 14,
+        "unique_species": 14,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -8631,6 +10065,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 13,
+        "unique_species": 13,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -8665,6 +10105,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 13,
+        "unique_species": 13,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -8699,6 +10145,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 13,
+        "unique_species": 13,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -8733,6 +10185,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 12,
+        "unique_species": 12,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -8767,6 +10225,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 12,
+        "unique_species": 12,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -8801,6 +10265,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 12,
+        "unique_species": 12,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -8835,6 +10305,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 12,
+        "unique_species": 12,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -8869,6 +10345,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 12,
+        "unique_species": 12,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -8903,6 +10385,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 11,
+        "unique_species": 11,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -8937,6 +10425,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 11,
+        "unique_species": 11,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -8971,6 +10465,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 11,
+        "unique_species": 11,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -9005,6 +10505,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 11,
+        "unique_species": 11,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -9039,6 +10545,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 11,
+        "unique_species": 11,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -9073,6 +10585,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 11,
+        "unique_species": 11,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -9107,6 +10625,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 11,
+        "unique_species": 11,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -9141,6 +10665,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 11,
+        "unique_species": 11,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -9175,6 +10705,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 10,
+        "unique_species": 10,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -9209,6 +10745,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 10,
+        "unique_species": 10,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -9243,6 +10785,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 10,
+        "unique_species": 10,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -9277,6 +10825,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 10,
+        "unique_species": 10,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -9311,6 +10865,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 10,
+        "unique_species": 10,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -9345,6 +10905,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 10,
+        "unique_species": 10,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -9379,6 +10945,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 10,
+        "unique_species": 10,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -9413,6 +10985,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 10,
+        "unique_species": 10,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     },
     {
@@ -9447,6 +11025,12 @@
       },
       "described_source_info": null,
       "estimate_source_info": null,
+      "tip_taxonomy": {
+        "unique_ids": 10,
+        "unique_species": 10,
+        "subspecies_tips": 0,
+        "redundancy": 0
+      },
       "is_partition_canonical": false
     }
   ],

@@ -133,6 +133,44 @@ def load_audit_overrides() -> dict[str, dict]:
     return out
 
 
+def compute_tip_taxonomy(filename: str) -> dict | None:
+    """Read a name shard and break the tips down by taxonomic level.
+
+    Standardized names follow `Genus_species[_subspecies_or_code]` (with
+    the third token lowercased+alphabetic when it's a subspecies epithet
+    and uppercase/coded when it's a locality/specimen marker). This lets
+    the web app distinguish species-level coverage from raw tip count —
+    important for trees like turtles where 329 tip IDs collapse into 287
+    species.
+    """
+    shard_path = NAMES_DIR / f"{filename}.json"
+    if not shard_path.exists():
+        return None
+    try:
+        names = json.loads(shard_path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return None
+    species: set[str] = set()
+    subspecies_tips = 0
+    for name in names.values():
+        if not name:
+            continue
+        parts = name.split("_")
+        if len(parts) < 2:
+            continue
+        species.add("_".join(parts[:2]))
+        if len(parts) > 2:
+            third = parts[2]
+            if third and third[0].islower() and third.isalpha():
+                subspecies_tips += 1
+    return {
+        "unique_ids": len(names),
+        "unique_species": len(species),
+        "subspecies_tips": subspecies_tips,
+        "redundancy": len(names) - len(species),
+    }
+
+
 def build_name_shards(metadata: list[dict]) -> int:
     """Generate one `<filename>.json` per tree with {id: name} for every tip
     that tree uses. Stored in standardized/names/, loaded on demand by the
@@ -304,6 +342,7 @@ def main() -> None:
             "estimate": est,
             "described_source_info": source_info(prov.get("species_count_source")),
             "estimate_source_info": source_info(est.get("estimate_source")) if est else None,
+            "tip_taxonomy": compute_tip_taxonomy(filename),
         })
 
         agg = by_group_aggregate[group]

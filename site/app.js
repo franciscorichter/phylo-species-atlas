@@ -491,7 +491,19 @@ async function selectTree(filename, scrollIntoView) {
     ? `${fmt.format(est.estimated_total)} <span class="range">(${fmt.format(est.estimated_low || est.estimated_total)}–${fmt.format(est.estimated_high || est.estimated_total)})</span>` +
       sourceLinkHTML(t.estimate_source_info, est.estimate_source, est.estimate_confidence)
     : null;
-  const covDescribed = t.coverage_pct != null ? `${t.coverage_pct.toFixed(1)}% <span class="src">of described</span>` : "—";
+  // Coverage (described). When tip_taxonomy reveals subspecies-level redundancy
+  // (unique_species < unique_ids), surface a species-level recomputation
+  // alongside the tip-level number — for trees like turtles where 593 tips
+  // represent only 287 species, the 100% tip-level figure is misleading.
+  let covDescribed = t.coverage_pct != null ? `${t.coverage_pct.toFixed(1)}% <span class="src">of described</span>` : "—";
+  if (t.tip_taxonomy && t.tip_taxonomy.unique_species && t.described_species) {
+    const us = t.tip_taxonomy.unique_species;
+    const desc = t.described_species;
+    if (us !== t.ntips && us < desc) {
+      const speciesPct = (100 * us / desc).toFixed(1);
+      covDescribed = `${t.coverage_pct != null ? t.coverage_pct.toFixed(1) + "% " : ""}<span class="src">tip-level</span> · <strong>${speciesPct}%</strong> <span class="src">at species level (${fmt.format(us)} unique / ${fmt.format(desc)} described)</span>`;
+    }
+  }
   let covEstimated = null;
   if (est && est.estimated_total && t.ntips) {
     const main = (100 * t.ntips / est.estimated_total).toFixed(1);
@@ -515,16 +527,28 @@ async function selectTree(filename, scrollIntoView) {
   const auditMethods = auditTree?.methods;
   const useAuditMethods = !!auditMethods && t.is_partition_canonical;
 
-  // Tips: when audit has multi-individual breakdown, show it inline.
-  let tipsVal = fmt.format(t.ntips || 0);
-  if (useAuditMethods && auditTree.multiple_individuals_per_species) {
-    const u = auditTree.unique_ids;
-    const sp = auditTree.species_represented;
+  // Tips field. Layered fallback:
+  //   1) tip_taxonomy from build.py (cross-partition, derived from the name shard).
+  //      Adds unique-ID and unique-species breakdown when the tree has subspecies
+  //      or duplicate tips.
+  //   2) audit-confirmed species_represented (from info.yaml) when present.
+  //   3) plain ntips otherwise.
+  let tipsVal = fmt.format(t.ntips || 0) + " tips";
+  const tx = t.tip_taxonomy;
+  if (tx) {
     const parts = [`${fmt.format(t.ntips || 0)} tips`];
-    if (u) parts.push(`${fmt.format(u)} unique IDs`);
-    if (sp) parts.push(`${fmt.format(sp)} species`);
+    if (tx.unique_ids != null && tx.unique_ids !== t.ntips) {
+      parts.push(`${fmt.format(tx.unique_ids)} unique IDs`);
+    }
+    if (tx.unique_species != null && tx.unique_species !== (tx.unique_ids ?? t.ntips)) {
+      parts.push(`${fmt.format(tx.unique_species)} species`);
+    }
+    if (tx.subspecies_tips > 0) {
+      parts.push(`<span class="src">${fmt.format(tx.subspecies_tips)} subspecies-level</span>`);
+    }
     tipsVal = parts.join(" · ");
-  } else if (useAuditMethods && auditTree.species_represented && auditTree.species_represented !== t.ntips) {
+  }
+  if (useAuditMethods && auditTree.species_represented && (!tx || tx.unique_species == null)) {
     tipsVal = `${fmt.format(t.ntips || 0)} tips · ${fmt.format(auditTree.species_represented)} species`;
   }
 
@@ -573,7 +597,6 @@ async function selectTree(filename, scrollIntoView) {
     .join("");
 
   renderDatasetChooser(t);
-  renderAuditPanel(t);
   renderUncertaintyPanel(t);
 
   const dl = document.getElementById("download-newick");

@@ -1,0 +1,163 @@
+// Audit log page — renders site/data.json's `audits` block as a per-partition
+// verification trail. Reads the same data.json the main page uses.
+
+const fmt = new Intl.NumberFormat("en-US");
+
+function escapeHTML(s) {
+  return String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
+}
+
+async function init() {
+  const res = await fetch("data.json");
+  if (!res.ok) {
+    document.getElementById("audit-list").innerHTML = `<p class="empty">Could not load data.json (HTTP ${res.status}).</p>`;
+    return;
+  }
+  const data = await res.json();
+  renderSummary(data);
+  renderList(data);
+}
+
+function renderSummary(data) {
+  const audits = data.audits || {};
+  const list = Object.values(audits);
+  const stats = data.summary || {};
+  const verified = list.filter(a => (a.audit || {}).status === "verified").length;
+  const inProgress = list.filter(a => (a.audit || {}).status === "in_progress").length;
+  const totalPartitions = (stats.n_groups || 0) + (data.unrepresented || []).length;
+  const items = [
+    ["Audited partitions", `${list.length} / ${totalPartitions || "—"}`],
+    ["Verified", verified],
+    ["In progress", inProgress],
+    ["Total resolutions", list.reduce((acc, a) => acc + ((a.resolutions || []).length), 0)],
+  ];
+  document.getElementById("audit-summary").innerHTML = items
+    .map(([k, v]) => `<div class="stat"><span class="stat-num">${v}</span><span class="stat-key">${k}</span></div>`)
+    .join("");
+}
+
+function renderList(data) {
+  const audits = data.audits || {};
+  const entries = Object.entries(audits);
+  if (!entries.length) {
+    document.getElementById("audit-empty").hidden = false;
+    return;
+  }
+  // Order: verified first, then in_progress, then alphabetic.
+  const order = { verified: 0, in_progress: 1, shipped: 2, stub: 3, deferred: 4 };
+  entries.sort(([na, a], [nb, b]) => {
+    const sa = order[(a.audit || {}).status] ?? 9;
+    const sb = order[(b.audit || {}).status] ?? 9;
+    if (sa !== sb) return sa - sb;
+    return na.localeCompare(nb);
+  });
+
+  document.getElementById("audit-list").innerHTML = entries
+    .map(([partition, a]) => renderPartition(partition, a))
+    .join("");
+}
+
+function renderPartition(partition, audit) {
+  const auditMeta = audit.audit || {};
+  const status = auditMeta.status || "stub";
+  const lastAudited = auditMeta.last_audited || "—";
+  const category = audit.category || "";
+
+  const estSrc = (audit.estimate && audit.estimate.source) || {};
+  let doiFixHTML = "";
+  if (estSrc.paper_doi_status === "broken" && estSrc.live_doi) {
+    doiFixHTML = `
+      <section class="aud-block">
+        <h3>Estimate-source DOI correction</h3>
+        <div class="aud-doi">
+          <div class="doi-row doi-broken">
+            <span class="doi-label">Paper cites</span>
+            <a href="https://doi.org/${escapeHTML(estSrc.paper_doi)}" target="_blank" rel="noopener">${escapeHTML(estSrc.paper_key || "")} · ${escapeHTML(estSrc.paper_doi)}</a>
+            <span class="badge-broken">404</span>
+          </div>
+          <div class="doi-row doi-live">
+            <span class="doi-label">Live (replacement)</span>
+            <a href="https://doi.org/${escapeHTML(estSrc.live_doi)}" target="_blank" rel="noopener">${escapeHTML(estSrc.live_key || "live")} · ${escapeHTML(estSrc.live_doi)}</a>
+            ${estSrc.live_year ? `<span class="muted">${estSrc.live_year}</span>` : ""}
+            ${estSrc.live_cited_value ? `<span class="muted">${fmt.format(estSrc.live_cited_value)} species</span>` : ""}
+          </div>
+        </div>
+        ${estSrc.note ? `<p class="aud-note">${escapeHTML(estSrc.note).replace(/\n/g, "<br>")}</p>` : ""}
+      </section>`;
+  }
+
+  const resolutions = audit.resolutions || [];
+  const resHTML = resolutions.length
+    ? `
+      <section class="aud-block">
+        <h3>Resolutions (${resolutions.length})</h3>
+        <ol class="aud-resolutions">
+          ${resolutions.map(r => `
+            <li>
+              <div class="res-issue"><strong>Issue:</strong> ${escapeHTML(r.issue)}</div>
+              <div class="res-fix"><strong>Resolved by:</strong> ${escapeHTML(r.resolved_by)}</div>
+            </li>`).join("")}
+        </ol>
+      </section>`
+    : "";
+
+  const cands = audit.candidate_subclades || [];
+  const candHTML = cands.length
+    ? `
+      <section class="aud-block">
+        <h3>Candidate sub-clades (${cands.length})</h3>
+        <ul class="aud-cands">
+          ${cands.map(c => `
+            <li>
+              <div class="cand-head">
+                <strong>${escapeHTML(c.taxon || "")}</strong>
+                <span class="cand-priority cand-${c.priority || "low"}">${escapeHTML(c.priority || "low")}</span>
+                <span class="cand-status">${escapeHTML(c.status || "proposed")}</span>
+              </div>
+              ${c.rationale ? `<p class="cand-rationale">${escapeHTML(c.rationale)}</p>` : ""}
+              ${(c.candidate_papers || []).map(p => `
+                <p class="cand-paper">
+                  ${p.doi ? `<a href="https://doi.org/${escapeHTML(p.doi)}" target="_blank" rel="noopener">${escapeHTML(p.doi)}</a>` : ""}
+                  ${p.year ? `<span class="muted">${p.year}</span>` : ""}
+                  · ${escapeHTML(p.study || "")}
+                  ${p.ntips ? `<span class="muted">${fmt.format(p.ntips)} tips</span>` : ""}
+                </p>`).join("")}
+            </li>`).join("")}
+        </ul>
+      </section>`
+    : "";
+
+  const shipped = audit.shipped_subclades || [];
+  const shipHTML = shipped.length
+    ? `
+      <section class="aud-block">
+        <h3>Shipped sub-clades (${shipped.length})</h3>
+        <ul class="aud-cands">
+          ${shipped.map(s => `
+            <li>
+              <strong>${escapeHTML(s.taxon || "")}</strong>
+              <span class="muted">${escapeHTML(s.study || "")}</span>
+              ${s.ntips ? `<span class="muted">${fmt.format(s.ntips)} tips</span>` : ""}
+            </li>`).join("")}
+        </ul>
+      </section>`
+    : "";
+
+  return `
+    <article class="aud-card">
+      <header class="aud-card-head">
+        <h2>${escapeHTML(partition)}</h2>
+        <div class="aud-meta">
+          <span class="audit-badge audit-${status}">${status.replace(/_/g, " ")}</span>
+          ${category ? `<span class="muted">${escapeHTML(category)}</span>` : ""}
+          <span class="muted">last reviewed ${escapeHTML(lastAudited)}</span>
+        </div>
+      </header>
+      ${doiFixHTML}
+      ${resHTML}
+      ${shipHTML}
+      ${candHTML}
+    </article>`;
+}
+
+init();

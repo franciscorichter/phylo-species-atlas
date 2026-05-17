@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atlas audit log — Phylo-Species Atlas</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="audit-page">
+<header>
+  <h1>Atlas audit log</h1>
+  <p class="tagline">
+    <a href="index.html">← Back to atlas</a> ·
+    <a href="https://github.com/franciscorichter/phylo-species-atlas" target="_blank" rel="noopener">GitHub</a>
+  </p>
+  <p class="audit-intro">
+    Per-partition verification trail. Each entry records what was checked,
+    what was found, and how it was resolved. The atlas's source data
+    (<code>standardized/</code>, <code>data_*.csv</code>) is the published
+    paper artifact and never edited; corrections live in
+    <code>site/data/partitions/&lt;slug&gt;/info.yaml</code> and surface here
+    so users can see what changed between paper and web.
+  </p>
+  <div id="audit-summary" class="stats"></div>
+</header>
+
+<main class="audit-main">
+  <div id="audit-empty" class="empty" hidden>No audits yet — only this initial framework.</div>
+  <div id="audit-list"></div>
+</main>
+
+<footer>
+  <p>Audit framework v1 · <a href="https://github.com/franciscorichter/phylo-species-atlas/tree/main/audits">Working files in <code>audits/</code></a></p>
+</footer>
+
+<script src="audit.js"></script>
+</body>
+</html>
