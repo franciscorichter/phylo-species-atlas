@@ -63,6 +63,8 @@
         "subspecies_tips": 2479,
         "redundancy": 12333
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": true
     },
     {
@@ -115,6 +117,8 @@
         "subspecies_tips": 0,
         "redundancy": 136644
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": true
     },
     {
@@ -167,6 +171,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": true
     },
     {
@@ -200,6 +206,8 @@
         "subspecies_tips": 349,
         "redundancy": 675
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -252,6 +260,8 @@
         "subspecies_tips": 133,
         "redundancy": 42
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": true
     },
     {
@@ -304,6 +314,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": true
     },
     {
@@ -356,6 +368,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": true
     },
     {
@@ -408,6 +422,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": true
     },
     {
@@ -460,6 +476,8 @@
         "subspecies_tips": 0,
         "redundancy": 6966
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": true
     },
     {
@@ -512,6 +530,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": true
     },
     {
@@ -564,6 +584,8 @@
         "subspecies_tips": 1,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": true
     },
     {
@@ -616,6 +638,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -668,6 +692,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -720,6 +746,8 @@
         "subspecies_tips": 3166,
         "redundancy": 2426
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -772,6 +800,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -824,6 +854,8 @@
         "subspecies_tips": 9,
         "redundancy": 48
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": true
     },
     {
@@ -876,6 +908,8 @@
         "subspecies_tips": 7,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -928,6 +962,8 @@
         "subspecies_tips": 1206,
         "redundancy": 547
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": true
     },
     {
@@ -980,6 +1016,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": true
     },
     {
@@ -1032,6 +1070,8 @@
         "subspecies_tips": 12,
         "redundancy": 59
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -1078,6 +1118,8 @@
         "subspecies_tips": 0,
         "redundancy": 1076
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -1130,6 +1172,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -1182,6 +1226,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -1228,6 +1274,8 @@
         "subspecies_tips": 110,
         "redundancy": 203
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": true
     },
     {
@@ -1268,6 +1316,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -1308,6 +1358,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -1360,6 +1412,14 @@
         "subspecies_tips": 31,
         "redundancy": 42
       },
+      "tree_url_override": "data/partitions/turtles/tree.nwk",
+      "tip_taxonomy_override": {
+        "unique_ids": 287,
+        "unique_species": 287,
+        "subspecies_tips": 14,
+        "redundancy": 0,
+        "total_tips": 287
+      },
       "is_partition_canonical": true
     },
     {
@@ -1400,6 +1460,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -1452,6 +1514,8 @@
         "subspecies_tips": 0,
         "redundancy": 531
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": true
     },
     {
@@ -1492,6 +1556,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -1538,6 +1604,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -1584,6 +1652,8 @@
         "subspecies_tips": 0,
         "redundancy": 353
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -1624,6 +1694,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -1664,6 +1736,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -1704,6 +1778,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -1744,6 +1820,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -1784,6 +1862,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -1824,6 +1904,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -1864,6 +1946,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -1916,6 +2000,14 @@
         "subspecies_tips": 34,
         "redundancy": 29
       },
+      "tree_url_override": "data/partitions/mammals/tree.nwk",
+      "tip_taxonomy_override": {
+        "unique_ids": 233,
+        "unique_species": 233,
+        "subspecies_tips": 0,
+        "redundancy": 0,
+        "total_tips": 5912
+      },
       "is_partition_canonical": false
     },
     {
@@ -1961,6 +2053,14 @@
         "unique_species": 294,
         "subspecies_tips": 0,
         "redundancy": 0
+      },
+      "tree_url_override": "data/partitions/mammals/tree.nwk",
+      "tip_taxonomy_override": {
+        "unique_ids": 267,
+        "unique_species": 267,
+        "subspecies_tips": 0,
+        "redundancy": 0,
+        "total_tips": 5912
       },
       "is_partition_canonical": false
     },
@@ -2014,6 +2114,8 @@
         "subspecies_tips": 24,
         "redundancy": 1
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": true
     },
     {
@@ -2054,6 +2156,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -2094,6 +2198,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -2134,6 +2240,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -2186,6 +2294,8 @@
         "subspecies_tips": 7,
         "redundancy": 2
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -2226,6 +2336,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -2266,6 +2378,8 @@
         "subspecies_tips": 32,
         "redundancy": 15
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -2306,6 +2420,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -2346,6 +2462,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -2386,6 +2504,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -2426,6 +2546,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -2466,6 +2588,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -2512,6 +2636,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -2552,6 +2678,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -2592,6 +2720,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -2632,6 +2762,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -2672,6 +2804,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -2712,6 +2846,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -2764,6 +2900,8 @@
         "subspecies_tips": 10,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": true
     },
     {
@@ -2804,6 +2942,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -2844,6 +2984,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -2884,6 +3026,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -2924,6 +3068,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -2964,6 +3110,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -3004,6 +3152,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -3044,6 +3194,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -3084,6 +3236,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -3124,6 +3278,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -3170,6 +3326,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -3210,6 +3368,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -3250,6 +3410,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -3290,6 +3452,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -3330,6 +3494,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -3370,6 +3536,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -3410,6 +3578,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -3450,6 +3620,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -3502,6 +3674,8 @@
         "subspecies_tips": 105,
         "redundancy": 25
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": true
     },
     {
@@ -3542,6 +3716,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -3582,6 +3758,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -3622,6 +3800,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -3662,6 +3842,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -3702,6 +3884,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -3735,6 +3919,8 @@
         "subspecies_tips": 0,
         "redundancy": 63
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -3775,6 +3961,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -3815,6 +4003,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -3855,6 +4045,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -3907,6 +4099,8 @@
         "subspecies_tips": 0,
         "redundancy": 95
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": true
     },
     {
@@ -3959,6 +4153,8 @@
         "subspecies_tips": 0,
         "redundancy": 74
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": true
     },
     {
@@ -3999,6 +4195,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -4039,6 +4237,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -4079,6 +4279,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -4119,6 +4321,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -4159,6 +4363,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -4211,6 +4417,14 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": "data/partitions/mammals/tree.nwk",
+      "tip_taxonomy_override": {
+        "unique_ids": 85,
+        "unique_species": 85,
+        "subspecies_tips": 0,
+        "redundancy": 0,
+        "total_tips": 5912
+      },
       "is_partition_canonical": false
     },
     {
@@ -4251,6 +4465,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -4297,6 +4513,8 @@
         "subspecies_tips": 0,
         "redundancy": 1
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -4337,6 +4555,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -4389,6 +4609,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": true
     },
     {
@@ -4429,6 +4651,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -4469,6 +4693,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -4509,6 +4735,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -4549,6 +4777,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -4601,6 +4831,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": true
     },
     {
@@ -4641,6 +4873,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -4681,6 +4915,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -4721,6 +4957,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -4761,6 +4999,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -4801,6 +5041,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -4853,6 +5095,8 @@
         "subspecies_tips": 1,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": true
     },
     {
@@ -4893,6 +5137,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -4933,6 +5179,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -4973,6 +5221,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -5013,6 +5263,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -5053,6 +5305,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -5093,6 +5347,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -5133,6 +5389,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -5173,6 +5431,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -5213,6 +5473,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -5253,6 +5515,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -5293,6 +5557,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -5333,6 +5599,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -5373,6 +5641,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -5413,6 +5683,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -5453,6 +5725,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -5493,6 +5767,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -5545,6 +5821,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": true
     },
     {
@@ -5585,6 +5863,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -5625,6 +5905,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -5665,6 +5947,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -5705,6 +5989,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -5745,6 +6031,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -5785,6 +6073,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -5825,6 +6115,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -5865,6 +6157,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -5905,6 +6199,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -5945,6 +6241,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -5985,6 +6283,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -6025,6 +6325,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -6065,6 +6367,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -6105,6 +6409,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -6145,6 +6451,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -6185,6 +6493,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -6225,6 +6535,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -6265,6 +6577,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -6305,6 +6619,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -6345,6 +6661,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -6385,6 +6703,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -6425,6 +6745,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -6465,6 +6787,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -6505,6 +6829,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -6545,6 +6871,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -6585,6 +6913,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -6625,6 +6955,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -6665,6 +6997,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -6705,6 +7039,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -6745,6 +7081,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -6785,6 +7123,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -6825,6 +7165,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -6865,6 +7207,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -6905,6 +7249,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -6945,6 +7291,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -6985,6 +7333,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -7025,6 +7375,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -7065,6 +7417,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -7105,6 +7459,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -7145,6 +7501,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -7185,6 +7543,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -7225,6 +7585,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -7265,6 +7627,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -7305,6 +7669,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -7345,6 +7711,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -7385,6 +7753,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -7425,6 +7795,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -7465,6 +7837,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -7505,6 +7879,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -7545,6 +7921,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -7585,6 +7963,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -7625,6 +8005,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -7665,6 +8047,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -7705,6 +8089,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -7745,6 +8131,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -7785,6 +8173,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -7825,6 +8215,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -7865,6 +8257,8 @@
         "subspecies_tips": 0,
         "redundancy": 25
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -7905,6 +8299,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -7945,6 +8341,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -7985,6 +8383,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -8025,6 +8425,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -8065,6 +8467,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -8105,6 +8509,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -8145,6 +8551,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -8185,6 +8593,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -8225,6 +8635,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -8265,6 +8677,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -8305,6 +8719,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -8345,6 +8761,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -8385,6 +8803,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -8425,6 +8845,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -8465,6 +8887,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -8505,6 +8929,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -8545,6 +8971,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -8585,6 +9013,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -8625,6 +9055,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -8665,6 +9097,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -8705,6 +9139,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -8745,6 +9181,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -8785,6 +9223,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -8825,6 +9265,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -8865,6 +9307,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -8905,6 +9349,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -8945,6 +9391,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -8985,6 +9433,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -9025,6 +9475,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -9065,6 +9517,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -9105,6 +9559,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -9145,6 +9601,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -9185,6 +9643,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -9225,6 +9685,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -9265,6 +9727,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -9305,6 +9769,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -9345,6 +9811,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -9385,6 +9853,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -9425,6 +9895,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -9465,6 +9937,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -9505,6 +9979,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -9551,6 +10027,8 @@
         "subspecies_tips": 0,
         "redundancy": 16
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": true
     },
     {
@@ -9591,6 +10069,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -9631,6 +10111,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -9671,6 +10153,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -9711,6 +10195,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -9751,6 +10237,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -9791,6 +10279,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -9831,6 +10321,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -9871,6 +10363,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -9911,6 +10405,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -9951,6 +10447,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -9991,6 +10489,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -10031,6 +10531,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -10071,6 +10573,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -10111,6 +10615,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -10151,6 +10657,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -10191,6 +10699,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -10231,6 +10741,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -10271,6 +10783,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -10311,6 +10825,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -10351,6 +10867,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -10391,6 +10909,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -10431,6 +10951,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -10471,6 +10993,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -10511,6 +11035,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -10551,6 +11077,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -10591,6 +11119,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -10631,6 +11161,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -10671,6 +11203,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -10711,6 +11245,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -10751,6 +11287,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -10791,6 +11329,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -10831,6 +11371,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -10871,6 +11413,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -10911,6 +11455,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -10951,6 +11497,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -10991,6 +11539,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -11031,6 +11581,8 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     }
   ],
@@ -15959,12 +16511,13 @@
       },
       "tree": {
         "file": "tree.nwk",
-        "ntips": 593,
-        "unique_ids": 329,
-        "species_represented": 279,
-        "coverage_pct_described": 80,
+        "ntips": 287,
+        "derivation": "Derived from the 591-individual Thomson 2021 MCC (standardized/trees/turtles.nwk)\nby pruning to a single representative per species — the smallest numeric tip\nID under each Genus_species. Internal unary nodes collapsed by summing branch\nlengths. See scripts/derive_species_tree.py for the reproducible recipe.\n",
+        "species_represented": 287,
+        "coverage_pct_described": 79.7,
+        "coverage_pct_described_ttwg_2025": 78.8,
         "dated": true,
-        "multiple_individuals_per_species": true,
+        "multiple_individuals_per_species": false,
         "source": {
           "key": "Thomson 2021",
           "study": "Thomson RC, Spinks PQ, Shaffer HB (2021)",
@@ -15995,6 +16548,15 @@
         "host_url": "https://datadryad.org/dataset/doi:10.5061/dryad.jh9w0vt8w",
         "host_doi": "10.5061/dryad.jh9w0vt8w",
         "files": [
+          {
+            "name": "multi-individual.tree.nwk",
+            "label": "Original 593-tip multi-individual MCC",
+            "description": "The published Thomson 2021 MCC tree with 591 turtles + 2 outgroups = 593 tips,\nused to test species-level monophyly. The atlas's canonical 287-tip view above\nis derived from this tree (one representative per species). This file IS the\ncanonical paper artifact — hosted locally because it's the basis for the\natlas-derived canonical.\n",
+            "size_bytes": 18746,
+            "format": "Newick (standardized IDs)",
+            "url": "data/partitions/turtles/uncertainty/multi-individual.tree.nwk",
+            "local": true
+          },
           {
             "name": "sampleFromPosterior.100.tre",
             "label": "Posterior sample (100 chronograms)",
@@ -16032,8 +16594,8 @@
           "resolved_by": "Web app reads authoritative figures from tree.methods (n_loci=15) and tree.species_represented (=279) instead of the CSV methods_brief."
         },
         {
-          "issue": "Tree has 593 tip positions, 329 unique IDs, 279 species — multiple individuals per species used to test species-level monophyly.",
-          "resolved_by": "Property of the tree (not a bug). Web app surfaces 'Multiple individuals per species' as an informational metadata field with the breakdown."
+          "issue": "Tree has 593 tip positions for 287 species — multiple individuals per species used to test species-level monophyly.",
+          "resolved_by": "Atlas-derived 287-tip species-level tree is now the canonical (pruned from the 591-individual MCC, one rep per species). The original multi-individual tree is preserved as an uncertainty file. Reproducible via scripts/derive_species_tree.py."
         }
       ],
       "audit": {

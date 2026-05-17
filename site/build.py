@@ -133,6 +133,57 @@ def load_audit_overrides() -> dict[str, dict]:
     return out
 
 
+def _override_taxonomy(partition: str | None, filename: str, full_names: dict[str, str]) -> dict | None:
+    if not partition or not full_names:
+        return None
+    slug = partition.lower().replace(" ", "_")
+    candidate = SITE_DATA / slug / "tree.nwk"
+    standard = STD / "trees" / filename
+    if not candidate.exists() or not standard.exists():
+        return None
+    if candidate.stat().st_size == standard.stat().st_size:
+        return None
+    return tip_taxonomy_for_override(candidate, full_names)
+
+
+def _site_data_tree_override(partition: str | None, filename: str) -> str | None:
+    """Return a URL path to the site/data tree override when one exists.
+
+    The override is recognized by being a different file than
+    standardized/trees/<filename>.nwk — same size means it's just the original
+    copied across (no override intent). The returned path is RELATIVE TO THE
+    DEPLOY ROOT so the patched TREES_BASE on Pages still resolves it.
+    """
+    if not partition:
+        return None
+    slug = partition.lower().replace(" ", "_")
+    candidate = SITE_DATA / slug / "tree.nwk"
+    standard = STD / "trees" / filename
+    if not candidate.exists() or not standard.exists():
+        return None
+    if candidate.stat().st_size == standard.stat().st_size:
+        return None  # same file copied across — no override
+    # Path the viewer fetches. On the live deploy, site/data ends up at /data/.
+    return f"data/partitions/{slug}/tree.nwk"
+
+
+def tip_taxonomy_for_override(override_path: Path, names: dict[str, str]) -> dict | None:
+    """Like tip_taxonomy_from_names but for an atlas-derived override tree:
+    parse the override Newick directly, extract its tip IDs, and build the
+    taxonomy stats from THAT subset (not from the full shard, which still
+    reflects the original multi-individual tree)."""
+    if not override_path.exists():
+        return None
+    text = override_path.read_text(encoding="utf-8", errors="ignore")
+    ids = [m.group(2) for m in TIP_ID_RE.finditer(text)]
+    if not ids:
+        return None
+    subset = {i: names[i] for i in set(ids) if i in names}
+    tx = tip_taxonomy_from_names(subset)
+    tx["total_tips"] = len(ids)  # actual tip positions in the override tree
+    return tx
+
+
 def tip_taxonomy_from_names(names: dict[str, str]) -> dict:
     """Break a tree's tip names down by taxonomic level.
 
@@ -350,6 +401,13 @@ def main() -> None:
             "estimate_source_info": source_info(est.get("estimate_source")) if est else None,
             "tip_taxonomy": (tip_taxonomy_from_names(names_by_filename[filename])
                              if filename in names_by_filename else None),
+            # When site/data/partitions/<slug>/tree.nwk exists and differs from
+            # standardized/trees/<filename>.nwk, it's an atlas-derived override
+            # (e.g., turtles species-level pruning). The viewer prefers it; the
+            # original stays under uncertainty/ as the multi-individual version.
+            "tree_url_override": _site_data_tree_override(partition, filename),
+            "tip_taxonomy_override": _override_taxonomy(partition, filename,
+                                                       names_by_filename.get(filename, {})),
         })
 
         agg = by_group_aggregate[group]

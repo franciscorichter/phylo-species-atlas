@@ -491,17 +491,16 @@ async function selectTree(filename, scrollIntoView) {
     ? `${fmt.format(est.estimated_total)} <span class="range">(${fmt.format(est.estimated_low || est.estimated_total)}–${fmt.format(est.estimated_high || est.estimated_total)})</span>` +
       sourceLinkHTML(t.estimate_source_info, est.estimate_source, est.estimate_confidence)
     : null;
-  // Coverage (described). When tip_taxonomy reveals subspecies-level redundancy
-  // (unique_species < unique_ids), surface a species-level recomputation
-  // alongside the tip-level number — for trees like turtles where 593 tips
-  // represent only 287 species, the 100% tip-level figure is misleading.
+  // Coverage (described). Use the override's species count when an atlas-derived
+  // canonical tree exists; otherwise check tip_taxonomy from the original shard.
   let covDescribed = t.coverage_pct != null ? `${t.coverage_pct.toFixed(1)}% <span class="src">of described</span>` : "—";
-  if (t.tip_taxonomy && t.tip_taxonomy.unique_species && t.described_species) {
-    const us = t.tip_taxonomy.unique_species;
+  const txForCoverage = t.tip_taxonomy_override || t.tip_taxonomy;
+  if (txForCoverage && txForCoverage.unique_species && t.described_species) {
+    const us = txForCoverage.unique_species;
     const desc = t.described_species;
-    if (us !== t.ntips && us < desc) {
+    if (us < desc && us !== t.ntips) {
       const speciesPct = (100 * us / desc).toFixed(1);
-      covDescribed = `${t.coverage_pct != null ? t.coverage_pct.toFixed(1) + "% " : ""}<span class="src">tip-level</span> · <strong>${speciesPct}%</strong> <span class="src">at species level (${fmt.format(us)} unique / ${fmt.format(desc)} described)</span>`;
+      covDescribed = `<strong>${speciesPct}%</strong> <span class="src">at species level (${fmt.format(us)} unique / ${fmt.format(desc)} described)</span>`;
     }
   }
   let covEstimated = null;
@@ -528,14 +527,21 @@ async function selectTree(filename, scrollIntoView) {
   const useAuditMethods = !!auditMethods && t.is_partition_canonical;
 
   // Tips field. Layered fallback:
-  //   1) tip_taxonomy from build.py (cross-partition, derived from the name shard).
-  //      Adds unique-ID and unique-species breakdown when the tree has subspecies
-  //      or duplicate tips.
-  //   2) audit-confirmed species_represented (from info.yaml) when present.
-  //   3) plain ntips otherwise.
+  //   1) tip_taxonomy_override (atlas-derived species-level tree present)
+  //   2) tip_taxonomy (cross-partition, from the full name shard)
+  //   3) audit-confirmed species_represented (from info.yaml)
+  //   4) plain ntips
   let tipsVal = fmt.format(t.ntips || 0) + " tips";
+  const txOv = t.tip_taxonomy_override;
   const tx = t.tip_taxonomy;
-  if (tx) {
+  if (txOv) {
+    // Atlas-derived: report the override tree's actual content + flag the
+    // derivation, with the original multi-individual count in parens.
+    const parts = [`${fmt.format(txOv.total_tips)} tips`];
+    if (txOv.unique_species != null) parts.push(`${fmt.format(txOv.unique_species)} species`);
+    parts.push(`<span class="src">atlas-derived from ${fmt.format(t.ntips || 0)}-tip multi-individual MCC</span>`);
+    tipsVal = parts.join(" · ");
+  } else if (tx) {
     const parts = [`${fmt.format(t.ntips || 0)} tips`];
     if (tx.unique_ids != null && tx.unique_ids !== t.ntips) {
       parts.push(`${fmt.format(tx.unique_ids)} unique IDs`);
@@ -548,7 +554,7 @@ async function selectTree(filename, scrollIntoView) {
     }
     tipsVal = parts.join(" · ");
   }
-  if (useAuditMethods && auditTree.species_represented && (!tx || tx.unique_species == null)) {
+  if (useAuditMethods && auditTree.species_represented && !txOv && (!tx || tx.unique_species == null)) {
     tipsVal = `${fmt.format(t.ntips || 0)} tips · ${fmt.format(auditTree.species_represented)} species`;
   }
 
@@ -600,7 +606,7 @@ async function selectTree(filename, scrollIntoView) {
   renderUncertaintyPanel(t);
 
   const dl = document.getElementById("download-newick");
-  dl.href = TREES_BASE + filename;
+  dl.href = t.tree_url_override || (TREES_BASE + filename);
   dl.setAttribute("download", filename);
 
   renderRSnippet(t);
@@ -812,10 +818,20 @@ async function loadAndRenderTree(t) {
   status.textContent = `Loading ${t.filename}…`;
 
   try {
-    // Fetch the tree and its name shard in parallel. The shard is optional —
-    // if it 404s or fails, we just fall back to numeric tip IDs.
+    // Prefer the atlas-derived override tree when build.py flags one (e.g.
+    // turtles' species-level pruning). The name shard still resolves IDs
+    // against the full dictionary, so it's the same shard.
+    const treeUrl = t.tree_url_override
+      ? t.tree_url_override
+      : TREES_BASE + t.filename;
+    // The effective tip count: if there's an override, use its taxonomy's
+    // total_tips; otherwise the CSV-recorded ntips.
+    const txOverride = t.tip_taxonomy_override;
+    const effectiveTips = txOverride && txOverride.total_tips != null
+      ? txOverride.total_tips
+      : (t.ntips || 0);
     const [treeRes, namesRes] = await Promise.all([
-      fetch(TREES_BASE + t.filename),
+      fetch(treeUrl),
       fetch(NAMES_BASE + t.filename + ".json").catch(() => null),
     ]);
     if (!treeRes.ok) throw new Error(`HTTP ${treeRes.status}`);
@@ -824,13 +840,16 @@ async function loadAndRenderTree(t) {
       try { STATE.currentNames = await namesRes.json(); } catch { STATE.currentNames = {}; }
     }
 
-    if ((t.ntips || 0) > TIP_RENDER_LIMIT) {
+    if (effectiveTips > TIP_RENDER_LIMIT) {
       const sampled = sampleNewick(newick, TIP_RENDER_LIMIT);
       newick = sampled.newick;
       status.classList.add("warning");
-      status.textContent = `Tree has ${fmt.format(t.ntips)} tips — showing a random sample of ${fmt.format(sampled.kept)}. Download for the full tree.`;
+      status.textContent = `Tree has ${fmt.format(effectiveTips)} tips — showing a random sample of ${fmt.format(sampled.kept)}. Download for the full tree.`;
     } else {
-      status.textContent = `${fmt.format(t.ntips || 0)} tips — full tree shown.`;
+      const suffix = t.tree_url_override
+        ? " — atlas-derived species-level tree (one tip per species)"
+        : " — full tree shown.";
+      status.textContent = `${fmt.format(effectiveTips)} tips${suffix}`;
     }
 
     STATE.currentNewick = newick;

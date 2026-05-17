@@ -37,14 +37,24 @@ estimate:
       net taxonomic change since 2021.
 
 # --- Canonical tree ---
+# The atlas's shipped paper tree (standardized/trees/turtles.nwk) has 593 tips
+# representing 287 species across 1-3 specimens each. For an atlas of species
+# diversity the species-level view is the useful one, so the web app loads an
+# atlas-derived 287-tip pruning of the MCC. The multi-individual MCC and the
+# 100-tree posterior are linked from the uncertainty section below.
 tree:
   file: tree.nwk
-  ntips: 593                                 # 591 turtles + 2 outgroups (paper)
-  unique_ids: 329                            # numeric IDs in the file
-  species_represented: 279                   # paper: 279 of 348 living species
-  coverage_pct_described: 80                 # rounded — paper states 80%
+  ntips: 287                                 # atlas-derived: one tip per species
+  derivation: |
+    Derived from the 591-individual Thomson 2021 MCC (standardized/trees/turtles.nwk)
+    by pruning to a single representative per species — the smallest numeric tip
+    ID under each Genus_species. Internal unary nodes collapsed by summing branch
+    lengths. See scripts/derive_species_tree.py for the reproducible recipe.
+  species_represented: 287
+  coverage_pct_described: 79.7               # 287 / 360 (TTWG 2021)
+  coverage_pct_described_ttwg_2025: 78.8     # 287 / 364 (TTWG 2025)
   dated: true
-  multiple_individuals_per_species: true
+  multiple_individuals_per_species: false
   source:
     key: Thomson 2021
     study: Thomson RC, Spinks PQ, Shaffer HB (2021)
@@ -74,6 +84,18 @@ uncertainty:
   host_url: https://datadryad.org/dataset/doi:10.5061/dryad.jh9w0vt8w
   host_doi: 10.5061/dryad.jh9w0vt8w
   files:
+    - name: multi-individual.tree.nwk
+      label: Original 593-tip multi-individual MCC
+      description: |
+        The published Thomson 2021 MCC tree with 591 turtles + 2 outgroups = 593 tips,
+        used to test species-level monophyly. The atlas's canonical 287-tip view above
+        is derived from this tree (one representative per species). This file IS the
+        canonical paper artifact — hosted locally because it's the basis for the
+        atlas-derived canonical.
+      size_bytes: 18746
+      format: Newick (standardized IDs)
+      url: data/partitions/turtles/uncertainty/multi-individual.tree.nwk
+      local: true
     - name: sampleFromPosterior.100.tre
       label: Posterior sample (100 chronograms)
       description: |
@@ -111,8 +133,8 @@ resolutions:
     resolved_by: "Web app substitutes TTWG 2025 via estimate.source.live_doi; surfaced as a DOI-correction block on the partition detail panel."
   - issue: "data_provenance.csv methods_brief says '13 loci for 294 species'; paper actually reports 15 loci and 279 species."
     resolved_by: "Web app reads authoritative figures from tree.methods (n_loci=15) and tree.species_represented (=279) instead of the CSV methods_brief."
-  - issue: "Tree has 593 tip positions, 329 unique IDs, 279 species — multiple individuals per species used to test species-level monophyly."
-    resolved_by: "Property of the tree (not a bug). Web app surfaces 'Multiple individuals per species' as an informational metadata field with the breakdown."
+  - issue: "Tree has 593 tip positions for 287 species — multiple individuals per species used to test species-level monophyly."
+    resolved_by: "Atlas-derived 287-tip species-level tree is now the canonical (pruned from the 591-individual MCC, one rep per species). The original multi-individual tree is preserved as an uncertainty file. Reproducible via scripts/derive_species_tree.py."
 
 # --- Audit linkage ---
 audit:

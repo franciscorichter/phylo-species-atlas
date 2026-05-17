@@ -263,8 +263,8 @@ Sea turtles (Cheloniidae + Dermochelyidae = 7 species) and softshells
 ## Decisions (resolved)
 
 - ✅ **Broken TTWG 2021 DOI** — web app substitutes TTWG 2025 (live, Crossref-verified) via `info.yaml.estimate.source.live_doi`. The paper-side `data_sources.csv` row stays as-is (per the don't-touch-paper-data rule); users see the correction prominently on the partition detail panel.
-- ✅ **Loci/species mismatch** — web app reads authoritative figures from `info.yaml.tree.methods.n_loci` (=15) and `info.yaml.tree.species_represented` (=279) instead of falling back to `data_provenance.csv methods_brief`. CSV stays as-is.
-- ✅ **Multiple individuals per species** — surfaced as an informational metadata field ("Tips: 593 · Unique IDs: 329 · Species: 279"), not a caveat. This is a property of the Thomson 2021 design (deliberate inclusion of 2+ individuals per species to test monophyly), not a bug.
+- ✅ **Loci/species mismatch** — web app reads authoritative figures from `info.yaml.tree.methods.n_loci` (=15) and `info.yaml.tree.species_represented` (=287) instead of falling back to `data_provenance.csv methods_brief`. CSV stays as-is.
+- ✅ **Multiple individuals per species — canonical-tree swap** — the published 591-individual MCC contains 593 tips for 287 species (1-3 specimens each). For an atlas of species diversity, the species-level view is the useful one, so the canonical tree shown by the web app is an atlas-derived 287-tip pruning of the MCC (one representative per species, smallest numeric tip ID). The original multi-individual tree is preserved as an uncertainty file (locally hosted) and remains the canonical PAPER artifact. Pruning is reproducible via `scripts/derive_species_tree.py`.
 - 🟡 **Geoemydidae candidate** (Pereira 2017) — deferred. Worth a species-overlap check vs Thomson 2021's 80% sampling before deciding to ship.
 - ⬜ **Testudinidae candidate** (Pyron 2014) — skipped, low priority.
 
