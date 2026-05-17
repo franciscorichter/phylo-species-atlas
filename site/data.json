@@ -14170,6 +14170,39 @@
           "posterior_n": 10000
         }
       },
+      "uncertainty": {
+        "host": "VertLife / GitHub",
+        "host_url": "https://github.com/n8upham/MamPhy_v1",
+        "host_doi": null,
+        "external_archive_url": "http://vertlife.org/data/mammals/",
+        "files": [
+          {
+            "name": "MamPhy_BDvr_Completed_5911sp_topoCons_NDexp_v2_sample100_PATCHES.tre",
+            "label": "Posterior sub-sample (100 of 10,000, NDexp)",
+            "description": "Small downloadable sample (100 trees) from the NDexp 10,000-tree\ncredible set, on the 28-patch backbone topology. The full 5911-tip\ncredible set is hosted externally at vertlife.org/data/mammals/.\n",
+            "size_bytes": 72640,
+            "format": "NEXUS",
+            "url": "https://github.com/n8upham/MamPhy_v1/raw/master/_DATA/MamPhy_BDvr_Completed_5911sp_topoCons_NDexp_v2_sample100_28PATCHES_patchNames.tre"
+          },
+          {
+            "name": "MamPhy_BDvr_Completed_5911sp_topoCons_NDexp_MCC_v2.tre",
+            "label": "MCC tree (NDexp, 5911 species, with annotations)",
+            "description": "The full-species MCC consensus from the node-dated (NDexp) credible\nset, with TreeAnnotator node annotations including 95% HPD divergence\nintervals. The atlas's mammals.nwk is the simplified Newick version.\n",
+            "size_bytes": null,
+            "format": "NEXUS",
+            "url": "http://vertlife.org/data/mammals/"
+          },
+          {
+            "name": "Full credible set — NDexp 10,000 trees",
+            "label": "Full posterior (10,000 chronograms, NDexp)",
+            "description": "Complete BEAST credible set. Several hundred MB; hosted at vertlife.org\nbecause it exceeds GitHub's 100 MB file limit. Also available for the\nparallel FBD tip-dating analysis.\n",
+            "size_bytes": null,
+            "format": "NEXUS (large)",
+            "url": "http://vertlife.org/data/mammals/"
+          }
+        ],
+        "note": "The atlas ships only the MCC consensus (mammals.nwk). The full 10,000-tree\ncredible sets, posterior trace logs, and BEAST/MrBayes XML files live at\nthe original Upham 2019 hosting points listed above.\n"
+      },
       "resolutions": [
         {
           "issue": "Upham 2019 fossil-calibration count not yet extracted (requires S1 Appendix read).",
@@ -14372,6 +14405,38 @@
           "divergence_ci_note": "95% HPD on internal nodes; 100-tree posterior credible set (atlas ships MCC consensus only).",
           "posterior_n": 100
         }
+      },
+      "uncertainty": {
+        "host": "Dryad",
+        "host_url": "https://datadryad.org/dataset/doi:10.5061/dryad.jh9w0vt8w",
+        "host_doi": "10.5061/dryad.jh9w0vt8w",
+        "files": [
+          {
+            "name": "sampleFromPosterior.100.tre",
+            "label": "Posterior sample (100 chronograms)",
+            "description": "100 time-calibrated trees drawn from the BEAST posterior distribution.\nUsed in Thomson 2021 for downstream diversification analyses; carries\nthe divergence-time uncertainty that the MCC consensus collapses.\n",
+            "size_bytes": 2766973,
+            "format": "NEXUS",
+            "url": "https://datadryad.org/downloads/file_stream/559160"
+          },
+          {
+            "name": "bd.mcc.median_heights.tre",
+            "label": "MCC tree with median node heights",
+            "description": "Maximum-clade-credibility consensus with median heights (and node\nannotations including 95% HPD on divergence times when opened in\nFigTree or similar).\n",
+            "size_bytes": 310771,
+            "format": "NEXUS",
+            "url": "https://datadryad.org/downloads/file_stream/559156"
+          },
+          {
+            "name": "turtle.288.bd.xml",
+            "label": "BEAST XML configuration",
+            "description": "Full BEAST input XML — taxon sampling, calibration priors, clock\nmodel, MCMC settings. Use to reproduce the dating run.\n",
+            "size_bytes": 4433875,
+            "format": "BEAST XML",
+            "url": "https://datadryad.org/downloads/file_stream/559161"
+          }
+        ],
+        "note": "Dryad serves files through a Cloudflare challenge that blocks programmatic\nfetches. Click-through to a browser is reliable. The atlas does not\nmirror these files locally so that Dryad remains the canonical version.\n"
       },
       "resolutions": [
         {

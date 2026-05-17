@@ -65,6 +65,46 @@ tree:
     divergence_ci_note: "95% HPD on internal nodes; 100-tree posterior credible set (atlas ships MCC consensus only)."
     posterior_n: 100
 
+# --- Uncertainty data (posterior samples, HPD intervals) ---
+# The atlas ships only the MCC consensus tree; everything below lives at the
+# original data host and is reachable via the download links here. Sizes are
+# from the host's file listing as of the audit date.
+uncertainty:
+  host: Dryad
+  host_url: https://datadryad.org/dataset/doi:10.5061/dryad.jh9w0vt8w
+  host_doi: 10.5061/dryad.jh9w0vt8w
+  files:
+    - name: sampleFromPosterior.100.tre
+      label: Posterior sample (100 chronograms)
+      description: |
+        100 time-calibrated trees drawn from the BEAST posterior distribution.
+        Used in Thomson 2021 for downstream diversification analyses; carries
+        the divergence-time uncertainty that the MCC consensus collapses.
+      size_bytes: 2766973
+      format: NEXUS
+      url: https://datadryad.org/downloads/file_stream/559160
+    - name: bd.mcc.median_heights.tre
+      label: MCC tree with median node heights
+      description: |
+        Maximum-clade-credibility consensus with median heights (and node
+        annotations including 95% HPD on divergence times when opened in
+        FigTree or similar).
+      size_bytes: 310771
+      format: NEXUS
+      url: https://datadryad.org/downloads/file_stream/559156
+    - name: turtle.288.bd.xml
+      label: BEAST XML configuration
+      description: |
+        Full BEAST input XML — taxon sampling, calibration priors, clock
+        model, MCMC settings. Use to reproduce the dating run.
+      size_bytes: 4433875
+      format: BEAST XML
+      url: https://datadryad.org/downloads/file_stream/559161
+  note: |
+    Dryad serves files through a Cloudflare challenge that blocks programmatic
+    fetches. Click-through to a browser is reliable. The atlas does not
+    mirror these files locally so that Dryad remains the canonical version.
+
 # --- Resolution log (caveats once surfaced, now resolved via UI overrides) ---
 resolutions:
   - issue: "Estimate-source DOI in data_sources.csv (TTWG 2021) returns 404."

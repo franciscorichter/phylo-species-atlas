@@ -574,6 +574,7 @@ async function selectTree(filename, scrollIntoView) {
 
   renderDatasetChooser(t);
   renderAuditPanel(t);
+  renderUncertaintyPanel(t);
 
   const dl = document.getElementById("download-newick");
   dl.href = TREES_BASE + filename;
@@ -639,6 +640,51 @@ function renderAuditPanel(t) {
     </div>
     ${estSrcHTML}
   `;
+}
+
+// Posterior samples / HPD trees / BEAST XML — surfaced as a card with
+// click-through links to the original data host (Dryad, GitHub, VertLife).
+// The atlas does not mirror these files; the host is canonical.
+function renderUncertaintyPanel(t) {
+  const host = document.getElementById("uncertainty-panel");
+  if (!host) return;
+  const audit = STATE.data.audits?.[t.partition_group];
+  const unc = audit?.uncertainty;
+  if (!unc || !t.is_partition_canonical) {
+    host.hidden = true;
+    host.innerHTML = "";
+    return;
+  }
+  const files = unc.files || [];
+  const fileRowsHTML = files.map(f => {
+    const sizeText = f.size_bytes
+      ? `${f.size_bytes >= 1048576 ? (f.size_bytes / 1048576).toFixed(1) + " MB" : (f.size_bytes / 1024).toFixed(0) + " KB"}`
+      : f.format && /large/i.test(f.format) ? "large" : "—";
+    const fmtBadge = f.format ? `<span class="unc-fmt">${escapeHTML(f.format)}</span>` : "";
+    return `
+      <li class="unc-file">
+        <div class="unc-file-head">
+          <a class="unc-link" href="${f.url}" target="_blank" rel="noopener">${escapeHTML(f.label || f.name)}</a>
+          ${fmtBadge}
+          <span class="unc-size">${sizeText}</span>
+        </div>
+        ${f.description ? `<div class="unc-desc">${escapeHTML(f.description).replace(/\n/g, "<br>")}</div>` : ""}
+        ${f.name && f.name !== f.label ? `<div class="unc-fname"><code>${escapeHTML(f.name)}</code></div>` : ""}
+      </li>`;
+  }).join("");
+  host.hidden = false;
+  host.innerHTML = `
+    <div class="card">
+      <div class="card-header">
+        <h3>Posterior &amp; uncertainty data</h3>
+        ${unc.host_url ? `<a class="btn-secondary" href="${unc.host_url}" target="_blank" rel="noopener">Browse at ${escapeHTML(unc.host || "host")}</a>` : ""}
+      </div>
+      <p class="card-sub">
+        The atlas ships only the MCC consensus tree. The original posterior trees, HPD intervals, and BEAST input live at the data host below.
+      </p>
+      <ul class="unc-list">${fileRowsHTML}</ul>
+      ${unc.note ? `<p class="unc-note">${escapeHTML(unc.note).replace(/\n/g, "<br>")}</p>` : ""}
+    </div>`;
 }
 
 function escapeHTML(s) {
