@@ -507,20 +507,66 @@ async function selectTree(filename, scrollIntoView) {
     ? `<a class="src-link" href="https://doi.org/${t.doi}" target="_blank" rel="noopener" title="${(t.study || "") + (t.year ? " (" + t.year + ")" : "") + (t.journal ? " — " + t.journal : "")}"><span class="src-type paper">paper</span>${(t.study || "").split(",")[0].split(" et")[0] || t.doi}${t.year ? " " + t.year : ""}</a>`
     : (t.study ? `<span class="src">${t.study}${t.year ? " (" + t.year + ")" : ""}</span>` : "—");
 
+  // When an audit exists for the partition, prefer its authoritative figures
+  // (n_loci, species_represented, multiple_individuals_per_species) over the
+  // CSV-derived ones, and fold the methods block inline.
+  const audit = STATE.data.audits?.[t.partition_group];
+  const auditTree = audit?.tree;
+  const auditMethods = auditTree?.methods;
+  const useAuditMethods = !!auditMethods && t.is_partition_canonical;
+
+  // Tips: when audit has multi-individual breakdown, show it inline.
+  let tipsVal = fmt.format(t.ntips || 0);
+  if (useAuditMethods && auditTree.multiple_individuals_per_species) {
+    const u = auditTree.unique_ids;
+    const sp = auditTree.species_represented;
+    const parts = [`${fmt.format(t.ntips || 0)} tips`];
+    if (u) parts.push(`${fmt.format(u)} unique IDs`);
+    if (sp) parts.push(`${fmt.format(sp)} species`);
+    tipsVal = parts.join(" · ");
+  } else if (useAuditMethods && auditTree.species_represented && auditTree.species_represented !== t.ntips) {
+    tipsVal = `${fmt.format(t.ntips || 0)} tips · ${fmt.format(auditTree.species_represented)} species`;
+  }
+
   const fields = [
     ["Group", t.group + (t.partition_group && t.partition_group !== t.group ? ` <span class="src">→ ${t.partition_group}</span>` : "")],
     ["Tree paper", treePaperHTML],
-    ["Journal", t.journal],
-    ["Tips", fmt.format(t.ntips || 0)],
+    ["Tips", tipsVal],
     ["Dated", t.dated ? "yes" : "no"],
     ["Crown age", t.crown_ma ? `${t.crown_ma} Ma` : "—"],
     ["Described species", describedVal],
     ["Estimated species", estimatedVal],
     ["Coverage (described)", covDescribed],
     ["Coverage (estimated)", covEstimated],
+  ];
+
+  // Inline methods + uncertainty block when audit available.
+  if (useAuditMethods) {
+    const m = auditMethods;
+    const methodFields = [
+      ["Inference", m.inference],
+      ["Software", Array.isArray(m.software) ? m.software.join(", ") : m.software],
+      ["Data type", m.data_type],
+      ["Loci / genes", m.n_loci || m.n_genes],
+      ["Total bp", m.total_bp ? fmt.format(m.total_bp) : null],
+      ["Substitution model", m.substitution_model],
+      ["Dating method", m.dating_method],
+      ["Fossil calibrations", m.fossil_calibrations],
+      ["Support metric", m.support_metric],
+      ["Support summary", m.support_typical],
+      ["Divergence CIs", m.divergence_ci_available ? (m.divergence_ci_note || "yes") : "no"],
+      ["Posterior trees", m.posterior_n ? fmt.format(m.posterior_n) : null],
+    ];
+    for (const [k, v] of methodFields) {
+      if (v != null && v !== "") fields.push([k, escapeHTML(String(v))]);
+    }
+  }
+
+  fields.push(
     ["Tree file source", t.data_source],
     ["File", t.size_bytes ? `${(t.size_bytes / 1024).toFixed(1)} KB` : "—"],
-  ];
+  );
+
   document.getElementById("detail-meta").innerHTML = fields
     .filter(([_, v]) => v !== null && v !== undefined && v !== "")
     .map(([k, v]) => `<div class="field"><span class="key">${k}</span><span class="val">${v}</span></div>`)
@@ -540,7 +586,9 @@ async function selectTree(filename, scrollIntoView) {
 
 // Render the audit findings panel for the partition the selected tree belongs
 // to. Pulls from STATE.data.audits[partition] which is populated from
-// site/data/partitions/<slug>/info.yaml at build time.
+// site/data/partitions/<slug>/info.yaml at build time. Methods + uncertainty
+// from the audit are folded inline into detail-meta (above), so this panel
+// only carries the status badge and the DOI-correction block.
 function renderAuditPanel(t) {
   const host = document.getElementById("audit-panel");
   if (!host) return;
@@ -552,15 +600,10 @@ function renderAuditPanel(t) {
     host.innerHTML = "";
     return;
   }
-  host.hidden = false;
   const status = (audit.audit && audit.audit.status) || "stub";
   const lastAudited = audit.audit && audit.audit.last_audited;
-  const caveats = audit.caveats || [];
-  const methods = (audit.tree && audit.tree.methods) || null;
   const estSrc = (audit.estimate && audit.estimate.source) || {};
 
-  // Estimate-source surface: if the paper-side DOI is broken, strike it through
-  // and show the live replacement prominently.
   let estSrcHTML = "";
   if (estSrc.paper_doi_status === "broken" && estSrc.live_doi) {
     estSrcHTML = `
@@ -580,57 +623,21 @@ function renderAuditPanel(t) {
       </div>`;
   }
 
-  // Caveats list.
-  let caveatsHTML = "";
-  if (caveats.length) {
-    caveatsHTML = `
-      <details class="audit-caveats" open>
-        <summary><strong>${caveats.length} caveat${caveats.length === 1 ? "" : "s"} on this partition</strong></summary>
-        <ul>${caveats.map(c => `
-          <li class="cav cav-${c.severity || "low"}">
-            <span class="cav-sev">${(c.severity || "low").toUpperCase()}</span>
-            <span class="cav-body">
-              <strong>${escapeHTML(c.summary || "")}</strong>
-              ${c.detail ? `<div class="cav-detail">${escapeHTML(c.detail)}</div>` : ""}
-            </span>
-          </li>`).join("")}</ul>
-      </details>`;
+  // If there's nothing notable beyond status (no DOI correction), keep the
+  // panel hidden — the methods data is already in detail-meta.
+  if (!estSrcHTML && status === "verified") {
+    host.hidden = true;
+    host.innerHTML = "";
+    return;
   }
 
-  // Methods block — only show if audit's tree.methods exists AND this tree is
-  // the canonical partition tree (sub-clades have their own methods).
-  let methodsHTML = "";
-  if (methods && t.is_partition_canonical) {
-    const m = methods;
-    const rows = [
-      ["Inference", m.inference],
-      ["Software", Array.isArray(m.software) ? m.software.join(", ") : m.software],
-      ["Data", m.data_type],
-      ["Loci / genes", m.n_loci || m.n_genes],
-      ["Total bp", m.total_bp ? fmt.format(m.total_bp) : null],
-      ["Substitution model", m.substitution_model],
-      ["Dating method", m.dating_method],
-      ["Fossil calibrations", m.fossil_calibrations],
-      ["Support metric", m.support_metric],
-      ["Support summary", m.support_typical],
-      ["Divergence CIs", m.divergence_ci_available ? (m.divergence_ci_note || "yes") : "no"],
-      ["Posterior trees", m.posterior_n ? fmt.format(m.posterior_n) : null],
-    ].filter(([_, v]) => v != null && v !== "");
-    methodsHTML = `
-      <details class="audit-methods">
-        <summary><strong>Methods & uncertainty (from audit)</strong></summary>
-        <dl>${rows.map(([k, v]) => `<dt>${k}</dt><dd>${escapeHTML(String(v))}</dd>`).join("")}</dl>
-      </details>`;
-  }
-
+  host.hidden = false;
   host.innerHTML = `
     <div class="audit-header">
       <span class="audit-badge audit-${status}">${status.replace(/_/g, " ")}</span>
       <span class="src">audit · last reviewed ${lastAudited || "—"}</span>
     </div>
     ${estSrcHTML}
-    ${caveatsHTML}
-    ${methodsHTML}
   `;
 }
 

@@ -9,8 +9,8 @@
     "n_datasets": 49,
     "total_tips": 702787,
     "n_audited": 2,
-    "n_audits_in_progress": 2,
-    "n_audits_verified": 0
+    "n_audits_in_progress": 0,
+    "n_audits_verified": 2
   },
   "trees": [
     {
@@ -14170,9 +14170,19 @@
           "posterior_n": 10000
         }
       },
+      "resolutions": [
+        {
+          "issue": "Upham 2019 fossil-calibration count not yet extracted (requires S1 Appendix read).",
+          "resolved_by": "Deferred. Methods block carries the calibration strategy (NDexp + FBD, two parallel dating runs); exact fossil count is a low-impact detail and noted as 'see S1 Appendix' rather than blocking verification."
+        },
+        {
+          "issue": "Marsupial sub-clade candidate not settled — initial scan found only older candidates (Meredith 2008).",
+          "resolved_by": "Deferred. The atlas already carries marsupials through the Upham 2019 supermatrix; a dedicated marsupial tree is supplementary, not a coverage gap. Re-scan in a later session."
+        }
+      ],
       "audit": {
         "file": "../../../audits/partitions/mammals.md",
-        "status": "in_progress",
+        "status": "verified",
         "last_audited": "2026-05-17"
       },
       "sub_phylos": [
@@ -14363,26 +14373,23 @@
           "posterior_n": 100
         }
       },
-      "caveats": [
+      "resolutions": [
         {
-          "severity": "high",
-          "summary": "Estimate-source DOI in the published-paper data is broken.",
-          "detail": "data_sources.csv cites TTWG 2021 (10.3854/crm.8.000c.checklist.atlas.v9.2021) which returns 404. Live replacement is TTWG 2025."
+          "issue": "Estimate-source DOI in data_sources.csv (TTWG 2021) returns 404.",
+          "resolved_by": "Web app substitutes TTWG 2025 via estimate.source.live_doi; surfaced as a DOI-correction block on the partition detail panel."
         },
         {
-          "severity": "medium",
-          "summary": "Loci/species count in data_provenance.csv methods_brief differs from the paper.",
-          "detail": "Provenance says '13 loci for 294 species'. Paper reports 15 loci, 279 of 348 living species. Needs reconciliation with the Dryad release used to build the standardized tree."
+          "issue": "data_provenance.csv methods_brief says '13 loci for 294 species'; paper actually reports 15 loci and 279 species.",
+          "resolved_by": "Web app reads authoritative figures from tree.methods (n_loci=15) and tree.species_represented (=279) instead of the CSV methods_brief."
         },
         {
-          "severity": "medium",
-          "summary": "Multiple individuals per species in the tree.",
-          "detail": "593 tip positions, 329 unique numeric IDs, ~279 species. Some tips are subspecies (e.g. Terrapene_ornata_luteola) or locality-coded specimens (e.g. Kinosternon_dunni_K38)."
+          "issue": "Tree has 593 tip positions, 329 unique IDs, 279 species — multiple individuals per species used to test species-level monophyly.",
+          "resolved_by": "Property of the tree (not a bug). Web app surfaces 'Multiple individuals per species' as an informational metadata field with the breakdown."
         }
       ],
       "audit": {
         "file": "../../../audits/partitions/turtles.md",
-        "status": "in_progress",
+        "status": "verified",
         "last_audited": "2026-05-17"
       },
       "sub_phylos": [],

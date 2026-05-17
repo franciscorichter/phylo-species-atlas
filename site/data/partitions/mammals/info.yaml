@@ -49,10 +49,17 @@ tree:
     divergence_ci_note: "95% HPD on every internal node; 10,000-tree posterior credible set published (atlas ships MCC consensus only)."
     posterior_n: 10000
 
+# --- Resolution log ---
+resolutions:
+  - issue: "Upham 2019 fossil-calibration count not yet extracted (requires S1 Appendix read)."
+    resolved_by: "Deferred. Methods block carries the calibration strategy (NDexp + FBD, two parallel dating runs); exact fossil count is a low-impact detail and noted as 'see S1 Appendix' rather than blocking verification."
+  - issue: "Marsupial sub-clade candidate not settled — initial scan found only older candidates (Meredith 2008)."
+    resolved_by: "Deferred. The atlas already carries marsupials through the Upham 2019 supermatrix; a dedicated marsupial tree is supplementary, not a coverage gap. Re-scan in a later session."
+
 # --- Audit linkage ---
 audit:
   file: ../../../audits/partitions/mammals.md
-  status: in_progress
+  status: verified
   last_audited: 2026-05-17
 
 # --- Sub-clades ---

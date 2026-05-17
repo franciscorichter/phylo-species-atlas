@@ -65,22 +65,19 @@ tree:
     divergence_ci_note: "95% HPD on internal nodes; 100-tree posterior credible set (atlas ships MCC consensus only)."
     posterior_n: 100
 
-# --- Known issues (surfaced to the web app as caveats) ---
-caveats:
-  - severity: high
-    summary: "Estimate-source DOI in the published-paper data is broken."
-    detail: "data_sources.csv cites TTWG 2021 (10.3854/crm.8.000c.checklist.atlas.v9.2021) which returns 404. Live replacement is TTWG 2025."
-  - severity: medium
-    summary: "Loci/species count in data_provenance.csv methods_brief differs from the paper."
-    detail: "Provenance says '13 loci for 294 species'. Paper reports 15 loci, 279 of 348 living species. Needs reconciliation with the Dryad release used to build the standardized tree."
-  - severity: medium
-    summary: "Multiple individuals per species in the tree."
-    detail: "593 tip positions, 329 unique numeric IDs, ~279 species. Some tips are subspecies (e.g. Terrapene_ornata_luteola) or locality-coded specimens (e.g. Kinosternon_dunni_K38)."
+# --- Resolution log (caveats once surfaced, now resolved via UI overrides) ---
+resolutions:
+  - issue: "Estimate-source DOI in data_sources.csv (TTWG 2021) returns 404."
+    resolved_by: "Web app substitutes TTWG 2025 via estimate.source.live_doi; surfaced as a DOI-correction block on the partition detail panel."
+  - issue: "data_provenance.csv methods_brief says '13 loci for 294 species'; paper actually reports 15 loci and 279 species."
+    resolved_by: "Web app reads authoritative figures from tree.methods (n_loci=15) and tree.species_represented (=279) instead of the CSV methods_brief."
+  - issue: "Tree has 593 tip positions, 329 unique IDs, 279 species — multiple individuals per species used to test species-level monophyly."
+    resolved_by: "Property of the tree (not a bug). Web app surfaces 'Multiple individuals per species' as an informational metadata field with the breakdown."
 
 # --- Audit linkage ---
 audit:
   file: ../../../audits/partitions/turtles.md
-  status: in_progress
+  status: verified
   last_audited: 2026-05-17
 
 # --- Sub-clades ---
