@@ -8,9 +8,9 @@
     "n_groups": 264,
     "n_datasets": 49,
     "total_tips": 702787,
-    "n_audited": 2,
+    "n_audited": 3,
     "n_audits_in_progress": 0,
-    "n_audits_verified": 2
+    "n_audits_verified": 3
   },
   "trees": [
     {
@@ -1604,8 +1604,14 @@
         "subspecies_tips": 0,
         "redundancy": 0
       },
-      "tree_url_override": null,
-      "tip_taxonomy_override": null,
+      "tree_url_override": "data/partitions/birds/tree.nwk",
+      "tip_taxonomy_override": {
+        "unique_ids": 347,
+        "unique_species": 347,
+        "subspecies_tips": 0,
+        "redundancy": 0,
+        "total_tips": 10824
+      },
       "is_partition_canonical": false
     },
     {
@@ -16258,6 +16264,339 @@
     }
   ],
   "audits": {
+    "Birds": {
+      "partition": "Birds",
+      "slug": "birds",
+      "category": "Vertebrates",
+      "estimate": {
+        "described": 11195,
+        "low": 11195,
+        "total": 11195,
+        "high": 11400,
+        "confidence": "High",
+        "source": {
+          "key": "IUCN Red List 2025",
+          "doi": null,
+          "type": "database",
+          "pdf": null,
+          "url": "https://www.iucnredlist.org/",
+          "note": "IUCN Red List is the live estimate source for birds. No DOI applies.\nClements 2021 (used by the McTavish 2025 tree taxonomy) lists 10,824\nspecies; IUCN 2025 reports 11,195. The 371-species delta reflects\ntaxonomic differences and recent splits not yet incorporated into\nClements at the time of the tree build.\n"
+        }
+      },
+      "tree": {
+        "file": "tree.nwk",
+        "ntips": 10824,
+        "unique_ids": 10824,
+        "species_represented": 10824,
+        "coverage_pct_described": 96.7,
+        "dated": true,
+        "multiple_individuals_per_species": false,
+        "source": {
+          "key": "McTavish 2025",
+          "study": "McTavish EJ, Gerbracht JA, Holder MT, Iliff MJ, Lepage D et al. (2025)",
+          "doi": "10.1073/pnas.2409658122",
+          "pdf": "papers/tree.pdf"
+        },
+        "methods": {
+          "inference": "synthesis",
+          "software": [
+            "Open Tree synthesis algorithm",
+            "Chronosynth (Python)",
+            "python-opentree",
+            "addTaxa (R)"
+          ],
+          "data_type": "supertree",
+          "n_loci": null,
+          "n_genes": null,
+          "substitution_model": null,
+          "dating_method": "Chronosynth: summarizes node ages from dated input trees; 100 random taxon-addition trees per Clements taxonomy year, summarized to MCC.",
+          "fossil_calibrations": null,
+          "support_metric": "source_count",
+          "support_typical": "Per-branch support = number of supporting input studies (1-24). 34% of branches conflict with at least one input study; 14% conflict with the majority.",
+          "divergence_ci_available": true,
+          "divergence_ci_note": "CIs on node dates from the 100-tree taxon-addition sample (atlas ships only the MCC consensus).",
+          "posterior_n": 100,
+          "inputs_summary": "262 published studies (1990-2024); 9,239 species (85%) have direct phylogenetic data; 1,585 (15%) placed by addTaxa from Clements/Birds-of-the-World taxonomic constraints."
+        },
+        "alternative": {
+          "key": "Jetz 2012",
+          "study": "Jetz W, Thomas GH, Joy JB, Hartmann K, Mooers AO (2012)",
+          "doi": "10.1038/nature11631",
+          "journal": "Nature",
+          "ntips": 9993,
+          "note": "Pre-McTavish canonical: BEAST supermatrix with Hackett backbone,\n1,000-tree posterior credible set at https://data.vertlife.org/birdtree/.\nUseful for diversification analyses requiring a posterior sample;\n14% of branches differ from McTavish 2025.\n"
+        }
+      },
+      "uncertainty": {
+        "host": "VertLife / GitHub",
+        "host_url": "https://github.com/McTavishLab/AvesData",
+        "host_doi": null,
+        "files": [
+          {
+            "name": "McTavish 2025 — Aves data repository",
+            "label": "McTavish 2025 source data (Open Tree + Chronosynth pipeline)",
+            "description": "Full reproducible pipeline for the McTavish 2025 synthesis tree —\ninput phylogenies, OTT identifiers, Chronosynth date-smoothing,\nand the 100-tree taxon-addition sample per Clements taxonomy year.\n",
+            "size_bytes": null,
+            "format": "GitHub repository",
+            "url": "https://github.com/McTavishLab/AvesData"
+          },
+          {
+            "name": "BirdTree.org — Jetz 2012 posterior",
+            "label": "Jetz 2012 — 1000-tree posterior credible set (alternative canonical)",
+            "description": "BEAST posterior from Jetz et al. 2012 Nature. 1000 trees per backbone\n(Hackett + Ericson). The original canonical from the atlas's\ndata_provenance.csv (birds_jetz); still useful for diversification\nanalyses needing a posterior sample.\n",
+            "size_bytes": null,
+            "format": "VertLife portal (multiple downloads)",
+            "url": "https://data.vertlife.org/birdtree/"
+          }
+        ],
+        "note": "Atlas ships only the McTavish 2025 MCC consensus. Two external sources\ncover uncertainty: McTavish's GitHub for the synthesis pipeline + 100-tree\ntaxon-addition sample, and BirdTree.org for Jetz 2012's 1000-tree posterior.\n"
+      },
+      "resolutions": [
+        {
+          "issue": "Burgio 2019 parrots tree has no DOI in data_provenance.csv.",
+          "resolved_by": "DOI 10.1016/j.dib.2019.103882 verified via Crossref; carried in sub-phylos/parrots/papers/sources.json. Paper-side CSV unchanged."
+        },
+        {
+          "issue": "Atlas's data_provenance.csv records two canonical bird-tree candidates (birds_jetz + birds_mctavish).",
+          "resolved_by": "Atlas chose McTavish 2025 as canonical based on coverage (10,824 vs 9,993) and updatability. Jetz 2012 documented as alternative in info.yaml.tree.alternative for users who need the BEAST posterior."
+        },
+        {
+          "issue": "Parrots tree includes 15 extinct species (413 tips, 398 extant).",
+          "resolved_by": "Deferred. Extant-only pruning queued for Phase E (mechanism shared with the turtles species-level pruning). Effective extant coverage is 398 species; user-visible until pruning ships."
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/birds.md",
+        "status": "verified",
+        "last_audited": "2026-05-17"
+      },
+      "sub_phylos": [
+        {
+          "slug": "parrots"
+        }
+      ],
+      "_sub_phylos_loaded": [
+        {
+          "slug": "parrots",
+          "taxon": "Psittaciformes",
+          "parent": "birds",
+          "parent_category": "Vertebrates",
+          "tree": {
+            "file": "tree.nwk",
+            "ntips": 413,
+            "ntips_extant": 398,
+            "ntips_extinct": 15,
+            "dated": true,
+            "source": {
+              "key": "Burgio 2019",
+              "study": "Burgio KR, Davis E. (2019)",
+              "doi": "10.1016/j.dib.2019.103882",
+              "pdf": "papers/tree.pdf"
+            },
+            "methods": {
+              "inference": "supertree",
+              "software": [
+                "MRP (Matrix Representation with Parsimony)"
+              ],
+              "data_type": "supertree",
+              "n_loci": null,
+              "n_genes": null,
+              "substitution_model": null,
+              "dating_method": "MRP supertree from 188 source trees; time-calibrated.",
+              "fossil_calibrations": null,
+              "support_metric": "none",
+              "support_typical": null,
+              "divergence_ci_available": false,
+              "divergence_ci_note": "Single time-calibrated supertree; no posterior or bootstrap reported in this Data in Brief release."
+            }
+          },
+          "species_count": {
+            "source": "provenance (data_provenance.csv)",
+            "described": 413,
+            "described_extant": 398,
+            "coverage_pct_described": 100.0
+          }
+        }
+      ],
+      "audit_version": 1,
+      "status": "verified",
+      "last_audited": "2026-05-17",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "IUCN Red List 2025",
+        "doi": null,
+        "doi_verified": "na",
+        "crossref_match": "na",
+        "openalex_id": null,
+        "year_published": 2025,
+        "cited_value": 11195,
+        "newer_authoritative_known": false,
+        "newer_candidate": null,
+        "notes": "Estimate source is the IUCN Red List of Threatened Species (live database).\nNo DOI applies; the URL is https://www.iucnredlist.org/. The 11,195-species\ncount is a live snapshot. Birds taxonomy is also tracked by Clements\n(eBird/Cornell) and IOC (International Ornithological Congress). McTavish\n2025 explicitly aligns to Clements; the IUCN figure is reasonable for\n\"described species\" but differs slightly from Clements 2021 (10,824) and\n2023 (11,017). The 10,824 tip count corresponds exactly to Clements 2021.\n"
+      },
+      "canonical_tree": {
+        "filename": "birds.nwk",
+        "provenance_group": "birds_mctavish",
+        "study": "McTavish EJ, Gerbracht JA, Holder MT, Iliff MJ, Lepage D et al. (2025)",
+        "doi": "10.1073/pnas.2409658122",
+        "doi_verified": true,
+        "crossref_match": true,
+        "newer_authoritative_known": false,
+        "newer_candidate": null,
+        "alternative": {
+          "key": "Jetz 2012",
+          "doi": "10.1038/nature11631",
+          "note": "Atlas's data_provenance.csv carries an alternative canonical from Jetz et al. 2012\nNature (birds_jetz, 9,993 tips, BEAST supermatrix with Hackett backbone, 1000-tree\nposterior at VertLife). The atlas's standardized release ships the McTavish 2025\ntree as canonical because it (a) is more recent and updatable, (b) covers more\nspecies (10,824 vs 9,993), and (c) explicitly notes that 14% of branches differ\nfrom Jetz 2012 — Jetz's classic BEAST tree remains useful for diversification\nanalyses that need a posterior credible set.\n"
+        }
+      },
+      "methods": {
+        "inference": "synthesis",
+        "software": [
+          "Open Tree synthesis algorithm",
+          "Chronosynth (Python)",
+          "python-opentree",
+          "addTaxa (R)"
+        ],
+        "data_type": "supertree",
+        "n_loci": null,
+        "n_genes": null,
+        "total_bp": null,
+        "substitution_model": null,
+        "dated": true,
+        "dating_method": "Chronosynth — summarizes node ages from dated input trees. Expanded from\nDatelife concepts; uses input node-age sets as calibrations and smooths\nover the topology. The dated synthesis tree is built by sampling 100\nrandom taxon-addition trees per Clements taxonomy year, dating each via\nChronosynth, then summarizing to a single MCC tree.\n",
+        "fossil_calibrations": null,
+        "support_metric": "source_count",
+        "support_typical": "Per-branch support is the number of input studies supporting that branch:\ngrey (0 conflicting studies) → dull red (1-4) → bright red (5+ conflicting).\n14% of branches conflict with the majority of input studies. 3,781 branches\n(34% of the tree) have at least one conflicting input study.\n",
+        "divergence_ci_available": true,
+        "divergence_ci_note": "CIs on node dates from the 100-tree taxon-addition sample. The synthesis\nexplicitly summarizes uncertainty across input studies. The atlas ships\nonly the MCC consensus.\n",
+        "posterior_n": 100,
+        "bootstrap_n": null,
+        "methods_url": "https://www.pnas.org/doi/10.1073/pnas.2409658122",
+        "inputs": {
+          "n_published_studies": 262,
+          "publication_year_range": "1990-2024",
+          "species_with_phylogenetic_information": 9239,
+          "species_added_by_addTaxa": 1585,
+          "note": "9,239 / 10,824 species (85%) have direct phylogenetic information from\ninput studies. The remaining 15% are placed by addTaxa using\nClements/Birds-of-the-World taxonomic constraints. This is unusual\nrelative to other partitions in the atlas (typically all tips come\nfrom sequence data); the audit surfaces this fact as a methodological\nconsideration when interpreting species-level placement uncertainty.\n"
+        }
+      },
+      "shipped_subclades": [
+        {
+          "filename": "parrots.nwk",
+          "study": "Burgio KR & Davis E. (2019)",
+          "taxon": "Psittaciformes",
+          "ntips": 413,
+          "methods_inherits_parent": false,
+          "note": "Burgio 2019 MRP supertree from 188 source trees. 398 extant species\n+ 15 extinct species = 413 tips. Atlas ships all 413; for species-level\ncoverage of EXTANT diversity the effective tip count is 398. Future\natlas-derived pruning could surface this distinction explicitly\n(similar to the turtles canonical-tree swap).\n"
+        }
+      ],
+      "candidate_subclades": [
+        {
+          "taxon": "Passeriformes (passerine songbirds)",
+          "rationale": "~6,500 passerine species, ~60% of all birds. The largest clade by far;\nthe McTavish 2025 synthesis captures all of them via 262 input studies,\nbut a dedicated species-level passerine supermatrix tree would carry\nmore uniform support estimates. Oliveros 2019 PNAS is the canonical\nmulti-locus passerine tree.\n",
+          "candidate_papers": [
+            {
+              "doi": "10.1073/pnas.1813206116",
+              "year": 2019,
+              "study": "Oliveros et al. — Earth history and the passerine superradiation",
+              "ntips": 4060,
+              "url": "https://www.pnas.org/doi/10.1073/pnas.1813206116"
+            }
+          ],
+          "download_target": "supplementary",
+          "recipe_file": null,
+          "priority": "medium",
+          "status": "proposed",
+          "notes": "4,060 species (~62% of Passeriformes); BEAST-dated multi-locus tree.\nComplementary to the synthesis: dedicated inference gives uniform\nmethodology across the clade, while synthesis aggregates many studies.\n"
+        },
+        {
+          "taxon": "Trochilidae (hummingbirds)",
+          "rationale": "~360 hummingbird species. McGuire 2014 is the dedicated multi-locus\nphylogeny. Species-richness is comparable to turtles, with concentrated\ndiversification in the Andes; useful for atlas comparisons.\n",
+          "candidate_papers": [
+            {
+              "doi": "10.1016/j.cub.2014.03.016",
+              "year": 2014,
+              "study": "McGuire, Witt, Remsen, Corl, Rabosky, Altshuler, Dudley — Molecular Phylogenetics and the Diversification of Hummingbirds",
+              "ntips": 284,
+              "url": "https://www.cell.com/current-biology/fulltext/S0960-9822(14)00366-3"
+            }
+          ],
+          "download_target": "dryad",
+          "recipe_file": null,
+          "priority": "low",
+          "status": "proposed",
+          "notes": "Already well-covered by McTavish 2025 synthesis; a dedicated tree would\nadd focused dating uncertainty but not species coverage.\n"
+        },
+        {
+          "taxon": "Furnariida + Tyrannida (suboscine passerines)",
+          "rationale": "Suboscine passerines (~1,300 species). Harvey et al. 2020 Science is\nthe recent multi-locus species-level tree.\n",
+          "candidate_papers": [
+            {
+              "doi": "10.1126/science.aaz6970",
+              "year": 2020,
+              "study": "Harvey, Bravo, Claramunt, Cuervo, Derryberry et al. — The evolution of a tropical biodiversity hotspot",
+              "ntips": 1287,
+              "url": "https://www.science.org/doi/10.1126/science.aaz6970"
+            }
+          ],
+          "download_target": "supplementary",
+          "recipe_file": null,
+          "priority": "low",
+          "status": "proposed",
+          "notes": "Specialist clade; useful if a passerine-focused audit is later commissioned."
+        }
+      ],
+      "website": {
+        "surface_methods": true,
+        "surface_uncertainty": true,
+        "surface_candidates": true,
+        "badge": "verified"
+      },
+      "api_calls": [
+        {
+          "service": "crossref",
+          "target": "10.1073/pnas.2409658122",
+          "ts": "2026-05-17T13:30Z",
+          "cache": "pending",
+          "outcome": "hit"
+        },
+        {
+          "service": "crossref",
+          "target": "10.1038/nature11631",
+          "ts": "2026-05-17T13:30Z",
+          "cache": "pending",
+          "outcome": "hit"
+        },
+        {
+          "service": "crossref",
+          "target": "10.1016/j.dib.2019.103882",
+          "ts": "2026-05-17T13:30Z",
+          "cache": "pending",
+          "outcome": "hit"
+        },
+        {
+          "service": "crossref",
+          "target": "10.1073/pnas.1813206116",
+          "ts": "2026-05-17T13:30Z",
+          "cache": "pending",
+          "outcome": "hit"
+        },
+        {
+          "service": "crossref",
+          "target": "10.1126/science.aaz6970",
+          "ts": "2026-05-17T13:30Z",
+          "cache": "pending",
+          "outcome": "hit"
+        },
+        {
+          "service": "crossref",
+          "target": "10.1016/j.cub.2014.03.016",
+          "ts": "2026-05-17T13:30Z",
+          "cache": "pending",
+          "outcome": "hit"
+        }
+      ]
+    },
     "Mammals": {
       "partition": "Mammals",
       "slug": "mammals",
@@ -16484,6 +16823,183 @@
             "coverage_pct_described": 57.7
           }
         }
+      ],
+      "audit_version": 1,
+      "status": "verified",
+      "last_audited": "2026-05-17",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "Burgin 2018",
+        "doi": "10.1093/jmammal/gyx147",
+        "doi_verified": true,
+        "crossref_match": true,
+        "openalex_id": null,
+        "year_published": 2018,
+        "cited_value": 6736,
+        "newer_authoritative_known": true,
+        "newer_candidate": {
+          "doi": null,
+          "year": 2026,
+          "study": "Mammal Diversity Database (MDD)",
+          "cited_value": null,
+          "recommendation": "watch",
+          "notes": "MDD (mammaldiversity.org) is the living successor to Burgin 2018, maintained\nby the American Society of Mammalogists. Burgin is the canonical fixed citation;\nMDD evolves the count continuously (typically ±50 species per release). For a\npublished-paper atlas, keep Burgin 2018 cited; surface MDD as the live link.\n"
+        },
+        "notes": "Crossref returns \"How many species of mammals are there?\" — Burgin, Colella,\nKahn (J Mammal 99(1)). Matches data_sources.csv exactly.\n"
+      },
+      "canonical_tree": {
+        "filename": "mammals.nwk",
+        "provenance_group": "mammals",
+        "study": "Upham NS, Esselstyn JA, Jetz W (2019)",
+        "doi": "10.1371/journal.pbio.3000494",
+        "doi_verified": true,
+        "crossref_match": true,
+        "newer_authoritative_known": false,
+        "newer_candidate": null
+      },
+      "methods": {
+        "inference": "bayesian",
+        "software": [
+          "MrBayes 3.2.6",
+          "RAxML 8.2.3",
+          "PartitionFinder 1.1.1"
+        ],
+        "data_type": "supermatrix",
+        "n_loci": 31,
+        "n_genes": 31,
+        "total_bp": 39099,
+        "substitution_model": "GTR+G, nine-partition",
+        "dated": true,
+        "dating_method": "Two-level \"backbone-and-patch\" approach. Two dating schemes published in\nparallel: node-dated with exponential priors (NDexp) and tip-dated with\nfossilized birth-death (FBD). Atlas ships the NDexp MCC tree.\n",
+        "fossil_calibrations": null,
+        "support_metric": "posterior_probability",
+        "support_typical": "Most nodes >0.95 PP; weakly-supported placements (Atlantogenata root ≈0.53 PP;\nMyzopodidae among bats) explicitly discussed in the paper.\n",
+        "divergence_ci_available": true,
+        "divergence_ci_note": "95% HPD intervals on every internal node. The Upham 2019 release ships\n100-tree posterior samples for both dating schemes (10,000 trees in each\ncredible set; atlas currently ships only the MCC consensus).\n",
+        "posterior_n": 10000,
+        "bootstrap_n": null,
+        "methods_url": "https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.3000494"
+      },
+      "shipped_subclades": [
+        {
+          "filename": "primates.nwk",
+          "study": "Arnold, Matthews & Nunn 2010 (10kTrees v3)",
+          "taxon": "Primates",
+          "ntips": 301,
+          "methods_inherits_parent": false
+        },
+        {
+          "filename": "carnivora.nwk",
+          "study": "Nyakatura & Bininda-Emonds 2012",
+          "taxon": "Carnivora",
+          "ntips": 294,
+          "methods_inherits_parent": false
+        },
+        {
+          "filename": "cetaceans.nwk",
+          "study": "McGowen et al. 2020",
+          "taxon": "Cetacea",
+          "ntips": 85,
+          "methods_inherits_parent": false
+        }
+      ],
+      "candidate_subclades": [
+        {
+          "taxon": "Chiroptera (bats)",
+          "rationale": "~1,400 species — largest mammal order without a dedicated tree in the atlas.\nThe Upham 2019 tree covers bats at supermatrix resolution but a clade-focused\ntree exists with comparable coverage and explicit bat-specific calibrations.\n",
+          "candidate_papers": [
+            {
+              "doi": "10.1007/s10914-016-9363-8",
+              "year": 2016,
+              "study": "Amador, Moyers Arévalo, Almeida, Catalano & Giannini — Bat Systematics in the Light of Unconstrained Analyses of a Comprehensive Molecular Supermatrix",
+              "ntips": 803,
+              "url": "https://link.springer.com/article/10.1007/s10914-016-9363-8"
+            }
+          ],
+          "download_target": "supplementary",
+          "recipe_file": null,
+          "priority": "high",
+          "status": "proposed",
+          "notes": "Springer paper with supplementary tree files. Need to confirm whether the\nshipped tree is dated or topology-only. 803 tips covers ~57% of described\nbat diversity; complements rather than supersedes the Upham 2019 placement.\n"
+        },
+        {
+          "taxon": "Rodentia (muroids)",
+          "rationale": "~2,500 rodent species; Muroidea is the species-richest mammalian superfamily.\nSteppan & Schenk 2017 explicitly publishes a 900-species muroid tree, the\nlargest dated muroid phylogeny in the literature.\n",
+          "candidate_papers": [
+            {
+              "doi": "10.1371/journal.pone.0183070",
+              "year": 2017,
+              "study": "Steppan & Schenk — Muroid rodent phylogenetics, 900-species tree reveals increasing diversification rates",
+              "ntips": 900,
+              "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0183070"
+            }
+          ],
+          "download_target": "figshare",
+          "recipe_file": null,
+          "priority": "high",
+          "status": "proposed",
+          "notes": "PLOS ONE → open data. Covers Muroidea only (not all of Rodentia), but that\nis where the species-richness lives. A second candidate for non-muroid\nrodents (squirrels, beavers, caviomorphs) should be added as a follow-up.\n"
+        },
+        {
+          "taxon": "Marsupialia",
+          "rationale": "~370 marsupial species. The Upham 2019 supermatrix covers them but a\nmarsupial-focused tree with denser sampling and australidelphian-specific\ncalibrations would improve the dating signal. Literature search returned\npartial candidates only — Meredith et al. 2008 (older, 5 nuclear genes)\nand Phillips et al. 2022 (Dasyuromorphia only). No single species-level\nAustralasian + Didelphimorphia tree clearly stands out.\n",
+          "candidate_papers": [
+            {
+              "doi": "10.1007/s10914-007-9062-6",
+              "year": 2008,
+              "study": "Meredith, Westerman & Case — A Phylogeny and Timescale for Marsupial Evolution Based on Sequences for Five Nuclear Genes",
+              "ntips": null,
+              "url": "https://link.springer.com/article/10.1007/s10914-007-9062-6"
+            }
+          ],
+          "download_target": "unknown",
+          "recipe_file": null,
+          "priority": "medium",
+          "status": "proposed",
+          "notes": "Needs a deeper literature scan in Phase B. Mitchell et al. 2014 was\nmentioned in the planning step but the Crossref/OpenAlex queries did not\nsurface a clear species-level marsupial supermatrix that postdates Upham\n2019. Possible the right tree is hidden inside a broader Marsupialia\npaper (Beck 2017; May-Collado 2015) — flag for manual hunt.\n"
+        }
+      ],
+      "website": {
+        "surface_methods": true,
+        "surface_uncertainty": true,
+        "surface_candidates": true,
+        "badge": "verified"
+      },
+      "api_calls": [
+        {
+          "service": "crossref",
+          "target": "10.1093/jmammal/gyx147",
+          "ts": "2026-05-17T00:00Z",
+          "cache": "pending",
+          "outcome": "hit"
+        },
+        {
+          "service": "crossref",
+          "target": "10.1371/journal.pbio.3000494",
+          "ts": "2026-05-17T00:00Z",
+          "cache": "pending",
+          "outcome": "hit"
+        },
+        {
+          "service": "openalex",
+          "target": "Chiroptera species phylogeny supermatrix",
+          "ts": "2026-05-17T00:00Z",
+          "cache": "pending",
+          "outcome": "hit"
+        },
+        {
+          "service": "openalex",
+          "target": "Rodentia species phylogeny tree",
+          "ts": "2026-05-17T00:00Z",
+          "cache": "pending",
+          "outcome": "hit"
+        },
+        {
+          "service": "openalex",
+          "target": "Marsupialia phylogeny species-level tree",
+          "ts": "2026-05-17T00:00Z",
+          "cache": "miss"
+        }
       ]
     },
     "Turtles": {
@@ -16604,7 +17120,166 @@
         "last_audited": "2026-05-17"
       },
       "sub_phylos": [],
-      "_sub_phylos_loaded": []
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "verified",
+      "last_audited": "2026-05-17",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "TTWG 2021",
+        "doi": "10.3854/crm.8.000c.checklist.atlas.v9.2021",
+        "doi_verified": false,
+        "crossref_match": "na",
+        "openalex_id": null,
+        "year_published": 2021,
+        "cited_value": 360,
+        "newer_authoritative_known": true,
+        "newer_candidate": {
+          "doi": "10.3854/crm.10.checklist.atlas.v10.2025",
+          "year": 2025,
+          "study": "TTWG (Turtle Taxonomy Working Group) 10th edition — \"Turtles of the World: Annotated Checklist and Atlas\"",
+          "cited_value": 364,
+          "recommendation": "switch",
+          "notes": "The 2021 (v9) DOI returns 404 on Crossref and on doi.org — citation is dead.\nThe 2025 (v10) DOI resolves cleanly (302 → iucn-tftsg.org/checklist, Crossref\nHTTP 200). Switch the citation to TTWG 2025 in data_sources.csv (or, if the\npaper-side data is frozen, surface a corrected live link in the web UI).\nSpecies count moves 360 → 364 (+4 net taxonomic changes since 2021).\n"
+        },
+        "notes": "The cited DOI is broken. Chelonian Research Monographs registers a fresh DOI\nper edition; the v9/2021 DOI does not resolve at doi.org. This is a\ndata-quality bug in data_sources.csv that should be tracked even though the\npaper-side data is frozen.\n"
+      },
+      "canonical_tree": {
+        "filename": "turtles.nwk",
+        "provenance_group": "turtles",
+        "study": "Thomson RC, Spinks PQ, Shaffer HB (2021)",
+        "doi": "10.1073/pnas.2012215118",
+        "doi_verified": true,
+        "crossref_match": true,
+        "newer_authoritative_known": false,
+        "newer_candidate": null
+      },
+      "methods": {
+        "inference": "bayesian",
+        "software": [
+          "MrBayes 3.2",
+          "BEAST 1.8.2",
+          "TreeAnnotator 1.8.2",
+          "LogCombiner 1.8.2"
+        ],
+        "data_type": "multi-locus",
+        "n_loci": 15,
+        "n_genes": 15,
+        "total_bp": null,
+        "substitution_model": "MrBayes: per-partition substitution models selected with model selection.\nBEAST divergence-time run: Hasegawa-Kishino-Yano (HKY) for each partition\n(chosen for MCMC performance, not strict model fit).\n",
+        "dated": true,
+        "dating_method": "BEAST 1.8.2 with uncorrelated lognormal relaxed clock; birth-death tree\nprior; estimated on a reduced one-individual-per-species version of the\ndataset.\n",
+        "fossil_calibrations": 22,
+        "support_metric": "posterior_probability",
+        "support_typical": "Posterior probability = 1 on the major deep splits (Cryptodira / Pleurodira,\nall 14 currently recognized families monophyletic). Tree captures all 14\nfamilies and 98% of genera; species-level support varies, not summarized\nin a single number.\n",
+        "divergence_ci_available": true,
+        "divergence_ci_note": "95% HPD intervals reported on internal nodes. 100 chronograms drawn from\nthe BEAST posterior were used for downstream diversification analyses;\nthe atlas currently ships only the MCC consensus.\n",
+        "posterior_n": 100,
+        "bootstrap_n": null,
+        "methods_url": "https://www.pnas.org/doi/10.1073/pnas.2012215118"
+      },
+      "findings": [
+        {
+          "severity": "high",
+          "field": "data_sources.csv → TTWG 2021 doi",
+          "issue": "DOI 10.3854/crm.8.000c.checklist.atlas.v9.2021 returns 404 on Crossref and doi.org.",
+          "fix": "Replace with TTWG 2025 (10.3854/crm.10.checklist.atlas.v10.2025) OR add a verified-DOI follow-up to data_sources.csv."
+        },
+        {
+          "severity": "medium",
+          "field": "data_provenance.csv → methods_brief for turtles",
+          "issue": "The CSV says \"13 loci for 294 species\". The Thomson 2021 paper reports\n15 loci and 279 of 348 living species (80%). The original filename\n\"thomson2021_turtle_mcc_294sp.tre\" preserves the 294 figure — possibly\nfrom an early Dryad release that included subspecies in the species count.\n",
+          "fix": "Manual reconciliation needed. Confirm whether the shipped MCC tree is the\nsame as the paper's 591-individual MCC (which corresponds to 279 species\n+ outgroups) or an alternative Dryad version. Update methods_brief\naccordingly.\n"
+        },
+        {
+          "severity": "medium",
+          "field": "standardized/trees/turtles.nwk",
+          "issue": "Tree has 593 tip positions and 329 unique numeric IDs. The dictionary\nmaps these IDs to names that include subspecies (e.g. Terrapene_ornata_luteola)\nand locality codes (e.g. Kinosternon_dunni_K38). This means the tree's\n\"species\" coverage is ambiguous without de-duplication.\n",
+          "fix": "Web app should surface this (\"593 tips covering ~279 species across\nmultiple individuals; some tips are subspecies\"). Already partially\ncaptured by the existing notes field in data_provenance.csv: \"Multiple\nindividuals per species; displayed coverage is capped at 100%\".\n"
+        }
+      ],
+      "shipped_subclades": [],
+      "candidate_subclades": [
+        {
+          "taxon": "Testudinidae (tortoises)",
+          "rationale": "~50 species. Thomson 2021 covers all 14 families at the family level but\ntortoise species-level resolution may improve with a tortoise-focused\nmultilocus tree. Pyron 2014 (Sys Bio) is a candidate — biogeographic\nanalysis with detailed Testudinidae sampling.\n",
+          "candidate_papers": [
+            {
+              "doi": "10.1093/sysbio/syu042",
+              "year": 2014,
+              "study": "Pyron — Biogeographic Analysis Reveals Ancient Continental Vicariance and Recent Oceanic Dispersal",
+              "ntips": null,
+              "url": "https://academic.oup.com/sysbio/article/63/5/779/2847947"
+            }
+          ],
+          "download_target": "unknown",
+          "recipe_file": null,
+          "priority": "low",
+          "status": "proposed",
+          "notes": "Low priority because Thomson 2021 at 80% species coverage already gives\ngood tortoise resolution. Sub-clade tree would be supplementary.\n"
+        },
+        {
+          "taxon": "Geoemydidae (Asian river/leaf turtles)",
+          "rationale": "~70 species — the largest turtle family. Thomson 2021's 80% sampling\nmay have its largest gaps here (many South-East Asian species hard to\nsample). Pereira 2017 (MPE) provides a focused multilocus geoemydid tree.\n",
+          "candidate_papers": [
+            {
+              "doi": "10.1016/j.ympev.2017.05.008",
+              "year": 2017,
+              "study": "Pereira et al. — Multilocus phylogeny and statistical biogeography clarify the evolutionary history of major Asian river turtles",
+              "ntips": null,
+              "url": "https://www.sciencedirect.com/science/article/pii/S1055790317301215"
+            }
+          ],
+          "download_target": "unknown",
+          "recipe_file": null,
+          "priority": "medium",
+          "status": "proposed",
+          "notes": "Geoemydidae is the family most likely to have species missing from\nThomson 2021's 80% sampling. Worth checking species count overlap.\n"
+        }
+      ],
+      "website": {
+        "surface_methods": true,
+        "surface_uncertainty": true,
+        "surface_candidates": true,
+        "badge": "verified"
+      },
+      "api_calls": [
+        {
+          "service": "crossref",
+          "target": "10.1073/pnas.2012215118",
+          "ts": "2026-05-17T01:30Z",
+          "cache": "pending",
+          "outcome": "hit"
+        },
+        {
+          "service": "crossref",
+          "target": "10.3854/crm.8.000c.checklist.atlas.v9.2021",
+          "ts": "2026-05-17T01:30Z",
+          "cache": "pending",
+          "outcome": "error"
+        },
+        {
+          "service": "crossref",
+          "target": "10.3854/crm.10.checklist.atlas.v10.2025",
+          "ts": "2026-05-17T01:30Z",
+          "cache": "pending",
+          "outcome": "hit"
+        },
+        {
+          "service": "openalex",
+          "target": "Testudinidae tortoise phylogeny",
+          "ts": "2026-05-17T01:30Z",
+          "cache": "pending",
+          "outcome": "hit"
+        },
+        {
+          "service": "openalex",
+          "target": "Geoemydidae Emydidae phylogeny species-level",
+          "ts": "2026-05-17T01:30Z",
+          "cache": "pending",
+          "outcome": "hit"
+        }
+      ]
     }
   }
 }

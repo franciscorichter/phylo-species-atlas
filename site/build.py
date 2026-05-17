@@ -92,44 +92,87 @@ def _json_default(o):
     raise TypeError(f"Object of type {o.__class__.__name__} is not JSON serializable")
 
 
-def load_audit_overrides() -> dict[str, dict]:
-    """Read every site/data/partitions/<slug>/info.yaml and return a dict
-    keyed by the `partition:` field. These records carry verified-audit
-    facts (methods block, caveats, corrected estimate source) that the web
-    app should prefer over the paper-side CSV values.
+_AUDIT_FRONTMATTER_RE = re.compile(r"^---\s*\n(.*?\n)---\s*$", re.DOTALL | re.MULTILINE)
 
-    Returns an empty dict when PyYAML is not installed — the build still
-    works, just without the audit layer.
+
+def _load_audit_frontmatter(audits_dir: Path) -> dict[str, dict]:
+    """Parse YAML frontmatter from every audits/partitions/<slug>.md file.
+
+    Keyed by the `partition:` field. These records carry the audit's working
+    metadata (shipped/candidate sub-clades, full estimate-source verification
+    block, etc.) that the audit page renders. info.yaml carries only the
+    verified subset the data view needs.
     """
-    if not HAS_YAML or not SITE_DATA.exists():
-        if not HAS_YAML:
-            print("PyYAML not installed — skipping audit overrides", file=sys.stderr)
+    if not HAS_YAML or not audits_dir.exists():
         return {}
     out: dict[str, dict] = {}
-    for info_path in sorted(SITE_DATA.glob("*/info.yaml")):
+    for md_path in sorted(audits_dir.glob("*.md")):
+        text = md_path.read_text(encoding="utf-8")
+        m = _AUDIT_FRONTMATTER_RE.match(text)
+        if not m:
+            continue
         try:
-            data = yaml.safe_load(info_path.read_text(encoding="utf-8"))
+            data = yaml.safe_load(m.group(1))
         except yaml.YAMLError as e:
-            print(f"WARN: skipping {info_path}: {e}", file=sys.stderr)
+            print(f"WARN: bad frontmatter in {md_path}: {e}", file=sys.stderr)
             continue
         if not isinstance(data, dict):
             continue
         partition = data.get("partition")
         if not partition:
             continue
-        # Collect sub-phylo info.yaml files too, attach as a list.
-        sub_dir = info_path.parent / "sub-phylos"
-        subs = []
-        if sub_dir.exists():
-            for sub_info in sorted(sub_dir.glob("*/info.yaml")):
-                try:
-                    sub_data = yaml.safe_load(sub_info.read_text(encoding="utf-8"))
-                    if isinstance(sub_data, dict):
-                        subs.append(sub_data)
-                except yaml.YAMLError:
-                    continue
-        data["_sub_phylos_loaded"] = subs
         out[partition] = data
+    return out
+
+
+def load_audit_overrides() -> dict[str, dict]:
+    """Read site/data/partitions/<slug>/info.yaml AND audits/partitions/<slug>.md
+    frontmatter, merging them into a single dict keyed by partition name. The
+    info.yaml provides web-facing facts; the .md frontmatter provides the
+    audit's process metadata (candidate/shipped sub-clades, audit trail).
+    """
+    if not HAS_YAML:
+        print("PyYAML not installed — skipping audit overrides", file=sys.stderr)
+        return {}
+    out: dict[str, dict] = {}
+
+    audits_md = _load_audit_frontmatter(ROOT / "audits" / "partitions")
+
+    if SITE_DATA.exists():
+        for info_path in sorted(SITE_DATA.glob("*/info.yaml")):
+            try:
+                data = yaml.safe_load(info_path.read_text(encoding="utf-8"))
+            except yaml.YAMLError as e:
+                print(f"WARN: skipping {info_path}: {e}", file=sys.stderr)
+                continue
+            if not isinstance(data, dict):
+                continue
+            partition = data.get("partition")
+            if not partition:
+                continue
+            sub_dir = info_path.parent / "sub-phylos"
+            subs = []
+            if sub_dir.exists():
+                for sub_info in sorted(sub_dir.glob("*/info.yaml")):
+                    try:
+                        sub_data = yaml.safe_load(sub_info.read_text(encoding="utf-8"))
+                        if isinstance(sub_data, dict):
+                            subs.append(sub_data)
+                    except yaml.YAMLError:
+                        continue
+            data["_sub_phylos_loaded"] = subs
+            # Merge audit .md frontmatter — adds shipped_subclades,
+            # candidate_subclades, full estimate_source/canonical_tree blocks,
+            # api_calls trail. info.yaml fields take precedence on conflicts.
+            md = audits_md.pop(partition, None)
+            if md:
+                for k, v in md.items():
+                    data.setdefault(k, v)
+            out[partition] = data
+
+    # Audits that haven't been migrated to site/data/ yet — still surface.
+    for partition, md in audits_md.items():
+        out[partition] = md
     return out
 
 

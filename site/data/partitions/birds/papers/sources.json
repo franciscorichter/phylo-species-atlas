@@ -1,0 +1,24 @@
+{
+  "tree": {
+    "file": "tree.pdf",
+    "doi": "10.1073/pnas.2409658122",
+    "study": "McTavish EJ, Gerbracht JA, Holder MT, Iliff MJ, Lepage D, Rees J, Yang B, Smith SA (2025). A complete and dynamic tree of birds. Proceedings of the National Academy of Sciences 122(18):e2409658122.",
+    "year": 2025,
+    "journal": "Proceedings of the National Academy of Sciences",
+    "license": "PNAS license (open access)",
+    "open_access": true,
+    "url": "https://www.pnas.org/doi/10.1073/pnas.2409658122",
+    "data_url": "https://github.com/McTavishLab/AvesData"
+  },
+  "estimate": {
+    "file": null,
+    "doi": null,
+    "study": "IUCN Red List of Threatened Species (2025 access). Live database, no fixed citation.",
+    "year": 2025,
+    "journal": "IUCN database",
+    "license": "IUCN data use policy",
+    "open_access": true,
+    "url": "https://www.iucnredlist.org/",
+    "note": "Live database, not a paper. No PDF to ship. The 11,195-species count is the IUCN 2025 access snapshot."
+  }
+}

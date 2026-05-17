@@ -1,0 +1,115 @@
+# Birds — partition metadata for the web app.
+
+partition: Birds
+slug: birds
+category: Vertebrates
+
+# --- Diversity estimate ---
+estimate:
+  described: 11195
+  low: 11195
+  total: 11195
+  high: 11400
+  confidence: High
+  source:
+    key: IUCN Red List 2025
+    doi: null
+    type: database
+    pdf: null
+    url: https://www.iucnredlist.org/
+    note: |
+      IUCN Red List is the live estimate source for birds. No DOI applies.
+      Clements 2021 (used by the McTavish 2025 tree taxonomy) lists 10,824
+      species; IUCN 2025 reports 11,195. The 371-species delta reflects
+      taxonomic differences and recent splits not yet incorporated into
+      Clements at the time of the tree build.
+
+# --- Canonical tree ---
+tree:
+  file: tree.nwk
+  ntips: 10824
+  unique_ids: 10824
+  species_represented: 10824
+  coverage_pct_described: 96.7                    # 10824 / 11195 IUCN
+  dated: true
+  multiple_individuals_per_species: false
+  source:
+    key: McTavish 2025
+    study: McTavish EJ, Gerbracht JA, Holder MT, Iliff MJ, Lepage D et al. (2025)
+    doi: 10.1073/pnas.2409658122
+    pdf: papers/tree.pdf
+  methods:
+    inference: synthesis
+    software: ["Open Tree synthesis algorithm", "Chronosynth (Python)", "python-opentree", "addTaxa (R)"]
+    data_type: supertree
+    n_loci: null
+    n_genes: null
+    substitution_model: null
+    dating_method: "Chronosynth: summarizes node ages from dated input trees; 100 random taxon-addition trees per Clements taxonomy year, summarized to MCC."
+    fossil_calibrations: null
+    support_metric: source_count
+    support_typical: "Per-branch support = number of supporting input studies (1-24). 34% of branches conflict with at least one input study; 14% conflict with the majority."
+    divergence_ci_available: true
+    divergence_ci_note: "CIs on node dates from the 100-tree taxon-addition sample (atlas ships only the MCC consensus)."
+    posterior_n: 100
+    inputs_summary: "262 published studies (1990-2024); 9,239 species (85%) have direct phylogenetic data; 1,585 (15%) placed by addTaxa from Clements/Birds-of-the-World taxonomic constraints."
+  alternative:
+    key: Jetz 2012
+    study: Jetz W, Thomas GH, Joy JB, Hartmann K, Mooers AO (2012)
+    doi: 10.1038/nature11631
+    journal: Nature
+    ntips: 9993
+    note: |
+      Pre-McTavish canonical: BEAST supermatrix with Hackett backbone,
+      1,000-tree posterior credible set at https://data.vertlife.org/birdtree/.
+      Useful for diversification analyses requiring a posterior sample;
+      14% of branches differ from McTavish 2025.
+
+# --- Uncertainty / posterior data ---
+uncertainty:
+  host: VertLife / GitHub
+  host_url: https://github.com/McTavishLab/AvesData
+  host_doi: null
+  files:
+    - name: McTavish 2025 — Aves data repository
+      label: McTavish 2025 source data (Open Tree + Chronosynth pipeline)
+      description: |
+        Full reproducible pipeline for the McTavish 2025 synthesis tree —
+        input phylogenies, OTT identifiers, Chronosynth date-smoothing,
+        and the 100-tree taxon-addition sample per Clements taxonomy year.
+      size_bytes: null
+      format: GitHub repository
+      url: https://github.com/McTavishLab/AvesData
+    - name: BirdTree.org — Jetz 2012 posterior
+      label: Jetz 2012 — 1000-tree posterior credible set (alternative canonical)
+      description: |
+        BEAST posterior from Jetz et al. 2012 Nature. 1000 trees per backbone
+        (Hackett + Ericson). The original canonical from the atlas's
+        data_provenance.csv (birds_jetz); still useful for diversification
+        analyses needing a posterior sample.
+      size_bytes: null
+      format: VertLife portal (multiple downloads)
+      url: https://data.vertlife.org/birdtree/
+  note: |
+    Atlas ships only the McTavish 2025 MCC consensus. Two external sources
+    cover uncertainty: McTavish's GitHub for the synthesis pipeline + 100-tree
+    taxon-addition sample, and BirdTree.org for Jetz 2012's 1000-tree posterior.
+
+# --- Resolution log ---
+resolutions:
+  - issue: "Burgio 2019 parrots tree has no DOI in data_provenance.csv."
+    resolved_by: "DOI 10.1016/j.dib.2019.103882 verified via Crossref; carried in sub-phylos/parrots/papers/sources.json. Paper-side CSV unchanged."
+  - issue: "Atlas's data_provenance.csv records two canonical bird-tree candidates (birds_jetz + birds_mctavish)."
+    resolved_by: "Atlas chose McTavish 2025 as canonical based on coverage (10,824 vs 9,993) and updatability. Jetz 2012 documented as alternative in info.yaml.tree.alternative for users who need the BEAST posterior."
+  - issue: "Parrots tree includes 15 extinct species (413 tips, 398 extant)."
+    resolved_by: "Deferred. Extant-only pruning queued for Phase E (mechanism shared with the turtles species-level pruning). Effective extant coverage is 398 species; user-visible until pruning ships."
+
+# --- Audit linkage ---
+audit:
+  file: ../../../audits/partitions/birds.md
+  status: verified
+  last_audited: 2026-05-17
+
+# --- Sub-clades ---
+sub_phylos:
+  - slug: parrots

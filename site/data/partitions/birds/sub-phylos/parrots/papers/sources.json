@@ -1,0 +1,13 @@
+{
+  "tree": {
+    "file": "tree.pdf",
+    "doi": "10.1016/j.dib.2019.103882",
+    "study": "Burgio KR, Davis E (2019). Phylogenetic supertree and functional trait database for all extant parrots. Data in Brief 24:103882.",
+    "year": 2019,
+    "journal": "Data in Brief",
+    "license": "Elsevier (CC-BY)",
+    "open_access": true,
+    "url": "https://www.sciencedirect.com/science/article/pii/S2352340919303105",
+    "data_url": "https://figshare.com/articles/dataset/5877324"
+  }
+}

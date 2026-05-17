@@ -1,0 +1,35 @@
+slug: parrots
+taxon: Psittaciformes
+parent: birds
+parent_category: Vertebrates
+
+tree:
+  file: tree.nwk
+  ntips: 413                          # 398 extant + 15 extinct (paper-stated)
+  ntips_extant: 398
+  ntips_extinct: 15
+  dated: true
+  source:
+    key: Burgio 2019
+    study: Burgio KR, Davis E. (2019)
+    doi: 10.1016/j.dib.2019.103882
+    pdf: papers/tree.pdf
+  methods:
+    inference: supertree
+    software: ["MRP (Matrix Representation with Parsimony)"]
+    data_type: supertree
+    n_loci: null
+    n_genes: null
+    substitution_model: null
+    dating_method: "MRP supertree from 188 source trees; time-calibrated."
+    fossil_calibrations: null
+    support_metric: none
+    support_typical: null
+    divergence_ci_available: false
+    divergence_ci_note: "Single time-calibrated supertree; no posterior or bootstrap reported in this Data in Brief release."
+
+species_count:
+  source: provenance (data_provenance.csv)
+  described: 413
+  described_extant: 398
+  coverage_pct_described: 100.0

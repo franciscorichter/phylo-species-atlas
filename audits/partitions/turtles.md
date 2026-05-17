@@ -19,7 +19,7 @@ estimate_source:
   newer_candidate:
     doi: 10.3854/crm.10.checklist.atlas.v10.2025
     year: 2025
-    study: TTWG (Turtle Taxonomy Working Group) 10th edition — "Turtles of the World: Annotated Checklist and Atlas"
+    study: 'TTWG (Turtle Taxonomy Working Group) 10th edition — "Turtles of the World: Annotated Checklist and Atlas"'
     cited_value: 364
     recommendation: switch
     notes: |
