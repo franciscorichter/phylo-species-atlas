@@ -10,7 +10,7 @@ estimate:
   low: 11195
   total: 11195
   high: 11400
-  confidence: High
+  confidence: High              # for the described count; high bound is atlas-heuristic
   source:
     key: IUCN Red List 2025
     doi: null
@@ -23,6 +23,41 @@ estimate:
       species; IUCN 2025 reports 11,195. The 371-species delta reflects
       taxonomic differences and recent splits not yet incorporated into
       Clements at the time of the tree build.
+  # IUCN publishes a CHECKLIST not an estimate. No "true diversity range"
+  # has been published for birds in the modern literature with the
+  # rigour Stork 2018 uses for insects. The high bound is atlas-heuristic.
+  interval_provenance:
+    described:
+      type: database
+      source: IUCN Red List 2025
+      verbatim_quote: null
+    estimated_total:
+      type: derived
+      source: IUCN Red List 2025
+      verbatim_quote: null
+      note: "Set equal to described — no true-diversity estimate published."
+    estimated_low:
+      type: derived-from-described
+      source: IUCN Red List 2025
+      verbatim_quote: null
+      note: "Low bound = described count."
+    estimated_high:
+      type: heuristic
+      source: atlas-derived
+      verbatim_quote: null
+      note: |
+        IUCN does not publish a true-diversity estimate for birds. The 11,400
+        figure appears to be an atlas-derived "round-up" allowing a few
+        hundred undescribed species. Birds are arguably the best-described
+        clade on Earth (~5-10 new species/year discovery rate); any honest
+        upper bound would be within ~1% of described. The 11,400 here is a
+        rough placeholder, not a paper-published claim.
+    overall_classification: fully-heuristic
+    auditor_note: |
+      Birds intervals are essentially "described count + atlas heuristic".
+      The chart should de-emphasize the error bars on this partition
+      (visually equating them with Stork 2018's evidence-based insect range
+      misleads readers about the literature base for each clade).
 
 # --- Canonical tree ---
 tree:

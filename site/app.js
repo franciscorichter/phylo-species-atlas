@@ -115,22 +115,38 @@ function renderCoveragePlot() {
       thickness: 1.2,
       width: 4,
     };
-    // Range type: when the source publishes total == low (well-catalogued
-    // clades — Birds, Mammals, Turtles), the bar lands at the upper edge of
-    // the visible range because the cited "central estimate" equals the
-    // lower bound. When total sits between low and high (Sharks, Insects),
-    // the bar lands in the middle. We flag this so the hover explains it.
-    const rangeType = (r) =>
-      r.estimated_low === r.estimated_total
-        ? "described count is the floor; uncertainty is only on undescribed species"
-        : (r.estimated_high === r.estimated_total
-            ? "central estimate is the ceiling (unusual)"
-            : "bilateral uncertainty range");
+    // Interval provenance, when audited: paper-published-range / partly-heuristic /
+    // fully-heuristic / derived. The chart styles error bars based on this
+    // so readers don't visually equate Stork 2018's evidence-based insect
+    // range with a turtle "described count + 10 guesswork" placeholder.
+    const intervalClass = (r) => {
+      const ip = r.interval_provenance;
+      if (!ip) return "unaudited";
+      return ip.overall_classification || "unaudited";
+    };
+    const classLabel = (cls) => ({
+      "paper-published-range": "paper-published range",
+      "partly-heuristic": "partly heuristic (upper bound is a description-rate projection or atlas-derived)",
+      "fully-heuristic": "heuristic — no true-diversity estimate published",
+      "derived": "derived from described count",
+      "unaudited": "not yet audited for interval provenance",
+    }[cls] || cls);
+
+    // Error-bar styling: keep the bars solid for paper-published, mute them
+    // for heuristic intervals so the eye reads them as less authoritative.
+    const errorColor = (r) => {
+      const cls = intervalClass(r);
+      return (cls === "fully-heuristic" || cls === "partly-heuristic")
+        ? "rgba(180,140,90,0.45)"  // muted amber for heuristic
+        : "#888";                  // standard grey for paper-published
+    };
+    errorBars.color = rows.map(errorColor);
+
     customdata = rows.map(r => [
       r.study, r.year || "", r.tips, r.estimated_total, r.estimated_low, r.estimated_high,
       r.estimate_source || "—", r.estimate_confidence || "—",
       r.coverage_pct_estimated_low, r.coverage_pct_estimated_high,
-      rangeType(r),
+      classLabel(intervalClass(r)),
     ]);
     hovertemplate =
       "<b>%{y}</b><br>" +
@@ -138,10 +154,10 @@ function renderCoveragePlot() {
       "<span style='color:#999'>(%{customdata[8]:.1f}–%{customdata[9]:.1f}%)</span><br>" +
       "Tips: %{customdata[2]:,}<br>" +
       "Estimated total: %{customdata[3]:,} (range %{customdata[4]:,}–%{customdata[5]:,})<br>" +
-      "<i style='color:#7a7a7a'>%{customdata[10]}</i><br>" +
+      "<i style='color:#7a7a7a'>Interval: %{customdata[10]}</i><br>" +
       "Estimate source: %{customdata[6]} · confidence %{customdata[7]}<br>" +
       "<i>%{customdata[0]}</i> (%{customdata[1]})<extra></extra>";
-    xTitle = "Coverage of estimated true diversity (%) — error bars = low/high estimate range";
+    xTitle = "Coverage of estimated true diversity (%) — error bars: solid = paper-published, faded = atlas-heuristic";
   } else {
     values = rows.map(r => r.coverage_pct);
     valueText = rows.map(r => `${r.coverage_pct.toFixed(1)}%`);

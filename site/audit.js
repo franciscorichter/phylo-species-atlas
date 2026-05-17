@@ -63,7 +63,42 @@ function renderPartition(partition, audit) {
   const lastAudited = auditMeta.last_audited || "—";
   const category = audit.category || "";
 
-  const estSrc = (audit.estimate && audit.estimate.source) || {};
+  const estObj = audit.estimate || {};
+  const estSrc = estObj.source || {};
+  const ip = estObj.interval_provenance;
+
+  let intervalHTML = "";
+  if (ip) {
+    const clsLabel = {
+      "paper-published-range": "paper-published range",
+      "partly-heuristic": "partly heuristic",
+      "fully-heuristic": "fully heuristic",
+      "derived": "derived from described count",
+    }[ip.overall_classification] || ip.overall_classification;
+    const clsClass = ip.overall_classification || "unaudited";
+    const fieldRow = (label, sub) => {
+      if (!sub) return "";
+      const note = sub.note ? `<div class="ip-note">${escapeHTML(sub.note)}</div>` : "";
+      const quote = sub.verbatim_quote ? `<div class="ip-quote">“${escapeHTML(sub.verbatim_quote)}”</div>` : "";
+      return `<tr>
+        <th>${escapeHTML(label)}</th>
+        <td><span class="ip-type ip-type-${(sub.type || "").replace(/-/g, "_")}">${escapeHTML(sub.type || "—")}</span></td>
+        <td>${escapeHTML(sub.source || "—")}${quote}${note}</td>
+      </tr>`;
+    };
+    intervalHTML = `
+      <section class="aud-block">
+        <h3>Interval provenance <span class="ip-cls ip-cls-${clsClass}">${escapeHTML(clsLabel)}</span></h3>
+        <table class="ip-table">
+          ${fieldRow("Described", ip.described)}
+          ${fieldRow("Estimated total", ip.estimated_total)}
+          ${fieldRow("Low bound", ip.estimated_low)}
+          ${fieldRow("High bound", ip.estimated_high)}
+        </table>
+        ${ip.auditor_note ? `<p class="aud-note">${escapeHTML(ip.auditor_note)}</p>` : ""}
+      </section>`;
+  }
+
   let doiFixHTML = "";
   if (estSrc.paper_doi_status === "broken" && estSrc.live_doi) {
     doiFixHTML = `
@@ -153,6 +188,7 @@ function renderPartition(partition, audit) {
           <span class="muted">last reviewed ${escapeHTML(lastAudited)}</span>
         </div>
       </header>
+      ${intervalHTML}
       ${doiFixHTML}
       ${resHTML}
       ${shipHTML}

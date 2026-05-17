@@ -12,9 +12,9 @@ category: Vertebrates
 estimate:
   described: 6736
   low: 6736
-  total: 7500
-  high: 7500
-  confidence: High
+  total: 6736                   # equals described — no true-diversity estimate published
+  high: 7500                    # Burgin 2018 2050 description-rate PROJECTION, not a true-diversity bound
+  confidence: High              # for the described count; the high bound is heuristic
   source:
     key: Burgin 2018
     doi: 10.1093/jmammal/gyx147
@@ -22,6 +22,42 @@ estimate:
     note: |
       Live successor is the Mammal Diversity Database (mammaldiversity.org);
       the published-paper citation is Burgin 2018.
+  # Honest provenance per field — most "intervals" in the atlas are partly
+  # heuristic. For mammals: `described` is the MDD live count (newer than
+  # Burgin 2018's 6,399); `total` and `low` collapse to the described count
+  # (no true-diversity estimate published); `high` is Burgin 2018's 2050
+  # DESCRIPTION-RATE PROJECTION (~7,509), not a current true-diversity bound.
+  interval_provenance:
+    described:
+      type: database
+      source: Mammal Diversity Database (MDD, 2024+)
+      verbatim_quote: null
+    estimated_total:
+      type: derived
+      source: Burgin 2018 / MDD
+      verbatim_quote: "MDD currently lists 6,495 valid species (6,399 extant, 96 recently extinct)"
+      note: "Set equal to described — no true-diversity estimate published."
+    estimated_low:
+      type: derived-from-described
+      source: Burgin 2018 / MDD
+      verbatim_quote: null
+      note: "Low bound = described count. Not a published interval bound."
+    estimated_high:
+      type: projection
+      source: Burgin 2018
+      verbatim_quote: "our estimates increase to 7,509 species recognized by 2050 and 9,009 by 2100"
+      note: |
+        Burgin 2018's 7,500-ish figure is a DESCRIPTION-RATE PROJECTION to
+        the year 2050 — extrapolating recent description rates forward.
+        It is NOT an estimate of TRUE mammal diversity (current undiscovered
+        species). Treating it as the 'high' end of an estimated_total interval
+        overstates Burgin 2018's claim.
+    overall_classification: partly-heuristic
+    auditor_note: |
+      Mammals lack a paper-published true-diversity range. The 6,736 figure is
+      the current MDD-tracked described-species count (well-established). The
+      7,500 upper bound is a 2050 projection of described counts (Burgin 2018
+      §Discussion), not a 2025 estimate of cryptic + undescribed diversity.
 
 # --- Canonical tree ---
 tree:

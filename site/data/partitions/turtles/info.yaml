@@ -35,6 +35,40 @@ estimate:
       paper-side citation (v9/2021) had a broken DOI and was replaced here by
       the v10/2025 edition (species count 360 → 364). The 4-species delta is
       net taxonomic change since 2021.
+  # TTWG is a TAXONOMIC CHECKLIST not a diversity-estimate paper. It does
+  # not publish a true-diversity range. The 360 / 370 bounds are heuristic.
+  interval_provenance:
+    described:
+      type: database
+      source: TTWG 2021 / TTWG 2025 (10th edition)
+      verbatim_quote: "364 turtle and tortoise species are currently generally recognized as distinct and included in this checklist (TTWG 2025)"
+    estimated_total:
+      type: derived
+      source: TTWG 2021
+      verbatim_quote: null
+      note: "Set equal to described — no true-diversity estimate published. TTWG 2025 reports 364; data_estimates.csv recorded 360 from the v9 (2021) checklist."
+    estimated_low:
+      type: derived-from-described
+      source: TTWG 2021
+      verbatim_quote: null
+      note: "Low bound = described count."
+    estimated_high:
+      type: heuristic
+      source: atlas-derived
+      verbatim_quote: null
+      note: |
+        TTWG does not publish a true-diversity bound. The 370 figure allows
+        ~10 undescribed/cryptic species. Turtles are extremely well-described
+        (~1 new species per year, mostly subspecies elevations); the actual
+        cryptic-diversity reserve is small. Honest upper bound is within ~5%
+        of described.
+    overall_classification: fully-heuristic
+    auditor_note: |
+      Turtles intervals are heuristic. Like Birds and Mammals, turtles are a
+      well-catalogued clade — TTWG publishes a checklist, not a diversity
+      estimate. The 370 placeholder shouldn't be visually equated with the
+      paper-published ranges that exist for poorly-described clades
+      (Insects 2.6M-7.8M from Stork 2018, etc).
 
 # --- Canonical tree ---
 # The atlas's shipped paper tree (standardized/trees/turtles.nwk) has 593 tips

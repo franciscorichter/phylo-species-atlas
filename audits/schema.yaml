@@ -47,6 +47,32 @@ object_schemas:
     newer_authoritative_known:    { type: bool }
     newer_candidate:              { type: object?, schema: newer_candidate }
     notes:                        { type: string? }
+    # Provenance for each of the four estimate fields. Forces an auditor
+    # to attribute every number explicitly — most "intervals" in the atlas
+    # turn out to be partly heuristic (low == described count + atlas guess).
+    interval_provenance:          { type: object?, schema: interval_provenance }
+
+  interval_provenance:
+    described:
+      type:                       { type: enum, values: [database, paper, atlas-derived] }
+      source:                     { type: string }     # e.g. "IUCN Red List 2025", "Burgin 2018"
+      verbatim_quote:             { type: string? }    # the exact phrase if from a paper
+    estimated_total:
+      type:                       { type: enum, values: [paper-published, derived, atlas-derived, heuristic] }
+      source:                     { type: string }
+      verbatim_quote:             { type: string? }
+    estimated_low:
+      type:                       { type: enum, values: [paper-published, derived-from-described, heuristic, atlas-derived] }
+      source:                     { type: string }
+      verbatim_quote:             { type: string? }
+      note:                       { type: string? }
+    estimated_high:
+      type:                       { type: enum, values: [paper-published, projection, heuristic, atlas-derived] }
+      source:                     { type: string }
+      verbatim_quote:             { type: string? }
+      note:                       { type: string? }
+    overall_classification:       { type: enum, values: [paper-published-range, partly-heuristic, fully-heuristic, derived] }
+    auditor_note:                 { type: string? }
 
   canonical_tree:
     filename:                     { type: string }      # matches standardized/metadata.csv

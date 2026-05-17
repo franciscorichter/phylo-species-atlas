@@ -984,6 +984,71 @@ main {
 .cand-paper { margin: 2px 0; font-size: 11.5px; }
 .cand-paper .muted { color: var(--muted); }
 
+/* Interval provenance table on the audit page */
+.ip-cls {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.ip-cls-paper-published-range { background: #d6efd9; color: #1f6b29; }
+.ip-cls-partly-heuristic      { background: #fde7c8; color: #8a4d0a; }
+.ip-cls-fully-heuristic       { background: #f8d8d8; color: #8a1a1a; }
+.ip-cls-derived               { background: #e1e6f0; color: #444; }
+.ip-cls-unaudited             { background: #eee; color: #666; }
+
+.ip-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  margin-top: 6px;
+}
+.ip-table th, .ip-table td {
+  padding: 6px 8px;
+  text-align: left;
+  vertical-align: top;
+  border-top: 1px solid var(--line);
+}
+.ip-table th {
+  width: 120px;
+  font-weight: 600;
+  color: var(--muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.ip-type {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 8px;
+  font-size: 10.5px;
+  font-weight: 600;
+}
+.ip-type-paper_published, .ip-type-paper_published_range { background: #d6efd9; color: #1f6b29; }
+.ip-type-database                                        { background: #d6e3ef; color: #1a4d8a; }
+.ip-type-derived, .ip-type-derived_from_described        { background: #eaeaea; color: #555; }
+.ip-type-projection                                      { background: #fdf1d6; color: #8a6a0a; }
+.ip-type-heuristic                                       { background: #f8d8d8; color: #8a1a1a; }
+.ip-type-atlas_derived                                   { background: #ddd; color: #666; }
+.ip-note {
+  margin-top: 4px;
+  color: #555;
+  font-size: 11.5px;
+  line-height: 1.5;
+}
+.ip-quote {
+  margin-top: 4px;
+  padding-left: 8px;
+  border-left: 2px solid var(--accent);
+  color: #1a1a1a;
+  font-size: 11.5px;
+  font-style: italic;
+}
+
 footer {
   padding: 16px 36px 28px;
   color: var(--muted);

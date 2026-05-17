@@ -638,22 +638,25 @@ def main() -> None:
         if (a.get("audit") or {}).get("status") == "verified"
     )
 
-    # Apply broken-DOI substitution on coverage rows when the audit replaces
-    # the estimate source.
+    # Apply broken-DOI substitution AND attach interval_provenance on coverage
+    # rows when the audit has them.
     for row in coverage_rows:
         partition = row.get("partition_group")
         if not partition or partition not in audits:
             continue
-        est = (audits[partition].get("estimate") or {}).get("source") or {}
-        if est.get("paper_doi_status") == "broken" and est.get("live_doi"):
+        est_obj = audits[partition].get("estimate") or {}
+        src = est_obj.get("source") or {}
+        if src.get("paper_doi_status") == "broken" and src.get("live_doi"):
             row["estimate_source_corrected"] = {
-                "key": est.get("live_key"),
-                "doi": est.get("live_doi"),
-                "year": est.get("live_year"),
-                "url": est.get("url"),
-                "note": est.get("note"),
+                "key": src.get("live_key"),
+                "doi": src.get("live_doi"),
+                "year": src.get("live_year"),
+                "url": src.get("url"),
+                "note": src.get("note"),
             }
             row["estimate_source_paper_doi_status"] = "broken"
+        if est_obj.get("interval_provenance"):
+            row["interval_provenance"] = est_obj["interval_provenance"]
 
     bundle = {
         "schema_version": 4,

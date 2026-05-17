@@ -11910,7 +11910,34 @@
       "estimate_confidence": "High",
       "coverage_pct_estimated": 96.7,
       "coverage_pct_estimated_low": 94.9,
-      "coverage_pct_estimated_high": 96.7
+      "coverage_pct_estimated_high": 96.7,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "IUCN Red List 2025",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "derived",
+          "source": "IUCN Red List 2025",
+          "verbatim_quote": null,
+          "note": "Set equal to described — no true-diversity estimate published."
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "IUCN Red List 2025",
+          "verbatim_quote": null,
+          "note": "Low bound = described count."
+        },
+        "estimated_high": {
+          "type": "heuristic",
+          "source": "atlas-derived",
+          "verbatim_quote": null,
+          "note": "IUCN does not publish a true-diversity estimate for birds. The 11,400\nfigure appears to be an atlas-derived \"round-up\" allowing a few\nhundred undescribed species. Birds are arguably the best-described\nclade on Earth (~5-10 new species/year discovery rate); any honest\nupper bound would be within ~1% of described. The 11,400 here is a\nrough placeholder, not a paper-published claim.\n"
+        },
+        "overall_classification": "fully-heuristic",
+        "auditor_note": "Birds intervals are essentially \"described count + atlas heuristic\".\nThe chart should de-emphasize the error bars on this partition\n(visually equating them with Stork 2018's evidence-based insect range\nmisleads readers about the literature base for each clade).\n"
+      }
     },
     {
       "filename": "sharks.nwk",
@@ -11960,7 +11987,34 @@
       "estimate_confidence": "High",
       "coverage_pct_estimated": 1.3,
       "coverage_pct_estimated_low": 1.1,
-      "coverage_pct_estimated_high": 1.3
+      "coverage_pct_estimated_high": 1.3,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Mammal Diversity Database (MDD, 2024+)",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "derived",
+          "source": "Burgin 2018 / MDD",
+          "verbatim_quote": "MDD currently lists 6,495 valid species (6,399 extant, 96 recently extinct)",
+          "note": "Set equal to described — no true-diversity estimate published."
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "Burgin 2018 / MDD",
+          "verbatim_quote": null,
+          "note": "Low bound = described count. Not a published interval bound."
+        },
+        "estimated_high": {
+          "type": "projection",
+          "source": "Burgin 2018",
+          "verbatim_quote": "our estimates increase to 7,509 species recognized by 2050 and 9,009 by 2100",
+          "note": "Burgin 2018's 7,500-ish figure is a DESCRIPTION-RATE PROJECTION to\nthe year 2050 — extrapolating recent description rates forward.\nIt is NOT an estimate of TRUE mammal diversity (current undiscovered\nspecies). Treating it as the 'high' end of an estimated_total interval\noverstates Burgin 2018's claim.\n"
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Mammals lack a paper-published true-diversity range. The 6,736 figure is\nthe current MDD-tracked described-species count (well-established). The\n7,500 upper bound is a 2050 projection of described counts (Burgin 2018\n§Discussion), not a 2025 estimate of cryptic + undescribed diversity.\n"
+      }
     },
     {
       "filename": "carnivora.nwk",
@@ -11985,7 +12039,34 @@
       "estimate_confidence": "High",
       "coverage_pct_estimated": 4.0,
       "coverage_pct_estimated_low": 3.6,
-      "coverage_pct_estimated_high": 4.0
+      "coverage_pct_estimated_high": 4.0,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Mammal Diversity Database (MDD, 2024+)",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "derived",
+          "source": "Burgin 2018 / MDD",
+          "verbatim_quote": "MDD currently lists 6,495 valid species (6,399 extant, 96 recently extinct)",
+          "note": "Set equal to described — no true-diversity estimate published."
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "Burgin 2018 / MDD",
+          "verbatim_quote": null,
+          "note": "Low bound = described count. Not a published interval bound."
+        },
+        "estimated_high": {
+          "type": "projection",
+          "source": "Burgin 2018",
+          "verbatim_quote": "our estimates increase to 7,509 species recognized by 2050 and 9,009 by 2100",
+          "note": "Burgin 2018's 7,500-ish figure is a DESCRIPTION-RATE PROJECTION to\nthe year 2050 — extrapolating recent description rates forward.\nIt is NOT an estimate of TRUE mammal diversity (current undiscovered\nspecies). Treating it as the 'high' end of an estimated_total interval\noverstates Burgin 2018's claim.\n"
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Mammals lack a paper-published true-diversity range. The 6,736 figure is\nthe current MDD-tracked described-species count (well-established). The\n7,500 upper bound is a 2050 projection of described counts (Burgin 2018\n§Discussion), not a 2025 estimate of cryptic + undescribed diversity.\n"
+      }
     },
     {
       "filename": "seed_plants.nwk",
@@ -12035,7 +12116,34 @@
       "estimate_confidence": "High",
       "coverage_pct_estimated": 87.8,
       "coverage_pct_estimated_low": 78.8,
-      "coverage_pct_estimated_high": 87.8
+      "coverage_pct_estimated_high": 87.8,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Mammal Diversity Database (MDD, 2024+)",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "derived",
+          "source": "Burgin 2018 / MDD",
+          "verbatim_quote": "MDD currently lists 6,495 valid species (6,399 extant, 96 recently extinct)",
+          "note": "Set equal to described — no true-diversity estimate published."
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "Burgin 2018 / MDD",
+          "verbatim_quote": null,
+          "note": "Low bound = described count. Not a published interval bound."
+        },
+        "estimated_high": {
+          "type": "projection",
+          "source": "Burgin 2018",
+          "verbatim_quote": "our estimates increase to 7,509 species recognized by 2050 and 9,009 by 2100",
+          "note": "Burgin 2018's 7,500-ish figure is a DESCRIPTION-RATE PROJECTION to\nthe year 2050 — extrapolating recent description rates forward.\nIt is NOT an estimate of TRUE mammal diversity (current undiscovered\nspecies). Treating it as the 'high' end of an estimated_total interval\noverstates Burgin 2018's claim.\n"
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Mammals lack a paper-published true-diversity range. The 6,736 figure is\nthe current MDD-tracked described-species count (well-established). The\n7,500 upper bound is a 2050 projection of described counts (Burgin 2018\n§Discussion), not a 2025 estimate of cryptic + undescribed diversity.\n"
+      }
     },
     {
       "filename": "parrots.nwk",
@@ -12060,7 +12168,34 @@
       "estimate_confidence": "High",
       "coverage_pct_estimated": 3.1,
       "coverage_pct_estimated_low": 3.0,
-      "coverage_pct_estimated_high": 3.1
+      "coverage_pct_estimated_high": 3.1,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "IUCN Red List 2025",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "derived",
+          "source": "IUCN Red List 2025",
+          "verbatim_quote": null,
+          "note": "Set equal to described — no true-diversity estimate published."
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "IUCN Red List 2025",
+          "verbatim_quote": null,
+          "note": "Low bound = described count."
+        },
+        "estimated_high": {
+          "type": "heuristic",
+          "source": "atlas-derived",
+          "verbatim_quote": null,
+          "note": "IUCN does not publish a true-diversity estimate for birds. The 11,400\nfigure appears to be an atlas-derived \"round-up\" allowing a few\nhundred undescribed species. Birds are arguably the best-described\nclade on Earth (~5-10 new species/year discovery rate); any honest\nupper bound would be within ~1% of described. The 11,400 here is a\nrough placeholder, not a paper-published claim.\n"
+        },
+        "overall_classification": "fully-heuristic",
+        "auditor_note": "Birds intervals are essentially \"described count + atlas heuristic\".\nThe chart should de-emphasize the error bars on this partition\n(visually equating them with Stork 2018's evidence-based insect range\nmisleads readers about the literature base for each clade).\n"
+      }
     },
     {
       "filename": "squamates.nwk",
@@ -12143,7 +12278,34 @@
         "url": "https://iucn-tftsg.org/checklist/",
         "note": "Live successor is the IUCN-TFTSG Turtles of the World checklist; the\npaper-side citation (v9/2021) had a broken DOI and was replaced here by\nthe v10/2025 edition (species count 360 → 364). The 4-species delta is\nnet taxonomic change since 2021.\n"
       },
-      "estimate_source_paper_doi_status": "broken"
+      "estimate_source_paper_doi_status": "broken",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "TTWG 2021 / TTWG 2025 (10th edition)",
+          "verbatim_quote": "364 turtle and tortoise species are currently generally recognized as distinct and included in this checklist (TTWG 2025)"
+        },
+        "estimated_total": {
+          "type": "derived",
+          "source": "TTWG 2021",
+          "verbatim_quote": null,
+          "note": "Set equal to described — no true-diversity estimate published. TTWG 2025 reports 364; data_estimates.csv recorded 360 from the v9 (2021) checklist."
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "TTWG 2021",
+          "verbatim_quote": null,
+          "note": "Low bound = described count."
+        },
+        "estimated_high": {
+          "type": "heuristic",
+          "source": "atlas-derived",
+          "verbatim_quote": null,
+          "note": "TTWG does not publish a true-diversity bound. The 370 figure allows\n~10 undescribed/cryptic species. Turtles are extremely well-described\n(~1 new species per year, mostly subspecies elevations); the actual\ncryptic-diversity reserve is small. Honest upper bound is within ~5%\nof described.\n"
+        },
+        "overall_classification": "fully-heuristic",
+        "auditor_note": "Turtles intervals are heuristic. Like Birds and Mammals, turtles are a\nwell-catalogued clade — TTWG publishes a checklist, not a diversity\nestimate. The 370 placeholder shouldn't be visually equated with the\npaper-published ranges that exist for poorly-described clades\n(Insects 2.6M-7.8M from Stork 2018, etc).\n"
+      }
     },
     {
       "filename": "frogs.nwk",
@@ -12243,7 +12405,34 @@
       "estimate_confidence": "High",
       "coverage_pct_estimated": 3.5,
       "coverage_pct_estimated_low": 3.1,
-      "coverage_pct_estimated_high": 3.5
+      "coverage_pct_estimated_high": 3.5,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Mammal Diversity Database (MDD, 2024+)",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "derived",
+          "source": "Burgin 2018 / MDD",
+          "verbatim_quote": "MDD currently lists 6,495 valid species (6,399 extant, 96 recently extinct)",
+          "note": "Set equal to described — no true-diversity estimate published."
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "Burgin 2018 / MDD",
+          "verbatim_quote": null,
+          "note": "Low bound = described count. Not a published interval bound."
+        },
+        "estimated_high": {
+          "type": "projection",
+          "source": "Burgin 2018",
+          "verbatim_quote": "our estimates increase to 7,509 species recognized by 2050 and 9,009 by 2100",
+          "note": "Burgin 2018's 7,500-ish figure is a DESCRIPTION-RATE PROJECTION to\nthe year 2050 — extrapolating recent description rates forward.\nIt is NOT an estimate of TRUE mammal diversity (current undiscovered\nspecies). Treating it as the 'high' end of an estimated_total interval\noverstates Burgin 2018's claim.\n"
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Mammals lack a paper-published true-diversity range. The 6,736 figure is\nthe current MDD-tracked described-species count (well-established). The\n7,500 upper bound is a 2050 projection of described counts (Burgin 2018\n§Discussion), not a 2025 estimate of cryptic + undescribed diversity.\n"
+      }
     },
     {
       "filename": "archaea.nwk",
@@ -16586,6 +16775,33 @@
           "pdf": null,
           "url": "https://www.iucnredlist.org/",
           "note": "IUCN Red List is the live estimate source for birds. No DOI applies.\nClements 2021 (used by the McTavish 2025 tree taxonomy) lists 10,824\nspecies; IUCN 2025 reports 11,195. The 371-species delta reflects\ntaxonomic differences and recent splits not yet incorporated into\nClements at the time of the tree build.\n"
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "IUCN Red List 2025",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "derived",
+            "source": "IUCN Red List 2025",
+            "verbatim_quote": null,
+            "note": "Set equal to described — no true-diversity estimate published."
+          },
+          "estimated_low": {
+            "type": "derived-from-described",
+            "source": "IUCN Red List 2025",
+            "verbatim_quote": null,
+            "note": "Low bound = described count."
+          },
+          "estimated_high": {
+            "type": "heuristic",
+            "source": "atlas-derived",
+            "verbatim_quote": null,
+            "note": "IUCN does not publish a true-diversity estimate for birds. The 11,400\nfigure appears to be an atlas-derived \"round-up\" allowing a few\nhundred undescribed species. Birds are arguably the best-described\nclade on Earth (~5-10 new species/year discovery rate); any honest\nupper bound would be within ~1% of described. The 11,400 here is a\nrough placeholder, not a paper-published claim.\n"
+          },
+          "overall_classification": "fully-heuristic",
+          "auditor_note": "Birds intervals are essentially \"described count + atlas heuristic\".\nThe chart should de-emphasize the error bars on this partition\n(visually equating them with Stork 2018's evidence-based insect range\nmisleads readers about the literature base for each clade).\n"
         }
       },
       "tree": {
@@ -16909,7 +17125,7 @@
       "estimate": {
         "described": 6736,
         "low": 6736,
-        "total": 7500,
+        "total": 6736,
         "high": 7500,
         "confidence": "High",
         "source": {
@@ -16917,6 +17133,33 @@
           "doi": "10.1093/jmammal/gyx147",
           "pdf": "papers/estimate.pdf",
           "note": "Live successor is the Mammal Diversity Database (mammaldiversity.org);\nthe published-paper citation is Burgin 2018.\n"
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "Mammal Diversity Database (MDD, 2024+)",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "derived",
+            "source": "Burgin 2018 / MDD",
+            "verbatim_quote": "MDD currently lists 6,495 valid species (6,399 extant, 96 recently extinct)",
+            "note": "Set equal to described — no true-diversity estimate published."
+          },
+          "estimated_low": {
+            "type": "derived-from-described",
+            "source": "Burgin 2018 / MDD",
+            "verbatim_quote": null,
+            "note": "Low bound = described count. Not a published interval bound."
+          },
+          "estimated_high": {
+            "type": "projection",
+            "source": "Burgin 2018",
+            "verbatim_quote": "our estimates increase to 7,509 species recognized by 2050 and 9,009 by 2100",
+            "note": "Burgin 2018's 7,500-ish figure is a DESCRIPTION-RATE PROJECTION to\nthe year 2050 — extrapolating recent description rates forward.\nIt is NOT an estimate of TRUE mammal diversity (current undiscovered\nspecies). Treating it as the 'high' end of an estimated_total interval\noverstates Burgin 2018's claim.\n"
+          },
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Mammals lack a paper-published true-diversity range. The 6,736 figure is\nthe current MDD-tracked described-species count (well-established). The\n7,500 upper bound is a 2050 projection of described counts (Burgin 2018\n§Discussion), not a 2025 estimate of cryptic + undescribed diversity.\n"
         }
       },
       "tree": {
@@ -17328,6 +17571,33 @@
           "pdf": "papers/estimate.pdf",
           "url": "https://iucn-tftsg.org/checklist/",
           "note": "Live successor is the IUCN-TFTSG Turtles of the World checklist; the\npaper-side citation (v9/2021) had a broken DOI and was replaced here by\nthe v10/2025 edition (species count 360 → 364). The 4-species delta is\nnet taxonomic change since 2021.\n"
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "TTWG 2021 / TTWG 2025 (10th edition)",
+            "verbatim_quote": "364 turtle and tortoise species are currently generally recognized as distinct and included in this checklist (TTWG 2025)"
+          },
+          "estimated_total": {
+            "type": "derived",
+            "source": "TTWG 2021",
+            "verbatim_quote": null,
+            "note": "Set equal to described — no true-diversity estimate published. TTWG 2025 reports 364; data_estimates.csv recorded 360 from the v9 (2021) checklist."
+          },
+          "estimated_low": {
+            "type": "derived-from-described",
+            "source": "TTWG 2021",
+            "verbatim_quote": null,
+            "note": "Low bound = described count."
+          },
+          "estimated_high": {
+            "type": "heuristic",
+            "source": "atlas-derived",
+            "verbatim_quote": null,
+            "note": "TTWG does not publish a true-diversity bound. The 370 figure allows\n~10 undescribed/cryptic species. Turtles are extremely well-described\n(~1 new species per year, mostly subspecies elevations); the actual\ncryptic-diversity reserve is small. Honest upper bound is within ~5%\nof described.\n"
+          },
+          "overall_classification": "fully-heuristic",
+          "auditor_note": "Turtles intervals are heuristic. Like Birds and Mammals, turtles are a\nwell-catalogued clade — TTWG publishes a checklist, not a diversity\nestimate. The 370 placeholder shouldn't be visually equated with the\npaper-published ranges that exist for poorly-described clades\n(Insects 2.6M-7.8M from Stork 2018, etc).\n"
         }
       },
       "tree": {
