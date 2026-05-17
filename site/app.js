@@ -493,21 +493,25 @@ async function selectTree(filename, scrollIntoView) {
     : null;
   // Coverage (described). Use the override's species count when an atlas-derived
   // canonical tree exists; otherwise check tip_taxonomy from the original shard.
-  let covDescribed = t.coverage_pct != null ? `${t.coverage_pct.toFixed(1)}% <span class="src">of described</span>` : "—";
+  // Coverage uses the species-level effective count when available
+  // (tip_taxonomy_override.unique_species for atlas-derived canonicals like
+  // turtles; tip_taxonomy.unique_species when the tree has redundancy). Falls
+  // back to raw ntips when neither applies. This matches build.py's coverage_pct.
   const txForCoverage = t.tip_taxonomy_override || t.tip_taxonomy;
-  if (txForCoverage && txForCoverage.unique_species && t.described_species) {
-    const us = txForCoverage.unique_species;
-    const desc = t.described_species;
-    if (us < desc && us !== t.ntips) {
-      const speciesPct = (100 * us / desc).toFixed(1);
-      covDescribed = `<strong>${speciesPct}%</strong> <span class="src">at species level (${fmt.format(us)} unique / ${fmt.format(desc)} described)</span>`;
-    }
+  const effectiveCount = (txForCoverage?.unique_species) ?? t.ntips;
+
+  let covDescribed = t.coverage_pct != null
+    ? `${t.coverage_pct.toFixed(1)}% <span class="src">of described</span>`
+    : "—";
+  if (effectiveCount !== t.ntips && t.described_species) {
+    covDescribed = `${t.coverage_pct.toFixed(1)}% <span class="src">at species level (${fmt.format(effectiveCount)} / ${fmt.format(t.described_species)} described)</span>`;
   }
+
   let covEstimated = null;
-  if (est && est.estimated_total && t.ntips) {
-    const main = (100 * t.ntips / est.estimated_total).toFixed(1);
-    const lo = est.estimated_high ? (100 * t.ntips / est.estimated_high).toFixed(1) : null;
-    const hi = est.estimated_low ? (100 * t.ntips / est.estimated_low).toFixed(1) : null;
+  if (est && est.estimated_total && effectiveCount) {
+    const main = (100 * effectiveCount / est.estimated_total).toFixed(1);
+    const lo = est.estimated_high ? (100 * effectiveCount / est.estimated_high).toFixed(1) : null;
+    const hi = est.estimated_low ? (100 * effectiveCount / est.estimated_low).toFixed(1) : null;
     const subnote = t.is_partition_anchor
       ? `<span class="src">of ${t.partition_group || "partition"} estimate</span>`
       : `<span class="src">of ${t.partition_group} estimate &mdash; this tree is a sub-clade of ${t.partition_group}, so the % refers to the whole partition</span>`;

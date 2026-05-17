@@ -484,37 +484,53 @@ def main() -> None:
     # described_species and coverage_pct attached from its provenance row.
     coverage_rows = []
     for t in trees:
-        tips = t["ntips"]
+        # When the tree has an atlas-derived species-level override (e.g.,
+        # turtles' 287-tip pruning), use the override's species count as the
+        # numerator for both 'described' and 'estimated' coverage. The CSV
+        # coverage_pct came from the original multi-individual tip count and
+        # is misleading (turtles shows 100% tip-level but only 79.7% species-level).
         described = t["described_species"]
-        cov = t["coverage_pct"]
-        if described and cov is not None:
-            row_out = {
-                "filename": t["filename"],
-                "group": t["group"],
-                "provenance_group": t["provenance_group"],
-                "partition_group": t["partition_group"],
-                "category": t.get("category"),
-                "study": t["study"],
-                "year": t["year"],
-                "tips": tips,
-                "described_species": described,
-                "described_source": t["described_source"],
-                "coverage_pct": cov,
-                "dated": t["dated"],
-                "is_partition_anchor": t["is_partition_anchor"],
-                "is_partition_canonical": t["is_partition_canonical"],
-            }
-            est = t["estimate"]
-            if est and est.get("estimated_total"):
-                row_out["estimated_total"] = est["estimated_total"]
-                row_out["estimated_low"] = est["estimated_low"]
-                row_out["estimated_high"] = est["estimated_high"]
-                row_out["estimate_source"] = est["estimate_source"]
-                row_out["estimate_confidence"] = est["estimate_confidence"]
-                row_out["coverage_pct_estimated"] = _est_pct(tips, est["estimated_total"])
-                row_out["coverage_pct_estimated_low"] = _est_pct(tips, est["estimated_high"])  # high denom = low cov
-                row_out["coverage_pct_estimated_high"] = _est_pct(tips, est["estimated_low"])  # low denom = high cov
-            coverage_rows.append(row_out)
+        if not described:
+            continue
+        tx_ov = t.get("tip_taxonomy_override") or {}
+        tx = t.get("tip_taxonomy") or {}
+        effective_count = (tx_ov.get("unique_species")
+                           or tx.get("unique_species")
+                           or t["ntips"])
+        if effective_count == t["ntips"] and t["coverage_pct"] is not None:
+            # No taxonomic correction needed — keep CSV's pre-computed coverage.
+            cov = t["coverage_pct"]
+        else:
+            # Recompute from species-level effective count.
+            cov = round(100 * effective_count / described, 1)
+        row_out = {
+            "filename": t["filename"],
+            "group": t["group"],
+            "provenance_group": t["provenance_group"],
+            "partition_group": t["partition_group"],
+            "category": t.get("category"),
+            "study": t["study"],
+            "year": t["year"],
+            "tips": effective_count,            # what users see as the species/tip count
+            "raw_tips": t["ntips"],             # CSV-recorded raw tip positions
+            "described_species": described,
+            "described_source": t["described_source"],
+            "coverage_pct": cov,
+            "dated": t["dated"],
+            "is_partition_anchor": t["is_partition_anchor"],
+            "is_partition_canonical": t["is_partition_canonical"],
+        }
+        est = t["estimate"]
+        if est and est.get("estimated_total"):
+            row_out["estimated_total"] = est["estimated_total"]
+            row_out["estimated_low"] = est["estimated_low"]
+            row_out["estimated_high"] = est["estimated_high"]
+            row_out["estimate_source"] = est["estimate_source"]
+            row_out["estimate_confidence"] = est["estimate_confidence"]
+            row_out["coverage_pct_estimated"] = _est_pct(effective_count, est["estimated_total"])
+            row_out["coverage_pct_estimated_low"] = _est_pct(effective_count, est["estimated_high"])  # high denom = low cov
+            row_out["coverage_pct_estimated_high"] = _est_pct(effective_count, est["estimated_low"])  # low denom = high cov
+        coverage_rows.append(row_out)
     coverage_rows.sort(key=lambda r: -r["coverage_pct"])
 
     # Datasets per partition — sourced from shipped trees, so every entry maps
