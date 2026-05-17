@@ -230,31 +230,60 @@ def tip_taxonomy_for_override(override_path: Path, names: dict[str, str]) -> dic
 def tip_taxonomy_from_names(names: dict[str, str]) -> dict:
     """Break a tree's tip names down by taxonomic level.
 
-    Standardized names follow `Genus_species[_subspecies_or_code]` (with
-    the third token lowercased+alphabetic when it's a subspecies epithet
-    and uppercase/coded when it's a locality/specimen marker). This lets
-    the web app distinguish species-level coverage from raw tip count —
-    important for trees like turtles where 329 tip IDs collapse into 287
-    species.
+    Tries to parse `Genus_species[_subspecies_or_code]` (Latin binomial)
+    naming, where Genus is capitalized + lowercase-tail and species is
+    all-lowercase. This applies cleanly to vertebrates, most plants, fungi,
+    and many invertebrate trees.
+
+    BUT many partitions use non-binomial labels:
+      - bacteria/archaea use GTDB assembly IDs (`GB_GCA_024640485.1`)
+      - bryophytes use voucher-prefixed names (`UFG_393202_P031.Buxbaumia_aphylla`)
+      - crustaceans use single-word names (`Sympagurus`)
+      - diatoms use concatenated genus+species (`Pseudo-nitzschiaheimii`)
+
+    For non-binomial trees, treating each unique ID as a distinct species
+    is the safe interpretation (each tip is a distinct sequence/specimen).
+    `binomial_format` records which case we hit.
     """
     species: set[str] = set()
     subspecies_tips = 0
+    binomial_count = 0
+    n = 0
     for name in names.values():
         if not name:
             continue
+        n += 1
         parts = name.split("_")
-        if len(parts) < 2:
-            continue
-        species.add("_".join(parts[:2]))
-        if len(parts) > 2:
-            third = parts[2]
-            if third and third[0].islower() and third.isalpha():
-                subspecies_tips += 1
+        if len(parts) >= 2:
+            first, second = parts[0], parts[1]
+            is_binomial = (
+                first[:1].isupper() and first[1:].islower() and len(first) >= 2
+                and second[:1].islower()
+                and second.replace(".", "").replace("-", "").isalpha()
+            )
+            if is_binomial:
+                binomial_count += 1
+                species.add(f"{first}_{second}")
+                if len(parts) > 2:
+                    third = parts[2]
+                    if third and third[0].islower() and third.isalpha():
+                        subspecies_tips += 1
+                continue
+        # Not binomial — treat the full name as a unique species label.
+        species.add(name)
+    binomial_format = n > 0 and binomial_count > n * 0.5
+    if binomial_format:
+        unique_species = len(species)
+    else:
+        # Don't trust the parsing — fall back to unique-IDs.
+        unique_species = len(names)
+        subspecies_tips = 0
     return {
         "unique_ids": len(names),
-        "unique_species": len(species),
+        "unique_species": unique_species,
         "subspecies_tips": subspecies_tips,
-        "redundancy": len(names) - len(species),
+        "redundancy": len(names) - unique_species,
+        "binomial_format": binomial_format,
     }
 
 
