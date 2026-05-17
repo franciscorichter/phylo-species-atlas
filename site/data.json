@@ -1,13 +1,16 @@
 {
-  "schema_version": 3,
-  "generated_from": "standardized/metadata.csv + data_provenance.csv + data_estimates.csv + data_sources.csv",
+  "schema_version": 4,
+  "generated_from": "standardized/metadata.csv + data_provenance.csv + data_estimates.csv + data_sources.csv + site/data/partitions/*/info.yaml",
   "summary": {
     "n_trees": 264,
     "n_dated": 246,
     "n_undated": 18,
     "n_groups": 264,
     "n_datasets": 49,
-    "total_tips": 702787
+    "total_tips": 702787,
+    "n_audited": 2,
+    "n_audits_in_progress": 2,
+    "n_audits_verified": 0
   },
   "trees": [
     {
@@ -9470,7 +9473,15 @@
       "estimate_confidence": "High",
       "coverage_pct_estimated": 100.0,
       "coverage_pct_estimated_low": 100.0,
-      "coverage_pct_estimated_high": 100.0
+      "coverage_pct_estimated_high": 100.0,
+      "estimate_source_corrected": {
+        "key": "TTWG 2025",
+        "doi": "10.3854/crm.10.checklist.atlas.v10.2025",
+        "year": 2025,
+        "url": "https://iucn-tftsg.org/checklist/",
+        "note": "Live successor is the IUCN-TFTSG Turtles of the World checklist; the\npaper-side citation (v9/2021) had a broken DOI and was replaced here by\nthe v10/2025 edition (species count 360 → 364). The 4-species delta is\nnet taxonomic change since 2021.\n"
+      },
+      "estimate_source_paper_doi_status": "broken"
     },
     {
       "filename": "parrots.nwk",
@@ -14109,5 +14120,273 @@
       },
       "estimate_confidence": "Medium"
     }
-  ]
+  ],
+  "audits": {
+    "Mammals": {
+      "partition": "Mammals",
+      "slug": "mammals",
+      "category": "Vertebrates",
+      "estimate": {
+        "described": 6736,
+        "low": 6736,
+        "total": 7500,
+        "high": 7500,
+        "confidence": "High",
+        "source": {
+          "key": "Burgin 2018",
+          "doi": "10.1093/jmammal/gyx147",
+          "pdf": "papers/estimate.pdf",
+          "note": "Live successor is the Mammal Diversity Database (mammaldiversity.org);\nthe published-paper citation is Burgin 2018.\n"
+        }
+      },
+      "tree": {
+        "file": "tree.nwk",
+        "ntips": 5912,
+        "dated": true,
+        "source": {
+          "key": "Upham 2019",
+          "study": "Upham NS, Esselstyn JA, Jetz W (2019)",
+          "doi": "10.1371/journal.pbio.3000494",
+          "pdf": "papers/tree.pdf"
+        },
+        "methods": {
+          "inference": "bayesian",
+          "software": [
+            "MrBayes 3.2.6",
+            "RAxML 8.2.3",
+            "PartitionFinder 1.1.1"
+          ],
+          "data_type": "supermatrix",
+          "n_loci": 31,
+          "n_genes": 31,
+          "total_bp": 39099,
+          "substitution_model": "GTR+G, nine-partition",
+          "dating_method": "Backbone-and-patch; NDexp (node-dated, exponential priors); also FBD published",
+          "fossil_calibrations": null,
+          "support_metric": "posterior_probability",
+          "support_typical": "Most nodes PP>0.95; explicit weak placements include Atlantogenata root (≈0.53) and Myzopodidae bats.",
+          "divergence_ci_available": true,
+          "divergence_ci_note": "95% HPD on every internal node; 10,000-tree posterior credible set published (atlas ships MCC consensus only).",
+          "posterior_n": 10000
+        }
+      },
+      "audit": {
+        "file": "../../../audits/partitions/mammals.md",
+        "status": "in_progress",
+        "last_audited": "2026-05-17"
+      },
+      "sub_phylos": [
+        {
+          "slug": "primates"
+        },
+        {
+          "slug": "carnivora"
+        },
+        {
+          "slug": "cetaceans"
+        }
+      ],
+      "_sub_phylos_loaded": [
+        {
+          "slug": "carnivora",
+          "taxon": "Carnivora",
+          "parent": "mammals",
+          "parent_category": "Vertebrates",
+          "tree": {
+            "file": "tree.nwk",
+            "ntips": 294,
+            "dated": true,
+            "source": {
+              "key": "Nyakatura 2012",
+              "study": "Nyakatura K, Bininda-Emonds ORP (2012)",
+              "doi": "10.1186/1741-7007-10-12",
+              "pdf": "papers/tree.pdf"
+            },
+            "methods": {
+              "inference": "supertree",
+              "software": [
+                "Matrix Representation with Parsimony (MRP); custom Perl pipeline"
+              ],
+              "data_type": "supertree",
+              "n_loci": 74,
+              "n_genes": null,
+              "total_bp": 45000,
+              "substitution_model": null,
+              "dating_method": "Supertree from 188 source trees combined with 74-gene supermatrix calibration",
+              "fossil_calibrations": null,
+              "support_metric": "bootstrap",
+              "support_typical": null,
+              "divergence_ci_available": false,
+              "divergence_ci_note": "Single dated tree; no CIs reported",
+              "note": "Supertree includes outgroups (Homo, Rattus, Mus) which are removed during atlas standardization."
+            }
+          },
+          "species_count": {
+            "source": "provenance (data_provenance.csv)",
+            "described": 294,
+            "coverage_pct_described": 100.0
+          }
+        },
+        {
+          "slug": "cetaceans",
+          "taxon": "Cetacea",
+          "parent": "mammals",
+          "parent_category": "Vertebrates",
+          "tree": {
+            "file": "tree.nwk",
+            "ntips": 85,
+            "dated": true,
+            "source": {
+              "key": "McGowen 2020",
+              "study": "McGowen MR, Tsagkogeorga G, Álvarez-Carretero S, dos Reis M et al. (2020)",
+              "doi": "10.1093/sysbio/syz068",
+              "pdf": "papers/tree.pdf"
+            },
+            "methods": {
+              "inference": "bayesian",
+              "software": [
+                "MCMCTree",
+                "BEAST (target-capture analyses)"
+              ],
+              "data_type": "UCE",
+              "n_loci": null,
+              "n_genes": null,
+              "substitution_model": null,
+              "dating_method": "Target sequence capture; Bayesian molecular clock dating",
+              "fossil_calibrations": null,
+              "support_metric": "posterior_probability",
+              "support_typical": null,
+              "divergence_ci_available": true,
+              "divergence_ci_note": "95% HPD intervals reported."
+            }
+          },
+          "species_count": {
+            "source": "WoRMS",
+            "described": 92,
+            "coverage_pct_described": 92.4
+          }
+        },
+        {
+          "slug": "primates",
+          "taxon": "Primates",
+          "parent": "mammals",
+          "parent_category": "Vertebrates",
+          "tree": {
+            "file": "tree.nwk",
+            "ntips": 301,
+            "dated": true,
+            "source": {
+              "key": "Arnold 2010",
+              "study": "Arnold C, Matthews LJ, Nunn CL (2010)",
+              "doi": "10.1002/evan.20251",
+              "pdf": "papers/tree.pdf"
+            },
+            "methods": {
+              "inference": "bayesian",
+              "software": [
+                "Bayesian inference (paper does not specify suite)"
+              ],
+              "data_type": "multi-locus",
+              "n_loci": null,
+              "n_genes": null,
+              "substitution_model": null,
+              "dating_method": "Bayesian relaxed clock; calibrations from Springer et al.",
+              "support_metric": "posterior_probability",
+              "support_typical": null,
+              "divergence_ci_available": true,
+              "divergence_ci_note": "100-tree posterior available via 10kTrees download portal.",
+              "posterior_n": 100,
+              "note": "Methods block is a placeholder — 10kTrees v3 dataset documentation in Evolutionary Anthropology covers it; needs a detailed read."
+            }
+          },
+          "species_count": {
+            "source": "IUCN Red List 2025",
+            "described": 522,
+            "coverage_pct_described": 57.7
+          }
+        }
+      ]
+    },
+    "Turtles": {
+      "partition": "Turtles",
+      "slug": "turtles",
+      "category": "Vertebrates",
+      "estimate": {
+        "described": 360,
+        "low": 360,
+        "total": 360,
+        "high": 370,
+        "confidence": "High",
+        "source": {
+          "paper_key": "TTWG 2021",
+          "paper_doi": "10.3854/crm.8.000c.checklist.atlas.v9.2021",
+          "paper_doi_status": "broken",
+          "live_key": "TTWG 2025",
+          "live_doi": "10.3854/crm.10.checklist.atlas.v10.2025",
+          "live_year": 2025,
+          "live_cited_value": 364,
+          "pdf": "papers/estimate.pdf",
+          "url": "https://iucn-tftsg.org/checklist/",
+          "note": "Live successor is the IUCN-TFTSG Turtles of the World checklist; the\npaper-side citation (v9/2021) had a broken DOI and was replaced here by\nthe v10/2025 edition (species count 360 → 364). The 4-species delta is\nnet taxonomic change since 2021.\n"
+        }
+      },
+      "tree": {
+        "file": "tree.nwk",
+        "ntips": 593,
+        "unique_ids": 329,
+        "species_represented": 279,
+        "coverage_pct_described": 80,
+        "dated": true,
+        "multiple_individuals_per_species": true,
+        "source": {
+          "key": "Thomson 2021",
+          "study": "Thomson RC, Spinks PQ, Shaffer HB (2021)",
+          "doi": "10.1073/pnas.2012215118",
+          "pdf": "papers/tree.pdf"
+        },
+        "methods": {
+          "inference": "bayesian",
+          "software": [
+            "MrBayes 3.2",
+            "BEAST 1.8.2"
+          ],
+          "data_type": "multi-locus",
+          "n_loci": 15,
+          "n_genes": 15,
+          "substitution_model": "HKY per partition (BEAST divergence-time run)",
+          "dating_method": "Uncorrelated lognormal relaxed clock; birth-death tree prior",
+          "fossil_calibrations": 22,
+          "support_metric": "posterior_probability",
+          "support_typical": "PP=1 on deep splits; all 14 families monophyletic; 98% of genera represented.",
+          "divergence_ci_available": true,
+          "divergence_ci_note": "95% HPD on internal nodes; 100-tree posterior credible set (atlas ships MCC consensus only).",
+          "posterior_n": 100
+        }
+      },
+      "caveats": [
+        {
+          "severity": "high",
+          "summary": "Estimate-source DOI in the published-paper data is broken.",
+          "detail": "data_sources.csv cites TTWG 2021 (10.3854/crm.8.000c.checklist.atlas.v9.2021) which returns 404. Live replacement is TTWG 2025."
+        },
+        {
+          "severity": "medium",
+          "summary": "Loci/species count in data_provenance.csv methods_brief differs from the paper.",
+          "detail": "Provenance says '13 loci for 294 species'. Paper reports 15 loci, 279 of 348 living species. Needs reconciliation with the Dryad release used to build the standardized tree."
+        },
+        {
+          "severity": "medium",
+          "summary": "Multiple individuals per species in the tree.",
+          "detail": "593 tip positions, 329 unique numeric IDs, ~279 species. Some tips are subspecies (e.g. Terrapene_ornata_luteola) or locality-coded specimens (e.g. Kinosternon_dunni_K38)."
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/turtles.md",
+        "status": "in_progress",
+        "last_audited": "2026-05-17"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": []
+    }
+  }
 }

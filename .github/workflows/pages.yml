@@ -6,6 +6,7 @@ on:
     paths:
       - "site/**"
       - "standardized/**"
+      - "audits/**"
       - "data_provenance.csv"
       - "data_estimates.csv"
       - "data_sources.csv"
@@ -30,6 +31,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
+      - name: Install Python deps
+        run: pip install pyyaml
 
       - name: Build data.json
         run: python site/build.py

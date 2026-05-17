@@ -527,6 +527,7 @@ async function selectTree(filename, scrollIntoView) {
     .join("");
 
   renderDatasetChooser(t);
+  renderAuditPanel(t);
 
   const dl = document.getElementById("download-newick");
   dl.href = TREES_BASE + filename;
@@ -535,6 +536,106 @@ async function selectTree(filename, scrollIntoView) {
   renderRSnippet(t);
 
   await loadAndRenderTree(t);
+}
+
+// Render the audit findings panel for the partition the selected tree belongs
+// to. Pulls from STATE.data.audits[partition] which is populated from
+// site/data/partitions/<slug>/info.yaml at build time.
+function renderAuditPanel(t) {
+  const host = document.getElementById("audit-panel");
+  if (!host) return;
+  const audits = STATE.data.audits || {};
+  const partition = t.partition_group;
+  const audit = partition && audits[partition];
+  if (!audit) {
+    host.hidden = true;
+    host.innerHTML = "";
+    return;
+  }
+  host.hidden = false;
+  const status = (audit.audit && audit.audit.status) || "stub";
+  const lastAudited = audit.audit && audit.audit.last_audited;
+  const caveats = audit.caveats || [];
+  const methods = (audit.tree && audit.tree.methods) || null;
+  const estSrc = (audit.estimate && audit.estimate.source) || {};
+
+  // Estimate-source surface: if the paper-side DOI is broken, strike it through
+  // and show the live replacement prominently.
+  let estSrcHTML = "";
+  if (estSrc.paper_doi_status === "broken" && estSrc.live_doi) {
+    estSrcHTML = `
+      <div class="audit-correction">
+        <strong>Estimate source DOI was broken</strong> and has been replaced for the web display.
+        <div class="audit-doi-pair">
+          <span class="doi-broken"><span class="src">paper cites:</span>
+            <a href="https://doi.org/${estSrc.paper_doi}" target="_blank" rel="noopener">${estSrc.paper_key} · ${estSrc.paper_doi}</a>
+            <span class="badge-broken">404</span>
+          </span>
+          <span class="doi-live"><span class="src">live:</span>
+            <a href="https://doi.org/${estSrc.live_doi}" target="_blank" rel="noopener">${estSrc.live_key || "live"} · ${estSrc.live_doi}</a>
+            ${estSrc.live_cited_value ? `<span class="src"> · ${fmt.format(estSrc.live_cited_value)} species</span>` : ""}
+          </span>
+        </div>
+        ${estSrc.note ? `<p class="audit-note">${escapeHTML(estSrc.note).replace(/\n/g, "<br>")}</p>` : ""}
+      </div>`;
+  }
+
+  // Caveats list.
+  let caveatsHTML = "";
+  if (caveats.length) {
+    caveatsHTML = `
+      <details class="audit-caveats" open>
+        <summary><strong>${caveats.length} caveat${caveats.length === 1 ? "" : "s"} on this partition</strong></summary>
+        <ul>${caveats.map(c => `
+          <li class="cav cav-${c.severity || "low"}">
+            <span class="cav-sev">${(c.severity || "low").toUpperCase()}</span>
+            <span class="cav-body">
+              <strong>${escapeHTML(c.summary || "")}</strong>
+              ${c.detail ? `<div class="cav-detail">${escapeHTML(c.detail)}</div>` : ""}
+            </span>
+          </li>`).join("")}</ul>
+      </details>`;
+  }
+
+  // Methods block — only show if audit's tree.methods exists AND this tree is
+  // the canonical partition tree (sub-clades have their own methods).
+  let methodsHTML = "";
+  if (methods && t.is_partition_canonical) {
+    const m = methods;
+    const rows = [
+      ["Inference", m.inference],
+      ["Software", Array.isArray(m.software) ? m.software.join(", ") : m.software],
+      ["Data", m.data_type],
+      ["Loci / genes", m.n_loci || m.n_genes],
+      ["Total bp", m.total_bp ? fmt.format(m.total_bp) : null],
+      ["Substitution model", m.substitution_model],
+      ["Dating method", m.dating_method],
+      ["Fossil calibrations", m.fossil_calibrations],
+      ["Support metric", m.support_metric],
+      ["Support summary", m.support_typical],
+      ["Divergence CIs", m.divergence_ci_available ? (m.divergence_ci_note || "yes") : "no"],
+      ["Posterior trees", m.posterior_n ? fmt.format(m.posterior_n) : null],
+    ].filter(([_, v]) => v != null && v !== "");
+    methodsHTML = `
+      <details class="audit-methods">
+        <summary><strong>Methods & uncertainty (from audit)</strong></summary>
+        <dl>${rows.map(([k, v]) => `<dt>${k}</dt><dd>${escapeHTML(String(v))}</dd>`).join("")}</dl>
+      </details>`;
+  }
+
+  host.innerHTML = `
+    <div class="audit-header">
+      <span class="audit-badge audit-${status}">${status.replace(/_/g, " ")}</span>
+      <span class="src">audit · last reviewed ${lastAudited || "—"}</span>
+    </div>
+    ${estSrcHTML}
+    ${caveatsHTML}
+    ${methodsHTML}
+  `;
+}
+
+function escapeHTML(s) {
+  return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
 }
 
 function renderDatasetChooser(t) {

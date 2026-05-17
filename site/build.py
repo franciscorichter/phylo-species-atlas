@@ -20,7 +20,14 @@ ESTIMATES = ROOT / "data_estimates.csv"
 SOURCES = ROOT / "data_sources.csv"
 DICTIONARY = STD / "dictionary.csv"
 NAMES_DIR = STD / "names"
+SITE_DATA = Path(__file__).resolve().parent / "data" / "partitions"  # web-data overrides
 OUT = Path(__file__).resolve().parent / "data.json"
+
+try:
+    import yaml  # type: ignore
+    HAS_YAML = True
+except ImportError:
+    HAS_YAML = False
 
 # Map provenance group (dataset-level slug) → partition group in data_estimates.csv
 # (the user-facing Figure 1 category). Sub-clade datasets inherit their parent's
@@ -75,6 +82,55 @@ TIP_RE = re.compile(r"[(,]\s*(\d+|[A-Za-z_][\w.]*)")
 # end at ':' or ',' or ')'. This is exact for the standardized trees (all tips
 # are integer IDs from standardized/dictionary.csv).
 TIP_ID_RE = re.compile(r"([(,])(-?\d+)(?=[:,)])")
+
+
+def _json_default(o):
+    """JSON encoder hook for types PyYAML produces (date, datetime)."""
+    import datetime
+    if isinstance(o, (datetime.date, datetime.datetime)):
+        return o.isoformat()
+    raise TypeError(f"Object of type {o.__class__.__name__} is not JSON serializable")
+
+
+def load_audit_overrides() -> dict[str, dict]:
+    """Read every site/data/partitions/<slug>/info.yaml and return a dict
+    keyed by the `partition:` field. These records carry verified-audit
+    facts (methods block, caveats, corrected estimate source) that the web
+    app should prefer over the paper-side CSV values.
+
+    Returns an empty dict when PyYAML is not installed — the build still
+    works, just without the audit layer.
+    """
+    if not HAS_YAML or not SITE_DATA.exists():
+        if not HAS_YAML:
+            print("PyYAML not installed — skipping audit overrides", file=sys.stderr)
+        return {}
+    out: dict[str, dict] = {}
+    for info_path in sorted(SITE_DATA.glob("*/info.yaml")):
+        try:
+            data = yaml.safe_load(info_path.read_text(encoding="utf-8"))
+        except yaml.YAMLError as e:
+            print(f"WARN: skipping {info_path}: {e}", file=sys.stderr)
+            continue
+        if not isinstance(data, dict):
+            continue
+        partition = data.get("partition")
+        if not partition:
+            continue
+        # Collect sub-phylo info.yaml files too, attach as a list.
+        sub_dir = info_path.parent / "sub-phylos"
+        subs = []
+        if sub_dir.exists():
+            for sub_info in sorted(sub_dir.glob("*/info.yaml")):
+                try:
+                    sub_data = yaml.safe_load(sub_info.read_text(encoding="utf-8"))
+                    if isinstance(sub_data, dict):
+                        subs.append(sub_data)
+                except yaml.YAMLError:
+                    continue
+        data["_sub_phylos_loaded"] = subs
+        out[partition] = data
+    return out
 
 
 def build_name_shards(metadata: list[dict]) -> int:
@@ -375,17 +431,50 @@ def main() -> None:
         "total_tips": sum((r["ntips"] or 0) for r in trees),
     }
 
+    # Load per-partition audit overrides from site/data/partitions/<slug>/info.yaml.
+    # Each loaded record contributes:
+    #   - methods + caveats + audit linkage → audits[partition_name]
+    #   - corrected estimate source when the paper-cited DOI is broken
+    audits = load_audit_overrides()
+    summary["n_audited"] = len(audits)
+    summary["n_audits_in_progress"] = sum(
+        1 for a in audits.values()
+        if (a.get("audit") or {}).get("status") == "in_progress"
+    )
+    summary["n_audits_verified"] = sum(
+        1 for a in audits.values()
+        if (a.get("audit") or {}).get("status") == "verified"
+    )
+
+    # Apply broken-DOI substitution on coverage rows when the audit replaces
+    # the estimate source.
+    for row in coverage_rows:
+        partition = row.get("partition_group")
+        if not partition or partition not in audits:
+            continue
+        est = (audits[partition].get("estimate") or {}).get("source") or {}
+        if est.get("paper_doi_status") == "broken" and est.get("live_doi"):
+            row["estimate_source_corrected"] = {
+                "key": est.get("live_key"),
+                "doi": est.get("live_doi"),
+                "year": est.get("live_year"),
+                "url": est.get("url"),
+                "note": est.get("note"),
+            }
+            row["estimate_source_paper_doi_status"] = "broken"
+
     bundle = {
-        "schema_version": 3,
-        "generated_from": "standardized/metadata.csv + data_provenance.csv + data_estimates.csv + data_sources.csv",
+        "schema_version": 4,
+        "generated_from": "standardized/metadata.csv + data_provenance.csv + data_estimates.csv + data_sources.csv + site/data/partitions/*/info.yaml",
         "summary": summary,
         "trees": trees,
         "coverage": coverage_rows,
         "datasets_by_partition": dict(datasets_by_partition),
         "unrepresented": unrepresented,
+        "audits": audits,
     }
 
-    OUT.write_text(json.dumps(bundle, indent=2, ensure_ascii=False))
+    OUT.write_text(json.dumps(bundle, indent=2, ensure_ascii=False, default=_json_default))
     size_kb = OUT.stat().st_size / 1024
     print(f"wrote {OUT.name}: {len(trees)} trees, {len(coverage_rows)} coverage rows, "
           f"{len(unrepresented)} unrepresented lineages, {size_kb:.1f} KB", file=sys.stderr)
