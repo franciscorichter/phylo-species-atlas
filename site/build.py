@@ -133,8 +133,8 @@ def load_audit_overrides() -> dict[str, dict]:
     return out
 
 
-def compute_tip_taxonomy(filename: str) -> dict | None:
-    """Read a name shard and break the tips down by taxonomic level.
+def tip_taxonomy_from_names(names: dict[str, str]) -> dict:
+    """Break a tree's tip names down by taxonomic level.
 
     Standardized names follow `Genus_species[_subspecies_or_code]` (with
     the third token lowercased+alphabetic when it's a subspecies epithet
@@ -143,13 +143,6 @@ def compute_tip_taxonomy(filename: str) -> dict | None:
     important for trees like turtles where 329 tip IDs collapse into 287
     species.
     """
-    shard_path = NAMES_DIR / f"{filename}.json"
-    if not shard_path.exists():
-        return None
-    try:
-        names = json.loads(shard_path.read_text(encoding="utf-8"))
-    except (json.JSONDecodeError, OSError):
-        return None
     species: set[str] = set()
     subspecies_tips = 0
     for name in names.values():
@@ -171,16 +164,22 @@ def compute_tip_taxonomy(filename: str) -> dict | None:
     }
 
 
-def build_name_shards(metadata: list[dict]) -> int:
+def build_name_shards(metadata: list[dict]) -> tuple[int, dict[str, dict[str, str]]]:
     """Generate one `<filename>.json` per tree with {id: name} for every tip
     that tree uses. Stored in standardized/names/, loaded on demand by the
     web viewer to populate hover tooltips with species/specimen names.
 
-    Returns total bytes written (for the summary line).
+    Also returns the in-memory {filename: {id: name}} mapping so callers
+    (compute_tip_taxonomy) can derive per-tree taxonomy stats without
+    re-reading from disk — this matters on CI runs where the shards don't
+    exist yet when the main build loop runs.
+
+    Returns (total_bytes_written, names_by_filename).
     """
+    names_by_filename: dict[str, dict[str, str]] = {}
     if not DICTIONARY.exists():
         print("dictionary.csv missing — skipping name shards", file=sys.stderr)
-        return 0
+        return 0, names_by_filename
     NAMES_DIR.mkdir(exist_ok=True)
     print("loading dictionary…", file=sys.stderr)
     name_by_id: dict[str, str] = {}
@@ -197,10 +196,11 @@ def build_name_shards(metadata: list[dict]) -> int:
         text = tree_path.read_text(encoding="utf-8", errors="ignore")
         ids = {m.group(2) for m in TIP_ID_RE.finditer(text)}
         shard = {i: name_by_id[i] for i in ids if i in name_by_id}
+        names_by_filename[filename] = shard
         out_path = NAMES_DIR / f"{filename}.json"
         out_path.write_text(json.dumps(shard, separators=(",", ":"), ensure_ascii=False))
         total += out_path.stat().st_size
-    return total
+    return total, names_by_filename
 
 
 def count_tips(newick_path: Path) -> int:
@@ -282,6 +282,12 @@ def main() -> None:
             "category": est.get("category") or None,
         }
 
+    # Build name shards FIRST so the in-memory names map is available
+    # when the main loop attaches tip_taxonomy. Otherwise on a fresh CI
+    # checkout (no standardized/names/ on disk yet) every tree gets
+    # tip_taxonomy = None and the web app misses species-level coverage.
+    shard_bytes, names_by_filename = build_name_shards(metadata)
+
     trees = []
     by_group_aggregate = defaultdict(lambda: {"trees": 0, "tips": 0})
     dated_count = 0
@@ -342,7 +348,8 @@ def main() -> None:
             "estimate": est,
             "described_source_info": source_info(prov.get("species_count_source")),
             "estimate_source_info": source_info(est.get("estimate_source")) if est else None,
-            "tip_taxonomy": compute_tip_taxonomy(filename),
+            "tip_taxonomy": (tip_taxonomy_from_names(names_by_filename[filename])
+                             if filename in names_by_filename else None),
         })
 
         agg = by_group_aggregate[group]
@@ -518,9 +525,9 @@ def main() -> None:
     print(f"wrote {OUT.name}: {len(trees)} trees, {len(coverage_rows)} coverage rows, "
           f"{len(unrepresented)} unrepresented lineages, {size_kb:.1f} KB", file=sys.stderr)
 
-    shard_bytes = build_name_shards(metadata)
+    # Name shards were already built (and counted) at the top of main().
     if shard_bytes:
-        print(f"wrote name shards: {len(metadata)} files, {shard_bytes/1024/1024:.1f} MB total",
+        print(f"wrote name shards: {len(names_by_filename)} files, {shard_bytes/1024/1024:.1f} MB total",
               file=sys.stderr)
 
 
