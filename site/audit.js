@@ -135,6 +135,17 @@ function renderPartition(partition, audit) {
       </section>`;
   }
 
+  // Deferred reason: why this partition has no shipped tree (from canonical_tree.reason).
+  let deferredHTML = "";
+  const ct = audit.canonical_tree || {};
+  if (auditMeta.status === "deferred" && ct.reason) {
+    deferredHTML = `
+      <section class="aud-block aud-deferred">
+        <h3>No shipped canonical tree</h3>
+        <p class="aud-deferred-reason">${escapeHTML(ct.reason)}</p>
+      </section>`;
+  }
+
   let doiFixHTML = "";
   if (estSrc.paper_doi_status === "broken" && estSrc.live_doi) {
     doiFixHTML = `
@@ -224,6 +235,7 @@ function renderPartition(partition, audit) {
           <span class="muted">last reviewed ${escapeHTML(lastAudited)}</span>
         </div>
       </header>
+      ${deferredHTML}
       ${intervalHTML}
       ${doiFixHTML}
       ${resHTML}

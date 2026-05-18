@@ -1035,6 +1035,19 @@ main {
 .cand-paper { margin: 2px 0; font-size: 11.5px; }
 .cand-paper .muted { color: var(--muted); }
 
+.aud-deferred {
+  background: #fafafa;
+  border-left: 3px solid #b0b0b0;
+  padding: 10px 14px;
+  border-radius: 0 4px 4px 0;
+}
+.aud-deferred-reason {
+  margin: 4px 0 0;
+  color: #444;
+  font-size: 12.5px;
+  line-height: 1.55;
+}
+
 /* Interval provenance table on the audit page */
 .ip-cls {
   display: inline-block;
