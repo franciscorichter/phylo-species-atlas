@@ -9,7 +9,6 @@ const STATE = {
   showLabels: false,
   currentNewick: null,
   currentNames: {}, // {id: standardized_name} for the active tree
-  coverageMode: "described", // or "estimated"
   query: "",
   datedOnly: false,
 };
@@ -32,7 +31,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   renderSummary();
   renderCoveragePlot();
-  wireCoverageToggle();
   wireFilters();
   applyFilters();
 });
@@ -77,176 +75,168 @@ const CATEGORY_RANK = Object.fromEntries(CATEGORY_ORDER.map((c, i) => [c, i]));
 function renderCoveragePlot() {
   const allRows = STATE.data.coverage;
   if (!allRows.length) return;
-  const mode = STATE.coverageMode;
-  const estimatedAvailable = (r) => r.coverage_pct_estimated != null;
 
-  // Coverage chart shows one bar per partition — the canonical (largest)
-  // tree. Sub-clade trees (parrots within Birds, primates within Mammals,
-  // etc.) appear only when the user expands the partition in the tree
-  // list on the left. Bars are grouped by macro-category; within each
-  // category, the row order is fixed across both modes (sorted once by
-  // described coverage desc) so toggling described↔estimated only changes
-  // bar lengths, not positions — letting users compare the two readings.
+  // Single chart per partition (canonical tree row). Three visual elements:
+  //   ▸ filled marker at tree-tip count (what the atlas actually ships)
+  //   ▸ open marker at described-species count (what taxonomists have catalogued)
+  //   ▸ a line interval from estimated_low to estimated_high with a marker at
+  //     estimated_total (what diversity studies estimate is really out there)
+  // X-axis is log-scale species counts because the range across partitions
+  // spans 6+ orders of magnitude (60 echinoderm tips to 4 million bacteria).
   const canonical = allRows.filter(r => r.is_partition_canonical);
-  const baseOrder = canonical.slice().sort((a, b) => {
+  const rows = canonical.slice().sort((a, b) => {
     const ra = CATEGORY_RANK[a.category] ?? 99;
     const rb = CATEGORY_RANK[b.category] ?? 99;
     if (ra !== rb) return ra - rb;
-    return (b.coverage_pct ?? 0) - (a.coverage_pct ?? 0);
+    return (b.estimated_total ?? b.described_species ?? 0) - (a.estimated_total ?? a.described_species ?? 0);
   });
-  const rows = mode === "estimated"
-    ? baseOrder.filter(estimatedAvailable)
-    : baseOrder;
 
   const labels = rows.map(r => r.group);
-  const colors = rows.map(r => r.dated ? "#2a6fbf" : "#c97a2a");
 
-  let values, valueText, customdata, hovertemplate, errorBars, xTitle;
+  const intervalClass = (r) => {
+    const ip = r.interval_provenance;
+    return (ip && ip.overall_classification) || "unaudited";
+  };
+  const classLabel = (cls) => ({
+    "paper-published-range": "paper-published range",
+    "partly-heuristic": "partly heuristic (one bound is the described count or atlas-derived)",
+    "fully-heuristic": "heuristic — no true-diversity estimate published",
+    "derived": "derived from described count",
+    "unaudited": "not yet audited for interval provenance",
+  }[cls] || cls);
 
-  if (mode === "estimated") {
-    values = rows.map(r => r.coverage_pct_estimated);
-    valueText = rows.map(r => `${r.coverage_pct_estimated.toFixed(1)}%`);
-    errorBars = {
-      type: "data",
-      symmetric: false,
-      array: rows.map(r => Math.max(0, r.coverage_pct_estimated_high - r.coverage_pct_estimated)),
-      arrayminus: rows.map(r => Math.max(0, r.coverage_pct_estimated - r.coverage_pct_estimated_low)),
-      color: "#999",
-      thickness: 1.2,
-      width: 4,
-    };
-    // Interval provenance, when audited: paper-published-range / partly-heuristic /
-    // fully-heuristic / derived. The chart styles error bars based on this
-    // so readers don't visually equate Stork 2018's evidence-based insect
-    // range with a turtle "described count + 10 guesswork" placeholder.
-    const intervalClass = (r) => {
-      const ip = r.interval_provenance;
-      if (!ip) return "unaudited";
-      return ip.overall_classification || "unaudited";
-    };
-    const classLabel = (cls) => ({
-      "paper-published-range": "paper-published range",
-      "partly-heuristic": "partly heuristic (upper bound is a description-rate projection or atlas-derived)",
-      "fully-heuristic": "heuristic — no true-diversity estimate published",
-      "derived": "derived from described count",
-      "unaudited": "not yet audited for interval provenance",
-    }[cls] || cls);
-
-    // Error-bar styling: keep the bars solid for paper-published, mute them
-    // for heuristic intervals so the eye reads them as less authoritative.
-    const errorColor = (r) => {
-      const cls = intervalClass(r);
-      return (cls === "fully-heuristic" || cls === "partly-heuristic")
-        ? "rgba(180,140,90,0.45)"  // muted amber for heuristic
-        : "#888";                  // standard grey for paper-published
-    };
-    errorBars.color = rows.map(errorColor);
-
-    customdata = rows.map(r => [
-      r.study, r.year || "", r.tips, r.estimated_total, r.estimated_low, r.estimated_high,
-      r.estimate_source || "—", r.estimate_confidence || "—",
-      r.coverage_pct_estimated_low, r.coverage_pct_estimated_high,
-      classLabel(intervalClass(r)),
-    ]);
-    hovertemplate =
-      "<b>%{y}</b><br>" +
-      "Coverage of estimate: %{x:.1f}% " +
-      "<span style='color:#999'>(%{customdata[8]:.1f}–%{customdata[9]:.1f}%)</span><br>" +
-      "Tips: %{customdata[2]:,}<br>" +
-      "Estimated total: %{customdata[3]:,} (range %{customdata[4]:,}–%{customdata[5]:,})<br>" +
-      "<i style='color:#7a7a7a'>Interval: %{customdata[10]}</i><br>" +
-      "Estimate source: %{customdata[6]} · confidence %{customdata[7]}<br>" +
-      "<i>%{customdata[0]}</i> (%{customdata[1]})<extra></extra>";
-    xTitle = "Coverage of estimated true diversity (%) — error bars: solid = paper-published, faded = atlas-heuristic";
-  } else {
-    values = rows.map(r => r.coverage_pct);
-    valueText = rows.map(r => `${r.coverage_pct.toFixed(1)}%`);
-    errorBars = undefined;
-    customdata = rows.map(r => [r.study, r.year || "", r.tips, r.described_species, r.described_source || "—"]);
-    hovertemplate =
-      "<b>%{y}</b><br>" +
-      "Coverage: %{x:.1f}%<br>" +
-      "Tips: %{customdata[2]:,}<br>" +
-      "Described: %{customdata[3]:,} (source: %{customdata[4]})<br>" +
-      "<i>%{customdata[0]}</i> (%{customdata[1]})<extra></extra>";
-    xTitle = "Coverage of described species (%)";
-  }
-
-  const trace = {
-    type: "bar",
-    orientation: "h",
-    x: values,
-    y: labels,
-    marker: { color: colors, line: { width: 0 } },
-    text: valueText,
-    textposition: "outside",
-    textfont: { size: 11, color: "#1a1a1a", family: FONT_STACK },
-    cliponaxis: false,
-    customdata,
-    hovertemplate,
-    ...(errorBars ? { error_x: errorBars } : {}),
+  // Interval line + estimated-total marker. Heuristic ranges get a muted
+  // amber colour so the eye reads them as less authoritative than the
+  // paper-published ones (Stork 2018 insects, Mora 2011 amphibians, etc).
+  const intervalColor = (r) => {
+    const cls = intervalClass(r);
+    return (cls === "fully-heuristic" || cls === "partly-heuristic")
+      ? "rgba(180,140,90,0.55)"
+      : "#5a5a5a";
   };
 
-  // Compute category bands: the first row index of each category, and the
-  // count in that category. These drive the annotations + dividers between
-  // groups so the chart visually echoes the paper's macro grouping.
+  const estimatedTrace = {
+    type: "scatter",
+    mode: "markers",
+    name: "Estimated true diversity",
+    x: rows.map(r => r.estimated_total ?? null),
+    y: labels,
+    marker: {
+      symbol: "circle",
+      size: 9,
+      color: rows.map(intervalColor),
+      line: { color: "#333", width: 0.5 },
+    },
+    error_x: {
+      type: "data",
+      symmetric: false,
+      array: rows.map(r => Math.max(0, (r.estimated_high ?? r.estimated_total ?? 0) - (r.estimated_total ?? 0))),
+      arrayminus: rows.map(r => Math.max(0, (r.estimated_total ?? 0) - (r.estimated_low ?? r.estimated_total ?? 0))),
+      color: rows.map(intervalColor),
+      thickness: 1.5,
+      width: 5,
+    },
+    customdata: rows.map(r => [
+      r.estimated_low, r.estimated_high, r.estimate_source || "—",
+      r.estimate_confidence || "—", classLabel(intervalClass(r)),
+    ]),
+    hovertemplate:
+      "<b>%{y}</b><br>" +
+      "Estimated total: %{x:,} (range %{customdata[0]:,}–%{customdata[1]:,})<br>" +
+      "<i style='color:#7a7a7a'>Interval: %{customdata[4]}</i><br>" +
+      "Source: %{customdata[2]} · confidence %{customdata[3]}<extra></extra>",
+  };
+
+  const describedTrace = {
+    type: "scatter",
+    mode: "markers",
+    name: "Described species",
+    x: rows.map(r => r.described_species ?? null),
+    y: labels,
+    marker: {
+      symbol: "circle-open",
+      size: 11,
+      color: "#1a1a1a",
+      line: { color: "#1a1a1a", width: 1.5 },
+    },
+    customdata: rows.map(r => [r.described_species ?? 0, r.described_source || "—"]),
+    hovertemplate:
+      "<b>%{y}</b><br>" +
+      "Described species: %{x:,}<br>" +
+      "Source: %{customdata[1]}<extra></extra>",
+  };
+
+  const tipsTrace = {
+    type: "scatter",
+    mode: "markers",
+    name: "Tips in shipped tree",
+    x: rows.map(r => r.tips ?? null),
+    y: labels,
+    marker: {
+      symbol: "diamond",
+      size: 10,
+      color: rows.map(r => r.dated ? "#2a6fbf" : "#c97a2a"),
+      line: { color: "#1a1a1a", width: 0.5 },
+    },
+    customdata: rows.map(r => [
+      r.tips ?? 0, r.described_species ?? 0,
+      r.described_species ? (100 * r.tips / r.described_species).toFixed(1) : "—",
+      r.study || "", r.year || "",
+    ]),
+    hovertemplate:
+      "<b>%{y}</b><br>" +
+      "Tips in tree: %{x:,}<br>" +
+      "Coverage: %{customdata[2]}% of described<br>" +
+      "<i>%{customdata[3]}</i> (%{customdata[4]})<extra></extra>",
+  };
+
+  // Category bands → labels in the left gutter + dotted dividers between groups.
   const bands = [];
   for (let i = 0; i < rows.length; i++) {
     const cat = rows[i].category || "Other";
     const last = bands[bands.length - 1];
-    if (!last || last.category !== cat) {
-      bands.push({ category: cat, start: i, end: i });
-    } else {
-      last.end = i;
-    }
+    if (!last || last.category !== cat) bands.push({ category: cat, start: i, end: i });
+    else last.end = i;
   }
-  // Category labels live in the left gutter, anchored to the leftmost edge
-  // of the chart area so they sit to the LEFT of the y-tick labels rather
-  // than over the bars. xshift = -(left margin) pins them flush left.
   const LEFT_MARGIN = 230;
-  const CATEGORY_GUTTER_PX = LEFT_MARGIN - 80; // 80px reserved for tick labels
   const annotations = bands.map(b => {
     const midRow = Math.floor((b.start + b.end) / 2);
     return {
       xref: "paper", yref: "y",
-      x: 0, xanchor: "left",
-      xshift: -LEFT_MARGIN + 6,
+      x: 0, xanchor: "left", xshift: -LEFT_MARGIN + 6,
       y: rows[midRow].group, yanchor: "middle",
       text: `<b>${b.category.toUpperCase()}</b>`,
-      showarrow: false,
-      align: "left",
+      showarrow: false, align: "left",
       font: { family: FONT_STACK, size: 10.5, color: "#7a7a7a" },
     };
   });
-  // Light divider lines between category bands.
   const shapes = bands.slice(1).map(b => ({
     type: "line", xref: "paper", yref: "y",
-    x0: 0, x1: 1,
-    y0: rows[b.start].group, y1: rows[b.start].group,
-    line: { color: "#e4e4e4", width: 1, dash: "dot" },
-    layer: "below",
+    x0: 0, x1: 1, y0: rows[b.start].group, y1: rows[b.start].group,
+    line: { color: "#e4e4e4", width: 1, dash: "dot" }, layer: "below",
   }));
 
-  const chartHeight = Math.max(520, labels.length * 28 + bands.length * 8 + 80);
   const container = document.getElementById("coverage-plot");
-  container.style.height = chartHeight + "px";
+  container.style.height = Math.max(560, labels.length * 28 + bands.length * 8 + 110) + "px";
 
-  // x-axis range: 0–112 normally; expand for estimated mode if upper error bar pokes past it
-  const maxX = mode === "estimated"
-    ? Math.max(112, Math.ceil(Math.max(...rows.map(r => r.coverage_pct_estimated_high)) / 10) * 10 + 5)
-    : 112;
+  // Log-scale x-axis: range from a sensible floor to just above the highest
+  // upper bound across all partitions.
+  const allXVals = rows.flatMap(r => [r.tips, r.described_species, r.estimated_high])
+    .filter(v => v != null && v > 0);
+  const maxX = Math.pow(10, Math.ceil(Math.log10(Math.max(...allXVals))));
+  const minX = 10;
 
   const layout = {
-    margin: { l: LEFT_MARGIN, r: 70, t: 18, b: 52 },
+    margin: { l: LEFT_MARGIN, r: 30, t: 18, b: 64 },
     annotations,
     shapes,
     font: { family: FONT_STACK, size: 12, color: "#1a1a1a" },
     xaxis: {
-      title: { text: xTitle, font: { size: 12, color: "#6b6b6b" }, standoff: 12 },
-      range: [0, maxX],
+      title: { text: "Species count (log scale) — ◇ tips · ◯ described · ● estimated total (with low–high whiskers)", font: { size: 12, color: "#6b6b6b" }, standoff: 14 },
+      type: "log",
+      range: [Math.log10(minX), Math.log10(maxX)],
       gridcolor: "#eee",
       zerolinecolor: "#ddd",
-      ticksuffix: "%",
       tickfont: { size: 11, color: "#6b6b6b" },
       ticks: "outside",
       tickcolor: "#ddd",
@@ -258,20 +248,24 @@ function renderCoveragePlot() {
       ticks: "",
       ticksuffix: "   ",
     },
-    bargap: 0.38,
     paper_bgcolor: "transparent",
     plot_bgcolor: "transparent",
-    showlegend: false,
+    showlegend: true,
+    legend: {
+      orientation: "h", y: 1.04, x: 0, xanchor: "left",
+      font: { size: 11, family: FONT_STACK },
+      bgcolor: "rgba(255,255,255,0)",
+    },
     hoverlabel: {
-      bgcolor: "#fff",
-      bordercolor: "#e5e5e5",
+      bgcolor: "#fff", bordercolor: "#e5e5e5",
       font: { size: 12, family: FONT_STACK, color: "#1a1a1a" },
       align: "left",
     },
   };
 
   Plotly.purge(container);
-  Plotly.newPlot(container, [trace], layout, { displayModeBar: false, responsive: true });
+  Plotly.newPlot(container, [estimatedTrace, describedTrace, tipsTrace], layout,
+                 { displayModeBar: false, responsive: true });
 
   container.on("plotly_click", (ev) => {
     const point = ev.points && ev.points[0];
@@ -281,31 +275,10 @@ function renderCoveragePlot() {
     selectTree(row.filename, true);
   });
 
-  // Update the sub-line copy under the title to match the mode
   const sub = document.getElementById("coverage-sub");
   if (sub) {
-    if (mode === "estimated") {
-      sub.innerHTML = "Each bar is <strong>one published dataset</strong>. Coverage = tips in tree &divide; <strong>estimated true diversity</strong>. Error bars span the low–high estimate range from the cited source.";
-    } else {
-      sub.innerHTML = "Each bar is <strong>one published dataset</strong>. Coverage = tips in tree &divide; <strong>described</strong> species &times; 100. Click a bar to inspect that tree.";
-    }
+    sub.innerHTML = "Each row = one partition. <strong>◇</strong> = tips in the shipped tree (dated <span style='color:#2a6fbf'>■</span> / undated <span style='color:#c97a2a'>■</span>). <strong>◯</strong> = described species (taxonomic catalogue). <strong>●</strong> = estimated true diversity with low–high whiskers; <em>solid</em> = paper-published range, <em>faded amber</em> = atlas-derived heuristic. Click any marker to inspect the partition's tree.";
   }
-}
-
-function wireCoverageToggle() {
-  document.querySelectorAll(".toggle-opt").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const mode = btn.dataset.mode;
-      if (mode === STATE.coverageMode) return;
-      STATE.coverageMode = mode;
-      document.querySelectorAll(".toggle-opt").forEach(b => {
-        const on = b.dataset.mode === mode;
-        b.classList.toggle("active", on);
-        b.setAttribute("aria-pressed", on ? "true" : "false");
-      });
-      renderCoveragePlot();
-    });
-  });
 }
 
 function wireFilters() {
