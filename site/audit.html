@@ -22,10 +22,30 @@
     so users can see what changed between paper and web.
   </p>
   <div id="audit-summary" class="stats"></div>
+  <div id="audit-filters" class="audit-filters">
+    <div class="filter-row">
+      <span class="filter-label">Status</span>
+      <button class="filter-chip active" data-filter-status="all">All</button>
+      <button class="filter-chip" data-filter-status="verified">Verified</button>
+      <button class="filter-chip" data-filter-status="in_progress">In progress</button>
+      <button class="filter-chip" data-filter-status="deferred">Deferred</button>
+    </div>
+    <div class="filter-row">
+      <span class="filter-label">Category</span>
+      <button class="filter-chip active" data-filter-cat="all">All</button>
+      <button class="filter-chip" data-filter-cat="Vertebrates">Vertebrates</button>
+      <button class="filter-chip" data-filter-cat="Plants">Plants</button>
+      <button class="filter-chip" data-filter-cat="Arthropods">Arthropods</button>
+      <button class="filter-chip" data-filter-cat="Other animals">Other animals</button>
+      <button class="filter-chip" data-filter-cat="Microbes &amp; protists">Microbes &amp; protists</button>
+      <button class="filter-chip" data-filter-cat="Not yet represented">Not yet represented</button>
+    </div>
+  </div>
 </header>
 
 <main class="audit-main">
   <div id="audit-empty" class="empty" hidden>No audits yet — only this initial framework.</div>
+  <div id="audit-count" class="audit-count"></div>
   <div id="audit-list"></div>
 </main>
 

@@ -7,15 +7,38 @@ function escapeHTML(s) {
   return String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
 }
 
+const FILTERS = { status: "all", category: "all" };
+let LOADED_DATA = null;
+
 async function init() {
   const res = await fetch("data.json");
   if (!res.ok) {
     document.getElementById("audit-list").innerHTML = `<p class="empty">Could not load data.json (HTTP ${res.status}).</p>`;
     return;
   }
-  const data = await res.json();
-  renderSummary(data);
-  renderList(data);
+  LOADED_DATA = await res.json();
+  renderSummary(LOADED_DATA);
+  wireFilters();
+  renderList(LOADED_DATA);
+}
+
+function wireFilters() {
+  document.querySelectorAll("[data-filter-status]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      FILTERS.status = btn.dataset.filterStatus;
+      document.querySelectorAll("[data-filter-status]").forEach(b =>
+        b.classList.toggle("active", b === btn));
+      renderList(LOADED_DATA);
+    });
+  });
+  document.querySelectorAll("[data-filter-cat]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      FILTERS.category = btn.dataset.filterCat;
+      document.querySelectorAll("[data-filter-cat]").forEach(b =>
+        b.classList.toggle("active", b === btn));
+      renderList(LOADED_DATA);
+    });
+  });
 }
 
 function renderSummary(data) {
@@ -38,11 +61,17 @@ function renderSummary(data) {
 
 function renderList(data) {
   const audits = data.audits || {};
-  const entries = Object.entries(audits);
-  if (!entries.length) {
+  const allEntries = Object.entries(audits);
+  if (!allEntries.length) {
     document.getElementById("audit-empty").hidden = false;
     return;
   }
+  // Apply filters.
+  let entries = allEntries.filter(([_, a]) => {
+    if (FILTERS.status !== "all" && (a.audit || {}).status !== FILTERS.status) return false;
+    if (FILTERS.category !== "all" && a.category !== FILTERS.category) return false;
+    return true;
+  });
   // Order: verified first, then in_progress, then alphabetic.
   const order = { verified: 0, in_progress: 1, shipped: 2, stub: 3, deferred: 4 };
   entries.sort(([na, a], [nb, b]) => {
@@ -51,6 +80,13 @@ function renderList(data) {
     if (sa !== sb) return sa - sb;
     return na.localeCompare(nb);
   });
+
+  const countEl = document.getElementById("audit-count");
+  if (countEl) {
+    countEl.textContent = entries.length === allEntries.length
+      ? `Showing all ${allEntries.length} partitions`
+      : `Showing ${entries.length} of ${allEntries.length} partitions`;
+  }
 
   document.getElementById("audit-list").innerHTML = entries
     .map(([partition, a]) => renderPartition(partition, a))
