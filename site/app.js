@@ -37,15 +37,21 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 function renderSummary() {
   const s = STATE.data.summary;
+  const auditedFrac = s.n_audited && s.n_groups
+    ? `${s.n_audits_verified || 0}/${s.n_audited}`
+    : null;
   const items = [
-    ["Trees", s.n_trees],
-    ["Datasets", s.n_datasets],
-    ["Dated", s.n_dated],
-    ["Undated", s.n_undated],
-    ["Total tips", s.total_tips],
+    ["Trees", fmt.format(s.n_trees)],
+    ["Datasets", fmt.format(s.n_datasets)],
+    ["Dated", fmt.format(s.n_dated)],
+    ["Undated", fmt.format(s.n_undated)],
+    ["Total tips", fmt.format(s.total_tips)],
   ];
+  if (auditedFrac) {
+    items.push([`<a href="audit.html" class="audit-link">Audits verified</a>`, auditedFrac]);
+  }
   document.getElementById("summary-stats").innerHTML = items.map(([label, value]) =>
-    `<div class="stat"><span class="value">${fmt.format(value)}</span><span class="label">${label}</span></div>`
+    `<div class="stat"><span class="value">${value}</span><span class="label">${label}</span></div>`
   ).join("");
 }
 
