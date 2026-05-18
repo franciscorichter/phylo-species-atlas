@@ -33,19 +33,20 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 function renderSummary() {
   const s = STATE.data.summary;
-  const auditedFrac = s.n_audited && s.n_groups
-    ? `${s.n_audits_verified || 0}/${s.n_audited}`
-    : null;
+  // Header surfaces the stats that actually change as the atlas evolves:
+  // partitions, shipped trees, audit progress, atlas-derived canonicals,
+  // and how many partition intervals trace to paper-published verbatim
+  // quotes vs heuristics.
   const items = [
-    ["Trees", fmt.format(s.n_trees)],
-    ["Datasets", fmt.format(s.n_datasets)],
-    ["Dated", fmt.format(s.n_dated)],
-    ["Undated", fmt.format(s.n_undated)],
-    ["Total tips", fmt.format(s.total_tips)],
+    ["Partitions", fmt.format(s.n_partitions || 0)],
+    ["Trees shipped", fmt.format(s.n_trees)],
+    ["Total described sp.", fmt.format(s.total_described_species || 0)],
+    [`<a href="audit.html" class="audit-link">Audits verified</a>`,
+     `${s.n_audits_verified || 0}/${s.n_audited || 0}`],
+    ["Atlas-derived trees", fmt.format(s.n_atlas_derived || 0)],
+    ["Paper-published intervals",
+     `${s.n_paper_published_intervals || 0}/${s.n_audited || 0}`],
   ];
-  if (auditedFrac) {
-    items.push([`<a href="audit.html" class="audit-link">Audits verified</a>`, auditedFrac]);
-  }
   document.getElementById("summary-stats").innerHTML = items.map(([label, value]) =>
     `<div class="stat"><span class="value">${value}</span><span class="label">${label}</span></div>`
   ).join("");

@@ -744,6 +744,30 @@ def main() -> None:
         1 for a in audits.values()
         if (a.get("audit") or {}).get("status") == "verified"
     )
+    summary["n_audits_deferred"] = sum(
+        1 for a in audits.values()
+        if (a.get("audit") or {}).get("status") == "deferred"
+    )
+    # Partitions (= chart rows where is_partition_canonical=true)
+    summary["n_partitions"] = sum(1 for r in coverage_rows if r.get("is_partition_canonical"))
+    # Atlas-derived canonical trees (Turtles, Bryozoa, Primates, Seed plants, Fungi)
+    summary["n_atlas_derived"] = sum(
+        1 for t in trees if t.get("tree_url_override")
+    )
+    # Interval-class distribution
+    from collections import Counter
+    cls_counts = Counter()
+    for a in audits.values():
+        ip = (a.get("estimate") or {}).get("interval_provenance") or {}
+        cls_counts[ip.get("overall_classification") or "unaudited"] += 1
+    summary["n_paper_published_intervals"] = cls_counts.get("paper-published-range", 0)
+    summary["n_partly_heuristic_intervals"] = cls_counts.get("partly-heuristic", 0)
+    summary["n_fully_heuristic_intervals"] = cls_counts.get("fully-heuristic", 0)
+    # Total described species (summed across partitions, excluding overlap)
+    summary["total_described_species"] = sum(
+        (r.get("described_species") or 0)
+        for r in coverage_rows if r.get("is_partition_canonical")
+    )
 
     # Apply broken-DOI substitution AND attach interval_provenance on coverage
     # rows when the audit has them.
