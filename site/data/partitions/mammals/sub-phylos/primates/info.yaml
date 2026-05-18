@@ -5,7 +5,14 @@ parent_category: Vertebrates
 
 tree:
   file: tree.nwk
-  ntips: 301
+  ntips: 272                                # atlas-derived: one tip per species (pruned from 301)
+  derivation: |
+    Derived from the 301-tip Arnold 2010 10kTrees v3 MCC by pruning to a
+    single representative per species (smallest numeric tip ID under each
+    Genus_species). 9.6% subspecies-level redundancy in the original tree
+    (34 subspecies-suffixed tips like Gorilla_gorilla_gorilla).
+    Reproducible via scripts/derive_species_tree.py.
+  species_represented: 272
   dated: true
   source:
     key: Arnold 2010
@@ -30,4 +37,16 @@ tree:
 species_count:
   source: IUCN Red List 2025
   described: 522
-  coverage_pct_described: 57.7
+  coverage_pct_described: 52.1                # 272 / 522 (species-level)
+
+uncertainty:
+  files:
+    - name: multi-individual.tree.nwk
+      label: Original 301-tip multi-individual MCC (locally hosted)
+      description: |
+        The published Arnold 2010 10kTrees v3 MCC with 301 tips representing
+        272 species (9.6% subspecies/specimen redundancy). The atlas-derived
+        272-tip canonical above is pruned from this tree.
+      format: Newick (standardized IDs)
+      url: data/partitions/mammals/sub-phylos/primates/uncertainty/multi-individual.tree.nwk
+      local: true

@@ -176,38 +176,56 @@ def load_audit_overrides() -> dict[str, dict]:
     return out
 
 
-def _override_taxonomy(partition: str | None, filename: str, full_names: dict[str, str]) -> dict | None:
-    if not partition or not full_names:
-        return None
-    slug = partition.lower().replace(" ", "_")
-    candidate = SITE_DATA / slug / "tree.nwk"
-    standard = STD / "trees" / filename
-    if not candidate.exists() or not standard.exists():
-        return None
-    if candidate.stat().st_size == standard.stat().st_size:
-        return None
-    return tip_taxonomy_for_override(candidate, full_names)
+def _find_override_path(partition: str | None, group: str, filename: str) -> Path | None:
+    """Locate an atlas-derived tree override under site/data/.
 
+    Selection rule: each `group` (from standardized/metadata.csv) maps to
+    exactly one possible override location.
+      - Partition canonical (group == partition_slug):
+        site/data/partitions/<partition_slug>/tree.nwk
+      - Sub-clade (group != partition_slug):
+        site/data/partitions/<partition_slug>/sub-phylos/<group>/tree.nwk
 
-def _site_data_tree_override(partition: str | None, filename: str) -> str | None:
-    """Return a URL path to the site/data tree override when one exists.
-
-    The override is recognized by being a different file than
-    standardized/trees/<filename>.nwk — same size means it's just the original
-    copied across (no override intent). The returned path is RELATIVE TO THE
-    DEPLOY ROOT so the patched TREES_BASE on Pages still resolves it.
+    The candidate is considered an override only when its file size differs
+    from standardized/trees/<filename>.nwk (same size ⇒ just a copy, no
+    derivation intent).
     """
     if not partition:
         return None
-    slug = partition.lower().replace(" ", "_")
-    candidate = SITE_DATA / slug / "tree.nwk"
+    pslug = partition.lower().replace(" ", "_")
     standard = STD / "trees" / filename
-    if not candidate.exists() or not standard.exists():
+    if not standard.exists():
         return None
-    if candidate.stat().st_size == standard.stat().st_size:
-        return None  # same file copied across — no override
-    # Path the viewer fetches. On the live deploy, site/data ends up at /data/.
-    return f"data/partitions/{slug}/tree.nwk"
+    if group == pslug:
+        candidate = SITE_DATA / pslug / "tree.nwk"
+    else:
+        candidate = SITE_DATA / pslug / "sub-phylos" / group / "tree.nwk"
+    if candidate.exists() and candidate.stat().st_size != standard.stat().st_size:
+        return candidate
+    return None
+
+
+def _override_url(partition: str | None, group: str, filename: str) -> str | None:
+    """Same selection as _find_override_path, but returns the URL path the
+    viewer fetches (relative to the site root). The viewer combines this
+    with its base URL (../  in dev, ./ on Pages) — both resolve correctly
+    so long as we emit `data/partitions/...`."""
+    path = _find_override_path(partition, group, filename)
+    if not path:
+        return None
+    # SITE_DATA.parent.parent == site/, so this yields "data/partitions/..."
+    rel = path.relative_to(SITE_DATA.parent.parent)
+    return str(rel).replace("\\", "/")
+
+
+def _override_taxonomy(partition: str | None, group: str, filename: str,
+                       full_names: dict[str, str]) -> dict | None:
+    if not partition or not full_names:
+        return None
+    candidate = _find_override_path(partition, group, filename)
+    if not candidate:
+        return None
+    return tip_taxonomy_for_override(candidate, full_names)
 
 
 def tip_taxonomy_for_override(override_path: Path, names: dict[str, str]) -> dict | None:
@@ -487,8 +505,8 @@ def main() -> None:
             # standardized/trees/<filename>.nwk, it's an atlas-derived override
             # (e.g., turtles species-level pruning). The viewer prefers it; the
             # original stays under uncertainty/ as the multi-individual version.
-            "tree_url_override": _site_data_tree_override(partition, filename),
-            "tip_taxonomy_override": _override_taxonomy(partition, filename,
+            "tree_url_override": _override_url(partition, group, filename),
+            "tip_taxonomy_override": _override_taxonomy(partition, group, filename,
                                                        names_by_filename.get(filename, {})),
         })
 

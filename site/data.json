@@ -650,15 +650,8 @@
         "redundancy": 0,
         "binomial_format": true
       },
-      "tree_url_override": "data/partitions/amphibians/tree.nwk",
-      "tip_taxonomy_override": {
-        "unique_ids": 4117,
-        "unique_species": 4117,
-        "subspecies_tips": 0,
-        "redundancy": 0,
-        "binomial_format": true,
-        "total_tips": 7239
-      },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -712,15 +705,8 @@
         "redundancy": 0,
         "binomial_format": true
       },
-      "tree_url_override": "data/partitions/insects/tree.nwk",
-      "tip_taxonomy_override": {
-        "unique_ids": 2593,
-        "unique_species": 2593,
-        "subspecies_tips": 0,
-        "redundancy": 0,
-        "binomial_format": true,
-        "total_tips": 53596
-      },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -774,15 +760,8 @@
         "redundancy": 0,
         "binomial_format": false
       },
-      "tree_url_override": "data/partitions/fish/tree.nwk",
-      "tip_taxonomy_override": {
-        "unique_ids": 0,
-        "unique_species": 0,
-        "subspecies_tips": 0,
-        "redundancy": 0,
-        "binomial_format": false,
-        "total_tips": 11638
-      },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -836,15 +815,8 @@
         "redundancy": 0,
         "binomial_format": false
       },
-      "tree_url_override": "data/partitions/insects/tree.nwk",
-      "tip_taxonomy_override": {
-        "unique_ids": 0,
-        "unique_species": 0,
-        "subspecies_tips": 0,
-        "redundancy": 0,
-        "binomial_format": false,
-        "total_tips": 53596
-      },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -953,15 +925,8 @@
         "redundancy": 0,
         "binomial_format": true
       },
-      "tree_url_override": "data/partitions/seed_plants/tree.nwk",
-      "tip_taxonomy_override": {
-        "unique_ids": 1373,
-        "unique_species": 1373,
-        "subspecies_tips": 0,
-        "redundancy": 0,
-        "binomial_format": true,
-        "total_tips": 356305
-      },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -1125,15 +1090,8 @@
         "redundancy": 0,
         "binomial_format": false
       },
-      "tree_url_override": "data/partitions/seed_plants/tree.nwk",
-      "tip_taxonomy_override": {
-        "unique_ids": 0,
-        "unique_species": 0,
-        "subspecies_tips": 0,
-        "redundancy": 0,
-        "binomial_format": false,
-        "total_tips": 356305
-      },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -1181,15 +1139,8 @@
         "redundancy": 0,
         "binomial_format": false
       },
-      "tree_url_override": "data/partitions/seed_plants/tree.nwk",
-      "tip_taxonomy_override": {
-        "unique_ids": 0,
-        "unique_species": 0,
-        "subspecies_tips": 0,
-        "redundancy": 0,
-        "binomial_format": false,
-        "total_tips": 356305
-      },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -1243,15 +1194,8 @@
         "redundancy": 0,
         "binomial_format": true
       },
-      "tree_url_override": "data/partitions/seed_plants/tree.nwk",
-      "tip_taxonomy_override": {
-        "unique_ids": 996,
-        "unique_species": 996,
-        "subspecies_tips": 0,
-        "redundancy": 0,
-        "binomial_format": true,
-        "total_tips": 356305
-      },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -1305,15 +1249,8 @@
         "redundancy": 0,
         "binomial_format": true
       },
-      "tree_url_override": "data/partitions/amphibians/tree.nwk",
-      "tip_taxonomy_override": {
-        "unique_ids": 602,
-        "unique_species": 602,
-        "subspecies_tips": 0,
-        "redundancy": 0,
-        "binomial_format": true,
-        "total_tips": 7239
-      },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -1706,15 +1643,8 @@
         "redundancy": 0,
         "binomial_format": true
       },
-      "tree_url_override": "data/partitions/birds/tree.nwk",
-      "tip_taxonomy_override": {
-        "unique_ids": 347,
-        "unique_species": 347,
-        "subspecies_tips": 0,
-        "redundancy": 0,
-        "binomial_format": true,
-        "total_tips": 10824
-      },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -1762,15 +1692,8 @@
         "redundancy": 0,
         "binomial_format": false
       },
-      "tree_url_override": "data/partitions/seed_plants/tree.nwk",
-      "tip_taxonomy_override": {
-        "unique_ids": 0,
-        "unique_species": 0,
-        "subspecies_tips": 0,
-        "redundancy": 0,
-        "binomial_format": false,
-        "total_tips": 356305
-      },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -2125,14 +2048,14 @@
         "redundancy": 29,
         "binomial_format": true
       },
-      "tree_url_override": "data/partitions/mammals/tree.nwk",
+      "tree_url_override": "data/partitions/mammals/sub-phylos/primates/tree.nwk",
       "tip_taxonomy_override": {
-        "unique_ids": 233,
-        "unique_species": 233,
-        "subspecies_tips": 0,
+        "unique_ids": 272,
+        "unique_species": 272,
+        "subspecies_tips": 5,
         "redundancy": 0,
         "binomial_format": true,
-        "total_tips": 5912
+        "total_tips": 272
       },
       "is_partition_canonical": false
     },
@@ -2181,15 +2104,8 @@
         "redundancy": 0,
         "binomial_format": true
       },
-      "tree_url_override": "data/partitions/mammals/tree.nwk",
-      "tip_taxonomy_override": {
-        "unique_ids": 267,
-        "unique_species": 267,
-        "subspecies_tips": 0,
-        "redundancy": 0,
-        "binomial_format": true,
-        "total_tips": 5912
-      },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -2427,15 +2343,8 @@
         "redundancy": 2,
         "binomial_format": true
       },
-      "tree_url_override": "data/partitions/seed_plants/tree.nwk",
-      "tip_taxonomy_override": {
-        "unique_ids": 165,
-        "unique_species": 165,
-        "subspecies_tips": 0,
-        "redundancy": 0,
-        "binomial_format": true,
-        "total_tips": 356305
-      },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -2784,15 +2693,8 @@
         "redundancy": 0,
         "binomial_format": true
       },
-      "tree_url_override": "data/partitions/insects/tree.nwk",
-      "tip_taxonomy_override": {
-        "unique_ids": 100,
-        "unique_species": 100,
-        "subspecies_tips": 0,
-        "redundancy": 0,
-        "binomial_format": true,
-        "total_tips": 53596
-      },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -3497,15 +3399,8 @@
         "redundancy": 0,
         "binomial_format": false
       },
-      "tree_url_override": "data/partitions/insects/tree.nwk",
-      "tip_taxonomy_override": {
-        "unique_ids": 0,
-        "unique_species": 0,
-        "subspecies_tips": 0,
-        "redundancy": 0,
-        "binomial_format": false,
-        "total_tips": 53596
-      },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -4620,15 +4515,8 @@
         "redundancy": 0,
         "binomial_format": true
       },
-      "tree_url_override": "data/partitions/mammals/tree.nwk",
-      "tip_taxonomy_override": {
-        "unique_ids": 85,
-        "unique_species": 85,
-        "subspecies_tips": 0,
-        "redundancy": 0,
-        "binomial_format": true,
-        "total_tips": 5912
-      },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -4719,15 +4607,8 @@
         "redundancy": 0,
         "binomial_format": true
       },
-      "tree_url_override": "data/partitions/insects/tree.nwk",
-      "tip_taxonomy_override": {
-        "unique_ids": 31,
-        "unique_species": 31,
-        "subspecies_tips": 0,
-        "redundancy": 0,
-        "binomial_format": true,
-        "total_tips": 53596
-      },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": false
     },
     {
@@ -11968,6 +11849,161 @@
   ],
   "coverage": [
     {
+      "filename": "parrots.nwk",
+      "group": "parrots",
+      "provenance_group": "parrots",
+      "partition_group": "Birds",
+      "category": "Vertebrates",
+      "study": "Burgio 2019",
+      "year": 2019,
+      "tips": 413,
+      "raw_tips": 413,
+      "described_species": 413,
+      "described_source": null,
+      "coverage_pct": 100.0,
+      "dated": true,
+      "is_partition_anchor": false,
+      "is_partition_canonical": false,
+      "estimated_total": 11195,
+      "estimated_low": 11195,
+      "estimated_high": 11400,
+      "estimate_source": "IUCN",
+      "estimate_confidence": "High",
+      "coverage_pct_estimated": 3.7,
+      "coverage_pct_estimated_low": 3.6,
+      "coverage_pct_estimated_high": 3.7,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "IUCN Red List 2025",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "derived",
+          "source": "IUCN Red List 2025",
+          "verbatim_quote": null,
+          "note": "Set equal to described — no true-diversity estimate published."
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "IUCN Red List 2025",
+          "verbatim_quote": null,
+          "note": "Low bound = described count."
+        },
+        "estimated_high": {
+          "type": "heuristic",
+          "source": "atlas-derived",
+          "verbatim_quote": null,
+          "note": "IUCN does not publish a true-diversity estimate for birds. The 11,400\nfigure appears to be an atlas-derived \"round-up\" allowing a few\nhundred undescribed species. Birds are arguably the best-described\nclade on Earth (~5-10 new species/year discovery rate); any honest\nupper bound would be within ~1% of described. The 11,400 here is a\nrough placeholder, not a paper-published claim.\n"
+        },
+        "overall_classification": "fully-heuristic",
+        "auditor_note": "Birds intervals are essentially \"described count + atlas heuristic\".\nThe chart should de-emphasize the error bars on this partition\n(visually equating them with Stork 2018's evidence-based insect range\nmisleads readers about the literature base for each clade).\n"
+      }
+    },
+    {
+      "filename": "carnivora.nwk",
+      "group": "carnivora",
+      "provenance_group": "carnivora",
+      "partition_group": "Mammals",
+      "category": "Vertebrates",
+      "study": "Nyakatura 2012",
+      "year": 2012,
+      "tips": 294,
+      "raw_tips": 294,
+      "described_species": 294,
+      "described_source": null,
+      "coverage_pct": 100.0,
+      "dated": true,
+      "is_partition_anchor": false,
+      "is_partition_canonical": false,
+      "estimated_total": 6736,
+      "estimated_low": 6736,
+      "estimated_high": 7500,
+      "estimate_source": "Burgin 2018",
+      "estimate_confidence": "High",
+      "coverage_pct_estimated": 4.4,
+      "coverage_pct_estimated_low": 3.9,
+      "coverage_pct_estimated_high": 4.4,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Mammal Diversity Database (MDD, 2024+)",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "derived",
+          "source": "Burgin 2018 / MDD",
+          "verbatim_quote": "MDD currently lists 6,495 valid species (6,399 extant, 96 recently extinct)",
+          "note": "Set equal to described — no true-diversity estimate published."
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "Burgin 2018 / MDD",
+          "verbatim_quote": null,
+          "note": "Low bound = described count. Not a published interval bound."
+        },
+        "estimated_high": {
+          "type": "projection",
+          "source": "Burgin 2018",
+          "verbatim_quote": "our estimates increase to 7,509 species recognized by 2050 and 9,009 by 2100",
+          "note": "Burgin 2018's 7,500-ish figure is a DESCRIPTION-RATE PROJECTION to\nthe year 2050 — extrapolating recent description rates forward.\nIt is NOT an estimate of TRUE mammal diversity (current undiscovered\nspecies). Treating it as the 'high' end of an estimated_total interval\noverstates Burgin 2018's claim.\n"
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Mammals lack a paper-published true-diversity range. The 6,736 figure is\nthe current MDD-tracked described-species count (well-established). The\n7,500 upper bound is a 2050 projection of described counts (Burgin 2018\n§Discussion), not a 2025 estimate of cryptic + undescribed diversity.\n"
+      }
+    },
+    {
+      "filename": "salamanders.nwk",
+      "group": "salamanders",
+      "provenance_group": "salamanders",
+      "partition_group": "Amphibians",
+      "category": "Vertebrates",
+      "study": "Stewart 2025",
+      "year": 2025,
+      "tips": 796,
+      "raw_tips": 796,
+      "described_species": 814,
+      "described_source": "AmphibiaWeb",
+      "coverage_pct": 97.8,
+      "dated": true,
+      "is_partition_anchor": false,
+      "is_partition_canonical": false,
+      "estimated_total": 15000,
+      "estimated_low": 10000,
+      "estimated_high": 20000,
+      "estimate_source": "Mora 2011",
+      "estimate_confidence": "Medium",
+      "coverage_pct_estimated": 5.3,
+      "coverage_pct_estimated_low": 4.0,
+      "coverage_pct_estimated_high": 8.0,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "AmphibiaWeb 2025",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Mora 2011",
+          "verbatim_quote": null,
+          "note": "Mora 2011 estimates ~15,000 amphibian species using extrapolation from genus-discovery curves."
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "Mora 2011",
+          "verbatim_quote": null,
+          "note": "Bilateral range; not equal to described."
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Mora 2011",
+          "verbatim_quote": null
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "Mora 2011 is one of the few papers in the atlas that publishes a true bilateral diversity estimate for vertebrates. The 10,000-15,000-20,000 range is genuine paper-derived uncertainty, not heuristic."
+      }
+    },
+    {
       "filename": "birds.nwk",
       "group": "birds",
       "provenance_group": "birds_mctavish",
@@ -12125,58 +12161,6 @@
       }
     },
     {
-      "filename": "carnivora.nwk",
-      "group": "carnivora",
-      "provenance_group": "carnivora",
-      "partition_group": "Mammals",
-      "category": "Vertebrates",
-      "study": "Nyakatura 2012",
-      "year": 2012,
-      "tips": 267,
-      "raw_tips": 294,
-      "described_species": 294,
-      "described_source": null,
-      "coverage_pct": 90.8,
-      "dated": true,
-      "is_partition_anchor": false,
-      "is_partition_canonical": false,
-      "estimated_total": 6736,
-      "estimated_low": 6736,
-      "estimated_high": 7500,
-      "estimate_source": "Burgin 2018",
-      "estimate_confidence": "High",
-      "coverage_pct_estimated": 4.0,
-      "coverage_pct_estimated_low": 3.6,
-      "coverage_pct_estimated_high": 4.0,
-      "interval_provenance": {
-        "described": {
-          "type": "database",
-          "source": "Mammal Diversity Database (MDD, 2024+)",
-          "verbatim_quote": null
-        },
-        "estimated_total": {
-          "type": "derived",
-          "source": "Burgin 2018 / MDD",
-          "verbatim_quote": "MDD currently lists 6,495 valid species (6,399 extant, 96 recently extinct)",
-          "note": "Set equal to described — no true-diversity estimate published."
-        },
-        "estimated_low": {
-          "type": "derived-from-described",
-          "source": "Burgin 2018 / MDD",
-          "verbatim_quote": null,
-          "note": "Low bound = described count. Not a published interval bound."
-        },
-        "estimated_high": {
-          "type": "projection",
-          "source": "Burgin 2018",
-          "verbatim_quote": "our estimates increase to 7,509 species recognized by 2050 and 9,009 by 2100",
-          "note": "Burgin 2018's 7,500-ish figure is a DESCRIPTION-RATE PROJECTION to\nthe year 2050 — extrapolating recent description rates forward.\nIt is NOT an estimate of TRUE mammal diversity (current undiscovered\nspecies). Treating it as the 'high' end of an estimated_total interval\noverstates Burgin 2018's claim.\n"
-        },
-        "overall_classification": "partly-heuristic",
-        "auditor_note": "Mammals lack a paper-published true-diversity range. The 6,736 figure is\nthe current MDD-tracked described-species count (well-established). The\n7,500 upper bound is a 2050 projection of described counts (Burgin 2018\n§Discussion), not a 2025 estimate of cryptic + undescribed diversity.\n"
-      }
-    },
-    {
       "filename": "seed_plants.nwk",
       "group": "seed_plants",
       "provenance_group": "seed_plants",
@@ -12276,58 +12260,6 @@
         },
         "overall_classification": "partly-heuristic",
         "auditor_note": "Mammals lack a paper-published true-diversity range. The 6,736 figure is\nthe current MDD-tracked described-species count (well-established). The\n7,500 upper bound is a 2050 projection of described counts (Burgin 2018\n§Discussion), not a 2025 estimate of cryptic + undescribed diversity.\n"
-      }
-    },
-    {
-      "filename": "parrots.nwk",
-      "group": "parrots",
-      "provenance_group": "parrots",
-      "partition_group": "Birds",
-      "category": "Vertebrates",
-      "study": "Burgio 2019",
-      "year": 2019,
-      "tips": 347,
-      "raw_tips": 413,
-      "described_species": 413,
-      "described_source": null,
-      "coverage_pct": 84.0,
-      "dated": true,
-      "is_partition_anchor": false,
-      "is_partition_canonical": false,
-      "estimated_total": 11195,
-      "estimated_low": 11195,
-      "estimated_high": 11400,
-      "estimate_source": "IUCN",
-      "estimate_confidence": "High",
-      "coverage_pct_estimated": 3.1,
-      "coverage_pct_estimated_low": 3.0,
-      "coverage_pct_estimated_high": 3.1,
-      "interval_provenance": {
-        "described": {
-          "type": "database",
-          "source": "IUCN Red List 2025",
-          "verbatim_quote": null
-        },
-        "estimated_total": {
-          "type": "derived",
-          "source": "IUCN Red List 2025",
-          "verbatim_quote": null,
-          "note": "Set equal to described — no true-diversity estimate published."
-        },
-        "estimated_low": {
-          "type": "derived-from-described",
-          "source": "IUCN Red List 2025",
-          "verbatim_quote": null,
-          "note": "Low bound = described count."
-        },
-        "estimated_high": {
-          "type": "heuristic",
-          "source": "atlas-derived",
-          "verbatim_quote": null,
-          "note": "IUCN does not publish a true-diversity estimate for birds. The 11,400\nfigure appears to be an atlas-derived \"round-up\" allowing a few\nhundred undescribed species. Birds are arguably the best-described\nclade on Earth (~5-10 new species/year discovery rate); any honest\nupper bound would be within ~1% of described. The 11,400 here is a\nrough placeholder, not a paper-published claim.\n"
-        },
-        "overall_classification": "fully-heuristic",
-        "auditor_note": "Birds intervals are essentially \"described count + atlas heuristic\".\nThe chart should de-emphasize the error bars on this partition\n(visually equating them with Stork 2018's evidence-based insect range\nmisleads readers about the literature base for each clade).\n"
       }
     },
     {
@@ -12493,57 +12425,6 @@
       }
     },
     {
-      "filename": "salamanders.nwk",
-      "group": "salamanders",
-      "provenance_group": "salamanders",
-      "partition_group": "Amphibians",
-      "category": "Vertebrates",
-      "study": "Stewart 2025",
-      "year": 2025,
-      "tips": 602,
-      "raw_tips": 796,
-      "described_species": 814,
-      "described_source": "AmphibiaWeb",
-      "coverage_pct": 74.0,
-      "dated": true,
-      "is_partition_anchor": false,
-      "is_partition_canonical": false,
-      "estimated_total": 15000,
-      "estimated_low": 10000,
-      "estimated_high": 20000,
-      "estimate_source": "Mora 2011",
-      "estimate_confidence": "Medium",
-      "coverage_pct_estimated": 4.0,
-      "coverage_pct_estimated_low": 3.0,
-      "coverage_pct_estimated_high": 6.0,
-      "interval_provenance": {
-        "described": {
-          "type": "database",
-          "source": "AmphibiaWeb 2025",
-          "verbatim_quote": null
-        },
-        "estimated_total": {
-          "type": "paper-published",
-          "source": "Mora 2011",
-          "verbatim_quote": null,
-          "note": "Mora 2011 estimates ~15,000 amphibian species using extrapolation from genus-discovery curves."
-        },
-        "estimated_low": {
-          "type": "paper-published",
-          "source": "Mora 2011",
-          "verbatim_quote": null,
-          "note": "Bilateral range; not equal to described."
-        },
-        "estimated_high": {
-          "type": "paper-published",
-          "source": "Mora 2011",
-          "verbatim_quote": null
-        },
-        "overall_classification": "paper-published-range",
-        "auditor_note": "Mora 2011 is one of the few papers in the atlas that publishes a true bilateral diversity estimate for vertebrates. The 10,000-15,000-20,000 range is genuine paper-derived uncertainty, not heuristic."
-      }
-    },
-    {
       "filename": "frogs.nwk",
       "group": "frogs",
       "provenance_group": "frogs",
@@ -12551,11 +12432,11 @@
       "category": "Vertebrates",
       "study": "Portik 2023",
       "year": 2023,
-      "tips": 4117,
+      "tips": 5326,
       "raw_tips": 5326,
       "described_species": 7486,
       "described_source": "AmphibiaWeb 2025",
-      "coverage_pct": 55.0,
+      "coverage_pct": 71.1,
       "dated": true,
       "is_partition_anchor": false,
       "is_partition_canonical": false,
@@ -12564,9 +12445,9 @@
       "estimated_high": 20000,
       "estimate_source": "Mora 2011",
       "estimate_confidence": "Medium",
-      "coverage_pct_estimated": 27.4,
-      "coverage_pct_estimated_low": 20.6,
-      "coverage_pct_estimated_high": 41.2,
+      "coverage_pct_estimated": 35.5,
+      "coverage_pct_estimated_low": 26.6,
+      "coverage_pct_estimated_high": 53.3,
       "interval_provenance": {
         "described": {
           "type": "database",
@@ -12602,11 +12483,11 @@
       "category": "Plants",
       "study": "CactEcoDB 2026",
       "year": 2026,
-      "tips": 996,
+      "tips": 1063,
       "raw_tips": 1063,
       "described_species": 1900,
       "described_source": "Catalogue of Life 2025",
-      "coverage_pct": 52.4,
+      "coverage_pct": 55.9,
       "dated": true,
       "is_partition_anchor": false,
       "is_partition_canonical": false,
@@ -12617,7 +12498,7 @@
       "estimate_confidence": "Medium",
       "coverage_pct_estimated": 0.2,
       "coverage_pct_estimated_low": 0.2,
-      "coverage_pct_estimated_high": 0.2,
+      "coverage_pct_estimated_high": 0.3,
       "interval_provenance": {
         "described": {
           "type": "database",
@@ -12642,6 +12523,58 @@
         },
         "overall_classification": "paper-published-range",
         "auditor_note": "True bilateral range from a quantitative meta-analysis of angiosperm taxonomy."
+      }
+    },
+    {
+      "filename": "primates.nwk",
+      "group": "primates",
+      "provenance_group": "primates",
+      "partition_group": "Mammals",
+      "category": "Vertebrates",
+      "study": "10kTrees v3",
+      "year": 2010,
+      "tips": 272,
+      "raw_tips": 301,
+      "described_species": 522,
+      "described_source": "IUCN Red List 2025",
+      "coverage_pct": 52.1,
+      "dated": true,
+      "is_partition_anchor": false,
+      "is_partition_canonical": false,
+      "estimated_total": 6736,
+      "estimated_low": 6736,
+      "estimated_high": 7500,
+      "estimate_source": "Burgin 2018",
+      "estimate_confidence": "High",
+      "coverage_pct_estimated": 4.0,
+      "coverage_pct_estimated_low": 3.6,
+      "coverage_pct_estimated_high": 4.0,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Mammal Diversity Database (MDD, 2024+)",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "derived",
+          "source": "Burgin 2018 / MDD",
+          "verbatim_quote": "MDD currently lists 6,495 valid species (6,399 extant, 96 recently extinct)",
+          "note": "Set equal to described — no true-diversity estimate published."
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "Burgin 2018 / MDD",
+          "verbatim_quote": null,
+          "note": "Low bound = described count. Not a published interval bound."
+        },
+        "estimated_high": {
+          "type": "projection",
+          "source": "Burgin 2018",
+          "verbatim_quote": "our estimates increase to 7,509 species recognized by 2050 and 9,009 by 2100",
+          "note": "Burgin 2018's 7,500-ish figure is a DESCRIPTION-RATE PROJECTION to\nthe year 2050 — extrapolating recent description rates forward.\nIt is NOT an estimate of TRUE mammal diversity (current undiscovered\nspecies). Treating it as the 'high' end of an estimated_total interval\noverstates Burgin 2018's claim.\n"
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Mammals lack a paper-published true-diversity range. The 6,736 figure is\nthe current MDD-tracked described-species count (well-established). The\n7,500 upper bound is a 2050 projection of described counts (Burgin 2018\n§Discussion), not a 2025 estimate of cryptic + undescribed diversity.\n"
       }
     },
     {
@@ -12691,58 +12624,6 @@
         },
         "overall_classification": "fully-heuristic",
         "auditor_note": "PPG I 2016 is the Pteridophyte Phylogeny Group classification (taxonomic authority). Round-number bounds (13500, 15000) are atlas placeholders."
-      }
-    },
-    {
-      "filename": "primates.nwk",
-      "group": "primates",
-      "provenance_group": "primates",
-      "partition_group": "Mammals",
-      "category": "Vertebrates",
-      "study": "10kTrees v3",
-      "year": 2010,
-      "tips": 233,
-      "raw_tips": 301,
-      "described_species": 522,
-      "described_source": "IUCN Red List 2025",
-      "coverage_pct": 44.6,
-      "dated": true,
-      "is_partition_anchor": false,
-      "is_partition_canonical": false,
-      "estimated_total": 6736,
-      "estimated_low": 6736,
-      "estimated_high": 7500,
-      "estimate_source": "Burgin 2018",
-      "estimate_confidence": "High",
-      "coverage_pct_estimated": 3.5,
-      "coverage_pct_estimated_low": 3.1,
-      "coverage_pct_estimated_high": 3.5,
-      "interval_provenance": {
-        "described": {
-          "type": "database",
-          "source": "Mammal Diversity Database (MDD, 2024+)",
-          "verbatim_quote": null
-        },
-        "estimated_total": {
-          "type": "derived",
-          "source": "Burgin 2018 / MDD",
-          "verbatim_quote": "MDD currently lists 6,495 valid species (6,399 extant, 96 recently extinct)",
-          "note": "Set equal to described — no true-diversity estimate published."
-        },
-        "estimated_low": {
-          "type": "derived-from-described",
-          "source": "Burgin 2018 / MDD",
-          "verbatim_quote": null,
-          "note": "Low bound = described count. Not a published interval bound."
-        },
-        "estimated_high": {
-          "type": "projection",
-          "source": "Burgin 2018",
-          "verbatim_quote": "our estimates increase to 7,509 species recognized by 2050 and 9,009 by 2100",
-          "note": "Burgin 2018's 7,500-ish figure is a DESCRIPTION-RATE PROJECTION to\nthe year 2050 — extrapolating recent description rates forward.\nIt is NOT an estimate of TRUE mammal diversity (current undiscovered\nspecies). Treating it as the 'high' end of an estimated_total interval\noverstates Burgin 2018's claim.\n"
-        },
-        "overall_classification": "partly-heuristic",
-        "auditor_note": "Mammals lack a paper-published true-diversity range. The 6,736 figure is\nthe current MDD-tracked described-species count (well-established). The\n7,500 upper bound is a 2050 projection of described counts (Burgin 2018\n§Discussion), not a 2025 estimate of cryptic + undescribed diversity.\n"
       }
     },
     {
@@ -12847,6 +12728,58 @@
       }
     },
     {
+      "filename": "bees.nwk",
+      "group": "bees",
+      "provenance_group": "bees",
+      "partition_group": "Insects",
+      "category": "Arthropods",
+      "study": "Henriquez-Piskulich 2024",
+      "year": 2024,
+      "tips": 4586,
+      "raw_tips": 4586,
+      "described_species": 20507,
+      "described_source": "Discover Life",
+      "coverage_pct": 22.4,
+      "dated": true,
+      "is_partition_anchor": false,
+      "is_partition_canonical": false,
+      "estimated_total": 5500000,
+      "estimated_low": 2600000,
+      "estimated_high": 7800000,
+      "estimate_source": "Stork 2018",
+      "estimate_confidence": "Low",
+      "coverage_pct_estimated": 0.1,
+      "coverage_pct_estimated_low": 0.1,
+      "coverage_pct_estimated_high": 0.2,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Catalogue of Life 2025",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Stork 2018",
+          "verbatim_quote": "globally there are approximately 1.5 million, 5.5 million, and 7 million species of beetles, insects, and terrestrial arthropods, respectively",
+          "note": "Stork 2018's own central estimate of ~5.5 million insect species."
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "Stork 2018 (review of higher-taxonomic-ratio estimates)",
+          "verbatim_quote": null,
+          "note": "2.6M from Stork's review table — higher taxonomic ratio extrapolation."
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Stork 2018 (review of prior literature)",
+          "verbatim_quote": null,
+          "note": "7.8M from Stork's review of prior estimates (Hamilton 2010, 2013 — 7.8M with CI 2.9-13.7)."
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "Range 2.6M-5.5M-7.8M is meta-range across Stork 2018's review of multiple primary estimates. Stork's OWN central is ~5.5M. The breadth honestly reflects deep uncertainty in insect diversity estimation."
+      }
+    },
+    {
       "filename": "bacteria.nwk",
       "group": "bacteria",
       "provenance_group": "bacteria",
@@ -12942,58 +12875,6 @@
         },
         "overall_classification": "paper-published-range",
         "auditor_note": "Appeltans 2012 provides bilateral paper-published range for Cnidaria."
-      }
-    },
-    {
-      "filename": "bees.nwk",
-      "group": "bees",
-      "provenance_group": "bees",
-      "partition_group": "Insects",
-      "category": "Arthropods",
-      "study": "Henriquez-Piskulich 2024",
-      "year": 2024,
-      "tips": 2593,
-      "raw_tips": 4586,
-      "described_species": 20507,
-      "described_source": "Discover Life",
-      "coverage_pct": 12.6,
-      "dated": true,
-      "is_partition_anchor": false,
-      "is_partition_canonical": false,
-      "estimated_total": 5500000,
-      "estimated_low": 2600000,
-      "estimated_high": 7800000,
-      "estimate_source": "Stork 2018",
-      "estimate_confidence": "Low",
-      "coverage_pct_estimated": 0.0,
-      "coverage_pct_estimated_low": 0.0,
-      "coverage_pct_estimated_high": 0.1,
-      "interval_provenance": {
-        "described": {
-          "type": "database",
-          "source": "Catalogue of Life 2025",
-          "verbatim_quote": null
-        },
-        "estimated_total": {
-          "type": "paper-published",
-          "source": "Stork 2018",
-          "verbatim_quote": "globally there are approximately 1.5 million, 5.5 million, and 7 million species of beetles, insects, and terrestrial arthropods, respectively",
-          "note": "Stork 2018's own central estimate of ~5.5 million insect species."
-        },
-        "estimated_low": {
-          "type": "paper-published",
-          "source": "Stork 2018 (review of higher-taxonomic-ratio estimates)",
-          "verbatim_quote": null,
-          "note": "2.6M from Stork's review table — higher taxonomic ratio extrapolation."
-        },
-        "estimated_high": {
-          "type": "paper-published",
-          "source": "Stork 2018 (review of prior literature)",
-          "verbatim_quote": null,
-          "note": "7.8M from Stork's review of prior estimates (Hamilton 2010, 2013 — 7.8M with CI 2.9-13.7)."
-        },
-        "overall_classification": "paper-published-range",
-        "auditor_note": "Range 2.6M-5.5M-7.8M is meta-range across Stork 2018's review of multiple primary estimates. Stork's OWN central is ~5.5M. The breadth honestly reflects deep uncertainty in insect diversity estimation."
       }
     },
     {
@@ -13308,11 +13189,11 @@
       "category": "Plants",
       "study": "Givnish 2023",
       "year": 2023,
-      "tips": 1373,
+      "tips": 1475,
       "raw_tips": 1475,
       "described_species": 28000,
       "described_source": "Catalogue of Life 2025",
-      "coverage_pct": 4.9,
+      "coverage_pct": 5.3,
       "dated": true,
       "is_partition_anchor": false,
       "is_partition_canonical": false,
@@ -13323,7 +13204,7 @@
       "estimate_confidence": "Medium",
       "coverage_pct_estimated": 0.3,
       "coverage_pct_estimated_low": 0.3,
-      "coverage_pct_estimated_high": 0.3,
+      "coverage_pct_estimated_high": 0.4,
       "interval_provenance": {
         "described": {
           "type": "database",
@@ -13647,6 +13528,56 @@
       }
     },
     {
+      "filename": "asteraceae.nwk",
+      "group": "asteraceae",
+      "provenance_group": "asteraceae",
+      "partition_group": "Seed plants",
+      "category": "Plants",
+      "study": "Mandel 2019",
+      "year": 2019,
+      "tips": 254,
+      "raw_tips": 256,
+      "described_species": 34000,
+      "described_source": "Catalogue of Life 2025",
+      "coverage_pct": 0.7,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": false,
+      "estimated_total": 450000,
+      "estimated_low": 400000,
+      "estimated_high": 500000,
+      "estimate_source": "Nic Lughadha 2016",
+      "estimate_confidence": "Medium",
+      "coverage_pct_estimated": 0.1,
+      "coverage_pct_estimated_low": 0.1,
+      "coverage_pct_estimated_high": 0.1,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "World Flora Online 2025",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Nic Lughadha 2016",
+          "verbatim_quote": null,
+          "note": "Paper-published estimate of total angiosperm + gymnosperm diversity."
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "Nic Lughadha 2016",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Nic Lughadha 2016",
+          "verbatim_quote": null
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "True bilateral range from a quantitative meta-analysis of angiosperm taxonomy."
+      }
+    },
+    {
       "filename": "nematodes.nwk",
       "group": "nematodes",
       "provenance_group": "nematodes",
@@ -13693,56 +13624,6 @@
         },
         "overall_classification": "paper-published-range",
         "auditor_note": "Hodda 2022 provides bilateral paper-published range for Nematodes."
-      }
-    },
-    {
-      "filename": "asteraceae.nwk",
-      "group": "asteraceae",
-      "provenance_group": "asteraceae",
-      "partition_group": "Seed plants",
-      "category": "Plants",
-      "study": "Mandel 2019",
-      "year": 2019,
-      "tips": 165,
-      "raw_tips": 256,
-      "described_species": 34000,
-      "described_source": "Catalogue of Life 2025",
-      "coverage_pct": 0.5,
-      "dated": false,
-      "is_partition_anchor": false,
-      "is_partition_canonical": false,
-      "estimated_total": 450000,
-      "estimated_low": 400000,
-      "estimated_high": 500000,
-      "estimate_source": "Nic Lughadha 2016",
-      "estimate_confidence": "Medium",
-      "coverage_pct_estimated": 0.0,
-      "coverage_pct_estimated_low": 0.0,
-      "coverage_pct_estimated_high": 0.0,
-      "interval_provenance": {
-        "described": {
-          "type": "database",
-          "source": "World Flora Online 2025",
-          "verbatim_quote": null
-        },
-        "estimated_total": {
-          "type": "paper-published",
-          "source": "Nic Lughadha 2016",
-          "verbatim_quote": null,
-          "note": "Paper-published estimate of total angiosperm + gymnosperm diversity."
-        },
-        "estimated_low": {
-          "type": "paper-published",
-          "source": "Nic Lughadha 2016",
-          "verbatim_quote": null
-        },
-        "estimated_high": {
-          "type": "paper-published",
-          "source": "Nic Lughadha 2016",
-          "verbatim_quote": null
-        },
-        "overall_classification": "paper-published-range",
-        "auditor_note": "True bilateral range from a quantitative meta-analysis of angiosperm taxonomy."
       }
     },
     {
@@ -14049,7 +13930,7 @@
       "category": "Arthropods",
       "study": "Johnson 2018",
       "year": 2018,
-      "tips": 100,
+      "tips": 192,
       "raw_tips": 193,
       "described_species": 1000000,
       "described_source": null,
@@ -14153,7 +14034,7 @@
       "category": "Arthropods",
       "study": "Romiguier 2022",
       "year": 2022,
-      "tips": 31,
+      "tips": 83,
       "raw_tips": 83,
       "described_species": 1000000,
       "described_source": null,
@@ -19652,7 +19533,12 @@
         "data_type": "UCE",
         "note": "17-gene supermatrix, RAxML ML, rogue-taxon pruning; cheilostome-focused."
       },
-      "resolutions": [],
+      "resolutions": [
+        {
+          "issue": "Orr 2022 MCC ships with 720 tips but only 517 species (27.8% subspecies/specimen redundancy — highest of any tree in the atlas).",
+          "resolved_by": "Atlas-derived 517-tip species-level pruning is now the canonical tree (one tip per species, smallest numeric ID per Genus_species). The original 720-tip MCC is preserved as a locally-hosted uncertainty file. Reproducible via scripts/derive_species_tree.py."
+        }
+      ],
       "website": {
         "badge": "verified"
       }
