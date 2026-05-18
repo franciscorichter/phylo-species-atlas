@@ -172,15 +172,27 @@ function renderCoveragePlot() {
       "Source: %{customdata[1]}<extra></extra>",
   };
 
+  // Tip marker: ◇ for paper-shipped trees, ★ for atlas-derived species-level
+  // pruning (Turtles, Bryozoa, Seed plants, Fungi, ...). The atlas-derived
+  // ones are NOT what the source paper published verbatim — they're one-rep-
+  // per-species reductions of multi-individual MCCs, transparent in info.yaml.
+  // Build.py exposes this via the `tree_url_override` field per partition;
+  // the chart picks up the override status by joining via filename.
+  const overrideByFilename = {};
+  for (const t of STATE.data.trees) {
+    if (t.tree_url_override) overrideByFilename[t.filename] = true;
+  }
+  const isDerived = (r) => !!overrideByFilename[r.filename];
+
   const tipsTrace = {
     type: "scatter",
     mode: "markers",
-    name: "Tips in shipped tree",
+    name: "Tips in shipped tree (◇ paper-shipped / ★ atlas-derived)",
     x: rows.map(r => r.tips ?? null),
     y: labels,
     marker: {
-      symbol: "diamond",
-      size: 10,
+      symbol: rows.map(r => isDerived(r) ? "star" : "diamond"),
+      size: rows.map(r => isDerived(r) ? 12 : 10),
       color: rows.map(r => r.dated ? "#2a6fbf" : "#c97a2a"),
       line: { color: "#1a1a1a", width: 0.5 },
     },
@@ -188,11 +200,13 @@ function renderCoveragePlot() {
       r.tips ?? 0, r.described_species ?? 0,
       r.described_species ? (100 * r.tips / r.described_species).toFixed(1) : "—",
       r.study || "", r.year || "",
+      isDerived(r) ? `atlas-derived species-level pruning (raw paper tree had ${fmt.format(r.raw_tips || r.tips)} tips)` : "paper-shipped MCC",
     ]),
     hovertemplate:
       "<b>%{y}</b><br>" +
       "Tips in tree: %{x:,}<br>" +
       "Coverage: %{customdata[2]}% of described<br>" +
+      "<i style='color:#7a7a7a'>%{customdata[5]}</i><br>" +
       "<i>%{customdata[3]}</i> (%{customdata[4]})<extra></extra>",
   };
 
@@ -283,7 +297,7 @@ function renderCoveragePlot() {
 
   const sub = document.getElementById("coverage-sub");
   if (sub) {
-    sub.innerHTML = "Each row = one partition. <strong>◇</strong> = tips in the shipped tree (dated <span style='color:#2a6fbf'>■</span> / undated <span style='color:#c97a2a'>■</span>). <strong>◯</strong> = described species (taxonomic catalogue). <strong>●</strong> = estimated true diversity with low–high whiskers; <em>solid</em> = paper-published range, <em>faded amber</em> = atlas-derived heuristic. Click any marker to inspect the partition's tree.";
+    sub.innerHTML = "Each row = one partition. <strong>◇</strong> = tips in a paper-shipped tree, <strong>★</strong> = atlas-derived species-level pruning (dated <span style='color:#2a6fbf'>■</span> / undated <span style='color:#c97a2a'>■</span>). <strong>◯</strong> = described species (taxonomic catalogue). <strong>●</strong> = estimated true diversity with low–high whiskers; <em>solid</em> = paper-published range, <em>faded amber</em> = atlas-derived heuristic. Click any marker to inspect the partition's tree.";
   }
 }
 
