@@ -21,7 +21,7 @@ estimate:
     estimated_total:
       type: paper-published
       source: Appeltans 2012
-      verbatim_quote: null
+      verbatim_quote: 'there may be 0.7-1.0 million marine species (226,000 eukaryotic species currently described; 58,000-72,000 collected but undescribed; 482,000-741,000 yet to be sampled)'
     estimated_low:
       type: derived-from-described
       source: Appeltans 2012
