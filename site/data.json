@@ -14323,7 +14323,7 @@
         "estimated_total": {
           "type": "heuristic",
           "source": "PPG I 2016",
-          "verbatim_quote": null
+          "verbatim_quote": "this classification treats an estimated 11,916 species in 337 genera, 51 families, 14 orders, and two classes (Lycopodiopsida + Polypodiopsida combined)"
         },
         "estimated_low": {
           "type": "derived-from-described",
@@ -23838,7 +23838,7 @@
           "estimated_total": {
             "type": "heuristic",
             "source": "PPG I 2016",
-            "verbatim_quote": null
+            "verbatim_quote": "this classification treats an estimated 11,916 species in 337 genera, 51 families, 14 orders, and two classes (Lycopodiopsida + Polypodiopsida combined)"
           },
           "estimated_low": {
             "type": "derived-from-described",
