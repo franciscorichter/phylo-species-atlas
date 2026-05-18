@@ -642,6 +642,37 @@ def main() -> None:
     unrepresented.sort(key=lambda x: (CAT_ORDER.get(x["category"], 9),
                                       -(x["described"] or 0)))
 
+    # Surface the unrepresented partitions on the main coverage chart too —
+    # gives users the full "dark matter" story alongside the shipped trees.
+    # Each gets tips=null (no shipped tree → no ◇/★ marker), but the ◯
+    # described and ● estimated whiskers all render.
+    for u in unrepresented:
+        row_out = {
+            "filename": None,
+            "group": u["group"].lower().replace(" ", "_"),
+            "provenance_group": None,
+            "partition_group": u["group"],
+            "category": u["category"],
+            "study": None,
+            "year": None,
+            "tips": None,
+            "raw_tips": None,
+            "described_species": u["described"],
+            "described_source": None,
+            "coverage_pct": None,
+            "dated": False,
+            "is_partition_anchor": False,
+            "is_partition_canonical": True,  # so the chart filter picks it up
+            "is_unrepresented": True,        # so the renderer can style differently
+            "estimated_total": u["estimated_total"],
+            "estimated_low": u["estimated_low"],
+            "estimated_high": u["estimated_high"],
+            "estimate_source": u["estimate_source"],
+            "estimate_confidence": u["estimate_confidence"],
+        }
+        # No coverage_pct_estimated_* — those require tips. Skip.
+        coverage_rows.append(row_out)
+
     summary = {
         "n_trees": len(trees),
         "n_dated": dated_count,

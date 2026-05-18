@@ -153,6 +153,9 @@ function renderCoveragePlot() {
       "Source: %{customdata[2]} · confidence %{customdata[3]}<extra></extra>",
   };
 
+  // Mute described/estimated markers for unrepresented partitions so the
+  // missing-tree story reads at a glance (no ◇ tip + slightly faded ◯ ●).
+  const describedMarkerColor = rows.map(r => r.is_unrepresented ? "#9a9a9a" : "#1a1a1a");
   const describedTrace = {
     type: "scatter",
     mode: "markers",
@@ -162,12 +165,15 @@ function renderCoveragePlot() {
     marker: {
       symbol: "circle-open",
       size: 11,
-      color: "#1a1a1a",
-      line: { color: "#1a1a1a", width: 1.5 },
+      color: describedMarkerColor,
+      line: { color: describedMarkerColor, width: 1.5 },
     },
-    customdata: rows.map(r => [r.described_species ?? 0, r.described_source || "—"]),
+    customdata: rows.map(r => [
+      r.described_species ?? 0, r.described_source || "—",
+      r.is_unrepresented ? " · no shipped tree" : "",
+    ]),
     hovertemplate:
-      "<b>%{y}</b><br>" +
+      "<b>%{y}</b>%{customdata[2]}<br>" +
       "Described species: %{x:,}<br>" +
       "Source: %{customdata[1]}<extra></extra>",
   };
@@ -291,13 +297,22 @@ function renderCoveragePlot() {
     const point = ev.points && ev.points[0];
     if (!point) return;
     const row = rows[point.pointIndex];
-    if (!row || !row.filename) return;
+    if (!row) return;
+    if (row.is_unrepresented) {
+      // No tree to load — surface the audit page link in case the user wants
+      // to see why this partition has no shipped tree.
+      window.open(`audit.html#${row.partition_group}`, "_blank");
+      return;
+    }
+    if (!row.filename) return;
     selectTree(row.filename, true);
   });
 
   const sub = document.getElementById("coverage-sub");
   if (sub) {
-    sub.innerHTML = "Each row = one partition. <strong>◇</strong> = tips in a paper-shipped tree, <strong>★</strong> = atlas-derived species-level pruning (dated <span style='color:#2a6fbf'>■</span> / undated <span style='color:#c97a2a'>■</span>). <strong>◯</strong> = described species (taxonomic catalogue). <strong>●</strong> = estimated true diversity with low–high whiskers; <em>solid</em> = paper-published range, <em>faded amber</em> = atlas-derived heuristic. Click any marker to inspect the partition's tree.";
+    const nShipped = rows.filter(r => !r.is_unrepresented).length;
+    const nDark = rows.filter(r => r.is_unrepresented).length;
+    sub.innerHTML = `Each row = one partition (${nShipped} with a shipped tree, ${nDark} 'dark matter' — no tree yet). <strong>◇</strong> = paper-shipped tree tips, <strong>★</strong> = atlas-derived species-level pruning (dated <span style='color:#2a6fbf'>■</span> / undated <span style='color:#c97a2a'>■</span>). <strong>◯</strong> = described species (taxonomic catalogue). <strong>●</strong> = estimated true diversity with low–high whiskers; <em>solid</em> = paper-published range, <em>faded amber</em> = atlas-derived heuristic. Click a tip/diamond marker to inspect the tree; click a dark-matter row to see the audit.`;
   }
 }
 

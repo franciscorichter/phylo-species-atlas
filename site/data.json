@@ -14094,6 +14094,1651 @@
         "overall_classification": "paper-published-range",
         "auditor_note": "Range 2.6M-5.5M-7.8M is meta-range across Stork 2018's review of multiple primary estimates. Stork's OWN central is ~5.5M. The breadth honestly reflects deep uncertainty in insect diversity estimation."
       }
+    },
+    {
+      "filename": null,
+      "group": "hagfish",
+      "provenance_group": null,
+      "partition_group": "Hagfish",
+      "category": "Vertebrates",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 82,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 100,
+      "estimated_low": 82,
+      "estimated_high": 120,
+      "estimate_source": "Fernholm 2013",
+      "estimate_confidence": "Medium",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Fernholm 2013",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "heuristic",
+          "source": "Fernholm 2013",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "Fernholm 2013",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Fernholm 2013",
+          "verbatim_quote": null
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+      }
+    },
+    {
+      "filename": null,
+      "group": "lampreys",
+      "provenance_group": null,
+      "partition_group": "Lampreys",
+      "category": "Vertebrates",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 48,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 55,
+      "estimated_low": 48,
+      "estimated_high": 65,
+      "estimate_source": "Potter 2015",
+      "estimate_confidence": "High",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Potter 2015",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "heuristic",
+          "source": "Potter 2015",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "Potter 2015",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Potter 2015",
+          "verbatim_quote": null
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+      }
+    },
+    {
+      "filename": null,
+      "group": "crocodilians",
+      "provenance_group": null,
+      "partition_group": "Crocodilians",
+      "category": "Vertebrates",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 27,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 28,
+      "estimated_low": 27,
+      "estimated_high": 30,
+      "estimate_source": "IUCN CSG",
+      "estimate_confidence": "High",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "IUCN CSG",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "heuristic",
+          "source": "IUCN CSG",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "IUCN CSG",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "IUCN CSG",
+          "verbatim_quote": null
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+      }
+    },
+    {
+      "filename": null,
+      "group": "green_algae",
+      "provenance_group": null,
+      "partition_group": "Green algae",
+      "category": "Plants",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 11000,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 22000,
+      "estimated_low": 13000,
+      "estimated_high": 30000,
+      "estimate_source": "Guiry 2012",
+      "estimate_confidence": "Low",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Guiry 2012",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Guiry 2012",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "Guiry 2012",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Guiry 2012",
+          "verbatim_quote": null
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+      }
+    },
+    {
+      "filename": null,
+      "group": "lycophytes",
+      "provenance_group": null,
+      "partition_group": "Lycophytes",
+      "category": "Plants",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 1350,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 1400,
+      "estimated_low": 1350,
+      "estimated_high": 1500,
+      "estimate_source": "PPG I 2016",
+      "estimate_confidence": "High",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "PPG I 2016",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "heuristic",
+          "source": "PPG I 2016",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "PPG I 2016",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "PPG I 2016",
+          "verbatim_quote": null
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+      }
+    },
+    {
+      "filename": null,
+      "group": "myriapods",
+      "provenance_group": null,
+      "partition_group": "Myriapods",
+      "category": "Arthropods",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 17000,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 85000,
+      "estimated_low": 40000,
+      "estimated_high": 130000,
+      "estimate_source": "Chapman 2009",
+      "estimate_confidence": "Low",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Chapman 2009",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Chapman 2009",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "Chapman 2009",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Chapman 2009",
+          "verbatim_quote": null
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+      }
+    },
+    {
+      "filename": null,
+      "group": "annelids",
+      "provenance_group": null,
+      "partition_group": "Annelids",
+      "category": "Other animals",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 21000,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 35000,
+      "estimated_low": 21000,
+      "estimated_high": 50000,
+      "estimate_source": "Appeltans 2012",
+      "estimate_confidence": "Medium",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Appeltans 2012",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "heuristic",
+          "source": "Appeltans 2012",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "Appeltans 2012",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Appeltans 2012",
+          "verbatim_quote": null
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+      }
+    },
+    {
+      "filename": null,
+      "group": "flatworms",
+      "provenance_group": null,
+      "partition_group": "Flatworms",
+      "category": "Other animals",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 20000,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 100000,
+      "estimated_low": 44000,
+      "estimated_high": 200000,
+      "estimate_source": "Zhang 2013",
+      "estimate_confidence": "Low",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Zhang 2013",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Zhang 2013",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "Zhang 2013",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Zhang 2013",
+          "verbatim_quote": null
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+      }
+    },
+    {
+      "filename": null,
+      "group": "tunicates",
+      "provenance_group": null,
+      "partition_group": "Tunicates",
+      "category": "Other animals",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 3145,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 5100,
+      "estimated_low": 3500,
+      "estimated_high": 7000,
+      "estimate_source": "Appeltans 2012",
+      "estimate_confidence": "Medium",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Appeltans 2012",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Appeltans 2012",
+          "verbatim_quote": "there may be 0.7-1.0 million marine species (226,000 eukaryotic species currently described; 58,000-72,000 collected but undescribed; 482,000-741,000 yet to be sampled)"
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "Appeltans 2012",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Appeltans 2012",
+          "verbatim_quote": null
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+      }
+    },
+    {
+      "filename": null,
+      "group": "nemerteans",
+      "provenance_group": null,
+      "partition_group": "Nemerteans",
+      "category": "Other animals",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 1300,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 4500,
+      "estimated_low": 1300,
+      "estimated_high": 13500,
+      "estimate_source": "Kajihara 2008",
+      "estimate_confidence": "Low",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Kajihara 2008",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "heuristic",
+          "source": "Kajihara 2008",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "Kajihara 2008",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Kajihara 2008",
+          "verbatim_quote": null
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+      }
+    },
+    {
+      "filename": null,
+      "group": "ctenophores",
+      "provenance_group": null,
+      "partition_group": "Ctenophores",
+      "category": "Other animals",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 200,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 300,
+      "estimated_low": 200,
+      "estimated_high": 500,
+      "estimate_source": "WoRMS",
+      "estimate_confidence": "Low",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "WoRMS",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "heuristic",
+          "source": "WoRMS",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "WoRMS",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "WoRMS",
+          "verbatim_quote": null
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+      }
+    },
+    {
+      "filename": null,
+      "group": "foraminifera",
+      "provenance_group": null,
+      "partition_group": "Foraminifera",
+      "category": "Microbes & protists",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 9000,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 12000,
+      "estimated_low": 9000,
+      "estimated_high": 15000,
+      "estimate_source": "Hayward 2020",
+      "estimate_confidence": "Medium",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Hayward 2020",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "heuristic",
+          "source": "Hayward 2020",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "Hayward 2020",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Hayward 2020",
+          "verbatim_quote": null
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+      }
+    },
+    {
+      "filename": null,
+      "group": "ciliates",
+      "provenance_group": null,
+      "partition_group": "Ciliates",
+      "category": "Microbes & protists",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 4500,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 40000,
+      "estimated_low": 20000,
+      "estimated_high": 100000,
+      "estimate_source": "Foissner 2008",
+      "estimate_confidence": "Low",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Foissner 2008",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Foissner 2008",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "Foissner 2008",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Foissner 2008",
+          "verbatim_quote": null
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+      }
+    },
+    {
+      "filename": null,
+      "group": "amoebozoa",
+      "provenance_group": null,
+      "partition_group": "Amoebozoa",
+      "category": "Microbes & protists",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 2400,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 10000,
+      "estimated_low": 4000,
+      "estimated_high": 20000,
+      "estimate_source": "Adl 2007",
+      "estimate_confidence": "Low",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Adl 2007",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Adl 2007",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "Adl 2007",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Adl 2007",
+          "verbatim_quote": null
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+      }
+    },
+    {
+      "filename": null,
+      "group": "dinoflagellates",
+      "provenance_group": null,
+      "partition_group": "Dinoflagellates",
+      "category": "Microbes & protists",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 2300,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 5000,
+      "estimated_low": 3000,
+      "estimated_high": 10000,
+      "estimate_source": "Gomez 2012",
+      "estimate_confidence": "Low",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Gomez 2012",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Gomez 2012",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "Gomez 2012",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Gomez 2012",
+          "verbatim_quote": null
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+      }
+    },
+    {
+      "filename": null,
+      "group": "brown_algae",
+      "provenance_group": null,
+      "partition_group": "Brown algae",
+      "category": "Microbes & protists",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 2000,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 2500,
+      "estimated_low": 2000,
+      "estimated_high": 4000,
+      "estimate_source": "Guiry 2024",
+      "estimate_confidence": "Medium",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Guiry 2024",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "heuristic",
+          "source": "Guiry 2024",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "Guiry 2024",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Guiry 2024",
+          "verbatim_quote": null
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+      }
+    },
+    {
+      "filename": null,
+      "group": "haptophytes",
+      "provenance_group": null,
+      "partition_group": "Haptophytes",
+      "category": "Microbes & protists",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 760,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 2000,
+      "estimated_low": 762,
+      "estimated_high": 4000,
+      "estimate_source": "de Vargas 2007",
+      "estimate_confidence": "Low",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "de Vargas 2007",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "de Vargas 2007",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "de Vargas 2007",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "de Vargas 2007",
+          "verbatim_quote": null
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+      }
+    },
+    {
+      "filename": null,
+      "group": "choanoflagellates",
+      "provenance_group": null,
+      "partition_group": "Choanoflagellates",
+      "category": "Microbes & protists",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 300,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 300,
+      "estimated_low": 300,
+      "estimated_high": 500,
+      "estimate_source": "Carr 2008",
+      "estimate_confidence": "Low",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Carr 2008",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "heuristic",
+          "source": "Carr 2008",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "Carr 2008",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Carr 2008",
+          "verbatim_quote": null
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+      }
+    },
+    {
+      "filename": null,
+      "group": "acari",
+      "provenance_group": null,
+      "partition_group": "Acari",
+      "category": "Not yet represented",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 55000,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 500000,
+      "estimated_low": 100000,
+      "estimated_high": 1000000,
+      "estimate_source": "Zhang 2013",
+      "estimate_confidence": "Low",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Zhang 2013",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Zhang 2013",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "Zhang 2013",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Zhang 2013",
+          "verbatim_quote": null
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+      }
+    },
+    {
+      "filename": null,
+      "group": "other_arachnids",
+      "provenance_group": null,
+      "partition_group": "Other arachnids",
+      "category": "Not yet represented",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 12000,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 25000,
+      "estimated_low": 15000,
+      "estimated_high": 50000,
+      "estimate_source": "CoL",
+      "estimate_confidence": "Low",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "CoL",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "CoL",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "CoL",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "CoL",
+          "verbatim_quote": null
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+      }
+    },
+    {
+      "filename": null,
+      "group": "other_hexapods",
+      "provenance_group": null,
+      "partition_group": "Other hexapods",
+      "category": "Not yet represented",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 10000,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 15000,
+      "estimated_low": 10000,
+      "estimated_high": 25000,
+      "estimate_source": "CoL",
+      "estimate_confidence": "Low",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "CoL",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "heuristic",
+          "source": "CoL",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "CoL",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "CoL",
+          "verbatim_quote": null
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+      }
+    },
+    {
+      "filename": null,
+      "group": "rhodophyta",
+      "provenance_group": null,
+      "partition_group": "Rhodophyta",
+      "category": "Not yet represented",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 7000,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 10000,
+      "estimated_low": 7000,
+      "estimated_high": 15000,
+      "estimate_source": "AlgaeBase",
+      "estimate_confidence": "Low",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "AlgaeBase",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "heuristic",
+          "source": "AlgaeBase",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "AlgaeBase",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "AlgaeBase",
+          "verbatim_quote": null
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+      }
+    },
+    {
+      "filename": null,
+      "group": "apicomplexa",
+      "provenance_group": null,
+      "partition_group": "Apicomplexa",
+      "category": "Not yet represented",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 6000,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 10000,
+      "estimated_low": 6000,
+      "estimated_high": 20000,
+      "estimate_source": "CoL",
+      "estimate_confidence": "Low",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "CoL",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "heuristic",
+          "source": "CoL",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "CoL",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "CoL",
+          "verbatim_quote": null
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+      }
+    },
+    {
+      "filename": null,
+      "group": "other_phyla",
+      "provenance_group": null,
+      "partition_group": "Other phyla",
+      "category": "Not yet represented",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 4300,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 10000,
+      "estimated_low": 4300,
+      "estimated_high": 15000,
+      "estimate_source": "CoL",
+      "estimate_confidence": "Low",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "CoL",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "heuristic",
+          "source": "CoL",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "CoL",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "CoL",
+          "verbatim_quote": null
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+      }
+    },
+    {
+      "filename": null,
+      "group": "scorpiones",
+      "provenance_group": null,
+      "partition_group": "Scorpiones",
+      "category": "Not yet represented",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 2700,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 3500,
+      "estimated_low": 2700,
+      "estimated_high": 5000,
+      "estimate_source": "Rein 2024",
+      "estimate_confidence": "Medium",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Rein 2024",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "heuristic",
+          "source": "Rein 2024",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "Rein 2024",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Rein 2024",
+          "verbatim_quote": null
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+      }
+    },
+    {
+      "filename": null,
+      "group": "myxozoa",
+      "provenance_group": null,
+      "partition_group": "Myxozoa",
+      "category": "Not yet represented",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 2400,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 4000,
+      "estimated_low": 2400,
+      "estimated_high": 6000,
+      "estimate_source": "WoRMS",
+      "estimate_confidence": "Low",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "WoRMS",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "heuristic",
+          "source": "WoRMS",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "WoRMS",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "WoRMS",
+          "verbatim_quote": null
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+      }
+    },
+    {
+      "filename": null,
+      "group": "rotifera",
+      "provenance_group": null,
+      "partition_group": "Rotifera",
+      "category": "Not yet represented",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 2200,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 2200,
+      "estimated_low": 2200,
+      "estimated_high": 2500,
+      "estimate_source": "Segers 2007",
+      "estimate_confidence": "High",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Segers 2007",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "heuristic",
+          "source": "Segers 2007",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "Segers 2007",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Segers 2007",
+          "verbatim_quote": null
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+      }
+    },
+    {
+      "filename": null,
+      "group": "euglenozoa",
+      "provenance_group": null,
+      "partition_group": "Euglenozoa",
+      "category": "Not yet represented",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 2000,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 5000,
+      "estimated_low": 2000,
+      "estimated_high": 10000,
+      "estimate_source": "CoL",
+      "estimate_confidence": "Low",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "CoL",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "heuristic",
+          "source": "CoL",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "CoL",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "CoL",
+          "verbatim_quote": null
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+      }
+    },
+    {
+      "filename": null,
+      "group": "cercozoa",
+      "provenance_group": null,
+      "partition_group": "Cercozoa",
+      "category": "Not yet represented",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 2000,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 5000,
+      "estimated_low": 2000,
+      "estimated_high": 10000,
+      "estimate_source": "CoL",
+      "estimate_confidence": "Low",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "CoL",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "heuristic",
+          "source": "CoL",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "CoL",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "CoL",
+          "verbatim_quote": null
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+      }
+    },
+    {
+      "filename": null,
+      "group": "other_mollusca",
+      "provenance_group": null,
+      "partition_group": "Other Mollusca",
+      "category": "Not yet represented",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 1500,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 3000,
+      "estimated_low": 1500,
+      "estimated_high": 5000,
+      "estimate_source": "WoRMS",
+      "estimate_confidence": "Medium",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "WoRMS",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "heuristic",
+          "source": "WoRMS",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "WoRMS",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "WoRMS",
+          "verbatim_quote": null
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+      }
+    },
+    {
+      "filename": null,
+      "group": "tardigrada",
+      "provenance_group": null,
+      "partition_group": "Tardigrada",
+      "category": "Not yet represented",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 1488,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 2081,
+      "estimated_low": 1488,
+      "estimated_high": 3000,
+      "estimate_source": "Bartels 2016",
+      "estimate_confidence": "Medium",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Bartels 2016",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "heuristic",
+          "source": "Bartels 2016",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "Bartels 2016",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Bartels 2016",
+          "verbatim_quote": null
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+      }
+    },
+    {
+      "filename": null,
+      "group": "pycnogonida",
+      "provenance_group": null,
+      "partition_group": "Pycnogonida",
+      "category": "Not yet represented",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 1400,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 2000,
+      "estimated_low": 1400,
+      "estimated_high": 3000,
+      "estimate_source": "WoRMS",
+      "estimate_confidence": "Medium",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "WoRMS",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "heuristic",
+          "source": "WoRMS",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "WoRMS",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "WoRMS",
+          "verbatim_quote": null
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+      }
+    },
+    {
+      "filename": null,
+      "group": "acanthocephala",
+      "provenance_group": null,
+      "partition_group": "Acanthocephala",
+      "category": "Not yet represented",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 1300,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 2000,
+      "estimated_low": 1300,
+      "estimated_high": 3000,
+      "estimate_source": "CoL",
+      "estimate_confidence": "Medium",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "CoL",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "heuristic",
+          "source": "CoL",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "CoL",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "CoL",
+          "verbatim_quote": null
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+      }
+    },
+    {
+      "filename": null,
+      "group": "chrysophyta",
+      "provenance_group": null,
+      "partition_group": "Chrysophyta",
+      "category": "Not yet represented",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 1200,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 3000,
+      "estimated_low": 1200,
+      "estimated_high": 5000,
+      "estimate_source": "AlgaeBase",
+      "estimate_confidence": "Low",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "AlgaeBase",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "heuristic",
+          "source": "AlgaeBase",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "AlgaeBase",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "AlgaeBase",
+          "verbatim_quote": null
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+      }
+    },
+    {
+      "filename": null,
+      "group": "oomycetes",
+      "provenance_group": null,
+      "partition_group": "Oomycetes",
+      "category": "Not yet represented",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 1000,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 2000,
+      "estimated_low": 1000,
+      "estimated_high": 3000,
+      "estimate_source": "CoL",
+      "estimate_confidence": "Medium",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "CoL",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "heuristic",
+          "source": "CoL",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "CoL",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "CoL",
+          "verbatim_quote": null
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+      }
     }
   ],
   "datasets_by_partition": {
