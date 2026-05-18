@@ -56,10 +56,11 @@
       <div id="detail-empty" class="empty">Select a tree on the left to see details.</div>
       <div id="detail" hidden>
         <h2 id="detail-name"></h2>
+        <div id="dark-matter-panel" hidden></div>
         <div id="dataset-chooser" class="dataset-chooser" hidden></div>
         <div id="detail-meta" class="meta"></div>
         <div id="uncertainty-panel" hidden></div>
-        <div class="card">
+        <div class="card" id="r-snippet-card">
           <div class="card-header">
             <h3>Use from R</h3>
             <div class="viewer-controls">
@@ -71,7 +72,7 @@
           </p>
           <pre class="r-snippet"><code id="r-snippet"></code></pre>
         </div>
-        <div class="card">
+        <div class="card" id="tree-viewer-card">
           <div class="card-header">
             <h3>Tree viewer</h3>
             <div class="viewer-controls">

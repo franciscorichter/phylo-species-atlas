@@ -1048,6 +1048,110 @@ main {
   line-height: 1.55;
 }
 
+/* Dark-matter detail panel — no tree, just the evidence */
+.dm-card { padding-bottom: 14px; }
+.dm-section {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+.dm-section:first-of-type {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+.dm-section h3 {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+.dm-reason {
+  margin: 4px 0 0;
+  color: #1a1a1a;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.dm-dl {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 4px 14px;
+  margin: 6px 0 0;
+  font-size: 13px;
+}
+.dm-dl dt {
+  color: var(--muted);
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  padding-top: 1px;
+}
+.dm-dl dd { margin: 0; color: #1a1a1a; }
+.ev-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 13px;
+}
+.ev-link:hover { text-decoration: underline; }
+.ev-link .src-type {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.ev-link .src-type.paper { background: #eef2f8; color: var(--accent); }
+.ev-link .src-type.database { background: #e1ebd6; color: #1f6b29; }
+.dm-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  margin: 4px 0 0;
+}
+.dm-table th, .dm-table td {
+  text-align: left;
+  padding: 6px 8px;
+  border-top: 1px solid var(--line);
+  vertical-align: top;
+}
+.dm-table thead th {
+  font-weight: 600;
+  color: var(--muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-top: none;
+}
+.dm-note { color: #555; font-size: 11.5px; line-height: 1.5; }
+.dm-bnote {
+  margin-top: 6px;
+  color: #555;
+  font-size: 11.5px;
+  line-height: 1.5;
+}
+.dm-quote {
+  margin-top: 4px;
+  padding-left: 8px;
+  border-left: 2px solid var(--accent);
+  color: #1a1a1a;
+  font-size: 11.5px;
+  font-style: italic;
+}
+.dm-footer {
+  margin-top: 16px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.dm-footer a { color: var(--accent); }
+
 /* Interval provenance table on the audit page */
 .ip-cls {
   display: inline-block;

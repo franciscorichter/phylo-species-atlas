@@ -121,34 +121,53 @@ function renderCoveragePlot() {
       : "#5a5a5a";
   };
 
+  // Estimate is a RANGE, not a point. Render as an interval bar only (no
+  // central ● marker). Plotly draws the interval via error_x bars; we anchor
+  // at the geometric midpoint of (low, high) and make the marker invisible.
+  // For partitions where low or high are missing, the trace still renders
+  // at estimated_total without whiskers.
+  const intervalAnchor = (r) => {
+    if (r.estimated_low && r.estimated_high) {
+      // Geometric midpoint on the log axis — visually centred on the bar.
+      return Math.sqrt(r.estimated_low * r.estimated_high);
+    }
+    return r.estimated_total ?? null;
+  };
   const estimatedTrace = {
     type: "scatter",
     mode: "markers",
-    name: "Estimated true diversity",
-    x: rows.map(r => r.estimated_total ?? null),
+    name: "Estimated true diversity (interval)",
+    x: rows.map(intervalAnchor),
     y: labels,
     marker: {
       symbol: "circle",
-      size: 9,
-      color: rows.map(intervalColor),
-      line: { color: "#333", width: 0.5 },
+      size: 0,                             // invisible anchor; the visible part is the error bar
+      color: "rgba(0,0,0,0)",
+      opacity: 0,
     },
     error_x: {
       type: "data",
       symmetric: false,
-      array: rows.map(r => Math.max(0, (r.estimated_high ?? r.estimated_total ?? 0) - (r.estimated_total ?? 0))),
-      arrayminus: rows.map(r => Math.max(0, (r.estimated_total ?? 0) - (r.estimated_low ?? r.estimated_total ?? 0))),
+      array: rows.map(r => {
+        const a = intervalAnchor(r);
+        return a != null && r.estimated_high != null ? Math.max(0, r.estimated_high - a) : 0;
+      }),
+      arrayminus: rows.map(r => {
+        const a = intervalAnchor(r);
+        return a != null && r.estimated_low != null ? Math.max(0, a - r.estimated_low) : 0;
+      }),
       color: rows.map(intervalColor),
-      thickness: 1.5,
-      width: 5,
+      thickness: 2.0,
+      width: 6,
     },
     customdata: rows.map(r => [
       r.estimated_low, r.estimated_high, r.estimate_source || "—",
       r.estimate_confidence || "—", classLabel(intervalClass(r)),
+      r.estimated_total,
     ]),
     hovertemplate:
       "<b>%{y}</b><br>" +
-      "Estimated total: %{x:,} (range %{customdata[0]:,}–%{customdata[1]:,})<br>" +
+      "Estimated range: %{customdata[0]:,}–%{customdata[1]:,} (cited central: %{customdata[5]:,})<br>" +
       "<i style='color:#7a7a7a'>Interval: %{customdata[4]}</i><br>" +
       "Source: %{customdata[2]} · confidence %{customdata[3]}<extra></extra>",
   };
@@ -299,9 +318,7 @@ function renderCoveragePlot() {
     const row = rows[point.pointIndex];
     if (!row) return;
     if (row.is_unrepresented) {
-      // No tree to load — surface the audit page link in case the user wants
-      // to see why this partition has no shipped tree.
-      window.open(`audit.html#${row.partition_group}`, "_blank");
+      selectDarkMatter(row.partition_group, true);
       return;
     }
     if (!row.filename) return;
@@ -312,7 +329,7 @@ function renderCoveragePlot() {
   if (sub) {
     const nShipped = rows.filter(r => !r.is_unrepresented).length;
     const nDark = rows.filter(r => r.is_unrepresented).length;
-    sub.innerHTML = `Each row = one partition (${nShipped} with a shipped tree, ${nDark} 'dark matter' — no tree yet). <strong>◇</strong> = paper-shipped tree tips, <strong>★</strong> = atlas-derived species-level pruning (dated <span style='color:#2a6fbf'>■</span> / undated <span style='color:#c97a2a'>■</span>). <strong>◯</strong> = described species (taxonomic catalogue). <strong>●</strong> = estimated true diversity with low–high whiskers; <em>solid</em> = paper-published range, <em>faded amber</em> = atlas-derived heuristic. Click a tip/diamond marker to inspect the tree; click a dark-matter row to see the audit.`;
+    sub.innerHTML = `Each row = one partition (${nShipped} with a shipped tree, ${nDark} 'dark matter' — no tree yet). <strong>◇</strong> = paper-shipped tree tips, <strong>★</strong> = atlas-derived species-level pruning (dated <span style='color:#2a6fbf'>■</span> / undated <span style='color:#c97a2a'>■</span>). <strong>◯</strong> = described species (taxonomic catalogue). <strong>━━━━</strong> = estimated true diversity interval (low–high); <em>solid grey</em> = paper-published range, <em>faded amber</em> = atlas-derived heuristic. Click a tree row to inspect it; click a dark-matter row to see the evidence behind its interval.`;
   }
 }
 
@@ -499,6 +516,139 @@ function renderTreeList() {
   });
 }
 
+// Select a dark-matter (no-tree) partition: show the partition's audit
+// info — interval, evidence-paper hyperlinks, constituents — instead of
+// trying to load a tree that doesn't exist.
+function selectDarkMatter(partitionName, scrollIntoView) {
+  STATE.selected = null;
+  document.getElementById("detail-empty").hidden = true;
+  document.getElementById("detail").hidden = false;
+  document.getElementById("detail-name").textContent = partitionName;
+
+  // Hide the tree-related cards.
+  document.getElementById("dataset-chooser").hidden = true;
+  document.getElementById("detail-meta").innerHTML = "";
+  document.getElementById("uncertainty-panel").hidden = true;
+  document.getElementById("r-snippet-card").hidden = true;
+  document.getElementById("tree-viewer-card").hidden = true;
+  document.getElementById("dark-matter-panel").hidden = false;
+
+  const audit = (STATE.data.audits || {})[partitionName] || {};
+  const est = audit.estimate || {};
+  const src = est.source || {};
+  const ip = est.interval_provenance || {};
+  const canTree = audit.canonical_tree || {};
+  const constituents = audit.constituents || [];
+
+  const classLabel = (cls) => ({
+    "paper-published-range": "paper-published range",
+    "partly-heuristic": "partly heuristic",
+    "fully-heuristic": "heuristic — no true-diversity estimate published",
+    "derived": "derived from described count",
+    "unaudited": "not yet audited for interval provenance",
+  }[cls] || cls);
+  const clsClass = ip.overall_classification || "unaudited";
+
+  // Paper hyperlinks for the interval evidence.
+  let srcLinks = "";
+  if (src.doi) {
+    srcLinks += `<a href="https://doi.org/${escapeHTML(src.doi)}" target="_blank" rel="noopener" class="ev-link"><span class="src-type paper">paper</span>${escapeHTML(src.key || "source")} · DOI ${escapeHTML(src.doi)}</a>`;
+  } else if (src.url) {
+    srcLinks += `<a href="${escapeHTML(src.url)}" target="_blank" rel="noopener" class="ev-link"><span class="src-type database">database</span>${escapeHTML(src.key || "source")}</a>`;
+  } else if (src.key) {
+    srcLinks += `<span class="src">${escapeHTML(src.key)}</span>`;
+  }
+
+  // Range row.
+  const rangeText = (est.low != null && est.high != null)
+    ? `${fmt.format(est.low)}–${fmt.format(est.high)}`
+    : (est.total != null ? `${fmt.format(est.total)} (single point)` : "—");
+
+  // Constituents table (only when present, e.g. for "Others").
+  let constituentsHTML = "";
+  if (constituents.length) {
+    constituentsHTML = `
+      <section class="dm-section">
+        <h3>Constituent clades (${constituents.length})</h3>
+        <table class="dm-table">
+          <thead><tr>
+            <th>Clade</th><th>Described</th><th>Estimated</th><th>Notes</th>
+          </tr></thead>
+          <tbody>
+            ${constituents.map(c => `<tr>
+              <td><strong>${escapeHTML(c.name)}</strong></td>
+              <td>${fmt.format(c.described || 0)}</td>
+              <td>${fmt.format(c.estimated || 0)}</td>
+              <td class="dm-note">${c.note ? escapeHTML(c.note) : ""}</td>
+            </tr>`).join("")}
+          </tbody>
+        </table>
+      </section>`;
+  }
+
+  // Interval provenance per-bound, with verbatim quotes when present.
+  const renderBound = (label, bound) => {
+    if (!bound) return "";
+    const note = bound.note ? `<div class="dm-bnote">${escapeHTML(bound.note)}</div>` : "";
+    const quote = bound.verbatim_quote ? `<div class="dm-quote">“${escapeHTML(bound.verbatim_quote)}”</div>` : "";
+    return `<tr>
+      <th>${escapeHTML(label)}</th>
+      <td><span class="ip-type ip-type-${(bound.type || "").replace(/-/g, "_")}">${escapeHTML(bound.type || "—")}</span></td>
+      <td>${escapeHTML(bound.source || "—")}${quote}${note}</td>
+    </tr>`;
+  };
+
+  const intervalProvHTML = (ip && Object.keys(ip).length > 0) ? `
+    <section class="dm-section">
+      <h3>Interval provenance <span class="ip-cls ip-cls-${clsClass}">${escapeHTML(classLabel(clsClass))}</span></h3>
+      <table class="ip-table">
+        ${renderBound("Described", ip.described)}
+        ${renderBound("Estimated total", ip.estimated_total)}
+        ${renderBound("Low bound", ip.estimated_low)}
+        ${renderBound("High bound", ip.estimated_high)}
+      </table>
+      ${ip.auditor_note ? `<p class="dm-bnote">${escapeHTML(ip.auditor_note)}</p>` : ""}
+    </section>` : "";
+
+  const host = document.getElementById("dark-matter-panel");
+  host.innerHTML = `
+    <div class="card dm-card">
+      <div class="card-header">
+        <h3>No shipped tree for this partition</h3>
+        <span class="audit-badge audit-deferred">${escapeHTML((audit.audit || {}).status || "deferred")}</span>
+      </div>
+      <p class="card-sub">${escapeHTML(audit.category || "")} · This partition lacks a canonical phylogenetic tree in the atlas. The information below describes the diversity estimate and its evidence.</p>
+
+      ${canTree.reason ? `<section class="dm-section">
+        <h3>Why no tree</h3>
+        <p class="dm-reason">${escapeHTML(canTree.reason)}</p>
+      </section>` : ""}
+
+      <section class="dm-section">
+        <h3>Diversity estimate</h3>
+        <dl class="dm-dl">
+          <dt>Described species</dt>
+          <dd>${est.described != null ? fmt.format(est.described) : "—"}</dd>
+          <dt>Estimated range</dt>
+          <dd>${rangeText}</dd>
+          ${est.confidence ? `<dt>Confidence</dt><dd>${escapeHTML(est.confidence)}</dd>` : ""}
+          <dt>Evidence</dt>
+          <dd>${srcLinks || '<span class="src">—</span>'}</dd>
+        </dl>
+      </section>
+
+      ${constituentsHTML}
+      ${intervalProvHTML}
+
+      <p class="dm-footer"><a href="audit.html#${encodeURIComponent(partitionName)}" target="_blank" rel="noopener">Full audit entry →</a></p>
+    </div>
+  `;
+
+  if (scrollIntoView) {
+    document.getElementById("detail").scrollIntoView({ block: "start", behavior: "smooth" });
+  }
+}
+
 async function selectTree(filename, scrollIntoView) {
   STATE.selected = filename;
   // If the selected tree is a sub-clade, make sure its partition is expanded
@@ -519,6 +669,10 @@ async function selectTree(filename, scrollIntoView) {
   document.getElementById("detail-empty").hidden = true;
   document.getElementById("detail").hidden = false;
   document.getElementById("detail-name").textContent = t.filename.replace(/\.nwk$/, "");
+  // Hide dark-matter panel; show tree-related cards.
+  document.getElementById("dark-matter-panel").hidden = true;
+  document.getElementById("r-snippet-card").hidden = false;
+  document.getElementById("tree-viewer-card").hidden = false;
 
   const est = t.estimate;
   const describedVal = t.described_species
