@@ -31,8 +31,8 @@ estimate:
       type: paper-published
       source: Agnarsson 2013
       verbatim_quote: null
-    overall_classification: paper-published-range
-    auditor_note: "Bilateral 80k-170k range likely paper-published by Agnarsson 2013; verify DOI and verbatim quote."
+    overall_classification: partly-heuristic
+    auditor_note: "Agnarsson 2013 spider diversity reference not isolated by Crossref. Bounds 80k-120k-170k unverified."
 
 tree:
   file: tree.nwk

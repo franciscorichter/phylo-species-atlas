@@ -30,8 +30,8 @@ estimate:
       type: paper-published
       source: Gomez 2012
       verbatim_quote: null
-    overall_classification: paper-published-range
-    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+    overall_classification: partly-heuristic
+    auditor_note: "Gomez 2012 dinoflagellate checklist. Not abstract-indexed. Bounds 3k-5k-10k not verified. (Guiry 2024 reports 2,956 living dinoflagellates, partially constraining the central.)"
 
 tree: null
 caveats:

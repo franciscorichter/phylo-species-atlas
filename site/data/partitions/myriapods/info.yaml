@@ -30,8 +30,8 @@ estimate:
       type: paper-published
       source: Chapman 2009
       verbatim_quote: null
-    overall_classification: paper-published-range
-    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+    overall_classification: partly-heuristic
+    auditor_note: "Chapman 2009 'Numbers of Living Species in Australia and the World' — government report (Australian Biological Resources Study). Not in Crossref. Bounds 40k-85k-130k unverified."
 
 tree: null
 caveats:

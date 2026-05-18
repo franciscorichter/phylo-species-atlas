@@ -30,8 +30,8 @@ estimate:
       type: paper-published
       source: Zhang 2013
       verbatim_quote: null
-    overall_classification: paper-published-range
-    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+    overall_classification: partly-heuristic
+    auditor_note: "Zhang 2013 is part of the Animal Biodiversity Outline series (Zootaxa). Specific Acari volume not retrievable via standard abstract APIs. Atlas's 100k-500k-1M range likely from Zhang's body tables but unverified."
 
 tree: null
 caveats:

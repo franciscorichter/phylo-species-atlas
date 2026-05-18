@@ -30,8 +30,8 @@ estimate:
       type: paper-published
       source: Adl 2007
       verbatim_quote: null
-    overall_classification: paper-published-range
-    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+    overall_classification: partly-heuristic
+    auditor_note: "Adl 2007 'Diversity, nomenclature, and taxonomy of protists' (Syst Biol). No abstract indexed; bounds 4k-10k-20k not verified."
 
 tree: null
 caveats:

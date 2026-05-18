@@ -30,8 +30,8 @@ estimate:
       type: paper-published
       source: Zhang 2013
       verbatim_quote: null
-    overall_classification: paper-published-range
-    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+    overall_classification: partly-heuristic
+    auditor_note: "Zhang 2013 platyhelminth volume (Animal Biodiversity Outline). Not abstract-indexed. Bounds 44k-100k-200k not verified."
 
 tree: null
 caveats:

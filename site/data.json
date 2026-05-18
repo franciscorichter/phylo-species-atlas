@@ -13293,8 +13293,8 @@
           "source": "Agnarsson 2013",
           "verbatim_quote": null
         },
-        "overall_classification": "paper-published-range",
-        "auditor_note": "Bilateral 80k-170k range likely paper-published by Agnarsson 2013; verify DOI and verbatim quote."
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Agnarsson 2013 spider diversity reference not isolated by Crossref. Bounds 80k-120k-170k unverified."
       }
     },
     {
@@ -14382,8 +14382,8 @@
           "source": "Chapman 2009",
           "verbatim_quote": null
         },
-        "overall_classification": "paper-published-range",
-        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Chapman 2009 'Numbers of Living Species in Australia and the World' — government report (Australian Biological Resources Study). Not in Crossref. Bounds 40k-85k-130k unverified."
       }
     },
     {
@@ -14476,8 +14476,8 @@
           "source": "Zhang 2013",
           "verbatim_quote": null
         },
-        "overall_classification": "paper-published-range",
-        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Zhang 2013 platyhelminth volume (Animal Biodiversity Outline). Not abstract-indexed. Bounds 44k-100k-200k not verified."
       }
     },
     {
@@ -14713,8 +14713,8 @@
           "source": "Foissner 2008",
           "verbatim_quote": null
         },
-        "overall_classification": "paper-published-range",
-        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Foissner 2008 is a book chapter on protist diversity. Not abstract-indexed. Bounds 20k-40k-100k not verified."
       }
     },
     {
@@ -14760,8 +14760,8 @@
           "source": "Adl 2007",
           "verbatim_quote": null
         },
-        "overall_classification": "paper-published-range",
-        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Adl 2007 'Diversity, nomenclature, and taxonomy of protists' (Syst Biol). No abstract indexed; bounds 4k-10k-20k not verified."
       }
     },
     {
@@ -14807,8 +14807,8 @@
           "source": "Gomez 2012",
           "verbatim_quote": null
         },
-        "overall_classification": "paper-published-range",
-        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Gomez 2012 dinoflagellate checklist. Not abstract-indexed. Bounds 3k-5k-10k not verified. (Guiry 2024 reports 2,956 living dinoflagellates, partially constraining the central.)"
       }
     },
     {
@@ -14901,8 +14901,8 @@
           "source": "de Vargas 2007",
           "verbatim_quote": null
         },
-        "overall_classification": "paper-published-range",
-        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "de Vargas 2007 haptophyte review chapter. Not abstract-indexed. Bounds 762-2k-4k not verified. (Guiry 2024 reports 1,722 Haptophyta species; central plausible.)"
       }
     },
     {
@@ -14995,8 +14995,8 @@
           "source": "Zhang 2013",
           "verbatim_quote": null
         },
-        "overall_classification": "paper-published-range",
-        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Zhang 2013 is part of the Animal Biodiversity Outline series (Zootaxa). Specific Acari volume not retrievable via standard abstract APIs. Atlas's 100k-500k-1M range likely from Zhang's body tables but unverified."
       }
     },
     {
@@ -19762,8 +19762,8 @@
             "source": "Zhang 2013",
             "verbatim_quote": null
           },
-          "overall_classification": "paper-published-range",
-          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Zhang 2013 is part of the Animal Biodiversity Outline series (Zootaxa). Specific Acari volume not retrievable via standard abstract APIs. Atlas's 100k-500k-1M range likely from Zhang's body tables but unverified."
         }
       },
       "tree": null,
@@ -19843,8 +19843,8 @@
             "source": "Adl 2007",
             "verbatim_quote": null
           },
-          "overall_classification": "paper-published-range",
-          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Adl 2007 'Diversity, nomenclature, and taxonomy of protists' (Syst Biol). No abstract indexed; bounds 4k-10k-20k not verified."
         }
       },
       "tree": null,
@@ -21690,8 +21690,8 @@
             "source": "Foissner 2008",
             "verbatim_quote": null
           },
-          "overall_classification": "paper-published-range",
-          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Foissner 2008 is a book chapter on protist diversity. Not abstract-indexed. Bounds 20k-40k-100k not verified."
         }
       },
       "tree": null,
@@ -22266,8 +22266,8 @@
             "source": "Gomez 2012",
             "verbatim_quote": null
           },
-          "overall_classification": "paper-published-range",
-          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Gomez 2012 dinoflagellate checklist. Not abstract-indexed. Bounds 3k-5k-10k not verified. (Guiry 2024 reports 2,956 living dinoflagellates, partially constraining the central.)"
         }
       },
       "tree": null,
@@ -22884,8 +22884,8 @@
             "source": "Zhang 2013",
             "verbatim_quote": null
           },
-          "overall_classification": "paper-published-range",
-          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Zhang 2013 platyhelminth volume (Animal Biodiversity Outline). Not abstract-indexed. Bounds 44k-100k-200k not verified."
         }
       },
       "tree": null,
@@ -23391,8 +23391,8 @@
             "source": "de Vargas 2007",
             "verbatim_quote": null
           },
-          "overall_classification": "paper-published-range",
-          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "de Vargas 2007 haptophyte review chapter. Not abstract-indexed. Bounds 762-2k-4k not verified. (Guiry 2024 reports 1,722 Haptophyta species; central plausible.)"
         }
       },
       "tree": null,
@@ -24485,8 +24485,8 @@
             "source": "Chapman 2009",
             "verbatim_quote": null
           },
-          "overall_classification": "paper-published-range",
-          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Chapman 2009 'Numbers of Living Species in Australia and the World' — government report (Australian Biological Resources Study). Not in Crossref. Bounds 40k-85k-130k unverified."
         }
       },
       "tree": null,
@@ -26236,8 +26236,8 @@
             "source": "Agnarsson 2013",
             "verbatim_quote": null
           },
-          "overall_classification": "paper-published-range",
-          "auditor_note": "Bilateral 80k-170k range likely paper-published by Agnarsson 2013; verify DOI and verbatim quote."
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Agnarsson 2013 spider diversity reference not isolated by Crossref. Bounds 80k-120k-170k unverified."
         }
       },
       "tree": {

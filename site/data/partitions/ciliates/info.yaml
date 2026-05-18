@@ -30,8 +30,8 @@ estimate:
       type: paper-published
       source: Foissner 2008
       verbatim_quote: null
-    overall_classification: paper-published-range
-    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+    overall_classification: partly-heuristic
+    auditor_note: "Foissner 2008 is a book chapter on protist diversity. Not abstract-indexed. Bounds 20k-40k-100k not verified."
 
 tree: null
 caveats:

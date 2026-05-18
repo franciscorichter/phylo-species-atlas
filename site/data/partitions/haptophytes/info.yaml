@@ -30,8 +30,8 @@ estimate:
       type: paper-published
       source: de Vargas 2007
       verbatim_quote: null
-    overall_classification: paper-published-range
-    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+    overall_classification: partly-heuristic
+    auditor_note: "de Vargas 2007 haptophyte review chapter. Not abstract-indexed. Bounds 762-2k-4k not verified. (Guiry 2024 reports 1,722 Haptophyta species; central plausible.)"
 
 tree: null
 caveats:
