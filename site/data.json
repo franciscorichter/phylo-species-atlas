@@ -12667,26 +12667,29 @@
       "interval_provenance": {
         "described": {
           "type": "database",
-          "source": "GTDB / live database",
+          "source": "GTDB R10",
           "verbatim_quote": null
         },
         "estimated_total": {
-          "type": "paper-published",
-          "source": "Louca 2019",
-          "verbatim_quote": null
+          "type": "atlas-derived",
+          "source": "atlas-derived",
+          "verbatim_quote": null,
+          "note": "50,000 total is NOT Louca's number. Louca 2019 reports combined prokaryote diversity (0.8-1.6M), not separate archaea-only estimate."
         },
         "estimated_low": {
-          "type": "paper-published",
-          "source": "Louca 2019",
-          "verbatim_quote": null
+          "type": "atlas-derived",
+          "source": "atlas-derived",
+          "verbatim_quote": null,
+          "note": "20,000 low is atlas-derived above the GTDB described count."
         },
         "estimated_high": {
-          "type": "paper-published",
-          "source": "Louca 2019",
-          "verbatim_quote": null
+          "type": "atlas-derived",
+          "source": "atlas-derived",
+          "verbatim_quote": null,
+          "note": "500,000 high is atlas-derived — represents roughly archaea's share of Louca's 0.8-1.6M prokaryote total if archaea are ~30%, but the split isn't paper-published."
         },
-        "overall_classification": "paper-published-range",
-        "auditor_note": "Microbe diversity estimates carry extreme uncertainty (orders of magnitude). Louca 2019 provides paper-published bounds."
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Louca 2019 publishes a paper-derived prokaryote total (0.8-1.6M\nOTUs); the atlas's archaea-specific interval is an atlas-derived\npartitioning of that figure, not directly quoted from Louca. Honest\nreclassification: partly-heuristic (cited paper supports the order\nof magnitude; the precise archaea-only bounds don't come from it).\n"
       }
     },
     {
@@ -18577,33 +18580,37 @@
         "confidence": "Low",
         "source": {
           "key": "Louca 2019",
-          "doi": null,
+          "doi": "10.1371/journal.pbio.3000106",
           "pdf": null,
-          "url": null
+          "url": "https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.3000106",
+          "note": "Louca et al. 2019 PLOS Biology — 'A census-based estimate of Earth's bacterial and archaeal diversity'. Reports ~0.8–1.6 million prokaryotic OTUs GLOBALLY (combined bacteria + archaea), not per-domain."
         },
         "interval_provenance": {
           "described": {
             "type": "database",
-            "source": "GTDB / live database",
+            "source": "GTDB R10",
             "verbatim_quote": null
           },
           "estimated_total": {
-            "type": "paper-published",
-            "source": "Louca 2019",
-            "verbatim_quote": null
+            "type": "atlas-derived",
+            "source": "atlas-derived",
+            "verbatim_quote": null,
+            "note": "50,000 total is NOT Louca's number. Louca 2019 reports combined prokaryote diversity (0.8-1.6M), not separate archaea-only estimate."
           },
           "estimated_low": {
-            "type": "paper-published",
-            "source": "Louca 2019",
-            "verbatim_quote": null
+            "type": "atlas-derived",
+            "source": "atlas-derived",
+            "verbatim_quote": null,
+            "note": "20,000 low is atlas-derived above the GTDB described count."
           },
           "estimated_high": {
-            "type": "paper-published",
-            "source": "Louca 2019",
-            "verbatim_quote": null
+            "type": "atlas-derived",
+            "source": "atlas-derived",
+            "verbatim_quote": null,
+            "note": "500,000 high is atlas-derived — represents roughly archaea's share of Louca's 0.8-1.6M prokaryote total if archaea are ~30%, but the split isn't paper-published."
           },
-          "overall_classification": "paper-published-range",
-          "auditor_note": "Microbe diversity estimates carry extreme uncertainty (orders of magnitude). Louca 2019 provides paper-published bounds."
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Louca 2019 publishes a paper-derived prokaryote total (0.8-1.6M\nOTUs); the atlas's archaea-specific interval is an atlas-derived\npartitioning of that figure, not directly quoted from Louca. Honest\nreclassification: partly-heuristic (cited paper supports the order\nof magnitude; the precise archaea-only bounds don't come from it).\n"
         }
       },
       "tree": {
