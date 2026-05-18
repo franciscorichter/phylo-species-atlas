@@ -1,0 +1,70 @@
+partition: Crustaceans
+slug: crustaceans
+category: Arthropods
+
+estimate:
+  described: 77000
+  low: 100000
+  total: 150000
+  high: 250000
+  confidence: Low
+  source:
+    key: Appeltans 2012
+    doi: 10.1016/j.cub.2012.09.036
+    pdf: null
+    url: https://www.cell.com/current-biology/fulltext/S0960-9822(12)01142-1
+    note: "Appeltans et al. 2012 Current Biology — 'The Magnitude of Global Marine Species Diversity'."
+  interval_provenance:
+    described:
+      type: database
+      source: World Register of Marine Species (WoRMS)
+      verbatim_quote: null
+    estimated_total:
+      type: paper-published
+      source: Appeltans 2012
+      verbatim_quote: null
+    estimated_low:
+      type: paper-published
+      source: Appeltans 2012
+      verbatim_quote: null
+    estimated_high:
+      type: paper-published
+      source: Appeltans 2012
+      verbatim_quote: null
+    overall_classification: paper-published-range
+    auditor_note: "Appeltans 2012 — WoRMS-led marine species enumeration. Bilateral range likely paper-published."
+
+tree:
+  file: tree.nwk
+  ntips: 95
+  unique_ids: 95
+  species_represented: 95
+  coverage_pct_described: 0.1
+  dated: false
+  multiple_individuals_per_species: false
+  source:
+    key: Wolfe 2019
+    study: Wolfe JM et al. (2019)
+    doi: 10.1098/rspb.2019.0079
+    pdf: papers/tree.pdf
+  methods:
+    inference: bayesian
+    software: ["Bayesian inference", "ML, ASTRAL"]
+    data_type: UCE
+    n_loci: 410
+    dating_method: "410-loci anchored hybrid enrichment; 94 species / 58 families."
+    support_metric: posterior_probability
+    divergence_ci_available: true
+    note: "DECAPODA ONLY — under-represents the Crustacea partition (~77k species). High-priority replacement candidate."
+
+caveats:
+  - severity: high
+    summary: "Shipped tree is decapod-only — drastically narrower than the partition."
+    detail: "Wolfe 2019's 95 tips cover only the order Decapoda. The Crustacea partition spans ~77k species across many orders (Amphipoda, Isopoda, Copepoda, Cirripedia, etc.). The 0.1% coverage shouldn't be interpreted as overall crustacean tree coverage."
+
+audit:
+  file: ../../../audits/partitions/crustaceans.md
+  status: in_progress
+  last_audited: 2026-05-18
+
+sub_phylos: []

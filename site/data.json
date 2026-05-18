@@ -8,9 +8,9 @@
     "n_groups": 264,
     "n_datasets": 49,
     "total_tips": 702787,
-    "n_audited": 10,
-    "n_audits_in_progress": 0,
-    "n_audits_verified": 10
+    "n_audited": 13,
+    "n_audits_in_progress": 1,
+    "n_audits_verified": 12
   },
   "trees": [
     {
@@ -712,8 +712,15 @@
         "redundancy": 0,
         "binomial_format": true
       },
-      "tree_url_override": null,
-      "tip_taxonomy_override": null,
+      "tree_url_override": "data/partitions/insects/tree.nwk",
+      "tip_taxonomy_override": {
+        "unique_ids": 2593,
+        "unique_species": 2593,
+        "subspecies_tips": 0,
+        "redundancy": 0,
+        "binomial_format": true,
+        "total_tips": 53596
+      },
       "is_partition_canonical": false
     },
     {
@@ -829,8 +836,15 @@
         "redundancy": 0,
         "binomial_format": false
       },
-      "tree_url_override": null,
-      "tip_taxonomy_override": null,
+      "tree_url_override": "data/partitions/insects/tree.nwk",
+      "tip_taxonomy_override": {
+        "unique_ids": 0,
+        "unique_species": 0,
+        "subspecies_tips": 0,
+        "redundancy": 0,
+        "binomial_format": false,
+        "total_tips": 53596
+      },
       "is_partition_canonical": false
     },
     {
@@ -2763,8 +2777,15 @@
         "redundancy": 0,
         "binomial_format": true
       },
-      "tree_url_override": null,
-      "tip_taxonomy_override": null,
+      "tree_url_override": "data/partitions/insects/tree.nwk",
+      "tip_taxonomy_override": {
+        "unique_ids": 100,
+        "unique_species": 100,
+        "subspecies_tips": 0,
+        "redundancy": 0,
+        "binomial_format": true,
+        "total_tips": 53596
+      },
       "is_partition_canonical": false
     },
     {
@@ -3469,8 +3490,15 @@
         "redundancy": 0,
         "binomial_format": false
       },
-      "tree_url_override": null,
-      "tip_taxonomy_override": null,
+      "tree_url_override": "data/partitions/insects/tree.nwk",
+      "tip_taxonomy_override": {
+        "unique_ids": 0,
+        "unique_species": 0,
+        "subspecies_tips": 0,
+        "redundancy": 0,
+        "binomial_format": false,
+        "total_tips": 53596
+      },
       "is_partition_canonical": false
     },
     {
@@ -4684,8 +4712,15 @@
         "redundancy": 0,
         "binomial_format": true
       },
-      "tree_url_override": null,
-      "tip_taxonomy_override": null,
+      "tree_url_override": "data/partitions/insects/tree.nwk",
+      "tip_taxonomy_override": {
+        "unique_ids": 31,
+        "unique_species": 31,
+        "subspecies_tips": 0,
+        "redundancy": 0,
+        "binomial_format": true,
+        "total_tips": 53596
+      },
       "is_partition_canonical": false
     },
     {
@@ -12781,31 +12816,6 @@
       }
     },
     {
-      "filename": "bees.nwk",
-      "group": "bees",
-      "provenance_group": "bees",
-      "partition_group": "Insects",
-      "category": "Arthropods",
-      "study": "Henriquez-Piskulich 2024",
-      "year": 2024,
-      "tips": 4586,
-      "raw_tips": 4586,
-      "described_species": 20507,
-      "described_source": "Discover Life",
-      "coverage_pct": 22.4,
-      "dated": true,
-      "is_partition_anchor": false,
-      "is_partition_canonical": false,
-      "estimated_total": 5500000,
-      "estimated_low": 2600000,
-      "estimated_high": 7800000,
-      "estimate_source": "Stork 2018",
-      "estimate_confidence": "Low",
-      "coverage_pct_estimated": 0.1,
-      "coverage_pct_estimated_low": 0.1,
-      "coverage_pct_estimated_high": 0.2
-    },
-    {
       "filename": "bacteria.nwk",
       "group": "bacteria",
       "provenance_group": "bacteria",
@@ -12856,6 +12866,58 @@
       "coverage_pct_estimated_high": 2.4
     },
     {
+      "filename": "bees.nwk",
+      "group": "bees",
+      "provenance_group": "bees",
+      "partition_group": "Insects",
+      "category": "Arthropods",
+      "study": "Henriquez-Piskulich 2024",
+      "year": 2024,
+      "tips": 2593,
+      "raw_tips": 4586,
+      "described_species": 20507,
+      "described_source": "Discover Life",
+      "coverage_pct": 12.6,
+      "dated": true,
+      "is_partition_anchor": false,
+      "is_partition_canonical": false,
+      "estimated_total": 5500000,
+      "estimated_low": 2600000,
+      "estimated_high": 7800000,
+      "estimate_source": "Stork 2018",
+      "estimate_confidence": "Low",
+      "coverage_pct_estimated": 0.0,
+      "coverage_pct_estimated_low": 0.0,
+      "coverage_pct_estimated_high": 0.1,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Catalogue of Life 2025",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Stork 2018",
+          "verbatim_quote": "globally there are approximately 1.5 million, 5.5 million, and 7 million species of beetles, insects, and terrestrial arthropods, respectively",
+          "note": "Stork 2018's own central estimate of ~5.5 million insect species."
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "Stork 2018 (review of higher-taxonomic-ratio estimates)",
+          "verbatim_quote": null,
+          "note": "2.6M from Stork's review table — higher taxonomic ratio extrapolation."
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Stork 2018 (review of prior literature)",
+          "verbatim_quote": null,
+          "note": "7.8M from Stork's review of prior estimates (Hamilton 2010, 2013 — 7.8M with CI 2.9-13.7)."
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "Range 2.6M-5.5M-7.8M is meta-range across Stork 2018's review of multiple primary estimates. Stork's OWN central is ~5.5M. The breadth honestly reflects deep uncertainty in insect diversity estimation."
+      }
+    },
+    {
       "filename": "butterflies.nwk",
       "group": "butterflies",
       "provenance_group": "butterflies",
@@ -12878,7 +12940,34 @@
       "estimate_confidence": "Low",
       "coverage_pct_estimated": 0.0,
       "coverage_pct_estimated_low": 0.0,
-      "coverage_pct_estimated_high": 0.1
+      "coverage_pct_estimated_high": 0.1,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Catalogue of Life 2025",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Stork 2018",
+          "verbatim_quote": "globally there are approximately 1.5 million, 5.5 million, and 7 million species of beetles, insects, and terrestrial arthropods, respectively",
+          "note": "Stork 2018's own central estimate of ~5.5 million insect species."
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "Stork 2018 (review of higher-taxonomic-ratio estimates)",
+          "verbatim_quote": null,
+          "note": "2.6M from Stork's review table — higher taxonomic ratio extrapolation."
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Stork 2018 (review of prior literature)",
+          "verbatim_quote": null,
+          "note": "7.8M from Stork's review of prior estimates (Hamilton 2010, 2013 — 7.8M with CI 2.9-13.7)."
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "Range 2.6M-5.5M-7.8M is meta-range across Stork 2018's review of multiple primary estimates. Stork's OWN central is ~5.5M. The breadth honestly reflects deep uncertainty in insect diversity estimation."
+      }
     },
     {
       "filename": "cephalopods.nwk",
@@ -12978,7 +13067,34 @@
       "estimate_confidence": "Low",
       "coverage_pct_estimated": 1.0,
       "coverage_pct_estimated_low": 0.7,
-      "coverage_pct_estimated_high": 2.1
+      "coverage_pct_estimated_high": 2.1,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Catalogue of Life 2025",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Stork 2018",
+          "verbatim_quote": "globally there are approximately 1.5 million, 5.5 million, and 7 million species of beetles, insects, and terrestrial arthropods, respectively",
+          "note": "Stork 2018's own central estimate of ~5.5 million insect species."
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "Stork 2018 (review of higher-taxonomic-ratio estimates)",
+          "verbatim_quote": null,
+          "note": "2.6M from Stork's review table — higher taxonomic ratio extrapolation."
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Stork 2018 (review of prior literature)",
+          "verbatim_quote": null,
+          "note": "7.8M from Stork's review of prior estimates (Hamilton 2010, 2013 — 7.8M with CI 2.9-13.7)."
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "Range 2.6M-5.5M-7.8M is meta-range across Stork 2018's review of multiple primary estimates. Stork's OWN central is ~5.5M. The breadth honestly reflects deep uncertainty in insect diversity estimation."
+      }
     },
     {
       "filename": "orchids.nwk",
@@ -13053,7 +13169,31 @@
       "estimate_confidence": "Medium",
       "coverage_pct_estimated": 1.2,
       "coverage_pct_estimated_low": 0.8,
-      "coverage_pct_estimated_high": 1.8
+      "coverage_pct_estimated_high": 1.8,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "World Spider Catalog 2025",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Agnarsson 2013",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "Agnarsson 2013",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Agnarsson 2013",
+          "verbatim_quote": null
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "Bilateral 80k-170k range likely paper-published by Agnarsson 2013; verify DOI and verbatim quote."
+      }
     },
     {
       "filename": "bryophytes.nwk",
@@ -13329,7 +13469,31 @@
       "estimate_confidence": "Low",
       "coverage_pct_estimated": 0.1,
       "coverage_pct_estimated_low": 0.0,
-      "coverage_pct_estimated_high": 0.1
+      "coverage_pct_estimated_high": 0.1,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "World Register of Marine Species (WoRMS)",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Appeltans 2012",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "Appeltans 2012",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Appeltans 2012",
+          "verbatim_quote": null
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "Appeltans 2012 — WoRMS-led marine species enumeration. Bilateral range likely paper-published."
+      }
     },
     {
       "filename": "gastropods.nwk",
@@ -17929,6 +18093,144 @@
         "badge": "verified"
       }
     },
+    "Crustaceans": {
+      "partition": "Crustaceans",
+      "slug": "crustaceans",
+      "category": "Arthropods",
+      "estimate": {
+        "described": 77000,
+        "low": 100000,
+        "total": 150000,
+        "high": 250000,
+        "confidence": "Low",
+        "source": {
+          "key": "Appeltans 2012",
+          "doi": "10.1016/j.cub.2012.09.036",
+          "pdf": null,
+          "url": "https://www.cell.com/current-biology/fulltext/S0960-9822(12)01142-1",
+          "note": "Appeltans et al. 2012 Current Biology — 'The Magnitude of Global Marine Species Diversity'."
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "World Register of Marine Species (WoRMS)",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "paper-published",
+            "source": "Appeltans 2012",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "paper-published",
+            "source": "Appeltans 2012",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "Appeltans 2012",
+            "verbatim_quote": null
+          },
+          "overall_classification": "paper-published-range",
+          "auditor_note": "Appeltans 2012 — WoRMS-led marine species enumeration. Bilateral range likely paper-published."
+        }
+      },
+      "tree": {
+        "file": "tree.nwk",
+        "ntips": 95,
+        "unique_ids": 95,
+        "species_represented": 95,
+        "coverage_pct_described": 0.1,
+        "dated": false,
+        "multiple_individuals_per_species": false,
+        "source": {
+          "key": "Wolfe 2019",
+          "study": "Wolfe JM et al. (2019)",
+          "doi": "10.1098/rspb.2019.0079",
+          "pdf": "papers/tree.pdf"
+        },
+        "methods": {
+          "inference": "bayesian",
+          "software": [
+            "Bayesian inference",
+            "ML, ASTRAL"
+          ],
+          "data_type": "UCE",
+          "n_loci": 410,
+          "dating_method": "410-loci anchored hybrid enrichment; 94 species / 58 families.",
+          "support_metric": "posterior_probability",
+          "divergence_ci_available": true,
+          "note": "DECAPODA ONLY — under-represents the Crustacea partition (~77k species). High-priority replacement candidate."
+        }
+      },
+      "caveats": [
+        {
+          "severity": "high",
+          "summary": "Shipped tree is decapod-only — drastically narrower than the partition.",
+          "detail": "Wolfe 2019's 95 tips cover only the order Decapoda. The Crustacea partition spans ~77k species across many orders (Amphipoda, Isopoda, Copepoda, Cirripedia, etc.). The 0.1% coverage shouldn't be interpreted as overall crustacean tree coverage."
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/crustaceans.md",
+        "status": "in_progress",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "in_progress",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "Appeltans 2012",
+        "doi": "10.1016/j.cub.2012.09.036",
+        "doi_verified": "unchecked",
+        "year_published": 2012,
+        "cited_value": 150000
+      },
+      "canonical_tree": {
+        "filename": "crustaceans.nwk",
+        "provenance_group": "crustaceans",
+        "study": "Wolfe JM et al. (2019)",
+        "doi": "10.1098/rspb.2019.0079",
+        "doi_verified": true,
+        "crossref_match": true
+      },
+      "methods": {
+        "inference": "bayesian",
+        "software": [
+          "Bayesian + ML pipeline"
+        ],
+        "data_type": "UCE",
+        "n_loci": 410,
+        "dating_method": "410-loci anchored hybrid enrichment; 94 species across 58 decapod families.",
+        "support_metric": "posterior_probability",
+        "divergence_ci_available": true,
+        "note": "Decapoda-only; not representative of all crustacean diversity. 95 tips for 77k described crustaceans = 0.1% coverage."
+      },
+      "shipped_subclades": [],
+      "candidate_subclades": [
+        {
+          "taxon": "Whole-tree replacement — broader crustacean phylogeny",
+          "rationale": "Wolfe 2019 ships under 'crustaceans' but covers only Decapoda (94 of ~9,000 decapod species; ~0.1% of all crustaceans). Atlas needs a Pancrustacea-level tree for adequate partition representation.",
+          "candidate_papers": [],
+          "priority": "high",
+          "status": "proposed"
+        }
+      ],
+      "resolutions": [
+        {
+          "issue": "Shipped tree (Wolfe 2019, 95 tips) is decapod-only — drastically under-represents the Crustacea partition (~77k described species).",
+          "resolved_by": "Flagged as high-priority replacement candidate. Status kept as in_progress (not verified) until a broader crustacean tree is identified or the partition is restructured."
+        }
+      ],
+      "website": {
+        "surface_methods": true,
+        "surface_uncertainty": true,
+        "surface_candidates": true,
+        "badge": "in_progress"
+      }
+    },
     "Ferns": {
       "partition": "Ferns",
       "slug": "ferns",
@@ -18280,6 +18582,166 @@
         {
           "issue": "Atlas ships the 31,516-tip FishTreeOfLife chronogram with taxonomic imputation; only 11,638 tips have direct DNA data.",
           "resolved_by": "Documented in methods.note. Users interpreting species-level placement uncertainty should consult Rabosky 2018 §Methods."
+        }
+      ],
+      "website": {
+        "surface_methods": true,
+        "surface_uncertainty": true,
+        "surface_candidates": true,
+        "badge": "verified"
+      }
+    },
+    "Insects": {
+      "partition": "Insects",
+      "slug": "insects",
+      "category": "Arthropods",
+      "estimate": {
+        "described": 1000000,
+        "low": 2600000,
+        "total": 5500000,
+        "high": 7800000,
+        "confidence": "Low",
+        "source": {
+          "key": "Stork 2018",
+          "doi": "10.1146/annurev-ento-020117-043348",
+          "pdf": "papers/estimate.pdf",
+          "url": "https://www.annualreviews.org/doi/10.1146/annurev-ento-020117-043348"
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "Catalogue of Life 2025",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "paper-published",
+            "source": "Stork 2018",
+            "verbatim_quote": "globally there are approximately 1.5 million, 5.5 million, and 7 million species of beetles, insects, and terrestrial arthropods, respectively",
+            "note": "Stork 2018's own central estimate of ~5.5 million insect species."
+          },
+          "estimated_low": {
+            "type": "paper-published",
+            "source": "Stork 2018 (review of higher-taxonomic-ratio estimates)",
+            "verbatim_quote": null,
+            "note": "2.6M from Stork's review table — higher taxonomic ratio extrapolation."
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "Stork 2018 (review of prior literature)",
+            "verbatim_quote": null,
+            "note": "7.8M from Stork's review of prior estimates (Hamilton 2010, 2013 — 7.8M with CI 2.9-13.7)."
+          },
+          "overall_classification": "paper-published-range",
+          "auditor_note": "Range 2.6M-5.5M-7.8M is meta-range across Stork 2018's review of multiple primary estimates. Stork's OWN central is ~5.5M. The breadth honestly reflects deep uncertainty in insect diversity estimation."
+        }
+      },
+      "tree": {
+        "file": "tree.nwk",
+        "ntips": 53596,
+        "unique_ids": 53596,
+        "species_represented": 53596,
+        "coverage_pct_described": 5.4,
+        "dated": false,
+        "multiple_individuals_per_species": false,
+        "source": {
+          "key": "insectphylo v2",
+          "study": "Chesters D et al. (2023)",
+          "doi": "10.1111/1755-0998.13817",
+          "pdf": "papers/tree.pdf"
+        },
+        "methods": {
+          "inference": "synthesis",
+          "software": [
+            "insectphylo pipeline"
+          ],
+          "data_type": "supertree",
+          "dating_method": "Synthesis molecular phylogeny from GenBank data; continuously updated. v2 Feb 2026. UNDATED.",
+          "support_metric": "source_count",
+          "divergence_ci_available": false,
+          "note": "24 order-level trees also available."
+        }
+      },
+      "uncertainty": {
+        "host": "insectphylo.org",
+        "host_url": "https://insectphylo.org/",
+        "files": []
+      },
+      "audit": {
+        "file": "../../../audits/partitions/insects.md",
+        "status": "verified",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "verified",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "Stork 2018",
+        "doi": "10.1146/annurev-ento-020117-043348",
+        "doi_verified": true,
+        "crossref_match": true,
+        "year_published": 2018,
+        "cited_value": 5500000,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": "insects.nwk",
+        "provenance_group": "insects",
+        "study": "Chesters D et al. (2023)",
+        "doi": "10.1111/1755-0998.13817",
+        "doi_verified": true,
+        "crossref_match": true
+      },
+      "methods": {
+        "inference": "synthesis",
+        "software": [
+          "insectphylo pipeline"
+        ],
+        "data_type": "supertree",
+        "dated": false,
+        "dating_method": "Synthesis molecular phylogeny from GenBank data; continuously updated. Atlas v2 from Feb 2026.",
+        "support_metric": "source_count",
+        "divergence_ci_available": false,
+        "note": "Undated. 24 order-level trees also available."
+      },
+      "shipped_subclades": [
+        {
+          "filename": "butterflies.nwk",
+          "study": "Kawahara AY et al. (2023)",
+          "taxon": "Lepidoptera (butterflies)",
+          "ntips": 2258
+        },
+        {
+          "filename": "bees.nwk",
+          "study": "Henriquez-Piskulich PA et al. (2024)",
+          "taxon": "Apoidea (bees)",
+          "ntips": 4586
+        },
+        {
+          "filename": "hemiptera.nwk",
+          "study": "Johnson KP et al. (2018)",
+          "taxon": "Hemiptera",
+          "ntips": 193
+        },
+        {
+          "filename": "termites.nwk",
+          "study": "Hellemans S et al. (2024)",
+          "taxon": "Isoptera (termites)",
+          "ntips": 138
+        },
+        {
+          "filename": "ants.nwk",
+          "study": "Romiguier J et al. (2022)",
+          "taxon": "Formicidae (ants)",
+          "ntips": 83
+        }
+      ],
+      "resolutions": [
+        {
+          "issue": "Atlas's high bound (7.8M) and low (2.6M) come from Stork 2018's REVIEW table of multiple published estimates, not Stork's own single estimate.",
+          "resolved_by": "Documented as paper-published-range, with auditor note clarifying it's a meta-range across multiple primary estimates (Stork's own central is ~5.5M)."
         }
       ],
       "website": {
@@ -19141,6 +19603,140 @@
           "cache": "pending"
         }
       ]
+    },
+    "Spiders": {
+      "partition": "Spiders",
+      "slug": "spiders",
+      "category": "Arthropods",
+      "estimate": {
+        "described": 52249,
+        "low": 80000,
+        "total": 120000,
+        "high": 170000,
+        "confidence": "Medium",
+        "source": {
+          "key": "Agnarsson 2013",
+          "doi": null,
+          "pdf": null,
+          "url": null,
+          "note": "Agnarsson et al. 2013 — spider species-richness estimate. Verify DOI."
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "World Spider Catalog 2025",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "paper-published",
+            "source": "Agnarsson 2013",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "paper-published",
+            "source": "Agnarsson 2013",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "Agnarsson 2013",
+            "verbatim_quote": null
+          },
+          "overall_classification": "paper-published-range",
+          "auditor_note": "Bilateral 80k-170k range likely paper-published by Agnarsson 2013; verify DOI and verbatim quote."
+        }
+      },
+      "tree": {
+        "file": "tree.nwk",
+        "ntips": 1456,
+        "unique_ids": 1456,
+        "species_represented": 1456,
+        "coverage_pct_described": 2.8,
+        "dated": true,
+        "multiple_individuals_per_species": false,
+        "source": {
+          "key": "Garrison 2016",
+          "study": "Garrison NL et al. (2016)",
+          "doi": "10.7717/peerj.1719",
+          "pdf": "papers/tree.pdf"
+        },
+        "methods": {
+          "inference": "ml",
+          "software": [
+            "RAxML"
+          ],
+          "data_type": "UCE",
+          "dating_method": "UCEs + transcriptomes, time-calibrated.",
+          "support_metric": "bootstrap",
+          "divergence_ci_available": true,
+          "note": "Alternative calibration and ML backbone also available on Zenodo."
+        }
+      },
+      "uncertainty": {
+        "host": "Zenodo",
+        "host_url": "https://zenodo.org/records/3941712",
+        "files": [
+          {
+            "name": "Garrison 2016 archive",
+            "label": "Multiple tree variants",
+            "description": "Time-calibrated, alternative calibrations, ML backbone.",
+            "size_bytes": null,
+            "format": "Zenodo",
+            "url": "https://zenodo.org/records/3941712"
+          }
+        ]
+      },
+      "audit": {
+        "file": "../../../audits/partitions/spiders.md",
+        "status": "verified",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "verified",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "Agnarsson 2013",
+        "doi": null,
+        "doi_verified": "unchecked",
+        "year_published": 2013,
+        "cited_value": 120000
+      },
+      "canonical_tree": {
+        "filename": "spiders.nwk",
+        "provenance_group": "spiders",
+        "study": "Garrison NL et al. (2016)",
+        "doi": "10.7717/peerj.1719",
+        "doi_verified": true,
+        "crossref_match": true
+      },
+      "methods": {
+        "inference": "ml",
+        "software": [
+          "RAxML"
+        ],
+        "data_type": "UCE",
+        "dating_method": "UCEs + transcriptomes, time-calibrated.",
+        "support_metric": "bootstrap",
+        "divergence_ci_available": true,
+        "note": "Alternative calibration and ML backbone also available."
+      },
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [
+        {
+          "issue": "1,456-tip tree covers 2.8% of described spider species (~52k). World Spider Catalog 2025 tracks the canonical described count continuously.",
+          "resolved_by": "Documented. Sparse coverage reflects state of spider phylogenetics; no comprehensive tree exists."
+        }
+      ],
+      "website": {
+        "surface_methods": true,
+        "surface_uncertainty": true,
+        "surface_candidates": true,
+        "badge": "verified"
+      }
     },
     "Squamates": {
       "partition": "Squamates",

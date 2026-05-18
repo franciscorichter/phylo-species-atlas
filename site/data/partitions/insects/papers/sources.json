@@ -1,0 +1,23 @@
+{
+  "tree": {
+    "file": "tree.pdf",
+    "doi": "10.1111/1755-0998.13817",
+    "study": "Chesters D et al. (2023). Launching insectphylo.org; a new hub facilitating construction and use of synthesis phylogenies. Molecular Ecology Resources.",
+    "year": 2023,
+    "journal": "Molecular Ecology Resources",
+    "license": "Wiley (subscription)",
+    "open_access": false,
+    "url": "https://onlinelibrary.wiley.com/doi/10.1111/1755-0998.13817",
+    "data_url": "https://insectphylo.org/"
+  },
+  "estimate": {
+    "file": "estimate.pdf",
+    "doi": "10.1146/annurev-ento-020117-043348",
+    "study": "Stork NE (2018). How Many Species of Insects and Other Terrestrial Arthropods Are There on Earth? Annual Review of Entomology 63:31-45.",
+    "year": 2018,
+    "journal": "Annual Review of Entomology",
+    "license": "Annual Reviews (subscription)",
+    "open_access": false,
+    "url": "https://www.annualreviews.org/doi/10.1146/annurev-ento-020117-043348"
+  }
+}

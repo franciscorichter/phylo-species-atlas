@@ -1,0 +1,71 @@
+partition: Insects
+slug: insects
+category: Arthropods
+
+estimate:
+  described: 1000000
+  low: 2600000
+  total: 5500000
+  high: 7800000
+  confidence: Low
+  source:
+    key: Stork 2018
+    doi: 10.1146/annurev-ento-020117-043348
+    pdf: papers/estimate.pdf
+    url: https://www.annualreviews.org/doi/10.1146/annurev-ento-020117-043348
+  interval_provenance:
+    described:
+      type: database
+      source: Catalogue of Life 2025
+      verbatim_quote: null
+    estimated_total:
+      type: paper-published
+      source: Stork 2018
+      verbatim_quote: "globally there are approximately 1.5 million, 5.5 million, and 7 million species of beetles, insects, and terrestrial arthropods, respectively"
+      note: "Stork 2018's own central estimate of ~5.5 million insect species."
+    estimated_low:
+      type: paper-published
+      source: Stork 2018 (review of higher-taxonomic-ratio estimates)
+      verbatim_quote: null
+      note: "2.6M from Stork's review table — higher taxonomic ratio extrapolation."
+    estimated_high:
+      type: paper-published
+      source: Stork 2018 (review of prior literature)
+      verbatim_quote: null
+      note: "7.8M from Stork's review of prior estimates (Hamilton 2010, 2013 — 7.8M with CI 2.9-13.7)."
+    overall_classification: paper-published-range
+    auditor_note: "Range 2.6M-5.5M-7.8M is meta-range across Stork 2018's review of multiple primary estimates. Stork's OWN central is ~5.5M. The breadth honestly reflects deep uncertainty in insect diversity estimation."
+
+tree:
+  file: tree.nwk
+  ntips: 53596
+  unique_ids: 53596
+  species_represented: 53596
+  coverage_pct_described: 5.4
+  dated: false
+  multiple_individuals_per_species: false
+  source:
+    key: insectphylo v2
+    study: Chesters D et al. (2023)
+    doi: 10.1111/1755-0998.13817
+    pdf: papers/tree.pdf
+  methods:
+    inference: synthesis
+    software: ["insectphylo pipeline"]
+    data_type: supertree
+    dating_method: "Synthesis molecular phylogeny from GenBank data; continuously updated. v2 Feb 2026. UNDATED."
+    support_metric: source_count
+    divergence_ci_available: false
+    note: "24 order-level trees also available."
+
+uncertainty:
+  host: insectphylo.org
+  host_url: https://insectphylo.org/
+  files: []
+
+audit:
+  file: ../../../audits/partitions/insects.md
+  status: verified
+  last_audited: 2026-05-18
+
+sub_phylos: []

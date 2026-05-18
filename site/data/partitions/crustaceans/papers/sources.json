@@ -1,0 +1,13 @@
+{
+  "tree": {
+    "file": "tree.pdf",
+    "doi": "10.1098/rspb.2019.0079",
+    "study": "Wolfe JM, Breinholt JW, Crandall KA, Lemmon AR, Lemmon EM, Timm LE, Siddall ME, Bracken-Grissom HD (2019). A phylogenomic framework, evolutionary timeline and genomic resources for comparative studies of decapod crustaceans. Proceedings of the Royal Society B 286:20190079.",
+    "year": 2019,
+    "journal": "Proceedings of the Royal Society B",
+    "license": "Royal Society (subscription)",
+    "open_access": false,
+    "url": "https://royalsocietypublishing.org/doi/10.1098/rspb.2019.0079",
+    "data_url": "https://datadryad.org/dataset/doi:10.5061/dryad.k7505mn"
+  }
+}

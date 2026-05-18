@@ -1,0 +1,75 @@
+partition: Spiders
+slug: spiders
+category: Arthropods
+
+estimate:
+  described: 52249
+  low: 80000
+  total: 120000
+  high: 170000
+  confidence: Medium
+  source:
+    key: Agnarsson 2013
+    doi: null
+    pdf: null
+    url: null
+    note: "Agnarsson et al. 2013 — spider species-richness estimate. Verify DOI."
+  interval_provenance:
+    described:
+      type: database
+      source: World Spider Catalog 2025
+      verbatim_quote: null
+    estimated_total:
+      type: paper-published
+      source: Agnarsson 2013
+      verbatim_quote: null
+    estimated_low:
+      type: paper-published
+      source: Agnarsson 2013
+      verbatim_quote: null
+    estimated_high:
+      type: paper-published
+      source: Agnarsson 2013
+      verbatim_quote: null
+    overall_classification: paper-published-range
+    auditor_note: "Bilateral 80k-170k range likely paper-published by Agnarsson 2013; verify DOI and verbatim quote."
+
+tree:
+  file: tree.nwk
+  ntips: 1456
+  unique_ids: 1456
+  species_represented: 1456
+  coverage_pct_described: 2.8
+  dated: true
+  multiple_individuals_per_species: false
+  source:
+    key: Garrison 2016
+    study: Garrison NL et al. (2016)
+    doi: 10.7717/peerj.1719
+    pdf: papers/tree.pdf
+  methods:
+    inference: ml
+    software: [RAxML]
+    data_type: UCE
+    dating_method: "UCEs + transcriptomes, time-calibrated."
+    support_metric: bootstrap
+    divergence_ci_available: true
+    note: "Alternative calibration and ML backbone also available on Zenodo."
+
+uncertainty:
+  host: Zenodo
+  host_url: https://zenodo.org/records/3941712
+  files:
+    - name: Garrison 2016 archive
+      label: Multiple tree variants
+      description: "Time-calibrated, alternative calibrations, ML backbone."
+      size_bytes: null
+      format: Zenodo
+      url: https://zenodo.org/records/3941712
+
+audit:
+  file: ../../../audits/partitions/spiders.md
+  status: verified
+  last_audited: 2026-05-18
+
+sub_phylos: []
