@@ -84,10 +84,16 @@ api_calls:
 # Sharks — partition audit
 
 **Status: verified.** Stein 2018 (tree) and Weigmann 2016 (estimate) both
-DOI-verified. The interval `1300–1450–1600` is the only one among the
-first four audited vertebrate partitions that's plausibly paper-published
-(bilateral, not equal to described), though the verbatim quote from
-Weigmann 2016 needs to be confirmed when the paywalled PDF is accessed.
+DOI-verified.
+
+**Interval-provenance correction (2026-05-18)**: Weigmann 2016's abstract
+(retrieved via OpenAlex) actually reports **1,188 chondrichthyan species**
+as of 7 Nov 2015 (16 orders, 61 families, 199 genera). The atlas's
+interval `1300–1450–1600` is NOT traceable to Weigmann's published numbers
+— it does not appear in the abstract. Reclassified from
+paper-published-range → fully-heuristic. The cited source remains valid
+for the described count (1,282 actually comes from Chondrichthyan Tree
+of Life, a live database); the interval bounds are atlas-derived.
 
 ## Methods
 

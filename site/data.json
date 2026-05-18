@@ -12095,31 +12095,31 @@
       "coverage_pct_estimated_high": 91.7,
       "interval_provenance": {
         "described": {
-          "type": "paper",
-          "source": "Weigmann 2016",
+          "type": "database",
+          "source": "Chondrichthyan Tree of Life",
           "verbatim_quote": null,
-          "note": "Weigmann's annotated checklist tallies described chondrichthyan species."
+          "note": "data_provenance.csv attributes the 1,282 described count to 'Chondrichthyan Tree of Life' — a live database, NOT Weigmann 2016 (which reported 1,188 species as of Nov 2015)."
         },
         "estimated_total": {
-          "type": "paper-published",
-          "source": "Weigmann 2016",
+          "type": "atlas-derived",
+          "source": "atlas-derived heuristic",
           "verbatim_quote": null,
-          "note": "1,450 figure reported in atlas as paper-derived; awaiting verbatim quote verification from paywalled PDF."
+          "note": "1,450 figure NOT traceable to Weigmann 2016. The paper's abstract reports a checklist of 1,188 species with no explicit true-diversity bilateral estimate."
         },
         "estimated_low": {
-          "type": "paper-published",
-          "source": "Weigmann 2016",
+          "type": "heuristic",
+          "source": "atlas-derived",
           "verbatim_quote": null,
-          "note": "Bilateral range 1300-1600; not equal to described (1282), suggesting paper-published true-diversity estimate."
+          "note": "1,300 bound NOT in Weigmann 2016 abstract."
         },
         "estimated_high": {
-          "type": "paper-published",
-          "source": "Weigmann 2016",
+          "type": "heuristic",
+          "source": "atlas-derived",
           "verbatim_quote": null,
-          "note": "Pending verbatim verification."
+          "note": "1,600 upper bound NOT explicitly published by Weigmann 2016."
         },
-        "overall_classification": "paper-published-range",
-        "auditor_note": "First audited vertebrate partition with a non-degenerate interval. Need\nto access Weigmann 2016 (paywalled, not in local papers archive) to\ncopy in the verbatim quote supporting 1300-1600 as a true-diversity\nrange. Bilateral structure (low < described < total < high) makes this\nprovisionally classified as paper-published-range.\n"
+        "overall_classification": "fully-heuristic",
+        "auditor_note": "AUDIT CORRECTION: this interval was initially classified as\npaper-published-range based on its bilateral structure (1300<1282<1450<1600).\nOpenAlex retrieval of Weigmann 2016's abstract shows the paper reports\n1,188 chondrichthyan species as of 7 Nov 2015 — 16 orders, 61 families,\n199 genera. No bilateral 1300–1600 true-diversity estimate appears in\nthe abstract. The atlas's range is therefore atlas-derived rather than\npaper-published, and the partition reclassifies as fully-heuristic.\nThe CITED source (Weigmann 2016) is valid for the described count;\nthe interval bounds simply aren't its claims.\n"
       }
     },
     {
@@ -20353,11 +20353,28 @@
       "shipped_subclades": [],
       "candidate_subclades": [
         {
-          "taxon": "Whole-tree replacement — broader crustacean phylogeny",
-          "rationale": "Wolfe 2019 ships under 'crustaceans' but covers only Decapoda (94 of ~9,000 decapod species; ~0.1% of all crustaceans). Atlas needs a Pancrustacea-level tree for adequate partition representation.",
-          "candidate_papers": [],
+          "taxon": "Whole-tree replacement — Pancrustacea phylogenomic tree",
+          "rationale": "Wolfe 2019 ships under 'crustaceans' but covers only Decapoda\n(94 of ~9,000 decapod species; ~0.1% of all crustaceans).\nBernot 2023 (MBE) is a Pancrustacea-wide phylogenomic synthesis:\n105 taxa across 30 of 57 crustacean orders, 576 protein-coding\ngenes / 121,508 AA positions, 90 transcriptomes + 15 genomes.\nCovers Branchiopoda, Copepoda, Malacostraca, Thecostraca, Ostracoda,\nRemipedia, Cephalocarida and more — broadly representative of the\npartition.\n",
+          "candidate_papers": [
+            {
+              "doi": "10.1093/molbev/msad175",
+              "year": 2023,
+              "study": "Bernot JP, Owen CL, Wolfe JM, Meland K, Olesen J, Crandall KA — Major Revisions in Pancrustacean Phylogeny and Evidence of Sensitivity to Taxon Sampling",
+              "ntips": 105,
+              "url": "https://academic.oup.com/mbe/article/40/8/msad175/7232083",
+              "data_doi": "10.5061/dryad.dr7sqvb2h",
+              "data_files": [
+                "treefiles.zip (81 KB)",
+                "matrices.zip (19 MB)",
+                "orthologs.zip (16 MB)",
+                "divergence_time_files.zip (38 KB)"
+              ]
+            }
+          ],
+          "download_target": "dryad",
           "priority": "high",
-          "status": "proposed"
+          "status": "proposed",
+          "notes": "Dryad deposit confirmed: doi:10.5061/dryad.dr7sqvb2h. Tree files\n(81 KB ZIP) reachable via browser at\nhttps://datadryad.org/dataset/doi:10.5061/dryad.dr7sqvb2h but\nblocked by Cloudflare anti-bot when fetched programmatically.\nManual download → unzip → standardize → ship. Even at\norder/family resolution (105 taxa vs Wolfe 2019's 94 decapods),\nthis is a meaningful step up in breadth across crustacean classes.\n"
         }
       ],
       "resolutions": [
@@ -24127,31 +24144,31 @@
         },
         "interval_provenance": {
           "described": {
-            "type": "paper",
-            "source": "Weigmann 2016",
+            "type": "database",
+            "source": "Chondrichthyan Tree of Life",
             "verbatim_quote": null,
-            "note": "Weigmann's annotated checklist tallies described chondrichthyan species."
+            "note": "data_provenance.csv attributes the 1,282 described count to 'Chondrichthyan Tree of Life' — a live database, NOT Weigmann 2016 (which reported 1,188 species as of Nov 2015)."
           },
           "estimated_total": {
-            "type": "paper-published",
-            "source": "Weigmann 2016",
+            "type": "atlas-derived",
+            "source": "atlas-derived heuristic",
             "verbatim_quote": null,
-            "note": "1,450 figure reported in atlas as paper-derived; awaiting verbatim quote verification from paywalled PDF."
+            "note": "1,450 figure NOT traceable to Weigmann 2016. The paper's abstract reports a checklist of 1,188 species with no explicit true-diversity bilateral estimate."
           },
           "estimated_low": {
-            "type": "paper-published",
-            "source": "Weigmann 2016",
+            "type": "heuristic",
+            "source": "atlas-derived",
             "verbatim_quote": null,
-            "note": "Bilateral range 1300-1600; not equal to described (1282), suggesting paper-published true-diversity estimate."
+            "note": "1,300 bound NOT in Weigmann 2016 abstract."
           },
           "estimated_high": {
-            "type": "paper-published",
-            "source": "Weigmann 2016",
+            "type": "heuristic",
+            "source": "atlas-derived",
             "verbatim_quote": null,
-            "note": "Pending verbatim verification."
+            "note": "1,600 upper bound NOT explicitly published by Weigmann 2016."
           },
-          "overall_classification": "paper-published-range",
-          "auditor_note": "First audited vertebrate partition with a non-degenerate interval. Need\nto access Weigmann 2016 (paywalled, not in local papers archive) to\ncopy in the verbatim quote supporting 1300-1600 as a true-diversity\nrange. Bilateral structure (low < described < total < high) makes this\nprovisionally classified as paper-published-range.\n"
+          "overall_classification": "fully-heuristic",
+          "auditor_note": "AUDIT CORRECTION: this interval was initially classified as\npaper-published-range based on its bilateral structure (1300<1282<1450<1600).\nOpenAlex retrieval of Weigmann 2016's abstract shows the paper reports\n1,188 chondrichthyan species as of 7 Nov 2015 — 16 orders, 61 families,\n199 genera. No bilateral 1300–1600 true-diversity estimate appears in\nthe abstract. The atlas's range is therefore atlas-derived rather than\npaper-published, and the partition reclassifies as fully-heuristic.\nThe CITED source (Weigmann 2016) is valid for the described count;\nthe interval bounds simply aren't its claims.\n"
         }
       },
       "tree": {
