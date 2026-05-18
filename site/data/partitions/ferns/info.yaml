@@ -1,0 +1,74 @@
+partition: Ferns
+slug: ferns
+category: Plants
+
+estimate:
+  described: 12000
+  low: 12000
+  total: 13500
+  high: 15000
+  confidence: High
+  source:
+    key: PPG I 2016
+    doi: 10.1111/jse.12229
+    pdf: null
+    url: https://onlinelibrary.wiley.com/doi/10.1111/jse.12229
+  interval_provenance:
+    described:
+      type: paper
+      source: PPG I 2016
+      verbatim_quote: null
+    estimated_total:
+      type: heuristic
+      source: atlas-derived
+      verbatim_quote: null
+    estimated_low:
+      type: derived-from-described
+      source: PPG I 2016
+      verbatim_quote: null
+    estimated_high:
+      type: heuristic
+      source: atlas-derived
+      verbatim_quote: null
+    overall_classification: fully-heuristic
+    auditor_note: "PPG I 2016 is the Pteridophyte Phylogeny Group classification (taxonomic authority). Round-number bounds (13500, 15000) are atlas placeholders."
+
+tree:
+  file: tree.nwk
+  ntips: 6234
+  unique_ids: 6234
+  species_represented: 6234
+  coverage_pct_described: 52.0
+  dated: true
+  multiple_individuals_per_species: false
+  source:
+    key: Nitta 2022
+    study: Nitta JH, Schuettpelz E, Ramirez-Barahona S, Iwasaki W (2022)
+    doi: 10.3389/fpls.2022.909768
+    pdf: papers/tree.pdf
+  methods:
+    inference: ml
+    software: [RAxML, IQ-TREE, treePL]
+    data_type: multi-locus
+    dating_method: "Automated pipeline combining plastomes + plastid regions. Continuously updated."
+    support_metric: bootstrap
+    divergence_ci_available: true
+    note: "Atlas ships dated consensus. ML and undated versions also available. R package `ftolr` provides programmatic access."
+
+uncertainty:
+  host: GitHub (fernphy)
+  host_url: https://github.com/fernphy/ftol_data
+  files:
+    - name: FToL multi-version archive
+      label: Multiple versions (dated, ML, undated)
+      description: "Fern Tree of Life data archive — updated regularly."
+      size_bytes: null
+      format: GitHub repository
+      url: https://github.com/fernphy/ftol_data
+
+audit:
+  file: ../../../audits/partitions/ferns.md
+  status: verified
+  last_audited: 2026-05-18
+
+sub_phylos: []

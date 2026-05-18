@@ -1,0 +1,83 @@
+partition: Seed plants
+slug: seed_plants
+category: Plants
+
+estimate:
+  described: 383671
+  low: 400000
+  total: 450000
+  high: 500000
+  confidence: Medium
+  source:
+    key: Nic Lughadha 2016
+    doi: 10.11646/phytotaxa.261.3.1
+    pdf: null
+    url: https://www.mapress.com/pt/article/view/phytotaxa.261.3.1
+    note: "Nic Lughadha et al. 2016 Phytotaxa — 'Counting counts: revised estimates of numbers of accepted species of flowering plants...'"
+  interval_provenance:
+    described:
+      type: database
+      source: World Flora Online 2025
+      verbatim_quote: null
+    estimated_total:
+      type: paper-published
+      source: Nic Lughadha 2016
+      verbatim_quote: null
+      note: "Paper-published estimate of total angiosperm + gymnosperm diversity."
+    estimated_low:
+      type: paper-published
+      source: Nic Lughadha 2016
+      verbatim_quote: null
+    estimated_high:
+      type: paper-published
+      source: Nic Lughadha 2016
+      verbatim_quote: null
+    overall_classification: paper-published-range
+    auditor_note: "True bilateral range from a quantitative meta-analysis of angiosperm taxonomy."
+
+tree:
+  file: tree.nwk
+  ntips: 356305
+  unique_ids: 356305
+  species_represented: 356305
+  coverage_pct_described: 92.9
+  dated: true
+  multiple_individuals_per_species: false
+  source:
+    key: Smith Brown 2018
+    study: Smith SA, Brown JW (2018)
+    doi: 10.1002/ajb2.1019
+    pdf: papers/tree.pdf
+  methods:
+    inference: ml
+    software: [RAxML, treePL]
+    data_type: supermatrix
+    n_loci: 7
+    dating_method: "7-gene RAxML ML + treePL dating. Multi-stage build: ~80k species with sequence data, extended to ~356k via taxonomic placement."
+    support_metric: bootstrap
+    divergence_ci_available: false
+    note: "Six tree variants (ALLMB/ALLOTB/GBMB/GBOTB + 2 dated). Atlas ships ALLMB. ~80k tips have direct sequence data; ~276k placed taxonomically — species-level placement confidence varies."
+
+uncertainty:
+  host: GitHub (FePhyFoFum)
+  host_url: https://github.com/FePhyFoFum/big_seed_plant_trees
+  files:
+    - name: Six tree variants
+      label: ALLMB / ALLOTB / GBMB / GBOTB + dated
+      description: "Six published variants of the seed-plant tree."
+      size_bytes: null
+      format: GitHub repository
+      url: https://github.com/FePhyFoFum/big_seed_plant_trees
+
+audit:
+  file: ../../../audits/partitions/seed_plants.md
+  status: verified
+  last_audited: 2026-05-18
+
+sub_phylos:
+  - slug: grasses
+  - slug: orchids
+  - slug: asteraceae
+  - slug: solanaceae
+  - slug: cacti
+  - slug: eucalyptus

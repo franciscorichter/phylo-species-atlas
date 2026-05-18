@@ -1,0 +1,80 @@
+partition: Bryophytes
+slug: bryophytes
+category: Plants
+
+estimate:
+  described: 24000
+  low: 24000
+  total: 24000
+  high: 28000
+  confidence: Medium
+  source:
+    key: CoL 2025
+    doi: null
+    type: database
+    pdf: null
+    url: https://www.catalogueoflife.org/
+  interval_provenance:
+    described:
+      type: database
+      source: Catalogue of Life 2025
+      verbatim_quote: null
+    estimated_total:
+      type: derived
+      source: CoL 2025
+      verbatim_quote: null
+      note: "Set equal to described — no true-diversity estimate published."
+    estimated_low:
+      type: derived-from-described
+      source: CoL 2025
+      verbatim_quote: null
+    estimated_high:
+      type: heuristic
+      source: atlas-derived
+      verbatim_quote: null
+      note: "28,000 allows ~17% undescribed. CoL doesn't publish a range."
+    overall_classification: fully-heuristic
+    auditor_note: "Bryophyte true diversity is poorly constrained; species concepts are taxonomically contested. Heuristic upper bound."
+
+tree:
+  file: tree.nwk
+  ntips: 533
+  unique_ids: 533
+  species_represented: 533
+  coverage_pct_described: 2.2
+  dated: true
+  multiple_individuals_per_species: false
+  source:
+    key: Bechteler 2023
+    study: Bechteler J et al. (2023)
+    doi: 10.1002/ajb2.16249
+    pdf: papers/tree.pdf
+  methods:
+    inference: ml
+    software: [ASTRAL, RAxML]
+    data_type: UCE
+    n_genes: 228
+    dating_method: "Phylogenomic time tree from 405 exons (228 nuclear genes); 52 of 54 bryophyte orders; 29 fossil calibrations."
+    fossil_calibrations: 29
+    support_metric: bootstrap
+    divergence_ci_available: true
+    note: "ASTRAL coalescent tree and RAxML tree also available. 533 tips for ~24,000 species — 2.2% coverage. Sparse but highest-quality."
+
+uncertainty:
+  host: Dryad
+  host_url: https://datadryad.org/stash/dataset/doi:10.5061/dryad.3j9kd51qm
+  host_doi: 10.5061/dryad.3j9kd51qm
+  files:
+    - name: Bechteler 2023 archive
+      label: ASTRAL + RAxML + dated trees
+      description: "Three tree variants from the phylogenomic analysis."
+      size_bytes: null
+      format: Dryad archive
+      url: https://datadryad.org/stash/dataset/doi:10.5061/dryad.3j9kd51qm
+
+audit:
+  file: ../../../audits/partitions/bryophytes.md
+  status: verified
+  last_audited: 2026-05-18
+
+sub_phylos: []

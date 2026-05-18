@@ -1,0 +1,13 @@
+{
+  "tree": {
+    "file": "tree.pdf",
+    "doi": "10.3389/fpls.2022.909768",
+    "study": "Nitta JH, Schuettpelz E, Ramirez-Barahona S, Iwasaki W (2022). An open and continuously updated fern tree of life. Frontiers in Plant Science 13:909768.",
+    "year": 2022,
+    "journal": "Frontiers in Plant Science",
+    "license": "CC-BY 4.0",
+    "open_access": true,
+    "url": "https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2022.909768",
+    "data_url": "https://github.com/fernphy/ftol_data"
+  }
+}

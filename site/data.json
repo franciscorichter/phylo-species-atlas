@@ -8,9 +8,9 @@
     "n_groups": 264,
     "n_datasets": 49,
     "total_tips": 702787,
-    "n_audited": 7,
+    "n_audited": 10,
     "n_audits_in_progress": 0,
-    "n_audits_verified": 7
+    "n_audits_verified": 10
   },
   "trees": [
     {
@@ -939,8 +939,15 @@
         "redundancy": 0,
         "binomial_format": true
       },
-      "tree_url_override": null,
-      "tip_taxonomy_override": null,
+      "tree_url_override": "data/partitions/seed_plants/tree.nwk",
+      "tip_taxonomy_override": {
+        "unique_ids": 1373,
+        "unique_species": 1373,
+        "subspecies_tips": 0,
+        "redundancy": 0,
+        "binomial_format": true,
+        "total_tips": 356305
+      },
       "is_partition_canonical": false
     },
     {
@@ -1104,8 +1111,15 @@
         "redundancy": 0,
         "binomial_format": false
       },
-      "tree_url_override": null,
-      "tip_taxonomy_override": null,
+      "tree_url_override": "data/partitions/seed_plants/tree.nwk",
+      "tip_taxonomy_override": {
+        "unique_ids": 0,
+        "unique_species": 0,
+        "subspecies_tips": 0,
+        "redundancy": 0,
+        "binomial_format": false,
+        "total_tips": 356305
+      },
       "is_partition_canonical": false
     },
     {
@@ -1153,8 +1167,15 @@
         "redundancy": 0,
         "binomial_format": false
       },
-      "tree_url_override": null,
-      "tip_taxonomy_override": null,
+      "tree_url_override": "data/partitions/seed_plants/tree.nwk",
+      "tip_taxonomy_override": {
+        "unique_ids": 0,
+        "unique_species": 0,
+        "subspecies_tips": 0,
+        "redundancy": 0,
+        "binomial_format": false,
+        "total_tips": 356305
+      },
       "is_partition_canonical": false
     },
     {
@@ -1208,8 +1229,15 @@
         "redundancy": 0,
         "binomial_format": true
       },
-      "tree_url_override": null,
-      "tip_taxonomy_override": null,
+      "tree_url_override": "data/partitions/seed_plants/tree.nwk",
+      "tip_taxonomy_override": {
+        "unique_ids": 996,
+        "unique_species": 996,
+        "subspecies_tips": 0,
+        "redundancy": 0,
+        "binomial_format": true,
+        "total_tips": 356305
+      },
       "is_partition_canonical": false
     },
     {
@@ -1713,8 +1741,15 @@
         "redundancy": 0,
         "binomial_format": false
       },
-      "tree_url_override": null,
-      "tip_taxonomy_override": null,
+      "tree_url_override": "data/partitions/seed_plants/tree.nwk",
+      "tip_taxonomy_override": {
+        "unique_ids": 0,
+        "unique_species": 0,
+        "subspecies_tips": 0,
+        "redundancy": 0,
+        "binomial_format": false,
+        "total_tips": 356305
+      },
       "is_partition_canonical": false
     },
     {
@@ -2371,8 +2406,15 @@
         "redundancy": 2,
         "binomial_format": true
       },
-      "tree_url_override": null,
-      "tip_taxonomy_override": null,
+      "tree_url_override": "data/partitions/seed_plants/tree.nwk",
+      "tip_taxonomy_override": {
+        "unique_ids": 165,
+        "unique_species": 165,
+        "subspecies_tips": 0,
+        "redundancy": 0,
+        "binomial_format": true,
+        "total_tips": 356305
+      },
       "is_partition_canonical": false
     },
     {
@@ -12115,7 +12157,32 @@
       "estimate_confidence": "Medium",
       "coverage_pct_estimated": 76.1,
       "coverage_pct_estimated_low": 68.5,
-      "coverage_pct_estimated_high": 85.6
+      "coverage_pct_estimated_high": 85.6,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "World Flora Online 2025",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Nic Lughadha 2016",
+          "verbatim_quote": null,
+          "note": "Paper-published estimate of total angiosperm + gymnosperm diversity."
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "Nic Lughadha 2016",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Nic Lughadha 2016",
+          "verbatim_quote": null
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "True bilateral range from a quantitative meta-analysis of angiosperm taxonomy."
+      }
     },
     {
       "filename": "mammals.nwk",
@@ -12435,31 +12502,6 @@
       }
     },
     {
-      "filename": "cacti.nwk",
-      "group": "cacti",
-      "provenance_group": "cacti",
-      "partition_group": "Seed plants",
-      "category": "Plants",
-      "study": "CactEcoDB 2026",
-      "year": 2026,
-      "tips": 1063,
-      "raw_tips": 1063,
-      "described_species": 1900,
-      "described_source": "Catalogue of Life 2025",
-      "coverage_pct": 55.9,
-      "dated": true,
-      "is_partition_anchor": false,
-      "is_partition_canonical": false,
-      "estimated_total": 450000,
-      "estimated_low": 400000,
-      "estimated_high": 500000,
-      "estimate_source": "Nic Lughadha 2016",
-      "estimate_confidence": "Medium",
-      "coverage_pct_estimated": 0.2,
-      "coverage_pct_estimated_low": 0.2,
-      "coverage_pct_estimated_high": 0.3
-    },
-    {
       "filename": "frogs.nwk",
       "group": "frogs",
       "provenance_group": "frogs",
@@ -12511,6 +12553,56 @@
       }
     },
     {
+      "filename": "cacti.nwk",
+      "group": "cacti",
+      "provenance_group": "cacti",
+      "partition_group": "Seed plants",
+      "category": "Plants",
+      "study": "CactEcoDB 2026",
+      "year": 2026,
+      "tips": 996,
+      "raw_tips": 1063,
+      "described_species": 1900,
+      "described_source": "Catalogue of Life 2025",
+      "coverage_pct": 52.4,
+      "dated": true,
+      "is_partition_anchor": false,
+      "is_partition_canonical": false,
+      "estimated_total": 450000,
+      "estimated_low": 400000,
+      "estimated_high": 500000,
+      "estimate_source": "Nic Lughadha 2016",
+      "estimate_confidence": "Medium",
+      "coverage_pct_estimated": 0.2,
+      "coverage_pct_estimated_low": 0.2,
+      "coverage_pct_estimated_high": 0.2,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "World Flora Online 2025",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Nic Lughadha 2016",
+          "verbatim_quote": null,
+          "note": "Paper-published estimate of total angiosperm + gymnosperm diversity."
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "Nic Lughadha 2016",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Nic Lughadha 2016",
+          "verbatim_quote": null
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "True bilateral range from a quantitative meta-analysis of angiosperm taxonomy."
+      }
+    },
+    {
       "filename": "ferns.nwk",
       "group": "ferns",
       "provenance_group": "ferns",
@@ -12533,7 +12625,31 @@
       "estimate_confidence": "High",
       "coverage_pct_estimated": 46.2,
       "coverage_pct_estimated_low": 41.6,
-      "coverage_pct_estimated_high": 52.0
+      "coverage_pct_estimated_high": 52.0,
+      "interval_provenance": {
+        "described": {
+          "type": "paper",
+          "source": "PPG I 2016",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "heuristic",
+          "source": "atlas-derived",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "PPG I 2016",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "heuristic",
+          "source": "atlas-derived",
+          "verbatim_quote": null
+        },
+        "overall_classification": "fully-heuristic",
+        "auditor_note": "PPG I 2016 is the Pteridophyte Phylogeny Group classification (taxonomic authority). Round-number bounds (13500, 15000) are atlas placeholders."
+      }
     },
     {
       "filename": "primates.nwk",
@@ -12812,7 +12928,32 @@
       "estimate_confidence": "Medium",
       "coverage_pct_estimated": 0.3,
       "coverage_pct_estimated_low": 0.2,
-      "coverage_pct_estimated_high": 0.3
+      "coverage_pct_estimated_high": 0.3,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "World Flora Online 2025",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Nic Lughadha 2016",
+          "verbatim_quote": null,
+          "note": "Paper-published estimate of total angiosperm + gymnosperm diversity."
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "Nic Lughadha 2016",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Nic Lughadha 2016",
+          "verbatim_quote": null
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "True bilateral range from a quantitative meta-analysis of angiosperm taxonomy."
+      }
     },
     {
       "filename": "insects.nwk",
@@ -12847,11 +12988,11 @@
       "category": "Plants",
       "study": "Givnish 2023",
       "year": 2023,
-      "tips": 1475,
+      "tips": 1373,
       "raw_tips": 1475,
       "described_species": 28000,
       "described_source": "Catalogue of Life 2025",
-      "coverage_pct": 5.3,
+      "coverage_pct": 4.9,
       "dated": true,
       "is_partition_anchor": false,
       "is_partition_canonical": false,
@@ -12862,7 +13003,32 @@
       "estimate_confidence": "Medium",
       "coverage_pct_estimated": 0.3,
       "coverage_pct_estimated_low": 0.3,
-      "coverage_pct_estimated_high": 0.4
+      "coverage_pct_estimated_high": 0.3,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "World Flora Online 2025",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Nic Lughadha 2016",
+          "verbatim_quote": null,
+          "note": "Paper-published estimate of total angiosperm + gymnosperm diversity."
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "Nic Lughadha 2016",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Nic Lughadha 2016",
+          "verbatim_quote": null
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "True bilateral range from a quantitative meta-analysis of angiosperm taxonomy."
+      }
     },
     {
       "filename": "spiders.nwk",
@@ -12912,7 +13078,33 @@
       "estimate_confidence": "Medium",
       "coverage_pct_estimated": 2.2,
       "coverage_pct_estimated_low": 1.9,
-      "coverage_pct_estimated_high": 2.2
+      "coverage_pct_estimated_high": 2.2,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Catalogue of Life 2025",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "derived",
+          "source": "CoL 2025",
+          "verbatim_quote": null,
+          "note": "Set equal to described — no true-diversity estimate published."
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "CoL 2025",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "heuristic",
+          "source": "atlas-derived",
+          "verbatim_quote": null,
+          "note": "28,000 allows ~17% undescribed. CoL doesn't publish a range."
+        },
+        "overall_classification": "fully-heuristic",
+        "auditor_note": "Bryophyte true diversity is poorly constrained; species concepts are taxonomically contested. Heuristic upper bound."
+      }
     },
     {
       "filename": "sponges.nwk",
@@ -12990,31 +13182,6 @@
       "coverage_pct_estimated_high": 0.8
     },
     {
-      "filename": "asteraceae.nwk",
-      "group": "asteraceae",
-      "provenance_group": "asteraceae",
-      "partition_group": "Seed plants",
-      "category": "Plants",
-      "study": "Mandel 2019",
-      "year": 2019,
-      "tips": 254,
-      "raw_tips": 256,
-      "described_species": 34000,
-      "described_source": "Catalogue of Life 2025",
-      "coverage_pct": 0.7,
-      "dated": false,
-      "is_partition_anchor": false,
-      "is_partition_canonical": false,
-      "estimated_total": 450000,
-      "estimated_low": 400000,
-      "estimated_high": 500000,
-      "estimate_source": "Nic Lughadha 2016",
-      "estimate_confidence": "Medium",
-      "coverage_pct_estimated": 0.1,
-      "coverage_pct_estimated_low": 0.1,
-      "coverage_pct_estimated_high": 0.1
-    },
-    {
       "filename": "nematodes.nwk",
       "group": "nematodes",
       "provenance_group": "nematodes",
@@ -13038,6 +13205,56 @@
       "coverage_pct_estimated": 0.0,
       "coverage_pct_estimated_low": 0.0,
       "coverage_pct_estimated_high": 0.0
+    },
+    {
+      "filename": "asteraceae.nwk",
+      "group": "asteraceae",
+      "provenance_group": "asteraceae",
+      "partition_group": "Seed plants",
+      "category": "Plants",
+      "study": "Mandel 2019",
+      "year": 2019,
+      "tips": 165,
+      "raw_tips": 256,
+      "described_species": 34000,
+      "described_source": "Catalogue of Life 2025",
+      "coverage_pct": 0.5,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": false,
+      "estimated_total": 450000,
+      "estimated_low": 400000,
+      "estimated_high": 500000,
+      "estimate_source": "Nic Lughadha 2016",
+      "estimate_confidence": "Medium",
+      "coverage_pct_estimated": 0.0,
+      "coverage_pct_estimated_low": 0.0,
+      "coverage_pct_estimated_high": 0.0,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "World Flora Online 2025",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Nic Lughadha 2016",
+          "verbatim_quote": null,
+          "note": "Paper-published estimate of total angiosperm + gymnosperm diversity."
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "Nic Lughadha 2016",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Nic Lughadha 2016",
+          "verbatim_quote": null
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "True bilateral range from a quantitative meta-analysis of angiosperm taxonomy."
+      }
     },
     {
       "filename": "diatoms.nwk",
@@ -17567,6 +17784,296 @@
         }
       ]
     },
+    "Bryophytes": {
+      "partition": "Bryophytes",
+      "slug": "bryophytes",
+      "category": "Plants",
+      "estimate": {
+        "described": 24000,
+        "low": 24000,
+        "total": 24000,
+        "high": 28000,
+        "confidence": "Medium",
+        "source": {
+          "key": "CoL 2025",
+          "doi": null,
+          "type": "database",
+          "pdf": null,
+          "url": "https://www.catalogueoflife.org/"
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "Catalogue of Life 2025",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "derived",
+            "source": "CoL 2025",
+            "verbatim_quote": null,
+            "note": "Set equal to described — no true-diversity estimate published."
+          },
+          "estimated_low": {
+            "type": "derived-from-described",
+            "source": "CoL 2025",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "heuristic",
+            "source": "atlas-derived",
+            "verbatim_quote": null,
+            "note": "28,000 allows ~17% undescribed. CoL doesn't publish a range."
+          },
+          "overall_classification": "fully-heuristic",
+          "auditor_note": "Bryophyte true diversity is poorly constrained; species concepts are taxonomically contested. Heuristic upper bound."
+        }
+      },
+      "tree": {
+        "file": "tree.nwk",
+        "ntips": 533,
+        "unique_ids": 533,
+        "species_represented": 533,
+        "coverage_pct_described": 2.2,
+        "dated": true,
+        "multiple_individuals_per_species": false,
+        "source": {
+          "key": "Bechteler 2023",
+          "study": "Bechteler J et al. (2023)",
+          "doi": "10.1002/ajb2.16249",
+          "pdf": "papers/tree.pdf"
+        },
+        "methods": {
+          "inference": "ml",
+          "software": [
+            "ASTRAL",
+            "RAxML"
+          ],
+          "data_type": "UCE",
+          "n_genes": 228,
+          "dating_method": "Phylogenomic time tree from 405 exons (228 nuclear genes); 52 of 54 bryophyte orders; 29 fossil calibrations.",
+          "fossil_calibrations": 29,
+          "support_metric": "bootstrap",
+          "divergence_ci_available": true,
+          "note": "ASTRAL coalescent tree and RAxML tree also available. 533 tips for ~24,000 species — 2.2% coverage. Sparse but highest-quality."
+        }
+      },
+      "uncertainty": {
+        "host": "Dryad",
+        "host_url": "https://datadryad.org/stash/dataset/doi:10.5061/dryad.3j9kd51qm",
+        "host_doi": "10.5061/dryad.3j9kd51qm",
+        "files": [
+          {
+            "name": "Bechteler 2023 archive",
+            "label": "ASTRAL + RAxML + dated trees",
+            "description": "Three tree variants from the phylogenomic analysis.",
+            "size_bytes": null,
+            "format": "Dryad archive",
+            "url": "https://datadryad.org/stash/dataset/doi:10.5061/dryad.3j9kd51qm"
+          }
+        ]
+      },
+      "audit": {
+        "file": "../../../audits/partitions/bryophytes.md",
+        "status": "verified",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "verified",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "CoL 2025",
+        "doi": null,
+        "doi_verified": "na",
+        "year_published": 2025,
+        "cited_value": 24000,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": "bryophytes.nwk",
+        "provenance_group": "bryophytes",
+        "study": "Bechteler J et al. (2023)",
+        "doi": "10.1002/ajb2.16249",
+        "doi_verified": true,
+        "crossref_match": true
+      },
+      "methods": {
+        "inference": "ml",
+        "software": [
+          "ASTRAL",
+          "RAxML"
+        ],
+        "data_type": "UCE",
+        "n_genes": 228,
+        "total_bp": null,
+        "dating_method": "Phylogenomic time tree from 405 exons (228 nuclear genes), 52 of 54 bryophyte orders. 29 fossil calibrations.",
+        "fossil_calibrations": 29,
+        "support_metric": "bootstrap",
+        "divergence_ci_available": true,
+        "note": "Also ASTRAL coalescent tree and RAxML tree available."
+      },
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [
+        {
+          "issue": "Tree has only 533 tips for ~24,000 described bryophyte species — 2.2% coverage. Severe sampling sparsity.",
+          "resolved_by": "Coverage gap is fundamental to bryophyte phylogenetics (most species have no sequence data). Documented; no fix available without major new sequencing effort."
+        }
+      ],
+      "website": {
+        "surface_methods": true,
+        "surface_uncertainty": true,
+        "surface_candidates": true,
+        "badge": "verified"
+      }
+    },
+    "Ferns": {
+      "partition": "Ferns",
+      "slug": "ferns",
+      "category": "Plants",
+      "estimate": {
+        "described": 12000,
+        "low": 12000,
+        "total": 13500,
+        "high": 15000,
+        "confidence": "High",
+        "source": {
+          "key": "PPG I 2016",
+          "doi": "10.1111/jse.12229",
+          "pdf": null,
+          "url": "https://onlinelibrary.wiley.com/doi/10.1111/jse.12229"
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "paper",
+            "source": "PPG I 2016",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "heuristic",
+            "source": "atlas-derived",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "derived-from-described",
+            "source": "PPG I 2016",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "heuristic",
+            "source": "atlas-derived",
+            "verbatim_quote": null
+          },
+          "overall_classification": "fully-heuristic",
+          "auditor_note": "PPG I 2016 is the Pteridophyte Phylogeny Group classification (taxonomic authority). Round-number bounds (13500, 15000) are atlas placeholders."
+        }
+      },
+      "tree": {
+        "file": "tree.nwk",
+        "ntips": 6234,
+        "unique_ids": 6234,
+        "species_represented": 6234,
+        "coverage_pct_described": 52.0,
+        "dated": true,
+        "multiple_individuals_per_species": false,
+        "source": {
+          "key": "Nitta 2022",
+          "study": "Nitta JH, Schuettpelz E, Ramirez-Barahona S, Iwasaki W (2022)",
+          "doi": "10.3389/fpls.2022.909768",
+          "pdf": "papers/tree.pdf"
+        },
+        "methods": {
+          "inference": "ml",
+          "software": [
+            "RAxML",
+            "IQ-TREE",
+            "treePL"
+          ],
+          "data_type": "multi-locus",
+          "dating_method": "Automated pipeline combining plastomes + plastid regions. Continuously updated.",
+          "support_metric": "bootstrap",
+          "divergence_ci_available": true,
+          "note": "Atlas ships dated consensus. ML and undated versions also available. R package `ftolr` provides programmatic access."
+        }
+      },
+      "uncertainty": {
+        "host": "GitHub (fernphy)",
+        "host_url": "https://github.com/fernphy/ftol_data",
+        "files": [
+          {
+            "name": "FToL multi-version archive",
+            "label": "Multiple versions (dated, ML, undated)",
+            "description": "Fern Tree of Life data archive — updated regularly.",
+            "size_bytes": null,
+            "format": "GitHub repository",
+            "url": "https://github.com/fernphy/ftol_data"
+          }
+        ]
+      },
+      "audit": {
+        "file": "../../../audits/partitions/ferns.md",
+        "status": "verified",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "verified",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "PPG I 2016",
+        "doi": "10.1111/jse.12229",
+        "doi_verified": "unchecked",
+        "year_published": 2016,
+        "cited_value": 13500,
+        "newer_authoritative_known": true,
+        "newer_candidate": {
+          "doi": null,
+          "year": 2025,
+          "study": "Fern Tree of Life (FToL, ferntreeoflife.org)",
+          "cited_value": null,
+          "recommendation": "watch"
+        }
+      },
+      "canonical_tree": {
+        "filename": "ferns.nwk",
+        "provenance_group": "ferns",
+        "study": "Nitta JH, Schuettpelz E, Ramirez-Barahona S, Iwasaki W (2022)",
+        "doi": "10.3389/fpls.2022.909768",
+        "doi_verified": true,
+        "crossref_match": true
+      },
+      "methods": {
+        "inference": "ml",
+        "software": [
+          "RAxML",
+          "IQ-TREE",
+          "treePL"
+        ],
+        "data_type": "multi-locus",
+        "dating_method": "Automated pipeline combining plastomes + plastid regions; continuously updated; published as Fern Tree of Life (FToL).",
+        "support_metric": "bootstrap",
+        "divergence_ci_available": true,
+        "note": "ML and undated versions also published. R package `ftolr` provides programmatic access."
+      },
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [
+        {
+          "issue": "PPG I 2016 (Pteridophyte Phylogeny Group I) is the taxonomic authority but doesn't publish a true-diversity range — the 12000-13500-15000 bounds are heuristic round-numbers.",
+          "resolved_by": "Interval classified as fully-heuristic in info.yaml."
+        }
+      ],
+      "website": {
+        "surface_methods": true,
+        "surface_uncertainty": true,
+        "surface_candidates": true,
+        "badge": "verified"
+      }
+    },
     "Fish": {
       "partition": "Fish",
       "slug": "fish",
@@ -18213,6 +18720,237 @@
           "cache": "miss"
         }
       ]
+    },
+    "Seed plants": {
+      "partition": "Seed plants",
+      "slug": "seed_plants",
+      "category": "Plants",
+      "estimate": {
+        "described": 383671,
+        "low": 400000,
+        "total": 450000,
+        "high": 500000,
+        "confidence": "Medium",
+        "source": {
+          "key": "Nic Lughadha 2016",
+          "doi": "10.11646/phytotaxa.261.3.1",
+          "pdf": null,
+          "url": "https://www.mapress.com/pt/article/view/phytotaxa.261.3.1",
+          "note": "Nic Lughadha et al. 2016 Phytotaxa — 'Counting counts: revised estimates of numbers of accepted species of flowering plants...'"
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "World Flora Online 2025",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "paper-published",
+            "source": "Nic Lughadha 2016",
+            "verbatim_quote": null,
+            "note": "Paper-published estimate of total angiosperm + gymnosperm diversity."
+          },
+          "estimated_low": {
+            "type": "paper-published",
+            "source": "Nic Lughadha 2016",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "Nic Lughadha 2016",
+            "verbatim_quote": null
+          },
+          "overall_classification": "paper-published-range",
+          "auditor_note": "True bilateral range from a quantitative meta-analysis of angiosperm taxonomy."
+        }
+      },
+      "tree": {
+        "file": "tree.nwk",
+        "ntips": 356305,
+        "unique_ids": 356305,
+        "species_represented": 356305,
+        "coverage_pct_described": 92.9,
+        "dated": true,
+        "multiple_individuals_per_species": false,
+        "source": {
+          "key": "Smith Brown 2018",
+          "study": "Smith SA, Brown JW (2018)",
+          "doi": "10.1002/ajb2.1019",
+          "pdf": "papers/tree.pdf"
+        },
+        "methods": {
+          "inference": "ml",
+          "software": [
+            "RAxML",
+            "treePL"
+          ],
+          "data_type": "supermatrix",
+          "n_loci": 7,
+          "dating_method": "7-gene RAxML ML + treePL dating. Multi-stage build: ~80k species with sequence data, extended to ~356k via taxonomic placement.",
+          "support_metric": "bootstrap",
+          "divergence_ci_available": false,
+          "note": "Six tree variants (ALLMB/ALLOTB/GBMB/GBOTB + 2 dated). Atlas ships ALLMB. ~80k tips have direct sequence data; ~276k placed taxonomically — species-level placement confidence varies."
+        }
+      },
+      "uncertainty": {
+        "host": "GitHub (FePhyFoFum)",
+        "host_url": "https://github.com/FePhyFoFum/big_seed_plant_trees",
+        "files": [
+          {
+            "name": "Six tree variants",
+            "label": "ALLMB / ALLOTB / GBMB / GBOTB + dated",
+            "description": "Six published variants of the seed-plant tree.",
+            "size_bytes": null,
+            "format": "GitHub repository",
+            "url": "https://github.com/FePhyFoFum/big_seed_plant_trees"
+          }
+        ]
+      },
+      "audit": {
+        "file": "../../../audits/partitions/seed_plants.md",
+        "status": "verified",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [
+        {
+          "slug": "grasses"
+        },
+        {
+          "slug": "orchids"
+        },
+        {
+          "slug": "asteraceae"
+        },
+        {
+          "slug": "solanaceae"
+        },
+        {
+          "slug": "cacti"
+        },
+        {
+          "slug": "eucalyptus"
+        }
+      ],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "verified",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "Nic Lughadha 2016",
+        "doi": "10.11646/phytotaxa.261.3.1",
+        "doi_verified": "unchecked",
+        "crossref_match": "unchecked",
+        "year_published": 2016,
+        "cited_value": 450000,
+        "newer_authoritative_known": true,
+        "newer_candidate": {
+          "doi": null,
+          "year": 2025,
+          "study": "World Flora Online",
+          "cited_value": 383671,
+          "recommendation": "watch",
+          "notes": "WFO tracks the canonical described count; Nic Lughadha 2016 published the bilateral estimate."
+        }
+      },
+      "canonical_tree": {
+        "filename": "seed_plants.nwk",
+        "provenance_group": "seed_plants",
+        "study": "Smith SA, Brown JW (2018)",
+        "doi": "10.1002/ajb2.1019",
+        "doi_verified": true,
+        "crossref_match": true,
+        "newer_authoritative_known": true,
+        "newer_candidate": {
+          "doi": "10.1038/s41586-024-07324-0",
+          "year": 2024,
+          "study": "Zuntini AR et al. — Phylogenomics and the rise of the angiosperms",
+          "cited_value": 9505,
+          "recommendation": "watch",
+          "notes": "Zuntini 2024 Nature is a genomic-scale phylogenomic synthesis (353 nuclear genes, 9505 species). Different methodology (phylogenomic vs Smith 2018 supermatrix); both remain valid canonical candidates."
+        }
+      },
+      "methods": {
+        "inference": "ml",
+        "software": [
+          "RAxML",
+          "treePL"
+        ],
+        "data_type": "supermatrix",
+        "n_loci": 7,
+        "dating_method": "7-gene ML supermatrix, RAxML + treePL dating. Tree built in stages: ~80k seed plants with sequence data, extended to ~356k via taxonomic placement.",
+        "support_metric": "bootstrap",
+        "divergence_ci_available": false,
+        "posterior_n": null,
+        "note": "6 tree variants available (ALLMB, ALLOTB, GBMB, GBOTB, all-mol-backbone, all-otb-backbone). Atlas ships the ALLMB variant."
+      },
+      "shipped_subclades": [
+        {
+          "filename": "grasses.nwk",
+          "study": "GPWG III (2025)",
+          "taxon": "Poaceae",
+          "ntips": 1153
+        },
+        {
+          "filename": "orchids.nwk",
+          "study": "Thompson JB et al. (2023)",
+          "taxon": "Orchidaceae",
+          "ntips": 1475
+        },
+        {
+          "filename": "asteraceae.nwk",
+          "study": "Mandel JR et al. (2019)",
+          "taxon": "Asteraceae",
+          "ntips": 256
+        },
+        {
+          "filename": "solanaceae.nwk",
+          "study": "Sarkinen et al. (2013)",
+          "taxon": "Solanaceae",
+          "ntips": 1076
+        },
+        {
+          "filename": "cacti.nwk",
+          "study": "Thompson J et al. (2026)",
+          "taxon": "Cactaceae",
+          "ntips": 1063
+        },
+        {
+          "filename": "eucalyptus.nwk",
+          "study": "Crisp MD et al. (2024)",
+          "taxon": "Eucalyptus",
+          "ntips": 399
+        }
+      ],
+      "candidate_subclades": [
+        {
+          "taxon": "Whole-tree refresh — Zuntini 2024 phylogenomic synthesis",
+          "rationale": "9,505 angiosperm species at 353 nuclear genes (Angiosperms353 probe set). Phylogenomic resolution far exceeds Smith 2018's 7 plastid genes; consider as the new canonical.",
+          "candidate_papers": [
+            {
+              "doi": "10.1038/s41586-024-07324-0",
+              "year": 2024,
+              "study": "Zuntini AR et al. — Phylogenomics and the rise of the angiosperms",
+              "ntips": 9505
+            }
+          ],
+          "download_target": "dryad",
+          "priority": "high",
+          "status": "proposed"
+        }
+      ],
+      "resolutions": [
+        {
+          "issue": "356k tips include ~80k with direct sequence data + ~276k added via taxonomic placement. The latter have very low species-level confidence.",
+          "resolved_by": "Documented in methods.note. Users should consult Smith 2018 §Methods for placement uncertainty."
+        }
+      ],
+      "website": {
+        "surface_methods": true,
+        "surface_uncertainty": true,
+        "surface_candidates": true,
+        "badge": "verified"
+      }
     },
     "Sharks": {
       "partition": "Sharks",
