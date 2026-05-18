@@ -121,45 +121,43 @@ function renderCoveragePlot() {
       : "#5a5a5a";
   };
 
-  // Estimate is a RANGE, not a point. Render as an interval bar only (no
-  // central ● marker). Plotly draws the interval via error_x bars; we anchor
-  // at the geometric midpoint of (low, high) and make the marker invisible.
-  // For partitions where low or high are missing, the trace still renders
-  // at estimated_total without whiskers.
+  // Estimate is a RANGE, not a point. Render as a line segment from low to
+  // high for each row — implemented via Plotly shapes (no markers at all).
+  // A separate invisible scatter trace at the midpoint provides a hover
+  // target so users can still inspect interval details.
+  const intervalShapes = rows.map(r => {
+    if (r.estimated_low == null || r.estimated_high == null) return null;
+    if (r.estimated_low >= r.estimated_high) return null;  // degenerate
+    return {
+      type: "line",
+      xref: "x", yref: "y",
+      x0: r.estimated_low, x1: r.estimated_high,
+      y0: r.group, y1: r.group,
+      line: { color: intervalColor(r), width: 3 },
+      layer: "above",
+    };
+  }).filter(Boolean);
+  // Hover-only trace: invisible scatter at the geometric midpoint so users
+  // can still hover the interval to see source/range info.
   const intervalAnchor = (r) => {
     if (r.estimated_low && r.estimated_high) {
-      // Geometric midpoint on the log axis — visually centred on the bar.
       return Math.sqrt(r.estimated_low * r.estimated_high);
     }
     return r.estimated_total ?? null;
   };
-  const estimatedTrace = {
+  const estimatedHoverTrace = {
     type: "scatter",
     mode: "markers",
     name: "Estimated true diversity (interval)",
     x: rows.map(intervalAnchor),
     y: labels,
     marker: {
-      symbol: "circle",
-      size: 0,                             // invisible anchor; the visible part is the error bar
+      symbol: "line-ns-open",
+      size: 12,
       color: "rgba(0,0,0,0)",
-      opacity: 0,
+      line: { color: "rgba(0,0,0,0)", width: 0 },
     },
-    error_x: {
-      type: "data",
-      symmetric: false,
-      array: rows.map(r => {
-        const a = intervalAnchor(r);
-        return a != null && r.estimated_high != null ? Math.max(0, r.estimated_high - a) : 0;
-      }),
-      arrayminus: rows.map(r => {
-        const a = intervalAnchor(r);
-        return a != null && r.estimated_low != null ? Math.max(0, a - r.estimated_low) : 0;
-      }),
-      color: rows.map(intervalColor),
-      thickness: 2.0,
-      width: 6,
-    },
+    hoverinfo: "text",
     customdata: rows.map(r => [
       r.estimated_low, r.estimated_high, r.estimate_source || "—",
       r.estimate_confidence || "—", classLabel(intervalClass(r)),
@@ -167,9 +165,9 @@ function renderCoveragePlot() {
     ]),
     hovertemplate:
       "<b>%{y}</b><br>" +
-      "Estimated range: %{customdata[0]:,}–%{customdata[1]:,} (cited central: %{customdata[5]:,})<br>" +
-      "<i style='color:#7a7a7a'>Interval: %{customdata[4]}</i><br>" +
-      "Source: %{customdata[2]} · confidence %{customdata[3]}<extra></extra>",
+      "Estimated range: %{customdata[0]:,}–%{customdata[1]:,}<br>" +
+      (`<i style='color:#7a7a7a'>cited central: %{customdata[5]:,} · %{customdata[4]}</i><br>` +
+       "Source: %{customdata[2]} · confidence %{customdata[3]}<extra></extra>"),
   };
 
   // Mute described/estimated markers for unrepresented partitions so the
@@ -255,11 +253,14 @@ function renderCoveragePlot() {
       font: { family: FONT_STACK, size: 10.5, color: "#7a7a7a" },
     };
   });
-  const shapes = bands.slice(1).map(b => ({
-    type: "line", xref: "paper", yref: "y",
-    x0: 0, x1: 1, y0: rows[b.start].group, y1: rows[b.start].group,
-    line: { color: "#e4e4e4", width: 1, dash: "dot" }, layer: "below",
-  }));
+  const shapes = [
+    ...bands.slice(1).map(b => ({
+      type: "line", xref: "paper", yref: "y",
+      x0: 0, x1: 1, y0: rows[b.start].group, y1: rows[b.start].group,
+      line: { color: "#e4e4e4", width: 1, dash: "dot" }, layer: "below",
+    })),
+    ...intervalShapes,
+  ];
 
   const container = document.getElementById("coverage-plot");
   container.style.height = Math.max(560, labels.length * 28 + bands.length * 8 + 110) + "px";
@@ -309,7 +310,7 @@ function renderCoveragePlot() {
   };
 
   Plotly.purge(container);
-  Plotly.newPlot(container, [estimatedTrace, describedTrace, tipsTrace], layout,
+  Plotly.newPlot(container, [estimatedHoverTrace, describedTrace, tipsTrace], layout,
                  { displayModeBar: false, responsive: true });
 
   container.on("plotly_click", (ev) => {
