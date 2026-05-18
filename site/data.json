@@ -1361,8 +1361,15 @@
         "redundancy": 200,
         "binomial_format": true
       },
-      "tree_url_override": null,
-      "tip_taxonomy_override": null,
+      "tree_url_override": "data/partitions/bryozoa/tree.nwk",
+      "tip_taxonomy_override": {
+        "unique_ids": 517,
+        "unique_species": 517,
+        "subspecies_tips": 71,
+        "redundancy": 0,
+        "binomial_format": true,
+        "total_tips": 517
+      },
       "is_partition_canonical": true
     },
     {
@@ -13200,11 +13207,11 @@
       "category": "Other animals",
       "study": "Orr 2023",
       "year": 2022,
-      "tips": 520,
+      "tips": 517,
       "raw_tips": 720,
       "described_species": 6000,
       "described_source": null,
-      "coverage_pct": 8.7,
+      "coverage_pct": 8.6,
       "dated": false,
       "is_partition_anchor": true,
       "is_partition_canonical": true,
@@ -13215,7 +13222,7 @@
       "estimate_confidence": "Medium",
       "coverage_pct_estimated": 6.5,
       "coverage_pct_estimated_low": 5.2,
-      "coverage_pct_estimated_high": 8.7,
+      "coverage_pct_estimated_high": 8.6,
       "interval_provenance": {
         "described": {
           "type": "database",
@@ -19574,14 +19581,14 @@
       },
       "tree": {
         "file": "tree.nwk",
-        "ntips": 720,
-        "unique_ids": 720,
-        "species_represented": 720,
-        "coverage_pct_described": 12.0,
+        "ntips": 517,
+        "derivation": "Derived from the 720-tip Orr 2022 multi-individual MCC by pruning to a\nsingle representative per species (smallest numeric tip ID under each\nGenus_species). 27.8% subspecies/specimen-level redundancy in the\noriginal tree. Reproducible via scripts/derive_species_tree.py.\n",
+        "species_represented": 517,
+        "coverage_pct_described": 8.6,
         "dated": true,
         "multiple_individuals_per_species": false,
         "source": {
-          "key": "Orr RJS et al.",
+          "key": "Orr 2022",
           "study": "Orr RJS et al. (2022)",
           "doi": "10.1126/sciadv.abm7452",
           "pdf": "papers/tree.pdf"
@@ -19589,8 +19596,31 @@
         "methods": {
           "inference": "ml",
           "data_type": "UCE",
-          "note": "17-gene supermatrix, RAxML ML, rogue-taxon pruning; cheilostome-focused."
+          "note": "17-gene supermatrix, RAxML ML, rogue-taxon pruning; cheilostome-focused. Atlas-derived species-level pruning replaces the original multi-individual MCC."
         }
+      },
+      "uncertainty": {
+        "host": "Dryad",
+        "host_url": "https://doi.org/10.5061/dryad.2v6wwpzp9",
+        "files": [
+          {
+            "name": "multi-individual.tree.nwk",
+            "label": "Original 720-tip multi-individual MCC (locally hosted)",
+            "description": "The published Orr 2022 MCC tree with 720 tips for 517 species\n(27.8% subspecies/specimen redundancy). The atlas-derived 517-tip\ncanonical above is pruned from this tree.\n",
+            "size_bytes": null,
+            "format": "Newick (standardized IDs)",
+            "url": "data/partitions/bryozoa/uncertainty/multi-individual.tree.nwk",
+            "local": true
+          },
+          {
+            "name": "Full Dryad archive",
+            "label": "Orr 2022 Dryad archive (854-tip ML tree, alignments)",
+            "description": "Full original release including the 854-tip ML tree and full alignments.",
+            "size_bytes": null,
+            "format": "Dryad",
+            "url": "https://doi.org/10.5061/dryad.2v6wwpzp9"
+          }
+        ]
       },
       "audit": {
         "file": "../../../audits/partitions/bryozoa.md",

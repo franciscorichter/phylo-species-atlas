@@ -35,21 +35,46 @@ estimate:
 
 tree:
   file: tree.nwk
-  ntips: 720
-  unique_ids: 720
-  species_represented: 720
-  coverage_pct_described: 12.0
+  ntips: 517                                 # atlas-derived: one tip per species (pruned from 720)
+  derivation: |
+    Derived from the 720-tip Orr 2022 multi-individual MCC by pruning to a
+    single representative per species (smallest numeric tip ID under each
+    Genus_species). 27.8% subspecies/specimen-level redundancy in the
+    original tree. Reproducible via scripts/derive_species_tree.py.
+  species_represented: 517
+  coverage_pct_described: 8.6
   dated: true
   multiple_individuals_per_species: false
   source:
-    key: Orr RJS et al.
+    key: Orr 2022
     study: Orr RJS et al. (2022)
     doi: 10.1126/sciadv.abm7452
     pdf: papers/tree.pdf
   methods:
     inference: ml
     data_type: UCE
-    note: "17-gene supermatrix, RAxML ML, rogue-taxon pruning; cheilostome-focused."
+    note: "17-gene supermatrix, RAxML ML, rogue-taxon pruning; cheilostome-focused. Atlas-derived species-level pruning replaces the original multi-individual MCC."
+
+uncertainty:
+  host: Dryad
+  host_url: https://doi.org/10.5061/dryad.2v6wwpzp9
+  files:
+    - name: multi-individual.tree.nwk
+      label: Original 720-tip multi-individual MCC (locally hosted)
+      description: |
+        The published Orr 2022 MCC tree with 720 tips for 517 species
+        (27.8% subspecies/specimen redundancy). The atlas-derived 517-tip
+        canonical above is pruned from this tree.
+      size_bytes: null
+      format: Newick (standardized IDs)
+      url: data/partitions/bryozoa/uncertainty/multi-individual.tree.nwk
+      local: true
+    - name: Full Dryad archive
+      label: Orr 2022 Dryad archive (854-tip ML tree, alignments)
+      description: "Full original release including the 854-tip ML tree and full alignments."
+      size_bytes: null
+      format: Dryad
+      url: https://doi.org/10.5061/dryad.2v6wwpzp9
 
 audit:
   file: ../../../audits/partitions/bryozoa.md

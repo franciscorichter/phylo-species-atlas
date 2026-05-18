@@ -25,7 +25,10 @@ methods:
   data_type: UCE
   note: "17-gene supermatrix, RAxML ML, rogue-taxon pruning; cheilostome-focused."
 
-resolutions: []
+resolutions:
+  - issue: "Orr 2022 MCC ships with 720 tips but only 517 species (27.8% subspecies/specimen redundancy — highest of any tree in the atlas)."
+    resolved_by: "Atlas-derived 517-tip species-level pruning is now the canonical tree (one tip per species, smallest numeric ID per Genus_species). The original 720-tip MCC is preserved as a locally-hosted uncertainty file. Reproducible via scripts/derive_species_tree.py."
+
 website:
   badge: verified
 ---
@@ -35,5 +38,8 @@ website:
 **Status: verified.** Orr RJS et al. (2022) tree (DOI 10.1126/sciadv.abm7452). Appeltans 2012 estimate. Interval
 classification: partly-heuristic.
 
-Tree covers 720 tips / 6000 described = 12.0% (BACKBONE-LEVEL —
-Bryozoa phylogenetics is data-sparse at species level).
+Canonical is now the **atlas-derived 517-tip species-level pruning** of
+the Orr 2022 MCC (720 → 517, removing 27.8% redundancy from
+subspecies/specimen duplicates — the highest redundancy in the atlas).
+Coverage 517 / 6000 = 8.6% at species level. Original multi-individual
+MCC preserved as uncertainty data.
