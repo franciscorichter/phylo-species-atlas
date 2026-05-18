@@ -1,0 +1,20 @@
+slug: orchids
+taxon: Orchidaceae
+parent: seed_plants
+
+tree:
+  file: tree.nwk
+  ntips: 1475
+  dated: true
+  source:
+    key: Thompson JB 2023
+    study: Thompson JB, Davis KE, Dodd HO, Wills MA, Priest NK (2023) PNAS
+    doi: 10.1073/pnas.2102408120
+    pdf: papers/tree.pdf
+  methods:
+    note: "Speciation in terrestrial orchids, reltime + treePL dated"
+
+species_count:
+  source: Catalogue of Life 2025
+  described: 28000
+  coverage_pct_described: 5.3

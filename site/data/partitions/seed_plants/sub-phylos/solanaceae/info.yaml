@@ -1,0 +1,20 @@
+slug: solanaceae
+taxon: Solanaceae
+parent: seed_plants
+
+tree:
+  file: tree.nwk
+  ntips: 1076
+  dated: true
+  source:
+    key: Sarkinen TE 2013
+    study: Sarkinen TE, Bohs L, Olmstead R, Knapp S (2013) BMC Evolutionary Biology
+    doi: 10.1186/1471-2148-13-214
+    pdf: papers/tree.pdf
+  methods:
+    note: "Dated 1000-tip tree of nightshades"
+
+species_count:
+  source: 
+  described: null
+  coverage_pct_described: null

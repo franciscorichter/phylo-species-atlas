@@ -1,0 +1,20 @@
+slug: bees
+taxon: Apoidea (bees)
+parent: insects
+
+tree:
+  file: tree.nwk
+  ntips: 4586
+  dated: true
+  source:
+    key: Henriquez-Piskulich PA 2024
+    study: Henriquez-Piskulich PA et al. (2024) Molecular Phylogenetics and Evolution
+    doi: 10.1016/j.ympev.2023.107963
+    pdf: papers/tree.pdf
+  methods:
+    note: "Supermatrix of all available bee sequences, IQ-TREE ML, treePL"
+
+species_count:
+  source: Discover Life
+  described: 20507
+  coverage_pct_described: 22.4

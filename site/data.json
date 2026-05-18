@@ -21909,8 +21909,145 @@
         "status": "verified",
         "last_audited": "2026-05-18"
       },
-      "sub_phylos": [],
-      "_sub_phylos_loaded": [],
+      "sub_phylos": [
+        {
+          "slug": "butterflies"
+        },
+        {
+          "slug": "bees"
+        },
+        {
+          "slug": "hemiptera"
+        },
+        {
+          "slug": "termites"
+        },
+        {
+          "slug": "ants"
+        }
+      ],
+      "_sub_phylos_loaded": [
+        {
+          "slug": "ants",
+          "taxon": "Formicidae",
+          "parent": "insects",
+          "tree": {
+            "file": "tree.nwk",
+            "ntips": 83,
+            "dated": false,
+            "source": {
+              "key": "Romiguier J 2022",
+              "study": "Romiguier J et al. (2022) Current Biology",
+              "doi": "10.1016/j.cub.2022.05.014",
+              "pdf": "papers/tree.pdf"
+            },
+            "methods": {
+              "note": "65 genomes; 17 ant subfamilies; supermatrix + supertree"
+            }
+          },
+          "species_count": {
+            "source": null,
+            "described": null,
+            "coverage_pct_described": null
+          }
+        },
+        {
+          "slug": "bees",
+          "taxon": "Apoidea (bees)",
+          "parent": "insects",
+          "tree": {
+            "file": "tree.nwk",
+            "ntips": 4586,
+            "dated": true,
+            "source": {
+              "key": "Henriquez-Piskulich PA 2024",
+              "study": "Henriquez-Piskulich PA et al. (2024) Molecular Phylogenetics and Evolution",
+              "doi": "10.1016/j.ympev.2023.107963",
+              "pdf": "papers/tree.pdf"
+            },
+            "methods": {
+              "note": "Supermatrix of all available bee sequences, IQ-TREE ML, treePL"
+            }
+          },
+          "species_count": {
+            "source": "Discover Life",
+            "described": 20507,
+            "coverage_pct_described": 22.4
+          }
+        },
+        {
+          "slug": "butterflies",
+          "taxon": "Lepidoptera (butterflies)",
+          "parent": "insects",
+          "tree": {
+            "file": "tree.nwk",
+            "ntips": 2258,
+            "dated": true,
+            "source": {
+              "key": "Kawahara AY 2023",
+              "study": "Kawahara AY et al. (2023) Nature Ecology & Evolution",
+              "doi": "10.1038/s41559-023-02041-9",
+              "pdf": "papers/tree.pdf"
+            },
+            "methods": {
+              "note": "391 nuclear loci from ~2300 species, ML, treePL dating"
+            }
+          },
+          "species_count": {
+            "source": "Catalogue of Life 2025",
+            "described": 19000,
+            "coverage_pct_described": 11.9
+          }
+        },
+        {
+          "slug": "hemiptera",
+          "taxon": "Hemiptera",
+          "parent": "insects",
+          "tree": {
+            "file": "tree.nwk",
+            "ntips": 193,
+            "dated": false,
+            "source": {
+              "key": "Johnson KP 2018",
+              "study": "Johnson KP et al. (2018) PNAS",
+              "doi": "10.1073/pnas.1815820115",
+              "pdf": "papers/tree.pdf"
+            },
+            "methods": {
+              "note": "Phylogenomics of hemipteroid insects; 2395 genes"
+            }
+          },
+          "species_count": {
+            "source": null,
+            "described": null,
+            "coverage_pct_described": null
+          }
+        },
+        {
+          "slug": "termites",
+          "taxon": "Isoptera",
+          "parent": "insects",
+          "tree": {
+            "file": "tree.nwk",
+            "ntips": 138,
+            "dated": false,
+            "source": {
+              "key": "Hellemans S 2024",
+              "study": "Hellemans S et al. (2024) Nature Communications",
+              "doi": "10.1038/s41467-024-51028-y",
+              "pdf": "papers/tree.pdf"
+            },
+            "methods": {
+              "note": "Genomic data on termite classification; UCE phylogenomics"
+            }
+          },
+          "species_count": {
+            "source": null,
+            "described": null,
+            "coverage_pct_described": null
+          }
+        }
+      ],
       "audit_version": 1,
       "status": "verified",
       "last_audited": "2026-05-18",
@@ -23761,7 +23898,152 @@
           "slug": "eucalyptus"
         }
       ],
-      "_sub_phylos_loaded": [],
+      "_sub_phylos_loaded": [
+        {
+          "slug": "asteraceae",
+          "taxon": "Asteraceae",
+          "parent": "seed_plants",
+          "tree": {
+            "file": "tree.nwk",
+            "ntips": 256,
+            "dated": false,
+            "source": {
+              "key": "Mandel JR 2019",
+              "study": "Mandel JR et al. (2019) PNAS",
+              "doi": "10.1073/pnas.1903871116",
+              "pdf": "papers/tree.pdf"
+            },
+            "methods": {
+              "note": "935 nuclear loci, 942707 bp, RAxML ML"
+            }
+          },
+          "species_count": {
+            "source": "Catalogue of Life 2025",
+            "described": 34000,
+            "coverage_pct_described": 0.8
+          }
+        },
+        {
+          "slug": "cacti",
+          "taxon": "Cactaceae",
+          "parent": "seed_plants",
+          "tree": {
+            "file": "tree.nwk",
+            "ntips": 1063,
+            "dated": true,
+            "source": {
+              "key": "Thompson J 2026",
+              "study": "Thompson J et al. (2026) Scientific Data",
+              "doi": "10.1038/s41597-026-06936-7",
+              "pdf": "papers/tree.pdf"
+            },
+            "methods": {
+              "note": "Largest time-calibrated cactus phylogeny, part of CactEcoDB database"
+            }
+          },
+          "species_count": {
+            "source": "Catalogue of Life 2025",
+            "described": 1900,
+            "coverage_pct_described": 55.9
+          }
+        },
+        {
+          "slug": "eucalyptus",
+          "taxon": "Eucalyptus",
+          "parent": "seed_plants",
+          "tree": {
+            "file": "tree.nwk",
+            "ntips": 399,
+            "dated": false,
+            "source": {
+              "key": "Crisp MD 2024",
+              "study": "Crisp MD et al. (2024) Journal of Systematics and Evolution",
+              "doi": "10.1111/jse.13047",
+              "pdf": "papers/tree.pdf"
+            },
+            "methods": {
+              "note": "101 nuclear exons, 392 samples/329 species, IQtree + RAxML"
+            }
+          },
+          "species_count": {
+            "source": null,
+            "described": null,
+            "coverage_pct_described": null
+          }
+        },
+        {
+          "slug": "grasses",
+          "taxon": "Poaceae",
+          "parent": "seed_plants",
+          "tree": {
+            "file": "tree.nwk",
+            "ntips": 1153,
+            "dated": false,
+            "source": {
+              "key": "Grass Phylogeny Working Group III 2025",
+              "study": "Grass Phylogeny Working Group III (2025) New Phytologist",
+              "doi": "10.1111/nph.20263",
+              "pdf": "papers/tree.pdf"
+            },
+            "methods": {
+              "note": "331 nuclear genes from 1153 tips, ASTRAL coalescent"
+            }
+          },
+          "species_count": {
+            "source": "Catalogue of Life 2025",
+            "described": 12000,
+            "coverage_pct_described": 9.6
+          }
+        },
+        {
+          "slug": "orchids",
+          "taxon": "Orchidaceae",
+          "parent": "seed_plants",
+          "tree": {
+            "file": "tree.nwk",
+            "ntips": 1475,
+            "dated": true,
+            "source": {
+              "key": "Thompson JB 2023",
+              "study": "Thompson JB, Davis KE, Dodd HO, Wills MA, Priest NK (2023) PNAS",
+              "doi": "10.1073/pnas.2102408120",
+              "pdf": "papers/tree.pdf"
+            },
+            "methods": {
+              "note": "Speciation in terrestrial orchids, reltime + treePL dated"
+            }
+          },
+          "species_count": {
+            "source": "Catalogue of Life 2025",
+            "described": 28000,
+            "coverage_pct_described": 5.3
+          }
+        },
+        {
+          "slug": "solanaceae",
+          "taxon": "Solanaceae",
+          "parent": "seed_plants",
+          "tree": {
+            "file": "tree.nwk",
+            "ntips": 1076,
+            "dated": true,
+            "source": {
+              "key": "Sarkinen TE 2013",
+              "study": "Sarkinen TE, Bohs L, Olmstead R, Knapp S (2013) BMC Evolutionary Biology",
+              "doi": "10.1186/1471-2148-13-214",
+              "pdf": "papers/tree.pdf"
+            },
+            "methods": {
+              "note": "Dated 1000-tip tree of nightshades"
+            }
+          },
+          "species_count": {
+            "source": null,
+            "described": null,
+            "coverage_pct_described": null
+          }
+        }
+      ],
       "audit_version": 1,
       "status": "verified",
       "last_audited": "2026-05-18",

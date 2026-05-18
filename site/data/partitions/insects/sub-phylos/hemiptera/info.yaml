@@ -1,0 +1,20 @@
+slug: hemiptera
+taxon: Hemiptera
+parent: insects
+
+tree:
+  file: tree.nwk
+  ntips: 193
+  dated: false
+  source:
+    key: Johnson KP 2018
+    study: Johnson KP et al. (2018) PNAS
+    doi: 10.1073/pnas.1815820115
+    pdf: papers/tree.pdf
+  methods:
+    note: "Phylogenomics of hemipteroid insects; 2395 genes"
+
+species_count:
+  source: 
+  described: null
+  coverage_pct_described: null

@@ -1,0 +1,20 @@
+slug: termites
+taxon: Isoptera
+parent: insects
+
+tree:
+  file: tree.nwk
+  ntips: 138
+  dated: false
+  source:
+    key: Hellemans S 2024
+    study: Hellemans S et al. (2024) Nature Communications
+    doi: 10.1038/s41467-024-51028-y
+    pdf: papers/tree.pdf
+  methods:
+    note: "Genomic data on termite classification; UCE phylogenomics"
+
+species_count:
+  source: 
+  described: null
+  coverage_pct_described: null

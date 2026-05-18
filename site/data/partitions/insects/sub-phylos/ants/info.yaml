@@ -1,0 +1,20 @@
+slug: ants
+taxon: Formicidae
+parent: insects
+
+tree:
+  file: tree.nwk
+  ntips: 83
+  dated: false
+  source:
+    key: Romiguier J 2022
+    study: Romiguier J et al. (2022) Current Biology
+    doi: 10.1016/j.cub.2022.05.014
+    pdf: papers/tree.pdf
+  methods:
+    note: "65 genomes; 17 ant subfamilies; supermatrix + supertree"
+
+species_count:
+  source: 
+  described: null
+  coverage_pct_described: null

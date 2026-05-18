@@ -1,0 +1,20 @@
+slug: cacti
+taxon: Cactaceae
+parent: seed_plants
+
+tree:
+  file: tree.nwk
+  ntips: 1063
+  dated: true
+  source:
+    key: Thompson J 2026
+    study: Thompson J et al. (2026) Scientific Data
+    doi: 10.1038/s41597-026-06936-7
+    pdf: papers/tree.pdf
+  methods:
+    note: "Largest time-calibrated cactus phylogeny, part of CactEcoDB database"
+
+species_count:
+  source: Catalogue of Life 2025
+  described: 1900
+  coverage_pct_described: 55.9

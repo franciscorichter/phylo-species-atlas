@@ -1,0 +1,20 @@
+slug: asteraceae
+taxon: Asteraceae
+parent: seed_plants
+
+tree:
+  file: tree.nwk
+  ntips: 256
+  dated: false
+  source:
+    key: Mandel JR 2019
+    study: Mandel JR et al. (2019) PNAS
+    doi: 10.1073/pnas.1903871116
+    pdf: papers/tree.pdf
+  methods:
+    note: "935 nuclear loci, 942707 bp, RAxML ML"
+
+species_count:
+  source: Catalogue of Life 2025
+  described: 34000
+  coverage_pct_described: 0.8

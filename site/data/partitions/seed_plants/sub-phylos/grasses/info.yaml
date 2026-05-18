@@ -1,0 +1,20 @@
+slug: grasses
+taxon: Poaceae
+parent: seed_plants
+
+tree:
+  file: tree.nwk
+  ntips: 1153
+  dated: false
+  source:
+    key: Grass Phylogeny Working Group III 2025
+    study: Grass Phylogeny Working Group III (2025) New Phytologist
+    doi: 10.1111/nph.20263
+    pdf: papers/tree.pdf
+  methods:
+    note: "331 nuclear genes from 1153 tips, ASTRAL coalescent"
+
+species_count:
+  source: Catalogue of Life 2025
+  described: 12000
+  coverage_pct_described: 9.6

@@ -1,0 +1,20 @@
+slug: butterflies
+taxon: Lepidoptera (butterflies)
+parent: insects
+
+tree:
+  file: tree.nwk
+  ntips: 2258
+  dated: true
+  source:
+    key: Kawahara AY 2023
+    study: Kawahara AY et al. (2023) Nature Ecology & Evolution
+    doi: 10.1038/s41559-023-02041-9
+    pdf: papers/tree.pdf
+  methods:
+    note: "391 nuclear loci from ~2300 species, ML, treePL dating"
+
+species_count:
+  source: Catalogue of Life 2025
+  described: 19000
+  coverage_pct_described: 11.9

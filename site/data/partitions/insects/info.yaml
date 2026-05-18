@@ -68,4 +68,9 @@ audit:
   status: verified
   last_audited: 2026-05-18
 
-sub_phylos: []
+sub_phylos:
+  - slug: butterflies
+  - slug: bees
+  - slug: hemiptera
+  - slug: termites
+  - slug: ants

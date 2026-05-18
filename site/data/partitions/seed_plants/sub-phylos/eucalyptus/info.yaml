@@ -1,0 +1,20 @@
+slug: eucalyptus
+taxon: Eucalyptus
+parent: seed_plants
+
+tree:
+  file: tree.nwk
+  ntips: 399
+  dated: false
+  source:
+    key: Crisp MD 2024
+    study: Crisp MD et al. (2024) Journal of Systematics and Evolution
+    doi: 10.1111/jse.13047
+    pdf: papers/tree.pdf
+  methods:
+    note: "101 nuclear exons, 392 samples/329 species, IQtree + RAxML"
+
+species_count:
+  source: 
+  described: null
+  coverage_pct_described: null
