@@ -206,12 +206,7 @@ main {
 .methodology strong { color: var(--ink); font-weight: 600; }
 
 #browser {
-  display: grid;
-  grid-template-columns: 320px 1fr;
-  gap: 20px;
-}
-@media (max-width: 1000px) {
-  #browser { grid-template-columns: 1fr; }
+  display: block;
 }
 
 .panel {

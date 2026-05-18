@@ -28,23 +28,8 @@
   </section>
 
   <section id="browser">
-    <aside class="panel">
-      <h2>Trees</h2>
-      <div class="filters">
-        <input type="search" id="tree-search" placeholder="Search trees…" autocomplete="off">
-        <label class="check"><input type="checkbox" id="filter-dated"> Dated only</label>
-        <select id="sort-by">
-          <option value="ntips-desc">Largest first</option>
-          <option value="ntips-asc">Smallest first</option>
-          <option value="filename-asc">Name (A→Z)</option>
-          <option value="year-desc">Year (newest)</option>
-        </select>
-      </div>
-      <ul id="tree-list" class="tree-list"></ul>
-    </aside>
-
     <article class="panel detail">
-      <div id="detail-empty" class="empty">Select a tree on the left to see details.</div>
+      <div id="detail-empty" class="empty">Click a row in the chart above to see partition details.</div>
       <div id="detail" hidden>
         <h2 id="detail-name"></h2>
         <div id="dark-matter-panel" hidden></div>

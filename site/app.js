@@ -3,14 +3,11 @@
 
 const STATE = {
   data: null,
-  filtered: [],
   selected: null,
   layout: "linear", // or "radial"
   showLabels: false,
   currentNewick: null,
   currentNames: {}, // {id: standardized_name} for the active tree
-  query: "",
-  datedOnly: false,
 };
 
 const TREES_BASE = "../standardized/trees/"; // patched by CI for Pages deploy
@@ -31,8 +28,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   renderSummary();
   renderCoveragePlot();
-  wireFilters();
-  applyFilters();
+  wireTreeViewerControls();
 });
 
 function renderSummary() {
@@ -334,10 +330,7 @@ function renderCoveragePlot() {
   }
 }
 
-function wireFilters() {
-  document.getElementById("tree-search").addEventListener("input", applyFilters);
-  document.getElementById("filter-dated").addEventListener("change", applyFilters);
-  document.getElementById("sort-by").addEventListener("change", applyFilters);
+function wireTreeViewerControls() {
   document.getElementById("show-labels").addEventListener("change", (e) => {
     STATE.showLabels = e.target.checked;
     redrawTree();
@@ -349,172 +342,6 @@ function wireFilters() {
     redrawTree();
   });
   document.getElementById("reset-zoom").addEventListener("click", redrawTree);
-}
-
-function applyFilters() {
-  const q = document.getElementById("tree-search").value.trim().toLowerCase();
-  const datedOnly = document.getElementById("filter-dated").checked;
-  const sort = document.getElementById("sort-by").value;
-  STATE.query = q;
-  STATE.datedOnly = datedOnly;
-
-  let list = STATE.data.trees.slice();
-  if (q) {
-    list = list.filter(t =>
-      (t.filename || "").toLowerCase().includes(q) ||
-      (t.group || "").toLowerCase().includes(q) ||
-      (t.partition_group || "").toLowerCase().includes(q) ||
-      (t.study || "").toLowerCase().includes(q)
-    );
-  }
-  if (datedOnly) list = list.filter(t => t.dated);
-
-  list.sort((a, b) => {
-    switch (sort) {
-      case "ntips-asc": return (a.ntips || 0) - (b.ntips || 0);
-      case "filename-asc": return a.filename.localeCompare(b.filename);
-      case "year-desc": return (b.year || 0) - (a.year || 0);
-      case "ntips-desc":
-      default: return (b.ntips || 0) - (a.ntips || 0);
-    }
-  });
-
-  STATE.filtered = list;
-  renderTreeList();
-}
-
-const STATE_EXPANDED = new Set(); // partitions currently expanded in the sidebar
-
-function treeRowHTML(t, { indent = false } = {}) {
-  const cls = (STATE.selected === t.filename ? "active " : "") + (indent ? "child " : "");
-  const badge = t.dated ? "dated" : "undated";
-  const name = t.filename.replace(/\.nwk$/, "");
-  return `<li data-filename="${t.filename}" class="tree-item ${cls.trim()}">
-    <span class="tree-name"><span class="badge ${badge}"></span>${name}</span>
-    <span class="tree-meta">${fmt.format(t.ntips || 0)}</span>
-  </li>`;
-}
-
-function renderTreeList() {
-  const ul = document.getElementById("tree-list");
-  const list = STATE.filtered;
-  const searching = STATE.query.length > 0 || STATE.datedOnly;
-
-  let html;
-  if (searching) {
-    // Flat view when filtering — every match visible.
-    html = list.map(t => treeRowHTML(t)).join("");
-  } else {
-    // Hierarchical view: partition headers → canonical → sub-clades (collapsed).
-    // Bucket trees by partition; trees without a partition go to an "Other" bucket.
-    const buckets = new Map();
-    for (const t of list) {
-      const p = t.partition_group || "Other";
-      if (!buckets.has(p)) buckets.set(p, []);
-      buckets.get(p).push(t);
-    }
-
-    // Order partitions: by macro category (CATEGORY_ORDER), then by canonical
-    // tips desc within each category. "Condamine 2019 families" and "Other"
-    // are pinned to the bottom of their category.
-    const partitionInfo = Array.from(buckets.keys()).map(p => {
-      const items = buckets.get(p);
-      const canonical = items.find(t => t.is_partition_canonical) || items[0];
-      const category = items.find(t => t.category)?.category || "Other";
-      return { partition: p, canonicalTips: canonical?.ntips || 0, category };
-    });
-    partitionInfo.sort((a, b) => {
-      const ra = CATEGORY_RANK[a.category] ?? 99;
-      const rb = CATEGORY_RANK[b.category] ?? 99;
-      if (ra !== rb) return ra - rb;
-      const pinA = a.partition === "Condamine 2019 families" || a.partition === "Other" ? 1 : 0;
-      const pinB = b.partition === "Condamine 2019 families" || b.partition === "Other" ? 1 : 0;
-      if (pinA !== pinB) return pinA - pinB;
-      return b.canonicalTips - a.canonicalTips;
-    });
-
-    let lastCategory = null;
-    html = partitionInfo.map(({ partition, category }) => {
-      const items = buckets.get(partition);
-      const canonical = items.find(t => t.is_partition_canonical);
-      const subclades = items.filter(t => !t.is_partition_canonical);
-      const hasSub = subclades.length > 0;
-      const expanded = STATE_EXPANDED.has(partition);
-      const chevron = hasSub ? `<span class="chev">${expanded ? "▾" : "▸"}</span>` : `<span class="chev empty"></span>`;
-      const countBadge = hasSub ? `<span class="sub-count">+${subclades.length}</span>` : "";
-
-      let categoryRow = "";
-      if (category !== lastCategory) {
-        categoryRow = `<li class="category-header">${category}</li>`;
-        lastCategory = category;
-      }
-
-      const headerRow = `<li class="partition-header${hasSub ? ' has-children' : ''}${expanded ? ' open' : ''}" data-partition="${partition}">
-        ${chevron}<span class="partition-name">${partition}</span>${countBadge}
-      </li>`;
-
-      // For partitions without a canonical (e.g. Condamine 218 families), show
-      // children as a generic list under the header. For others, show canonical
-      // immediately; children appear when expanded.
-      let canonicalRow = "";
-      let childRows = "";
-      if (canonical) {
-        canonicalRow = treeRowHTML(canonical);
-      }
-      if (hasSub && expanded) {
-        childRows = subclades.map(t => treeRowHTML(t, { indent: true })).join("");
-      }
-      return categoryRow + headerRow + canonicalRow + childRows;
-    }).join("");
-
-    // Append the dark-matter section: partitions with an estimate but no
-    // shipped tree. Collapsible like the other partition headers.
-    const unrepresented = STATE.data.unrepresented || [];
-    if (unrepresented.length) {
-      const SECTION_KEY = "__unrepresented__";
-      const open = STATE_EXPANDED.has(SECTION_KEY);
-      const chev = `<span class="chev">${open ? "▾" : "▸"}</span>`;
-      let body = "";
-      if (open) {
-        // Sub-group by category.
-        const byCat = new Map();
-        for (const u of unrepresented) {
-          const c = u.category || "Other";
-          if (!byCat.has(c)) byCat.set(c, []);
-          byCat.get(c).push(u);
-        }
-        for (const [cat, items] of byCat) {
-          body += `<li class="dark-cat-header">${cat} <span class="sub-count">${items.length}</span></li>`;
-          for (const u of items) {
-            const desc = u.described ? fmt.format(u.described) + " described" : "—";
-            const link = sourceLinkHTML(u.estimate_source_info, u.estimate_source);
-            body += `<li class="tree-item dark child">
-              <span class="tree-name"><span class="badge dark"></span>${u.group}${link}</span>
-              <span class="tree-meta">${desc}</span>
-            </li>`;
-          }
-        }
-      }
-      html += `<li class="partition-header dark-header has-children${open ? ' open' : ''}" data-partition="${SECTION_KEY}">
-        ${chev}<span class="partition-name">Not yet represented</span><span class="sub-count">${unrepresented.length}</span>
-      </li>${body}`;
-    }
-  }
-
-  ul.innerHTML = html;
-
-  ul.querySelectorAll(".partition-header.has-children").forEach(li => {
-    li.addEventListener("click", () => {
-      const p = li.dataset.partition;
-      if (STATE_EXPANDED.has(p)) STATE_EXPANDED.delete(p);
-      else STATE_EXPANDED.add(p);
-      renderTreeList();
-    });
-  });
-  ul.querySelectorAll(".tree-item").forEach(li => {
-    if (!li.dataset.filename) return; // dark-matter rows have no tree to load
-    li.addEventListener("click", () => selectTree(li.dataset.filename, false));
-  });
 }
 
 // Select a dark-matter (no-tree) partition: show the partition's audit
@@ -652,20 +479,11 @@ function selectDarkMatter(partitionName, scrollIntoView) {
 
 async function selectTree(filename, scrollIntoView) {
   STATE.selected = filename;
-  // If the selected tree is a sub-clade, make sure its partition is expanded
-  // so the user can see it in the sidebar.
-  const t0 = STATE.data.trees.find(x => x.filename === filename);
-  if (t0 && t0.partition_group && !t0.is_partition_canonical) {
-    STATE_EXPANDED.add(t0.partition_group);
-  }
-  renderTreeList();
-  if (scrollIntoView) {
-    const li = document.querySelector(`#tree-list li[data-filename="${filename}"]`);
-    if (li) li.scrollIntoView({ block: "nearest", behavior: "smooth" });
-  }
-
   const t = STATE.data.trees.find(x => x.filename === filename);
   if (!t) return;
+  if (scrollIntoView) {
+    document.getElementById("detail").scrollIntoView({ block: "start", behavior: "smooth" });
+  }
 
   document.getElementById("detail-empty").hidden = true;
   document.getElementById("detail").hidden = false;
