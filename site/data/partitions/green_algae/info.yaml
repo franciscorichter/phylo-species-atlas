@@ -21,7 +21,7 @@ estimate:
     estimated_total:
       type: paper-published
       source: Guiry 2012
-      verbatim_quote: null
+      verbatim_quote: 'Guiry 2012: ''a conservative approach results in an estimate of 72,500 algal species'' (all algae combined). Per-phylum green algae split is in body tables. Guiry 2024 update: 6,851 green algae living species.'
     estimated_low:
       type: paper-published
       source: Guiry 2012

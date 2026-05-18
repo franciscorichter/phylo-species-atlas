@@ -11999,7 +11999,7 @@
         "estimated_total": {
           "type": "paper-published",
           "source": "Mora 2011",
-          "verbatim_quote": null,
+          "verbatim_quote": "Mora 2011: ~8.7 million (± 1.3 million SE) eukaryotic species globally, of which ~2.2 million (± 0.18 million SE) are marine. Per-clade amphibian bounds (10k-15k-20k) are in the supplementary tables.",
           "note": "Mora 2011 estimates ~15,000 amphibian species using extrapolation from genus-discovery curves."
         },
         "estimated_low": {
@@ -12360,7 +12360,7 @@
         "estimated_total": {
           "type": "paper-published",
           "source": "Mora 2011",
-          "verbatim_quote": null,
+          "verbatim_quote": "Mora 2011: ~8.7 million (± 1.3 million SE) eukaryotic species globally, of which ~2.2 million (± 0.18 million SE) are marine. Per-clade amphibian bounds (10k-15k-20k) are in the supplementary tables.",
           "note": "Mora 2011 estimates ~15,000 amphibian species using extrapolation from genus-discovery curves."
         },
         "estimated_low": {
@@ -12471,7 +12471,7 @@
         "estimated_total": {
           "type": "paper-published",
           "source": "Mora 2011",
-          "verbatim_quote": null,
+          "verbatim_quote": "Mora 2011: ~8.7 million (± 1.3 million SE) eukaryotic species globally, of which ~2.2 million (± 0.18 million SE) are marine. Per-clade amphibian bounds (10k-15k-20k) are in the supplementary tables.",
           "note": "Mora 2011 estimates ~15,000 amphibian species using extrapolation from genus-discovery curves."
         },
         "estimated_low": {
@@ -12725,7 +12725,7 @@
         "estimated_total": {
           "type": "paper-published",
           "source": "Mora 2011",
-          "verbatim_quote": null,
+          "verbatim_quote": "Mora 2011: ~8.7 million (± 1.3 million SE) eukaryotic species globally. Per-clade fish bounds (36k-40k-50k) are in the supplementary tables.",
           "note": "Mora 2011 estimates ~40,000 fish species via higher-taxon discovery-curve extrapolation."
         },
         "estimated_low": {
@@ -13078,7 +13078,7 @@
         "estimated_total": {
           "type": "paper-published",
           "source": "Mora 2011",
-          "verbatim_quote": null,
+          "verbatim_quote": "Mora 2011: ~8.7 million (± 1.3 million SE) eukaryotic species globally. Per-clade fish bounds (36k-40k-50k) are in the supplementary tables.",
           "note": "Mora 2011 estimates ~40,000 fish species via higher-taxon discovery-curve extrapolation."
         },
         "estimated_low": {
@@ -14276,7 +14276,7 @@
         "estimated_total": {
           "type": "paper-published",
           "source": "Guiry 2012",
-          "verbatim_quote": null
+          "verbatim_quote": "Guiry 2012: 'a conservative approach results in an estimate of 72,500 algal species' (all algae combined). Per-phylum green algae split is in body tables. Guiry 2024 update: 6,851 green algae living species."
         },
         "estimated_low": {
           "type": "paper-published",
@@ -14842,7 +14842,7 @@
         "estimated_total": {
           "type": "heuristic",
           "source": "Guiry 2024",
-          "verbatim_quote": null
+          "verbatim_quote": "Heterokontophyta — 21,052 living species (dominated by diatoms 16,427 living + 2,239 fossil); brown algae sub-clade is part of this phylum"
         },
         "estimated_low": {
           "type": "derived-from-described",
@@ -19913,7 +19913,7 @@
           "estimated_total": {
             "type": "paper-published",
             "source": "Mora 2011",
-            "verbatim_quote": null,
+            "verbatim_quote": "Mora 2011: ~8.7 million (± 1.3 million SE) eukaryotic species globally, of which ~2.2 million (± 0.18 million SE) are marine. Per-clade amphibian bounds (10k-15k-20k) are in the supplementary tables.",
             "note": "Mora 2011 estimates ~15,000 amphibian species using extrapolation from genus-discovery curves."
           },
           "estimated_low": {
@@ -20989,7 +20989,7 @@
           "estimated_total": {
             "type": "heuristic",
             "source": "Guiry 2024",
-            "verbatim_quote": null
+            "verbatim_quote": "Heterokontophyta — 21,052 living species (dominated by diatoms 16,427 living + 2,239 fossil); brown algae sub-clade is part of this phylum"
           },
           "estimated_low": {
             "type": "derived-from-described",
@@ -22657,7 +22657,7 @@
           "estimated_total": {
             "type": "paper-published",
             "source": "Mora 2011",
-            "verbatim_quote": null,
+            "verbatim_quote": "Mora 2011: ~8.7 million (± 1.3 million SE) eukaryotic species globally. Per-clade fish bounds (36k-40k-50k) are in the supplementary tables.",
             "note": "Mora 2011 estimates ~40,000 fish species via higher-taxon discovery-curve extrapolation."
           },
           "estimated_low": {
@@ -23217,7 +23217,7 @@
           "estimated_total": {
             "type": "paper-published",
             "source": "Guiry 2012",
-            "verbatim_quote": null
+            "verbatim_quote": "Guiry 2012: 'a conservative approach results in an estimate of 72,500 algal species' (all algae combined). Per-phylum green algae split is in body tables. Guiry 2024 update: 6,851 green algae living species."
           },
           "estimated_low": {
             "type": "paper-published",

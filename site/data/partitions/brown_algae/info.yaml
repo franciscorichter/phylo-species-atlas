@@ -21,7 +21,7 @@ estimate:
     estimated_total:
       type: heuristic
       source: Guiry 2024
-      verbatim_quote: null
+      verbatim_quote: 'Heterokontophyta — 21,052 living species (dominated by diatoms 16,427 living + 2,239 fossil); brown algae sub-clade is part of this phylum'
     estimated_low:
       type: derived-from-described
       source: Guiry 2024

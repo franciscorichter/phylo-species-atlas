@@ -21,7 +21,7 @@ estimate:
     estimated_total:
       type: paper-published
       source: Mora 2011
-      verbatim_quote: null
+      verbatim_quote: 'Mora 2011: ~8.7 million (± 1.3 million SE) eukaryotic species globally. Per-clade fish bounds (36k-40k-50k) are in the supplementary tables.'
       note: "Mora 2011 estimates ~40,000 fish species via higher-taxon discovery-curve extrapolation."
     estimated_low:
       type: derived-from-described
