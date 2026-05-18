@@ -30,8 +30,8 @@ estimate:
       type: paper-published
       source: CoL
       verbatim_quote: null
-    overall_classification: paper-published-range
-    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+    overall_classification: fully-heuristic
+    auditor_note: "CoL (Catalogue of Life) is a database. The 15k-25k-50k bounds for non-Spider non-Scorpion non-Acari arachnids are atlas-derived heuristics."
 
 tree: null
 caveats:

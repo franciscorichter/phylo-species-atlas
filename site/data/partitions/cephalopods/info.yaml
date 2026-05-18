@@ -30,8 +30,8 @@ estimate:
       type: paper-published
       source: WoRMS
       verbatim_quote: null
-    overall_classification: paper-published-range
-    auditor_note: "WoRMS provides bilateral paper-published range for Cephalopods."
+    overall_classification: partly-heuristic
+    auditor_note: "WoRMS is a database (World Register of Marine Species), not a paper publishing a true-diversity range. The atlas''s 900-1200-1500 bounds extend above WoRMS''s described count (~800) but the upper bounds aren''t paper-published."
 
 tree:
   file: tree.nwk
