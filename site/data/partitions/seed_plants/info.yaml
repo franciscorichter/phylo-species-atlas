@@ -10,9 +10,9 @@ estimate:
   confidence: Medium
   source:
     key: Nic Lughadha 2016
-    doi: 10.11646/phytotaxa.261.3.1
+    doi: 10.11646/phytotaxa.272.1.5
     pdf: null
-    url: https://www.mapress.com/pt/article/view/phytotaxa.261.3.1
+    url: https://www.mapress.com/pt/article/view/phytotaxa.272.1.5
     note: "Nic Lughadha et al. 2016 Phytotaxa — 'Counting counts: revised estimates of numbers of accepted species of flowering plants...'"
   interval_provenance:
     described:
@@ -22,7 +22,7 @@ estimate:
     estimated_total:
       type: paper-published
       source: Nic Lughadha 2016
-      verbatim_quote: null
+      verbatim_quote: 'numbers of accepted species of flowering plants (369,434), seed plants (370,492), vascular plants (383,671) and land plants (403,911)'
       note: "Paper-published estimate of total angiosperm + gymnosperm diversity."
     estimated_low:
       type: paper-published
@@ -32,8 +32,8 @@ estimate:
       type: paper-published
       source: Nic Lughadha 2016
       verbatim_quote: null
-    overall_classification: paper-published-range
-    auditor_note: "True bilateral range from a quantitative meta-analysis of angiosperm taxonomy."
+    overall_classification: partly-heuristic
+    auditor_note: "Nic Lughadha 2016 publishes DESCRIBED accepted species counts (370,492 seed plants; 383,671 vascular plants — close to atlas's 383,671 described). The atlas's 400k-450k-500k UPPER bounds are NOT in Nic Lughadha's abstract — they appear to be atlas-derived projections. Reclassified from paper-published-range to partly-heuristic."
 
 tree:
   file: tree.nwk

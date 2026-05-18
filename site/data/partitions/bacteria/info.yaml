@@ -21,7 +21,7 @@ estimate:
     estimated_total:
       type: paper-published
       source: Curtis 2002
-      verbatim_quote: null
+      verbatim_quote: 'a ton of soil could contain 4 × 10⁶ different taxa; the entire bacterial diversity of the sea may be unlikely to exceed 2 × 10⁶'
     estimated_low:
       type: paper-published
       source: Curtis 2002
@@ -30,7 +30,7 @@ estimate:
       type: paper-published
       source: Curtis 2002
       verbatim_quote: null
-    overall_classification: paper-published-range
+    overall_classification: partly-heuristic
     auditor_note: "Microbe diversity estimates carry extreme uncertainty (orders of magnitude). Curtis 2002 provides paper-published bounds."
 
 tree:
