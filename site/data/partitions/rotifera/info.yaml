@@ -1,0 +1,48 @@
+partition: Rotifera
+slug: rotifera
+category: Not yet represented
+
+estimate:
+  described: 2200
+  low: 2200
+  total: 2200
+  high: 2500
+  confidence: High
+  source:
+    key: Segers 2007
+    doi: null
+    pdf: null
+    url: null
+  interval_provenance:
+    described:
+      type: database
+      source: Segers 2007
+      verbatim_quote: null
+    estimated_total:
+      type: heuristic
+      source: Segers 2007
+      verbatim_quote: null
+    estimated_low:
+      type: derived-from-described
+      source: Segers 2007
+      verbatim_quote: null
+    estimated_high:
+      type: paper-published
+      source: Segers 2007
+      verbatim_quote: null
+    overall_classification: partly-heuristic
+    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+
+tree: null
+caveats:
+  - severity: medium
+    summary: "No canonical tree shipped in the atlas."
+    detail: |
+      Segers 2007 checklist; no species-level molecular tree at atlas scale.
+
+audit:
+  file: ../../../audits/partitions/rotifera.md
+  status: deferred
+  last_audited: 2026-05-18
+
+sub_phylos: []

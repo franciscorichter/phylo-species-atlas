@@ -1,0 +1,48 @@
+partition: Annelids
+slug: annelids
+category: Other animals
+
+estimate:
+  described: 21000
+  low: 21000
+  total: 35000
+  high: 50000
+  confidence: Medium
+  source:
+    key: Appeltans 2012
+    doi: 10.1016/j.cub.2012.09.036
+    pdf: null
+    url: null
+  interval_provenance:
+    described:
+      type: database
+      source: Appeltans 2012
+      verbatim_quote: null
+    estimated_total:
+      type: heuristic
+      source: Appeltans 2012
+      verbatim_quote: null
+    estimated_low:
+      type: derived-from-described
+      source: Appeltans 2012
+      verbatim_quote: null
+    estimated_high:
+      type: paper-published
+      source: Appeltans 2012
+      verbatim_quote: null
+    overall_classification: partly-heuristic
+    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+
+tree: null
+caveats:
+  - severity: medium
+    summary: "No canonical tree shipped in the atlas."
+    detail: |
+      Weigert 2014 annelid phylogenomic backbone available; ~60 species in current atlas data.
+
+audit:
+  file: ../../../audits/partitions/annelids.md
+  status: deferred
+  last_audited: 2026-05-18
+
+sub_phylos: []

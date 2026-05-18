@@ -1,0 +1,48 @@
+partition: Scorpiones
+slug: scorpiones
+category: Not yet represented
+
+estimate:
+  described: 2700
+  low: 2700
+  total: 3500
+  high: 5000
+  confidence: Medium
+  source:
+    key: Rein 2024
+    doi: null
+    pdf: null
+    url: null
+  interval_provenance:
+    described:
+      type: database
+      source: Rein 2024
+      verbatim_quote: null
+    estimated_total:
+      type: heuristic
+      source: Rein 2024
+      verbatim_quote: null
+    estimated_low:
+      type: derived-from-described
+      source: Rein 2024
+      verbatim_quote: null
+    estimated_high:
+      type: paper-published
+      source: Rein 2024
+      verbatim_quote: null
+    overall_classification: partly-heuristic
+    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+
+tree: null
+caveats:
+  - severity: medium
+    summary: "No canonical tree shipped in the atlas."
+    detail: |
+      Sharma 2018 scorpion phylogenomics; ~2700 described species; could be standardized.
+
+audit:
+  file: ../../../audits/partitions/scorpiones.md
+  status: deferred
+  last_audited: 2026-05-18
+
+sub_phylos: []

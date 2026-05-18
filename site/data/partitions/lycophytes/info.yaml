@@ -1,0 +1,48 @@
+partition: Lycophytes
+slug: lycophytes
+category: Plants
+
+estimate:
+  described: 1350
+  low: 1350
+  total: 1400
+  high: 1500
+  confidence: High
+  source:
+    key: PPG I 2016
+    doi: 10.1111/jse.12229
+    pdf: null
+    url: null
+  interval_provenance:
+    described:
+      type: database
+      source: PPG I 2016
+      verbatim_quote: null
+    estimated_total:
+      type: heuristic
+      source: PPG I 2016
+      verbatim_quote: null
+    estimated_low:
+      type: derived-from-described
+      source: PPG I 2016
+      verbatim_quote: null
+    estimated_high:
+      type: paper-published
+      source: PPG I 2016
+      verbatim_quote: null
+    overall_classification: partly-heuristic
+    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+
+tree: null
+caveats:
+  - severity: medium
+    summary: "No canonical tree shipped in the atlas."
+    detail: |
+      PPG I 2016 classification + Zhou 2024 lycophyte tree available; could be standardized.
+
+audit:
+  file: ../../../audits/partitions/lycophytes.md
+  status: deferred
+  last_audited: 2026-05-18
+
+sub_phylos: []

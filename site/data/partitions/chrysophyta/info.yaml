@@ -1,0 +1,48 @@
+partition: Chrysophyta
+slug: chrysophyta
+category: Not yet represented
+
+estimate:
+  described: 1200
+  low: 1200
+  total: 3000
+  high: 5000
+  confidence: Low
+  source:
+    key: AlgaeBase
+    doi: null
+    pdf: null
+    url: null
+  interval_provenance:
+    described:
+      type: database
+      source: AlgaeBase
+      verbatim_quote: null
+    estimated_total:
+      type: heuristic
+      source: AlgaeBase
+      verbatim_quote: null
+    estimated_low:
+      type: derived-from-described
+      source: AlgaeBase
+      verbatim_quote: null
+    estimated_high:
+      type: paper-published
+      source: AlgaeBase
+      verbatim_quote: null
+    overall_classification: partly-heuristic
+    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+
+tree: null
+caveats:
+  - severity: medium
+    summary: "No canonical tree shipped in the atlas."
+    detail: |
+      Golden algae; phylogenomic resources limited.
+
+audit:
+  file: ../../../audits/partitions/chrysophyta.md
+  status: deferred
+  last_audited: 2026-05-18
+
+sub_phylos: []

@@ -1,0 +1,48 @@
+partition: Dinoflagellates
+slug: dinoflagellates
+category: Microbes & protists
+
+estimate:
+  described: 2300
+  low: 3000
+  total: 5000
+  high: 10000
+  confidence: Low
+  source:
+    key: Gomez 2012
+    doi: null
+    pdf: null
+    url: null
+  interval_provenance:
+    described:
+      type: database
+      source: Gomez 2012
+      verbatim_quote: null
+    estimated_total:
+      type: paper-published
+      source: Gomez 2012
+      verbatim_quote: null
+    estimated_low:
+      type: paper-published
+      source: Gomez 2012
+      verbatim_quote: null
+    estimated_high:
+      type: paper-published
+      source: Gomez 2012
+      verbatim_quote: null
+    overall_classification: paper-published-range
+    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+
+tree: null
+caveats:
+  - severity: medium
+    summary: "No canonical tree shipped in the atlas."
+    detail: |
+      Cooney 2024 dinoflagellate phylogenomics; ~80 species.
+
+audit:
+  file: ../../../audits/partitions/dinoflagellates.md
+  status: deferred
+  last_audited: 2026-05-18
+
+sub_phylos: []

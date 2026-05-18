@@ -1,0 +1,48 @@
+partition: Other phyla
+slug: other_phyla
+category: Not yet represented
+
+estimate:
+  described: 4300
+  low: 4300
+  total: 10000
+  high: 15000
+  confidence: Low
+  source:
+    key: CoL
+    doi: null
+    pdf: null
+    url: null
+  interval_provenance:
+    described:
+      type: database
+      source: CoL
+      verbatim_quote: null
+    estimated_total:
+      type: heuristic
+      source: CoL
+      verbatim_quote: null
+    estimated_low:
+      type: derived-from-described
+      source: CoL
+      verbatim_quote: null
+    estimated_high:
+      type: paper-published
+      source: CoL
+      verbatim_quote: null
+    overall_classification: partly-heuristic
+    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+
+tree: null
+caveats:
+  - severity: medium
+    summary: "No canonical tree shipped in the atlas."
+    detail: |
+      Catch-all for minor animal phyla without dedicated bins.
+
+audit:
+  file: ../../../audits/partitions/other_phyla.md
+  status: deferred
+  last_audited: 2026-05-18
+
+sub_phylos: []

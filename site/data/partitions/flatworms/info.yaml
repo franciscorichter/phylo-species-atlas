@@ -1,0 +1,48 @@
+partition: Flatworms
+slug: flatworms
+category: Other animals
+
+estimate:
+  described: 20000
+  low: 44000
+  total: 100000
+  high: 200000
+  confidence: Low
+  source:
+    key: Zhang 2013
+    doi: null
+    pdf: null
+    url: null
+  interval_provenance:
+    described:
+      type: database
+      source: Zhang 2013
+      verbatim_quote: null
+    estimated_total:
+      type: paper-published
+      source: Zhang 2013
+      verbatim_quote: null
+    estimated_low:
+      type: paper-published
+      source: Zhang 2013
+      verbatim_quote: null
+    estimated_high:
+      type: paper-published
+      source: Zhang 2013
+      verbatim_quote: null
+    overall_classification: paper-published-range
+    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+
+tree: null
+caveats:
+  - severity: medium
+    summary: "No canonical tree shipped in the atlas."
+    detail: |
+      Brabec 2023 platyhelminth phylogenomics available; partial coverage only.
+
+audit:
+  file: ../../../audits/partitions/flatworms.md
+  status: deferred
+  last_audited: 2026-05-18
+
+sub_phylos: []

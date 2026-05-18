@@ -8,7 +8,7 @@
     "n_groups": 264,
     "n_datasets": 49,
     "total_tips": 702787,
-    "n_audited": 25,
+    "n_audited": 61,
     "n_audits_in_progress": 1,
     "n_audits_verified": 24
   },
@@ -729,7 +729,7 @@
       "provenance_group": "neotropical_fish",
       "partition_group": "Fish",
       "category": "Vertebrates",
-      "is_partition_anchor": false,
+      "is_partition_anchor": true,
       "study": "Tagliacollo 2024",
       "ntips": 3167,
       "dated": true,
@@ -738,9 +738,9 @@
       "journal": "Frontiers in Bioinformatics",
       "doi": "10.3389/fbinf.2024.1433995",
       "crown_ma": null,
-      "described_species": null,
+      "described_species": 36000,
       "described_source": "Eschmeyer's Catalog",
-      "coverage_pct": null,
+      "coverage_pct": 8.8,
       "data_source": "Journal supplement",
       "download_url": "https://doi.org/10.3389/fbinf.2024.1433995",
       "methods_brief": "51-marker supermatrix, 5984 total taxa, treePL dating",
@@ -1142,7 +1142,7 @@
       "provenance_group": "solanaceae",
       "partition_group": "Seed plants",
       "category": "Plants",
-      "is_partition_anchor": false,
+      "is_partition_anchor": true,
       "study": "Sarkinen 2013",
       "ntips": 1076,
       "dated": true,
@@ -1151,9 +1151,9 @@
       "journal": "BMC Evolutionary Biology",
       "doi": "10.1186/1471-2148-13-214",
       "crown_ma": 49.0,
-      "described_species": null,
+      "described_species": 383671,
       "described_source": null,
-      "coverage_pct": null,
+      "coverage_pct": 0.3,
       "data_source": "TreeBASE",
       "download_url": "TreeBASE S14458",
       "methods_brief": "Dated 1000-tip tree of nightshades",
@@ -1322,7 +1322,7 @@
       "provenance_group": "bryozoa",
       "partition_group": "Bryozoa",
       "category": "Other animals",
-      "is_partition_anchor": false,
+      "is_partition_anchor": true,
       "study": "Orr 2023",
       "ntips": 720,
       "dated": false,
@@ -1331,9 +1331,9 @@
       "journal": "Science Advances",
       "doi": "10.1126/sciadv.abm7452",
       "crown_ma": null,
-      "described_species": null,
+      "described_species": 6000,
       "described_source": null,
-      "coverage_pct": null,
+      "coverage_pct": 12.0,
       "data_source": "Dryad",
       "download_url": "https://doi.org/10.5061/dryad.2v6wwpzp9",
       "methods_brief": "17-gene supermatrix, RAxML ML, trimmed alignment with rogue-taxon pruning",
@@ -1716,7 +1716,7 @@
       "provenance_group": "eucalyptus",
       "partition_group": "Seed plants",
       "category": "Plants",
-      "is_partition_anchor": false,
+      "is_partition_anchor": true,
       "study": "Crisp 2024",
       "ntips": 399,
       "dated": false,
@@ -1725,9 +1725,9 @@
       "journal": "Journal of Systematics and Evolution",
       "doi": "10.1111/jse.13047",
       "crown_ma": null,
-      "described_species": null,
+      "described_species": 383671,
       "described_source": null,
-      "coverage_pct": null,
+      "coverage_pct": 0.1,
       "data_source": "Dryad",
       "download_url": "https://datadryad.org/dataset/doi:10.5061/dryad.7sqv9s4wq",
       "methods_brief": "101 nuclear exons, 392 samples/329 species, IQtree + RAxML",
@@ -2747,9 +2747,9 @@
       "journal": "PNAS",
       "doi": "10.1073/pnas.1815820115",
       "crown_ma": null,
-      "described_species": null,
+      "described_species": 1000000,
       "described_source": null,
-      "coverage_pct": null,
+      "coverage_pct": 0.0,
       "data_source": "Dryad",
       "download_url": "https://datadryad.org/dataset/doi:10.5061/dryad.t4f4g85",
       "methods_brief": "Phylogenomics of hemipteroid insects; 2395 genes",
@@ -3460,9 +3460,9 @@
       "journal": "Nature Communications",
       "doi": "10.1038/s41467-024-51028-y",
       "crown_ma": null,
-      "described_species": null,
+      "described_species": 1000000,
       "described_source": null,
-      "coverage_pct": null,
+      "coverage_pct": 0.0,
       "data_source": "Dryad",
       "download_url": "https://datadryad.org/stash/dataset/doi:10.5061/dryad.02v6wwqbm",
       "methods_brief": "Genomic data on termite classification; UCE phylogenomics",
@@ -4682,9 +4682,9 @@
       "journal": "Current Biology",
       "doi": "10.1016/j.cub.2022.05.014",
       "crown_ma": null,
-      "described_species": null,
+      "described_species": 1000000,
       "described_source": null,
-      "coverage_pct": null,
+      "coverage_pct": 0.0,
       "data_source": "Zenodo",
       "download_url": "https://doi.org/10.5281/zenodo.5705739",
       "methods_brief": "65 genomes; 17 ant subfamilies; supermatrix + supertree",
@@ -10324,7 +10324,7 @@
       "provenance_group": "conifers",
       "partition_group": "Conifers",
       "category": "Plants",
-      "is_partition_anchor": false,
+      "is_partition_anchor": true,
       "study": "Ran 2018",
       "ntips": 16,
       "dated": true,
@@ -10333,9 +10333,9 @@
       "journal": "Molecular Phylogenetics and Evolution",
       "doi": "10.1016/j.ympev.2018.08.011",
       "crown_ma": null,
-      "described_species": null,
+      "described_species": 615,
       "described_source": null,
-      "coverage_pct": null,
+      "coverage_pct": 2.6,
       "data_source": "Dryad",
       "download_url": "https://datadryad.org/dataset/doi:10.5061/dryad.q2s7q8m",
       "methods_brief": "Transcriptomic analysis of Pinaceae",
@@ -13141,6 +13141,107 @@
       }
     },
     {
+      "filename": "neotropical_fish.nwk",
+      "group": "neotropical_fish",
+      "provenance_group": "neotropical_fish",
+      "partition_group": "Fish",
+      "category": "Vertebrates",
+      "study": "Tagliacollo 2024",
+      "year": 2024,
+      "tips": 3167,
+      "raw_tips": 3167,
+      "described_species": 36000,
+      "described_source": "Eschmeyer's Catalog",
+      "coverage_pct": 8.8,
+      "dated": true,
+      "is_partition_anchor": true,
+      "is_partition_canonical": false,
+      "estimated_total": 40000,
+      "estimated_low": 36000,
+      "estimated_high": 50000,
+      "estimate_source": "Mora 2011",
+      "estimate_confidence": "Medium",
+      "coverage_pct_estimated": 7.9,
+      "coverage_pct_estimated_low": 6.3,
+      "coverage_pct_estimated_high": 8.8,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Eschmeyer's Catalog of Fishes",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Mora 2011",
+          "verbatim_quote": null,
+          "note": "Mora 2011 estimates ~40,000 fish species via higher-taxon discovery-curve extrapolation."
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "Eschmeyer's Catalog",
+          "verbatim_quote": null,
+          "note": "Low bound = described count from Eschmeyer."
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Mora 2011",
+          "verbatim_quote": null,
+          "note": "50,000 high bound from Mora 2011."
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Low bound equals described count (Eschmeyer floor); total + high are Mora 2011 estimates. The 36-50k spread is a true paper-published uncertainty."
+      }
+    },
+    {
+      "filename": "bryozoa.nwk",
+      "group": "bryozoa",
+      "provenance_group": "bryozoa",
+      "partition_group": "Bryozoa",
+      "category": "Other animals",
+      "study": "Orr 2023",
+      "year": 2022,
+      "tips": 520,
+      "raw_tips": 720,
+      "described_species": 6000,
+      "described_source": null,
+      "coverage_pct": 8.7,
+      "dated": false,
+      "is_partition_anchor": true,
+      "is_partition_canonical": true,
+      "estimated_total": 8000,
+      "estimated_low": 6000,
+      "estimated_high": 10000,
+      "estimate_source": "Appeltans 2012",
+      "estimate_confidence": "Medium",
+      "coverage_pct_estimated": 6.5,
+      "coverage_pct_estimated_low": 5.2,
+      "coverage_pct_estimated_high": 8.7,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "WoRMS / Appeltans 2012",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Appeltans 2012",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "Appeltans 2012",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Appeltans 2012",
+          "verbatim_quote": null
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Appeltans 2012 provides partial/heuristic bounds for Bryozoa."
+      }
+    },
+    {
       "filename": "insects.nwk",
       "group": "insects",
       "provenance_group": "insects",
@@ -13289,6 +13390,55 @@
         },
         "overall_classification": "paper-published-range",
         "auditor_note": "Bilateral 80k-170k range likely paper-published by Agnarsson 2013; verify DOI and verbatim quote."
+      }
+    },
+    {
+      "filename": "conifers.nwk",
+      "group": "conifers",
+      "provenance_group": "conifers",
+      "partition_group": "Conifers",
+      "category": "Plants",
+      "study": "Ran 2018",
+      "year": 2018,
+      "tips": 16,
+      "raw_tips": 16,
+      "described_species": 615,
+      "described_source": null,
+      "coverage_pct": 2.6,
+      "dated": true,
+      "is_partition_anchor": true,
+      "is_partition_canonical": true,
+      "estimated_total": 640,
+      "estimated_low": 615,
+      "estimated_high": 680,
+      "estimate_source": "Farjon 2017",
+      "estimate_confidence": "High",
+      "coverage_pct_estimated": 2.5,
+      "coverage_pct_estimated_low": 2.4,
+      "coverage_pct_estimated_high": 2.6,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Farjon 2017",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "heuristic",
+          "source": "Farjon 2017",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "Farjon 2017",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Farjon 2017",
+          "verbatim_quote": null
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
       }
     },
     {
@@ -13687,6 +13837,106 @@
       }
     },
     {
+      "filename": "solanaceae.nwk",
+      "group": "solanaceae",
+      "provenance_group": "solanaceae",
+      "partition_group": "Seed plants",
+      "category": "Plants",
+      "study": "Sarkinen 2013",
+      "year": 2013,
+      "tips": 1076,
+      "raw_tips": 1076,
+      "described_species": 383671,
+      "described_source": null,
+      "coverage_pct": 0.3,
+      "dated": true,
+      "is_partition_anchor": true,
+      "is_partition_canonical": false,
+      "estimated_total": 450000,
+      "estimated_low": 400000,
+      "estimated_high": 500000,
+      "estimate_source": "Nic Lughadha 2016",
+      "estimate_confidence": "Medium",
+      "coverage_pct_estimated": 0.2,
+      "coverage_pct_estimated_low": 0.2,
+      "coverage_pct_estimated_high": 0.3,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "World Flora Online 2025",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Nic Lughadha 2016",
+          "verbatim_quote": null,
+          "note": "Paper-published estimate of total angiosperm + gymnosperm diversity."
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "Nic Lughadha 2016",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Nic Lughadha 2016",
+          "verbatim_quote": null
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "True bilateral range from a quantitative meta-analysis of angiosperm taxonomy."
+      }
+    },
+    {
+      "filename": "eucalyptus.nwk",
+      "group": "eucalyptus",
+      "provenance_group": "eucalyptus",
+      "partition_group": "Seed plants",
+      "category": "Plants",
+      "study": "Crisp 2024",
+      "year": 2024,
+      "tips": 399,
+      "raw_tips": 399,
+      "described_species": 383671,
+      "described_source": null,
+      "coverage_pct": 0.1,
+      "dated": false,
+      "is_partition_anchor": true,
+      "is_partition_canonical": false,
+      "estimated_total": 450000,
+      "estimated_low": 400000,
+      "estimated_high": 500000,
+      "estimate_source": "Nic Lughadha 2016",
+      "estimate_confidence": "Medium",
+      "coverage_pct_estimated": 0.1,
+      "coverage_pct_estimated_low": 0.1,
+      "coverage_pct_estimated_high": 0.1,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "World Flora Online 2025",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Nic Lughadha 2016",
+          "verbatim_quote": null,
+          "note": "Paper-published estimate of total angiosperm + gymnosperm diversity."
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "Nic Lughadha 2016",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Nic Lughadha 2016",
+          "verbatim_quote": null
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "True bilateral range from a quantitative meta-analysis of angiosperm taxonomy."
+      }
+    },
+    {
       "filename": "crustaceans.nwk",
       "group": "crustaceans",
       "provenance_group": "crustaceans",
@@ -13783,6 +14033,162 @@
         "overall_classification": "paper-published-range",
         "auditor_note": "Appeltans 2012 provides bilateral paper-published range for Gastropods."
       }
+    },
+    {
+      "filename": "hemiptera.nwk",
+      "group": "hemiptera",
+      "provenance_group": "hemiptera",
+      "partition_group": "Insects",
+      "category": "Arthropods",
+      "study": "Johnson 2018",
+      "year": 2018,
+      "tips": 100,
+      "raw_tips": 193,
+      "described_species": 1000000,
+      "described_source": null,
+      "coverage_pct": 0.0,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": false,
+      "estimated_total": 5500000,
+      "estimated_low": 2600000,
+      "estimated_high": 7800000,
+      "estimate_source": "Stork 2018",
+      "estimate_confidence": "Low",
+      "coverage_pct_estimated": 0.0,
+      "coverage_pct_estimated_low": 0.0,
+      "coverage_pct_estimated_high": 0.0,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Catalogue of Life 2025",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Stork 2018",
+          "verbatim_quote": "globally there are approximately 1.5 million, 5.5 million, and 7 million species of beetles, insects, and terrestrial arthropods, respectively",
+          "note": "Stork 2018's own central estimate of ~5.5 million insect species."
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "Stork 2018 (review of higher-taxonomic-ratio estimates)",
+          "verbatim_quote": null,
+          "note": "2.6M from Stork's review table — higher taxonomic ratio extrapolation."
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Stork 2018 (review of prior literature)",
+          "verbatim_quote": null,
+          "note": "7.8M from Stork's review of prior estimates (Hamilton 2010, 2013 — 7.8M with CI 2.9-13.7)."
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "Range 2.6M-5.5M-7.8M is meta-range across Stork 2018's review of multiple primary estimates. Stork's OWN central is ~5.5M. The breadth honestly reflects deep uncertainty in insect diversity estimation."
+      }
+    },
+    {
+      "filename": "termites.nwk",
+      "group": "termites",
+      "provenance_group": "termites",
+      "partition_group": "Insects",
+      "category": "Arthropods",
+      "study": "2024 Nat Comms",
+      "year": 2024,
+      "tips": 138,
+      "raw_tips": 138,
+      "described_species": 1000000,
+      "described_source": null,
+      "coverage_pct": 0.0,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": false,
+      "estimated_total": 5500000,
+      "estimated_low": 2600000,
+      "estimated_high": 7800000,
+      "estimate_source": "Stork 2018",
+      "estimate_confidence": "Low",
+      "coverage_pct_estimated": 0.0,
+      "coverage_pct_estimated_low": 0.0,
+      "coverage_pct_estimated_high": 0.0,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Catalogue of Life 2025",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Stork 2018",
+          "verbatim_quote": "globally there are approximately 1.5 million, 5.5 million, and 7 million species of beetles, insects, and terrestrial arthropods, respectively",
+          "note": "Stork 2018's own central estimate of ~5.5 million insect species."
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "Stork 2018 (review of higher-taxonomic-ratio estimates)",
+          "verbatim_quote": null,
+          "note": "2.6M from Stork's review table — higher taxonomic ratio extrapolation."
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Stork 2018 (review of prior literature)",
+          "verbatim_quote": null,
+          "note": "7.8M from Stork's review of prior estimates (Hamilton 2010, 2013 — 7.8M with CI 2.9-13.7)."
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "Range 2.6M-5.5M-7.8M is meta-range across Stork 2018's review of multiple primary estimates. Stork's OWN central is ~5.5M. The breadth honestly reflects deep uncertainty in insect diversity estimation."
+      }
+    },
+    {
+      "filename": "ants.nwk",
+      "group": "ants",
+      "provenance_group": "ants",
+      "partition_group": "Insects",
+      "category": "Arthropods",
+      "study": "Romiguier 2022",
+      "year": 2022,
+      "tips": 31,
+      "raw_tips": 83,
+      "described_species": 1000000,
+      "described_source": null,
+      "coverage_pct": 0.0,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": false,
+      "estimated_total": 5500000,
+      "estimated_low": 2600000,
+      "estimated_high": 7800000,
+      "estimate_source": "Stork 2018",
+      "estimate_confidence": "Low",
+      "coverage_pct_estimated": 0.0,
+      "coverage_pct_estimated_low": 0.0,
+      "coverage_pct_estimated_high": 0.0,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Catalogue of Life 2025",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Stork 2018",
+          "verbatim_quote": "globally there are approximately 1.5 million, 5.5 million, and 7 million species of beetles, insects, and terrestrial arthropods, respectively",
+          "note": "Stork 2018's own central estimate of ~5.5 million insect species."
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "Stork 2018 (review of higher-taxonomic-ratio estimates)",
+          "verbatim_quote": null,
+          "note": "2.6M from Stork's review table — higher taxonomic ratio extrapolation."
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Stork 2018 (review of prior literature)",
+          "verbatim_quote": null,
+          "note": "7.8M from Stork's review of prior estimates (Hamilton 2010, 2013 — 7.8M with CI 2.9-13.7)."
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "Range 2.6M-5.5M-7.8M is meta-range across Stork 2018's review of multiple primary estimates. Stork's OWN central is ~5.5M. The breadth honestly reflects deep uncertainty in insect diversity estimation."
+      }
     }
   ],
   "datasets_by_partition": {
@@ -13832,7 +14238,7 @@
         "year": 2013,
         "tips": 1076,
         "dated": true,
-        "is_partition_anchor": false,
+        "is_partition_anchor": true,
         "is_partition_canonical": false
       },
       {
@@ -13856,7 +14262,7 @@
         "year": 2024,
         "tips": 399,
         "dated": false,
-        "is_partition_anchor": false,
+        "is_partition_anchor": true,
         "is_partition_canonical": false
       },
       {
@@ -13982,7 +14388,7 @@
         "year": 2024,
         "tips": 3167,
         "dated": true,
-        "is_partition_anchor": false,
+        "is_partition_anchor": true,
         "is_partition_canonical": false
       }
     ],
@@ -14194,7 +14600,7 @@
         "year": 2022,
         "tips": 720,
         "dated": false,
-        "is_partition_anchor": false,
+        "is_partition_anchor": true,
         "is_partition_canonical": true
       }
     ],
@@ -16980,7 +17386,7 @@
         "year": 2018,
         "tips": 16,
         "dated": true,
-        "is_partition_anchor": false,
+        "is_partition_anchor": true,
         "is_partition_canonical": true
       }
     ]
@@ -17583,6 +17989,249 @@
     }
   ],
   "audits": {
+    "Acanthocephala": {
+      "partition": "Acanthocephala",
+      "slug": "acanthocephala",
+      "category": "Not yet represented",
+      "estimate": {
+        "described": 1300,
+        "low": 1300,
+        "total": 2000,
+        "high": 3000,
+        "confidence": "Medium",
+        "source": {
+          "key": "CoL",
+          "doi": null,
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "CoL",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "heuristic",
+            "source": "CoL",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "derived-from-described",
+            "source": "CoL",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "CoL",
+            "verbatim_quote": null
+          },
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        }
+      },
+      "tree": null,
+      "caveats": [
+        {
+          "severity": "medium",
+          "summary": "No canonical tree shipped in the atlas.",
+          "detail": "Thorny-headed worms; nested within Rotifera in some treatments.\n"
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/acanthocephala.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "CoL",
+        "doi": null,
+        "doi_verified": "na",
+        "year_published": null,
+        "cited_value": 2000,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "Thorny-headed worms; nested within Rotifera in some treatments.\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
+      }
+    },
+    "Acari": {
+      "partition": "Acari",
+      "slug": "acari",
+      "category": "Not yet represented",
+      "estimate": {
+        "described": 55000,
+        "low": 100000,
+        "total": 500000,
+        "high": 1000000,
+        "confidence": "Low",
+        "source": {
+          "key": "Zhang 2013",
+          "doi": null,
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "Zhang 2013",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "paper-published",
+            "source": "Zhang 2013",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "paper-published",
+            "source": "Zhang 2013",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "Zhang 2013",
+            "verbatim_quote": null
+          },
+          "overall_classification": "paper-published-range",
+          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        }
+      },
+      "tree": null,
+      "caveats": [
+        {
+          "severity": "medium",
+          "summary": "No canonical tree shipped in the atlas.",
+          "detail": "Largest unrepresented clade (~500k species, mostly mites). Zhang 2013 reference; phylogenetics scattered across many papers.\n"
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/acari.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "Zhang 2013",
+        "doi": null,
+        "doi_verified": "na",
+        "year_published": null,
+        "cited_value": 500000,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "Largest unrepresented clade (~500k species, mostly mites). Zhang 2013 reference; phylogenetics scattered across many papers.\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
+      }
+    },
+    "Amoebozoa": {
+      "partition": "Amoebozoa",
+      "slug": "amoebozoa",
+      "category": "Microbes & protists",
+      "estimate": {
+        "described": 2400,
+        "low": 4000,
+        "total": 10000,
+        "high": 20000,
+        "confidence": "Low",
+        "source": {
+          "key": "Adl 2007",
+          "doi": null,
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "Adl 2007",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "paper-published",
+            "source": "Adl 2007",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "paper-published",
+            "source": "Adl 2007",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "Adl 2007",
+            "verbatim_quote": null
+          },
+          "overall_classification": "paper-published-range",
+          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        }
+      },
+      "tree": null,
+      "caveats": [
+        {
+          "severity": "medium",
+          "summary": "No canonical tree shipped in the atlas.",
+          "detail": "Tekle 2022 amoebae phylogenomics; sparse genome data limits species-level resolution.\n"
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/amoebozoa.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "Adl 2007",
+        "doi": null,
+        "doi_verified": "na",
+        "year_published": null,
+        "cited_value": 10000,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "Tekle 2022 amoebae phylogenomics; sparse genome data limits species-level resolution.\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
+      }
+    },
     "Amphibians": {
       "partition": "Amphibians",
       "slug": "amphibians",
@@ -17850,6 +18499,168 @@
         "surface_uncertainty": true,
         "surface_candidates": true,
         "badge": "verified"
+      }
+    },
+    "Annelids": {
+      "partition": "Annelids",
+      "slug": "annelids",
+      "category": "Other animals",
+      "estimate": {
+        "described": 21000,
+        "low": 21000,
+        "total": 35000,
+        "high": 50000,
+        "confidence": "Medium",
+        "source": {
+          "key": "Appeltans 2012",
+          "doi": "10.1016/j.cub.2012.09.036",
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "Appeltans 2012",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "heuristic",
+            "source": "Appeltans 2012",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "derived-from-described",
+            "source": "Appeltans 2012",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "Appeltans 2012",
+            "verbatim_quote": null
+          },
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        }
+      },
+      "tree": null,
+      "caveats": [
+        {
+          "severity": "medium",
+          "summary": "No canonical tree shipped in the atlas.",
+          "detail": "Weigert 2014 annelid phylogenomic backbone available; ~60 species in current atlas data.\n"
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/annelids.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "Appeltans 2012",
+        "doi": "10.1016/j.cub.2012.09.036",
+        "doi_verified": "unchecked",
+        "year_published": null,
+        "cited_value": 35000,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "Weigert 2014 annelid phylogenomic backbone available; ~60 species in current atlas data.\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
+      }
+    },
+    "Apicomplexa": {
+      "partition": "Apicomplexa",
+      "slug": "apicomplexa",
+      "category": "Not yet represented",
+      "estimate": {
+        "described": 6000,
+        "low": 6000,
+        "total": 10000,
+        "high": 20000,
+        "confidence": "Low",
+        "source": {
+          "key": "CoL",
+          "doi": null,
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "CoL",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "heuristic",
+            "source": "CoL",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "derived-from-described",
+            "source": "CoL",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "CoL",
+            "verbatim_quote": null
+          },
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        }
+      },
+      "tree": null,
+      "caveats": [
+        {
+          "severity": "medium",
+          "summary": "No canonical tree shipped in the atlas.",
+          "detail": "Important parasite clade; molecular trees scattered.\n"
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/apicomplexa.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "CoL",
+        "doi": null,
+        "doi_verified": "na",
+        "year_published": null,
+        "cited_value": 10000,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "Important parasite clade; molecular trees scattered.\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
       }
     },
     "Archaea": {
@@ -18494,6 +19305,87 @@
         "badge": "verified"
       }
     },
+    "Brown algae": {
+      "partition": "Brown algae",
+      "slug": "brown_algae",
+      "category": "Microbes & protists",
+      "estimate": {
+        "described": 2000,
+        "low": 2000,
+        "total": 2500,
+        "high": 4000,
+        "confidence": "Medium",
+        "source": {
+          "key": "Guiry 2024",
+          "doi": null,
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "Guiry 2024",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "heuristic",
+            "source": "Guiry 2024",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "derived-from-described",
+            "source": "Guiry 2024",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "Guiry 2024",
+            "verbatim_quote": null
+          },
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        }
+      },
+      "tree": null,
+      "caveats": [
+        {
+          "severity": "medium",
+          "summary": "No canonical tree shipped in the atlas.",
+          "detail": "Silberfeld 2010 brown-algae phylogeny; ~72 species in atlas data.\n"
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/brown_algae.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "Guiry 2024",
+        "doi": null,
+        "doi_verified": "na",
+        "year_published": null,
+        "cited_value": 2500,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "Silberfeld 2010 brown-algae phylogeny; ~72 species in atlas data.\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
+      }
+    },
     "Bryophytes": {
       "partition": "Bryophytes",
       "slug": "bryophytes",
@@ -18831,6 +19723,330 @@
         "badge": "verified"
       }
     },
+    "Cercozoa": {
+      "partition": "Cercozoa",
+      "slug": "cercozoa",
+      "category": "Not yet represented",
+      "estimate": {
+        "described": 2000,
+        "low": 2000,
+        "total": 5000,
+        "high": 10000,
+        "confidence": "Low",
+        "source": {
+          "key": "CoL",
+          "doi": null,
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "CoL",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "heuristic",
+            "source": "CoL",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "derived-from-described",
+            "source": "CoL",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "CoL",
+            "verbatim_quote": null
+          },
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        }
+      },
+      "tree": null,
+      "caveats": [
+        {
+          "severity": "medium",
+          "summary": "No canonical tree shipped in the atlas.",
+          "detail": "Diverse protist supergroup; little species-level resolution.\n"
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/cercozoa.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "CoL",
+        "doi": null,
+        "doi_verified": "na",
+        "year_published": null,
+        "cited_value": 5000,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "Diverse protist supergroup; little species-level resolution.\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
+      }
+    },
+    "Choanoflagellates": {
+      "partition": "Choanoflagellates",
+      "slug": "choanoflagellates",
+      "category": "Microbes & protists",
+      "estimate": {
+        "described": 300,
+        "low": 300,
+        "total": 300,
+        "high": 500,
+        "confidence": "Low",
+        "source": {
+          "key": "Carr 2008",
+          "doi": null,
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "Carr 2008",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "heuristic",
+            "source": "Carr 2008",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "derived-from-described",
+            "source": "Carr 2008",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "Carr 2008",
+            "verbatim_quote": null
+          },
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        }
+      },
+      "tree": null,
+      "caveats": [
+        {
+          "severity": "medium",
+          "summary": "No canonical tree shipped in the atlas.",
+          "detail": "Carr 2017 choanoflagellate tree; only ~47 species.\n"
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/choanoflagellates.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "Carr 2008",
+        "doi": null,
+        "doi_verified": "na",
+        "year_published": null,
+        "cited_value": 300,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "Carr 2017 choanoflagellate tree; only ~47 species.\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
+      }
+    },
+    "Chrysophyta": {
+      "partition": "Chrysophyta",
+      "slug": "chrysophyta",
+      "category": "Not yet represented",
+      "estimate": {
+        "described": 1200,
+        "low": 1200,
+        "total": 3000,
+        "high": 5000,
+        "confidence": "Low",
+        "source": {
+          "key": "AlgaeBase",
+          "doi": null,
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "AlgaeBase",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "heuristic",
+            "source": "AlgaeBase",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "derived-from-described",
+            "source": "AlgaeBase",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "AlgaeBase",
+            "verbatim_quote": null
+          },
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        }
+      },
+      "tree": null,
+      "caveats": [
+        {
+          "severity": "medium",
+          "summary": "No canonical tree shipped in the atlas.",
+          "detail": "Golden algae; phylogenomic resources limited.\n"
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/chrysophyta.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "AlgaeBase",
+        "doi": null,
+        "doi_verified": "na",
+        "year_published": null,
+        "cited_value": 3000,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "Golden algae; phylogenomic resources limited.\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
+      }
+    },
+    "Ciliates": {
+      "partition": "Ciliates",
+      "slug": "ciliates",
+      "category": "Microbes & protists",
+      "estimate": {
+        "described": 4500,
+        "low": 20000,
+        "total": 40000,
+        "high": 100000,
+        "confidence": "Low",
+        "source": {
+          "key": "Foissner 2008",
+          "doi": null,
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "Foissner 2008",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "paper-published",
+            "source": "Foissner 2008",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "paper-published",
+            "source": "Foissner 2008",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "Foissner 2008",
+            "verbatim_quote": null
+          },
+          "overall_classification": "paper-published-range",
+          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        }
+      },
+      "tree": null,
+      "caveats": [
+        {
+          "severity": "medium",
+          "summary": "No canonical tree shipped in the atlas.",
+          "detail": "Jiang 2024 ciliate phylogenomics; ~105 species in atlas data.\n"
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/ciliates.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "Foissner 2008",
+        "doi": null,
+        "doi_verified": "na",
+        "year_published": null,
+        "cited_value": 40000,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "Jiang 2024 ciliate phylogenomics; ~105 species in atlas data.\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
+      }
+    },
     "Cnidaria": {
       "partition": "Cnidaria",
       "slug": "cnidaria",
@@ -18925,6 +20141,168 @@
       "resolutions": [],
       "website": {
         "badge": "verified"
+      }
+    },
+    "Conifers": {
+      "partition": "Conifers",
+      "slug": "conifers",
+      "category": "Plants",
+      "estimate": {
+        "described": 615,
+        "low": 615,
+        "total": 640,
+        "high": 680,
+        "confidence": "High",
+        "source": {
+          "key": "Farjon 2017",
+          "doi": null,
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "Farjon 2017",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "heuristic",
+            "source": "Farjon 2017",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "derived-from-described",
+            "source": "Farjon 2017",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "Farjon 2017",
+            "verbatim_quote": null
+          },
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        }
+      },
+      "tree": null,
+      "caveats": [
+        {
+          "severity": "medium",
+          "summary": "No canonical tree shipped in the atlas.",
+          "detail": "Atlas ships only the Ran 2018 16-genus tree (genus-level), not species-level. Leslie 2018 published a 615-species supermatrix tree — strong candidate.\n"
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/conifers.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "Farjon 2017",
+        "doi": null,
+        "doi_verified": "na",
+        "year_published": null,
+        "cited_value": 640,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "Atlas ships only the Ran 2018 16-genus tree (genus-level), not species-level. Leslie 2018 published a 615-species supermatrix tree — strong candidate.\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
+      }
+    },
+    "Crocodilians": {
+      "partition": "Crocodilians",
+      "slug": "crocodilians",
+      "category": "Vertebrates",
+      "estimate": {
+        "described": 27,
+        "low": 27,
+        "total": 28,
+        "high": 30,
+        "confidence": "High",
+        "source": {
+          "key": "IUCN CSG",
+          "doi": null,
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "IUCN CSG",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "heuristic",
+            "source": "IUCN CSG",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "derived-from-described",
+            "source": "IUCN CSG",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "IUCN CSG",
+            "verbatim_quote": null
+          },
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        }
+      },
+      "tree": null,
+      "caveats": [
+        {
+          "severity": "medium",
+          "summary": "No canonical tree shipped in the atlas.",
+          "detail": "Small clade (28 species). Oaks 2011 published a species-level tree but the atlas didn't include it. Could be added.\n"
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/crocodilians.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "IUCN CSG",
+        "doi": null,
+        "doi_verified": "na",
+        "year_published": null,
+        "cited_value": 28,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "Small clade (28 species). Oaks 2011 published a species-level tree but the atlas didn't include it. Could be added.\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
       }
     },
     "Crustaceans": {
@@ -19065,6 +20443,87 @@
         "badge": "in_progress"
       }
     },
+    "Ctenophores": {
+      "partition": "Ctenophores",
+      "slug": "ctenophores",
+      "category": "Other animals",
+      "estimate": {
+        "described": 200,
+        "low": 200,
+        "total": 300,
+        "high": 500,
+        "confidence": "Low",
+        "source": {
+          "key": "WoRMS",
+          "doi": null,
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "WoRMS",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "heuristic",
+            "source": "WoRMS",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "derived-from-described",
+            "source": "WoRMS",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "WoRMS",
+            "verbatim_quote": null
+          },
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        }
+      },
+      "tree": null,
+      "caveats": [
+        {
+          "severity": "medium",
+          "summary": "No canonical tree shipped in the atlas.",
+          "detail": "Whelan 2017 ctenophore tree available; only ~27 species in atlas data.\n"
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/ctenophores.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "WoRMS",
+        "doi": null,
+        "doi_verified": "na",
+        "year_published": null,
+        "cited_value": 300,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "Whelan 2017 ctenophore tree available; only ~27 species in atlas data.\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
+      }
+    },
     "Diatoms": {
       "partition": "Diatoms",
       "slug": "diatoms",
@@ -19156,6 +20615,87 @@
       },
       "website": {
         "badge": "verified"
+      }
+    },
+    "Dinoflagellates": {
+      "partition": "Dinoflagellates",
+      "slug": "dinoflagellates",
+      "category": "Microbes & protists",
+      "estimate": {
+        "described": 2300,
+        "low": 3000,
+        "total": 5000,
+        "high": 10000,
+        "confidence": "Low",
+        "source": {
+          "key": "Gomez 2012",
+          "doi": null,
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "Gomez 2012",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "paper-published",
+            "source": "Gomez 2012",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "paper-published",
+            "source": "Gomez 2012",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "Gomez 2012",
+            "verbatim_quote": null
+          },
+          "overall_classification": "paper-published-range",
+          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        }
+      },
+      "tree": null,
+      "caveats": [
+        {
+          "severity": "medium",
+          "summary": "No canonical tree shipped in the atlas.",
+          "detail": "Cooney 2024 dinoflagellate phylogenomics; ~80 species.\n"
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/dinoflagellates.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "Gomez 2012",
+        "doi": null,
+        "doi_verified": "na",
+        "year_published": null,
+        "cited_value": 5000,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "Cooney 2024 dinoflagellate phylogenomics; ~80 species.\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
       }
     },
     "Echinoderms": {
@@ -19252,6 +20792,87 @@
       "resolutions": [],
       "website": {
         "badge": "verified"
+      }
+    },
+    "Euglenozoa": {
+      "partition": "Euglenozoa",
+      "slug": "euglenozoa",
+      "category": "Not yet represented",
+      "estimate": {
+        "described": 2000,
+        "low": 2000,
+        "total": 5000,
+        "high": 10000,
+        "confidence": "Low",
+        "source": {
+          "key": "CoL",
+          "doi": null,
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "CoL",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "heuristic",
+            "source": "CoL",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "derived-from-described",
+            "source": "CoL",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "CoL",
+            "verbatim_quote": null
+          },
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        }
+      },
+      "tree": null,
+      "caveats": [
+        {
+          "severity": "medium",
+          "summary": "No canonical tree shipped in the atlas.",
+          "detail": "Includes trypanosomes; molecular trees exist for sub-clades.\n"
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/euglenozoa.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "CoL",
+        "doi": null,
+        "doi_verified": "na",
+        "year_published": null,
+        "cited_value": 5000,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "Includes trypanosomes; molecular trees exist for sub-clades.\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
       }
     },
     "Ferns": {
@@ -19614,6 +21235,168 @@
         "badge": "verified"
       }
     },
+    "Flatworms": {
+      "partition": "Flatworms",
+      "slug": "flatworms",
+      "category": "Other animals",
+      "estimate": {
+        "described": 20000,
+        "low": 44000,
+        "total": 100000,
+        "high": 200000,
+        "confidence": "Low",
+        "source": {
+          "key": "Zhang 2013",
+          "doi": null,
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "Zhang 2013",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "paper-published",
+            "source": "Zhang 2013",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "paper-published",
+            "source": "Zhang 2013",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "Zhang 2013",
+            "verbatim_quote": null
+          },
+          "overall_classification": "paper-published-range",
+          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        }
+      },
+      "tree": null,
+      "caveats": [
+        {
+          "severity": "medium",
+          "summary": "No canonical tree shipped in the atlas.",
+          "detail": "Brabec 2023 platyhelminth phylogenomics available; partial coverage only.\n"
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/flatworms.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "Zhang 2013",
+        "doi": null,
+        "doi_verified": "na",
+        "year_published": null,
+        "cited_value": 100000,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "Brabec 2023 platyhelminth phylogenomics available; partial coverage only.\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
+      }
+    },
+    "Foraminifera": {
+      "partition": "Foraminifera",
+      "slug": "foraminifera",
+      "category": "Microbes & protists",
+      "estimate": {
+        "described": 9000,
+        "low": 9000,
+        "total": 12000,
+        "high": 15000,
+        "confidence": "Medium",
+        "source": {
+          "key": "Hayward 2020",
+          "doi": null,
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "Hayward 2020",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "heuristic",
+            "source": "Hayward 2020",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "derived-from-described",
+            "source": "Hayward 2020",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "Hayward 2020",
+            "verbatim_quote": null
+          },
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        }
+      },
+      "tree": null,
+      "caveats": [
+        {
+          "severity": "medium",
+          "summary": "No canonical tree shipped in the atlas.",
+          "detail": "Hayward 2020 reference; foraminifera molecular trees are limited.\n"
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/foraminifera.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "Hayward 2020",
+        "doi": null,
+        "doi_verified": "na",
+        "year_published": null,
+        "cited_value": 12000,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "Hayward 2020 reference; foraminifera molecular trees are limited.\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
+      }
+    },
     "Fungi": {
       "partition": "Fungi",
       "slug": "fungi",
@@ -19803,6 +21586,249 @@
         "badge": "verified"
       }
     },
+    "Green algae": {
+      "partition": "Green algae",
+      "slug": "green_algae",
+      "category": "Plants",
+      "estimate": {
+        "described": 11000,
+        "low": 13000,
+        "total": 22000,
+        "high": 30000,
+        "confidence": "Low",
+        "source": {
+          "key": "Guiry 2012",
+          "doi": null,
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "Guiry 2012",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "paper-published",
+            "source": "Guiry 2012",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "paper-published",
+            "source": "Guiry 2012",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "Guiry 2012",
+            "verbatim_quote": null
+          },
+          "overall_classification": "paper-published-range",
+          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        }
+      },
+      "tree": null,
+      "caveats": [
+        {
+          "severity": "medium",
+          "summary": "No canonical tree shipped in the atlas.",
+          "detail": "Li 2021 published a green-algae phylogeny but coverage is sparse (~70 species in atlas data shows in_undated_tree).\n"
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/green_algae.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "Guiry 2012",
+        "doi": null,
+        "doi_verified": "na",
+        "year_published": null,
+        "cited_value": 22000,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "Li 2021 published a green-algae phylogeny but coverage is sparse (~70 species in atlas data shows in_undated_tree).\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
+      }
+    },
+    "Hagfish": {
+      "partition": "Hagfish",
+      "slug": "hagfish",
+      "category": "Vertebrates",
+      "estimate": {
+        "described": 82,
+        "low": 82,
+        "total": 100,
+        "high": 120,
+        "confidence": "Medium",
+        "source": {
+          "key": "Fernholm 2013",
+          "doi": null,
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "Fernholm 2013",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "heuristic",
+            "source": "Fernholm 2013",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "derived-from-described",
+            "source": "Fernholm 2013",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "Fernholm 2013",
+            "verbatim_quote": null
+          },
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        }
+      },
+      "tree": null,
+      "caveats": [
+        {
+          "severity": "medium",
+          "summary": "No canonical tree shipped in the atlas.",
+          "detail": "Small clade (82 species). Fernholm 2013 is the standard reference but no species-level dated tree at atlas scale.\n"
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/hagfish.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "Fernholm 2013",
+        "doi": null,
+        "doi_verified": "na",
+        "year_published": null,
+        "cited_value": 100,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "Small clade (82 species). Fernholm 2013 is the standard reference but no species-level dated tree at atlas scale.\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
+      }
+    },
+    "Haptophytes": {
+      "partition": "Haptophytes",
+      "slug": "haptophytes",
+      "category": "Microbes & protists",
+      "estimate": {
+        "described": 760,
+        "low": 762,
+        "total": 2000,
+        "high": 4000,
+        "confidence": "Low",
+        "source": {
+          "key": "de Vargas 2007",
+          "doi": null,
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "de Vargas 2007",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "paper-published",
+            "source": "de Vargas 2007",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "paper-published",
+            "source": "de Vargas 2007",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "de Vargas 2007",
+            "verbatim_quote": null
+          },
+          "overall_classification": "paper-published-range",
+          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        }
+      },
+      "tree": null,
+      "caveats": [
+        {
+          "severity": "medium",
+          "summary": "No canonical tree shipped in the atlas.",
+          "detail": "Medlin 2010 haptophyte tree; small clade.\n"
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/haptophytes.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "de Vargas 2007",
+        "doi": null,
+        "doi_verified": "na",
+        "year_published": null,
+        "cited_value": 2000,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "Medlin 2010 haptophyte tree; small clade.\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
+      }
+    },
     "Insects": {
       "partition": "Insects",
       "slug": "insects",
@@ -19961,6 +21987,168 @@
         "surface_uncertainty": true,
         "surface_candidates": true,
         "badge": "verified"
+      }
+    },
+    "Lampreys": {
+      "partition": "Lampreys",
+      "slug": "lampreys",
+      "category": "Vertebrates",
+      "estimate": {
+        "described": 48,
+        "low": 48,
+        "total": 55,
+        "high": 65,
+        "confidence": "High",
+        "source": {
+          "key": "Potter 2015",
+          "doi": null,
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "Potter 2015",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "heuristic",
+            "source": "Potter 2015",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "derived-from-described",
+            "source": "Potter 2015",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "Potter 2015",
+            "verbatim_quote": null
+          },
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        }
+      },
+      "tree": null,
+      "caveats": [
+        {
+          "severity": "medium",
+          "summary": "No canonical tree shipped in the atlas.",
+          "detail": "Small clade (48 species). Hughes 2025 is recent and could be added.\n"
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/lampreys.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "Potter 2015",
+        "doi": null,
+        "doi_verified": "na",
+        "year_published": null,
+        "cited_value": 55,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "Small clade (48 species). Hughes 2025 is recent and could be added.\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
+      }
+    },
+    "Lycophytes": {
+      "partition": "Lycophytes",
+      "slug": "lycophytes",
+      "category": "Plants",
+      "estimate": {
+        "described": 1350,
+        "low": 1350,
+        "total": 1400,
+        "high": 1500,
+        "confidence": "High",
+        "source": {
+          "key": "PPG I 2016",
+          "doi": "10.1111/jse.12229",
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "PPG I 2016",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "heuristic",
+            "source": "PPG I 2016",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "derived-from-described",
+            "source": "PPG I 2016",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "PPG I 2016",
+            "verbatim_quote": null
+          },
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        }
+      },
+      "tree": null,
+      "caveats": [
+        {
+          "severity": "medium",
+          "summary": "No canonical tree shipped in the atlas.",
+          "detail": "PPG I 2016 classification + Zhou 2024 lycophyte tree available; could be standardized.\n"
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/lycophytes.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "PPG I 2016",
+        "doi": "10.1111/jse.12229",
+        "doi_verified": "unchecked",
+        "year_published": null,
+        "cited_value": 1400,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "PPG I 2016 classification + Zhou 2024 lycophyte tree available; could be standardized.\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
       }
     },
     "Mammals": {
@@ -20395,6 +22583,168 @@
         }
       ]
     },
+    "Myriapods": {
+      "partition": "Myriapods",
+      "slug": "myriapods",
+      "category": "Arthropods",
+      "estimate": {
+        "described": 17000,
+        "low": 40000,
+        "total": 85000,
+        "high": 130000,
+        "confidence": "Low",
+        "source": {
+          "key": "Chapman 2009",
+          "doi": null,
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "Chapman 2009",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "paper-published",
+            "source": "Chapman 2009",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "paper-published",
+            "source": "Chapman 2009",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "Chapman 2009",
+            "verbatim_quote": null
+          },
+          "overall_classification": "paper-published-range",
+          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        }
+      },
+      "tree": null,
+      "caveats": [
+        {
+          "severity": "medium",
+          "summary": "No canonical tree shipped in the atlas.",
+          "detail": "Benavides 2023 published a myriapod tree but not standardized in atlas.\n"
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/myriapods.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "Chapman 2009",
+        "doi": null,
+        "doi_verified": "na",
+        "year_published": null,
+        "cited_value": 85000,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "Benavides 2023 published a myriapod tree but not standardized in atlas.\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
+      }
+    },
+    "Myxozoa": {
+      "partition": "Myxozoa",
+      "slug": "myxozoa",
+      "category": "Not yet represented",
+      "estimate": {
+        "described": 2400,
+        "low": 2400,
+        "total": 4000,
+        "high": 6000,
+        "confidence": "Low",
+        "source": {
+          "key": "WoRMS",
+          "doi": null,
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "WoRMS",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "heuristic",
+            "source": "WoRMS",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "derived-from-described",
+            "source": "WoRMS",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "WoRMS",
+            "verbatim_quote": null
+          },
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        }
+      },
+      "tree": null,
+      "caveats": [
+        {
+          "severity": "medium",
+          "summary": "No canonical tree shipped in the atlas.",
+          "detail": "Cnidarian-derived parasites; phylogenetically nested in Cnidaria but counted separately.\n"
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/myxozoa.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "WoRMS",
+        "doi": null,
+        "doi_verified": "na",
+        "year_published": null,
+        "cited_value": 4000,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "Cnidarian-derived parasites; phylogenetically nested in Cnidaria but counted separately.\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
+      }
+    },
     "Nematodes": {
       "partition": "Nematodes",
       "slug": "nematodes",
@@ -20489,6 +22839,816 @@
       "resolutions": [],
       "website": {
         "badge": "verified"
+      }
+    },
+    "Nemerteans": {
+      "partition": "Nemerteans",
+      "slug": "nemerteans",
+      "category": "Other animals",
+      "estimate": {
+        "described": 1300,
+        "low": 1300,
+        "total": 4500,
+        "high": 13500,
+        "confidence": "Low",
+        "source": {
+          "key": "Kajihara 2008",
+          "doi": null,
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "Kajihara 2008",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "heuristic",
+            "source": "Kajihara 2008",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "derived-from-described",
+            "source": "Kajihara 2008",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "Kajihara 2008",
+            "verbatim_quote": null
+          },
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        }
+      },
+      "tree": null,
+      "caveats": [
+        {
+          "severity": "medium",
+          "summary": "No canonical tree shipped in the atlas.",
+          "detail": "Kajihara 2008 / Andrade 2012 nemertean trees available; not standardized.\n"
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/nemerteans.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "Kajihara 2008",
+        "doi": null,
+        "doi_verified": "na",
+        "year_published": null,
+        "cited_value": 4500,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "Kajihara 2008 / Andrade 2012 nemertean trees available; not standardized.\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
+      }
+    },
+    "Oomycetes": {
+      "partition": "Oomycetes",
+      "slug": "oomycetes",
+      "category": "Not yet represented",
+      "estimate": {
+        "described": 1000,
+        "low": 1000,
+        "total": 2000,
+        "high": 3000,
+        "confidence": "Medium",
+        "source": {
+          "key": "CoL",
+          "doi": null,
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "CoL",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "heuristic",
+            "source": "CoL",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "derived-from-described",
+            "source": "CoL",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "CoL",
+            "verbatim_quote": null
+          },
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        }
+      },
+      "tree": null,
+      "caveats": [
+        {
+          "severity": "medium",
+          "summary": "No canonical tree shipped in the atlas.",
+          "detail": "Water molds / downy mildews; fungus-like but stramenopiles.\n"
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/oomycetes.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "CoL",
+        "doi": null,
+        "doi_verified": "na",
+        "year_published": null,
+        "cited_value": 2000,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "Water molds / downy mildews; fungus-like but stramenopiles.\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
+      }
+    },
+    "Other arachnids": {
+      "partition": "Other arachnids",
+      "slug": "other_arachnids",
+      "category": "Not yet represented",
+      "estimate": {
+        "described": 12000,
+        "low": 15000,
+        "total": 25000,
+        "high": 50000,
+        "confidence": "Low",
+        "source": {
+          "key": "CoL",
+          "doi": null,
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "CoL",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "paper-published",
+            "source": "CoL",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "paper-published",
+            "source": "CoL",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "CoL",
+            "verbatim_quote": null
+          },
+          "overall_classification": "paper-published-range",
+          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        }
+      },
+      "tree": null,
+      "caveats": [
+        {
+          "severity": "medium",
+          "summary": "No canonical tree shipped in the atlas.",
+          "detail": "Catch-all for non-spider non-scorpion arachnids (harvestmen, solifuges, etc.).\n"
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/other_arachnids.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "CoL",
+        "doi": null,
+        "doi_verified": "na",
+        "year_published": null,
+        "cited_value": 25000,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "Catch-all for non-spider non-scorpion arachnids (harvestmen, solifuges, etc.).\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
+      }
+    },
+    "Other hexapods": {
+      "partition": "Other hexapods",
+      "slug": "other_hexapods",
+      "category": "Not yet represented",
+      "estimate": {
+        "described": 10000,
+        "low": 10000,
+        "total": 15000,
+        "high": 25000,
+        "confidence": "Low",
+        "source": {
+          "key": "CoL",
+          "doi": null,
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "CoL",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "heuristic",
+            "source": "CoL",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "derived-from-described",
+            "source": "CoL",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "CoL",
+            "verbatim_quote": null
+          },
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        }
+      },
+      "tree": null,
+      "caveats": [
+        {
+          "severity": "medium",
+          "summary": "No canonical tree shipped in the atlas.",
+          "detail": "Springtails, diplurans, proturans; small clades.\n"
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/other_hexapods.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "CoL",
+        "doi": null,
+        "doi_verified": "na",
+        "year_published": null,
+        "cited_value": 15000,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "Springtails, diplurans, proturans; small clades.\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
+      }
+    },
+    "Other Mollusca": {
+      "partition": "Other Mollusca",
+      "slug": "other_mollusca",
+      "category": "Not yet represented",
+      "estimate": {
+        "described": 1500,
+        "low": 1500,
+        "total": 3000,
+        "high": 5000,
+        "confidence": "Medium",
+        "source": {
+          "key": "WoRMS",
+          "doi": null,
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "WoRMS",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "heuristic",
+            "source": "WoRMS",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "derived-from-described",
+            "source": "WoRMS",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "WoRMS",
+            "verbatim_quote": null
+          },
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        }
+      },
+      "tree": null,
+      "caveats": [
+        {
+          "severity": "medium",
+          "summary": "No canonical tree shipped in the atlas.",
+          "detail": "Catch-all for chitons, scaphopods, monoplacophorans, cephalopods etc. not in dedicated bins.\n"
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/other_mollusca.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "WoRMS",
+        "doi": null,
+        "doi_verified": "na",
+        "year_published": null,
+        "cited_value": 3000,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "Catch-all for chitons, scaphopods, monoplacophorans, cephalopods etc. not in dedicated bins.\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
+      }
+    },
+    "Other phyla": {
+      "partition": "Other phyla",
+      "slug": "other_phyla",
+      "category": "Not yet represented",
+      "estimate": {
+        "described": 4300,
+        "low": 4300,
+        "total": 10000,
+        "high": 15000,
+        "confidence": "Low",
+        "source": {
+          "key": "CoL",
+          "doi": null,
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "CoL",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "heuristic",
+            "source": "CoL",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "derived-from-described",
+            "source": "CoL",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "CoL",
+            "verbatim_quote": null
+          },
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        }
+      },
+      "tree": null,
+      "caveats": [
+        {
+          "severity": "medium",
+          "summary": "No canonical tree shipped in the atlas.",
+          "detail": "Catch-all for minor animal phyla without dedicated bins.\n"
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/other_phyla.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "CoL",
+        "doi": null,
+        "doi_verified": "na",
+        "year_published": null,
+        "cited_value": 10000,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "Catch-all for minor animal phyla without dedicated bins.\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
+      }
+    },
+    "Pycnogonida": {
+      "partition": "Pycnogonida",
+      "slug": "pycnogonida",
+      "category": "Not yet represented",
+      "estimate": {
+        "described": 1400,
+        "low": 1400,
+        "total": 2000,
+        "high": 3000,
+        "confidence": "Medium",
+        "source": {
+          "key": "WoRMS",
+          "doi": null,
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "WoRMS",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "heuristic",
+            "source": "WoRMS",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "derived-from-described",
+            "source": "WoRMS",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "WoRMS",
+            "verbatim_quote": null
+          },
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        }
+      },
+      "tree": null,
+      "caveats": [
+        {
+          "severity": "medium",
+          "summary": "No canonical tree shipped in the atlas.",
+          "detail": "Sea spiders; ~1400 species; some genomic data.\n"
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/pycnogonida.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "WoRMS",
+        "doi": null,
+        "doi_verified": "na",
+        "year_published": null,
+        "cited_value": 2000,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "Sea spiders; ~1400 species; some genomic data.\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
+      }
+    },
+    "Rhodophyta": {
+      "partition": "Rhodophyta",
+      "slug": "rhodophyta",
+      "category": "Not yet represented",
+      "estimate": {
+        "described": 7000,
+        "low": 7000,
+        "total": 10000,
+        "high": 15000,
+        "confidence": "Low",
+        "source": {
+          "key": "AlgaeBase",
+          "doi": null,
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "AlgaeBase",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "heuristic",
+            "source": "AlgaeBase",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "derived-from-described",
+            "source": "AlgaeBase",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "AlgaeBase",
+            "verbatim_quote": null
+          },
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        }
+      },
+      "tree": null,
+      "caveats": [
+        {
+          "severity": "medium",
+          "summary": "No canonical tree shipped in the atlas.",
+          "detail": "AlgaeBase reference; molecular phylogeny exists but not at atlas scale.\n"
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/rhodophyta.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "AlgaeBase",
+        "doi": null,
+        "doi_verified": "na",
+        "year_published": null,
+        "cited_value": 10000,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "AlgaeBase reference; molecular phylogeny exists but not at atlas scale.\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
+      }
+    },
+    "Rotifera": {
+      "partition": "Rotifera",
+      "slug": "rotifera",
+      "category": "Not yet represented",
+      "estimate": {
+        "described": 2200,
+        "low": 2200,
+        "total": 2200,
+        "high": 2500,
+        "confidence": "High",
+        "source": {
+          "key": "Segers 2007",
+          "doi": null,
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "Segers 2007",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "heuristic",
+            "source": "Segers 2007",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "derived-from-described",
+            "source": "Segers 2007",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "Segers 2007",
+            "verbatim_quote": null
+          },
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        }
+      },
+      "tree": null,
+      "caveats": [
+        {
+          "severity": "medium",
+          "summary": "No canonical tree shipped in the atlas.",
+          "detail": "Segers 2007 checklist; no species-level molecular tree at atlas scale.\n"
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/rotifera.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "Segers 2007",
+        "doi": null,
+        "doi_verified": "na",
+        "year_published": null,
+        "cited_value": 2200,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "Segers 2007 checklist; no species-level molecular tree at atlas scale.\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
+      }
+    },
+    "Scorpiones": {
+      "partition": "Scorpiones",
+      "slug": "scorpiones",
+      "category": "Not yet represented",
+      "estimate": {
+        "described": 2700,
+        "low": 2700,
+        "total": 3500,
+        "high": 5000,
+        "confidence": "Medium",
+        "source": {
+          "key": "Rein 2024",
+          "doi": null,
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "Rein 2024",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "heuristic",
+            "source": "Rein 2024",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "derived-from-described",
+            "source": "Rein 2024",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "Rein 2024",
+            "verbatim_quote": null
+          },
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        }
+      },
+      "tree": null,
+      "caveats": [
+        {
+          "severity": "medium",
+          "summary": "No canonical tree shipped in the atlas.",
+          "detail": "Sharma 2018 scorpion phylogenomics; ~2700 described species; could be standardized.\n"
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/scorpiones.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "Rein 2024",
+        "doi": null,
+        "doi_verified": "na",
+        "year_published": null,
+        "cited_value": 3500,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "Sharma 2018 scorpion phylogenomics; ~2700 described species; could be standardized.\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
       }
     },
     "Seed plants": {
@@ -21317,6 +24477,168 @@
           "cache": "pending"
         }
       ]
+    },
+    "Tardigrada": {
+      "partition": "Tardigrada",
+      "slug": "tardigrada",
+      "category": "Not yet represented",
+      "estimate": {
+        "described": 1488,
+        "low": 1488,
+        "total": 2081,
+        "high": 3000,
+        "confidence": "Medium",
+        "source": {
+          "key": "Bartels 2016",
+          "doi": null,
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "Bartels 2016",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "heuristic",
+            "source": "Bartels 2016",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "derived-from-described",
+            "source": "Bartels 2016",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "Bartels 2016",
+            "verbatim_quote": null
+          },
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        }
+      },
+      "tree": null,
+      "caveats": [
+        {
+          "severity": "medium",
+          "summary": "No canonical tree shipped in the atlas.",
+          "detail": "Bartels 2016 reference; molecular trees exist but coverage limited.\n"
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/tardigrada.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "Bartels 2016",
+        "doi": null,
+        "doi_verified": "na",
+        "year_published": null,
+        "cited_value": 2081,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "Bartels 2016 reference; molecular trees exist but coverage limited.\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
+      }
+    },
+    "Tunicates": {
+      "partition": "Tunicates",
+      "slug": "tunicates",
+      "category": "Other animals",
+      "estimate": {
+        "described": 3145,
+        "low": 3500,
+        "total": 5100,
+        "high": 7000,
+        "confidence": "Medium",
+        "source": {
+          "key": "Appeltans 2012",
+          "doi": "10.1016/j.cub.2012.09.036",
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "Appeltans 2012",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "paper-published",
+            "source": "Appeltans 2012",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "paper-published",
+            "source": "Appeltans 2012",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "Appeltans 2012",
+            "verbatim_quote": null
+          },
+          "overall_classification": "paper-published-range",
+          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        }
+      },
+      "tree": null,
+      "caveats": [
+        {
+          "severity": "medium",
+          "summary": "No canonical tree shipped in the atlas.",
+          "detail": "Delsuc 2018 tunicate phylogeny available; ~63 species in atlas data.\n"
+        }
+      ],
+      "audit": {
+        "file": "../../../audits/partitions/tunicates.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "Appeltans 2012",
+        "doi": "10.1016/j.cub.2012.09.036",
+        "doi_verified": "unchecked",
+        "year_published": null,
+        "cited_value": 5100,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "Delsuc 2018 tunicate phylogeny available; ~63 species in atlas data.\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
+      }
     },
     "Turtles": {
       "partition": "Turtles",

@@ -1,0 +1,48 @@
+partition: Tunicates
+slug: tunicates
+category: Other animals
+
+estimate:
+  described: 3145
+  low: 3500
+  total: 5100
+  high: 7000
+  confidence: Medium
+  source:
+    key: Appeltans 2012
+    doi: 10.1016/j.cub.2012.09.036
+    pdf: null
+    url: null
+  interval_provenance:
+    described:
+      type: database
+      source: Appeltans 2012
+      verbatim_quote: null
+    estimated_total:
+      type: paper-published
+      source: Appeltans 2012
+      verbatim_quote: null
+    estimated_low:
+      type: paper-published
+      source: Appeltans 2012
+      verbatim_quote: null
+    estimated_high:
+      type: paper-published
+      source: Appeltans 2012
+      verbatim_quote: null
+    overall_classification: paper-published-range
+    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+
+tree: null
+caveats:
+  - severity: medium
+    summary: "No canonical tree shipped in the atlas."
+    detail: |
+      Delsuc 2018 tunicate phylogeny available; ~63 species in atlas data.
+
+audit:
+  file: ../../../audits/partitions/tunicates.md
+  status: deferred
+  last_audited: 2026-05-18
+
+sub_phylos: []

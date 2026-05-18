@@ -1,0 +1,48 @@
+partition: Ciliates
+slug: ciliates
+category: Microbes & protists
+
+estimate:
+  described: 4500
+  low: 20000
+  total: 40000
+  high: 100000
+  confidence: Low
+  source:
+    key: Foissner 2008
+    doi: null
+    pdf: null
+    url: null
+  interval_provenance:
+    described:
+      type: database
+      source: Foissner 2008
+      verbatim_quote: null
+    estimated_total:
+      type: paper-published
+      source: Foissner 2008
+      verbatim_quote: null
+    estimated_low:
+      type: paper-published
+      source: Foissner 2008
+      verbatim_quote: null
+    estimated_high:
+      type: paper-published
+      source: Foissner 2008
+      verbatim_quote: null
+    overall_classification: paper-published-range
+    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+
+tree: null
+caveats:
+  - severity: medium
+    summary: "No canonical tree shipped in the atlas."
+    detail: |
+      Jiang 2024 ciliate phylogenomics; ~105 species in atlas data.
+
+audit:
+  file: ../../../audits/partitions/ciliates.md
+  status: deferred
+  last_audited: 2026-05-18
+
+sub_phylos: []

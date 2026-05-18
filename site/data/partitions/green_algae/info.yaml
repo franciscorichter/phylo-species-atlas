@@ -1,0 +1,48 @@
+partition: Green algae
+slug: green_algae
+category: Plants
+
+estimate:
+  described: 11000
+  low: 13000
+  total: 22000
+  high: 30000
+  confidence: Low
+  source:
+    key: Guiry 2012
+    doi: null
+    pdf: null
+    url: null
+  interval_provenance:
+    described:
+      type: database
+      source: Guiry 2012
+      verbatim_quote: null
+    estimated_total:
+      type: paper-published
+      source: Guiry 2012
+      verbatim_quote: null
+    estimated_low:
+      type: paper-published
+      source: Guiry 2012
+      verbatim_quote: null
+    estimated_high:
+      type: paper-published
+      source: Guiry 2012
+      verbatim_quote: null
+    overall_classification: paper-published-range
+    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+
+tree: null
+caveats:
+  - severity: medium
+    summary: "No canonical tree shipped in the atlas."
+    detail: |
+      Li 2021 published a green-algae phylogeny but coverage is sparse (~70 species in atlas data shows in_undated_tree).
+
+audit:
+  file: ../../../audits/partitions/green_algae.md
+  status: deferred
+  last_audited: 2026-05-18
+
+sub_phylos: []

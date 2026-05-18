@@ -1,0 +1,48 @@
+partition: Myriapods
+slug: myriapods
+category: Arthropods
+
+estimate:
+  described: 17000
+  low: 40000
+  total: 85000
+  high: 130000
+  confidence: Low
+  source:
+    key: Chapman 2009
+    doi: null
+    pdf: null
+    url: null
+  interval_provenance:
+    described:
+      type: database
+      source: Chapman 2009
+      verbatim_quote: null
+    estimated_total:
+      type: paper-published
+      source: Chapman 2009
+      verbatim_quote: null
+    estimated_low:
+      type: paper-published
+      source: Chapman 2009
+      verbatim_quote: null
+    estimated_high:
+      type: paper-published
+      source: Chapman 2009
+      verbatim_quote: null
+    overall_classification: paper-published-range
+    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+
+tree: null
+caveats:
+  - severity: medium
+    summary: "No canonical tree shipped in the atlas."
+    detail: |
+      Benavides 2023 published a myriapod tree but not standardized in atlas.
+
+audit:
+  file: ../../../audits/partitions/myriapods.md
+  status: deferred
+  last_audited: 2026-05-18
+
+sub_phylos: []

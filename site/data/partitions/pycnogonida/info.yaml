@@ -1,0 +1,48 @@
+partition: Pycnogonida
+slug: pycnogonida
+category: Not yet represented
+
+estimate:
+  described: 1400
+  low: 1400
+  total: 2000
+  high: 3000
+  confidence: Medium
+  source:
+    key: WoRMS
+    doi: null
+    pdf: null
+    url: null
+  interval_provenance:
+    described:
+      type: database
+      source: WoRMS
+      verbatim_quote: null
+    estimated_total:
+      type: heuristic
+      source: WoRMS
+      verbatim_quote: null
+    estimated_low:
+      type: derived-from-described
+      source: WoRMS
+      verbatim_quote: null
+    estimated_high:
+      type: paper-published
+      source: WoRMS
+      verbatim_quote: null
+    overall_classification: partly-heuristic
+    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+
+tree: null
+caveats:
+  - severity: medium
+    summary: "No canonical tree shipped in the atlas."
+    detail: |
+      Sea spiders; ~1400 species; some genomic data.
+
+audit:
+  file: ../../../audits/partitions/pycnogonida.md
+  status: deferred
+  last_audited: 2026-05-18
+
+sub_phylos: []

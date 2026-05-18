@@ -1,0 +1,48 @@
+partition: Lampreys
+slug: lampreys
+category: Vertebrates
+
+estimate:
+  described: 48
+  low: 48
+  total: 55
+  high: 65
+  confidence: High
+  source:
+    key: Potter 2015
+    doi: null
+    pdf: null
+    url: null
+  interval_provenance:
+    described:
+      type: database
+      source: Potter 2015
+      verbatim_quote: null
+    estimated_total:
+      type: heuristic
+      source: Potter 2015
+      verbatim_quote: null
+    estimated_low:
+      type: derived-from-described
+      source: Potter 2015
+      verbatim_quote: null
+    estimated_high:
+      type: paper-published
+      source: Potter 2015
+      verbatim_quote: null
+    overall_classification: partly-heuristic
+    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+
+tree: null
+caveats:
+  - severity: medium
+    summary: "No canonical tree shipped in the atlas."
+    detail: |
+      Small clade (48 species). Hughes 2025 is recent and could be added.
+
+audit:
+  file: ../../../audits/partitions/lampreys.md
+  status: deferred
+  last_audited: 2026-05-18
+
+sub_phylos: []

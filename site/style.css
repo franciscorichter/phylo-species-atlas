@@ -706,7 +706,7 @@ main {
 .audit-badge.audit-in_progress   { background: #fde7c8; color: #8a4d0a; }
 .audit-badge.audit-verified      { background: #d6efd9; color: #1f6b29; }
 .audit-badge.audit-shipped       { background: #c8e1fd; color: #1a4d8a; }
-.audit-badge.audit-deferred      { background: #f0e1f8; color: #6b1a8a; }
+.audit-badge.audit-deferred      { background: #ececec; color: #555; }
 
 .audit-correction {
   background: #fff5e7;

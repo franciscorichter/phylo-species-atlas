@@ -1,0 +1,48 @@
+partition: Crocodilians
+slug: crocodilians
+category: Vertebrates
+
+estimate:
+  described: 27
+  low: 27
+  total: 28
+  high: 30
+  confidence: High
+  source:
+    key: IUCN CSG
+    doi: null
+    pdf: null
+    url: null
+  interval_provenance:
+    described:
+      type: database
+      source: IUCN CSG
+      verbatim_quote: null
+    estimated_total:
+      type: heuristic
+      source: IUCN CSG
+      verbatim_quote: null
+    estimated_low:
+      type: derived-from-described
+      source: IUCN CSG
+      verbatim_quote: null
+    estimated_high:
+      type: paper-published
+      source: IUCN CSG
+      verbatim_quote: null
+    overall_classification: partly-heuristic
+    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+
+tree: null
+caveats:
+  - severity: medium
+    summary: "No canonical tree shipped in the atlas."
+    detail: |
+      Small clade (28 species). Oaks 2011 published a species-level tree but the atlas didn't include it. Could be added.
+
+audit:
+  file: ../../../audits/partitions/crocodilians.md
+  status: deferred
+  last_audited: 2026-05-18
+
+sub_phylos: []

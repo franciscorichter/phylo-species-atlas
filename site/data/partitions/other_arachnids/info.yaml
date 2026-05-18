@@ -1,0 +1,48 @@
+partition: Other arachnids
+slug: other_arachnids
+category: Not yet represented
+
+estimate:
+  described: 12000
+  low: 15000
+  total: 25000
+  high: 50000
+  confidence: Low
+  source:
+    key: CoL
+    doi: null
+    pdf: null
+    url: null
+  interval_provenance:
+    described:
+      type: database
+      source: CoL
+      verbatim_quote: null
+    estimated_total:
+      type: paper-published
+      source: CoL
+      verbatim_quote: null
+    estimated_low:
+      type: paper-published
+      source: CoL
+      verbatim_quote: null
+    estimated_high:
+      type: paper-published
+      source: CoL
+      verbatim_quote: null
+    overall_classification: paper-published-range
+    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+
+tree: null
+caveats:
+  - severity: medium
+    summary: "No canonical tree shipped in the atlas."
+    detail: |
+      Catch-all for non-spider non-scorpion arachnids (harvestmen, solifuges, etc.).
+
+audit:
+  file: ../../../audits/partitions/other_arachnids.md
+  status: deferred
+  last_audited: 2026-05-18
+
+sub_phylos: []

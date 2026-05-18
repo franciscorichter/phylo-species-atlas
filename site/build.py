@@ -432,6 +432,16 @@ def main() -> None:
         coverage_pct = parse_float(prov.get("coverage_pct"))
         partition, est = estimate_for(prov_group)
 
+        # Fallback: when data_provenance.csv has no described_species for
+        # this tree (e.g. Bryozoa, where the original CSV row was empty),
+        # use the partition-level described count from data_estimates.csv
+        # so the tree still appears in the coverage chart.
+        if not described and partition:
+            est_row = estimates_by_partition.get(partition) or {}
+            described = parse_int(est_row.get("described"))
+        if described and coverage_pct is None and ntips_meta:
+            coverage_pct = round(100 * ntips_meta / described, 1)
+
         # Condamine 2019 family trees are 218 small family-level trees — group
         # them under one synthetic partition so they collapse cleanly in the UI.
         if not partition and group.startswith("condamine_"):

@@ -1,0 +1,48 @@
+partition: Hagfish
+slug: hagfish
+category: Vertebrates
+
+estimate:
+  described: 82
+  low: 82
+  total: 100
+  high: 120
+  confidence: Medium
+  source:
+    key: Fernholm 2013
+    doi: null
+    pdf: null
+    url: null
+  interval_provenance:
+    described:
+      type: database
+      source: Fernholm 2013
+      verbatim_quote: null
+    estimated_total:
+      type: heuristic
+      source: Fernholm 2013
+      verbatim_quote: null
+    estimated_low:
+      type: derived-from-described
+      source: Fernholm 2013
+      verbatim_quote: null
+    estimated_high:
+      type: paper-published
+      source: Fernholm 2013
+      verbatim_quote: null
+    overall_classification: partly-heuristic
+    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+
+tree: null
+caveats:
+  - severity: medium
+    summary: "No canonical tree shipped in the atlas."
+    detail: |
+      Small clade (82 species). Fernholm 2013 is the standard reference but no species-level dated tree at atlas scale.
+
+audit:
+  file: ../../../audits/partitions/hagfish.md
+  status: deferred
+  last_audited: 2026-05-18
+
+sub_phylos: []

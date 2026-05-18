@@ -1,0 +1,48 @@
+partition: Acari
+slug: acari
+category: Not yet represented
+
+estimate:
+  described: 55000
+  low: 100000
+  total: 500000
+  high: 1000000
+  confidence: Low
+  source:
+    key: Zhang 2013
+    doi: null
+    pdf: null
+    url: null
+  interval_provenance:
+    described:
+      type: database
+      source: Zhang 2013
+      verbatim_quote: null
+    estimated_total:
+      type: paper-published
+      source: Zhang 2013
+      verbatim_quote: null
+    estimated_low:
+      type: paper-published
+      source: Zhang 2013
+      verbatim_quote: null
+    estimated_high:
+      type: paper-published
+      source: Zhang 2013
+      verbatim_quote: null
+    overall_classification: paper-published-range
+    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+
+tree: null
+caveats:
+  - severity: medium
+    summary: "No canonical tree shipped in the atlas."
+    detail: |
+      Largest unrepresented clade (~500k species, mostly mites). Zhang 2013 reference; phylogenetics scattered across many papers.
+
+audit:
+  file: ../../../audits/partitions/acari.md
+  status: deferred
+  last_audited: 2026-05-18
+
+sub_phylos: []

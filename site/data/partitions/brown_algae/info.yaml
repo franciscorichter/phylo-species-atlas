@@ -1,0 +1,48 @@
+partition: Brown algae
+slug: brown_algae
+category: Microbes & protists
+
+estimate:
+  described: 2000
+  low: 2000
+  total: 2500
+  high: 4000
+  confidence: Medium
+  source:
+    key: Guiry 2024
+    doi: null
+    pdf: null
+    url: null
+  interval_provenance:
+    described:
+      type: database
+      source: Guiry 2024
+      verbatim_quote: null
+    estimated_total:
+      type: heuristic
+      source: Guiry 2024
+      verbatim_quote: null
+    estimated_low:
+      type: derived-from-described
+      source: Guiry 2024
+      verbatim_quote: null
+    estimated_high:
+      type: paper-published
+      source: Guiry 2024
+      verbatim_quote: null
+    overall_classification: partly-heuristic
+    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+
+tree: null
+caveats:
+  - severity: medium
+    summary: "No canonical tree shipped in the atlas."
+    detail: |
+      Silberfeld 2010 brown-algae phylogeny; ~72 species in atlas data.
+
+audit:
+  file: ../../../audits/partitions/brown_algae.md
+  status: deferred
+  last_audited: 2026-05-18
+
+sub_phylos: []
