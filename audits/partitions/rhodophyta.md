@@ -1,6 +1,6 @@
 ---
 partition: Rhodophyta
-category: Not yet represented
+category: Plants
 audit_version: 1
 status: deferred
 last_audited: 2026-05-18

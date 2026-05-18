@@ -1,0 +1,70 @@
+partition: Minor animal phyla
+slug: minor_animal_phyla
+category: Other animals
+
+estimate:
+  described: 376
+  low: 376
+  total: 535
+  high: 700
+  confidence: Medium
+  source:
+    key: Atlas-aggregated
+    doi: null
+    pdf: null
+    url: null
+    note: "Five small animal phyla without their own partition. Coverage is collectively exhaustive across Other animals."
+  interval_provenance:
+    described:
+      type: atlas-derived
+      source: atlas-aggregated
+      verbatim_quote: null
+      note: "Sum of described counts across 5 constituent phyla."
+    estimated_total:
+      type: atlas-derived
+      source: atlas-aggregated
+      verbatim_quote: null
+    estimated_low:
+      type: derived-from-described
+      source: atlas-aggregated
+      verbatim_quote: null
+    estimated_high:
+      type: atlas-derived
+      source: atlas-aggregated
+      verbatim_quote: null
+    overall_classification: derived
+    auditor_note: |
+      Five small invertebrate phyla aggregated to keep the Other-animals
+      category collectively exhaustive. Each has well-established species
+      counts from monographs but no atlas-scale phylogeny.
+
+tree: null
+
+constituents:
+  - name: Onychophora (velvet worms)
+    described: 200
+    estimated: 250
+    note: "Two families (Peripatidae, Peripatopsidae). Sister to Tardigrada + Arthropoda (Panarthropoda)."
+  - name: Placozoa
+    described: 4
+    estimated: 20
+    note: "Simplest free-living animals — Trichoplax + 3 more genetic species described 2018-2022."
+  - name: Loricifera
+    described: 39
+    estimated: 60
+    note: "Meiofaunal phylum discovered 1983. All marine sediments. Anaerobic species known."
+  - name: Cycliophora
+    described: 3
+    estimated: 5
+    note: "Symbiotic on lobster mouthparts. Symbion pandora and 2 congeners."
+  - name: Chaetognatha (arrow worms)
+    described: 130
+    estimated: 200
+    note: "Marine planktonic predators. Phylogenetic position contested."
+
+audit:
+  file: ../../../audits/partitions/minor_animal_phyla.md
+  status: deferred
+  last_audited: 2026-05-18
+
+sub_phylos: []

@@ -1,6 +1,6 @@
 ---
 partition: Other Mollusca
-category: Not yet represented
+category: Other animals
 audit_version: 1
 status: deferred
 last_audited: 2026-05-18

@@ -652,7 +652,7 @@ def main() -> None:
         })
     # Stable order: by category then by described count desc.
     CAT_ORDER = {"Vertebrates": 0, "Plants": 1, "Arthropods": 2, "Other animals": 3,
-                 "Microbes & protists": 4, "Not yet represented": 5}
+                 "Microbes & protists": 4}
     unrepresented.sort(key=lambda x: (CAT_ORDER.get(x["category"], 9),
                                       -(x["described"] or 0)))
 
@@ -688,14 +688,19 @@ def main() -> None:
     # Surface the unrepresented + synthetic partitions on the main coverage
     # chart — gives users the full "dark matter" story alongside the shipped
     # trees. Each gets tips=null (no shipped tree → no ◇/★ marker), but the
-    # ◯ described and ● estimated whiskers all render.
+    # ◯ described and ● estimated whiskers all render. Category is taken
+    # from the partition's audit info.yaml (if present), allowing the
+    # 'Not yet represented' CSV category to be overridden into the row's
+    # natural taxonomic category (Acari → Arthropods, etc.).
+    audit_categories = {p: a.get("category") for p, a in _audits_for_synth.items()}
     for u in list(unrepresented) + synthetic_partitions:
+        u_cat = audit_categories.get(u["group"]) or u["category"]
         row_out = {
             "filename": None,
             "group": u["group"].lower().replace(" ", "_"),
             "provenance_group": None,
             "partition_group": u["group"],
-            "category": u["category"],
+            "category": u_cat,
             "study": None,
             "year": None,
             "tips": None,

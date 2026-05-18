@@ -71,7 +71,7 @@ function sourceLinkHTML(info, fallbackLabel, confidence) {
 }
 
 // Macro-category ordering matches the paper's Figure 1 narrative.
-const CATEGORY_ORDER = ["Vertebrates", "Plants", "Arthropods", "Other animals", "Microbes & protists"];
+const CATEGORY_ORDER = ["Vertebrates", "Plants", "Arthropods", "Other animals", "Microbes & protists"];  // 5 high-level groups
 const CATEGORY_RANK = Object.fromEntries(CATEGORY_ORDER.map((c, i) => [c, i]));
 
 function renderCoveragePlot() {

@@ -1,6 +1,6 @@
 ---
 partition: Acari
-category: Not yet represented
+category: Arthropods
 audit_version: 1
 status: deferred
 last_audited: 2026-05-18

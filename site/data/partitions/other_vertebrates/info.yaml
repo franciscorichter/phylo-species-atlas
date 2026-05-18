@@ -1,0 +1,62 @@
+partition: Other vertebrates
+slug: other_vertebrates
+category: Vertebrates
+
+estimate:
+  described: 9
+  low: 9
+  total: 9
+  high: 9
+  confidence: High
+  source:
+    key: Atlas-aggregated
+    doi: null
+    pdf: null
+    url: null
+    note: "Vertebrate lineages absent from the atlas's 10 main vertebrate partitions."
+  interval_provenance:
+    described:
+      type: atlas-derived
+      source: atlas-aggregated
+      verbatim_quote: null
+      note: "Sum of described counts across 3 constituent vertebrate lineages."
+    estimated_total:
+      type: atlas-derived
+      source: atlas-aggregated
+      verbatim_quote: null
+    estimated_low:
+      type: derived-from-described
+      source: atlas-aggregated
+      verbatim_quote: null
+    estimated_high:
+      type: atlas-derived
+      source: atlas-aggregated
+      verbatim_quote: null
+    overall_classification: derived
+    auditor_note: |
+      Three vertebrate lineages with extremely small species counts and no
+      atlas partition: Tuatara, Coelacanths, Lungfishes. Aggregated here
+      so the Vertebrates category is collectively exhaustive.
+
+tree: null
+
+constituents:
+  - name: Tuatara (Sphenodontia)
+    described: 1
+    estimated: 1
+    note: "Only one living rhynchocephalian: Sphenodon punctatus. Sister to Squamata."
+  - name: Coelacanths (Coelacanthiformes)
+    described: 2
+    estimated: 2
+    note: "Latimeria chalumnae and L. menadoensis. 'Living fossils' — sarcopterygian fishes."
+  - name: Lungfishes (Dipnoi)
+    described: 6
+    estimated: 6
+    note: "Three genera (Neoceratodus, Protopterus, Lepidosiren). Sarcopterygians sister to or near tetrapods."
+
+audit:
+  file: ../../../audits/partitions/other_vertebrates.md
+  status: deferred
+  last_audited: 2026-05-18
+
+sub_phylos: []
