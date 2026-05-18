@@ -1,0 +1,30 @@
+slug: frogs
+taxon: Anura
+parent: amphibians
+parent_category: Vertebrates
+
+tree:
+  file: tree.nwk
+  ntips: 5326
+  dated: true
+  source:
+    key: Portik 2023
+    study: Portik DM, Streicher JW, Wiens JJ (2023)
+    doi: 10.1016/j.ympev.2023.107907
+    pdf: papers/tree.pdf
+  methods:
+    inference: ml
+    software: [RAxML, treePL]
+    data_type: supermatrix
+    n_loci: 307
+    dating_method: treePL rate-smoothing
+    support_metric: bootstrap
+    support_typical: "100 bootstrap trees available."
+    divergence_ci_available: true
+    posterior_n: null
+    note: "Supermatrix of up to 307 loci, 5,242 frog species in tree."
+
+species_count:
+  source: AmphibiaWeb 2025
+  described: 7486
+  coverage_pct_described: 71.1

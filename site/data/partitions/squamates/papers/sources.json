@@ -1,0 +1,23 @@
+{
+  "tree": {
+    "file": "tree.pdf",
+    "doi": "10.1016/j.biocon.2016.03.039",
+    "study": "Tonini JFR, Beard KH, Ferreira RB, Jetz W, Pyron RA (2016). Fully-sampled phylogenies of squamates reveal evolutionary patterns in threat status. Biological Conservation 204:23-31.",
+    "year": 2016,
+    "journal": "Biological Conservation",
+    "license": "Elsevier (subscription)",
+    "open_access": false,
+    "url": "https://www.sciencedirect.com/science/article/abs/pii/S0006320716301197",
+    "data_url": "https://datadryad.org/stash/dataset/doi:10.5061/dryad.db005"
+  },
+  "estimate": {
+    "file": null,
+    "doi": null,
+    "study": "Uetz P, Freed P, Aguilar R, Reyes F, Kudera J, Hosek J (eds.) (2025). The Reptile Database. Live taxonomic checklist.",
+    "year": 2025,
+    "journal": "Reptile Database",
+    "license": "Reptile Database terms",
+    "open_access": true,
+    "url": "https://reptile-database.reptarium.cz/"
+  }
+}

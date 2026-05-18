@@ -1,0 +1,24 @@
+{
+  "tree": {
+    "file": "tree.pdf",
+    "doi": "10.1038/s41559-017-0448-4",
+    "study": "Stein RW, Mull CG, Kuhn TS, Aschliman NC, Davidson LNK, Joy JB, Smith GJ, Dulvy NK, Mooers AO (2018). Global priorities for conserving the evolutionary history of sharks, rays and chimaeras. Nature Ecology & Evolution 2:288-298.",
+    "year": 2018,
+    "journal": "Nature Ecology & Evolution",
+    "license": "Springer Nature (subscription)",
+    "open_access": false,
+    "url": "https://www.nature.com/articles/s41559-017-0448-4",
+    "data_url": "https://vertlife.org/phylosubsets/"
+  },
+  "estimate": {
+    "file": null,
+    "doi": "10.1111/jfb.12874",
+    "study": "Weigmann S (2016). Annotated checklist of the living sharks, batoids and chimaeras (Chondrichthyes) of the world, with a focus on biogeographical diversity. Journal of Fish Biology 88(3):837-1037.",
+    "year": 2016,
+    "journal": "Journal of Fish Biology",
+    "license": "Wiley (subscription)",
+    "open_access": false,
+    "url": "https://onlinelibrary.wiley.com/doi/10.1111/jfb.12874",
+    "note": "PDF not in local papers archive; verbatim quote for interval bounds awaits access."
+  }
+}

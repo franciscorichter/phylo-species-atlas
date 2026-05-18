@@ -1,0 +1,83 @@
+partition: Fish
+slug: fish
+category: Vertebrates
+
+estimate:
+  described: 36000
+  low: 36000
+  total: 40000
+  high: 50000
+  confidence: Medium
+  source:
+    key: Mora 2011
+    doi: 10.1371/journal.pbio.1001127
+    pdf: papers/estimate.pdf
+    url: https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001127
+  interval_provenance:
+    described:
+      type: database
+      source: Eschmeyer's Catalog of Fishes
+      verbatim_quote: null
+    estimated_total:
+      type: paper-published
+      source: Mora 2011
+      verbatim_quote: null
+      note: "Mora 2011 estimates ~40,000 fish species via higher-taxon discovery-curve extrapolation."
+    estimated_low:
+      type: derived-from-described
+      source: Eschmeyer's Catalog
+      verbatim_quote: null
+      note: "Low bound = described count from Eschmeyer."
+    estimated_high:
+      type: paper-published
+      source: Mora 2011
+      verbatim_quote: null
+      note: "50,000 high bound from Mora 2011."
+    overall_classification: partly-heuristic
+    auditor_note: "Low bound equals described count (Eschmeyer floor); total + high are Mora 2011 estimates. The 36-50k spread is a true paper-published uncertainty."
+
+tree:
+  file: tree.nwk
+  ntips: 31516
+  unique_ids: 31516
+  species_represented: 31516
+  coverage_pct_described: 87.5
+  dated: true
+  multiple_individuals_per_species: false
+  source:
+    key: Rabosky 2018
+    study: Rabosky DL et al. (2018)
+    doi: 10.1038/s41586-018-0273-1
+    pdf: papers/tree.pdf
+  methods:
+    inference: ml
+    software: [RAxML, treePL]
+    data_type: supermatrix
+    n_loci: 27
+    dating_method: "27-gene RAxML ML with treePL dating; 130 fossil calibrations."
+    fossil_calibrations: 130
+    support_metric: bootstrap
+    divergence_ci_available: true
+    divergence_ci_note: "11,638-tip dated backbone + 100 chronograms with taxonomic imputation."
+    posterior_n: 100
+    note: "Atlas ships 31,516-tip FishTreeOfLife chronogram (taxonomic imputation extends the 11,638-tip backbone)."
+
+uncertainty:
+  host: FishTreeOfLife
+  host_url: https://fishtreeoflife.org/downloads/
+  files:
+    - name: FishTreeOfLife — 100 chronograms with taxonomic imputation
+      label: 100-tree credible set (imputation-extended)
+      description: "100 chronograms from the Rabosky 2018 backbone with taxonomic imputation; available from FishTreeOfLife portal."
+      size_bytes: null
+      format: FishTreeOfLife portal
+      url: https://fishtreeoflife.org/downloads/
+  note: "Atlas ships MCC consensus only."
+
+audit:
+  file: ../../../audits/partitions/fish.md
+  status: verified
+  last_audited: 2026-05-18
+
+sub_phylos:
+  - slug: neotropical_fish

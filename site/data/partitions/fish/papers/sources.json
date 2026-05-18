@@ -1,0 +1,23 @@
+{
+  "tree": {
+    "file": "tree.pdf",
+    "doi": "10.1038/s41586-018-0273-1",
+    "study": "Rabosky DL, Chang J, Title PO, Cowman PF, Sallan L, Friedman M, Eastman J, Magnuson-Ford K, Maeda T, Tokita M, Sloan PE, Jang K, Near TJ, Alfaro ME (2018). An inverse latitudinal gradient in speciation rate for marine fishes. Nature 559:392-395.",
+    "year": 2018,
+    "journal": "Nature",
+    "license": "Springer Nature (subscription)",
+    "open_access": false,
+    "url": "https://www.nature.com/articles/s41586-018-0273-1",
+    "data_url": "https://fishtreeoflife.org/downloads/"
+  },
+  "estimate": {
+    "file": "estimate.pdf",
+    "doi": "10.1371/journal.pbio.1001127",
+    "study": "Mora C, Tittensor DP, Adl S, Simpson AGB, Worm B (2011). How Many Species Are There on Earth and in the Ocean? PLOS Biology 9(8):e1001127.",
+    "year": 2011,
+    "journal": "PLOS Biology",
+    "license": "CC-BY 4.0",
+    "open_access": true,
+    "url": "https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001127"
+  }
+}

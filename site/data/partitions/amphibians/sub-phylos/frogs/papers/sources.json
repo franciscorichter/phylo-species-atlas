@@ -1,0 +1,13 @@
+{
+  "tree": {
+    "file": "tree.pdf",
+    "doi": "10.1016/j.ympev.2023.107907",
+    "study": "Portik DM, Streicher JW, Wiens JJ (2023). Frog phylogeny: A time-calibrated, species-level tree based on hundreds of loci and 5,242 species. Molecular Phylogenetics and Evolution 188:107907.",
+    "year": 2023,
+    "journal": "Molecular Phylogenetics and Evolution",
+    "license": "Elsevier (subscription)",
+    "open_access": false,
+    "url": "https://www.sciencedirect.com/science/article/abs/pii/S1055790323001719",
+    "data_url": "https://github.com/nhm-herpetology/frog-phylogeny"
+  }
+}

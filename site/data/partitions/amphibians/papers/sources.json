@@ -1,0 +1,23 @@
+{
+  "tree": {
+    "file": "tree.pdf",
+    "doi": "10.1038/s41559-018-0515-5",
+    "study": "Jetz W, Pyron RA (2018). The interplay of past diversification and evolutionary isolation with present imperilment across the amphibian tree of life. Nature Ecology & Evolution 2:850-858.",
+    "year": 2018,
+    "journal": "Nature Ecology & Evolution",
+    "license": "Springer Nature (subscription)",
+    "open_access": false,
+    "url": "https://www.nature.com/articles/s41559-018-0515-5",
+    "data_url": "https://datadryad.org/stash/dataset/doi:10.5061/dryad.cc3n6j5"
+  },
+  "estimate": {
+    "file": "estimate.pdf",
+    "doi": "10.1371/journal.pbio.1001127",
+    "study": "Mora C, Tittensor DP, Adl S, Simpson AGB, Worm B (2011). How Many Species Are There on Earth and in the Ocean? PLOS Biology 9(8):e1001127.",
+    "year": 2011,
+    "journal": "PLOS Biology",
+    "license": "CC-BY 4.0",
+    "open_access": true,
+    "url": "https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001127"
+  }
+}

@@ -1,0 +1,92 @@
+partition: Sharks
+slug: sharks
+category: Vertebrates
+
+estimate:
+  described: 1282
+  low: 1300
+  total: 1450
+  high: 1600
+  confidence: High
+  source:
+    key: Weigmann 2016
+    doi: 10.1111/jfb.12874
+    pdf: null                          # not in local papers archive; verify on access
+    url: https://onlinelibrary.wiley.com/doi/10.1111/jfb.12874
+    note: "Annotated checklist of chondrichthyans (sharks, batoids, chimaeras), J Fish Biol."
+  interval_provenance:
+    described:
+      type: paper
+      source: Weigmann 2016
+      verbatim_quote: null
+      note: "Weigmann's annotated checklist tallies described chondrichthyan species."
+    estimated_total:
+      type: paper-published
+      source: Weigmann 2016
+      verbatim_quote: null
+      note: "1,450 figure reported in atlas as paper-derived; awaiting verbatim quote verification from paywalled PDF."
+    estimated_low:
+      type: paper-published
+      source: Weigmann 2016
+      verbatim_quote: null
+      note: "Bilateral range 1300-1600; not equal to described (1282), suggesting paper-published true-diversity estimate."
+    estimated_high:
+      type: paper-published
+      source: Weigmann 2016
+      verbatim_quote: null
+      note: "Pending verbatim verification."
+    overall_classification: paper-published-range
+    auditor_note: |
+      First audited vertebrate partition with a non-degenerate interval. Need
+      to access Weigmann 2016 (paywalled, not in local papers archive) to
+      copy in the verbatim quote supporting 1300-1600 as a true-diversity
+      range. Bilateral structure (low < described < total < high) makes this
+      provisionally classified as paper-published-range.
+
+tree:
+  file: tree.nwk
+  ntips: 1192
+  unique_ids: 1192
+  species_represented: 1192
+  coverage_pct_described: 93.0
+  dated: true
+  multiple_individuals_per_species: false
+  source:
+    key: Stein 2018
+    study: Stein RW, Mull CG, Kuhn TS, Aschliman NC et al. (2018)
+    doi: 10.1038/s41559-017-0448-4
+    pdf: papers/tree.pdf
+  methods:
+    inference: ml
+    software: [RAxML, treePL 1.0, TreeAnnotator 1.7.5, Polytomy Resolver]
+    data_type: supermatrix
+    n_loci: null
+    substitution_model: GTR+CAT (GTRCAT)
+    dating_method: "treePL rate-smoothing; 7 fossil calibrations; 500 root-node-age samples → 500 dated trees."
+    fossil_calibrations: 7
+    support_metric: bootstrap
+    support_typical: "1,000 bootstrap replicates per RAxML run."
+    divergence_ci_available: true
+    divergence_ci_note: "500-tree credible set; atlas ships MCC consensus."
+    posterior_n: 500
+    bootstrap_n: 1000
+    note: "1,192 tips: 610 with direct molecular data + 582 added via Polytomy Resolver from taxonomic constraints."
+
+uncertainty:
+  host: VertLife
+  host_url: https://vertlife.org/phylosubsets/
+  files:
+    - name: Stein 2018 — 500-tree credible set
+      label: 500-tree credible set (one per root-node-age sample)
+      description: "Stein 2018's 500 treePL-dated, polytomy-resolved trees. Atlas ships only the MCC consensus."
+      size_bytes: null
+      format: VertLife phylosubsets portal
+      url: https://vertlife.org/phylosubsets/
+  note: "Posterior trees hosted at VertLife (Jetz lab portal). No DOI on the file set."
+
+audit:
+  file: ../../../audits/partitions/sharks.md
+  status: verified
+  last_audited: 2026-05-18
+
+sub_phylos: []

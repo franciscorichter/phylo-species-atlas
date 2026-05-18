@@ -8,9 +8,9 @@
     "n_groups": 264,
     "n_datasets": 49,
     "total_tips": 702787,
-    "n_audited": 3,
+    "n_audited": 7,
     "n_audits_in_progress": 0,
-    "n_audits_verified": 3
+    "n_audits_verified": 7
   },
   "trees": [
     {
@@ -650,8 +650,15 @@
         "redundancy": 0,
         "binomial_format": true
       },
-      "tree_url_override": null,
-      "tip_taxonomy_override": null,
+      "tree_url_override": "data/partitions/amphibians/tree.nwk",
+      "tip_taxonomy_override": {
+        "unique_ids": 4117,
+        "unique_species": 4117,
+        "subspecies_tips": 0,
+        "redundancy": 0,
+        "binomial_format": true,
+        "total_tips": 7239
+      },
       "is_partition_canonical": false
     },
     {
@@ -760,8 +767,15 @@
         "redundancy": 0,
         "binomial_format": false
       },
-      "tree_url_override": null,
-      "tip_taxonomy_override": null,
+      "tree_url_override": "data/partitions/fish/tree.nwk",
+      "tip_taxonomy_override": {
+        "unique_ids": 0,
+        "unique_species": 0,
+        "subspecies_tips": 0,
+        "redundancy": 0,
+        "binomial_format": false,
+        "total_tips": 11638
+      },
       "is_partition_canonical": false
     },
     {
@@ -1249,8 +1263,15 @@
         "redundancy": 0,
         "binomial_format": true
       },
-      "tree_url_override": null,
-      "tip_taxonomy_override": null,
+      "tree_url_override": "data/partitions/amphibians/tree.nwk",
+      "tip_taxonomy_override": {
+        "unique_ids": 602,
+        "unique_species": 602,
+        "subspecies_tips": 0,
+        "redundancy": 0,
+        "binomial_format": true,
+        "total_tips": 7239
+      },
       "is_partition_canonical": false
     },
     {
@@ -11863,31 +11884,6 @@
   ],
   "coverage": [
     {
-      "filename": "salamanders.nwk",
-      "group": "salamanders",
-      "provenance_group": "salamanders",
-      "partition_group": "Amphibians",
-      "category": "Vertebrates",
-      "study": "Stewart 2025",
-      "year": 2025,
-      "tips": 796,
-      "raw_tips": 796,
-      "described_species": 814,
-      "described_source": "AmphibiaWeb",
-      "coverage_pct": 97.8,
-      "dated": true,
-      "is_partition_anchor": false,
-      "is_partition_canonical": false,
-      "estimated_total": 15000,
-      "estimated_low": 10000,
-      "estimated_high": 20000,
-      "estimate_source": "Mora 2011",
-      "estimate_confidence": "Medium",
-      "coverage_pct_estimated": 5.3,
-      "coverage_pct_estimated_low": 4.0,
-      "coverage_pct_estimated_high": 8.0
-    },
-    {
       "filename": "birds.nwk",
       "group": "birds",
       "provenance_group": "birds_mctavish",
@@ -11962,7 +11958,35 @@
       "estimate_confidence": "High",
       "coverage_pct_estimated": 82.2,
       "coverage_pct_estimated_low": 74.5,
-      "coverage_pct_estimated_high": 91.7
+      "coverage_pct_estimated_high": 91.7,
+      "interval_provenance": {
+        "described": {
+          "type": "paper",
+          "source": "Weigmann 2016",
+          "verbatim_quote": null,
+          "note": "Weigmann's annotated checklist tallies described chondrichthyan species."
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Weigmann 2016",
+          "verbatim_quote": null,
+          "note": "1,450 figure reported in atlas as paper-derived; awaiting verbatim quote verification from paywalled PDF."
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "Weigmann 2016",
+          "verbatim_quote": null,
+          "note": "Bilateral range 1300-1600; not equal to described (1282), suggesting paper-published true-diversity estimate."
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Weigmann 2016",
+          "verbatim_quote": null,
+          "note": "Pending verbatim verification."
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "First audited vertebrate partition with a non-degenerate interval. Need\nto access Weigmann 2016 (paywalled, not in local papers archive) to\ncopy in the verbatim quote supporting 1300-1600 as a true-diversity\nrange. Bilateral structure (low < described < total < high) makes this\nprovisionally classified as paper-published-range.\n"
+      }
     },
     {
       "filename": "cetaceans.nwk",
@@ -12220,7 +12244,33 @@
       "estimate_confidence": "High",
       "coverage_pct_estimated": 81.3,
       "coverage_pct_estimated_low": 75.0,
-      "coverage_pct_estimated_high": 83.1
+      "coverage_pct_estimated_high": 83.1,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Reptile Database (Uetz 2025)",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "heuristic",
+          "source": "atlas-derived",
+          "verbatim_quote": null,
+          "note": "12,000 is a round-number placeholder above described."
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "Reptile Database",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "heuristic",
+          "source": "atlas-derived",
+          "verbatim_quote": null,
+          "note": "13,000 allows ~10% undescribed; not paper-published."
+        },
+        "overall_classification": "fully-heuristic",
+        "auditor_note": "Like Birds and Turtles, Squamates lacks a paper-published true-diversity range. The Reptile Database is a checklist, not an estimate. Round-number bounds (12k, 13k) are atlas placeholders."
+      }
     },
     {
       "filename": "amphibians.nwk",
@@ -12245,7 +12295,33 @@
       "estimate_confidence": "Medium",
       "coverage_pct_estimated": 48.3,
       "coverage_pct_estimated_low": 36.2,
-      "coverage_pct_estimated_high": 72.4
+      "coverage_pct_estimated_high": 72.4,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "AmphibiaWeb 2025",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Mora 2011",
+          "verbatim_quote": null,
+          "note": "Mora 2011 estimates ~15,000 amphibian species using extrapolation from genus-discovery curves."
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "Mora 2011",
+          "verbatim_quote": null,
+          "note": "Bilateral range; not equal to described."
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Mora 2011",
+          "verbatim_quote": null
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "Mora 2011 is one of the few papers in the atlas that publishes a true bilateral diversity estimate for vertebrates. The 10,000-15,000-20,000 range is genuine paper-derived uncertainty, not heuristic."
+      }
     },
     {
       "filename": "turtles.nwk",
@@ -12308,18 +12384,18 @@
       }
     },
     {
-      "filename": "frogs.nwk",
-      "group": "frogs",
-      "provenance_group": "frogs",
+      "filename": "salamanders.nwk",
+      "group": "salamanders",
+      "provenance_group": "salamanders",
       "partition_group": "Amphibians",
       "category": "Vertebrates",
-      "study": "Portik 2023",
-      "year": 2023,
-      "tips": 5326,
-      "raw_tips": 5326,
-      "described_species": 7486,
-      "described_source": "AmphibiaWeb 2025",
-      "coverage_pct": 71.1,
+      "study": "Stewart 2025",
+      "year": 2025,
+      "tips": 602,
+      "raw_tips": 796,
+      "described_species": 814,
+      "described_source": "AmphibiaWeb",
+      "coverage_pct": 74.0,
       "dated": true,
       "is_partition_anchor": false,
       "is_partition_canonical": false,
@@ -12328,9 +12404,35 @@
       "estimated_high": 20000,
       "estimate_source": "Mora 2011",
       "estimate_confidence": "Medium",
-      "coverage_pct_estimated": 35.5,
-      "coverage_pct_estimated_low": 26.6,
-      "coverage_pct_estimated_high": 53.3
+      "coverage_pct_estimated": 4.0,
+      "coverage_pct_estimated_low": 3.0,
+      "coverage_pct_estimated_high": 6.0,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "AmphibiaWeb 2025",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Mora 2011",
+          "verbatim_quote": null,
+          "note": "Mora 2011 estimates ~15,000 amphibian species using extrapolation from genus-discovery curves."
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "Mora 2011",
+          "verbatim_quote": null,
+          "note": "Bilateral range; not equal to described."
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Mora 2011",
+          "verbatim_quote": null
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "Mora 2011 is one of the few papers in the atlas that publishes a true bilateral diversity estimate for vertebrates. The 10,000-15,000-20,000 range is genuine paper-derived uncertainty, not heuristic."
+      }
     },
     {
       "filename": "cacti.nwk",
@@ -12356,6 +12458,57 @@
       "coverage_pct_estimated": 0.2,
       "coverage_pct_estimated_low": 0.2,
       "coverage_pct_estimated_high": 0.3
+    },
+    {
+      "filename": "frogs.nwk",
+      "group": "frogs",
+      "provenance_group": "frogs",
+      "partition_group": "Amphibians",
+      "category": "Vertebrates",
+      "study": "Portik 2023",
+      "year": 2023,
+      "tips": 4117,
+      "raw_tips": 5326,
+      "described_species": 7486,
+      "described_source": "AmphibiaWeb 2025",
+      "coverage_pct": 55.0,
+      "dated": true,
+      "is_partition_anchor": false,
+      "is_partition_canonical": false,
+      "estimated_total": 15000,
+      "estimated_low": 10000,
+      "estimated_high": 20000,
+      "estimate_source": "Mora 2011",
+      "estimate_confidence": "Medium",
+      "coverage_pct_estimated": 27.4,
+      "coverage_pct_estimated_low": 20.6,
+      "coverage_pct_estimated_high": 41.2,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "AmphibiaWeb 2025",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Mora 2011",
+          "verbatim_quote": null,
+          "note": "Mora 2011 estimates ~15,000 amphibian species using extrapolation from genus-discovery curves."
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "Mora 2011",
+          "verbatim_quote": null,
+          "note": "Bilateral range; not equal to described."
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Mora 2011",
+          "verbatim_quote": null
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "Mora 2011 is one of the few papers in the atlas that publishes a true bilateral diversity estimate for vertebrates. The 10,000-15,000-20,000 range is genuine paper-derived uncertainty, not heuristic."
+      }
     },
     {
       "filename": "ferns.nwk",
@@ -12482,7 +12635,34 @@
       "estimate_confidence": "Medium",
       "coverage_pct_estimated": 29.0,
       "coverage_pct_estimated_low": 23.2,
-      "coverage_pct_estimated_high": 32.2
+      "coverage_pct_estimated_high": 32.2,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Eschmeyer's Catalog of Fishes",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Mora 2011",
+          "verbatim_quote": null,
+          "note": "Mora 2011 estimates ~40,000 fish species via higher-taxon discovery-curve extrapolation."
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "Eschmeyer's Catalog",
+          "verbatim_quote": null,
+          "note": "Low bound = described count from Eschmeyer."
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Mora 2011",
+          "verbatim_quote": null,
+          "note": "50,000 high bound from Mora 2011."
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Low bound equals described count (Eschmeyer floor); total + high are Mora 2011 estimates. The 36-50k spread is a true paper-published uncertainty."
+      }
     },
     {
       "filename": "bees.nwk",
@@ -16758,6 +16938,275 @@
     }
   ],
   "audits": {
+    "Amphibians": {
+      "partition": "Amphibians",
+      "slug": "amphibians",
+      "category": "Vertebrates",
+      "estimate": {
+        "described": 8863,
+        "low": 10000,
+        "total": 15000,
+        "high": 20000,
+        "confidence": "Medium",
+        "source": {
+          "key": "Mora 2011",
+          "doi": "10.1371/journal.pbio.1001127",
+          "pdf": "papers/estimate.pdf",
+          "url": "https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001127",
+          "note": "Mora et al. 2011 PLOS Biology — 'How Many Species Are There on Earth and in the Ocean?' — uses extrapolation from higher-taxon discovery curves."
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "AmphibiaWeb 2025",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "paper-published",
+            "source": "Mora 2011",
+            "verbatim_quote": null,
+            "note": "Mora 2011 estimates ~15,000 amphibian species using extrapolation from genus-discovery curves."
+          },
+          "estimated_low": {
+            "type": "paper-published",
+            "source": "Mora 2011",
+            "verbatim_quote": null,
+            "note": "Bilateral range; not equal to described."
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "Mora 2011",
+            "verbatim_quote": null
+          },
+          "overall_classification": "paper-published-range",
+          "auditor_note": "Mora 2011 is one of the few papers in the atlas that publishes a true bilateral diversity estimate for vertebrates. The 10,000-15,000-20,000 range is genuine paper-derived uncertainty, not heuristic."
+        }
+      },
+      "tree": {
+        "file": "tree.nwk",
+        "ntips": 7239,
+        "unique_ids": 7239,
+        "species_represented": 7239,
+        "coverage_pct_described": 81.7,
+        "dated": true,
+        "multiple_individuals_per_species": false,
+        "source": {
+          "key": "Jetz Pyron 2018",
+          "study": "Jetz W, Pyron RA (2018)",
+          "doi": "10.1038/s41559-018-0515-5",
+          "pdf": "papers/tree.pdf"
+        },
+        "methods": {
+          "inference": "bayesian",
+          "software": [
+            "BEAST",
+            "Jetz 2012 imputation method"
+          ],
+          "data_type": "supermatrix",
+          "n_loci": 15,
+          "dating_method": "15-gene Bayesian supermatrix + taxonomic imputation to fill species missing from sequence data.",
+          "support_metric": "posterior_probability",
+          "divergence_ci_available": true,
+          "divergence_ci_note": "10 posterior tree sets on Dryad."
+        }
+      },
+      "uncertainty": {
+        "host": "Dryad",
+        "host_url": "https://datadryad.org/stash/dataset/doi:10.5061/dryad.cc3n6j5",
+        "host_doi": "10.5061/dryad.cc3n6j5",
+        "files": [
+          {
+            "name": "Jetz-Pyron 2018 posterior sets",
+            "label": "10 posterior credible sets",
+            "description": "Multiple posterior tree samples corresponding to different imputation runs.",
+            "size_bytes": null,
+            "format": "Dryad archive",
+            "url": "https://datadryad.org/stash/dataset/doi:10.5061/dryad.cc3n6j5"
+          }
+        ],
+        "note": "Atlas ships MCC consensus."
+      },
+      "audit": {
+        "file": "../../../audits/partitions/amphibians.md",
+        "status": "verified",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [
+        {
+          "slug": "frogs"
+        },
+        {
+          "slug": "salamanders"
+        }
+      ],
+      "_sub_phylos_loaded": [
+        {
+          "slug": "frogs",
+          "taxon": "Anura",
+          "parent": "amphibians",
+          "parent_category": "Vertebrates",
+          "tree": {
+            "file": "tree.nwk",
+            "ntips": 5326,
+            "dated": true,
+            "source": {
+              "key": "Portik 2023",
+              "study": "Portik DM, Streicher JW, Wiens JJ (2023)",
+              "doi": "10.1016/j.ympev.2023.107907",
+              "pdf": "papers/tree.pdf"
+            },
+            "methods": {
+              "inference": "ml",
+              "software": [
+                "RAxML",
+                "treePL"
+              ],
+              "data_type": "supermatrix",
+              "n_loci": 307,
+              "dating_method": "treePL rate-smoothing",
+              "support_metric": "bootstrap",
+              "support_typical": "100 bootstrap trees available.",
+              "divergence_ci_available": true,
+              "posterior_n": null,
+              "note": "Supermatrix of up to 307 loci, 5,242 frog species in tree."
+            }
+          },
+          "species_count": {
+            "source": "AmphibiaWeb 2025",
+            "described": 7486,
+            "coverage_pct_described": 71.1
+          }
+        },
+        {
+          "slug": "salamanders",
+          "taxon": "Caudata",
+          "parent": "amphibians",
+          "parent_category": "Vertebrates",
+          "tree": {
+            "file": "tree.nwk",
+            "ntips": 796,
+            "dated": true,
+            "source": {
+              "key": "Stewart 2025",
+              "study": "Stewart AA, Wiens JJ (2025)",
+              "doi": "10.1016/j.ympev.2024.108272",
+              "pdf": "papers/tree.pdf"
+            },
+            "methods": {
+              "inference": "ml",
+              "software": [
+                "RAxML",
+                "treePL"
+              ],
+              "data_type": "supermatrix",
+              "n_loci": 503,
+              "dating_method": "Time-calibrated supermatrix with 503 genes for 765 species.",
+              "support_metric": "bootstrap",
+              "divergence_ci_available": true,
+              "note": "Recent (Dec 2024 online; 2025 volume); 503-gene supermatrix."
+            }
+          },
+          "species_count": {
+            "source": "AmphibiaWeb 2025",
+            "described": 814,
+            "coverage_pct_described": 97.8
+          }
+        }
+      ],
+      "audit_version": 1,
+      "status": "verified",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "Mora 2011",
+        "doi": "10.1371/journal.pbio.1001127",
+        "doi_verified": true,
+        "crossref_match": true,
+        "year_published": 2011,
+        "cited_value": 15000,
+        "newer_authoritative_known": true,
+        "newer_candidate": {
+          "doi": null,
+          "year": 2025,
+          "study": "AmphibiaWeb live database",
+          "cited_value": 8863,
+          "recommendation": "watch",
+          "notes": "AmphibiaWeb tracks described species count continuously (~8,863 in 2025); Mora 2011 estimated true diversity at 15,000."
+        }
+      },
+      "canonical_tree": {
+        "filename": "amphibians.nwk",
+        "provenance_group": "amphibians",
+        "study": "Jetz W, Pyron RA (2018)",
+        "doi": "10.1038/s41559-018-0515-5",
+        "doi_verified": true,
+        "crossref_match": true,
+        "newer_authoritative_known": false,
+        "newer_candidate": null
+      },
+      "methods": {
+        "inference": "bayesian",
+        "software": [
+          "BEAST (Pyron 2014 base)",
+          "Jetz 2012 imputation"
+        ],
+        "data_type": "supermatrix",
+        "n_loci": 15,
+        "dated": true,
+        "dating_method": "15-gene supermatrix Bayesian + taxonomic imputation. Covers frogs + salamanders + caecilians.",
+        "support_metric": "posterior_probability",
+        "divergence_ci_available": true,
+        "divergence_ci_note": "10 posterior tree sets available on Dryad.",
+        "posterior_n": null
+      },
+      "shipped_subclades": [
+        {
+          "filename": "frogs.nwk",
+          "study": "Portik DM, Streicher JW, Wiens JJ (2023)",
+          "taxon": "Anura (frogs)",
+          "ntips": 5326,
+          "methods_inherits_parent": false
+        },
+        {
+          "filename": "salamanders.nwk",
+          "study": "Stewart AA, Wiens JJ (2025)",
+          "taxon": "Caudata (salamanders)",
+          "ntips": 796,
+          "methods_inherits_parent": false
+        }
+      ],
+      "candidate_subclades": [
+        {
+          "taxon": "Gymnophiona (caecilians)",
+          "rationale": "~215 caecilian species. Both Jetz-Pyron 2018 and the shipped sub-clades cover Anura + Caudata. A dedicated caecilian tree (San Mauro 2014) would complete the order-level coverage.",
+          "candidate_papers": [
+            {
+              "doi": null,
+              "year": 2014,
+              "study": "San Mauro et al. — caecilian phylogeny",
+              "ntips": null,
+              "url": null
+            }
+          ],
+          "download_target": "unknown",
+          "recipe_file": null,
+          "priority": "low",
+          "status": "proposed"
+        }
+      ],
+      "resolutions": [
+        {
+          "issue": "Mora 2011 estimated 15,000 species; current AmphibiaWeb count is 8,863. Gap reflects undescribed cryptic diversity, not a counting error.",
+          "resolved_by": "Documented. Mora 2011's estimate is bilateral (10,000-20,000); paper-published range. Honest scientific uncertainty."
+        }
+      ],
+      "website": {
+        "surface_methods": true,
+        "surface_uncertainty": true,
+        "surface_candidates": true,
+        "badge": "verified"
+      }
+    },
     "Birds": {
       "partition": "Birds",
       "slug": "birds",
@@ -17117,6 +17566,221 @@
           "outcome": "hit"
         }
       ]
+    },
+    "Fish": {
+      "partition": "Fish",
+      "slug": "fish",
+      "category": "Vertebrates",
+      "estimate": {
+        "described": 36000,
+        "low": 36000,
+        "total": 40000,
+        "high": 50000,
+        "confidence": "Medium",
+        "source": {
+          "key": "Mora 2011",
+          "doi": "10.1371/journal.pbio.1001127",
+          "pdf": "papers/estimate.pdf",
+          "url": "https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001127"
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "Eschmeyer's Catalog of Fishes",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "paper-published",
+            "source": "Mora 2011",
+            "verbatim_quote": null,
+            "note": "Mora 2011 estimates ~40,000 fish species via higher-taxon discovery-curve extrapolation."
+          },
+          "estimated_low": {
+            "type": "derived-from-described",
+            "source": "Eschmeyer's Catalog",
+            "verbatim_quote": null,
+            "note": "Low bound = described count from Eschmeyer."
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "Mora 2011",
+            "verbatim_quote": null,
+            "note": "50,000 high bound from Mora 2011."
+          },
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Low bound equals described count (Eschmeyer floor); total + high are Mora 2011 estimates. The 36-50k spread is a true paper-published uncertainty."
+        }
+      },
+      "tree": {
+        "file": "tree.nwk",
+        "ntips": 31516,
+        "unique_ids": 31516,
+        "species_represented": 31516,
+        "coverage_pct_described": 87.5,
+        "dated": true,
+        "multiple_individuals_per_species": false,
+        "source": {
+          "key": "Rabosky 2018",
+          "study": "Rabosky DL et al. (2018)",
+          "doi": "10.1038/s41586-018-0273-1",
+          "pdf": "papers/tree.pdf"
+        },
+        "methods": {
+          "inference": "ml",
+          "software": [
+            "RAxML",
+            "treePL"
+          ],
+          "data_type": "supermatrix",
+          "n_loci": 27,
+          "dating_method": "27-gene RAxML ML with treePL dating; 130 fossil calibrations.",
+          "fossil_calibrations": 130,
+          "support_metric": "bootstrap",
+          "divergence_ci_available": true,
+          "divergence_ci_note": "11,638-tip dated backbone + 100 chronograms with taxonomic imputation.",
+          "posterior_n": 100,
+          "note": "Atlas ships 31,516-tip FishTreeOfLife chronogram (taxonomic imputation extends the 11,638-tip backbone)."
+        }
+      },
+      "uncertainty": {
+        "host": "FishTreeOfLife",
+        "host_url": "https://fishtreeoflife.org/downloads/",
+        "files": [
+          {
+            "name": "FishTreeOfLife — 100 chronograms with taxonomic imputation",
+            "label": "100-tree credible set (imputation-extended)",
+            "description": "100 chronograms from the Rabosky 2018 backbone with taxonomic imputation; available from FishTreeOfLife portal.",
+            "size_bytes": null,
+            "format": "FishTreeOfLife portal",
+            "url": "https://fishtreeoflife.org/downloads/"
+          }
+        ],
+        "note": "Atlas ships MCC consensus only."
+      },
+      "audit": {
+        "file": "../../../audits/partitions/fish.md",
+        "status": "verified",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [
+        {
+          "slug": "neotropical_fish"
+        }
+      ],
+      "_sub_phylos_loaded": [
+        {
+          "slug": "neotropical_fish",
+          "taxon": "Neotropical freshwater fishes",
+          "parent": "fish",
+          "parent_category": "Vertebrates",
+          "tree": {
+            "file": "tree.nwk",
+            "ntips": 3167,
+            "dated": true,
+            "source": {
+              "key": "Tagliacollo 2024",
+              "study": "Tagliacollo VA et al. (2024)",
+              "doi": "10.3389/fbinf.2024.1433995",
+              "pdf": "papers/tree.pdf"
+            },
+            "methods": {
+              "inference": "ml",
+              "software": [
+                "RAxML",
+                "treePL"
+              ],
+              "data_type": "supermatrix",
+              "n_loci": 51,
+              "dating_method": "51-marker supermatrix, 5,984 total taxa, treePL dating.",
+              "support_metric": "bootstrap",
+              "note": "Also provides 5,984-taxon ML tree and genus-level dated tree."
+            }
+          },
+          "species_count": {
+            "source": "Eschmeyer's Catalog",
+            "described": null,
+            "coverage_pct_described": null
+          }
+        }
+      ],
+      "audit_version": 1,
+      "status": "verified",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "Mora 2011",
+        "doi": "10.1371/journal.pbio.1001127",
+        "doi_verified": true,
+        "crossref_match": true,
+        "year_published": 2011,
+        "cited_value": 40000,
+        "newer_authoritative_known": true,
+        "newer_candidate": {
+          "doi": null,
+          "year": 2025,
+          "study": "Eschmeyer's Catalog of Fishes (live)",
+          "cited_value": 36000,
+          "recommendation": "watch",
+          "notes": "Eschmeyer's Catalog tracks the canonical described count of ray-finned fishes."
+        }
+      },
+      "canonical_tree": {
+        "filename": "fish.nwk",
+        "provenance_group": "fish",
+        "study": "Rabosky DL, Chang J, Title PO, Cowman PF, Sallan L, Friedman M et al. (2018)",
+        "doi": "10.1038/s41586-018-0273-1",
+        "doi_verified": true,
+        "crossref_match": true,
+        "newer_authoritative_known": false,
+        "newer_candidate": null
+      },
+      "methods": {
+        "inference": "ml",
+        "software": [
+          "RAxML",
+          "treePL"
+        ],
+        "data_type": "supermatrix",
+        "n_loci": 27,
+        "dated": true,
+        "dating_method": "27-gene supermatrix RAxML ML, treePL dating with 130 fossil calibrations.",
+        "fossil_calibrations": 130,
+        "support_metric": "bootstrap",
+        "divergence_ci_available": true,
+        "divergence_ci_note": "11,638-tip dated backbone + 100 chronograms with taxonomic imputation (FishTreeOfLife).",
+        "posterior_n": 100,
+        "methods_url": "https://fishtreeoflife.org/"
+      },
+      "shipped_subclades": [
+        {
+          "filename": "neotropical_fish.nwk",
+          "study": "Tagliacollo VA et al. (2024)",
+          "taxon": "Neotropical freshwater fishes",
+          "ntips": 3167,
+          "methods_inherits_parent": false
+        }
+      ],
+      "candidate_subclades": [
+        {
+          "taxon": "Cichlidae (cichlids)",
+          "rationale": "~1,700 species; iconic radiation. Multiple cichlid trees available; would complement the broad Rabosky tree.",
+          "candidate_papers": [],
+          "priority": "low",
+          "status": "proposed"
+        }
+      ],
+      "resolutions": [
+        {
+          "issue": "Atlas ships the 31,516-tip FishTreeOfLife chronogram with taxonomic imputation; only 11,638 tips have direct DNA data.",
+          "resolved_by": "Documented in methods.note. Users interpreting species-level placement uncertainty should consult Rabosky 2018 §Methods."
+        }
+      ],
+      "website": {
+        "surface_methods": true,
+        "surface_uncertainty": true,
+        "surface_candidates": true,
+        "badge": "verified"
+      }
     },
     "Mammals": {
       "partition": "Mammals",
@@ -17547,6 +18211,372 @@
           "target": "Marsupialia phylogeny species-level tree",
           "ts": "2026-05-17T00:00Z",
           "cache": "miss"
+        }
+      ]
+    },
+    "Sharks": {
+      "partition": "Sharks",
+      "slug": "sharks",
+      "category": "Vertebrates",
+      "estimate": {
+        "described": 1282,
+        "low": 1300,
+        "total": 1450,
+        "high": 1600,
+        "confidence": "High",
+        "source": {
+          "key": "Weigmann 2016",
+          "doi": "10.1111/jfb.12874",
+          "pdf": null,
+          "url": "https://onlinelibrary.wiley.com/doi/10.1111/jfb.12874",
+          "note": "Annotated checklist of chondrichthyans (sharks, batoids, chimaeras), J Fish Biol."
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "paper",
+            "source": "Weigmann 2016",
+            "verbatim_quote": null,
+            "note": "Weigmann's annotated checklist tallies described chondrichthyan species."
+          },
+          "estimated_total": {
+            "type": "paper-published",
+            "source": "Weigmann 2016",
+            "verbatim_quote": null,
+            "note": "1,450 figure reported in atlas as paper-derived; awaiting verbatim quote verification from paywalled PDF."
+          },
+          "estimated_low": {
+            "type": "paper-published",
+            "source": "Weigmann 2016",
+            "verbatim_quote": null,
+            "note": "Bilateral range 1300-1600; not equal to described (1282), suggesting paper-published true-diversity estimate."
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "Weigmann 2016",
+            "verbatim_quote": null,
+            "note": "Pending verbatim verification."
+          },
+          "overall_classification": "paper-published-range",
+          "auditor_note": "First audited vertebrate partition with a non-degenerate interval. Need\nto access Weigmann 2016 (paywalled, not in local papers archive) to\ncopy in the verbatim quote supporting 1300-1600 as a true-diversity\nrange. Bilateral structure (low < described < total < high) makes this\nprovisionally classified as paper-published-range.\n"
+        }
+      },
+      "tree": {
+        "file": "tree.nwk",
+        "ntips": 1192,
+        "unique_ids": 1192,
+        "species_represented": 1192,
+        "coverage_pct_described": 93.0,
+        "dated": true,
+        "multiple_individuals_per_species": false,
+        "source": {
+          "key": "Stein 2018",
+          "study": "Stein RW, Mull CG, Kuhn TS, Aschliman NC et al. (2018)",
+          "doi": "10.1038/s41559-017-0448-4",
+          "pdf": "papers/tree.pdf"
+        },
+        "methods": {
+          "inference": "ml",
+          "software": [
+            "RAxML",
+            "treePL 1.0",
+            "TreeAnnotator 1.7.5",
+            "Polytomy Resolver"
+          ],
+          "data_type": "supermatrix",
+          "n_loci": null,
+          "substitution_model": "GTR+CAT (GTRCAT)",
+          "dating_method": "treePL rate-smoothing; 7 fossil calibrations; 500 root-node-age samples → 500 dated trees.",
+          "fossil_calibrations": 7,
+          "support_metric": "bootstrap",
+          "support_typical": "1,000 bootstrap replicates per RAxML run.",
+          "divergence_ci_available": true,
+          "divergence_ci_note": "500-tree credible set; atlas ships MCC consensus.",
+          "posterior_n": 500,
+          "bootstrap_n": 1000,
+          "note": "1,192 tips: 610 with direct molecular data + 582 added via Polytomy Resolver from taxonomic constraints."
+        }
+      },
+      "uncertainty": {
+        "host": "VertLife",
+        "host_url": "https://vertlife.org/phylosubsets/",
+        "files": [
+          {
+            "name": "Stein 2018 — 500-tree credible set",
+            "label": "500-tree credible set (one per root-node-age sample)",
+            "description": "Stein 2018's 500 treePL-dated, polytomy-resolved trees. Atlas ships only the MCC consensus.",
+            "size_bytes": null,
+            "format": "VertLife phylosubsets portal",
+            "url": "https://vertlife.org/phylosubsets/"
+          }
+        ],
+        "note": "Posterior trees hosted at VertLife (Jetz lab portal). No DOI on the file set."
+      },
+      "audit": {
+        "file": "../../../audits/partitions/sharks.md",
+        "status": "verified",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "verified",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "Weigmann 2016",
+        "doi": "10.1111/jfb.12874",
+        "doi_verified": true,
+        "crossref_match": true,
+        "year_published": 2016,
+        "cited_value": 1450,
+        "newer_authoritative_known": true,
+        "newer_candidate": {
+          "doi": null,
+          "year": 2025,
+          "study": "Chondrichthyan Tree of Life / Shark References (live)",
+          "cited_value": null,
+          "recommendation": "watch",
+          "notes": "Live databases (sharkreferences.com, Chondrichthyan Tree of Life) update species counts continuously; Weigmann 2016 is the canonical published checklist."
+        }
+      },
+      "canonical_tree": {
+        "filename": "sharks.nwk",
+        "provenance_group": "sharks",
+        "study": "Stein RW, Mull CG, Kuhn TS, Aschliman NC et al. (2018)",
+        "doi": "10.1038/s41559-017-0448-4",
+        "doi_verified": true,
+        "crossref_match": true,
+        "newer_authoritative_known": false,
+        "newer_candidate": null
+      },
+      "methods": {
+        "inference": "ml",
+        "software": [
+          "RAxML",
+          "treePL 1.0",
+          "TreeAnnotator 1.7.5",
+          "Polytomy Resolver"
+        ],
+        "data_type": "supermatrix",
+        "n_loci": null,
+        "n_genes": null,
+        "total_bp": null,
+        "substitution_model": "GTR+CAT (GTRCAT)",
+        "dated": true,
+        "dating_method": "treePL rate-smoothing (penalized likelihood) on the RAxML topology;\n7 fossil calibrations distributed across the Chondrichthyan phylogeny;\n500 root-node ages sampled → 500 dated trees per calibration scenario.\n",
+        "fossil_calibrations": 7,
+        "support_metric": "bootstrap",
+        "support_typical": "1,000 bootstrap replicates per RAxML run; low overall bootstrap when M3CPN excluded.",
+        "divergence_ci_available": true,
+        "divergence_ci_note": "500-tree posterior credible set (one per root-node age); atlas ships the MCC consensus.",
+        "posterior_n": 500,
+        "bootstrap_n": 1000,
+        "methods_url": "https://www.nature.com/articles/s41559-017-0448-4"
+      },
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [
+        {
+          "issue": "Tree contains 1,192 species but only 610 have direct molecular data; the remaining 582 were placed via Polytomy Resolver from taxonomic constraints.",
+          "resolved_by": "Documented in methods block. Users interpreting species-level placement uncertainty for the 582 taxon-addition species should consult Stein 2018 §Methods."
+        }
+      ],
+      "website": {
+        "surface_methods": true,
+        "surface_uncertainty": true,
+        "surface_candidates": true,
+        "badge": "verified"
+      },
+      "api_calls": [
+        {
+          "service": "crossref",
+          "target": "10.1038/s41559-017-0448-4",
+          "ts": "2026-05-18T00:00Z",
+          "outcome": "hit",
+          "cache": "pending"
+        },
+        {
+          "service": "crossref",
+          "target": "10.1111/jfb.12874",
+          "ts": "2026-05-18T00:00Z",
+          "outcome": "hit",
+          "cache": "pending"
+        }
+      ]
+    },
+    "Squamates": {
+      "partition": "Squamates",
+      "slug": "squamates",
+      "category": "Vertebrates",
+      "estimate": {
+        "described": 11744,
+        "low": 11744,
+        "total": 12000,
+        "high": 13000,
+        "confidence": "High",
+        "source": {
+          "key": "Uetz 2025",
+          "doi": null,
+          "type": "database",
+          "pdf": null,
+          "url": "https://reptile-database.reptarium.cz/",
+          "note": "Reptile Database — live taxonomic checklist maintained by Peter Uetz."
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "Reptile Database (Uetz 2025)",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "heuristic",
+            "source": "atlas-derived",
+            "verbatim_quote": null,
+            "note": "12,000 is a round-number placeholder above described."
+          },
+          "estimated_low": {
+            "type": "derived-from-described",
+            "source": "Reptile Database",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "heuristic",
+            "source": "atlas-derived",
+            "verbatim_quote": null,
+            "note": "13,000 allows ~10% undescribed; not paper-published."
+          },
+          "overall_classification": "fully-heuristic",
+          "auditor_note": "Like Birds and Turtles, Squamates lacks a paper-published true-diversity range. The Reptile Database is a checklist, not an estimate. Round-number bounds (12k, 13k) are atlas placeholders."
+        }
+      },
+      "tree": {
+        "file": "tree.nwk",
+        "ntips": 9755,
+        "unique_ids": 9755,
+        "species_represented": 9755,
+        "coverage_pct_described": 83.1,
+        "dated": true,
+        "multiple_individuals_per_species": false,
+        "source": {
+          "key": "Tonini 2016",
+          "study": "Tonini JFR, Beard KH, Ferreira RB, Jetz W, Pyron RA (2016)",
+          "doi": "10.1016/j.biocon.2016.03.039",
+          "pdf": "papers/tree.pdf"
+        },
+        "methods": {
+          "inference": "bayesian",
+          "software": [
+            "BEAST (via Pyron 2013)",
+            "Jetz et al. 2012 imputation"
+          ],
+          "data_type": "supermatrix",
+          "n_loci": 12,
+          "dating_method": "Inherited from Pyron 2013 Bayesian dating; Tonini 2016 extends to 9,755 species via Jetz 2012 taxonomic imputation.",
+          "support_metric": "posterior_probability",
+          "divergence_ci_available": true,
+          "divergence_ci_note": "10 posterior tree sets × 1000 trees each (~456 MB) on Dryad.",
+          "posterior_n": 10000,
+          "note": "4,170 species with direct molecular data (Pyron 2013); 5,585 additional species placed via taxonomic imputation. Users should weight species-level placements accordingly."
+        }
+      },
+      "uncertainty": {
+        "host": "Dryad",
+        "host_url": "https://datadryad.org/stash/dataset/doi:10.5061/dryad.db005",
+        "host_doi": "10.5061/dryad.db005",
+        "files": [
+          {
+            "name": "Tonini 2016 posterior credible set",
+            "label": "10 posterior sets × 1,000 trees each",
+            "description": "10 BEAST credible sets corresponding to 10 imputation runs; ~456 MB total.",
+            "size_bytes": null,
+            "format": "Dryad archive",
+            "url": "https://datadryad.org/stash/dataset/doi:10.5061/dryad.db005"
+          }
+        ],
+        "note": "Atlas ships only the MCC consensus."
+      },
+      "audit": {
+        "file": "../../../audits/partitions/squamates.md",
+        "status": "verified",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "verified",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "Uetz 2025",
+        "doi": null,
+        "doi_verified": "na",
+        "crossref_match": "na",
+        "year_published": 2025,
+        "cited_value": 11744,
+        "newer_authoritative_known": false,
+        "newer_candidate": null,
+        "notes": "Reptile Database (reptile-database.org) is a live taxonomic database. No DOI; Uetz P maintains the canonical reptile species list."
+      },
+      "canonical_tree": {
+        "filename": "squamates.nwk",
+        "provenance_group": "squamates",
+        "study": "Tonini JFR, Beard KH, Ferreira RB, Jetz W, Pyron RA (2016)",
+        "doi": "10.1016/j.biocon.2016.03.039",
+        "doi_verified": true,
+        "crossref_match": true,
+        "newer_authoritative_known": false,
+        "newer_candidate": null
+      },
+      "methods": {
+        "inference": "bayesian",
+        "software": [
+          "BEAST (via Pyron 2013)",
+          "Jetz et al. 2012 imputation method"
+        ],
+        "data_type": "supermatrix",
+        "n_loci": 12,
+        "data_source_note": "Built on Pyron 2013 12-gene supermatrix (4,170 squamates + 1 Sphenodon).\nTonini 2016 extends to 9,755 species via taxonomic imputation (Jetz 2012 method).\n",
+        "dated": true,
+        "dating_method": "Inherited from Pyron 2013 Bayesian dating.",
+        "fossil_calibrations": null,
+        "support_metric": "posterior_probability",
+        "divergence_ci_available": true,
+        "divergence_ci_note": "10 posterior tree sets (1000 trees each, ~456 MB total) available on Dryad.",
+        "posterior_n": 10000,
+        "methods_url": "https://www.sciencedirect.com/science/article/abs/pii/S0006320716301197"
+      },
+      "shipped_subclades": [],
+      "candidate_subclades": [
+        {
+          "taxon": "Iguania (iguanas, anoles, agamids)",
+          "rationale": "~1,800 species; well-studied. Daza et al. 2012 and others have dedicated multi-locus trees.",
+          "candidate_papers": [],
+          "download_target": "unknown",
+          "recipe_file": null,
+          "priority": "low",
+          "status": "proposed",
+          "notes": "Tonini 2016's imputation handles iguanian diversity well; dedicated tree would be supplementary."
+        }
+      ],
+      "resolutions": [
+        {
+          "issue": "Tonini 2016 reports ~9,500 squamate species; data_estimates.csv records 11,744 from Uetz 2025.",
+          "resolved_by": "Both correct for their dates. Tonini 2016 used 2015-era Reptile Database. The 9,755 tip count reflects the tree's vintage; the 11,744 described count reflects Uetz 2025. The 21% gap is real undescribed-since-2016 + cryptic recognition."
+        }
+      ],
+      "website": {
+        "surface_methods": true,
+        "surface_uncertainty": true,
+        "surface_candidates": true,
+        "badge": "verified"
+      },
+      "api_calls": [
+        {
+          "service": "crossref",
+          "target": "10.1016/j.biocon.2016.03.039",
+          "ts": "2026-05-18T00:00Z",
+          "outcome": "hit",
+          "cache": "pending"
         }
       ]
     },

@@ -1,0 +1,27 @@
+slug: neotropical_fish
+taxon: Neotropical freshwater fishes
+parent: fish
+parent_category: Vertebrates
+
+tree:
+  file: tree.nwk
+  ntips: 3167
+  dated: true
+  source:
+    key: Tagliacollo 2024
+    study: Tagliacollo VA et al. (2024)
+    doi: 10.3389/fbinf.2024.1433995
+    pdf: papers/tree.pdf
+  methods:
+    inference: ml
+    software: [RAxML, treePL]
+    data_type: supermatrix
+    n_loci: 51
+    dating_method: "51-marker supermatrix, 5,984 total taxa, treePL dating."
+    support_metric: bootstrap
+    note: "Also provides 5,984-taxon ML tree and genus-level dated tree."
+
+species_count:
+  source: Eschmeyer's Catalog
+  described: null
+  coverage_pct_described: null

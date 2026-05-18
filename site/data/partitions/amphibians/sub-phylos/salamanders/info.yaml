@@ -1,0 +1,28 @@
+slug: salamanders
+taxon: Caudata
+parent: amphibians
+parent_category: Vertebrates
+
+tree:
+  file: tree.nwk
+  ntips: 796
+  dated: true
+  source:
+    key: Stewart 2025
+    study: Stewart AA, Wiens JJ (2025)
+    doi: 10.1016/j.ympev.2024.108272
+    pdf: papers/tree.pdf
+  methods:
+    inference: ml
+    software: [RAxML, treePL]
+    data_type: supermatrix
+    n_loci: 503
+    dating_method: "Time-calibrated supermatrix with 503 genes for 765 species."
+    support_metric: bootstrap
+    divergence_ci_available: true
+    note: "Recent (Dec 2024 online; 2025 volume); 503-gene supermatrix."
+
+species_count:
+  source: AmphibiaWeb 2025
+  described: 814
+  coverage_pct_described: 97.8

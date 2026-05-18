@@ -1,0 +1,83 @@
+partition: Squamates
+slug: squamates
+category: Vertebrates
+
+estimate:
+  described: 11744
+  low: 11744
+  total: 12000
+  high: 13000
+  confidence: High
+  source:
+    key: Uetz 2025
+    doi: null
+    type: database
+    pdf: null
+    url: https://reptile-database.reptarium.cz/
+    note: "Reptile Database — live taxonomic checklist maintained by Peter Uetz."
+  interval_provenance:
+    described:
+      type: database
+      source: Reptile Database (Uetz 2025)
+      verbatim_quote: null
+    estimated_total:
+      type: heuristic
+      source: atlas-derived
+      verbatim_quote: null
+      note: "12,000 is a round-number placeholder above described."
+    estimated_low:
+      type: derived-from-described
+      source: Reptile Database
+      verbatim_quote: null
+    estimated_high:
+      type: heuristic
+      source: atlas-derived
+      verbatim_quote: null
+      note: "13,000 allows ~10% undescribed; not paper-published."
+    overall_classification: fully-heuristic
+    auditor_note: "Like Birds and Turtles, Squamates lacks a paper-published true-diversity range. The Reptile Database is a checklist, not an estimate. Round-number bounds (12k, 13k) are atlas placeholders."
+
+tree:
+  file: tree.nwk
+  ntips: 9755
+  unique_ids: 9755
+  species_represented: 9755
+  coverage_pct_described: 83.1
+  dated: true
+  multiple_individuals_per_species: false
+  source:
+    key: Tonini 2016
+    study: Tonini JFR, Beard KH, Ferreira RB, Jetz W, Pyron RA (2016)
+    doi: 10.1016/j.biocon.2016.03.039
+    pdf: papers/tree.pdf
+  methods:
+    inference: bayesian
+    software: ["BEAST (via Pyron 2013)", "Jetz et al. 2012 imputation"]
+    data_type: supermatrix
+    n_loci: 12
+    dating_method: "Inherited from Pyron 2013 Bayesian dating; Tonini 2016 extends to 9,755 species via Jetz 2012 taxonomic imputation."
+    support_metric: posterior_probability
+    divergence_ci_available: true
+    divergence_ci_note: "10 posterior tree sets × 1000 trees each (~456 MB) on Dryad."
+    posterior_n: 10000
+    note: "4,170 species with direct molecular data (Pyron 2013); 5,585 additional species placed via taxonomic imputation. Users should weight species-level placements accordingly."
+
+uncertainty:
+  host: Dryad
+  host_url: https://datadryad.org/stash/dataset/doi:10.5061/dryad.db005
+  host_doi: 10.5061/dryad.db005
+  files:
+    - name: Tonini 2016 posterior credible set
+      label: 10 posterior sets × 1,000 trees each
+      description: "10 BEAST credible sets corresponding to 10 imputation runs; ~456 MB total."
+      size_bytes: null
+      format: Dryad archive
+      url: https://datadryad.org/stash/dataset/doi:10.5061/dryad.db005
+  note: "Atlas ships only the MCC consensus."
+
+audit:
+  file: ../../../audits/partitions/squamates.md
+  status: verified
+  last_audited: 2026-05-18
+
+sub_phylos: []
