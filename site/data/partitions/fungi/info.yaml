@@ -1,0 +1,59 @@
+partition: Fungi
+slug: fungi
+category: Microbes & protists
+
+estimate:
+  described: 155000
+  low: 2200000
+  total: 3000000
+  high: 3800000
+  confidence: Low
+  source:
+    key: Hawksworth 2017
+    doi: 10.1128/9781555819583.ch4
+    pdf: null
+    url: null
+  interval_provenance:
+    described:
+      type: database
+      source: GTDB / live database
+      verbatim_quote: null
+    estimated_total:
+      type: paper-published
+      source: Hawksworth 2017
+      verbatim_quote: '2.2 to 3.8 Million Species'
+    estimated_low:
+      type: paper-published
+      source: Hawksworth 2017
+      verbatim_quote: null
+    estimated_high:
+      type: paper-published
+      source: Hawksworth 2017
+      verbatim_quote: null
+    overall_classification: paper-published-range
+    auditor_note: "Microbe diversity estimates carry extreme uncertainty (orders of magnitude). Hawksworth 2017 provides paper-published bounds."
+
+tree:
+  file: tree.nwk
+  ntips: 1672
+  unique_ids: 1672
+  species_represented: 1672
+  coverage_pct_described: 1.08
+  dated: false
+  multiple_individuals_per_species: false
+  source:
+    key: Li Y et al.
+    study: Li Y et al. (2021)
+    doi: 10.1016/j.cub.2021.01.074
+    pdf: papers/tree.pdf
+  methods:
+    inference: ml
+    data_type: phylogenomic
+    note: "Genome-scale phylogeny of kingdom Fungi; 290 genes from 1644 genomes, concatenation + coalescent. UNDATED."
+
+audit:
+  file: ../../../audits/partitions/fungi.md
+  status: verified
+  last_audited: 2026-05-18
+
+sub_phylos: []

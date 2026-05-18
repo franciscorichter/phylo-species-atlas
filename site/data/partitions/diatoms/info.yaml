@@ -1,0 +1,59 @@
+partition: Diatoms
+slug: diatoms
+category: Microbes & protists
+
+estimate:
+  described: 20000
+  low: 30000
+  total: 100000
+  high: 200000
+  confidence: Low
+  source:
+    key: Mann 2013
+    doi: null
+    pdf: null
+    url: null
+  interval_provenance:
+    described:
+      type: database
+      source: GTDB / live database
+      verbatim_quote: null
+    estimated_total:
+      type: paper-published
+      source: Mann 2013
+      verbatim_quote: null
+    estimated_low:
+      type: paper-published
+      source: Mann 2013
+      verbatim_quote: null
+    estimated_high:
+      type: paper-published
+      source: Mann 2013
+      verbatim_quote: null
+    overall_classification: paper-published-range
+    auditor_note: "Microbe diversity estimates carry extreme uncertainty (orders of magnitude). Mann 2013 provides paper-published bounds."
+
+tree:
+  file: tree.nwk
+  ntips: 94
+  unique_ids: 94
+  species_represented: 94
+  coverage_pct_described: 0.47
+  dated: false
+  multiple_individuals_per_species: false
+  source:
+    key: Parks MB
+    study: Parks MB, Wickett NJ, Alverson AJ (2018)
+    doi: 10.1093/molbev/msx268
+    pdf: papers/tree.pdf
+  methods:
+    inference: ml
+    data_type: phylogenomic
+    note: "Phylogenomics from transcriptomes, ASTRAL species tree. UNDATED."
+
+audit:
+  file: ../../../audits/partitions/diatoms.md
+  status: verified
+  last_audited: 2026-05-18
+
+sub_phylos: []

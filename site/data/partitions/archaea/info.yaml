@@ -1,0 +1,59 @@
+partition: Archaea
+slug: archaea
+category: Microbes & protists
+
+estimate:
+  described: 17245
+  low: 20000
+  total: 50000
+  high: 500000
+  confidence: Low
+  source:
+    key: Louca 2019
+    doi: null
+    pdf: null
+    url: null
+  interval_provenance:
+    described:
+      type: database
+      source: GTDB / live database
+      verbatim_quote: null
+    estimated_total:
+      type: paper-published
+      source: Louca 2019
+      verbatim_quote: null
+    estimated_low:
+      type: paper-published
+      source: Louca 2019
+      verbatim_quote: null
+    estimated_high:
+      type: paper-published
+      source: Louca 2019
+      verbatim_quote: null
+    overall_classification: paper-published-range
+    auditor_note: "Microbe diversity estimates carry extreme uncertainty (orders of magnitude). Louca 2019 provides paper-published bounds."
+
+tree:
+  file: tree.nwk
+  ntips: 6968
+  unique_ids: 6968
+  species_represented: 6968
+  coverage_pct_described: 40.41
+  dated: false
+  multiple_individuals_per_species: false
+  source:
+    key: Parks DH et al.
+    study: Parks DH et al. (2025)
+    doi: 10.1093/nar/gkaf1040
+    pdf: papers/tree.pdf
+  methods:
+    inference: ml
+    data_type: phylogenomic
+    note: "GTDB R10 — 53 concatenated marker proteins, IQ-TREE. Tips are genome accession IDs. UNDATED."
+
+audit:
+  file: ../../../audits/partitions/archaea.md
+  status: verified
+  last_audited: 2026-05-18
+
+sub_phylos: []

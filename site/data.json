@@ -8,9 +8,9 @@
     "n_groups": 264,
     "n_datasets": 49,
     "total_tips": 702787,
-    "n_audited": 21,
+    "n_audited": 25,
     "n_audits_in_progress": 1,
-    "n_audits_verified": 20
+    "n_audits_verified": 24
   },
   "trees": [
     {
@@ -12761,7 +12761,31 @@
       "estimate_confidence": "Low",
       "coverage_pct_estimated": 13.9,
       "coverage_pct_estimated_low": 1.4,
-      "coverage_pct_estimated_high": 34.8
+      "coverage_pct_estimated_high": 34.8,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "GTDB / live database",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Louca 2019",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "Louca 2019",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Louca 2019",
+          "verbatim_quote": null
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "Microbe diversity estimates carry extreme uncertainty (orders of magnitude). Louca 2019 provides paper-published bounds."
+      }
     },
     {
       "filename": "fish.nwk",
@@ -12838,7 +12862,31 @@
       "estimate_confidence": "Low",
       "coverage_pct_estimated": 3.4,
       "coverage_pct_estimated_low": 1.4,
-      "coverage_pct_estimated_high": 17.1
+      "coverage_pct_estimated_high": 17.1,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "GTDB / live database",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Curtis 2002",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "Curtis 2002",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Curtis 2002",
+          "verbatim_quote": null
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "Microbe diversity estimates carry extreme uncertainty (orders of magnitude). Curtis 2002 provides paper-published bounds."
+      }
     },
     {
       "filename": "corals.nwk",
@@ -13366,7 +13414,31 @@
       "estimate_confidence": "Low",
       "coverage_pct_estimated": 0.1,
       "coverage_pct_estimated_low": 0.0,
-      "coverage_pct_estimated_high": 0.1
+      "coverage_pct_estimated_high": 0.1,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "GTDB / live database",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Hawksworth 2017",
+          "verbatim_quote": "2.2 to 3.8 Million Species"
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "Hawksworth 2017",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Hawksworth 2017",
+          "verbatim_quote": null
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "Microbe diversity estimates carry extreme uncertainty (orders of magnitude). Hawksworth 2017 provides paper-published bounds."
+      }
     },
     {
       "filename": "echinoderms.nwk",
@@ -13539,7 +13611,31 @@
       "estimate_confidence": "Low",
       "coverage_pct_estimated": 0.1,
       "coverage_pct_estimated_low": 0.0,
-      "coverage_pct_estimated_high": 0.2
+      "coverage_pct_estimated_high": 0.2,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "GTDB / live database",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Mann 2013",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "Mann 2013",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Mann 2013",
+          "verbatim_quote": null
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "Microbe diversity estimates carry extreme uncertainty (orders of magnitude). Mann 2013 provides paper-published bounds."
+      }
     },
     {
       "filename": "bivalves.nwk",
@@ -17756,6 +17852,192 @@
         "badge": "verified"
       }
     },
+    "Archaea": {
+      "partition": "Archaea",
+      "slug": "archaea",
+      "category": "Microbes & protists",
+      "estimate": {
+        "described": 17245,
+        "low": 20000,
+        "total": 50000,
+        "high": 500000,
+        "confidence": "Low",
+        "source": {
+          "key": "Louca 2019",
+          "doi": null,
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "GTDB / live database",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "paper-published",
+            "source": "Louca 2019",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "paper-published",
+            "source": "Louca 2019",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "Louca 2019",
+            "verbatim_quote": null
+          },
+          "overall_classification": "paper-published-range",
+          "auditor_note": "Microbe diversity estimates carry extreme uncertainty (orders of magnitude). Louca 2019 provides paper-published bounds."
+        }
+      },
+      "tree": {
+        "file": "tree.nwk",
+        "ntips": 6968,
+        "unique_ids": 6968,
+        "species_represented": 6968,
+        "coverage_pct_described": 40.41,
+        "dated": false,
+        "multiple_individuals_per_species": false,
+        "source": {
+          "key": "Parks DH et al.",
+          "study": "Parks DH et al. (2025)",
+          "doi": "10.1093/nar/gkaf1040",
+          "pdf": "papers/tree.pdf"
+        },
+        "methods": {
+          "inference": "ml",
+          "data_type": "phylogenomic",
+          "note": "GTDB R10 — 53 concatenated marker proteins, IQ-TREE. Tips are genome accession IDs. UNDATED."
+        }
+      },
+      "audit": {
+        "file": "../../../audits/partitions/archaea.md",
+        "status": "verified",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "verified",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "Louca 2019",
+        "doi": null,
+        "doi_verified": "unchecked"
+      },
+      "canonical_tree": {
+        "filename": "archaea.nwk",
+        "provenance_group": "archaea",
+        "study": "Parks DH et al. (2025)",
+        "doi": "10.1093/nar/gkaf1040",
+        "doi_verified": "unchecked"
+      },
+      "methods": {
+        "inference": "ml",
+        "data_type": "phylogenomic",
+        "note": "GTDB R10 — 53 concatenated marker proteins, IQ-TREE. Tips are genome accession IDs."
+      },
+      "website": {
+        "badge": "verified"
+      }
+    },
+    "Bacteria": {
+      "partition": "Bacteria",
+      "slug": "bacteria",
+      "category": "Microbes & protists",
+      "estimate": {
+        "described": 715230,
+        "low": 800000,
+        "total": 4000000,
+        "high": 10000000,
+        "confidence": "Low",
+        "source": {
+          "key": "Curtis 2002",
+          "doi": null,
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "GTDB / live database",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "paper-published",
+            "source": "Curtis 2002",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "paper-published",
+            "source": "Curtis 2002",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "Curtis 2002",
+            "verbatim_quote": null
+          },
+          "overall_classification": "paper-published-range",
+          "auditor_note": "Microbe diversity estimates carry extreme uncertainty (orders of magnitude). Curtis 2002 provides paper-published bounds."
+        }
+      },
+      "tree": {
+        "file": "tree.nwk",
+        "ntips": 136646,
+        "unique_ids": 136646,
+        "species_represented": 136646,
+        "coverage_pct_described": 19.11,
+        "dated": false,
+        "multiple_individuals_per_species": false,
+        "source": {
+          "key": "Parks DH et al.",
+          "study": "Parks DH et al. (2025)",
+          "doi": "10.1093/nar/gkaf1040",
+          "pdf": "papers/tree.pdf"
+        },
+        "methods": {
+          "inference": "ml",
+          "data_type": "phylogenomic",
+          "note": "GTDB R10 — 120 concatenated marker proteins, FastTree. Tips are genome accession IDs (species cluster representatives). UNDATED."
+        }
+      },
+      "audit": {
+        "file": "../../../audits/partitions/bacteria.md",
+        "status": "verified",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "verified",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "Curtis 2002",
+        "doi": null,
+        "doi_verified": "unchecked"
+      },
+      "canonical_tree": {
+        "filename": "bacteria.nwk",
+        "provenance_group": "bacteria",
+        "study": "Parks DH et al. (2025)",
+        "doi": "10.1093/nar/gkaf1040",
+        "doi_verified": "unchecked"
+      },
+      "methods": {
+        "inference": "ml",
+        "data_type": "phylogenomic",
+        "note": "GTDB R10 — 120 concatenated marker proteins, FastTree. Tips are genome accession IDs (species cluster representatives)."
+      },
+      "website": {
+        "badge": "verified"
+      }
+    },
     "Birds": {
       "partition": "Birds",
       "slug": "birds",
@@ -18783,6 +19065,99 @@
         "badge": "in_progress"
       }
     },
+    "Diatoms": {
+      "partition": "Diatoms",
+      "slug": "diatoms",
+      "category": "Microbes & protists",
+      "estimate": {
+        "described": 20000,
+        "low": 30000,
+        "total": 100000,
+        "high": 200000,
+        "confidence": "Low",
+        "source": {
+          "key": "Mann 2013",
+          "doi": null,
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "GTDB / live database",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "paper-published",
+            "source": "Mann 2013",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "paper-published",
+            "source": "Mann 2013",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "Mann 2013",
+            "verbatim_quote": null
+          },
+          "overall_classification": "paper-published-range",
+          "auditor_note": "Microbe diversity estimates carry extreme uncertainty (orders of magnitude). Mann 2013 provides paper-published bounds."
+        }
+      },
+      "tree": {
+        "file": "tree.nwk",
+        "ntips": 94,
+        "unique_ids": 94,
+        "species_represented": 94,
+        "coverage_pct_described": 0.47,
+        "dated": false,
+        "multiple_individuals_per_species": false,
+        "source": {
+          "key": "Parks MB",
+          "study": "Parks MB, Wickett NJ, Alverson AJ (2018)",
+          "doi": "10.1093/molbev/msx268",
+          "pdf": "papers/tree.pdf"
+        },
+        "methods": {
+          "inference": "ml",
+          "data_type": "phylogenomic",
+          "note": "Phylogenomics from transcriptomes, ASTRAL species tree. UNDATED."
+        }
+      },
+      "audit": {
+        "file": "../../../audits/partitions/diatoms.md",
+        "status": "verified",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "verified",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "Mann 2013",
+        "doi": null,
+        "doi_verified": "unchecked"
+      },
+      "canonical_tree": {
+        "filename": "diatoms.nwk",
+        "provenance_group": "diatoms",
+        "study": "Parks MB, Wickett NJ, Alverson AJ (2018)",
+        "doi": "10.1093/molbev/msx268",
+        "doi_verified": "unchecked"
+      },
+      "methods": {
+        "inference": "ml",
+        "data_type": "phylogenomic",
+        "note": "Phylogenomics from transcriptomes, ASTRAL species tree."
+      },
+      "website": {
+        "badge": "verified"
+      }
+    },
     "Echinoderms": {
       "partition": "Echinoderms",
       "slug": "echinoderms",
@@ -19236,6 +19611,99 @@
         "surface_methods": true,
         "surface_uncertainty": true,
         "surface_candidates": true,
+        "badge": "verified"
+      }
+    },
+    "Fungi": {
+      "partition": "Fungi",
+      "slug": "fungi",
+      "category": "Microbes & protists",
+      "estimate": {
+        "described": 155000,
+        "low": 2200000,
+        "total": 3000000,
+        "high": 3800000,
+        "confidence": "Low",
+        "source": {
+          "key": "Hawksworth 2017",
+          "doi": "10.1128/9781555819583.ch4",
+          "pdf": null,
+          "url": null
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "database",
+            "source": "GTDB / live database",
+            "verbatim_quote": null
+          },
+          "estimated_total": {
+            "type": "paper-published",
+            "source": "Hawksworth 2017",
+            "verbatim_quote": "2.2 to 3.8 Million Species"
+          },
+          "estimated_low": {
+            "type": "paper-published",
+            "source": "Hawksworth 2017",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "paper-published",
+            "source": "Hawksworth 2017",
+            "verbatim_quote": null
+          },
+          "overall_classification": "paper-published-range",
+          "auditor_note": "Microbe diversity estimates carry extreme uncertainty (orders of magnitude). Hawksworth 2017 provides paper-published bounds."
+        }
+      },
+      "tree": {
+        "file": "tree.nwk",
+        "ntips": 1672,
+        "unique_ids": 1672,
+        "species_represented": 1672,
+        "coverage_pct_described": 1.08,
+        "dated": false,
+        "multiple_individuals_per_species": false,
+        "source": {
+          "key": "Li Y et al.",
+          "study": "Li Y et al. (2021)",
+          "doi": "10.1016/j.cub.2021.01.074",
+          "pdf": "papers/tree.pdf"
+        },
+        "methods": {
+          "inference": "ml",
+          "data_type": "phylogenomic",
+          "note": "Genome-scale phylogeny of kingdom Fungi; 290 genes from 1644 genomes, concatenation + coalescent. UNDATED."
+        }
+      },
+      "audit": {
+        "file": "../../../audits/partitions/fungi.md",
+        "status": "verified",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "verified",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "Hawksworth 2017",
+        "doi": "10.1128/9781555819583.ch4",
+        "doi_verified": true
+      },
+      "canonical_tree": {
+        "filename": "fungi.nwk",
+        "provenance_group": "fungi",
+        "study": "Li Y et al. (2021)",
+        "doi": "10.1016/j.cub.2021.01.074",
+        "doi_verified": "unchecked"
+      },
+      "methods": {
+        "inference": "ml",
+        "data_type": "phylogenomic",
+        "note": "Genome-scale phylogeny of kingdom Fungi; 290 genes from 1644 genomes, concatenation + coalescent."
+      },
+      "website": {
         "badge": "verified"
       }
     },

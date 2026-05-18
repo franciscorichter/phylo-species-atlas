@@ -1,0 +1,18 @@
+{
+  "tree": {
+    "file": "tree.pdf",
+    "doi": "10.1093/nar/gkaf1040",
+    "study": "Parks DH et al. (2025)",
+    "license": "Oxford Academic (open access)",
+    "open_access": true,
+    "url": "https://doi.org/10.1093/nar/gkaf1040"
+  },
+  "estimate": {
+    "file": null,
+    "doi": null,
+    "study": "Curtis 2002",
+    "license": "various",
+    "open_access": true,
+    "url": null
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "tree": {
+    "file": "tree.pdf",
+    "doi": "10.1016/j.cub.2021.01.074",
+    "study": "Li Y et al. (2021)",
+    "license": "Elsevier (subscription)",
+    "open_access": false,
+    "url": "https://doi.org/10.1016/j.cub.2021.01.074"
+  },
+  "estimate": {
+    "file": null,
+    "doi": "10.1128/9781555819583.ch4",
+    "study": "Hawksworth 2017",
+    "license": "open",
+    "open_access": true,
+    "url": "https://doi.org/10.1128/9781555819583.ch4"
+  }
+}
