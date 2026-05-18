@@ -33,11 +33,31 @@ methods:
 
 shipped_subclades: []
 candidate_subclades:
-  - taxon: "Whole-tree replacement — broader crustacean phylogeny"
-    rationale: "Wolfe 2019 ships under 'crustaceans' but covers only Decapoda (94 of ~9,000 decapod species; ~0.1% of all crustaceans). Atlas needs a Pancrustacea-level tree for adequate partition representation."
-    candidate_papers: []
+  - taxon: "Whole-tree replacement — Pancrustacea phylogenomic tree"
+    rationale: |
+      Wolfe 2019 ships under 'crustaceans' but covers only Decapoda
+      (94 of ~9,000 decapod species; ~0.1% of all crustaceans).
+      Bernot 2023 (MBE) is a Pancrustacea-wide phylogenomic synthesis:
+      105 taxa across 30 of 57 crustacean orders, 576 protein-coding
+      genes / 121,508 AA positions, 90 transcriptomes + 15 genomes.
+      Covers Branchiopoda, Copepoda, Malacostraca, Thecostraca, Ostracoda,
+      Remipedia, Cephalocarida and more — broadly representative of the
+      partition.
+    candidate_papers:
+      - doi: 10.1093/molbev/msad175
+        year: 2023
+        study: Bernot JP, Owen CL, Wolfe JM, Meland K, Olesen J, Crandall KA — Major Revisions in Pancrustacean Phylogeny and Evidence of Sensitivity to Taxon Sampling
+        ntips: 105
+        url: https://academic.oup.com/mbe/article/40/8/msad175/7232083
+    download_target: supplementary
     priority: high
     status: proposed
+    notes: |
+      Tree file location not explicitly documented in the article body —
+      likely in MBE supplementary or a Dryad deposit. Manual fetch needed
+      to standardize and ship. Even at order/family resolution (105 taxa
+      vs 94 in Wolfe 2019), this is a meaningful step up because of the
+      breadth across crustacean classes.
 
 resolutions:
   - issue: "Shipped tree (Wolfe 2019, 95 tips) is decapod-only — drastically under-represents the Crustacea partition (~77k described species)."
@@ -59,4 +79,8 @@ the crustacean canonical but covers only Decapoda (95 tips). This is a
 
 Appeltans 2012 estimate (100k-250k bilateral range) appears to be paper-
 published (from the World Register of Marine Species effort). High-priority
-improvement: identify a broader crustacean tree or split the partition.
+improvement candidate identified: **Bernot 2023 (MBE)** — Pancrustacean
+phylogenomic synthesis with 105 taxa across 30 of 57 crustacean orders,
+576 protein-coding genes. Significantly broader than Wolfe 2019's decapod
+focus. Status remains in_progress until the Bernot tree is fetched,
+standardized, and shipped.
