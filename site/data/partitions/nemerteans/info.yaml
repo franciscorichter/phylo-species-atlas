@@ -10,7 +10,7 @@ estimate:
   confidence: Low
   source:
     key: Kajihara 2008
-    doi: null
+    doi: 10.12782/specdiv.13.245
     pdf: null
     url: null
   interval_provenance:
@@ -21,7 +21,7 @@ estimate:
     estimated_total:
       type: heuristic
       source: Kajihara 2008
-      verbatim_quote: null
+      verbatim_quote: '285 genera and 1275 species are currently recognized as valid in the phylum Nemertea (Kajihara 2008 checklist)'
     estimated_low:
       type: derived-from-described
       source: Kajihara 2008
@@ -30,8 +30,8 @@ estimate:
       type: paper-published
       source: Kajihara 2008
       verbatim_quote: null
-    overall_classification: partly-heuristic
-    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+    overall_classification: fully-heuristic
+    auditor_note: "Kajihara 2008''s verbatim claim is 1,275 described species (the checklist count). The atlas''s 4500-13500 estimated range is atlas-derived above Kajihara''s described count, not paper-published."
 
 tree: null
 caveats:

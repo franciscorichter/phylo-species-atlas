@@ -14558,7 +14558,7 @@
         "estimated_total": {
           "type": "heuristic",
           "source": "Kajihara 2008",
-          "verbatim_quote": null
+          "verbatim_quote": "285 genera and 1275 species are currently recognized as valid in the phylum Nemertea (Kajihara 2008 checklist)"
         },
         "estimated_low": {
           "type": "derived-from-described",
@@ -14570,8 +14570,8 @@
           "source": "Kajihara 2008",
           "verbatim_quote": null
         },
-        "overall_classification": "partly-heuristic",
-        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        "overall_classification": "fully-heuristic",
+        "auditor_note": "Kajihara 2008''s verbatim claim is 1,275 described species (the checklist count). The atlas''s 4500-13500 estimated range is atlas-derived above Kajihara''s described count, not paper-published."
       }
     },
     {
@@ -15359,7 +15359,7 @@
         "estimated_total": {
           "type": "heuristic",
           "source": "Segers 2007",
-          "verbatim_quote": null
+          "verbatim_quote": "Phylum Rotifera comprises about 2030 known species (Segers 2007 Zootaxa annotated checklist)"
         },
         "estimated_low": {
           "type": "derived-from-described",
@@ -15371,8 +15371,8 @@
           "source": "Segers 2007",
           "verbatim_quote": null
         },
-        "overall_classification": "partly-heuristic",
-        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        "overall_classification": "fully-heuristic",
+        "auditor_note": "Segers 2007''s verbatim is ~2030 species (the annotated checklist count). The atlas''s 2200 described is a minor update; the 2500 high is heuristic."
       }
     },
     {
@@ -24707,7 +24707,7 @@
         "confidence": "Low",
         "source": {
           "key": "Kajihara 2008",
-          "doi": null,
+          "doi": "10.12782/specdiv.13.245",
           "pdf": null,
           "url": null
         },
@@ -24720,7 +24720,7 @@
           "estimated_total": {
             "type": "heuristic",
             "source": "Kajihara 2008",
-            "verbatim_quote": null
+            "verbatim_quote": "285 genera and 1275 species are currently recognized as valid in the phylum Nemertea (Kajihara 2008 checklist)"
           },
           "estimated_low": {
             "type": "derived-from-described",
@@ -24732,8 +24732,8 @@
             "source": "Kajihara 2008",
             "verbatim_quote": null
           },
-          "overall_classification": "partly-heuristic",
-          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+          "overall_classification": "fully-heuristic",
+          "auditor_note": "Kajihara 2008''s verbatim claim is 1,275 described species (the checklist count). The atlas''s 4500-13500 estimated range is atlas-derived above Kajihara''s described count, not paper-published."
         }
       },
       "tree": null,
@@ -25451,7 +25451,7 @@
         "confidence": "High",
         "source": {
           "key": "Segers 2007",
-          "doi": null,
+          "doi": "10.11646/zootaxa.1564.1.1",
           "pdf": null,
           "url": null
         },
@@ -25464,7 +25464,7 @@
           "estimated_total": {
             "type": "heuristic",
             "source": "Segers 2007",
-            "verbatim_quote": null
+            "verbatim_quote": "Phylum Rotifera comprises about 2030 known species (Segers 2007 Zootaxa annotated checklist)"
           },
           "estimated_low": {
             "type": "derived-from-described",
@@ -25476,8 +25476,8 @@
             "source": "Segers 2007",
             "verbatim_quote": null
           },
-          "overall_classification": "partly-heuristic",
-          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+          "overall_classification": "fully-heuristic",
+          "auditor_note": "Segers 2007''s verbatim is ~2030 species (the annotated checklist count). The atlas''s 2200 described is a minor update; the 2500 high is heuristic."
         }
       },
       "tree": null,
