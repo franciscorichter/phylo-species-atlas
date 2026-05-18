@@ -49,15 +49,23 @@ candidate_subclades:
         study: Bernot JP, Owen CL, Wolfe JM, Meland K, Olesen J, Crandall KA — Major Revisions in Pancrustacean Phylogeny and Evidence of Sensitivity to Taxon Sampling
         ntips: 105
         url: https://academic.oup.com/mbe/article/40/8/msad175/7232083
-    download_target: supplementary
+        data_doi: 10.5061/dryad.dr7sqvb2h
+        data_files:
+          - treefiles.zip (81 KB)
+          - matrices.zip (19 MB)
+          - orthologs.zip (16 MB)
+          - divergence_time_files.zip (38 KB)
+    download_target: dryad
     priority: high
     status: proposed
     notes: |
-      Tree file location not explicitly documented in the article body —
-      likely in MBE supplementary or a Dryad deposit. Manual fetch needed
-      to standardize and ship. Even at order/family resolution (105 taxa
-      vs 94 in Wolfe 2019), this is a meaningful step up because of the
-      breadth across crustacean classes.
+      Dryad deposit confirmed: doi:10.5061/dryad.dr7sqvb2h. Tree files
+      (81 KB ZIP) reachable via browser at
+      https://datadryad.org/dataset/doi:10.5061/dryad.dr7sqvb2h but
+      blocked by Cloudflare anti-bot when fetched programmatically.
+      Manual download → unzip → standardize → ship. Even at
+      order/family resolution (105 taxa vs Wolfe 2019's 94 decapods),
+      this is a meaningful step up in breadth across crustacean classes.
 
 resolutions:
   - issue: "Shipped tree (Wolfe 2019, 95 tips) is decapod-only — drastically under-represents the Crustacea partition (~77k described species)."
