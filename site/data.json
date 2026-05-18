@@ -8,7 +8,7 @@
     "n_groups": 264,
     "n_datasets": 49,
     "total_tips": 702787,
-    "n_audited": 63,
+    "n_audited": 62,
     "n_audits_in_progress": 1,
     "n_audits_verified": 24
   },
@@ -12013,8 +12013,8 @@
           "source": "Mora 2011",
           "verbatim_quote": null
         },
-        "overall_classification": "paper-published-range",
-        "auditor_note": "Mora 2011 is one of the few papers in the atlas that publishes a true bilateral diversity estimate for vertebrates. The 10,000-15,000-20,000 range is genuine paper-derived uncertainty, not heuristic."
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Mora 2011's published numerical content (Table 2) gives kingdom-level totals (Animalia 953,434 catalogued / 7,770,000 ± 958,000 predicted). The per-clade Amphibians bounds 10k-15k-20k do NOT appear at this resolution in the abstract or body. These bounds align with the post-2008 consensus (AmphibiaWeb + cryptic-diversity literature) but aren't traceable to a single Mora 2011 quote. Reclassified to partly-heuristic."
       }
     },
     {
@@ -12374,8 +12374,8 @@
           "source": "Mora 2011",
           "verbatim_quote": null
         },
-        "overall_classification": "paper-published-range",
-        "auditor_note": "Mora 2011 is one of the few papers in the atlas that publishes a true bilateral diversity estimate for vertebrates. The 10,000-15,000-20,000 range is genuine paper-derived uncertainty, not heuristic."
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Mora 2011's published numerical content (Table 2) gives kingdom-level totals (Animalia 953,434 catalogued / 7,770,000 ± 958,000 predicted). The per-clade Amphibians bounds 10k-15k-20k do NOT appear at this resolution in the abstract or body. These bounds align with the post-2008 consensus (AmphibiaWeb + cryptic-diversity literature) but aren't traceable to a single Mora 2011 quote. Reclassified to partly-heuristic."
       }
     },
     {
@@ -12485,8 +12485,8 @@
           "source": "Mora 2011",
           "verbatim_quote": null
         },
-        "overall_classification": "paper-published-range",
-        "auditor_note": "Mora 2011 is one of the few papers in the atlas that publishes a true bilateral diversity estimate for vertebrates. The 10,000-15,000-20,000 range is genuine paper-derived uncertainty, not heuristic."
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Mora 2011's published numerical content (Table 2) gives kingdom-level totals (Animalia 953,434 catalogued / 7,770,000 ± 958,000 predicted). The per-clade Amphibians bounds 10k-15k-20k do NOT appear at this resolution in the abstract or body. These bounds align with the post-2008 consensus (AmphibiaWeb + cryptic-diversity literature) but aren't traceable to a single Mora 2011 quote. Reclassified to partly-heuristic."
       }
     },
     {
@@ -12741,7 +12741,7 @@
           "note": "50,000 high bound from Mora 2011."
         },
         "overall_classification": "partly-heuristic",
-        "auditor_note": "Low bound equals described count (Eschmeyer floor); total + high are Mora 2011 estimates. The 36-50k spread is a true paper-published uncertainty."
+        "auditor_note": "Mora 2011's published numerical content is at the kingdom level (Animalia). The per-clade Fish bounds 36k-40k-50k align with Eschmeyer's Catalog + Mora's 2.2M marine eukaryote prediction but aren't a verbatim quote from Mora 2011. Reclassified to partly-heuristic."
       }
     },
     {
@@ -13094,7 +13094,7 @@
           "note": "50,000 high bound from Mora 2011."
         },
         "overall_classification": "partly-heuristic",
-        "auditor_note": "Low bound equals described count (Eschmeyer floor); total + high are Mora 2011 estimates. The 36-50k spread is a true paper-published uncertainty."
+        "auditor_note": "Mora 2011's published numerical content is at the kingdom level (Animalia). The per-clade Fish bounds 36k-40k-50k align with Eschmeyer's Catalog + Mora's 2.2M marine eukaryote prediction but aren't a verbatim quote from Mora 2011. Reclassified to partly-heuristic."
       }
     },
     {
@@ -14417,7 +14417,7 @@
         "estimated_total": {
           "type": "heuristic",
           "source": "Appeltans 2012",
-          "verbatim_quote": null
+          "verbatim_quote": "there may be 0.7-1.0 million marine species (226,000 eukaryotic species currently described; 58,000-72,000 collected but undescribed; 482,000-741,000 yet to be sampled)"
         },
         "estimated_low": {
           "type": "derived-from-described",
@@ -19927,8 +19927,8 @@
             "source": "Mora 2011",
             "verbatim_quote": null
           },
-          "overall_classification": "paper-published-range",
-          "auditor_note": "Mora 2011 is one of the few papers in the atlas that publishes a true bilateral diversity estimate for vertebrates. The 10,000-15,000-20,000 range is genuine paper-derived uncertainty, not heuristic."
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Mora 2011's published numerical content (Table 2) gives kingdom-level totals (Animalia 953,434 catalogued / 7,770,000 ± 958,000 predicted). The per-clade Amphibians bounds 10k-15k-20k do NOT appear at this resolution in the abstract or body. These bounds align with the post-2008 consensus (AmphibiaWeb + cryptic-diversity literature) but aren't traceable to a single Mora 2011 quote. Reclassified to partly-heuristic."
         }
       },
       "tree": {
@@ -20181,7 +20181,7 @@
           "estimated_total": {
             "type": "heuristic",
             "source": "Appeltans 2012",
-            "verbatim_quote": null
+            "verbatim_quote": "there may be 0.7-1.0 million marine species (226,000 eukaryotic species currently described; 58,000-72,000 collected but undescribed; 482,000-741,000 yet to be sampled)"
           },
           "estimated_low": {
             "type": "derived-from-described",
@@ -22673,7 +22673,7 @@
             "note": "50,000 high bound from Mora 2011."
           },
           "overall_classification": "partly-heuristic",
-          "auditor_note": "Low bound equals described count (Eschmeyer floor); total + high are Mora 2011 estimates. The 36-50k spread is a true paper-published uncertainty."
+          "auditor_note": "Mora 2011's published numerical content is at the kingdom level (Animalia). The per-clade Fish bounds 36k-40k-50k align with Eschmeyer's Catalog + Mora's 2.2M marine eukaryote prediction but aren't a verbatim quote from Mora 2011. Reclassified to partly-heuristic."
         }
       },
       "tree": {
@@ -27071,34 +27071,6 @@
           "outcome": "hit"
         }
       ]
-    },
-    "Conifers": {
-      "partition": "Conifers",
-      "category": "Plants",
-      "audit_version": 1,
-      "status": "deferred",
-      "last_audited": "2026-05-18",
-      "auditor": "francisco",
-      "estimate_source": {
-        "key": "Farjon 2017",
-        "doi": null,
-        "doi_verified": "na",
-        "year_published": null,
-        "cited_value": 640,
-        "newer_authoritative_known": false
-      },
-      "canonical_tree": {
-        "filename": null,
-        "status": "not-shipped",
-        "reason": "Atlas ships only the Ran 2018 16-genus tree (genus-level), not species-level. Leslie 2018 published a 615-species supermatrix tree — strong candidate.\n"
-      },
-      "methods": null,
-      "shipped_subclades": [],
-      "candidate_subclades": [],
-      "resolutions": [],
-      "website": {
-        "badge": "deferred"
-      }
     }
   }
 }

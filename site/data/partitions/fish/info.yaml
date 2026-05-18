@@ -34,7 +34,7 @@ estimate:
       verbatim_quote: null
       note: "50,000 high bound from Mora 2011."
     overall_classification: partly-heuristic
-    auditor_note: "Low bound equals described count (Eschmeyer floor); total + high are Mora 2011 estimates. The 36-50k spread is a true paper-published uncertainty."
+    auditor_note: "Mora 2011's published numerical content is at the kingdom level (Animalia). The per-clade Fish bounds 36k-40k-50k align with Eschmeyer's Catalog + Mora's 2.2M marine eukaryote prediction but aren't a verbatim quote from Mora 2011. Reclassified to partly-heuristic."
 
 tree:
   file: tree.nwk
