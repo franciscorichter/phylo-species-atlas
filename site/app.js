@@ -33,23 +33,71 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 function renderSummary() {
   const s = STATE.data.summary;
-  // Header surfaces the stats that actually change as the atlas evolves:
-  // partitions, shipped trees, audit progress, atlas-derived canonicals,
-  // and how many partition intervals trace to paper-published verbatim
-  // quotes vs heuristics.
-  const items = [
-    ["Partitions", fmt.format(s.n_partitions || 0)],
-    ["Trees shipped", fmt.format(s.n_trees)],
-    ["Total described sp.", fmt.format(s.total_described_species || 0)],
-    [`<a href="audit.html" class="audit-link">Audits verified</a>`,
-     `${s.n_audits_verified || 0}/${s.n_audited || 0}`],
-    ["Atlas-derived trees", fmt.format(s.n_atlas_derived || 0)],
-    ["Paper-published intervals",
-     `${s.n_paper_published_intervals || 0}/${s.n_audited || 0}`],
-  ];
-  document.getElementById("summary-stats").innerHTML = items.map(([label, value]) =>
-    `<div class="stat"><span class="value">${value}</span><span class="label">${label}</span></div>`
-  ).join("");
+  // Compact display: 2.9M instead of 2,878,313
+  const compact = (n) => {
+    if (n >= 1e6) return (n / 1e6).toFixed(1).replace(/\.0$/, "") + "M";
+    if (n >= 1e3) return (n / 1e3).toFixed(0) + "k";
+    return String(n);
+  };
+
+  // Per-category partition + verified counts from the coverage rows.
+  const catStats = new Map();
+  for (const r of (STATE.data.coverage || [])) {
+    if (!r.is_partition_canonical) continue;
+    const c = r.category || "Other";
+    if (!catStats.has(c)) catStats.set(c, { total: 0, verified: 0 });
+    const entry = catStats.get(c);
+    entry.total += 1;
+    const audit = STATE.data.audits?.[r.partition_group];
+    if (audit && (audit.audit || {}).status === "verified") entry.verified += 1;
+  }
+
+  // Coverage stats — what the atlas COVERS.
+  const coverageRow = `
+    <div class="stats-group">
+      <div class="stats-group-label">Coverage</div>
+      <div class="stats-row">
+        <div class="stat"><span class="value">${s.n_partitions || 0}</span><span class="label">Partitions</span></div>
+        <div class="stat"><span class="value">${fmt.format(s.n_trees)}</span><span class="label">Trees</span></div>
+        <div class="stat"><span class="value">${compact(s.total_described_species || 0)}</span><span class="label">Described species</span></div>
+      </div>
+    </div>`;
+
+  // Audit stats — what the atlas VERIFIED.
+  const auditRow = `
+    <div class="stats-group">
+      <div class="stats-group-label"><a href="audit.html" class="audit-link">Audit</a></div>
+      <div class="stats-row">
+        <div class="stat"><span class="value">${s.n_audits_verified || 0}/${s.n_audited || 0}</span><span class="label">Verified</span></div>
+        <div class="stat"><span class="value">${s.n_atlas_derived || 0}</span><span class="label">Atlas-derived trees</span></div>
+        <div class="stat"><span class="value">${s.n_paper_published_intervals || 0}</span><span class="label">Paper-published intervals</span></div>
+      </div>
+    </div>`;
+
+  // Category mini-bars: width = # partitions, filled portion = # verified.
+  const catOrder = ["Vertebrates", "Plants", "Arthropods", "Other animals", "Microbes & protists"];
+  const maxTotal = Math.max(...catOrder.map(c => catStats.get(c)?.total || 0));
+  const catRow = `
+    <div class="stats-group stats-group-cat">
+      <div class="stats-group-label">By category</div>
+      <div class="cat-bars">
+        ${catOrder.map(c => {
+          const e = catStats.get(c) || { total: 0, verified: 0 };
+          const widthPct = maxTotal ? Math.round(100 * e.total / maxTotal) : 0;
+          const verifiedPct = e.total ? Math.round(100 * e.verified / e.total) : 0;
+          return `
+            <div class="cat-bar-row">
+              <span class="cat-bar-label">${c}</span>
+              <div class="cat-bar" style="width:${widthPct}%">
+                <div class="cat-bar-fill" style="width:${verifiedPct}%"></div>
+              </div>
+              <span class="cat-bar-count">${e.verified}/${e.total}</span>
+            </div>`;
+        }).join("")}
+      </div>
+    </div>`;
+
+  document.getElementById("summary-stats").innerHTML = coverageRow + auditRow + catRow;
 }
 
 const FONT_STACK = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif";
