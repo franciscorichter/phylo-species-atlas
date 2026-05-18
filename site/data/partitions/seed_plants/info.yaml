@@ -81,6 +81,7 @@ audit:
   last_audited: 2026-05-18
 
 sub_phylos:
+  - slug: conifers
   - slug: grasses
   - slug: orchids
   - slug: asteraceae

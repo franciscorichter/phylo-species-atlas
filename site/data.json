@@ -8,7 +8,7 @@
     "n_groups": 264,
     "n_datasets": 49,
     "total_tips": 702787,
-    "n_audited": 61,
+    "n_audited": 62,
     "n_audits_in_progress": 1,
     "n_audits_verified": 24
   },
@@ -10224,7 +10224,7 @@
       "filename": "conifers.nwk",
       "group": "conifers",
       "provenance_group": "conifers",
-      "partition_group": "Conifers",
+      "partition_group": "Seed plants",
       "category": "Plants",
       "is_partition_anchor": true,
       "study": "Ran 2018",
@@ -10267,7 +10267,7 @@
       },
       "tree_url_override": null,
       "tip_taxonomy_override": null,
-      "is_partition_canonical": true
+      "is_partition_canonical": false
     },
     {
       "filename": "condamine_Cheirogaleidae.nwk",
@@ -13301,7 +13301,7 @@
       "filename": "conifers.nwk",
       "group": "conifers",
       "provenance_group": "conifers",
-      "partition_group": "Conifers",
+      "partition_group": "Seed plants",
       "category": "Plants",
       "study": "Ran 2018",
       "year": 2018,
@@ -13312,7 +13312,7 @@
       "coverage_pct": 2.6,
       "dated": true,
       "is_partition_anchor": true,
-      "is_partition_canonical": true,
+      "is_partition_canonical": false,
       "estimated_total": 640,
       "estimated_low": 615,
       "estimated_high": 680,
@@ -13324,26 +13324,27 @@
       "interval_provenance": {
         "described": {
           "type": "database",
-          "source": "Farjon 2017",
+          "source": "World Flora Online 2025",
           "verbatim_quote": null
         },
         "estimated_total": {
-          "type": "heuristic",
-          "source": "Farjon 2017",
-          "verbatim_quote": null
+          "type": "paper-published",
+          "source": "Nic Lughadha 2016",
+          "verbatim_quote": null,
+          "note": "Paper-published estimate of total angiosperm + gymnosperm diversity."
         },
         "estimated_low": {
-          "type": "derived-from-described",
-          "source": "Farjon 2017",
+          "type": "paper-published",
+          "source": "Nic Lughadha 2016",
           "verbatim_quote": null
         },
         "estimated_high": {
           "type": "paper-published",
-          "source": "Farjon 2017",
+          "source": "Nic Lughadha 2016",
           "verbatim_quote": null
         },
-        "overall_classification": "partly-heuristic",
-        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        "overall_classification": "paper-published-range",
+        "auditor_note": "True bilateral range from a quantitative meta-analysis of angiosperm taxonomy."
       }
     },
     {
@@ -15739,6 +15740,54 @@
         "overall_classification": "partly-heuristic",
         "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
       }
+    },
+    {
+      "filename": null,
+      "group": "others",
+      "provenance_group": null,
+      "partition_group": "Others",
+      "category": "Not yet represented",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 392,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 470,
+      "estimated_low": 392,
+      "estimated_high": 580,
+      "estimate_source": "Atlas-aggregated",
+      "estimate_confidence": "High",
+      "interval_provenance": {
+        "described": {
+          "type": "atlas-derived",
+          "source": "atlas-aggregated",
+          "verbatim_quote": null,
+          "note": "Sum of described counts across constituent clades."
+        },
+        "estimated_total": {
+          "type": "atlas-derived",
+          "source": "atlas-aggregated",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "atlas-aggregated",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "atlas-derived",
+          "source": "atlas-aggregated",
+          "verbatim_quote": null
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Synthetic partition aggregating species in lineages not contained in\nany other atlas partition. Constituent clades have well-known\ndescribed counts (mostly from monographs or single-paper checklists);\nthe high bound allows modest cryptic diversity.\n"
+      }
     }
   ],
   "datasets_by_partition": {
@@ -15825,6 +15874,18 @@
         "tips": 256,
         "dated": false,
         "is_partition_anchor": false,
+        "is_partition_canonical": false
+      },
+      {
+        "filename": "conifers.nwk",
+        "group": "conifers",
+        "provenance_group": "conifers",
+        "category": "Plants",
+        "study": "Ran 2018",
+        "year": 2018,
+        "tips": 16,
+        "dated": true,
+        "is_partition_anchor": true,
         "is_partition_canonical": false
       }
     ],
@@ -18925,20 +18986,6 @@
         "is_partition_anchor": true,
         "is_partition_canonical": true
       }
-    ],
-    "Conifers": [
-      {
-        "filename": "conifers.nwk",
-        "group": "conifers",
-        "provenance_group": "conifers",
-        "category": "Plants",
-        "study": "Ran 2018",
-        "year": 2018,
-        "tips": 16,
-        "dated": true,
-        "is_partition_anchor": true,
-        "is_partition_canonical": true
-      }
     ]
   },
   "unrepresented": [
@@ -21723,87 +21770,6 @@
       "resolutions": [],
       "website": {
         "badge": "verified"
-      }
-    },
-    "Conifers": {
-      "partition": "Conifers",
-      "slug": "conifers",
-      "category": "Plants",
-      "estimate": {
-        "described": 615,
-        "low": 615,
-        "total": 640,
-        "high": 680,
-        "confidence": "High",
-        "source": {
-          "key": "Farjon 2017",
-          "doi": null,
-          "pdf": null,
-          "url": null
-        },
-        "interval_provenance": {
-          "described": {
-            "type": "database",
-            "source": "Farjon 2017",
-            "verbatim_quote": null
-          },
-          "estimated_total": {
-            "type": "heuristic",
-            "source": "Farjon 2017",
-            "verbatim_quote": null
-          },
-          "estimated_low": {
-            "type": "derived-from-described",
-            "source": "Farjon 2017",
-            "verbatim_quote": null
-          },
-          "estimated_high": {
-            "type": "paper-published",
-            "source": "Farjon 2017",
-            "verbatim_quote": null
-          },
-          "overall_classification": "partly-heuristic",
-          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
-        }
-      },
-      "tree": null,
-      "caveats": [
-        {
-          "severity": "medium",
-          "summary": "No canonical tree shipped in the atlas.",
-          "detail": "Atlas ships only the Ran 2018 16-genus tree (genus-level), not species-level. Leslie 2018 published a 615-species supermatrix tree — strong candidate.\n"
-        }
-      ],
-      "audit": {
-        "file": "../../../audits/partitions/conifers.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
-      },
-      "sub_phylos": [],
-      "_sub_phylos_loaded": [],
-      "audit_version": 1,
-      "status": "deferred",
-      "last_audited": "2026-05-18",
-      "auditor": "francisco",
-      "estimate_source": {
-        "key": "Farjon 2017",
-        "doi": null,
-        "doi_verified": "na",
-        "year_published": null,
-        "cited_value": 640,
-        "newer_authoritative_known": false
-      },
-      "canonical_tree": {
-        "filename": null,
-        "status": "not-shipped",
-        "reason": "Atlas ships only the Ran 2018 16-genus tree (genus-level), not species-level. Leslie 2018 published a 615-species supermatrix tree — strong candidate.\n"
-      },
-      "methods": null,
-      "shipped_subclades": [],
-      "candidate_subclades": [],
-      "resolutions": [],
-      "website": {
-        "badge": "deferred"
       }
     },
     "Crocodilians": {
@@ -25077,6 +25043,142 @@
         "badge": "deferred"
       }
     },
+    "Others": {
+      "partition": "Others",
+      "slug": "others",
+      "category": "Not yet represented",
+      "estimate": {
+        "described": 392,
+        "low": 392,
+        "total": 470,
+        "high": 580,
+        "confidence": "High",
+        "source": {
+          "key": "Atlas-aggregated",
+          "doi": null,
+          "pdf": null,
+          "url": null,
+          "note": "Catch-all aggregate of species in clades not contained in any other partition."
+        },
+        "interval_provenance": {
+          "described": {
+            "type": "atlas-derived",
+            "source": "atlas-aggregated",
+            "verbatim_quote": null,
+            "note": "Sum of described counts across constituent clades."
+          },
+          "estimated_total": {
+            "type": "atlas-derived",
+            "source": "atlas-aggregated",
+            "verbatim_quote": null
+          },
+          "estimated_low": {
+            "type": "derived-from-described",
+            "source": "atlas-aggregated",
+            "verbatim_quote": null
+          },
+          "estimated_high": {
+            "type": "atlas-derived",
+            "source": "atlas-aggregated",
+            "verbatim_quote": null
+          },
+          "overall_classification": "partly-heuristic",
+          "auditor_note": "Synthetic partition aggregating species in lineages not contained in\nany other atlas partition. Constituent clades have well-known\ndescribed counts (mostly from monographs or single-paper checklists);\nthe high bound allows modest cryptic diversity.\n"
+        }
+      },
+      "tree": null,
+      "constituents": [
+        {
+          "name": "Tuatara (Sphenodontia)",
+          "described": 1,
+          "estimated": 1,
+          "note": "Only one living rhynchocephalian: Sphenodon punctatus. The sole remaining lineage of an ancient reptile group sister to Squamata.",
+          "refs": [
+            "https://reptile-database.reptarium.cz/"
+          ]
+        },
+        {
+          "name": "Coelacanths (Coelacanthiformes)",
+          "described": 2,
+          "estimated": 2,
+          "note": "Latimeria chalumnae and L. menadoensis. 'Living fossils' — sister to tetrapods.",
+          "refs": [
+            "https://www.iucnredlist.org/species/11375/"
+          ]
+        },
+        {
+          "name": "Lungfishes (Dipnoi)",
+          "described": 6,
+          "estimated": 6,
+          "note": "Three genera in three families. Sister to tetrapods (or Coelacanths sister to Dipnoi+tetrapods, depending on hypothesis)."
+        },
+        {
+          "name": "Onychophora (velvet worms)",
+          "described": 200,
+          "estimated": 250,
+          "note": "Two families (Peripatidae, Peripatopsidae). Sister to Tardigrada+Arthropoda (Panarthropoda)."
+        },
+        {
+          "name": "Placozoa",
+          "described": 4,
+          "estimated": 20,
+          "note": "Trichoplax adhaerens classically + 3 more genetic species described 2018-2022. Simplest free-living animals known. Many cryptic species likely."
+        },
+        {
+          "name": "Loricifera",
+          "described": 39,
+          "estimated": 60,
+          "note": "Meiofaunal phylum discovered 1983. All described from marine sediments. Anaerobic species known."
+        },
+        {
+          "name": "Cycliophora",
+          "described": 3,
+          "estimated": 5,
+          "note": "Symbiotic on lobster mouthparts. Symbion pandora and 2 congeners."
+        },
+        {
+          "name": "Chaetognatha (arrow worms)",
+          "described": 130,
+          "estimated": 200,
+          "note": "Marine planktonic predators. Phylogenetic position contested (deuterostomes? protostomes? incertae sedis)."
+        }
+      ],
+      "note": "These 8 small clades collectively account for ~392 described species —\nvanishingly small compared to the atlas's 2.9M total, but they are\ntaxonomic-coverage gaps not contained in any other partition. The\natlas's main partitions ('Fish' = ray-finned only via Eschmeyer's\nCatalog; 'Squamates' = lizards+snakes; etc.) explicitly exclude these\nlineages. Bundled into 'Others' so the chart's partition is collectively\nexhaustive.\n",
+      "audit": {
+        "file": "../../../audits/partitions/others.md",
+        "status": "deferred",
+        "last_audited": "2026-05-18"
+      },
+      "sub_phylos": [],
+      "_sub_phylos_loaded": [],
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "Atlas-aggregated",
+        "doi": null,
+        "doi_verified": "na",
+        "year_published": null,
+        "cited_value": 470,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "Synthetic catch-all partition aggregating ~392 described species across\n8 small lineages NOT contained in any other partition: Tuatara (1),\nCoelacanths (2), Lungfishes (6), Onychophora (~200), Placozoa (~4),\nLoricifera (~39), Cycliophora (3), Chaetognatha (~130). Each is small\nenough that no single tree exists across all of them; phylogenies are\nscattered across many papers. Bundled here so the atlas's partition\nis collectively exhaustive at the species level.\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "surface_methods": false,
+        "surface_uncertainty": false,
+        "surface_candidates": false,
+        "badge": "deferred"
+      }
+    },
     "Pycnogonida": {
       "partition": "Pycnogonida",
       "slug": "pycnogonida",
@@ -25493,6 +25595,9 @@
       },
       "sub_phylos": [
         {
+          "slug": "conifers"
+        },
+        {
           "slug": "grasses"
         },
         {
@@ -25559,6 +25664,34 @@
             "described": 1900,
             "coverage_pct_described": 55.9
           }
+        },
+        {
+          "slug": "conifers",
+          "taxon": "Pinopsida (conifers)",
+          "parent": "seed_plants",
+          "parent_category": "Plants",
+          "tree": {
+            "file": "tree.nwk",
+            "ntips": 16,
+            "dated": true,
+            "source": {
+              "key": "Ran 2018",
+              "study": "Ran JH, Shen TT, Wu H, Gong X, Wang XQ (2018)",
+              "doi": "10.1016/j.ympev.2018.08.011",
+              "pdf": "papers/tree.pdf"
+            },
+            "methods": {
+              "inference": "ml",
+              "data_type": "transcriptome",
+              "note": "Genus-level only — 16 genera of Pinaceae from transcriptomic analysis.\nReal species-level coverage would require Leslie 2018 (615-species\nconifer supermatrix tree) — candidate paper for future upgrade.\n"
+            }
+          },
+          "species_count": {
+            "source": "Farjon 2017",
+            "described": 615,
+            "coverage_pct_described": 2.6
+          },
+          "note": "Conifers WAS a top-level partition in data_estimates.csv but it's a sub-\nclade of Seed plants (Spermatophyta), so its 615 species double-counted\nwithin the 383,671 of Seed plants. Relocated to this sub-phylo. The web\napp excludes Conifers from the main dotplot to avoid the overlap; users\nreach this tree via Seed plants → sub-clade chooser.\n"
         },
         {
           "slug": "eucalyptus",
@@ -26840,6 +26973,34 @@
           "outcome": "hit"
         }
       ]
+    },
+    "Conifers": {
+      "partition": "Conifers",
+      "category": "Plants",
+      "audit_version": 1,
+      "status": "deferred",
+      "last_audited": "2026-05-18",
+      "auditor": "francisco",
+      "estimate_source": {
+        "key": "Farjon 2017",
+        "doi": null,
+        "doi_verified": "na",
+        "year_published": null,
+        "cited_value": 640,
+        "newer_authoritative_known": false
+      },
+      "canonical_tree": {
+        "filename": null,
+        "status": "not-shipped",
+        "reason": "Atlas ships only the Ran 2018 16-genus tree (genus-level), not species-level. Leslie 2018 published a 615-species supermatrix tree — strong candidate.\n"
+      },
+      "methods": null,
+      "shipped_subclades": [],
+      "candidate_subclades": [],
+      "resolutions": [],
+      "website": {
+        "badge": "deferred"
+      }
     }
   }
 }

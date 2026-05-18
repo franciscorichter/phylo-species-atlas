@@ -1,0 +1,33 @@
+slug: conifers
+taxon: Pinopsida (conifers)
+parent: seed_plants
+parent_category: Plants
+
+tree:
+  file: tree.nwk
+  ntips: 16                                  # genus-level only (Pinaceae genera)
+  dated: true
+  source:
+    key: Ran 2018
+    study: Ran JH, Shen TT, Wu H, Gong X, Wang XQ (2018)
+    doi: 10.1016/j.ympev.2018.08.011
+    pdf: papers/tree.pdf
+  methods:
+    inference: ml
+    data_type: transcriptome
+    note: |
+      Genus-level only — 16 genera of Pinaceae from transcriptomic analysis.
+      Real species-level coverage would require Leslie 2018 (615-species
+      conifer supermatrix tree) — candidate paper for future upgrade.
+
+species_count:
+  source: Farjon 2017
+  described: 615
+  coverage_pct_described: 2.6                # 16 genera ≈ 2.6% of 615 species
+
+note: |
+  Conifers WAS a top-level partition in data_estimates.csv but it's a sub-
+  clade of Seed plants (Spermatophyta), so its 615 species double-counted
+  within the 383,671 of Seed plants. Relocated to this sub-phylo. The web
+  app excludes Conifers from the main dotplot to avoid the overlap; users
+  reach this tree via Seed plants → sub-clade chooser.

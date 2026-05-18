@@ -1,0 +1,96 @@
+partition: Others
+slug: others
+category: Not yet represented
+
+estimate:
+  described: 392
+  low: 392
+  total: 470
+  high: 580
+  confidence: High
+  source:
+    key: Atlas-aggregated
+    doi: null
+    pdf: null
+    url: null
+    note: "Catch-all aggregate of species in clades not contained in any other partition."
+  interval_provenance:
+    described:
+      type: atlas-derived
+      source: atlas-aggregated
+      verbatim_quote: null
+      note: "Sum of described counts across constituent clades."
+    estimated_total:
+      type: atlas-derived
+      source: atlas-aggregated
+      verbatim_quote: null
+    estimated_low:
+      type: derived-from-described
+      source: atlas-aggregated
+      verbatim_quote: null
+    estimated_high:
+      type: atlas-derived
+      source: atlas-aggregated
+      verbatim_quote: null
+    overall_classification: partly-heuristic
+    auditor_note: |
+      Synthetic partition aggregating species in lineages not contained in
+      any other atlas partition. Constituent clades have well-known
+      described counts (mostly from monographs or single-paper checklists);
+      the high bound allows modest cryptic diversity.
+
+tree: null
+
+# Constituent clades — each entry surfaces in the audit when the user
+# clicks the 'Others' row on the chart.
+constituents:
+  - name: Tuatara (Sphenodontia)
+    described: 1
+    estimated: 1
+    note: "Only one living rhynchocephalian: Sphenodon punctatus. The sole remaining lineage of an ancient reptile group sister to Squamata."
+    refs: ["https://reptile-database.reptarium.cz/"]
+  - name: Coelacanths (Coelacanthiformes)
+    described: 2
+    estimated: 2
+    note: "Latimeria chalumnae and L. menadoensis. 'Living fossils' — sister to tetrapods."
+    refs: ["https://www.iucnredlist.org/species/11375/"]
+  - name: Lungfishes (Dipnoi)
+    described: 6
+    estimated: 6
+    note: "Three genera in three families. Sister to tetrapods (or Coelacanths sister to Dipnoi+tetrapods, depending on hypothesis)."
+  - name: Onychophora (velvet worms)
+    described: 200
+    estimated: 250
+    note: "Two families (Peripatidae, Peripatopsidae). Sister to Tardigrada+Arthropoda (Panarthropoda)."
+  - name: Placozoa
+    described: 4
+    estimated: 20
+    note: "Trichoplax adhaerens classically + 3 more genetic species described 2018-2022. Simplest free-living animals known. Many cryptic species likely."
+  - name: Loricifera
+    described: 39
+    estimated: 60
+    note: "Meiofaunal phylum discovered 1983. All described from marine sediments. Anaerobic species known."
+  - name: Cycliophora
+    described: 3
+    estimated: 5
+    note: "Symbiotic on lobster mouthparts. Symbion pandora and 2 congeners."
+  - name: Chaetognatha (arrow worms)
+    described: 130
+    estimated: 200
+    note: "Marine planktonic predators. Phylogenetic position contested (deuterostomes? protostomes? incertae sedis)."
+
+note: |
+  These 8 small clades collectively account for ~392 described species —
+  vanishingly small compared to the atlas's 2.9M total, but they are
+  taxonomic-coverage gaps not contained in any other partition. The
+  atlas's main partitions ('Fish' = ray-finned only via Eschmeyer's
+  Catalog; 'Squamates' = lizards+snakes; etc.) explicitly exclude these
+  lineages. Bundled into 'Others' so the chart's partition is collectively
+  exhaustive.
+
+audit:
+  file: ../../../audits/partitions/others.md
+  status: deferred
+  last_audited: 2026-05-18
+
+sub_phylos: []

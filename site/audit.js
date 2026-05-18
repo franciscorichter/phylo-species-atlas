@@ -146,6 +146,32 @@ function renderPartition(partition, audit) {
       </section>`;
   }
 
+  // Constituents (synthetic 'Others' partition aggregating 8 small clades).
+  let constituentsHTML = "";
+  const constituents = audit.constituents || [];
+  if (constituents.length) {
+    constituentsHTML = `
+      <section class="aud-block">
+        <h3>Constituent clades (${constituents.length})</h3>
+        <table class="ip-table">
+          <thead><tr>
+            <th style="width: 200px">Clade</th>
+            <th style="width: 80px">Described</th>
+            <th style="width: 80px">Estimated</th>
+            <th>Notes</th>
+          </tr></thead>
+          <tbody>
+            ${constituents.map(c => `<tr>
+              <td><strong>${escapeHTML(c.name)}</strong></td>
+              <td>${fmt.format(c.described || 0)}</td>
+              <td>${fmt.format(c.estimated || 0)}</td>
+              <td>${c.note ? escapeHTML(c.note) : ""}</td>
+            </tr>`).join("")}
+          </tbody>
+        </table>
+      </section>`;
+  }
+
   let doiFixHTML = "";
   if (estSrc.paper_doi_status === "broken" && estSrc.live_doi) {
     doiFixHTML = `
@@ -236,6 +262,7 @@ function renderPartition(partition, audit) {
         </div>
       </header>
       ${deferredHTML}
+      ${constituentsHTML}
       ${intervalHTML}
       ${doiFixHTML}
       ${resHTML}

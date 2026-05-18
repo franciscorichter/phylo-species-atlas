@@ -514,6 +514,16 @@ def main() -> None:
         agg["trees"] += 1
         agg["tips"] += ntips_meta or 0
 
+    # Reclassify the Conifers tree (Ran 2018 Pinaceae) as a sub-clade of
+    # Seed plants. Conifers were in data_estimates.csv as a top-level
+    # partition but Conifer species (~615) double-count within Seed plants
+    # (~383k, since Smith Brown 2018 ALLMB includes gymnosperms). Curated
+    # the tree's partition_group manually here so the chart's partition
+    # filter sees Conifers under Seed plants → sub-phylos → conifers/.
+    for t in trees:
+        if t.get("group") == "conifers":
+            t["partition_group"] = "Seed plants"
+
     # Identify the canonical tree per partition: the one with the most tips.
     # All other trees in that partition are sub-clades (Layer 2).
     partition_max_tips: dict[str, int] = {}
@@ -619,11 +629,15 @@ def main() -> None:
 
     # "Not yet represented" lineages — partitions present in data_estimates.csv
     # but with no shipped tree. These are the paper's dark-matter clades.
+    # Conifers is excluded: it's a sub-clade of Seed plants (the 615 Conifer
+    # species double-count within Seed plants' 383k), so the audit reclassifies
+    # Conifers as a sub-phylo rather than a top-level partition.
     mapped_partitions = {t["partition_group"] for t in trees if t.get("partition_group")}
+    PARTITION_EXCLUDED_FROM_CHART = {"Conifers"}
     unrepresented = []
     for r in estimates_rows:
         g = r.get("group")
-        if not g or g in mapped_partitions:
+        if not g or g in mapped_partitions or g in PARTITION_EXCLUDED_FROM_CHART:
             continue
         unrepresented.append({
             "group": g,
@@ -642,11 +656,40 @@ def main() -> None:
     unrepresented.sort(key=lambda x: (CAT_ORDER.get(x["category"], 9),
                                       -(x["described"] or 0)))
 
-    # Surface the unrepresented partitions on the main coverage chart too —
-    # gives users the full "dark matter" story alongside the shipped trees.
-    # Each gets tips=null (no shipped tree → no ◇/★ marker), but the ◯
-    # described and ● estimated whiskers all render.
-    for u in unrepresented:
+    # Synthetic atlas-only partitions: appear in audits/ but NOT in
+    # data_estimates.csv. Currently 'Others' — aggregates Tuatara, Coelacanths,
+    # Lungfishes, Onychophora, Placozoa, Loricifera, Cycliophora, Chaetognatha
+    # so the atlas's partition is collectively exhaustive at the species level.
+    synthetic_partitions = []
+    existing_in_csv = {r["group"] for r in estimates_rows}
+    existing_unrep = {u["group"] for u in unrepresented}
+    # We need the audits dict; load it now (was below, but coverage_rows
+    # need it here). Idempotent if already loaded.
+    _audits_for_synth = load_audit_overrides()
+    for partition_name, audit in _audits_for_synth.items():
+        if partition_name in existing_in_csv or partition_name in existing_unrep:
+            continue
+        est = audit.get("estimate") or {}
+        if not est.get("described") and not est.get("total"):
+            continue  # no numeric data
+        synthetic_partitions.append({
+            "group": partition_name,
+            "category": audit.get("category") or "Not yet represented",
+            "described": est.get("described"),
+            "estimated_total": est.get("total"),
+            "estimated_low": est.get("low"),
+            "estimated_high": est.get("high"),
+            "estimate_source": (est.get("source") or {}).get("key"),
+            "estimate_source_info": None,
+            "estimate_confidence": est.get("confidence"),
+            "synthetic": True,
+        })
+
+    # Surface the unrepresented + synthetic partitions on the main coverage
+    # chart — gives users the full "dark matter" story alongside the shipped
+    # trees. Each gets tips=null (no shipped tree → no ◇/★ marker), but the
+    # ◯ described and ● estimated whiskers all render.
+    for u in list(unrepresented) + synthetic_partitions:
         row_out = {
             "filename": None,
             "group": u["group"].lower().replace(" ", "_"),
