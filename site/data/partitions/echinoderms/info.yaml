@@ -1,0 +1,59 @@
+partition: Echinoderms
+slug: echinoderms
+category: Other animals
+
+estimate:
+  described: 7550
+  low: 8000
+  total: 10000
+  high: 15000
+  confidence: Medium
+  source:
+    key: Appeltans 2012
+    doi: 10.1016/j.cub.2012.09.036
+    pdf: null
+    url: https://www.cell.com/current-biology/fulltext/S0960-9822(12)01142-1
+  interval_provenance:
+    described:
+      type: database
+      source: WoRMS / Appeltans 2012
+      verbatim_quote: null
+    estimated_total:
+      type: paper-published
+      source: Appeltans 2012
+      verbatim_quote: null
+    estimated_low:
+      type: paper-published
+      source: Appeltans 2012
+      verbatim_quote: null
+    estimated_high:
+      type: paper-published
+      source: Appeltans 2012
+      verbatim_quote: null
+    overall_classification: paper-published-range
+    auditor_note: "Appeltans 2012 provides bilateral paper-published range for Echinoderms."
+
+tree:
+  file: tree.nwk
+  ntips: 66
+  unique_ids: 66
+  species_represented: 66
+  coverage_pct_described: 0.9
+  dated: true
+  multiple_individuals_per_species: false
+  source:
+    key: Mongiardino Koch N
+    study: Mongiardino Koch N, Thompson JR (2022)
+    doi: 10.7554/eLife.72460
+    pdf: papers/tree.pdf
+  methods:
+    inference: ml
+    data_type: UCE
+    note: "18 novel genomes/transcriptomes; near-complete major lineage sampling; Bayesian dating."
+
+audit:
+  file: ../../../audits/partitions/echinoderms.md
+  status: verified
+  last_audited: 2026-05-18
+
+sub_phylos: []

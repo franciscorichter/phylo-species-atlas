@@ -1,0 +1,59 @@
+partition: Bivalves
+slug: bivalves
+category: Other animals
+
+estimate:
+  described: 20000
+  low: 20000
+  total: 30000
+  high: 40000
+  confidence: Medium
+  source:
+    key: Appeltans 2012
+    doi: 10.1016/j.cub.2012.09.036
+    pdf: null
+    url: https://www.cell.com/current-biology/fulltext/S0960-9822(12)01142-1
+  interval_provenance:
+    described:
+      type: database
+      source: WoRMS / Appeltans 2012
+      verbatim_quote: null
+    estimated_total:
+      type: paper-published
+      source: Appeltans 2012
+      verbatim_quote: null
+    estimated_low:
+      type: derived-from-described
+      source: Appeltans 2012
+      verbatim_quote: null
+    estimated_high:
+      type: paper-published
+      source: Appeltans 2012
+      verbatim_quote: null
+    overall_classification: partly-heuristic
+    auditor_note: "Appeltans 2012 provides partial/heuristic bounds for Bivalves."
+
+tree:
+  file: tree.nwk
+  ntips: 73
+  unique_ids: 73
+  species_represented: 73
+  coverage_pct_described: 0.4
+  dated: true
+  multiple_individuals_per_species: false
+  source:
+    key: Pfeiffer JM
+    study: Pfeiffer JM, Breinholt JW, Page LM (2019)
+    doi: 10.1016/j.ympev.2019.02.016
+    pdf: papers/tree.pdf
+  methods:
+    inference: ml
+    data_type: UCE
+    note: "Unioverse probe set; anchored hybrid enrichment; FRESHWATER MUSSELS ONLY (Unionoida)."
+
+audit:
+  file: ../../../audits/partitions/bivalves.md
+  status: verified
+  last_audited: 2026-05-18
+
+sub_phylos: []

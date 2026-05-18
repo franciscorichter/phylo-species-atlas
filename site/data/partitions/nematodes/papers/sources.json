@@ -1,0 +1,21 @@
+{
+  "tree": {
+    "file": "tree.pdf",
+    "doi": "10.1093/sysbio/syae073",
+    "study": "Qing X et al. (2025)",
+    "year": null,
+    "journal": null,
+    "license": "Oxford Academic (subscription)",
+    "open_access": false,
+    "url": "https://doi.org/10.1093/sysbio/syae073"
+  },
+  "estimate": {
+    "file": null,
+    "doi": null,
+    "study": "Hodda 2022",
+    "year": null,
+    "license": "subscription",
+    "open_access": false,
+    "url": "https://www.cell.com/current-biology/fulltext/S0960-9822(12)01142-1"
+  }
+}

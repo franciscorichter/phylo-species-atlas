@@ -1,0 +1,21 @@
+{
+  "tree": {
+    "file": "tree.pdf",
+    "doi": "10.1126/sciadv.abm7452",
+    "study": "Orr RJS et al. (2022)",
+    "year": 7452,
+    "journal": null,
+    "license": "CC-BY 4.0",
+    "open_access": true,
+    "url": "https://doi.org/10.1126/sciadv.abm7452"
+  },
+  "estimate": {
+    "file": null,
+    "doi": "10.1016/j.cub.2012.09.036",
+    "study": "Appeltans 2012",
+    "year": null,
+    "license": "subscription",
+    "open_access": false,
+    "url": "https://www.cell.com/current-biology/fulltext/S0960-9822(12)01142-1"
+  }
+}

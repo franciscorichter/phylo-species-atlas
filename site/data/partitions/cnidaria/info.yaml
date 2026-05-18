@@ -1,0 +1,59 @@
+partition: Cnidaria
+slug: cnidaria
+category: Other animals
+
+estimate:
+  described: 11800
+  low: 12000
+  total: 16000
+  high: 25000
+  confidence: Medium
+  source:
+    key: Appeltans 2012
+    doi: 10.1016/j.cub.2012.09.036
+    pdf: null
+    url: https://www.cell.com/current-biology/fulltext/S0960-9822(12)01142-1
+  interval_provenance:
+    described:
+      type: database
+      source: WoRMS / Appeltans 2012
+      verbatim_quote: null
+    estimated_total:
+      type: paper-published
+      source: Appeltans 2012
+      verbatim_quote: null
+    estimated_low:
+      type: paper-published
+      source: Appeltans 2012
+      verbatim_quote: null
+    estimated_high:
+      type: paper-published
+      source: Appeltans 2012
+      verbatim_quote: null
+    overall_classification: paper-published-range
+    auditor_note: "Appeltans 2012 provides bilateral paper-published range for Cnidaria."
+
+tree:
+  file: tree.nwk
+  ntips: 289
+  unique_ids: 289
+  species_represented: 289
+  coverage_pct_described: 2.4
+  dated: true
+  multiple_individuals_per_species: false
+  source:
+    key: Vaga CF
+    study: Vaga CF, Quattrini AM et al. (2025)
+    doi: 10.1038/s41586-025-09615-6
+    pdf: papers/tree.pdf
+  methods:
+    inference: ml
+    data_type: UCE
+    note: "Hybrid-capture phylogenomics on Scleractinia (stony corals), BEAST dating; tree covers corals subset of Cnidaria."
+
+audit:
+  file: ../../../audits/partitions/cnidaria.md
+  status: verified
+  last_audited: 2026-05-18
+
+sub_phylos: []

@@ -1,0 +1,59 @@
+partition: Cephalopods
+slug: cephalopods
+category: Other animals
+
+estimate:
+  described: 800
+  low: 900
+  total: 1200
+  high: 1500
+  confidence: Medium
+  source:
+    key: WoRMS
+    doi: null
+    pdf: null
+    url: null
+  interval_provenance:
+    described:
+      type: database
+      source: WoRMS / WoRMS
+      verbatim_quote: null
+    estimated_total:
+      type: paper-published
+      source: WoRMS
+      verbatim_quote: null
+    estimated_low:
+      type: paper-published
+      source: WoRMS
+      verbatim_quote: null
+    estimated_high:
+      type: paper-published
+      source: WoRMS
+      verbatim_quote: null
+    overall_classification: paper-published-range
+    auditor_note: "WoRMS provides bilateral paper-published range for Cephalopods."
+
+tree:
+  file: tree.nwk
+  ntips: 81
+  unique_ids: 81
+  species_represented: 81
+  coverage_pct_described: 10.1
+  dated: true
+  multiple_individuals_per_species: false
+  source:
+    key: Basava K et al.
+    study: Basava K et al. (2024)
+    doi: 10.1101/2024.04.29.591691
+    pdf: papers/tree.pdf
+  methods:
+    inference: ml
+    data_type: UCE
+    note: "Lindgren phylogeny extended with BEAST dating; covers octopus, squid, cuttlefish."
+
+audit:
+  file: ../../../audits/partitions/cephalopods.md
+  status: verified
+  last_audited: 2026-05-18
+
+sub_phylos: []
