@@ -10,7 +10,7 @@ estimate:
   confidence: Medium
   source:
     key: Hayward 2020
-    doi: null
+    doi: 10.2113/gsjfr.50.3.291
     pdf: null
     url: null
   interval_provenance:
@@ -30,12 +30,8 @@ estimate:
       type: paper-published
       source: Hayward 2020
       verbatim_quote: null
-    overall_classification: partly-heuristic
-    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
-
-tree: null
-caveats:
-  - severity: medium
+    overall_classification: fully-heuristic
+    auditor_note: "Hayward 2020 is the World Foraminifera Database catalog (4,932 genera; ~9,600 extant species), NOT a paper publishing a true-diversity range. Atlas''s 9k-12k-15k bounds are heuristic. Reclassified."
     summary: "No canonical tree shipped in the atlas."
     detail: |
       Hayward 2020 reference; foraminifera molecular trees are limited.

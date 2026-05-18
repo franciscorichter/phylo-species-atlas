@@ -10,7 +10,7 @@ estimate:
   confidence: Medium
   source:
     key: Hodda 2022
-    doi: null
+    doi: 10.11646/zootaxa.5114.1.1
     pdf: null
     url: null
   interval_provenance:
@@ -30,18 +30,8 @@ estimate:
       type: paper-published
       source: Hodda 2022
       verbatim_quote: null
-    overall_classification: paper-published-range
-    auditor_note: "Hodda 2022 provides bilateral paper-published range for Nematodes."
-
-tree:
-  file: tree.nwk
-  ntips: 166
-  unique_ids: 166
-  species_represented: 166
-  coverage_pct_described: 0.6
-  dated: true
-  multiple_individuals_per_species: false
-  source:
+    overall_classification: fully-heuristic
+    auditor_note: "Hodda 2022 is a CLASSIFICATION paper reporting 28,537 valid described species in Nematoda (its census), NOT a published true-diversity estimate. The atlas''s 500k-1M-10M range is entirely atlas-derived heuristic. Reclassified from paper-published-range → fully-heuristic."
     key: Qing X et al.
     study: Qing X et al. (2025)
     doi: 10.1093/sysbio/syae073
