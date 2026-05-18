@@ -64,8 +64,15 @@
         "redundancy": 12325,
         "binomial_format": true
       },
-      "tree_url_override": null,
-      "tip_taxonomy_override": null,
+      "tree_url_override": "data/partitions/seed_plants/tree.nwk",
+      "tip_taxonomy_override": {
+        "unique_ids": 342466,
+        "unique_species": 342466,
+        "subspecies_tips": 947,
+        "redundancy": 0,
+        "binomial_format": true,
+        "total_tips": 342466
+      },
       "is_partition_canonical": true
     },
     {
@@ -870,8 +877,15 @@
         "redundancy": 48,
         "binomial_format": true
       },
-      "tree_url_override": null,
-      "tip_taxonomy_override": null,
+      "tree_url_override": "data/partitions/fungi/tree.nwk",
+      "tip_taxonomy_override": {
+        "unique_ids": 1602,
+        "unique_species": 1602,
+        "subspecies_tips": 9,
+        "redundancy": 0,
+        "binomial_format": true,
+        "total_tips": 1602
+      },
       "is_partition_canonical": true
     },
     {
@@ -12168,7 +12182,7 @@
       "category": "Plants",
       "study": "Smith & Brown 2018",
       "year": 2018,
-      "tips": 342474,
+      "tips": 342466,
       "raw_tips": 356305,
       "described_species": 383671,
       "described_source": "World Flora Online 2025",
@@ -21356,10 +21370,10 @@
       },
       "tree": {
         "file": "tree.nwk",
-        "ntips": 1672,
-        "unique_ids": 1672,
-        "species_represented": 1672,
-        "coverage_pct_described": 1.08,
+        "ntips": 1602,
+        "derivation": "Derived from the Li 2021 fungal genome tree by pruning to a single\nrepresentative per species (smallest numeric tip ID per Genus_species).\n2.9% redundancy in the original. Reproducible via\nscripts/derive_species_tree.py.\n",
+        "species_represented": 1602,
+        "coverage_pct_described": 1.03,
         "dated": false,
         "multiple_individuals_per_species": false,
         "source": {
@@ -22425,7 +22439,9 @@
           "parent_category": "Vertebrates",
           "tree": {
             "file": "tree.nwk",
-            "ntips": 301,
+            "ntips": 272,
+            "derivation": "Derived from the 301-tip Arnold 2010 10kTrees v3 MCC by pruning to a\nsingle representative per species (smallest numeric tip ID under each\nGenus_species). 9.6% subspecies-level redundancy in the original tree\n(34 subspecies-suffixed tips like Gorilla_gorilla_gorilla).\nReproducible via scripts/derive_species_tree.py.\n",
+            "species_represented": 272,
             "dated": true,
             "source": {
               "key": "Arnold 2010",
@@ -22454,7 +22470,19 @@
           "species_count": {
             "source": "IUCN Red List 2025",
             "described": 522,
-            "coverage_pct_described": 57.7
+            "coverage_pct_described": 52.1
+          },
+          "uncertainty": {
+            "files": [
+              {
+                "name": "multi-individual.tree.nwk",
+                "label": "Original 301-tip multi-individual MCC (locally hosted)",
+                "description": "The published Arnold 2010 10kTrees v3 MCC with 301 tips representing\n272 species (9.6% subspecies/specimen redundancy). The atlas-derived\n272-tip canonical above is pruned from this tree.\n",
+                "format": "Newick (standardized IDs)",
+                "url": "data/partitions/mammals/sub-phylos/primates/uncertainty/multi-individual.tree.nwk",
+                "local": true
+              }
+            ]
           }
         }
       ],
@@ -23749,10 +23777,10 @@
       },
       "tree": {
         "file": "tree.nwk",
-        "ntips": 356305,
-        "unique_ids": 356305,
-        "species_represented": 356305,
-        "coverage_pct_described": 92.9,
+        "ntips": 342466,
+        "derivation": "Derived from the Smith Brown 2018 ALLMB by pruning to a single\nrepresentative per species (smallest numeric tip ID under each\nGenus_species). 3.5% subspecies/specimen-level redundancy in the\noriginal tree (~13.8k redundant tips, including the 2,457 subspecies-\nsuffixed positions). Reproducible via scripts/derive_species_tree.py\n(~27 min for this 6 MB tree).\n",
+        "species_represented": 342466,
+        "coverage_pct_described": 89.3,
         "dated": true,
         "multiple_individuals_per_species": false,
         "source": {

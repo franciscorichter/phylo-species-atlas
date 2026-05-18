@@ -37,10 +37,16 @@ estimate:
 
 tree:
   file: tree.nwk
-  ntips: 356305
-  unique_ids: 356305
-  species_represented: 356305
-  coverage_pct_described: 92.9
+  ntips: 342466                              # atlas-derived: one tip per species (pruned from 356305)
+  derivation: |
+    Derived from the Smith Brown 2018 ALLMB by pruning to a single
+    representative per species (smallest numeric tip ID under each
+    Genus_species). 3.5% subspecies/specimen-level redundancy in the
+    original tree (~13.8k redundant tips, including the 2,457 subspecies-
+    suffixed positions). Reproducible via scripts/derive_species_tree.py
+    (~27 min for this 6 MB tree).
+  species_represented: 342466
+  coverage_pct_described: 89.3
   dated: true
   multiple_individuals_per_species: false
   source:

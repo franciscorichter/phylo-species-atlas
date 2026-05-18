@@ -35,10 +35,14 @@ estimate:
 
 tree:
   file: tree.nwk
-  ntips: 1672
-  unique_ids: 1672
-  species_represented: 1672
-  coverage_pct_described: 1.08
+  ntips: 1602                                # atlas-derived: one tip per species (pruned from 1672)
+  derivation: |
+    Derived from the Li 2021 fungal genome tree by pruning to a single
+    representative per species (smallest numeric tip ID per Genus_species).
+    2.9% redundancy in the original. Reproducible via
+    scripts/derive_species_tree.py.
+  species_represented: 1602
+  coverage_pct_described: 1.03
   dated: false
   multiple_individuals_per_species: false
   source:
