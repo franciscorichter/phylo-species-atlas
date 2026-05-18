@@ -95,6 +95,11 @@ function renderCoveragePlot() {
   });
 
   const labels = rows.map(r => r.group);
+  // Pretty display labels for the y-axis ticks: replace underscores with
+  // spaces (e.g. "other_vertebrates" → "other vertebrates"). The
+  // underlying `group` stays as-is so click handlers and shape
+  // positioning still match Plotly's internal y values.
+  const tickText = rows.map(r => (r.group || "").replace(/_/g, " "));
 
   const intervalClass = (r) => {
     const ip = r.interval_provenance;
@@ -239,17 +244,17 @@ function renderCoveragePlot() {
     else last.end = i;
   }
   const LEFT_MARGIN = 230;
-  const annotations = bands.map(b => {
-    const midRow = Math.floor((b.start + b.end) / 2);
-    return {
-      xref: "paper", yref: "y",
-      x: 0, xanchor: "left", xshift: -LEFT_MARGIN + 6,
-      y: rows[midRow].group, yanchor: "middle",
-      text: `<b>${b.category.toUpperCase()}</b>`,
-      showarrow: false, align: "left",
-      font: { family: FONT_STACK, size: 10.5, color: "#7a7a7a" },
-    };
-  });
+  // Anchor each category label at the FIRST row of its band, so users see
+  // exactly where the group starts (and the row above is the previous group's
+  // last entry). The label sits in the left gutter aligned with that first row.
+  const annotations = bands.map(b => ({
+    xref: "paper", yref: "y",
+    x: 0, xanchor: "left", xshift: -LEFT_MARGIN + 6,
+    y: rows[b.start].group, yanchor: "middle",
+    text: `<b>${b.category.toUpperCase()}</b>`,
+    showarrow: false, align: "left",
+    font: { family: FONT_STACK, size: 10.5, color: "#7a7a7a" },
+  }));
   const shapes = [
     ...bands.slice(1).map(b => ({
       type: "line", xref: "paper", yref: "y",
@@ -290,6 +295,9 @@ function renderCoveragePlot() {
       autorange: "reversed",
       ticks: "",
       ticksuffix: "   ",
+      tickmode: "array",
+      tickvals: labels,
+      ticktext: tickText,
     },
     paper_bgcolor: "transparent",
     plot_bgcolor: "transparent",
