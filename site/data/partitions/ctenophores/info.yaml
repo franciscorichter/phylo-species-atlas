@@ -12,7 +12,8 @@ estimate:
     key: WoRMS
     doi: null
     pdf: null
-    url: null
+    url: https://www.marinespecies.org/aphia.php?p=taxdetails&id=1248
+    note: "World Register of Marine Species (WoRMS) — ~200 accepted ctenophore species across 9 families."
   interval_provenance:
     described:
       type: database
@@ -38,11 +39,34 @@ caveats:
   - severity: medium
     summary: "No canonical tree shipped in the atlas."
     detail: |
-      Whelan 2017 ctenophore tree available; only ~27 species in atlas data.
+      ~200 described ctenophore species. Whelan 2017 (Nat Ecol Evol) is
+      the standard dated phylogenomic backbone but covers only ~27
+      species. Ctenophore species-level molecular sampling remains
+      sparse; many species are fragile and rarely DNA-sampled. A
+      backbone-level chronogram from Whelan 2017 could be added.
+
+dated_alternatives:
+  reason_canonical_undated: |
+    Phylogenomic backbone exists (Whelan 2017) but at family/order
+    level only. Species-level sampling lags behind for this fragile
+    gelatinous phylum.
+  candidates:
+    - key: Whelan 2017
+      doi: 10.1038/s41559-017-0331-3
+      study: "Whelan NV, Kocot KM, Moroz TP, Mukherjee K, Williams P, Paulay G et al. (2017) — Ctenophore relationships and their placement as the sister group to all other animals. Nat Ecol Evol 1:1737-1746."
+      scope: Phylogenomic backbone with relaxed-clock dating
+      tips: ~27
+      note: "Standard reference for ctenophore deep-time relationships and placement at the base of Metazoa."
+    - key: Simion 2017
+      doi: 10.1016/j.cub.2017.02.031
+      study: "Simion P, Philippe H, Baurain D et al. (2017) — A large and consistent phylogenomic dataset supports sponges as the sister group to all other animals. Curr Biol 27:958-967."
+      scope: Phylogenomic counter-hypothesis (sponges-first)
+      tips: ~20
+      note: "Alternative phylogenomic placement disputing Whelan 2017's ctenophores-first topology. Same scale, different answer."
 
 audit:
   file: ../../../audits/partitions/ctenophores.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []

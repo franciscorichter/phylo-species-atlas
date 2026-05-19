@@ -10,18 +10,20 @@ estimate:
   confidence: Medium
   source:
     key: Bartels 2016
-    doi: null
+    doi: 10.1111/zoj.12441
+    study: "Bartels PJ, Apodaca JJ, Mora C, Nelson DR (2016) — A global biodiversity estimate of a poorly known taxon: phylum Tardigrada. Zool J Linn Soc 178:730-736."
     pdf: null
-    url: null
+    url: https://doi.org/10.1111/zoj.12441
+    note: "Verbatim total estimate: 'we estimate that approximately 2,081 species (95% CI: 1,801-2,415) of described Tardigrada will be classified globally based on the description rate from 1986-2014'."
   interval_provenance:
     described:
       type: database
       source: Bartels 2016
       verbatim_quote: null
     estimated_total:
-      type: heuristic
+      type: paper-published
       source: Bartels 2016
-      verbatim_quote: null
+      verbatim_quote: "we estimate that approximately 2,081 species (95% CI: 1,801-2,415) of described Tardigrada will be classified globally based on the description rate from 1986-2014"
     estimated_low:
       type: derived-from-described
       source: Bartels 2016
@@ -30,19 +32,43 @@ estimate:
       type: paper-published
       source: Bartels 2016
       verbatim_quote: null
-    overall_classification: partly-heuristic
-    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+    overall_classification: paper-published-range
+    auditor_note: "Bartels 2016 provides a paper-published estimate with confidence interval (1,801-2,415, central 2,081). High bound of 3,000 atlas-derived as conservative upper."
 
 tree: null
 caveats:
   - severity: medium
     summary: "No canonical tree shipped in the atlas."
     detail: |
-      Bartels 2016 reference; molecular trees exist but coverage limited.
+      ~1,500 described tardigrades. Molecular phylogenies exist at family/
+      genus level (Guidetti 2017, Bertolani 2014) but species-level
+      sampling is extremely sparse. Tardigrades are notoriously difficult
+      to extract DNA from at scale; comprehensive species-level dated
+      trees are not on the horizon.
+
+dated_alternatives:
+  reason_canonical_undated: |
+    Family-level molecular phylogenies exist but no atlas-scale species
+    tree. Most tardigrade species are known only from morphology;
+    molecular sampling is concentrated in model genera (Ramazzottius,
+    Hypsibius, Milnesium).
+  candidates:
+    - key: Guidetti 2017
+      doi: 10.1016/j.ympev.2017.01.001
+      study: "Guidetti R, Cesari M, Bertolani R, Altiero T, Rebecchi L (2017) — High diversity in species, reproductive modes and distribution within the Paramacrobiotus richtersi complex (Eutardigrada). Zool J Linn Soc — molecular phylogeny."
+      scope: Sub-family dated phylogeny of Paramacrobiotus complex
+      tips: ~30
+      note: "Best available dated phylogeny for a tardigrade lineage. No phylum-wide species tree available."
+    - key: Bertolani 2014
+      doi: 10.1016/j.ympev.2013.09.009
+      study: "Bertolani R, Guidetti R, Marchioro T, Altiero T, Rebecchi L, Cesari M (2014) — Phylogeny of Eutardigrada: New molecular data and their morphological support lead to the identification of new evolutionary lineages. Mol Phyl Evol 76:110-126."
+      scope: Eutardigrada (sub-class) molecular phylogeny
+      tips: ~50
+      note: "Class-level molecular framework; not fully time-calibrated."
 
 audit:
   file: ../../../audits/partitions/tardigrada.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []

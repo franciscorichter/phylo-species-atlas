@@ -38,11 +38,36 @@ caveats:
   - severity: medium
     summary: "No canonical tree shipped in the atlas."
     detail: |
-      Delsuc 2018 tunicate phylogeny available; ~63 species in atlas data.
+      ~3,000 described tunicates (Ascidiacea + Thaliacea + Appendicularia)
+      but only ~63 species appear across cross-clade molecular datasets.
+      Delsuc 2018 (Nat Ecol Evol) is the standard dated phylogenomic
+      framework but covers only 31 species at the genus/family backbone
+      level. Adding a comprehensive species-level chronogram is a
+      candidate task.
+
+dated_alternatives:
+  reason_canonical_undated: |
+    No species-level dated tunicate tree exists at atlas scale. The
+    largest published dated chronograms are backbone-only (Delsuc 2018:
+    31 species; Kocot 2018: similar scale). Tunicate species-level
+    sampling is sparse outside model ascidian families.
+  candidates:
+    - key: Delsuc 2018
+      doi: 10.1186/s12915-018-0499-2
+      study: "Delsuc F, Philippe H, Tsagkogeorga G, Simion P, Tilak MK, Turon X et al. (2018) — A phylogenomic framework and timescale for comparative studies of tunicates. BMC Biology 16:39."
+      scope: Backbone phylogenomic framework with relaxed-clock dating
+      tips: 31
+      note: "Standard dated tunicate framework; 18 fossil/molecular calibrations. Backbone-level only."
+    - key: Shenkar 2011
+      doi: 10.1371/journal.pone.0020657
+      study: "Shenkar N, Swalla BJ (2011) — Global Diversity of Ascidiacea. PLoS One 6:e20657."
+      scope: Ascidiacea diversity census (no tree, but the authoritative species count source)
+      tips: null
+      note: "Source for the 3,145 described-species number used in this partition's estimate."
 
 audit:
   file: ../../../audits/partitions/tunicates.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []

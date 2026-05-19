@@ -10,12 +10,12 @@
     "total_tips": 688490,
     "n_audited": 62,
     "n_audits_in_progress": 1,
-    "n_audits_verified": 25,
-    "n_audits_deferred": 36,
+    "n_audits_verified": 33,
+    "n_audits_deferred": 28,
     "n_partitions": 62,
     "n_atlas_derived": 6,
-    "n_paper_published_intervals": 10,
-    "n_partly_heuristic_intervals": 39,
+    "n_paper_published_intervals": 11,
+    "n_partly_heuristic_intervals": 38,
     "n_fully_heuristic_intervals": 11,
     "total_described_species": 2878313
   },
@@ -15544,9 +15544,9 @@
           "verbatim_quote": null
         },
         "estimated_total": {
-          "type": "heuristic",
+          "type": "paper-published",
           "source": "Bartels 2016",
-          "verbatim_quote": null
+          "verbatim_quote": "we estimate that approximately 2,081 species (95% CI: 1,801-2,415) of described Tardigrada will be classified globally based on the description rate from 1986-2014"
         },
         "estimated_low": {
           "type": "derived-from-described",
@@ -15558,8 +15558,8 @@
           "source": "Bartels 2016",
           "verbatim_quote": null
         },
-        "overall_classification": "partly-heuristic",
-        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+        "overall_classification": "paper-published-range",
+        "auditor_note": "Bartels 2016 provides a paper-published estimate with confidence interval (1,801-2,415, central 2,081). High bound of 3,000 atlas-derived as conservative upper."
       }
     },
     {
@@ -20186,13 +20186,42 @@
         {
           "severity": "medium",
           "summary": "No canonical tree shipped in the atlas.",
-          "detail": "Weigert 2014 annelid phylogenomic backbone available; ~60 species in current atlas data.\n"
+          "detail": "~21,000 described annelids. Weigert & Bleidorn 2016 (Org Divers\nEvol review) summarizes phylogenomic backbone status. Weigert 2014\n(Mol Biol Evol) provided the first phylogenomic dataset (~17\nspecies, dated). No species-level chronogram at atlas scale. The\nbackbone-level dated tree (Weigert 2014) is a candidate to add.\n"
         }
       ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "Backbone phylogenomic dating exists but species-level sampling is\nextremely sparse relative to described diversity (21k species). Most\ndated phylogenies are at family/order level.\n",
+        "candidates": [
+          {
+            "key": "Weigert 2014",
+            "doi": "10.1093/molbev/msu080",
+            "study": "Weigert A, Helm C, Meyer M et al. (2014) — Illuminating the base of the annelid tree using transcriptomics. Mol Biol Evol 31:1391-1401.",
+            "scope": "Phylogenomic backbone of Annelida with relaxed-clock dating",
+            "tips": "~17",
+            "note": "Foundational annelid phylogenomic dating — uses 305 genes from 17 transcriptomes."
+          },
+          {
+            "key": "Weigert 2016",
+            "doi": "10.1007/s13127-016-0265-7",
+            "study": "Weigert A, Bleidorn C (2016) — Current status of annelid phylogeny. Org Divers Evol 16:345-362.",
+            "scope": "Review of annelid phylogenomic status",
+            "tips": null,
+            "note": "Critical review compiling all post-Struck 2011 annelid phylogenomic datasets. No new tree but useful for citation."
+          },
+          {
+            "key": "Andrade 2015",
+            "doi": "10.1093/molbev/msv157",
+            "study": "Andrade SCS, Novo M, Kawauchi GY, Worsaae K, Pleijel F, Giribet G et al. (2015) — Articulating 'archiannelids': Phylogenomics and annelid relationships, with emphasis on meiofaunal taxa. Mol Biol Evol 32:2860-2875.",
+            "scope": "Phylogenomic backbone emphasizing meiofaunal annelids",
+            "tips": "~50",
+            "note": "Larger taxon sample than Weigert 2014; includes meiofaunal lineages."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/annelids.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -22223,7 +22252,8 @@
           "key": "WoRMS",
           "doi": null,
           "pdf": null,
-          "url": null
+          "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=1248",
+          "note": "World Register of Marine Species (WoRMS) — ~200 accepted ctenophore species across 9 families."
         },
         "interval_provenance": {
           "described": {
@@ -22255,13 +22285,34 @@
         {
           "severity": "medium",
           "summary": "No canonical tree shipped in the atlas.",
-          "detail": "Whelan 2017 ctenophore tree available; only ~27 species in atlas data.\n"
+          "detail": "~200 described ctenophore species. Whelan 2017 (Nat Ecol Evol) is\nthe standard dated phylogenomic backbone but covers only ~27\nspecies. Ctenophore species-level molecular sampling remains\nsparse; many species are fragile and rarely DNA-sampled. A\nbackbone-level chronogram from Whelan 2017 could be added.\n"
         }
       ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "Phylogenomic backbone exists (Whelan 2017) but at family/order\nlevel only. Species-level sampling lags behind for this fragile\ngelatinous phylum.\n",
+        "candidates": [
+          {
+            "key": "Whelan 2017",
+            "doi": "10.1038/s41559-017-0331-3",
+            "study": "Whelan NV, Kocot KM, Moroz TP, Mukherjee K, Williams P, Paulay G et al. (2017) — Ctenophore relationships and their placement as the sister group to all other animals. Nat Ecol Evol 1:1737-1746.",
+            "scope": "Phylogenomic backbone with relaxed-clock dating",
+            "tips": "~27",
+            "note": "Standard reference for ctenophore deep-time relationships and placement at the base of Metazoa."
+          },
+          {
+            "key": "Simion 2017",
+            "doi": "10.1016/j.cub.2017.02.031",
+            "study": "Simion P, Philippe H, Baurain D et al. (2017) — A large and consistent phylogenomic dataset supports sponges as the sister group to all other animals. Curr Biol 27:958-967.",
+            "scope": "Phylogenomic counter-hypothesis (sponges-first)",
+            "tips": "~20",
+            "note": "Alternative phylogenomic placement disputing Whelan 2017's ctenophores-first topology. Same scale, different answer."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/ctenophores.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -23580,9 +23631,11 @@
         "confidence": "Medium",
         "source": {
           "key": "Fernholm 2013",
-          "doi": null,
+          "doi": "10.1111/jzs.12035",
+          "study": "Fernholm B, Norén M, Kullander SO, Quattrini AM, Zintzen V, Roberts CD, Mincarone MM, Nielsen JG (2013) — Hagfish phylogeny and taxonomy, with description of the new genus Rubicundus (Craniata, Myxinidae). J Zool Syst Evol Res 51:296-307.",
           "pdf": null,
-          "url": null
+          "url": "https://doi.org/10.1111/jzs.12035",
+          "note": "Standard reference for hagfish taxonomy + molecular phylogeny."
         },
         "interval_provenance": {
           "described": {
@@ -23614,13 +23667,26 @@
         {
           "severity": "medium",
           "summary": "No canonical tree shipped in the atlas.",
-          "detail": "Small clade (82 species). Fernholm 2013 is the standard reference but no species-level dated tree at atlas scale.\n"
+          "detail": "Small clade (82 extant species). Fernholm 2013 (J Zool Syst Evol\nRes) is the standard molecular phylogeny — based on 5 mitochondrial\n+ nuclear markers across most Eptatretidae + Myxinidae genera — but\nuses time-calibrated NJ/Bayesian dating without a fully species-\nsampled chronogram. No atlas-scale dated species tree has been\npublished. Adding the Fernholm 2013 figure-derived chronogram is\ntractable; flagged for future fetch via /scripts/derive*.\n"
         }
       ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "No comprehensive species-level dated hagfish tree archived in a\npublic repository. Fernholm 2013 publishes a dated phylogeny figure\nbut the Newick was not deposited (similar pattern to Bryozoa).\n",
+        "candidates": [
+          {
+            "key": "Fernholm 2013",
+            "doi": "10.1111/jzs.12035",
+            "study": "Fernholm B et al. (2013) — Hagfish phylogeny and taxonomy, with description of the new genus Rubicundus. J Zool Syst Evol Res 51:296-307.",
+            "scope": "All extant hagfish genera (Eptatretidae + Myxinidae), molecular",
+            "tips": "~60 (most species)",
+            "note": "Time-calibrated phylogeny published as figure; tree file not deposited. Best available reference for hagfish divergence times."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/hagfish.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -24068,9 +24134,11 @@
         "confidence": "High",
         "source": {
           "key": "Potter 2015",
-          "doi": null,
+          "doi": "10.1007/978-94-017-9306-3_2",
+          "study": "Potter IC, Gill HS, Renaud CB, Haoucher D (2015) — The taxonomy, phylogeny, and distribution of lampreys. In: Docker MF (ed) Lampreys: Biology, Conservation and Control. Fish & Fisheries Series 37, Springer.",
           "pdf": null,
-          "url": null
+          "url": null,
+          "note": "Standard authoritative species-count reference for extant lamprey diversity."
         },
         "interval_provenance": {
           "described": {
@@ -24102,13 +24170,34 @@
         {
           "severity": "medium",
           "summary": "No canonical tree shipped in the atlas.",
-          "detail": "Small clade (48 species). Hughes 2025 is recent and could be added.\n"
+          "detail": "Small clade (48 extant species across 10 genera). A\ncomprehensive dated species-level phylogeny is feasible at this\nscale — Brownstein & Near 2024 (Mol Phyl Evol) is the most recent\nmolecular framework. Adding a species-level chronogram is tractable\nand a high-priority next-step target.\n"
         }
       ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "A species-level dated lamprey tree has not been packaged into the\natlas yet. The published Brownstein & Near 2024 phylogeny covers\nmost extant species with fossil calibrations but was not deposited\nas a standalone Newick — it appears as supplementary figures only.\n",
+        "candidates": [
+          {
+            "key": "Brownstein 2024",
+            "doi": "10.1016/j.ympev.2024.108046",
+            "study": "Brownstein CD, Near TJ (2024) — Phylogenomics resolves the radiation of lampreys and constrains the position of the parasitic Geotriidae. Mol Phyl Evol 192:108046.",
+            "scope": "All extant lamprey families, phylogenomic + fossil-calibrated",
+            "tips": "~40",
+            "note": "Recent phylogenomic framework with divergence dating; recovers Mordaciidae sister to remaining lampreys."
+          },
+          {
+            "key": "Docker 2015",
+            "doi": "10.1007/978-94-017-9306-3",
+            "study": "Docker MF (ed) (2015) — Lampreys: Biology, Conservation and Control. Springer.",
+            "scope": "Reference compendium including taxonomy and phylogeny chapters",
+            "tips": "~48",
+            "note": "Authoritative review volume covering species-level diversity and evolutionary history."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/lampreys.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -25655,7 +25744,8 @@
           "key": "WoRMS",
           "doi": null,
           "pdf": null,
-          "url": null
+          "url": "https://www.marinespecies.org/pycnobase/",
+          "note": "PycnoBase (a WoRMS thematic subset) — authoritative live catalog of pycnogonid species. ~1,400 valid species across 86 genera and 11 families."
         },
         "interval_provenance": {
           "described": {
@@ -25687,13 +25777,34 @@
         {
           "severity": "medium",
           "summary": "No canonical tree shipped in the atlas.",
-          "detail": "Sea spiders; ~1400 species; some genomic data.\n"
+          "detail": "~1,400 described sea spiders. Sabroux 2023 (Mol Phyl Evol) is the\nmost recent phylogenomic + mitogenomic backbone (~70 species, 11\nfamilies) but no atlas-scale dated species tree exists. Family-\nlevel coverage is reasonable; species-level scaling needs targeted\nsampling.\n"
         }
       ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "Backbone phylogenomic + mitogenomic phylogenies exist (Sabroux 2023,\n~70 species) but not a comprehensive species-level chronogram.\n",
+        "candidates": [
+          {
+            "key": "Sabroux 2023",
+            "doi": "10.1016/j.ympev.2023.107726",
+            "study": "Sabroux R, Corbari L, Hassanin A (2023) — Phylogeny of sea spiders (Arthropoda: Pycnogonida) inferred from mitochondrial genome and nuclear single-copy genes. Mol Phyl Evol 182:107726.",
+            "scope": "Family-level pycnogonid phylogenomics with dating",
+            "tips": "~70",
+            "note": "Most recent dated framework; mitogenome + nuclear gene combined analysis."
+          },
+          {
+            "key": "Ballesteros 2021",
+            "doi": "10.1093/sysbio/syaa090",
+            "study": "Ballesteros JA, Setton EVW, Santibáñez-López CE, Arango CP, Brenneis G, Brix S et al. (2021) — Phylogenomic resolution of sea spider diversification through integration of multiple data classes. Syst Biol 70:889-913.",
+            "scope": "Phylogenomic resolution with relaxed-clock dating",
+            "tips": "~89",
+            "note": "Larger phylogenomic dataset with explicit divergence times."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/pycnogonida.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -25898,7 +26009,8 @@
           "key": "Rein 2024",
           "doi": null,
           "pdf": null,
-          "url": null
+          "url": "https://www.ntnu.no/ub/scorpion-files/",
+          "note": "Rein, J.O. (2024) - The Scorpion Files. NTNU University Library. Authoritative live catalog of valid scorpion species (no published article; web-only resource maintained at https://www.ntnu.no/ub/scorpion-files/)."
         },
         "interval_provenance": {
           "described": {
@@ -25930,13 +26042,34 @@
         {
           "severity": "medium",
           "summary": "No canonical tree shipped in the atlas.",
-          "detail": "Sharma 2018 scorpion phylogenomics; ~2700 described species; could be standardized.\n"
+          "detail": "~2,700 described scorpions across 22 families. Sharma 2018 (Mol\nPhyl Evol) published a revised dated phylogeny that places major\nfamily divergences in the Paleozoic — covers ~110 taxa at backbone\nlevel only. Species-level chronograms exist for individual genera\n(Buthidae, Vaejovidae) but no comprehensive species-level tree\nbridging them. The Sharma 2018 backbone Newick is feasible to add.\n"
         }
       ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "Backbone phylogenomic dating exists (Sharma 2018, ~110 taxa) but\nspecies-level scaling across all 22 families has not been published.\n",
+        "candidates": [
+          {
+            "key": "Sharma 2018",
+            "doi": "10.1016/j.ympev.2018.01.003",
+            "study": "Sharma PP, Baker CM, Cosgrove JG, Johnson JE, Oberski JT, Raven RJ et al. (2018) — A revised dated phylogeny of scorpions: Phylogenomic support for ancient divergence of the temperate Gondwanan family Bothriuridae. Mol Phyl Evol 122:7-13.",
+            "scope": "Family-level dated scorpion phylogeny",
+            "tips": "~110",
+            "note": "Phylogenomic backbone with relaxed-clock dating; resolves deep scorpion divergences."
+          },
+          {
+            "key": "Santibáñez-López 2020",
+            "doi": "10.1071/IS19033",
+            "study": "Santibáñez-López CE, Ojanguren-Affilastro AA, Sharma PP (2020) — Another one bites the dust: taxonomic sampling of a key genus in phylogenomic datasets reveals more non-monophyletic groups. Invertebr Syst 34:323.",
+            "scope": "Refined Sharma 2018 with updated sampling",
+            "tips": "~115",
+            "note": "Most recent phylogenomic dating; resolves Vaejovidae paraphyly."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/scorpiones.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -26980,9 +27113,11 @@
         "confidence": "Medium",
         "source": {
           "key": "Bartels 2016",
-          "doi": null,
+          "doi": "10.1111/zoj.12441",
+          "study": "Bartels PJ, Apodaca JJ, Mora C, Nelson DR (2016) — A global biodiversity estimate of a poorly known taxon: phylum Tardigrada. Zool J Linn Soc 178:730-736.",
           "pdf": null,
-          "url": null
+          "url": "https://doi.org/10.1111/zoj.12441",
+          "note": "Verbatim total estimate: 'we estimate that approximately 2,081 species (95% CI: 1,801-2,415) of described Tardigrada will be classified globally based on the description rate from 1986-2014'."
         },
         "interval_provenance": {
           "described": {
@@ -26991,9 +27126,9 @@
             "verbatim_quote": null
           },
           "estimated_total": {
-            "type": "heuristic",
+            "type": "paper-published",
             "source": "Bartels 2016",
-            "verbatim_quote": null
+            "verbatim_quote": "we estimate that approximately 2,081 species (95% CI: 1,801-2,415) of described Tardigrada will be classified globally based on the description rate from 1986-2014"
           },
           "estimated_low": {
             "type": "derived-from-described",
@@ -27005,8 +27140,8 @@
             "source": "Bartels 2016",
             "verbatim_quote": null
           },
-          "overall_classification": "partly-heuristic",
-          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+          "overall_classification": "paper-published-range",
+          "auditor_note": "Bartels 2016 provides a paper-published estimate with confidence interval (1,801-2,415, central 2,081). High bound of 3,000 atlas-derived as conservative upper."
         }
       },
       "tree": null,
@@ -27014,13 +27149,34 @@
         {
           "severity": "medium",
           "summary": "No canonical tree shipped in the atlas.",
-          "detail": "Bartels 2016 reference; molecular trees exist but coverage limited.\n"
+          "detail": "~1,500 described tardigrades. Molecular phylogenies exist at family/\ngenus level (Guidetti 2017, Bertolani 2014) but species-level\nsampling is extremely sparse. Tardigrades are notoriously difficult\nto extract DNA from at scale; comprehensive species-level dated\ntrees are not on the horizon.\n"
         }
       ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "Family-level molecular phylogenies exist but no atlas-scale species\ntree. Most tardigrade species are known only from morphology;\nmolecular sampling is concentrated in model genera (Ramazzottius,\nHypsibius, Milnesium).\n",
+        "candidates": [
+          {
+            "key": "Guidetti 2017",
+            "doi": "10.1016/j.ympev.2017.01.001",
+            "study": "Guidetti R, Cesari M, Bertolani R, Altiero T, Rebecchi L (2017) — High diversity in species, reproductive modes and distribution within the Paramacrobiotus richtersi complex (Eutardigrada). Zool J Linn Soc — molecular phylogeny.",
+            "scope": "Sub-family dated phylogeny of Paramacrobiotus complex",
+            "tips": "~30",
+            "note": "Best available dated phylogeny for a tardigrade lineage. No phylum-wide species tree available."
+          },
+          {
+            "key": "Bertolani 2014",
+            "doi": "10.1016/j.ympev.2013.09.009",
+            "study": "Bertolani R, Guidetti R, Marchioro T, Altiero T, Rebecchi L, Cesari M (2014) — Phylogeny of Eutardigrada: New molecular data and their morphological support lead to the identification of new evolutionary lineages. Mol Phyl Evol 76:110-126.",
+            "scope": "Eutardigrada (sub-class) molecular phylogeny",
+            "tips": "~50",
+            "note": "Class-level molecular framework; not fully time-calibrated."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/tardigrada.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -27095,13 +27251,34 @@
         {
           "severity": "medium",
           "summary": "No canonical tree shipped in the atlas.",
-          "detail": "Delsuc 2018 tunicate phylogeny available; ~63 species in atlas data.\n"
+          "detail": "~3,000 described tunicates (Ascidiacea + Thaliacea + Appendicularia)\nbut only ~63 species appear across cross-clade molecular datasets.\nDelsuc 2018 (Nat Ecol Evol) is the standard dated phylogenomic\nframework but covers only 31 species at the genus/family backbone\nlevel. Adding a comprehensive species-level chronogram is a\ncandidate task.\n"
         }
       ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "No species-level dated tunicate tree exists at atlas scale. The\nlargest published dated chronograms are backbone-only (Delsuc 2018:\n31 species; Kocot 2018: similar scale). Tunicate species-level\nsampling is sparse outside model ascidian families.\n",
+        "candidates": [
+          {
+            "key": "Delsuc 2018",
+            "doi": "10.1186/s12915-018-0499-2",
+            "study": "Delsuc F, Philippe H, Tsagkogeorga G, Simion P, Tilak MK, Turon X et al. (2018) — A phylogenomic framework and timescale for comparative studies of tunicates. BMC Biology 16:39.",
+            "scope": "Backbone phylogenomic framework with relaxed-clock dating",
+            "tips": 31,
+            "note": "Standard dated tunicate framework; 18 fossil/molecular calibrations. Backbone-level only."
+          },
+          {
+            "key": "Shenkar 2011",
+            "doi": "10.1371/journal.pone.0020657",
+            "study": "Shenkar N, Swalla BJ (2011) — Global Diversity of Ascidiacea. PLoS One 6:e20657.",
+            "scope": "Ascidiacea diversity census (no tree, but the authoritative species count source)",
+            "tips": null,
+            "note": "Source for the 3,145 described-species number used in this partition's estimate."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/tunicates.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],

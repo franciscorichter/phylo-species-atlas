@@ -38,11 +38,40 @@ caveats:
   - severity: medium
     summary: "No canonical tree shipped in the atlas."
     detail: |
-      Weigert 2014 annelid phylogenomic backbone available; ~60 species in current atlas data.
+      ~21,000 described annelids. Weigert & Bleidorn 2016 (Org Divers
+      Evol review) summarizes phylogenomic backbone status. Weigert 2014
+      (Mol Biol Evol) provided the first phylogenomic dataset (~17
+      species, dated). No species-level chronogram at atlas scale. The
+      backbone-level dated tree (Weigert 2014) is a candidate to add.
+
+dated_alternatives:
+  reason_canonical_undated: |
+    Backbone phylogenomic dating exists but species-level sampling is
+    extremely sparse relative to described diversity (21k species). Most
+    dated phylogenies are at family/order level.
+  candidates:
+    - key: Weigert 2014
+      doi: 10.1093/molbev/msu080
+      study: "Weigert A, Helm C, Meyer M et al. (2014) — Illuminating the base of the annelid tree using transcriptomics. Mol Biol Evol 31:1391-1401."
+      scope: Phylogenomic backbone of Annelida with relaxed-clock dating
+      tips: ~17
+      note: "Foundational annelid phylogenomic dating — uses 305 genes from 17 transcriptomes."
+    - key: Weigert 2016
+      doi: 10.1007/s13127-016-0265-7
+      study: "Weigert A, Bleidorn C (2016) — Current status of annelid phylogeny. Org Divers Evol 16:345-362."
+      scope: Review of annelid phylogenomic status
+      tips: null
+      note: "Critical review compiling all post-Struck 2011 annelid phylogenomic datasets. No new tree but useful for citation."
+    - key: Andrade 2015
+      doi: 10.1093/molbev/msv157
+      study: "Andrade SCS, Novo M, Kawauchi GY, Worsaae K, Pleijel F, Giribet G et al. (2015) — Articulating 'archiannelids': Phylogenomics and annelid relationships, with emphasis on meiofaunal taxa. Mol Biol Evol 32:2860-2875."
+      scope: Phylogenomic backbone emphasizing meiofaunal annelids
+      tips: ~50
+      note: "Larger taxon sample than Weigert 2014; includes meiofaunal lineages."
 
 audit:
   file: ../../../audits/partitions/annelids.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []

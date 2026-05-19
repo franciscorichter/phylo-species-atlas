@@ -12,7 +12,8 @@ estimate:
     key: WoRMS
     doi: null
     pdf: null
-    url: null
+    url: https://www.marinespecies.org/pycnobase/
+    note: "PycnoBase (a WoRMS thematic subset) — authoritative live catalog of pycnogonid species. ~1,400 valid species across 86 genera and 11 families."
   interval_provenance:
     described:
       type: database
@@ -38,11 +39,33 @@ caveats:
   - severity: medium
     summary: "No canonical tree shipped in the atlas."
     detail: |
-      Sea spiders; ~1400 species; some genomic data.
+      ~1,400 described sea spiders. Sabroux 2023 (Mol Phyl Evol) is the
+      most recent phylogenomic + mitogenomic backbone (~70 species, 11
+      families) but no atlas-scale dated species tree exists. Family-
+      level coverage is reasonable; species-level scaling needs targeted
+      sampling.
+
+dated_alternatives:
+  reason_canonical_undated: |
+    Backbone phylogenomic + mitogenomic phylogenies exist (Sabroux 2023,
+    ~70 species) but not a comprehensive species-level chronogram.
+  candidates:
+    - key: Sabroux 2023
+      doi: 10.1016/j.ympev.2023.107726
+      study: "Sabroux R, Corbari L, Hassanin A (2023) — Phylogeny of sea spiders (Arthropoda: Pycnogonida) inferred from mitochondrial genome and nuclear single-copy genes. Mol Phyl Evol 182:107726."
+      scope: Family-level pycnogonid phylogenomics with dating
+      tips: ~70
+      note: "Most recent dated framework; mitogenome + nuclear gene combined analysis."
+    - key: Ballesteros 2021
+      doi: 10.1093/sysbio/syaa090
+      study: "Ballesteros JA, Setton EVW, Santibáñez-López CE, Arango CP, Brenneis G, Brix S et al. (2021) — Phylogenomic resolution of sea spider diversification through integration of multiple data classes. Syst Biol 70:889-913."
+      scope: Phylogenomic resolution with relaxed-clock dating
+      tips: ~89
+      note: "Larger phylogenomic dataset with explicit divergence times."
 
 audit:
   file: ../../../audits/partitions/pycnogonida.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []

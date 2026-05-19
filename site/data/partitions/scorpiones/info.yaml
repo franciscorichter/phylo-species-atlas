@@ -12,7 +12,8 @@ estimate:
     key: Rein 2024
     doi: null
     pdf: null
-    url: null
+    url: https://www.ntnu.no/ub/scorpion-files/
+    note: "Rein, J.O. (2024) - The Scorpion Files. NTNU University Library. Authoritative live catalog of valid scorpion species (no published article; web-only resource maintained at https://www.ntnu.no/ub/scorpion-files/)."
   interval_provenance:
     described:
       type: database
@@ -38,11 +39,34 @@ caveats:
   - severity: medium
     summary: "No canonical tree shipped in the atlas."
     detail: |
-      Sharma 2018 scorpion phylogenomics; ~2700 described species; could be standardized.
+      ~2,700 described scorpions across 22 families. Sharma 2018 (Mol
+      Phyl Evol) published a revised dated phylogeny that places major
+      family divergences in the Paleozoic — covers ~110 taxa at backbone
+      level only. Species-level chronograms exist for individual genera
+      (Buthidae, Vaejovidae) but no comprehensive species-level tree
+      bridging them. The Sharma 2018 backbone Newick is feasible to add.
+
+dated_alternatives:
+  reason_canonical_undated: |
+    Backbone phylogenomic dating exists (Sharma 2018, ~110 taxa) but
+    species-level scaling across all 22 families has not been published.
+  candidates:
+    - key: Sharma 2018
+      doi: 10.1016/j.ympev.2018.01.003
+      study: "Sharma PP, Baker CM, Cosgrove JG, Johnson JE, Oberski JT, Raven RJ et al. (2018) — A revised dated phylogeny of scorpions: Phylogenomic support for ancient divergence of the temperate Gondwanan family Bothriuridae. Mol Phyl Evol 122:7-13."
+      scope: Family-level dated scorpion phylogeny
+      tips: ~110
+      note: "Phylogenomic backbone with relaxed-clock dating; resolves deep scorpion divergences."
+    - key: Santibáñez-López 2020
+      doi: 10.1071/IS19033
+      study: "Santibáñez-López CE, Ojanguren-Affilastro AA, Sharma PP (2020) — Another one bites the dust: taxonomic sampling of a key genus in phylogenomic datasets reveals more non-monophyletic groups. Invertebr Syst 34:323."
+      scope: Refined Sharma 2018 with updated sampling
+      tips: ~115
+      note: "Most recent phylogenomic dating; resolves Vaejovidae paraphyly."
 
 audit:
   file: ../../../audits/partitions/scorpiones.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []
