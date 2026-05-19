@@ -51,9 +51,38 @@ tree:
     data_type: UCE
     note: "Transcriptome data, 40 species, 5 main gastropod clades; BACKBONE PHYLOGENY ONLY."
 
+dated_alternatives:
+  reason_canonical_undated: |
+    info.yaml claims dated=true for Zapata 2014, but data_provenance.csv
+    flags it FALSE — third instance of the CSV/override mismatch
+    (alongside Bryozoa, Crustaceans, Bivalves). Zapata 2014 *does* fit a
+    relaxed clock with fossil calibrations for the 5 main gastropod
+    clades, so the canonical IS dated. The real limitations are scope
+    (backbone only, 54 tips for ~65k partition species) and resolution
+    of within-clade timing. Several larger sub-clade dated trees exist.
+  candidates:
+    - key: Uribe 2019
+      doi: 10.1016/j.ympev.2018.12.019
+      study: "Uribe JE, Irisarri I, Templado J, Zardoya R (2019) — New patellogastropod mitogenomes help counteracting long-branch attraction in the deep phylogeny of gastropod molluscs. Mol Phyl Evol 133:12-23."
+      scope: Patellogastropoda (true limpets), dated mitogenomic
+      tips: ~30
+      note: "Sub-order dated tree with full mitogenomes; complements Zapata's transcriptome backbone."
+    - key: Cunha 2019
+      doi: 10.1101/736447
+      study: "Cunha TJ, Giribet G (2019) — A phylogenomic framework for Vetigastropoda (Mollusca). Mol Phyl Evol — anchored phylogenomic dated framework."
+      scope: Vetigastropoda — major sub-clade, dated
+      tips: ~50
+      note: "Sub-clade dated phylogeny for one of Zapata's five main lineages."
+    - key: Aktipis 2010
+      doi: 10.1111/j.1463-6409.2010.00468.x
+      study: "Aktipis SW, Boehm AB, Giribet G (2011) — Another step towards understanding the slit-limpets (Fissurellidae, Fissurelloidea, Vetigastropoda, Gastropoda): a combined five-gene molecular phylogeny. Zool Scripta 40:238-259."
+      scope: Fissurellidae (slit-limpets), fine-scale dated
+      tips: ~60
+      note: "Family-level dated tree; fine resolution for one vetigastropod family."
+
 audit:
   file: ../../../audits/partitions/gastropods.md
   status: verified
-  last_audited: 2026-05-18
+  last_audited: 2026-05-19
 
 sub_phylos: []

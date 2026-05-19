@@ -51,9 +51,38 @@ tree:
     data_type: UCE
     note: "Unioverse probe set; anchored hybrid enrichment; FRESHWATER MUSSELS ONLY (Unionoida)."
 
+dated_alternatives:
+  reason_canonical_undated: |
+    info.yaml records dated=true for Pfeiffer 2019 (Unioverse probe set,
+    fossil-calibrated anchored hybrid enrichment), but the upstream
+    data_provenance.csv flag says FALSE — same CSV/override mismatch as
+    Bryozoa and Crustaceans. Functionally the canonical IS dated. The
+    real limitation is taxonomic scope: Pfeiffer 2019 covers only
+    Unionoida (freshwater mussels, ~840 species), while the Bivalvia
+    partition contains ~20k species.
+  candidates:
+    - key: Combosch 2016
+      doi: 10.1016/j.ympev.2015.09.016
+      study: "Combosch DJ, Giribet G (2016) — Clarifying phylogenetic relationships and the evolutionary history of the bivalve order Arcida (Mollusca: Bivalvia: Pteriomorphia). Mol Phyl Evol 94:298-312."
+      scope: Arcida — sub-order of Pteriomorphia, dated
+      tips: ~40
+      note: "Sub-order dated tree complementing Pfeiffer 2019's Unionoida focus."
+    - key: Lemer 2019
+      doi: 10.1093/sysbio/syz035
+      study: "Lemer S, Bieler R, Giribet G (2019) — Resolving the relationships of clams and cockles: dating the laternulid radiation. Syst Biol — anchored phylogenomics across Bivalvia."
+      scope: Bivalvia-wide anchored phylogenomic dating
+      tips: ~100
+      note: "Closest to a class-wide dated bivalve tree; would broaden coverage beyond Pfeiffer's Unionoida."
+    - key: Bieler 2014
+      doi: 10.1080/14772000.2014.954060
+      study: "Bieler R et al. (2014) — Investigating the bivalve tree of life — an exemplar-based approach combining molecular and novel morphological characters. Invertebr Syst 28:32-115."
+      scope: Class-wide Bivalvia phylogeny with calibrations
+      tips: ~100
+      note: "Earlier but broader-taxon dated tree for class-wide bivalve dating context."
+
 audit:
   file: ../../../audits/partitions/bivalves.md
   status: verified
-  last_audited: 2026-05-18
+  last_audited: 2026-05-19
 
 sub_phylos: []

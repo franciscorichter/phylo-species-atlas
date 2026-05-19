@@ -1,0 +1,28 @@
+slug: basidiomycota
+taxon: Basidiomycota (mushroom-forming fungi)
+parent: fungi
+parent_category: Microbes & protists
+
+tree:
+  file: tree.nwk
+  ntips: 543
+  dated: true
+  source:
+    key: Varga 2019
+    study: "Varga T, Krizsán K, Földi C et al. (2019) — Megaphylogeny resolves global patterns of mushroom evolution. Nature Ecology & Evolution 3:668-678."
+    doi: 10.1038/s41559-019-0834-1
+    pdf: null
+    url: https://doi.org/10.5061/dryad.gc2k9r9
+  methods:
+    inference: bayesian
+    software: ["PhyloBayes","FastDate"]
+    data_type: backbone_subset
+    dating_method: "PhyloBayes / FastDate; one of 10 cross-validated chronograms (fb_8 default fossil calibration scheme). The full Varga 2019 megaphylogeny has 5,284 ML tips; this 543-taxon dated backbone is the largest archived chronogram derivative."
+    support_metric: bayesian_credibility
+    divergence_ci_available: true
+    note: "Installed as atlas sub-clade tree 2026-05-19 from Dryad 10.5061/dryad.gc2k9r9 (PhyloBayes_FastDate.zip → PhyloBayes_output/fb_8.chain_sample.chronogram). The remaining nine cross-validated chronograms with alternate fossil calibrations are in the same zip; useful for sensitivity testing."
+
+species_count:
+  source: Species Fungorum 2025 (Basidiomycota)
+  described: ~52000
+  coverage_pct_described: ~1.0

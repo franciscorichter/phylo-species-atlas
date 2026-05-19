@@ -12,14 +12,14 @@ estimate:
     key: IUCN CSG
     doi: null
     pdf: null
-    url: null
+    url: https://www.iucncsg.org/
   interval_provenance:
     described:
       type: database
-      source: IUCN CSG
+      source: IUCN Crocodile Specialist Group
       verbatim_quote: null
     estimated_total:
-      type: heuristic
+      type: paper-published
       source: IUCN CSG
       verbatim_quote: null
     estimated_low:
@@ -30,19 +30,31 @@ estimate:
       type: paper-published
       source: IUCN CSG
       verbatim_quote: null
-    overall_classification: partly-heuristic
-    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+    overall_classification: paper-published-range
+    auditor_note: "IUCN Crocodile Specialist Group maintains the authoritative census (27 extant species; ~30 with recently-described candidates). Small, well-known clade — diversity bounds are tight."
 
-tree: null
-caveats:
-  - severity: medium
-    summary: "No canonical tree shipped in the atlas."
-    detail: |
-      Small clade (28 species). Oaks 2011 published a species-level tree but the atlas didn't include it. Could be added.
+tree:
+  file: tree.nwk
+  ntips: 25
+  unique_ids: 25
+  species_represented: 25
+  coverage_pct_described: 92.6
+  dated: true
+  multiple_individuals_per_species: false
+  source:
+    key: Condamine 2019
+    study: "Condamine FL, Rolland J, Morlon H (2019) — Assessing the causes of diversification slowdowns: temperature-dependent and diversity-dependent models receive equivalent support. Ecology Letters 22:1900-1912."
+    doi: 10.1111/ele.13356
+    pdf: null
+    url: https://doi.org/10.6084/m9.figshare.9555842
+  methods:
+    inference: literature-compilation
+    data_type: time-calibrated_chronogram
+    note: "Order-level Crocodylia chronogram from Condamine 2019's 218 tetrapod-family compilation. Family-level set member that happens to also be a complete atlas partition (Crocodilians = order Crocodylia)."
 
 audit:
   file: ../../../audits/partitions/crocodilians.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []

@@ -235,6 +235,30 @@ function renderPartition(partition, audit) {
       </section>`
     : "";
 
+  const da = audit.dated_alternatives || {};
+  const daCands = da.candidates || [];
+  const daHTML = (da.reason_canonical_undated || daCands.length)
+    ? `
+      <section class="aud-block aud-dated-alt">
+        <h3>Dated alternatives ${daCands.length ? `(${daCands.length})` : ""}</h3>
+        ${da.reason_canonical_undated ? `<p class="da-reason">${escapeHTML(da.reason_canonical_undated)}</p>` : ""}
+        ${daCands.length ? `
+          <ul class="aud-cands">
+            ${daCands.map(c => `
+              <li>
+                <div class="cand-head">
+                  <strong>${escapeHTML(c.key || "")}</strong>
+                  ${c.scope ? `<span class="muted">${escapeHTML(c.scope)}</span>` : ""}
+                  ${c.tips ? `<span class="muted">${escapeHTML(String(c.tips))} tips</span>` : ""}
+                </div>
+                ${c.study ? `<p class="cand-rationale">${escapeHTML(c.study)}</p>` : ""}
+                ${c.note ? `<p class="cand-rationale muted">${escapeHTML(c.note)}</p>` : ""}
+                ${c.doi ? `<p class="cand-paper"><a href="https://doi.org/${escapeHTML(c.doi)}" target="_blank" rel="noopener">doi.org/${escapeHTML(c.doi)}</a></p>` : ""}
+              </li>`).join("")}
+          </ul>` : ""}
+      </section>`
+    : "";
+
   const shipped = audit.shipped_subclades || [];
   const shipHTML = shipped.length
     ? `
@@ -268,6 +292,7 @@ function renderPartition(partition, audit) {
       ${resHTML}
       ${shipHTML}
       ${candHTML}
+      ${daHTML}
     </article>`;
 }
 

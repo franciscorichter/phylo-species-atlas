@@ -16,7 +16,7 @@ estimate:
   interval_provenance:
     described:
       type: database
-      source: GTDB / live database
+      source: AlgaeBase 2025
       verbatim_quote: null
     estimated_total:
       type: paper-published
@@ -27,23 +27,69 @@ estimate:
       source: Mann 2013
       verbatim_quote: null
     estimated_high:
-      type: paper-published
-      source: Mann 2013
+      type: atlas-derived
+      source: atlas-derived
       verbatim_quote: null
     overall_classification: partly-heuristic
-    auditor_note: "Mann 2013''s verbatim claim is ''at least 30,000 and probably ca. 100,000'' (extrapolation from sampled genera and species complexes). low=30k and total=100k are paper-published; high=200,000 is atlas-derived."
-    key: Parks MB
-    study: Parks MB, Wickett NJ, Alverson AJ (2018)
-    doi: 10.1093/molbev/msx268
-    pdf: papers/tree.pdf
+    auditor_note: "Mann 2013's verbatim claim is 'at least 30,000 and probably ca. 100,000' (extrapolation from sampled genera and species complexes). low=30k and total=100k are paper-published; high=200,000 is atlas-derived."
+
+tree:
+  file: tree.nwk
+  ntips: 244
+  unique_ids: 244
+  species_represented: 244
+  coverage_pct_described: 1.2
+  dated: true
+  multiple_individuals_per_species: false
+  source:
+    key: Nakov 2018
+    study: "Nakov T, Beaulieu JM, Alverson AJ (2018) — Accelerated diversification is related to life history and locomotion in a hyperdiverse lineage of microbial eukaryotes (Diatoms, Bacillariophyta). New Phytologist 219:462-473."
+    doi: 10.1111/nph.15137
+    pdf: null
+    url: https://doi.org/10.5281/zenodo.583628
   methods:
-    inference: ml
-    data_type: phylogenomic
-    note: "Phylogenomics from transcriptomes, ASTRAL species tree. UNDATED."
+    inference: penalized-likelihood
+    software: ["IQ-TREE","treePL"]
+    data_type: chloroplast_supermatrix
+    dating_method: "treePL with fossil calibrations across 244 diatom genera; one realization extracted from the published 1000-bootstrap distribution (1k.genus.trees.full.names.newick)."
+    support_metric: bootstrap
+    divergence_ci_available: true
+    note: "Installed as atlas override 2026-05-19 from Zenodo 10.5281/zenodo.583628. Replaces Parks 2018 (94 tips, undated) as the diatom canonical."
+  superseded_canonical:
+    key: Parks 2018
+    study: "Parks MB, Wickett NJ, Alverson AJ (2018) — A computational framework for assessing single-locus phylogenetic substitution models. Mol Biol Evol — atlas-shipped phylogenomic ASTRAL species tree (94 tips, undated)."
+    doi: 10.1093/molbev/msx268
+    note: "Demoted to historical comparison — superseded 2026-05-19 by Nakov 2018 dated tree (2.6x larger AND time-calibrated). Still accessible at standardized/trees/diatoms.nwk."
+
+dated_alternatives:
+  reason_canonical_undated: |
+    PROMOTED 2026-05-19 — Nakov 2018 (244 dated tips, treePL,
+    Zenodo 10.5281/zenodo.583628) is now the diatom canonical, replacing
+    Parks 2018 (94 tips, undated). The candidates list below tracks
+    complementary dated sub-clade trees beyond the canonical.
+  candidates:
+    - key: Nakov 2019
+      doi: 10.1111/evo.13585
+      study: "Nakov T, Beaulieu JM, Alverson AJ (2019) — Diatoms diversify and turn over faster in freshwater than marine environments. Evolution 73:2497-2511."
+      scope: Diatom freshwater-marine transitions, dated
+      tips: ~244
+      note: "Companion analysis from same dataset; useful for habitat-transition rate inference."
+    - key: Ruck 2016
+      doi: 10.1016/j.ympev.2016.07.023
+      study: "Ruck EC, Nakov T, Alverson AJ, Theriot EC (2016) — Phylogeny, ecology, morphological evolution, and reclassification of the diatom orders Surirellales and Rhopalodiales. Mol Phyl Evol 103:155-171."
+      scope: Surirellales + Rhopalodiales (sub-order), dated
+      tips: ~140
+      note: "Sub-order dated tree useful for fine-scale diversification questions in pennate diatoms."
+    - key: Theriot 2025
+      doi: 10.1073/pnas.2500153122
+      study: "Theriot EC et al. (2025) — Phylogenomics reveals the slow-burning fuse of diatom evolution. PNAS."
+      scope: Deep-time diatom phylogenomics, dated
+      tips: ~100
+      note: "Newest deep-time chronogram — complements Nakov 2018 with updated calibrations."
 
 audit:
   file: ../../../audits/partitions/diatoms.md
   status: verified
-  last_audited: 2026-05-18
+  last_audited: 2026-05-19
 
 sub_phylos: []

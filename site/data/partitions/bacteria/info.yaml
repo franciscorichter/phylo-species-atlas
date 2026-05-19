@@ -51,9 +51,36 @@ tree:
     data_type: phylogenomic
     note: "GTDB R10 — 120 concatenated marker proteins, FastTree. Tips are genome accession IDs (species cluster representatives). UNDATED."
 
+dated_alternatives:
+  reason_canonical_undated: |
+    GTDB R10 is a static-rate marker-protein tree built for taxonomy and
+    classification; it is not a chronogram and was never intended to be
+    one. Dating 136,646 bacterial tips back to the Archaean is
+    computationally infeasible at this scale and lacks the fossil/proxy
+    record needed for deep calibrations across all phyla.
+  candidates:
+    - key: Marin 2017
+      doi: 10.1093/molbev/msw245
+      study: "Marin J, Battistuzzi FU, Brown AC, Hedges SB (2017) — The timetree of prokaryotes: new insights into their evolution and speciation. Mol Biol Evol 34:437-446."
+      scope: Combined bacteria + archaea, phylum-level
+      tips: ~180
+      note: "Phylum-level chronogram covering both bacteria and archaea; standard reference for deep-time prokaryote dating."
+    - key: Battistuzzi 2009
+      doi: 10.1093/molbev/msp062
+      study: "Battistuzzi FU, Hedges SB (2009) — A major clade of prokaryotes with ancient adaptations to life on land. Mol Biol Evol 26:335-343."
+      scope: Major prokaryote backbone, focus on Terrabacteria origin
+      tips: ~60
+      note: "Foundational dated prokaryote backbone introducing the Terrabacteria/Hydrobacteria split."
+    - key: Davín 2018
+      doi: 10.1038/s41559-018-0525-3
+      study: "Davín AA, Tannier E, Williams TA, Boussau B, Daubin V, Szöllősi GJ (2018) — Gene transfers can date the tree of life. Nat Ecol Evol 2:904-909."
+      scope: Bacteria + archaea, gene-transfer-based dating
+      tips: ~100
+      note: "Uses horizontal gene transfers as relative-time markers — methodological alternative when fossil calibrations are absent."
+
 audit:
   file: ../../../audits/partitions/bacteria.md
   status: verified
-  last_audited: 2026-05-18
+  last_audited: 2026-05-19
 
 sub_phylos: []

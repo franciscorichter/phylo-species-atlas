@@ -63,10 +63,37 @@ uncertainty:
   host_url: https://insectphylo.org/
   files: []
 
+dated_alternatives:
+  reason_canonical_undated: |
+    insectphylo v2 is a continuously-updated GenBank-driven synthesis
+    supertree built for taxonomic coverage, not divergence time
+    estimation. No clock model is fitted across the 53k tips. The atlas
+    instead provides dated chronograms for individual insect orders
+    (butterflies, bees, hemiptera, termites, ants) as sub-clade trees.
+  candidates:
+    - key: Misof 2014
+      doi: 10.1126/science.1257570
+      study: "Misof B et al. (2014) — Phylogenomics resolves the timing and pattern of insect evolution. Science 346:763-767."
+      scope: Class-wide insect phylogenomic chronogram
+      tips: 144
+      note: "Standard reference for deep-time insect divergences; 144 transcriptomes, fossil-calibrated."
+    - key: Tihelka 2021
+      doi: 10.1016/j.cub.2021.06.057
+      study: "Tihelka E, Cai C, Giacomelli M et al. (2021) — The evolution of insect biodiversity. Curr Biol 31:R1299-R1311."
+      scope: Insect timetree review + updated calibrations
+      tips: ~120
+      note: "Updated insect timetree synthesizing post-Misof calibrations."
+    - key: Wipfler 2019
+      doi: 10.1073/pnas.1817794116
+      study: "Wipfler B et al. (2019) — Evolutionary history of Polyneoptera and its implications for our understanding of early winged insects. PNAS 116:3024-3029."
+      scope: Polyneoptera (orthopteroid orders) chronogram
+      tips: 106
+      note: "Sub-class dated phylogenomic backbone for the lower-neopteran insect orders."
+
 audit:
   file: ../../../audits/partitions/insects.md
   status: verified
-  last_audited: 2026-05-18
+  last_audited: 2026-05-19
 
 sub_phylos:
   - slug: butterflies

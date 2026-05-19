@@ -55,9 +55,36 @@ tree:
     data_type: phylogenomic
     note: "Genome-scale phylogeny of kingdom Fungi; 290 genes from 1644 genomes, concatenation + coalescent. UNDATED."
 
+dated_alternatives:
+  reason_canonical_undated: |
+    Li 2021 is a 290-gene maximum-likelihood phylogenomic supermatrix
+    built to resolve kingdom-level fungal topology, with no clock model
+    fitted. Strong dated alternatives exist for sub-kingdoms — and at
+    least one (Varga 2019) covers more species than the atlas canonical.
+  candidates:
+    - key: Varga 2019 (INSTALLED 2026-05-19)
+      doi: 10.1038/s41559-019-0834-1
+      study: "Varga T et al. (2019) — Megaphylogeny resolves global patterns of mushroom evolution. Nat Ecol Evol 3:668-678."
+      scope: Basidiomycota — mushroom-forming fungi, time-calibrated
+      tips: 543
+      note: "INSTALLED as Basidiomycota sub-clade tree (sub-phylos/basidiomycota/tree.nwk) on 2026-05-19. Sourced from Dryad 10.5061/dryad.gc2k9r9 PhyloBayes_FastDate.zip (fb_8 default calibration scheme). Note: the megaphylogeny paper reports 5,284 ML tips, but the largest *archived dated* derivative is the 543-taxon FastDate backbone — the full 5,284-tip chronogram was not deposited as a single tree file."
+    - key: Lutzoni 2018
+      doi: 10.1038/s41467-018-07849-9
+      study: "Lutzoni F et al. (2018) — Contemporaneous radiations of fungi and plants linked to symbiosis. Nat Commun 9:5451."
+      scope: Cross-kingdom fungal chronogram with land-plant co-evolution focus
+      tips: ~600
+      note: "30 fossil calibrations; covers main fungal phyla in a dated framework."
+    - key: Prieto 2013
+      doi: 10.1111/j.1502-3931.2013.00346.x
+      study: "Prieto M, Wedin M (2013) — Dating the diversification of the major lineages of Ascomycota (Fungi). PLoS One 8:e65576."
+      scope: Ascomycota — sister phylum to Basidiomycota
+      tips: ~420
+      note: "Companion dated phylogeny to Varga 2019 — together they cover most of Dikarya."
+
 audit:
   file: ../../../audits/partitions/fungi.md
   status: verified
-  last_audited: 2026-05-18
+  last_audited: 2026-05-19
 
-sub_phylos: []
+sub_phylos:
+  - slug: basidiomycota

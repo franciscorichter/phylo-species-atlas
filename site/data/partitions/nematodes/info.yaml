@@ -19,31 +19,68 @@ estimate:
       source: WoRMS / Hodda 2022
       verbatim_quote: null
     estimated_total:
-      type: paper-published
-      source: Hodda 2022
+      type: fully-heuristic
+      source: atlas-derived
       verbatim_quote: null
     estimated_low:
-      type: paper-published
-      source: Hodda 2022
+      type: fully-heuristic
+      source: atlas-derived
       verbatim_quote: null
     estimated_high:
-      type: paper-published
-      source: Hodda 2022
+      type: fully-heuristic
+      source: atlas-derived
       verbatim_quote: null
     overall_classification: fully-heuristic
-    auditor_note: "Hodda 2022 is a CLASSIFICATION paper reporting 28,537 valid described species in Nematoda (its census), NOT a published true-diversity estimate. The atlas''s 500k-1M-10M range is entirely atlas-derived heuristic. Reclassified from paper-published-range → fully-heuristic."
-    key: Qing X et al.
-    study: Qing X et al. (2025)
+    auditor_note: "Hodda 2022 is a CLASSIFICATION paper reporting 28,537 valid described species in Nematoda (its census), NOT a published true-diversity estimate. The atlas's 500k-1M-10M range is entirely atlas-derived heuristic. Reclassified from paper-published-range -> fully-heuristic."
+
+tree:
+  file: tree.nwk
+  ntips: 166
+  unique_ids: 166
+  species_represented: 166
+  coverage_pct_described: 0.6
+  dated: false
+  multiple_individuals_per_species: false
+  source:
+    key: Qing 2025
+    study: "Qing X et al. (2025) — Systematic Biology"
     doi: 10.1093/sysbio/syae073
     pdf: papers/tree.pdf
   methods:
     inference: ml
     data_type: UCE
-    note: "60 newly sequenced genomes, 8 nematode orders, 156+10 taxa; phylogenomic ML."
+    note: "60 newly sequenced genomes, 8 nematode orders, 156+10 taxa; phylogenomic ML. Topology-focused; no clock model. UNDATED."
+
+dated_alternatives:
+  reason_canonical_undated: |
+    Qing 2025 is a topology-resolution phylogenomic ML analysis built to
+    settle deep nematode relationships across 8 orders; no clock model
+    is fitted. Nematode fossil record is extremely sparse (mostly amber
+    inclusions), making deep dating difficult. Smaller dated trees exist
+    for sub-clades and at the phylum-level using HGT or 18S.
+  candidates:
+    - key: Smythe 2019
+      doi: 10.1186/s12862-019-1444-x
+      study: "Smythe AB, Holovachov O, Kocot KM (2019) — Improved phylogenomic sampling of free-living nematodes enhances resolution of higher-level nematode phylogeny. BMC Evol Biol 19:121."
+      scope: Free-living nematodes, phylum backbone
+      tips: ~50
+      note: "Phylogenomic backbone with some divergence-time estimates; complements Qing 2025 with broader free-living sampling."
+    - key: Ahmed 2022
+      doi: 10.3389/fevo.2021.769565
+      study: "Ahmed M et al. (2022) — Phylogenomic analysis of the phylum Nematoda: conflicts and congruences with morphology, 18S rRNA, and mitogenomes. Front Ecol Evol 9:769565."
+      scope: Phylum-wide phylogenomic synthesis
+      tips: ~100
+      note: "Cross-marker dated comparison; explicitly addresses conflicts between data types."
+    - key: Holterman 2006
+      doi: 10.1093/molbev/msl043
+      study: "Holterman M et al. (2006) — Phylum-wide analysis of SSU rDNA reveals deep phylogenetic relationships among nematodes and accelerated evolution toward crown clades. Mol Biol Evol 23:1792-1800."
+      scope: SSU rDNA dated phylogeny of Nematoda
+      tips: ~339
+      note: "Older but broader-taxon dated tree; useful for phylum-level branch lengths."
 
 audit:
   file: ../../../audits/partitions/nematodes.md
   status: verified
-  last_audited: 2026-05-18
+  last_audited: 2026-05-19
 
 sub_phylos: []

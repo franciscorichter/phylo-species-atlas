@@ -60,9 +60,36 @@ tree:
     data_type: phylogenomic
     note: "GTDB R10 — 53 concatenated marker proteins, IQ-TREE. Tips are genome accession IDs. UNDATED."
 
+dated_alternatives:
+  reason_canonical_undated: |
+    GTDB R10 archaeal tree is a marker-protein classification backbone,
+    not a chronogram. Archaeal fossil record is essentially absent —
+    dating relies on co-evolutionary or gene-transfer signals, which
+    have only been applied to small sub-clades. No 7k-tip dated archaea
+    phylogeny exists or is realistic.
+  candidates:
+    - key: Wolfe 2018
+      doi: 10.1038/s41559-018-0513-7
+      study: "Wolfe JM, Fournier GP (2018) — Horizontal gene transfer constrains the timing of methanogen evolution. Nat Ecol Evol 2:897-903."
+      scope: Methanogenic archaea, HGT-constrained timing
+      tips: ~50
+      note: "Methanogen-focused dated phylogeny using HGT as time constraint; sets minimum age for methanogenesis."
+    - key: Marin 2017
+      doi: 10.1093/molbev/msw245
+      study: "Marin J, Battistuzzi FU, Brown AC, Hedges SB (2017) — The timetree of prokaryotes. Mol Biol Evol 34:437-446."
+      scope: Combined bacteria + archaea, phylum-level
+      tips: ~180 (archaea ~30)
+      note: "Includes archaeal phyla in a deep-time chronogram alongside bacteria."
+    - key: Williams 2020
+      doi: 10.1038/s41586-019-1810-2
+      study: "Williams TA, Cox CJ, Foster PG, Szöllősi GJ, Embley TM (2020) — Phylogenomics provides robust support for a two-domains tree of life. Nat Ecol Evol 4:138-147."
+      scope: Two-domains topology with relaxed-clock dating of major clades
+      tips: ~70
+      note: "Includes a dated two-domains tree of life pertinent to archaea-eukaryote splits."
+
 audit:
   file: ../../../audits/partitions/archaea.md
   status: verified
-  last_audited: 2026-05-18
+  last_audited: 2026-05-19
 
 sub_phylos: []

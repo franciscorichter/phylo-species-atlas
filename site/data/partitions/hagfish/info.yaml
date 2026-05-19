@@ -10,9 +10,11 @@ estimate:
   confidence: Medium
   source:
     key: Fernholm 2013
-    doi: null
+    doi: 10.1111/jzs.12035
+    study: "Fernholm B, Norén M, Kullander SO, Quattrini AM, Zintzen V, Roberts CD, Mincarone MM, Nielsen JG (2013) — Hagfish phylogeny and taxonomy, with description of the new genus Rubicundus (Craniata, Myxinidae). J Zool Syst Evol Res 51:296-307."
     pdf: null
-    url: null
+    url: https://doi.org/10.1111/jzs.12035
+    note: "Standard reference for hagfish taxonomy + molecular phylogeny."
   interval_provenance:
     described:
       type: database
@@ -38,11 +40,30 @@ caveats:
   - severity: medium
     summary: "No canonical tree shipped in the atlas."
     detail: |
-      Small clade (82 species). Fernholm 2013 is the standard reference but no species-level dated tree at atlas scale.
+      Small clade (82 extant species). Fernholm 2013 (J Zool Syst Evol
+      Res) is the standard molecular phylogeny — based on 5 mitochondrial
+      + nuclear markers across most Eptatretidae + Myxinidae genera — but
+      uses time-calibrated NJ/Bayesian dating without a fully species-
+      sampled chronogram. No atlas-scale dated species tree has been
+      published. Adding the Fernholm 2013 figure-derived chronogram is
+      tractable; flagged for future fetch via /scripts/derive*.
+
+dated_alternatives:
+  reason_canonical_undated: |
+    No comprehensive species-level dated hagfish tree archived in a
+    public repository. Fernholm 2013 publishes a dated phylogeny figure
+    but the Newick was not deposited (similar pattern to Bryozoa).
+  candidates:
+    - key: Fernholm 2013
+      doi: 10.1111/jzs.12035
+      study: "Fernholm B et al. (2013) — Hagfish phylogeny and taxonomy, with description of the new genus Rubicundus. J Zool Syst Evol Res 51:296-307."
+      scope: All extant hagfish genera (Eptatretidae + Myxinidae), molecular
+      tips: ~60 (most species)
+      note: "Time-calibrated phylogeny published as figure; tree file not deposited. Best available reference for hagfish divergence times."
 
 audit:
   file: ../../../audits/partitions/hagfish.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []

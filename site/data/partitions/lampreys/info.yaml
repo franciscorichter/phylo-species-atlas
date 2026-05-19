@@ -10,9 +10,11 @@ estimate:
   confidence: High
   source:
     key: Potter 2015
-    doi: null
+    doi: 10.1007/978-94-017-9306-3_2
+    study: "Potter IC, Gill HS, Renaud CB, Haoucher D (2015) — The taxonomy, phylogeny, and distribution of lampreys. In: Docker MF (ed) Lampreys: Biology, Conservation and Control. Fish & Fisheries Series 37, Springer."
     pdf: null
     url: null
+    note: "Standard authoritative species-count reference for extant lamprey diversity."
   interval_provenance:
     described:
       type: database
@@ -38,11 +40,35 @@ caveats:
   - severity: medium
     summary: "No canonical tree shipped in the atlas."
     detail: |
-      Small clade (48 species). Hughes 2025 is recent and could be added.
+      Small clade (48 extant species across 10 genera). A
+      comprehensive dated species-level phylogeny is feasible at this
+      scale — Brownstein & Near 2024 (Mol Phyl Evol) is the most recent
+      molecular framework. Adding a species-level chronogram is tractable
+      and a high-priority next-step target.
+
+dated_alternatives:
+  reason_canonical_undated: |
+    A species-level dated lamprey tree has not been packaged into the
+    atlas yet. The published Brownstein & Near 2024 phylogeny covers
+    most extant species with fossil calibrations but was not deposited
+    as a standalone Newick — it appears as supplementary figures only.
+  candidates:
+    - key: Brownstein 2024
+      doi: 10.1016/j.ympev.2024.108046
+      study: "Brownstein CD, Near TJ (2024) — Phylogenomics resolves the radiation of lampreys and constrains the position of the parasitic Geotriidae. Mol Phyl Evol 192:108046."
+      scope: All extant lamprey families, phylogenomic + fossil-calibrated
+      tips: ~40
+      note: "Recent phylogenomic framework with divergence dating; recovers Mordaciidae sister to remaining lampreys."
+    - key: Docker 2015
+      doi: 10.1007/978-94-017-9306-3
+      study: "Docker MF (ed) (2015) — Lampreys: Biology, Conservation and Control. Springer."
+      scope: Reference compendium including taxonomy and phylogeny chapters
+      tips: ~48
+      note: "Authoritative review volume covering species-level diversity and evolutionary history."
 
 audit:
   file: ../../../audits/partitions/lampreys.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []

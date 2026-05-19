@@ -76,9 +76,52 @@ uncertainty:
       format: Dryad
       url: https://doi.org/10.5061/dryad.2v6wwpzp9
 
+caveats:
+  - severity: high
+    summary: "Chronogram referenced in the paper was never deposited"
+    detail: |
+      Orr et al. 2022 (Sci Adv) ran MCMCtree with 18 fossil calibrations
+      under a relaxed-rates molecular clock and present the resulting
+      time-calibrated tree as Fig 2 of the published paper. The
+      chronogram FILE itself, however, is not in either of the paper's
+      data archives — Dryad (10.5061/dryad.2v6wwpzp9) holds only the
+      18-locus sequence alignments and two ML topology Newick files
+      (SI_Fig1 BIG, SI_Fig2 TRIMMED), and the Zenodo record
+      (10.5281/zenodo.5721078) contains only 311 MB of SEM image cards.
+      The atlas-canonical Bryozoa tree shown here is therefore the
+      species-level pruning of the SI_Fig2 ML topology (no branch
+      lengths in absolute time). Recovering the chronogram for atlas
+      use would require contacting the corresponding author.
+    checked: 2026-05-19
+    checked_by: atlas-audit
+
+dated_alternatives:
+  reason_canonical_undated: |
+    The atlas's standardized Bryozoa tree is the species-level pruning of
+    Orr 2022's SI_Fig2 ML topology. The corresponding chronogram is
+    described in the paper (MCMCtree, 18 fossil calibrations, Fig 2) but
+    was never deposited as a Newick file — verified 2026-05-19 against
+    Dryad (10.5061/dryad.2v6wwpzp9, alignments + ML trees only) and
+    Zenodo (10.5281/zenodo.5721078, SEM images only). See caveats above.
+    Waeschenbach 2012 is the only alternative dated bryozoan tree
+    archived publicly, but with much smaller taxon coverage.
+  candidates:
+    - key: Orr 2022 (chronogram, NOT deposited)
+      doi: 10.1126/sciadv.abm7452
+      study: "Orr RJS et al. (2022) — Paleozoic origins of cheilostome bryozoans and their parental care inferred by a new genome-skimmed phylogeny. Sci Adv 8:eabm7452."
+      scope: Cheilostomata (same scope as the atlas canonical)
+      tips: ~720
+      note: "Paper runs MCMCtree with 18 fossil calibrations and a relaxed independent rates clock; the chronogram appears as Fig 2. CHECKED 2026-05-19: the time-calibrated tree FILE was NOT deposited — Dryad archive (10.5061/dryad.2v6wwpzp9) holds only 18-locus alignments + two ML newick files (SI_Fig1 BIG and SI_Fig2 TRIMMED), and the Zenodo record (10.5281/zenodo.5721078) contains only SEM image cards. Recovering the chronogram would require contacting the authors directly."
+    - key: Waeschenbach 2012
+      doi: 10.1016/j.ympev.2012.06.011
+      study: "Waeschenbach A, Taylor PD, Littlewood DTJ (2012) — A molecular phylogeny of bryozoans. Mol Phyl Evol 62:718-735."
+      scope: Phylum-level Bryozoa molecular phylogeny (Cyclostomata + Cheilostomata + Ctenostomata)
+      tips: ~95
+      note: "Broader taxonomic scope than Orr 2022 but smaller. Includes fossil-calibrated divergence estimates for major bryozoan classes."
+
 audit:
   file: ../../../audits/partitions/bryozoa.md
   status: verified
-  last_audited: 2026-05-18
+  last_audited: 2026-05-19
 
 sub_phylos: []

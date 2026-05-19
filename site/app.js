@@ -674,6 +674,7 @@ async function selectTree(filename, scrollIntoView) {
     .join("");
 
   renderDatasetChooser(t);
+  renderAuditPanel(t);
   renderUncertaintyPanel(t);
 
   const dl = document.getElementById("download-newick");
@@ -724,9 +725,81 @@ function renderAuditPanel(t) {
       </div>`;
   }
 
-  // If there's nothing notable beyond status (no DOI correction), keep the
-  // panel hidden — the methods data is already in detail-meta.
-  if (!estSrcHTML && status === "verified") {
+  // Caveats — known data-integrity issues with the shipped tree
+  // (e.g., Crustaceans: Decapoda-only; Bryozoa: chronogram not deposited).
+  const caveats = audit.caveats || [];
+  const caveatsHTML = caveats.length ? `
+    <div class="audit-block audit-caveats-block">
+      <h4>Caveats</h4>
+      <ul class="audit-caveat-list">
+        ${caveats.map(c => `
+          <li class="audit-caveat sev-${c.severity || 'medium'}">
+            <span class="caveat-sev sev-${c.severity || 'medium'}">${escapeHTML(c.severity || 'medium')}</span>
+            <span class="caveat-summary">${escapeHTML(c.summary || '')}</span>
+            ${c.detail ? `<div class="caveat-detail">${escapeHTML(c.detail).replace(/\n/g, "<br>")}</div>` : ""}
+          </li>`).join("")}
+      </ul>
+    </div>` : "";
+
+  // Dated alternatives — for any partition whose canonical is undated, or
+  // where dated alternatives exist as sub-clades / candidates. Includes the
+  // 'reason_canonical_undated' field that explains why dating wasn't done.
+  const da = audit.dated_alternatives || {};
+  const daCands = da.candidates || [];
+  const daHTML = (da.reason_canonical_undated || daCands.length) ? `
+    <div class="audit-block audit-dated-alt">
+      <h4>Dating context${daCands.length ? ` · ${daCands.length} alternative${daCands.length===1?'':'s'}` : ''}</h4>
+      ${da.reason_canonical_undated ? `<p class="da-reason">${escapeHTML(da.reason_canonical_undated)}</p>` : ""}
+      ${daCands.length ? `
+        <ul class="da-cands">
+          ${daCands.map(c => `
+            <li>
+              <div class="da-cand-head">
+                <strong>${escapeHTML(c.key || '')}</strong>
+                ${c.scope ? `<span class="src">${escapeHTML(c.scope)}</span>` : ""}
+                ${c.tips ? `<span class="src">${escapeHTML(String(c.tips))} tips</span>` : ""}
+              </div>
+              ${c.study ? `<div class="da-study">${escapeHTML(c.study)}</div>` : ""}
+              ${c.note ? `<div class="da-note">${escapeHTML(c.note)}</div>` : ""}
+              ${c.doi ? `<div class="da-doi"><a href="https://doi.org/${escapeHTML(c.doi)}" target="_blank" rel="noopener">doi.org/${escapeHTML(c.doi)}</a></div>` : ""}
+            </li>`).join("")}
+        </ul>` : ""}
+    </div>` : "";
+
+  // Superseded canonical — when an override replaced an earlier shipped tree
+  // (e.g., diatoms: Nakov 2018 replaced Parks 2018). Show the demoted study
+  // so users see the lineage decision.
+  const sup = (audit.tree && audit.tree.superseded_canonical) || null;
+  const supHTML = sup ? `
+    <div class="audit-block audit-superseded">
+      <h4>Superseded by current canonical</h4>
+      <div class="da-cand-head">
+        <strong>${escapeHTML(sup.key || '')}</strong>
+        ${sup.doi ? `<a class="da-doi-inline" href="https://doi.org/${escapeHTML(sup.doi)}" target="_blank" rel="noopener">doi.org/${escapeHTML(sup.doi)}</a>` : ""}
+      </div>
+      ${sup.study ? `<div class="da-study">${escapeHTML(sup.study)}</div>` : ""}
+      ${sup.note ? `<div class="da-note">${escapeHTML(sup.note)}</div>` : ""}
+    </div>` : "";
+
+  // Resolutions — issues that were closed during auditing.
+  const resolutions = audit.resolutions || [];
+  const resHTML = resolutions.length ? `
+    <div class="audit-block audit-resolutions">
+      <h4>Resolved issues (${resolutions.length})</h4>
+      <ul class="audit-res-list">
+        ${resolutions.map(r => `
+          <li>
+            <div><strong>Issue:</strong> ${escapeHTML(r.issue || '')}</div>
+            <div class="res-fix"><strong>Resolved:</strong> ${escapeHTML(r.resolved_by || '')}</div>
+          </li>`).join("")}
+      </ul>
+    </div>` : "";
+
+  // Show the panel when there's ANY notable audit content to surface — not
+  // just DOI corrections. Verified status alone is no reason to hide caveats
+  // or dating context that the curator went to the trouble of documenting.
+  const hasContent = !!(estSrcHTML || caveatsHTML || daHTML || supHTML || resHTML);
+  if (!hasContent && status === "verified") {
     host.hidden = true;
     host.innerHTML = "";
     return;
@@ -739,6 +812,10 @@ function renderAuditPanel(t) {
       <span class="src">audit · last reviewed ${lastAudited || "—"}</span>
     </div>
     ${estSrcHTML}
+    ${caveatsHTML}
+    ${supHTML}
+    ${daHTML}
+    ${resHTML}
   `;
 }
 

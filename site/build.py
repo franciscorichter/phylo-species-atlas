@@ -228,6 +228,37 @@ def _override_taxonomy(partition: str | None, group: str, filename: str,
     return tip_taxonomy_for_override(candidate, full_names)
 
 
+def _override_tree_meta(partition: str | None, group: str, filename: str) -> dict:
+    """When an override is active, read info.yaml's tree block to capture
+    the curator-asserted ntips/dated/source — those reflect the override
+    file's reality, not the upstream CSV row (which still describes the
+    superseded shipped tree)."""
+    if not HAS_YAML or not partition:
+        return {}
+    path = _find_override_path(partition, group, filename)
+    if not path:
+        return {}
+    info_yaml = path.parent / "info.yaml"
+    if not info_yaml.exists():
+        return {}
+    try:
+        data = yaml.safe_load(info_yaml.read_text(encoding="utf-8")) or {}
+    except yaml.YAMLError:
+        return {}
+    tree = data.get("tree") or {}
+    if not isinstance(tree, dict):
+        return {}
+    out = {}
+    for k in ("ntips", "dated"):
+        if k in tree and tree[k] is not None:
+            out[k] = tree[k]
+    src = tree.get("source") or {}
+    if src.get("key"): out["override_source_key"] = src["key"]
+    if src.get("doi"): out["override_source_doi"] = src["doi"]
+    if src.get("study"): out["override_source_study"] = src["study"]
+    return out
+
+
 def tip_taxonomy_for_override(override_path: Path, names: dict[str, str]) -> dict | None:
     """Like tip_taxonomy_from_names but for an atlas-derived override tree:
     parse the override Newick directly, extract its tip IDs, and build the
@@ -450,6 +481,21 @@ def main() -> None:
         coverage_pct = parse_float(prov.get("coverage_pct"))
         partition, est = estimate_for(prov_group)
 
+        # Special case: Condamine 2019 Crocodylia is the family-set member
+        # that maps to its own partition (Crocodilians) — promote it BEFORE
+        # the described-species fallback so it inherits the partition estimate.
+        if group == "condamine_Crocodylia":
+            partition = "Crocodilians"
+            est_row = estimates_by_partition.get("Crocodilians") or {}
+            est = {
+                "category": "Vertebrates",
+                "estimated_total": parse_int(est_row.get("total")),
+                "estimated_low": parse_int(est_row.get("low")),
+                "estimated_high": parse_int(est_row.get("high")),
+                "estimate_source": est_row.get("estimate_source"),
+                "estimate_confidence": est_row.get("confidence"),
+            }
+
         # Fallback: when data_provenance.csv has no described_species for
         # this tree (e.g. Bryozoa, where the original CSV row was empty),
         # use the partition-level described count from data_estimates.csv
@@ -509,6 +555,21 @@ def main() -> None:
             "tip_taxonomy_override": _override_taxonomy(partition, group, filename,
                                                        names_by_filename.get(filename, {})),
         })
+        # Apply override-side metadata when the curator has installed a
+        # replacement tree (e.g., Nakov 2018 swap-in for diatoms). The
+        # info.yaml tree block then carries the truth about ntips/dated/source
+        # for the override file, since the upstream CSV row still describes
+        # the superseded shipped tree.
+        if trees[-1].get("tree_url_override"):
+            meta = _override_tree_meta(partition, group, filename)
+            if "ntips" in meta:
+                trees[-1]["ntips"] = meta["ntips"]
+            if "dated" in meta:
+                trees[-1]["dated"] = bool(meta["dated"])
+            if meta.get("override_source_key"):
+                trees[-1]["study"] = meta.get("override_source_study") or meta["override_source_key"]
+            if meta.get("override_source_doi"):
+                trees[-1]["doi"] = meta["override_source_doi"]
 
         agg = by_group_aggregate[group]
         agg["trees"] += 1
@@ -541,6 +602,8 @@ def main() -> None:
         # is "the canonical Condamine tree", so leave them all as sub-clades.
         if p == "Condamine 2019 families":
             t["is_partition_canonical"] = False
+        elif p == "Crocodilians" and t.get("group") == "condamine_Crocodylia":
+            t["is_partition_canonical"] = True
         else:
             t["is_partition_canonical"] = bool(p and partition_max_tips.get(p) == n)
 
@@ -561,9 +624,17 @@ def main() -> None:
             continue
         tx_ov = t.get("tip_taxonomy_override") or {}
         tx = t.get("tip_taxonomy") or {}
-        effective_count = (tx_ov.get("unique_species")
-                           or tx.get("unique_species")
-                           or t["ntips"])
+        # When an override file is installed, trust the curator-asserted
+        # ntips (which we synced from info.yaml above) — overrides may use
+        # non-atlas tip labels that the dictionary-based taxonomy lookup
+        # can't parse (e.g., Nakov 2018 diatom binomials not in atlas
+        # dictionary). Otherwise fall back to per-species taxonomy stats.
+        if t.get("tree_url_override"):
+            effective_count = t["ntips"]
+        else:
+            effective_count = (tx_ov.get("unique_species")
+                               or tx.get("unique_species")
+                               or t["ntips"])
         if effective_count == t["ntips"] and t["coverage_pct"] is not None:
             # No taxonomic correction needed — keep CSV's pre-computed coverage.
             cov = t["coverage_pct"]

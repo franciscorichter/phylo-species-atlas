@@ -803,6 +803,60 @@ main {
 }
 .audit-note { margin: 6px 0 0; font-size: 11.5px; color: #6b6b6b; }
 
+.audit-block {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 4px;
+  background: #fafafa;
+  border-left: 3px solid #ccc;
+}
+.audit-block h4 {
+  margin: 0 0 6px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #555;
+}
+.audit-caveats-block { background: #fff7e6; border-left-color: #d48a1a; }
+.audit-dated-alt { background: #f3f6fb; border-left-color: #6b8cb3; }
+.audit-superseded { background: #f6f3fb; border-left-color: #8a6bb3; }
+.audit-resolutions { background: #f0f7f1; border-left-color: #2e8b3b; }
+
+.audit-caveat-list { list-style: none; padding: 0; margin: 0; }
+.audit-caveat { padding: 6px 0; border-top: 1px dashed #e0c69a; font-size: 12.5px; }
+.audit-caveat:first-child { border-top: none; }
+.caveat-sev {
+  display: inline-block;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 1px 6px;
+  border-radius: 3px;
+  background: #ececec;
+  color: #555;
+  margin-right: 6px;
+  text-transform: uppercase;
+}
+.caveat-sev.sev-high   { background: #fde0d0; color: #a32a0a; }
+.caveat-sev.sev-medium { background: #fde7c8; color: #8a4d0a; }
+.caveat-sev.sev-low    { background: #fdf1d6; color: #8a6a0a; }
+.caveat-summary { font-weight: 600; color: #2c2c2c; }
+.caveat-detail { margin-top: 4px; color: #555; font-size: 12px; line-height: 1.5; }
+
+.da-reason { font-size: 12.5px; color: #2c4a73; line-height: 1.55; margin: 0 0 8px; white-space: pre-wrap; }
+.da-cands { list-style: none; padding: 0; margin: 0; }
+.da-cands li { padding: 6px 0; border-top: 1px dashed #cdd6e3; font-size: 12px; }
+.da-cands li:first-child { border-top: none; }
+.da-cand-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 12px; }
+.da-cand-head .src { color: #6b6b6b; font-size: 11px; }
+.da-study { color: #444; margin-top: 3px; font-size: 11.5px; }
+.da-note { color: #555; font-style: italic; margin-top: 2px; font-size: 11.5px; }
+.da-doi a, .da-doi-inline { color: var(--accent); font-size: 11px; text-decoration: none; }
+.da-doi a:hover, .da-doi-inline:hover { text-decoration: underline; }
+.audit-res-list { list-style: none; padding: 0; margin: 0; font-size: 12.5px; }
+.audit-res-list li { padding: 4px 0; }
+.res-fix { color: #1f6b29; }
+
 .audit-caveats summary {
   cursor: pointer;
   padding: 4px 0;
@@ -1053,6 +1107,9 @@ main {
   padding-left: 20px;
 }
 .aud-resolutions li { margin: 8px 0; font-size: 12.5px; line-height: 1.5; }
+.aud-dated-alt { background: #f6f8fb; border-left: 3px solid #6b8cb3; padding: 10px 12px; border-radius: 4px; }
+.aud-dated-alt h3 { color: #2c4a73; margin-top: 0; }
+.da-reason { font-size: 12.5px; color: #444; line-height: 1.55; white-space: pre-wrap; margin: 4px 0 8px; }
 .res-issue { color: #1a1a1a; }
 .res-fix { color: #1f6b29; margin-top: 2px; }
 .aud-cands {

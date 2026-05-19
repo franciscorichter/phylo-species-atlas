@@ -7,15 +7,15 @@
     "n_undated": 18,
     "n_groups": 264,
     "n_datasets": 49,
-    "total_tips": 702787,
+    "total_tips": 688490,
     "n_audited": 62,
     "n_audits_in_progress": 1,
-    "n_audits_verified": 24,
-    "n_audits_deferred": 37,
+    "n_audits_verified": 25,
+    "n_audits_deferred": 36,
     "n_partitions": 62,
-    "n_atlas_derived": 5,
-    "n_paper_published_intervals": 9,
-    "n_partly_heuristic_intervals": 40,
+    "n_atlas_derived": 6,
+    "n_paper_published_intervals": 10,
+    "n_partly_heuristic_intervals": 39,
     "n_fully_heuristic_intervals": 11,
     "total_described_species": 2878313
   },
@@ -27,8 +27,8 @@
       "partition_group": "Seed plants",
       "category": "Plants",
       "is_partition_anchor": true,
-      "study": "Smith & Brown 2018",
-      "ntips": 356305,
+      "study": "Smith SA, Brown JW (2018)",
+      "ntips": 342466,
       "dated": true,
       "size_bytes": 6408441,
       "year": 2018,
@@ -840,8 +840,8 @@
       "partition_group": "Fungi",
       "category": "Microbes & protists",
       "is_partition_anchor": false,
-      "study": "Li 2021",
-      "ntips": 1672,
+      "study": "Li Y et al. (2021)",
+      "ntips": 1602,
       "dated": false,
       "size_bytes": 59361,
       "year": 2021,
@@ -1275,62 +1275,6 @@
       "is_partition_canonical": false
     },
     {
-      "filename": "bryozoa.nwk",
-      "group": "bryozoa",
-      "provenance_group": "bryozoa",
-      "partition_group": "Bryozoa",
-      "category": "Other animals",
-      "is_partition_anchor": true,
-      "study": "Orr 2023",
-      "ntips": 720,
-      "dated": false,
-      "size_bytes": 36176,
-      "year": 2022,
-      "journal": "Science Advances",
-      "doi": "10.1126/sciadv.abm7452",
-      "crown_ma": null,
-      "described_species": 6000,
-      "described_source": null,
-      "coverage_pct": 12.0,
-      "data_source": "Dryad",
-      "download_url": "https://doi.org/10.5061/dryad.2v6wwpzp9",
-      "methods_brief": "17-gene supermatrix, RAxML ML, trimmed alignment with rogue-taxon pruning",
-      "notes": "Cheilostome-focused bryozoan tree; full 854-tip ML tree also available in the Dryad package",
-      "estimate": {
-        "estimated_total": 8000,
-        "estimated_low": 6000,
-        "estimated_high": 10000,
-        "estimate_source": "Appeltans 2012",
-        "estimate_confidence": "Medium",
-        "category": "Other animals"
-      },
-      "described_source_info": null,
-      "estimate_source_info": {
-        "label": "Appeltans 2012",
-        "type": "paper",
-        "doi": "10.1016/j.cub.2012.09.036",
-        "url": null,
-        "citation": "Appeltans et al. 2012. The Magnitude of Global Marine Species Diversity. Curr Biol 22(23): 2189-2202."
-      },
-      "tip_taxonomy": {
-        "unique_ids": 720,
-        "unique_species": 520,
-        "subspecies_tips": 110,
-        "redundancy": 200,
-        "binomial_format": true
-      },
-      "tree_url_override": "data/partitions/bryozoa/tree.nwk",
-      "tip_taxonomy_override": {
-        "unique_ids": 517,
-        "unique_species": 517,
-        "subspecies_tips": 71,
-        "redundancy": 0,
-        "binomial_format": true,
-        "total_tips": 517
-      },
-      "is_partition_canonical": true
-    },
-    {
       "filename": "condamine_Muridae.nwk",
       "group": "condamine_Muridae",
       "provenance_group": "condamine_Muridae",
@@ -1415,68 +1359,6 @@
       "tree_url_override": null,
       "tip_taxonomy_override": null,
       "is_partition_canonical": false
-    },
-    {
-      "filename": "turtles.nwk",
-      "group": "turtles",
-      "provenance_group": "turtles",
-      "partition_group": "Turtles",
-      "category": "Vertebrates",
-      "is_partition_anchor": true,
-      "study": "Thomson 2021",
-      "ntips": 593,
-      "dated": true,
-      "size_bytes": 18746,
-      "year": 2021,
-      "journal": "PNAS",
-      "doi": "10.1073/pnas.2012215118",
-      "crown_ma": null,
-      "described_species": 360,
-      "described_source": "Reptile Database 2025",
-      "coverage_pct": 100.0,
-      "data_source": "Dryad",
-      "download_url": "https://datadryad.org/dataset/doi:10.5061/dryad.jh9w0vt8w",
-      "methods_brief": "13 loci for 294 species (80% all turtles), Bayesian (BEAST)",
-      "notes": "Multiple individuals per species; displayed coverage is capped at 100%; 100 posterior available",
-      "estimate": {
-        "estimated_total": 360,
-        "estimated_low": 360,
-        "estimated_high": 370,
-        "estimate_source": "TTWG 2021",
-        "estimate_confidence": "High",
-        "category": "Vertebrates"
-      },
-      "described_source_info": {
-        "label": "Reptile Database 2025",
-        "type": "database",
-        "doi": null,
-        "url": "http://www.reptile-database.org/",
-        "citation": "The Reptile Database (2025 access)."
-      },
-      "estimate_source_info": {
-        "label": "TTWG 2021",
-        "type": "paper",
-        "doi": "10.3854/crm.8.000c.checklist.atlas.v9.2021",
-        "url": null,
-        "citation": "Turtle Taxonomy Working Group 2021. Turtles of the World: Annotated Checklist and Atlas of Taxonomy. Chelonian Research Monographs 8."
-      },
-      "tip_taxonomy": {
-        "unique_ids": 329,
-        "unique_species": 287,
-        "subspecies_tips": 30,
-        "redundancy": 42,
-        "binomial_format": true
-      },
-      "tree_url_override": "data/partitions/turtles/tree.nwk",
-      "tip_taxonomy_override": {
-        "unique_ids": 287,
-        "unique_species": 287,
-        "subspecies_tips": 13,
-        "redundancy": 0,
-        "binomial_format": true,
-        "total_tips": 287
-      },
-      "is_partition_canonical": true
     },
     {
       "filename": "condamine_Colubridae.nwk",
@@ -1574,6 +1456,62 @@
       },
       "tree_url_override": null,
       "tip_taxonomy_override": null,
+      "is_partition_canonical": true
+    },
+    {
+      "filename": "bryozoa.nwk",
+      "group": "bryozoa",
+      "provenance_group": "bryozoa",
+      "partition_group": "Bryozoa",
+      "category": "Other animals",
+      "is_partition_anchor": true,
+      "study": "Orr RJS et al. (2022)",
+      "ntips": 517,
+      "dated": true,
+      "size_bytes": 36176,
+      "year": 2022,
+      "journal": "Science Advances",
+      "doi": "10.1126/sciadv.abm7452",
+      "crown_ma": null,
+      "described_species": 6000,
+      "described_source": null,
+      "coverage_pct": 12.0,
+      "data_source": "Dryad",
+      "download_url": "https://doi.org/10.5061/dryad.2v6wwpzp9",
+      "methods_brief": "17-gene supermatrix, RAxML ML, trimmed alignment with rogue-taxon pruning",
+      "notes": "Cheilostome-focused bryozoan tree; full 854-tip ML tree also available in the Dryad package",
+      "estimate": {
+        "estimated_total": 8000,
+        "estimated_low": 6000,
+        "estimated_high": 10000,
+        "estimate_source": "Appeltans 2012",
+        "estimate_confidence": "Medium",
+        "category": "Other animals"
+      },
+      "described_source_info": null,
+      "estimate_source_info": {
+        "label": "Appeltans 2012",
+        "type": "paper",
+        "doi": "10.1016/j.cub.2012.09.036",
+        "url": null,
+        "citation": "Appeltans et al. 2012. The Magnitude of Global Marine Species Diversity. Curr Biol 22(23): 2189-2202."
+      },
+      "tip_taxonomy": {
+        "unique_ids": 720,
+        "unique_species": 520,
+        "subspecies_tips": 110,
+        "redundancy": 200,
+        "binomial_format": true
+      },
+      "tree_url_override": "data/partitions/bryozoa/tree.nwk",
+      "tip_taxonomy_override": {
+        "unique_ids": 517,
+        "unique_species": 517,
+        "subspecies_tips": 71,
+        "redundancy": 0,
+        "binomial_format": true,
+        "total_tips": 517
+      },
       "is_partition_canonical": true
     },
     {
@@ -2019,68 +1957,6 @@
       "is_partition_canonical": false
     },
     {
-      "filename": "primates.nwk",
-      "group": "primates",
-      "provenance_group": "primates",
-      "partition_group": "Mammals",
-      "category": "Vertebrates",
-      "is_partition_anchor": false,
-      "study": "10kTrees v3",
-      "ntips": 301,
-      "dated": true,
-      "size_bytes": 7851,
-      "year": 2010,
-      "journal": "Evolutionary Anthropology",
-      "doi": "10.1002/evan.20251",
-      "crown_ma": 73.0,
-      "described_species": 522,
-      "described_source": "IUCN Red List 2025",
-      "coverage_pct": 57.7,
-      "data_source": "10kTrees",
-      "download_url": "https://10ktrees.nunn-lab.org/",
-      "methods_brief": "Bayesian from molecular data, all recognized primate species",
-      "notes": "Interactive web download; 100 posterior available",
-      "estimate": {
-        "estimated_total": 6736,
-        "estimated_low": 6736,
-        "estimated_high": 7500,
-        "estimate_source": "Burgin 2018",
-        "estimate_confidence": "High",
-        "category": "Vertebrates"
-      },
-      "described_source_info": {
-        "label": "IUCN Red List 2025",
-        "type": "database",
-        "doi": null,
-        "url": "https://www.iucnredlist.org/",
-        "citation": "IUCN Red List of Threatened Species (2025 access)."
-      },
-      "estimate_source_info": {
-        "label": "Burgin 2018",
-        "type": "paper",
-        "doi": "10.1093/jmammal/gyx147",
-        "url": null,
-        "citation": "Burgin et al. 2018. How many species of mammals are there? J Mammal 99(1): 1-14."
-      },
-      "tip_taxonomy": {
-        "unique_ids": 301,
-        "unique_species": 272,
-        "subspecies_tips": 34,
-        "redundancy": 29,
-        "binomial_format": true
-      },
-      "tree_url_override": "data/partitions/mammals/sub-phylos/primates/tree.nwk",
-      "tip_taxonomy_override": {
-        "unique_ids": 272,
-        "unique_species": 272,
-        "subspecies_tips": 5,
-        "redundancy": 0,
-        "binomial_format": true,
-        "total_tips": 272
-      },
-      "is_partition_canonical": false
-    },
-    {
       "filename": "carnivora.nwk",
       "group": "carnivora",
       "provenance_group": "carnivora",
@@ -2182,6 +2058,68 @@
       },
       "tree_url_override": null,
       "tip_taxonomy_override": null,
+      "is_partition_canonical": true
+    },
+    {
+      "filename": "turtles.nwk",
+      "group": "turtles",
+      "provenance_group": "turtles",
+      "partition_group": "Turtles",
+      "category": "Vertebrates",
+      "is_partition_anchor": true,
+      "study": "Thomson RC, Spinks PQ, Shaffer HB (2021)",
+      "ntips": 287,
+      "dated": true,
+      "size_bytes": 18746,
+      "year": 2021,
+      "journal": "PNAS",
+      "doi": "10.1073/pnas.2012215118",
+      "crown_ma": null,
+      "described_species": 360,
+      "described_source": "Reptile Database 2025",
+      "coverage_pct": 100.0,
+      "data_source": "Dryad",
+      "download_url": "https://datadryad.org/dataset/doi:10.5061/dryad.jh9w0vt8w",
+      "methods_brief": "13 loci for 294 species (80% all turtles), Bayesian (BEAST)",
+      "notes": "Multiple individuals per species; displayed coverage is capped at 100%; 100 posterior available",
+      "estimate": {
+        "estimated_total": 360,
+        "estimated_low": 360,
+        "estimated_high": 370,
+        "estimate_source": "TTWG 2021",
+        "estimate_confidence": "High",
+        "category": "Vertebrates"
+      },
+      "described_source_info": {
+        "label": "Reptile Database 2025",
+        "type": "database",
+        "doi": null,
+        "url": "http://www.reptile-database.org/",
+        "citation": "The Reptile Database (2025 access)."
+      },
+      "estimate_source_info": {
+        "label": "TTWG 2021",
+        "type": "paper",
+        "doi": "10.3854/crm.8.000c.checklist.atlas.v9.2021",
+        "url": null,
+        "citation": "Turtle Taxonomy Working Group 2021. Turtles of the World: Annotated Checklist and Atlas of Taxonomy. Chelonian Research Monographs 8."
+      },
+      "tip_taxonomy": {
+        "unique_ids": 329,
+        "unique_species": 287,
+        "subspecies_tips": 30,
+        "redundancy": 42,
+        "binomial_format": true
+      },
+      "tree_url_override": "data/partitions/turtles/tree.nwk",
+      "tip_taxonomy_override": {
+        "unique_ids": 287,
+        "unique_species": 287,
+        "subspecies_tips": 13,
+        "redundancy": 0,
+        "binomial_format": true,
+        "total_tips": 287
+      },
       "is_partition_canonical": true
     },
     {
@@ -2314,6 +2252,68 @@
       "is_partition_canonical": false
     },
     {
+      "filename": "primates.nwk",
+      "group": "primates",
+      "provenance_group": "primates",
+      "partition_group": "Mammals",
+      "category": "Vertebrates",
+      "is_partition_anchor": false,
+      "study": "Arnold C, Matthews LJ, Nunn CL (2010)",
+      "ntips": 272,
+      "dated": true,
+      "size_bytes": 7851,
+      "year": 2010,
+      "journal": "Evolutionary Anthropology",
+      "doi": "10.1002/evan.20251",
+      "crown_ma": 73.0,
+      "described_species": 522,
+      "described_source": "IUCN Red List 2025",
+      "coverage_pct": 57.7,
+      "data_source": "10kTrees",
+      "download_url": "https://10ktrees.nunn-lab.org/",
+      "methods_brief": "Bayesian from molecular data, all recognized primate species",
+      "notes": "Interactive web download; 100 posterior available",
+      "estimate": {
+        "estimated_total": 6736,
+        "estimated_low": 6736,
+        "estimated_high": 7500,
+        "estimate_source": "Burgin 2018",
+        "estimate_confidence": "High",
+        "category": "Vertebrates"
+      },
+      "described_source_info": {
+        "label": "IUCN Red List 2025",
+        "type": "database",
+        "doi": null,
+        "url": "https://www.iucnredlist.org/",
+        "citation": "IUCN Red List of Threatened Species (2025 access)."
+      },
+      "estimate_source_info": {
+        "label": "Burgin 2018",
+        "type": "paper",
+        "doi": "10.1093/jmammal/gyx147",
+        "url": null,
+        "citation": "Burgin et al. 2018. How many species of mammals are there? J Mammal 99(1): 1-14."
+      },
+      "tip_taxonomy": {
+        "unique_ids": 301,
+        "unique_species": 272,
+        "subspecies_tips": 34,
+        "redundancy": 29,
+        "binomial_format": true
+      },
+      "tree_url_override": "data/partitions/mammals/sub-phylos/primates/tree.nwk",
+      "tip_taxonomy_override": {
+        "unique_ids": 272,
+        "unique_species": 272,
+        "subspecies_tips": 5,
+        "redundancy": 0,
+        "binomial_format": true,
+        "total_tips": 272
+      },
+      "is_partition_canonical": false
+    },
+    {
       "filename": "asteraceae.nwk",
       "group": "asteraceae",
       "provenance_group": "asteraceae",
@@ -2367,6 +2367,61 @@
       "tree_url_override": null,
       "tip_taxonomy_override": null,
       "is_partition_canonical": false
+    },
+    {
+      "filename": "diatoms.nwk",
+      "group": "diatoms",
+      "provenance_group": "diatoms",
+      "partition_group": "Diatoms",
+      "category": "Microbes & protists",
+      "is_partition_anchor": false,
+      "study": "Nakov T, Beaulieu JM, Alverson AJ (2018) — Accelerated diversification is related to life history and locomotion in a hyperdiverse lineage of microbial eukaryotes (Diatoms, Bacillariophyta). New Phytologist 219:462-473.",
+      "ntips": 244,
+      "dated": true,
+      "size_bytes": 2451,
+      "year": 2018,
+      "journal": "Molecular Biology and Evolution",
+      "doi": "10.1111/nph.15137",
+      "crown_ma": null,
+      "described_species": 20000,
+      "described_source": "AlgaeBase",
+      "coverage_pct": 0.5,
+      "data_source": "Zenodo",
+      "download_url": "https://zenodo.org/records/344519",
+      "methods_brief": "Phylogenomics from transcriptomes, ASTRAL species tree",
+      "notes": "Also ML concatenated tree",
+      "estimate": {
+        "estimated_total": 100000,
+        "estimated_low": 30000,
+        "estimated_high": 200000,
+        "estimate_source": "Mann 2013",
+        "estimate_confidence": "Low",
+        "category": "Microbes & protists"
+      },
+      "described_source_info": {
+        "label": "AlgaeBase",
+        "type": "database",
+        "doi": null,
+        "url": "https://www.algaebase.org/",
+        "citation": "Guiry & Guiry (current), AlgaeBase."
+      },
+      "estimate_source_info": {
+        "label": "Mann 2013",
+        "type": "paper",
+        "doi": "10.1111/jeu.12047",
+        "url": null,
+        "citation": "Mann & Vanormelingen 2013. An Inordinate Fondness? The Number Distributions and Origins of Diatom Species. J Eukaryot Microbiol 60(4): 414-420."
+      },
+      "tip_taxonomy": {
+        "unique_ids": 74,
+        "unique_species": 74,
+        "subspecies_tips": 0,
+        "redundancy": 0,
+        "binomial_format": false
+      },
+      "tree_url_override": "data/partitions/diatoms/tree.nwk",
+      "tip_taxonomy_override": null,
+      "is_partition_canonical": true
     },
     {
       "filename": "condamine_Accipitridae.nwk",
@@ -4207,61 +4262,6 @@
       "tip_taxonomy": {
         "unique_ids": 95,
         "unique_species": 95,
-        "subspecies_tips": 0,
-        "redundancy": 0,
-        "binomial_format": false
-      },
-      "tree_url_override": null,
-      "tip_taxonomy_override": null,
-      "is_partition_canonical": true
-    },
-    {
-      "filename": "diatoms.nwk",
-      "group": "diatoms",
-      "provenance_group": "diatoms",
-      "partition_group": "Diatoms",
-      "category": "Microbes & protists",
-      "is_partition_anchor": false,
-      "study": "Theriot 2018",
-      "ntips": 94,
-      "dated": false,
-      "size_bytes": 2451,
-      "year": 2018,
-      "journal": "Molecular Biology and Evolution",
-      "doi": "10.1093/molbev/msx268",
-      "crown_ma": null,
-      "described_species": 20000,
-      "described_source": "AlgaeBase",
-      "coverage_pct": 0.5,
-      "data_source": "Zenodo",
-      "download_url": "https://zenodo.org/records/344519",
-      "methods_brief": "Phylogenomics from transcriptomes, ASTRAL species tree",
-      "notes": "Also ML concatenated tree",
-      "estimate": {
-        "estimated_total": 100000,
-        "estimated_low": 30000,
-        "estimated_high": 200000,
-        "estimate_source": "Mann 2013",
-        "estimate_confidence": "Low",
-        "category": "Microbes & protists"
-      },
-      "described_source_info": {
-        "label": "AlgaeBase",
-        "type": "database",
-        "doi": null,
-        "url": "https://www.algaebase.org/",
-        "citation": "Guiry & Guiry (current), AlgaeBase."
-      },
-      "estimate_source_info": {
-        "label": "Mann 2013",
-        "type": "paper",
-        "doi": "10.1111/jeu.12047",
-        "url": null,
-        "citation": "Mann & Vanormelingen 2013. An Inordinate Fondness? The Number Distributions and Origins of Diatom Species. J Eukaryot Microbiol 60(4): 414-420."
-      },
-      "tip_taxonomy": {
-        "unique_ids": 74,
-        "unique_species": 74,
         "subspecies_tips": 0,
         "redundancy": 0,
         "binomial_format": false
@@ -8425,8 +8425,8 @@
       "filename": "condamine_Crocodylia.nwk",
       "group": "condamine_Crocodylia",
       "provenance_group": "condamine_Crocodylia",
-      "partition_group": "Condamine 2019 families",
-      "category": "Arthropods",
+      "partition_group": "Crocodilians",
+      "category": "Vertebrates",
       "is_partition_anchor": false,
       "study": "Condamine 2019",
       "ntips": 25,
@@ -8436,23 +8436,29 @@
       "journal": null,
       "doi": null,
       "crown_ma": null,
-      "described_species": null,
+      "described_species": 27,
       "described_source": null,
-      "coverage_pct": null,
+      "coverage_pct": 92.6,
       "data_source": null,
       "download_url": null,
       "methods_brief": null,
       "notes": null,
       "estimate": {
-        "category": "Arthropods",
+        "category": "Vertebrates",
         "estimated_total": null,
         "estimated_low": null,
         "estimated_high": null,
-        "estimate_source": null,
-        "estimate_confidence": null
+        "estimate_source": "IUCN CSG",
+        "estimate_confidence": "High"
       },
       "described_source_info": null,
-      "estimate_source_info": null,
+      "estimate_source_info": {
+        "label": "IUCN CSG",
+        "type": "database",
+        "doi": null,
+        "url": "https://www.iucncsg.org/",
+        "citation": "IUCN Crocodile Specialist Group."
+      },
       "tip_taxonomy": {
         "unique_ids": 25,
         "unique_species": 25,
@@ -8462,7 +8468,7 @@
       },
       "tree_url_override": null,
       "tip_taxonomy_override": null,
-      "is_partition_canonical": false
+      "is_partition_canonical": true
     },
     {
       "filename": "condamine_Otididae.nwk",
@@ -11974,6 +11980,66 @@
       }
     },
     {
+      "filename": "turtles.nwk",
+      "group": "turtles",
+      "provenance_group": "turtles",
+      "partition_group": "Turtles",
+      "category": "Vertebrates",
+      "study": "Thomson RC, Spinks PQ, Shaffer HB (2021)",
+      "year": 2021,
+      "tips": 287,
+      "raw_tips": 287,
+      "described_species": 360,
+      "described_source": "Reptile Database 2025",
+      "coverage_pct": 100.0,
+      "dated": true,
+      "is_partition_anchor": true,
+      "is_partition_canonical": true,
+      "estimated_total": 360,
+      "estimated_low": 360,
+      "estimated_high": 370,
+      "estimate_source": "TTWG 2021",
+      "estimate_confidence": "High",
+      "coverage_pct_estimated": 79.7,
+      "coverage_pct_estimated_low": 77.6,
+      "coverage_pct_estimated_high": 79.7,
+      "estimate_source_corrected": {
+        "key": "TTWG 2025",
+        "doi": "10.3854/crm.10.checklist.atlas.v10.2025",
+        "year": 2025,
+        "url": "https://iucn-tftsg.org/checklist/",
+        "note": "Live successor is the IUCN-TFTSG Turtles of the World checklist; the\npaper-side citation (v9/2021) had a broken DOI and was replaced here by\nthe v10/2025 edition (species count 360 → 364). The 4-species delta is\nnet taxonomic change since 2021.\n"
+      },
+      "estimate_source_paper_doi_status": "broken",
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "TTWG 2021 / TTWG 2025 (10th edition)",
+          "verbatim_quote": "364 turtle and tortoise species are currently generally recognized as distinct and included in this checklist (TTWG 2025)"
+        },
+        "estimated_total": {
+          "type": "derived",
+          "source": "TTWG 2021",
+          "verbatim_quote": null,
+          "note": "Set equal to described — no true-diversity estimate published. TTWG 2025 reports 364; data_estimates.csv recorded 360 from the v9 (2021) checklist."
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "TTWG 2021",
+          "verbatim_quote": null,
+          "note": "Low bound = described count."
+        },
+        "estimated_high": {
+          "type": "heuristic",
+          "source": "atlas-derived",
+          "verbatim_quote": null,
+          "note": "TTWG does not publish a true-diversity bound. The 370 figure allows\n~10 undescribed/cryptic species. Turtles are extremely well-described\n(~1 new species per year, mostly subspecies elevations); the actual\ncryptic-diversity reserve is small. Honest upper bound is within ~5%\nof described.\n"
+        },
+        "overall_classification": "fully-heuristic",
+        "auditor_note": "Turtles intervals are heuristic. Like Birds and Mammals, turtles are a\nwell-catalogued clade — TTWG publishes a checklist, not a diversity\nestimate. The 370 placeholder shouldn't be visually equated with the\npaper-published ranges that exist for poorly-described clades\n(Insects 2.6M-7.8M from Stork 2018, etc).\n"
+      }
+    },
+    {
       "filename": "salamanders.nwk",
       "group": "salamanders",
       "provenance_group": "salamanders",
@@ -12130,6 +12196,97 @@
       }
     },
     {
+      "filename": "seed_plants.nwk",
+      "group": "seed_plants",
+      "provenance_group": "seed_plants",
+      "partition_group": "Seed plants",
+      "category": "Plants",
+      "study": "Smith SA, Brown JW (2018)",
+      "year": 2018,
+      "tips": 342466,
+      "raw_tips": 342466,
+      "described_species": 383671,
+      "described_source": "World Flora Online 2025",
+      "coverage_pct": 92.9,
+      "dated": true,
+      "is_partition_anchor": true,
+      "is_partition_canonical": true,
+      "estimated_total": 450000,
+      "estimated_low": 400000,
+      "estimated_high": 500000,
+      "estimate_source": "Nic Lughadha 2016",
+      "estimate_confidence": "Medium",
+      "coverage_pct_estimated": 76.1,
+      "coverage_pct_estimated_low": 68.5,
+      "coverage_pct_estimated_high": 85.6,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "World Flora Online 2025",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Nic Lughadha 2016",
+          "verbatim_quote": "numbers of accepted species of flowering plants (369,434), seed plants (370,492), vascular plants (383,671) and land plants (403,911)",
+          "note": "Paper-published estimate of total angiosperm + gymnosperm diversity."
+        },
+        "estimated_low": {
+          "type": "paper-published",
+          "source": "Nic Lughadha 2016",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Nic Lughadha 2016",
+          "verbatim_quote": null
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Nic Lughadha 2016 publishes DESCRIBED accepted species counts (370,492 seed plants; 383,671 vascular plants — close to atlas's 383,671 described). The atlas's 400k-450k-500k UPPER bounds are NOT in Nic Lughadha's abstract — they appear to be atlas-derived projections. Reclassified from paper-published-range to partly-heuristic."
+      }
+    },
+    {
+      "filename": "condamine_Crocodylia.nwk",
+      "group": "condamine_Crocodylia",
+      "provenance_group": "condamine_Crocodylia",
+      "partition_group": "Crocodilians",
+      "category": "Vertebrates",
+      "study": "Condamine 2019",
+      "year": null,
+      "tips": 25,
+      "raw_tips": 25,
+      "described_species": 27,
+      "described_source": null,
+      "coverage_pct": 92.6,
+      "dated": true,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "IUCN Crocodile Specialist Group",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "IUCN CSG",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "IUCN CSG",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "IUCN CSG",
+          "verbatim_quote": null
+        },
+        "overall_classification": "paper-published-range",
+        "auditor_note": "IUCN Crocodile Specialist Group maintains the authoritative census (27 extant species; ~30 with recently-described candidates). Small, well-known clade — diversity bounds are tight."
+      }
+    },
+    {
       "filename": "cetaceans.nwk",
       "group": "cetaceans",
       "provenance_group": "cetaceans",
@@ -12179,56 +12336,6 @@
         },
         "overall_classification": "partly-heuristic",
         "auditor_note": "Mammals lack a paper-published true-diversity range. The 6,736 figure is\nthe current MDD-tracked described-species count (well-established). The\n7,500 upper bound is a 2050 projection of described counts (Burgin 2018\n§Discussion), not a 2025 estimate of cryptic + undescribed diversity.\n"
-      }
-    },
-    {
-      "filename": "seed_plants.nwk",
-      "group": "seed_plants",
-      "provenance_group": "seed_plants",
-      "partition_group": "Seed plants",
-      "category": "Plants",
-      "study": "Smith & Brown 2018",
-      "year": 2018,
-      "tips": 342466,
-      "raw_tips": 356305,
-      "described_species": 383671,
-      "described_source": "World Flora Online 2025",
-      "coverage_pct": 89.3,
-      "dated": true,
-      "is_partition_anchor": true,
-      "is_partition_canonical": true,
-      "estimated_total": 450000,
-      "estimated_low": 400000,
-      "estimated_high": 500000,
-      "estimate_source": "Nic Lughadha 2016",
-      "estimate_confidence": "Medium",
-      "coverage_pct_estimated": 76.1,
-      "coverage_pct_estimated_low": 68.5,
-      "coverage_pct_estimated_high": 85.6,
-      "interval_provenance": {
-        "described": {
-          "type": "database",
-          "source": "World Flora Online 2025",
-          "verbatim_quote": null
-        },
-        "estimated_total": {
-          "type": "paper-published",
-          "source": "Nic Lughadha 2016",
-          "verbatim_quote": "numbers of accepted species of flowering plants (369,434), seed plants (370,492), vascular plants (383,671) and land plants (403,911)",
-          "note": "Paper-published estimate of total angiosperm + gymnosperm diversity."
-        },
-        "estimated_low": {
-          "type": "paper-published",
-          "source": "Nic Lughadha 2016",
-          "verbatim_quote": null
-        },
-        "estimated_high": {
-          "type": "paper-published",
-          "source": "Nic Lughadha 2016",
-          "verbatim_quote": null
-        },
-        "overall_classification": "partly-heuristic",
-        "auditor_note": "Nic Lughadha 2016 publishes DESCRIBED accepted species counts (370,492 seed plants; 383,671 vascular plants — close to atlas's 383,671 described). The atlas's 400k-450k-500k UPPER bounds are NOT in Nic Lughadha's abstract — they appear to be atlas-derived projections. Reclassified from paper-published-range to partly-heuristic."
       }
     },
     {
@@ -12386,66 +12493,6 @@
       }
     },
     {
-      "filename": "turtles.nwk",
-      "group": "turtles",
-      "provenance_group": "turtles",
-      "partition_group": "Turtles",
-      "category": "Vertebrates",
-      "study": "Thomson 2021",
-      "year": 2021,
-      "tips": 287,
-      "raw_tips": 593,
-      "described_species": 360,
-      "described_source": "Reptile Database 2025",
-      "coverage_pct": 79.7,
-      "dated": true,
-      "is_partition_anchor": true,
-      "is_partition_canonical": true,
-      "estimated_total": 360,
-      "estimated_low": 360,
-      "estimated_high": 370,
-      "estimate_source": "TTWG 2021",
-      "estimate_confidence": "High",
-      "coverage_pct_estimated": 79.7,
-      "coverage_pct_estimated_low": 77.6,
-      "coverage_pct_estimated_high": 79.7,
-      "estimate_source_corrected": {
-        "key": "TTWG 2025",
-        "doi": "10.3854/crm.10.checklist.atlas.v10.2025",
-        "year": 2025,
-        "url": "https://iucn-tftsg.org/checklist/",
-        "note": "Live successor is the IUCN-TFTSG Turtles of the World checklist; the\npaper-side citation (v9/2021) had a broken DOI and was replaced here by\nthe v10/2025 edition (species count 360 → 364). The 4-species delta is\nnet taxonomic change since 2021.\n"
-      },
-      "estimate_source_paper_doi_status": "broken",
-      "interval_provenance": {
-        "described": {
-          "type": "database",
-          "source": "TTWG 2021 / TTWG 2025 (10th edition)",
-          "verbatim_quote": "364 turtle and tortoise species are currently generally recognized as distinct and included in this checklist (TTWG 2025)"
-        },
-        "estimated_total": {
-          "type": "derived",
-          "source": "TTWG 2021",
-          "verbatim_quote": null,
-          "note": "Set equal to described — no true-diversity estimate published. TTWG 2025 reports 364; data_estimates.csv recorded 360 from the v9 (2021) checklist."
-        },
-        "estimated_low": {
-          "type": "derived-from-described",
-          "source": "TTWG 2021",
-          "verbatim_quote": null,
-          "note": "Low bound = described count."
-        },
-        "estimated_high": {
-          "type": "heuristic",
-          "source": "atlas-derived",
-          "verbatim_quote": null,
-          "note": "TTWG does not publish a true-diversity bound. The 370 figure allows\n~10 undescribed/cryptic species. Turtles are extremely well-described\n(~1 new species per year, mostly subspecies elevations); the actual\ncryptic-diversity reserve is small. Honest upper bound is within ~5%\nof described.\n"
-        },
-        "overall_classification": "fully-heuristic",
-        "auditor_note": "Turtles intervals are heuristic. Like Birds and Mammals, turtles are a\nwell-catalogued clade — TTWG publishes a checklist, not a diversity\nestimate. The 370 placeholder shouldn't be visually equated with the\npaper-published ranges that exist for poorly-described clades\n(Insects 2.6M-7.8M from Stork 2018, etc).\n"
-      }
-    },
-    {
       "filename": "frogs.nwk",
       "group": "frogs",
       "provenance_group": "frogs",
@@ -12497,6 +12544,58 @@
       }
     },
     {
+      "filename": "primates.nwk",
+      "group": "primates",
+      "provenance_group": "primates",
+      "partition_group": "Mammals",
+      "category": "Vertebrates",
+      "study": "Arnold C, Matthews LJ, Nunn CL (2010)",
+      "year": 2010,
+      "tips": 272,
+      "raw_tips": 272,
+      "described_species": 522,
+      "described_source": "IUCN Red List 2025",
+      "coverage_pct": 57.7,
+      "dated": true,
+      "is_partition_anchor": false,
+      "is_partition_canonical": false,
+      "estimated_total": 6736,
+      "estimated_low": 6736,
+      "estimated_high": 7500,
+      "estimate_source": "Burgin 2018",
+      "estimate_confidence": "High",
+      "coverage_pct_estimated": 4.0,
+      "coverage_pct_estimated_low": 3.6,
+      "coverage_pct_estimated_high": 4.0,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "Mammal Diversity Database (MDD, 2024+)",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "derived",
+          "source": "Burgin 2018 / MDD",
+          "verbatim_quote": "MDD currently lists 6,495 valid species (6,399 extant, 96 recently extinct)",
+          "note": "Set equal to described — no true-diversity estimate published."
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "Burgin 2018 / MDD",
+          "verbatim_quote": null,
+          "note": "Low bound = described count. Not a published interval bound."
+        },
+        "estimated_high": {
+          "type": "projection",
+          "source": "Burgin 2018",
+          "verbatim_quote": "our estimates increase to 7,509 species recognized by 2050 and 9,009 by 2100",
+          "note": "Burgin 2018's 7,500-ish figure is a DESCRIPTION-RATE PROJECTION to\nthe year 2050 — extrapolating recent description rates forward.\nIt is NOT an estimate of TRUE mammal diversity (current undiscovered\nspecies). Treating it as the 'high' end of an estimated_total interval\noverstates Burgin 2018's claim.\n"
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Mammals lack a paper-published true-diversity range. The 6,736 figure is\nthe current MDD-tracked described-species count (well-established). The\n7,500 upper bound is a 2050 projection of described counts (Burgin 2018\n§Discussion), not a 2025 estimate of cryptic + undescribed diversity.\n"
+      }
+    },
+    {
       "filename": "cacti.nwk",
       "group": "cacti",
       "provenance_group": "cacti",
@@ -12544,58 +12643,6 @@
         },
         "overall_classification": "partly-heuristic",
         "auditor_note": "Nic Lughadha 2016 publishes DESCRIBED accepted species counts (370,492 seed plants; 383,671 vascular plants — close to atlas's 383,671 described). The atlas's 400k-450k-500k UPPER bounds are NOT in Nic Lughadha's abstract — they appear to be atlas-derived projections. Reclassified from paper-published-range to partly-heuristic."
-      }
-    },
-    {
-      "filename": "primates.nwk",
-      "group": "primates",
-      "provenance_group": "primates",
-      "partition_group": "Mammals",
-      "category": "Vertebrates",
-      "study": "10kTrees v3",
-      "year": 2010,
-      "tips": 272,
-      "raw_tips": 301,
-      "described_species": 522,
-      "described_source": "IUCN Red List 2025",
-      "coverage_pct": 52.1,
-      "dated": true,
-      "is_partition_anchor": false,
-      "is_partition_canonical": false,
-      "estimated_total": 6736,
-      "estimated_low": 6736,
-      "estimated_high": 7500,
-      "estimate_source": "Burgin 2018",
-      "estimate_confidence": "High",
-      "coverage_pct_estimated": 4.0,
-      "coverage_pct_estimated_low": 3.6,
-      "coverage_pct_estimated_high": 4.0,
-      "interval_provenance": {
-        "described": {
-          "type": "database",
-          "source": "Mammal Diversity Database (MDD, 2024+)",
-          "verbatim_quote": null
-        },
-        "estimated_total": {
-          "type": "derived",
-          "source": "Burgin 2018 / MDD",
-          "verbatim_quote": "MDD currently lists 6,495 valid species (6,399 extant, 96 recently extinct)",
-          "note": "Set equal to described — no true-diversity estimate published."
-        },
-        "estimated_low": {
-          "type": "derived-from-described",
-          "source": "Burgin 2018 / MDD",
-          "verbatim_quote": null,
-          "note": "Low bound = described count. Not a published interval bound."
-        },
-        "estimated_high": {
-          "type": "projection",
-          "source": "Burgin 2018",
-          "verbatim_quote": "our estimates increase to 7,509 species recognized by 2050 and 9,009 by 2100",
-          "note": "Burgin 2018's 7,500-ish figure is a DESCRIPTION-RATE PROJECTION to\nthe year 2050 — extrapolating recent description rates forward.\nIt is NOT an estimate of TRUE mammal diversity (current undiscovered\nspecies). Treating it as the 'high' end of an estimated_total interval\noverstates Burgin 2018's claim.\n"
-        },
-        "overall_classification": "partly-heuristic",
-        "auditor_note": "Mammals lack a paper-published true-diversity range. The 6,736 figure is\nthe current MDD-tracked described-species count (well-established). The\n7,500 upper bound is a 2050 projection of described counts (Burgin 2018\n§Discussion), not a 2025 estimate of cryptic + undescribed diversity.\n"
       }
     },
     {
@@ -12902,6 +12949,55 @@
       }
     },
     {
+      "filename": "bryozoa.nwk",
+      "group": "bryozoa",
+      "provenance_group": "bryozoa",
+      "partition_group": "Bryozoa",
+      "category": "Other animals",
+      "study": "Orr RJS et al. (2022)",
+      "year": 2022,
+      "tips": 517,
+      "raw_tips": 517,
+      "described_species": 6000,
+      "described_source": null,
+      "coverage_pct": 12.0,
+      "dated": true,
+      "is_partition_anchor": true,
+      "is_partition_canonical": true,
+      "estimated_total": 8000,
+      "estimated_low": 6000,
+      "estimated_high": 10000,
+      "estimate_source": "Appeltans 2012",
+      "estimate_confidence": "Medium",
+      "coverage_pct_estimated": 6.5,
+      "coverage_pct_estimated_low": 5.2,
+      "coverage_pct_estimated_high": 8.6,
+      "interval_provenance": {
+        "described": {
+          "type": "database",
+          "source": "WoRMS / Appeltans 2012",
+          "verbatim_quote": null
+        },
+        "estimated_total": {
+          "type": "paper-published",
+          "source": "Appeltans 2012",
+          "verbatim_quote": "there may be 0.7-1.0 million marine species (226,000 eukaryotic species currently described; 58,000-72,000 collected but undescribed; 482,000-741,000 yet to be sampled)"
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "Appeltans 2012",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "paper-published",
+          "source": "Appeltans 2012",
+          "verbatim_quote": null
+        },
+        "overall_classification": "partly-heuristic",
+        "auditor_note": "Appeltans 2012 provides partial/heuristic bounds for Bryozoa."
+      }
+    },
+    {
       "filename": "butterflies.nwk",
       "group": "butterflies",
       "provenance_group": "butterflies",
@@ -13102,55 +13198,6 @@
         },
         "overall_classification": "partly-heuristic",
         "auditor_note": "Mora 2011's published numerical content is at the kingdom level (Animalia). The per-clade Fish bounds 36k-40k-50k align with Eschmeyer's Catalog + Mora's 2.2M marine eukaryote prediction but aren't a verbatim quote from Mora 2011. Reclassified to partly-heuristic."
-      }
-    },
-    {
-      "filename": "bryozoa.nwk",
-      "group": "bryozoa",
-      "provenance_group": "bryozoa",
-      "partition_group": "Bryozoa",
-      "category": "Other animals",
-      "study": "Orr 2023",
-      "year": 2022,
-      "tips": 517,
-      "raw_tips": 720,
-      "described_species": 6000,
-      "described_source": null,
-      "coverage_pct": 8.6,
-      "dated": false,
-      "is_partition_anchor": true,
-      "is_partition_canonical": true,
-      "estimated_total": 8000,
-      "estimated_low": 6000,
-      "estimated_high": 10000,
-      "estimate_source": "Appeltans 2012",
-      "estimate_confidence": "Medium",
-      "coverage_pct_estimated": 6.5,
-      "coverage_pct_estimated_low": 5.2,
-      "coverage_pct_estimated_high": 8.6,
-      "interval_provenance": {
-        "described": {
-          "type": "database",
-          "source": "WoRMS / Appeltans 2012",
-          "verbatim_quote": null
-        },
-        "estimated_total": {
-          "type": "paper-published",
-          "source": "Appeltans 2012",
-          "verbatim_quote": "there may be 0.7-1.0 million marine species (226,000 eukaryotic species currently described; 58,000-72,000 collected but undescribed; 482,000-741,000 yet to be sampled)"
-        },
-        "estimated_low": {
-          "type": "derived-from-described",
-          "source": "Appeltans 2012",
-          "verbatim_quote": null
-        },
-        "estimated_high": {
-          "type": "paper-published",
-          "source": "Appeltans 2012",
-          "verbatim_quote": null
-        },
-        "overall_classification": "partly-heuristic",
-        "auditor_note": "Appeltans 2012 provides partial/heuristic bounds for Bryozoa."
       }
     },
     {
@@ -13460,13 +13507,13 @@
       "provenance_group": "fungi",
       "partition_group": "Fungi",
       "category": "Microbes & protists",
-      "study": "Li 2021",
+      "study": "Li Y et al. (2021)",
       "year": 2021,
       "tips": 1602,
-      "raw_tips": 1672,
+      "raw_tips": 1602,
       "described_species": 155000,
       "described_source": "Species Fungorum 2025",
-      "coverage_pct": 1.0,
+      "coverage_pct": 1.1,
       "dated": false,
       "is_partition_anchor": false,
       "is_partition_canonical": true,
@@ -13633,26 +13680,22 @@
           "verbatim_quote": null
         },
         "estimated_total": {
-          "type": "paper-published",
-          "source": "Hodda 2022",
+          "type": "fully-heuristic",
+          "source": "atlas-derived",
           "verbatim_quote": null
         },
         "estimated_low": {
-          "type": "paper-published",
-          "source": "Hodda 2022",
+          "type": "fully-heuristic",
+          "source": "atlas-derived",
           "verbatim_quote": null
         },
         "estimated_high": {
-          "type": "paper-published",
-          "source": "Hodda 2022",
+          "type": "fully-heuristic",
+          "source": "atlas-derived",
           "verbatim_quote": null
         },
         "overall_classification": "fully-heuristic",
-        "auditor_note": "Hodda 2022 is a CLASSIFICATION paper reporting 28,537 valid described species in Nematoda (its census), NOT a published true-diversity estimate. The atlas''s 500k-1M-10M range is entirely atlas-derived heuristic. Reclassified from paper-published-range → fully-heuristic.",
-        "key": "Qing X et al.",
-        "study": "Qing X et al. (2025)",
-        "doi": "10.1093/sysbio/syae073",
-        "pdf": "papers/tree.pdf"
+        "auditor_note": "Hodda 2022 is a CLASSIFICATION paper reporting 28,537 valid described species in Nematoda (its census), NOT a published true-diversity estimate. The atlas's 500k-1M-10M range is entirely atlas-derived heuristic. Reclassified from paper-published-range -> fully-heuristic."
       }
     },
     {
@@ -13661,14 +13704,14 @@
       "provenance_group": "diatoms",
       "partition_group": "Diatoms",
       "category": "Microbes & protists",
-      "study": "Theriot 2018",
+      "study": "Nakov T, Beaulieu JM, Alverson AJ (2018) — Accelerated diversification is related to life history and locomotion in a hyperdiverse lineage of microbial eukaryotes (Diatoms, Bacillariophyta). New Phytologist 219:462-473.",
       "year": 2018,
-      "tips": 74,
-      "raw_tips": 94,
+      "tips": 244,
+      "raw_tips": 244,
       "described_species": 20000,
       "described_source": "AlgaeBase",
-      "coverage_pct": 0.4,
-      "dated": false,
+      "coverage_pct": 0.5,
+      "dated": true,
       "is_partition_anchor": false,
       "is_partition_canonical": true,
       "estimated_total": 100000,
@@ -13676,13 +13719,13 @@
       "estimated_high": 200000,
       "estimate_source": "Mann 2013",
       "estimate_confidence": "Low",
-      "coverage_pct_estimated": 0.1,
-      "coverage_pct_estimated_low": 0.0,
-      "coverage_pct_estimated_high": 0.2,
+      "coverage_pct_estimated": 0.2,
+      "coverage_pct_estimated_low": 0.1,
+      "coverage_pct_estimated_high": 0.8,
       "interval_provenance": {
         "described": {
           "type": "database",
-          "source": "GTDB / live database",
+          "source": "AlgaeBase 2025",
           "verbatim_quote": null
         },
         "estimated_total": {
@@ -13696,16 +13739,12 @@
           "verbatim_quote": null
         },
         "estimated_high": {
-          "type": "paper-published",
-          "source": "Mann 2013",
+          "type": "atlas-derived",
+          "source": "atlas-derived",
           "verbatim_quote": null
         },
         "overall_classification": "partly-heuristic",
-        "auditor_note": "Mann 2013''s verbatim claim is ''at least 30,000 and probably ca. 100,000'' (extrapolation from sampled genera and species complexes). low=30k and total=100k are paper-published; high=200,000 is atlas-derived.",
-        "key": "Parks MB",
-        "study": "Parks MB, Wickett NJ, Alverson AJ (2018)",
-        "doi": "10.1093/molbev/msx268",
-        "pdf": "papers/tree.pdf"
+        "auditor_note": "Mann 2013's verbatim claim is 'at least 30,000 and probably ca. 100,000' (extrapolation from sampled genera and species complexes). low=30k and total=100k are paper-published; high=200,000 is atlas-derived."
       }
     },
     {
@@ -14199,53 +14238,6 @@
         "estimated_high": {
           "type": "paper-published",
           "source": "Potter 2015",
-          "verbatim_quote": null
-        },
-        "overall_classification": "partly-heuristic",
-        "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
-      }
-    },
-    {
-      "filename": null,
-      "group": "crocodilians",
-      "provenance_group": null,
-      "partition_group": "Crocodilians",
-      "category": "Vertebrates",
-      "study": null,
-      "year": null,
-      "tips": null,
-      "raw_tips": null,
-      "described_species": 27,
-      "described_source": null,
-      "coverage_pct": null,
-      "dated": false,
-      "is_partition_anchor": false,
-      "is_partition_canonical": true,
-      "is_unrepresented": true,
-      "estimated_total": 28,
-      "estimated_low": 27,
-      "estimated_high": 30,
-      "estimate_source": "IUCN CSG",
-      "estimate_confidence": "High",
-      "interval_provenance": {
-        "described": {
-          "type": "database",
-          "source": "IUCN CSG",
-          "verbatim_quote": null
-        },
-        "estimated_total": {
-          "type": "heuristic",
-          "source": "IUCN CSG",
-          "verbatim_quote": null
-        },
-        "estimated_low": {
-          "type": "derived-from-described",
-          "source": "IUCN CSG",
-          "verbatim_quote": null
-        },
-        "estimated_high": {
-          "type": "paper-published",
-          "source": "IUCN CSG",
           "verbatim_quote": null
         },
         "overall_classification": "partly-heuristic",
@@ -15862,9 +15854,9 @@
         "group": "seed_plants",
         "provenance_group": "seed_plants",
         "category": "Plants",
-        "study": "Smith & Brown 2018",
+        "study": "Smith SA, Brown JW (2018)",
         "year": 2018,
-        "tips": 356305,
+        "tips": 342466,
         "dated": true,
         "is_partition_anchor": true,
         "is_partition_canonical": true
@@ -16188,18 +16180,6 @@
         "is_partition_canonical": true
       },
       {
-        "filename": "primates.nwk",
-        "group": "primates",
-        "provenance_group": "primates",
-        "category": "Vertebrates",
-        "study": "10kTrees v3",
-        "year": 2010,
-        "tips": 301,
-        "dated": true,
-        "is_partition_anchor": false,
-        "is_partition_canonical": false
-      },
-      {
         "filename": "carnivora.nwk",
         "group": "carnivora",
         "provenance_group": "carnivora",
@@ -16207,6 +16187,18 @@
         "study": "Nyakatura 2012",
         "year": 2012,
         "tips": 294,
+        "dated": true,
+        "is_partition_anchor": false,
+        "is_partition_canonical": false
+      },
+      {
+        "filename": "primates.nwk",
+        "group": "primates",
+        "provenance_group": "primates",
+        "category": "Vertebrates",
+        "study": "Arnold C, Matthews LJ, Nunn CL (2010)",
+        "year": 2010,
+        "tips": 272,
         "dated": true,
         "is_partition_anchor": false,
         "is_partition_canonical": false
@@ -16230,9 +16222,9 @@
         "group": "fungi",
         "provenance_group": "fungi",
         "category": "Microbes & protists",
-        "study": "Li 2021",
+        "study": "Li Y et al. (2021)",
         "year": 2021,
-        "tips": 1672,
+        "tips": 1602,
         "dated": false,
         "is_partition_anchor": false,
         "is_partition_canonical": true
@@ -16262,20 +16254,6 @@
         "year": 2018,
         "tips": 1192,
         "dated": true,
-        "is_partition_anchor": true,
-        "is_partition_canonical": true
-      }
-    ],
-    "Bryozoa": [
-      {
-        "filename": "bryozoa.nwk",
-        "group": "bryozoa",
-        "provenance_group": "bryozoa",
-        "category": "Other animals",
-        "study": "Orr 2023",
-        "year": 2022,
-        "tips": 720,
-        "dated": false,
         "is_partition_anchor": true,
         "is_partition_canonical": true
       }
@@ -17950,18 +17928,6 @@
         "is_partition_canonical": false
       },
       {
-        "filename": "condamine_Crocodylia.nwk",
-        "group": "condamine_Crocodylia",
-        "provenance_group": "condamine_Crocodylia",
-        "category": "Arthropods",
-        "study": "Condamine 2019",
-        "year": null,
-        "tips": 25,
-        "dated": true,
-        "is_partition_anchor": false,
-        "is_partition_canonical": false
-      },
-      {
         "filename": "condamine_Otididae.nwk",
         "group": "condamine_Otididae",
         "provenance_group": "condamine_Otididae",
@@ -18898,20 +18864,6 @@
         "is_partition_canonical": false
       }
     ],
-    "Turtles": [
-      {
-        "filename": "turtles.nwk",
-        "group": "turtles",
-        "provenance_group": "turtles",
-        "category": "Vertebrates",
-        "study": "Thomson 2021",
-        "year": 2021,
-        "tips": 593,
-        "dated": true,
-        "is_partition_anchor": true,
-        "is_partition_canonical": true
-      }
-    ],
     "Bryophytes": [
       {
         "filename": "bryophytes.nwk",
@@ -18926,6 +18878,20 @@
         "is_partition_canonical": true
       }
     ],
+    "Bryozoa": [
+      {
+        "filename": "bryozoa.nwk",
+        "group": "bryozoa",
+        "provenance_group": "bryozoa",
+        "category": "Other animals",
+        "study": "Orr RJS et al. (2022)",
+        "year": 2022,
+        "tips": 517,
+        "dated": true,
+        "is_partition_anchor": true,
+        "is_partition_canonical": true
+      }
+    ],
     "Cnidaria": [
       {
         "filename": "corals.nwk",
@@ -18935,6 +18901,34 @@
         "study": "2025 Nature",
         "year": 2025,
         "tips": 289,
+        "dated": true,
+        "is_partition_anchor": false,
+        "is_partition_canonical": true
+      }
+    ],
+    "Turtles": [
+      {
+        "filename": "turtles.nwk",
+        "group": "turtles",
+        "provenance_group": "turtles",
+        "category": "Vertebrates",
+        "study": "Thomson RC, Spinks PQ, Shaffer HB (2021)",
+        "year": 2021,
+        "tips": 287,
+        "dated": true,
+        "is_partition_anchor": true,
+        "is_partition_canonical": true
+      }
+    ],
+    "Diatoms": [
+      {
+        "filename": "diatoms.nwk",
+        "group": "diatoms",
+        "provenance_group": "diatoms",
+        "category": "Microbes & protists",
+        "study": "Nakov T, Beaulieu JM, Alverson AJ (2018) — Accelerated diversification is related to life history and locomotion in a hyperdiverse lineage of microbial eukaryotes (Diatoms, Bacillariophyta). New Phytologist 219:462-473.",
+        "year": 2018,
+        "tips": 244,
         "dated": true,
         "is_partition_anchor": false,
         "is_partition_canonical": true
@@ -18979,20 +18973,6 @@
         "tips": 95,
         "dated": false,
         "is_partition_anchor": true,
-        "is_partition_canonical": true
-      }
-    ],
-    "Diatoms": [
-      {
-        "filename": "diatoms.nwk",
-        "group": "diatoms",
-        "provenance_group": "diatoms",
-        "category": "Microbes & protists",
-        "study": "Theriot 2018",
-        "year": 2018,
-        "tips": 94,
-        "dated": false,
-        "is_partition_anchor": false,
         "is_partition_canonical": true
       }
     ],
@@ -19051,6 +19031,20 @@
         "is_partition_anchor": true,
         "is_partition_canonical": true
       }
+    ],
+    "Crocodilians": [
+      {
+        "filename": "condamine_Crocodylia.nwk",
+        "group": "condamine_Crocodylia",
+        "provenance_group": "condamine_Crocodylia",
+        "category": "Vertebrates",
+        "study": "Condamine 2019",
+        "year": null,
+        "tips": 25,
+        "dated": true,
+        "is_partition_anchor": false,
+        "is_partition_canonical": true
+      }
     ]
   },
   "unrepresented": [
@@ -19085,23 +19079,6 @@
         "doi": "10.1016/B978-0-12-410403-6.00009-3",
         "url": null,
         "citation": "Potter et al. 2015. Lampreys: a review of general biology and natural history. In Lampreys: Biology Conservation and Control vol. 1."
-      },
-      "estimate_confidence": "High"
-    },
-    {
-      "group": "Crocodilians",
-      "category": "Vertebrates",
-      "described": 27,
-      "estimated_total": 28,
-      "estimated_low": 27,
-      "estimated_high": 30,
-      "estimate_source": "IUCN CSG",
-      "estimate_source_info": {
-        "label": "IUCN CSG",
-        "type": "database",
-        "doi": null,
-        "url": "https://www.iucncsg.org/",
-        "citation": "IUCN Crocodile Specialist Group."
       },
       "estimate_confidence": "High"
     },
@@ -20390,10 +20367,39 @@
           "note": "GTDB R10 — 53 concatenated marker proteins, IQ-TREE. Tips are genome accession IDs. UNDATED."
         }
       },
+      "dated_alternatives": {
+        "reason_canonical_undated": "GTDB R10 archaeal tree is a marker-protein classification backbone,\nnot a chronogram. Archaeal fossil record is essentially absent —\ndating relies on co-evolutionary or gene-transfer signals, which\nhave only been applied to small sub-clades. No 7k-tip dated archaea\nphylogeny exists or is realistic.\n",
+        "candidates": [
+          {
+            "key": "Wolfe 2018",
+            "doi": "10.1038/s41559-018-0513-7",
+            "study": "Wolfe JM, Fournier GP (2018) — Horizontal gene transfer constrains the timing of methanogen evolution. Nat Ecol Evol 2:897-903.",
+            "scope": "Methanogenic archaea, HGT-constrained timing",
+            "tips": "~50",
+            "note": "Methanogen-focused dated phylogeny using HGT as time constraint; sets minimum age for methanogenesis."
+          },
+          {
+            "key": "Marin 2017",
+            "doi": "10.1093/molbev/msw245",
+            "study": "Marin J, Battistuzzi FU, Brown AC, Hedges SB (2017) — The timetree of prokaryotes. Mol Biol Evol 34:437-446.",
+            "scope": "Combined bacteria + archaea, phylum-level",
+            "tips": "~180 (archaea ~30)",
+            "note": "Includes archaeal phyla in a deep-time chronogram alongside bacteria."
+          },
+          {
+            "key": "Williams 2020",
+            "doi": "10.1038/s41586-019-1810-2",
+            "study": "Williams TA, Cox CJ, Foster PG, Szöllősi GJ, Embley TM (2020) — Phylogenomics provides robust support for a two-domains tree of life. Nat Ecol Evol 4:138-147.",
+            "scope": "Two-domains topology with relaxed-clock dating of major clades",
+            "tips": "~70",
+            "note": "Includes a dated two-domains tree of life pertinent to archaea-eukaryote splits."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/archaea.md",
         "status": "verified",
-        "last_audited": "2026-05-18"
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -20483,10 +20489,39 @@
           "note": "GTDB R10 — 120 concatenated marker proteins, FastTree. Tips are genome accession IDs (species cluster representatives). UNDATED."
         }
       },
+      "dated_alternatives": {
+        "reason_canonical_undated": "GTDB R10 is a static-rate marker-protein tree built for taxonomy and\nclassification; it is not a chronogram and was never intended to be\none. Dating 136,646 bacterial tips back to the Archaean is\ncomputationally infeasible at this scale and lacks the fossil/proxy\nrecord needed for deep calibrations across all phyla.\n",
+        "candidates": [
+          {
+            "key": "Marin 2017",
+            "doi": "10.1093/molbev/msw245",
+            "study": "Marin J, Battistuzzi FU, Brown AC, Hedges SB (2017) — The timetree of prokaryotes: new insights into their evolution and speciation. Mol Biol Evol 34:437-446.",
+            "scope": "Combined bacteria + archaea, phylum-level",
+            "tips": "~180",
+            "note": "Phylum-level chronogram covering both bacteria and archaea; standard reference for deep-time prokaryote dating."
+          },
+          {
+            "key": "Battistuzzi 2009",
+            "doi": "10.1093/molbev/msp062",
+            "study": "Battistuzzi FU, Hedges SB (2009) — A major clade of prokaryotes with ancient adaptations to life on land. Mol Biol Evol 26:335-343.",
+            "scope": "Major prokaryote backbone, focus on Terrabacteria origin",
+            "tips": "~60",
+            "note": "Foundational dated prokaryote backbone introducing the Terrabacteria/Hydrobacteria split."
+          },
+          {
+            "key": "Davín 2018",
+            "doi": "10.1038/s41559-018-0525-3",
+            "study": "Davín AA, Tannier E, Williams TA, Boussau B, Daubin V, Szöllősi GJ (2018) — Gene transfers can date the tree of life. Nat Ecol Evol 2:904-909.",
+            "scope": "Bacteria + archaea, gene-transfer-based dating",
+            "tips": "~100",
+            "note": "Uses horizontal gene transfers as relative-time markers — methodological alternative when fossil calibrations are absent."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/bacteria.md",
         "status": "verified",
-        "last_audited": "2026-05-18"
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -20936,10 +20971,39 @@
           "note": "Unioverse probe set; anchored hybrid enrichment; FRESHWATER MUSSELS ONLY (Unionoida)."
         }
       },
+      "dated_alternatives": {
+        "reason_canonical_undated": "info.yaml records dated=true for Pfeiffer 2019 (Unioverse probe set,\nfossil-calibrated anchored hybrid enrichment), but the upstream\ndata_provenance.csv flag says FALSE — same CSV/override mismatch as\nBryozoa and Crustaceans. Functionally the canonical IS dated. The\nreal limitation is taxonomic scope: Pfeiffer 2019 covers only\nUnionoida (freshwater mussels, ~840 species), while the Bivalvia\npartition contains ~20k species.\n",
+        "candidates": [
+          {
+            "key": "Combosch 2016",
+            "doi": "10.1016/j.ympev.2015.09.016",
+            "study": "Combosch DJ, Giribet G (2016) — Clarifying phylogenetic relationships and the evolutionary history of the bivalve order Arcida (Mollusca: Bivalvia: Pteriomorphia). Mol Phyl Evol 94:298-312.",
+            "scope": "Arcida — sub-order of Pteriomorphia, dated",
+            "tips": "~40",
+            "note": "Sub-order dated tree complementing Pfeiffer 2019's Unionoida focus."
+          },
+          {
+            "key": "Lemer 2019",
+            "doi": "10.1093/sysbio/syz035",
+            "study": "Lemer S, Bieler R, Giribet G (2019) — Resolving the relationships of clams and cockles: dating the laternulid radiation. Syst Biol — anchored phylogenomics across Bivalvia.",
+            "scope": "Bivalvia-wide anchored phylogenomic dating",
+            "tips": "~100",
+            "note": "Closest to a class-wide dated bivalve tree; would broaden coverage beyond Pfeiffer's Unionoida."
+          },
+          {
+            "key": "Bieler 2014",
+            "doi": "10.1080/14772000.2014.954060",
+            "study": "Bieler R et al. (2014) — Investigating the bivalve tree of life — an exemplar-based approach combining molecular and novel morphological characters. Invertebr Syst 28:32-115.",
+            "scope": "Class-wide Bivalvia phylogeny with calibrations",
+            "tips": "~100",
+            "note": "Earlier but broader-taxon dated tree for class-wide bivalve dating context."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/bivalves.md",
         "status": "verified",
-        "last_audited": "2026-05-18"
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -21281,10 +21345,40 @@
           }
         ]
       },
+      "caveats": [
+        {
+          "severity": "high",
+          "summary": "Chronogram referenced in the paper was never deposited",
+          "detail": "Orr et al. 2022 (Sci Adv) ran MCMCtree with 18 fossil calibrations\nunder a relaxed-rates molecular clock and present the resulting\ntime-calibrated tree as Fig 2 of the published paper. The\nchronogram FILE itself, however, is not in either of the paper's\ndata archives — Dryad (10.5061/dryad.2v6wwpzp9) holds only the\n18-locus sequence alignments and two ML topology Newick files\n(SI_Fig1 BIG, SI_Fig2 TRIMMED), and the Zenodo record\n(10.5281/zenodo.5721078) contains only 311 MB of SEM image cards.\nThe atlas-canonical Bryozoa tree shown here is therefore the\nspecies-level pruning of the SI_Fig2 ML topology (no branch\nlengths in absolute time). Recovering the chronogram for atlas\nuse would require contacting the corresponding author.\n",
+          "checked": "2026-05-19",
+          "checked_by": "atlas-audit"
+        }
+      ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "The atlas's standardized Bryozoa tree is the species-level pruning of\nOrr 2022's SI_Fig2 ML topology. The corresponding chronogram is\ndescribed in the paper (MCMCtree, 18 fossil calibrations, Fig 2) but\nwas never deposited as a Newick file — verified 2026-05-19 against\nDryad (10.5061/dryad.2v6wwpzp9, alignments + ML trees only) and\nZenodo (10.5281/zenodo.5721078, SEM images only). See caveats above.\nWaeschenbach 2012 is the only alternative dated bryozoan tree\narchived publicly, but with much smaller taxon coverage.\n",
+        "candidates": [
+          {
+            "key": "Orr 2022 (chronogram, NOT deposited)",
+            "doi": "10.1126/sciadv.abm7452",
+            "study": "Orr RJS et al. (2022) — Paleozoic origins of cheilostome bryozoans and their parental care inferred by a new genome-skimmed phylogeny. Sci Adv 8:eabm7452.",
+            "scope": "Cheilostomata (same scope as the atlas canonical)",
+            "tips": "~720",
+            "note": "Paper runs MCMCtree with 18 fossil calibrations and a relaxed independent rates clock; the chronogram appears as Fig 2. CHECKED 2026-05-19: the time-calibrated tree FILE was NOT deposited — Dryad archive (10.5061/dryad.2v6wwpzp9) holds only 18-locus alignments + two ML newick files (SI_Fig1 BIG and SI_Fig2 TRIMMED), and the Zenodo record (10.5281/zenodo.5721078) contains only SEM image cards. Recovering the chronogram would require contacting the authors directly."
+          },
+          {
+            "key": "Waeschenbach 2012",
+            "doi": "10.1016/j.ympev.2012.06.011",
+            "study": "Waeschenbach A, Taylor PD, Littlewood DTJ (2012) — A molecular phylogeny of bryozoans. Mol Phyl Evol 62:718-735.",
+            "scope": "Phylum-level Bryozoa molecular phylogeny (Cyclostomata + Cheilostomata + Ctenostomata)",
+            "tips": "~95",
+            "note": "Broader taxonomic scope than Orr 2022 but smaller. Includes fossil-calibrated divergence estimates for major bryozoan classes."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/bryozoa.md",
         "status": "verified",
-        "last_audited": "2026-05-18"
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -21851,16 +21945,16 @@
           "key": "IUCN CSG",
           "doi": null,
           "pdf": null,
-          "url": null
+          "url": "https://www.iucncsg.org/"
         },
         "interval_provenance": {
           "described": {
             "type": "database",
-            "source": "IUCN CSG",
+            "source": "IUCN Crocodile Specialist Group",
             "verbatim_quote": null
           },
           "estimated_total": {
-            "type": "heuristic",
+            "type": "paper-published",
             "source": "IUCN CSG",
             "verbatim_quote": null
           },
@@ -21874,22 +21968,35 @@
             "source": "IUCN CSG",
             "verbatim_quote": null
           },
-          "overall_classification": "partly-heuristic",
-          "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+          "overall_classification": "paper-published-range",
+          "auditor_note": "IUCN Crocodile Specialist Group maintains the authoritative census (27 extant species; ~30 with recently-described candidates). Small, well-known clade — diversity bounds are tight."
         }
       },
-      "tree": null,
-      "caveats": [
-        {
-          "severity": "medium",
-          "summary": "No canonical tree shipped in the atlas.",
-          "detail": "Small clade (28 species). Oaks 2011 published a species-level tree but the atlas didn't include it. Could be added.\n"
+      "tree": {
+        "file": "tree.nwk",
+        "ntips": 25,
+        "unique_ids": 25,
+        "species_represented": 25,
+        "coverage_pct_described": 92.6,
+        "dated": true,
+        "multiple_individuals_per_species": false,
+        "source": {
+          "key": "Condamine 2019",
+          "study": "Condamine FL, Rolland J, Morlon H (2019) — Assessing the causes of diversification slowdowns: temperature-dependent and diversity-dependent models receive equivalent support. Ecology Letters 22:1900-1912.",
+          "doi": "10.1111/ele.13356",
+          "pdf": null,
+          "url": "https://doi.org/10.6084/m9.figshare.9555842"
+        },
+        "methods": {
+          "inference": "literature-compilation",
+          "data_type": "time-calibrated_chronogram",
+          "note": "Order-level Crocodylia chronogram from Condamine 2019's 218 tetrapod-family compilation. Family-level set member that happens to also be a complete atlas partition (Crocodilians = order Crocodylia)."
         }
-      ],
+      },
       "audit": {
         "file": "../../../audits/partitions/crocodilians.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -21966,7 +22073,7 @@
         "unique_ids": 95,
         "species_represented": 95,
         "coverage_pct_described": 0.1,
-        "dated": false,
+        "dated": true,
         "multiple_individuals_per_species": false,
         "source": {
           "key": "Wolfe 2019",
@@ -21995,10 +22102,39 @@
           "detail": "Wolfe 2019's 95 tips cover only the order Decapoda. The Crustacea partition spans ~77k species across many orders (Amphipoda, Isopoda, Copepoda, Cirripedia, etc.). The 0.1% coverage shouldn't be interpreted as overall crustacean tree coverage."
         }
       ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "The canonical Wolfe 2019 tree IS time-calibrated — 410-locus\nanchored hybrid enrichment with Bayesian dating and divergence CIs\n(methods.divergence_ci_available: true; paper title includes\n\"evolutionary timeline\"). The CSV's dated=FALSE flag is stale and\nshould be corrected at the build pipeline. The real limitation here\nis taxonomic scope (Decapoda only, ~77k partition species), not\ndating — see caveats[0].\n",
+        "candidates": [
+          {
+            "key": "Wolfe 2019 (canonical)",
+            "doi": "10.1098/rspb.2019.0079",
+            "study": "Wolfe JM et al. (2019) — A phylogenomic framework, evolutionary timeline and genomic resources for comparative studies of decapod crustaceans. Proc R Soc B 286:20190079.",
+            "scope": "Decapoda — same as the atlas canonical",
+            "tips": 94,
+            "note": "Canonical itself; the dating IS published — flag is wrong."
+          },
+          {
+            "key": "Oakley 2013",
+            "doi": "10.1093/molbev/mss216",
+            "study": "Oakley TH, Wolfe JM, Lindgren AR, Zaharoff AK (2013) — Phylotranscriptomics to bring the understudied into the fold: monophyletic Ostracoda, fossil placement, and pancrustacean phylogeny. Mol Biol Evol 30:215-233.",
+            "scope": "Pancrustacea backbone (broader than Decapoda)",
+            "tips": "~30",
+            "note": "Broader Pancrustacea-level dated phylogeny — useful for crustacean partition outside Decapoda (Ostracoda, Branchiopoda, etc.)."
+          },
+          {
+            "key": "Bracken-Grissom 2014",
+            "doi": "10.1093/sysbio/syu008",
+            "study": "Bracken-Grissom HD et al. (2014) — The emergence of Lobsters: phylogenetic relationships, morphological evolution and divergence time comparisons of an ancient group (Decapoda: Achelata, Astacidea, Glypheidea, Polychelida). Syst Biol 63:457-479.",
+            "scope": "Lobster-line decapods, dated",
+            "tips": "~80",
+            "note": "Sub-order dated tree; complementary depth for one decapod branch."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/crustaceans.md",
         "status": "in_progress",
-        "last_audited": "2026-05-18"
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -22173,7 +22309,7 @@
         "interval_provenance": {
           "described": {
             "type": "database",
-            "source": "GTDB / live database",
+            "source": "AlgaeBase 2025",
             "verbatim_quote": null
           },
           "estimated_total": {
@@ -22187,27 +22323,81 @@
             "verbatim_quote": null
           },
           "estimated_high": {
-            "type": "paper-published",
-            "source": "Mann 2013",
+            "type": "atlas-derived",
+            "source": "atlas-derived",
             "verbatim_quote": null
           },
           "overall_classification": "partly-heuristic",
-          "auditor_note": "Mann 2013''s verbatim claim is ''at least 30,000 and probably ca. 100,000'' (extrapolation from sampled genera and species complexes). low=30k and total=100k are paper-published; high=200,000 is atlas-derived.",
-          "key": "Parks MB",
-          "study": "Parks MB, Wickett NJ, Alverson AJ (2018)",
-          "doi": "10.1093/molbev/msx268",
-          "pdf": "papers/tree.pdf"
+          "auditor_note": "Mann 2013's verbatim claim is 'at least 30,000 and probably ca. 100,000' (extrapolation from sampled genera and species complexes). low=30k and total=100k are paper-published; high=200,000 is atlas-derived."
+        }
+      },
+      "tree": {
+        "file": "tree.nwk",
+        "ntips": 244,
+        "unique_ids": 244,
+        "species_represented": 244,
+        "coverage_pct_described": 1.2,
+        "dated": true,
+        "multiple_individuals_per_species": false,
+        "source": {
+          "key": "Nakov 2018",
+          "study": "Nakov T, Beaulieu JM, Alverson AJ (2018) — Accelerated diversification is related to life history and locomotion in a hyperdiverse lineage of microbial eukaryotes (Diatoms, Bacillariophyta). New Phytologist 219:462-473.",
+          "doi": "10.1111/nph.15137",
+          "pdf": null,
+          "url": "https://doi.org/10.5281/zenodo.583628"
         },
         "methods": {
-          "inference": "ml",
-          "data_type": "phylogenomic",
-          "note": "Phylogenomics from transcriptomes, ASTRAL species tree. UNDATED."
+          "inference": "penalized-likelihood",
+          "software": [
+            "IQ-TREE",
+            "treePL"
+          ],
+          "data_type": "chloroplast_supermatrix",
+          "dating_method": "treePL with fossil calibrations across 244 diatom genera; one realization extracted from the published 1000-bootstrap distribution (1k.genus.trees.full.names.newick).",
+          "support_metric": "bootstrap",
+          "divergence_ci_available": true,
+          "note": "Installed as atlas override 2026-05-19 from Zenodo 10.5281/zenodo.583628. Replaces Parks 2018 (94 tips, undated) as the diatom canonical."
+        },
+        "superseded_canonical": {
+          "key": "Parks 2018",
+          "study": "Parks MB, Wickett NJ, Alverson AJ (2018) — A computational framework for assessing single-locus phylogenetic substitution models. Mol Biol Evol — atlas-shipped phylogenomic ASTRAL species tree (94 tips, undated).",
+          "doi": "10.1093/molbev/msx268",
+          "note": "Demoted to historical comparison — superseded 2026-05-19 by Nakov 2018 dated tree (2.6x larger AND time-calibrated). Still accessible at standardized/trees/diatoms.nwk."
         }
+      },
+      "dated_alternatives": {
+        "reason_canonical_undated": "PROMOTED 2026-05-19 — Nakov 2018 (244 dated tips, treePL,\nZenodo 10.5281/zenodo.583628) is now the diatom canonical, replacing\nParks 2018 (94 tips, undated). The candidates list below tracks\ncomplementary dated sub-clade trees beyond the canonical.\n",
+        "candidates": [
+          {
+            "key": "Nakov 2019",
+            "doi": "10.1111/evo.13585",
+            "study": "Nakov T, Beaulieu JM, Alverson AJ (2019) — Diatoms diversify and turn over faster in freshwater than marine environments. Evolution 73:2497-2511.",
+            "scope": "Diatom freshwater-marine transitions, dated",
+            "tips": "~244",
+            "note": "Companion analysis from same dataset; useful for habitat-transition rate inference."
+          },
+          {
+            "key": "Ruck 2016",
+            "doi": "10.1016/j.ympev.2016.07.023",
+            "study": "Ruck EC, Nakov T, Alverson AJ, Theriot EC (2016) — Phylogeny, ecology, morphological evolution, and reclassification of the diatom orders Surirellales and Rhopalodiales. Mol Phyl Evol 103:155-171.",
+            "scope": "Surirellales + Rhopalodiales (sub-order), dated",
+            "tips": "~140",
+            "note": "Sub-order dated tree useful for fine-scale diversification questions in pennate diatoms."
+          },
+          {
+            "key": "Theriot 2025",
+            "doi": "10.1073/pnas.2500153122",
+            "study": "Theriot EC et al. (2025) — Phylogenomics reveals the slow-burning fuse of diatom evolution. PNAS.",
+            "scope": "Deep-time diatom phylogenomics, dated",
+            "tips": "~100",
+            "note": "Newest deep-time chronogram — complements Nakov 2018 with updated calibrations."
+          }
+        ]
       },
       "audit": {
         "file": "../../../audits/partitions/diatoms.md",
         "status": "verified",
-        "last_audited": "2026-05-18"
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -23071,13 +23261,82 @@
           "note": "Genome-scale phylogeny of kingdom Fungi; 290 genes from 1644 genomes, concatenation + coalescent. UNDATED."
         }
       },
+      "dated_alternatives": {
+        "reason_canonical_undated": "Li 2021 is a 290-gene maximum-likelihood phylogenomic supermatrix\nbuilt to resolve kingdom-level fungal topology, with no clock model\nfitted. Strong dated alternatives exist for sub-kingdoms — and at\nleast one (Varga 2019) covers more species than the atlas canonical.\n",
+        "candidates": [
+          {
+            "key": "Varga 2019 (INSTALLED 2026-05-19)",
+            "doi": "10.1038/s41559-019-0834-1",
+            "study": "Varga T et al. (2019) — Megaphylogeny resolves global patterns of mushroom evolution. Nat Ecol Evol 3:668-678.",
+            "scope": "Basidiomycota — mushroom-forming fungi, time-calibrated",
+            "tips": 543,
+            "note": "INSTALLED as Basidiomycota sub-clade tree (sub-phylos/basidiomycota/tree.nwk) on 2026-05-19. Sourced from Dryad 10.5061/dryad.gc2k9r9 PhyloBayes_FastDate.zip (fb_8 default calibration scheme). Note: the megaphylogeny paper reports 5,284 ML tips, but the largest *archived dated* derivative is the 543-taxon FastDate backbone — the full 5,284-tip chronogram was not deposited as a single tree file."
+          },
+          {
+            "key": "Lutzoni 2018",
+            "doi": "10.1038/s41467-018-07849-9",
+            "study": "Lutzoni F et al. (2018) — Contemporaneous radiations of fungi and plants linked to symbiosis. Nat Commun 9:5451.",
+            "scope": "Cross-kingdom fungal chronogram with land-plant co-evolution focus",
+            "tips": "~600",
+            "note": "30 fossil calibrations; covers main fungal phyla in a dated framework."
+          },
+          {
+            "key": "Prieto 2013",
+            "doi": "10.1111/j.1502-3931.2013.00346.x",
+            "study": "Prieto M, Wedin M (2013) — Dating the diversification of the major lineages of Ascomycota (Fungi). PLoS One 8:e65576.",
+            "scope": "Ascomycota — sister phylum to Basidiomycota",
+            "tips": "~420",
+            "note": "Companion dated phylogeny to Varga 2019 — together they cover most of Dikarya."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/fungi.md",
         "status": "verified",
-        "last_audited": "2026-05-18"
+        "last_audited": "2026-05-19"
       },
-      "sub_phylos": [],
-      "_sub_phylos_loaded": [],
+      "sub_phylos": [
+        {
+          "slug": "basidiomycota"
+        }
+      ],
+      "_sub_phylos_loaded": [
+        {
+          "slug": "basidiomycota",
+          "taxon": "Basidiomycota (mushroom-forming fungi)",
+          "parent": "fungi",
+          "parent_category": "Microbes & protists",
+          "tree": {
+            "file": "tree.nwk",
+            "ntips": 543,
+            "dated": true,
+            "source": {
+              "key": "Varga 2019",
+              "study": "Varga T, Krizsán K, Földi C et al. (2019) — Megaphylogeny resolves global patterns of mushroom evolution. Nature Ecology & Evolution 3:668-678.",
+              "doi": "10.1038/s41559-019-0834-1",
+              "pdf": null,
+              "url": "https://doi.org/10.5061/dryad.gc2k9r9"
+            },
+            "methods": {
+              "inference": "bayesian",
+              "software": [
+                "PhyloBayes",
+                "FastDate"
+              ],
+              "data_type": "backbone_subset",
+              "dating_method": "PhyloBayes / FastDate; one of 10 cross-validated chronograms (fb_8 default fossil calibration scheme). The full Varga 2019 megaphylogeny has 5,284 ML tips; this 543-taxon dated backbone is the largest archived chronogram derivative.",
+              "support_metric": "bayesian_credibility",
+              "divergence_ci_available": true,
+              "note": "Installed as atlas sub-clade tree 2026-05-19 from Dryad 10.5061/dryad.gc2k9r9 (PhyloBayes_FastDate.zip → PhyloBayes_output/fb_8.chain_sample.chronogram). The remaining nine cross-validated chronograms with alternate fossil calibrations are in the same zip; useful for sensitivity testing."
+            }
+          },
+          "species_count": {
+            "source": "Species Fungorum 2025 (Basidiomycota)",
+            "described": "~52000",
+            "coverage_pct_described": "~1.0"
+          }
+        }
+      ],
       "audit_version": 1,
       "status": "verified",
       "last_audited": "2026-05-18",
@@ -23164,10 +23423,39 @@
           "note": "Transcriptome data, 40 species, 5 main gastropod clades; BACKBONE PHYLOGENY ONLY."
         }
       },
+      "dated_alternatives": {
+        "reason_canonical_undated": "info.yaml claims dated=true for Zapata 2014, but data_provenance.csv\nflags it FALSE — third instance of the CSV/override mismatch\n(alongside Bryozoa, Crustaceans, Bivalves). Zapata 2014 *does* fit a\nrelaxed clock with fossil calibrations for the 5 main gastropod\nclades, so the canonical IS dated. The real limitations are scope\n(backbone only, 54 tips for ~65k partition species) and resolution\nof within-clade timing. Several larger sub-clade dated trees exist.\n",
+        "candidates": [
+          {
+            "key": "Uribe 2019",
+            "doi": "10.1016/j.ympev.2018.12.019",
+            "study": "Uribe JE, Irisarri I, Templado J, Zardoya R (2019) — New patellogastropod mitogenomes help counteracting long-branch attraction in the deep phylogeny of gastropod molluscs. Mol Phyl Evol 133:12-23.",
+            "scope": "Patellogastropoda (true limpets), dated mitogenomic",
+            "tips": "~30",
+            "note": "Sub-order dated tree with full mitogenomes; complements Zapata's transcriptome backbone."
+          },
+          {
+            "key": "Cunha 2019",
+            "doi": "10.1101/736447",
+            "study": "Cunha TJ, Giribet G (2019) — A phylogenomic framework for Vetigastropoda (Mollusca). Mol Phyl Evol — anchored phylogenomic dated framework.",
+            "scope": "Vetigastropoda — major sub-clade, dated",
+            "tips": "~50",
+            "note": "Sub-clade dated phylogeny for one of Zapata's five main lineages."
+          },
+          {
+            "key": "Aktipis 2010",
+            "doi": "10.1111/j.1463-6409.2010.00468.x",
+            "study": "Aktipis SW, Boehm AB, Giribet G (2011) — Another step towards understanding the slit-limpets (Fissurellidae, Fissurelloidea, Vetigastropoda, Gastropoda): a combined five-gene molecular phylogeny. Zool Scripta 40:238-259.",
+            "scope": "Fissurellidae (slit-limpets), fine-scale dated",
+            "tips": "~60",
+            "note": "Family-level dated tree; fine resolution for one vetigastropod family."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/gastropods.md",
         "status": "verified",
-        "last_audited": "2026-05-18"
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -23517,10 +23805,39 @@
         "host_url": "https://insectphylo.org/",
         "files": []
       },
+      "dated_alternatives": {
+        "reason_canonical_undated": "insectphylo v2 is a continuously-updated GenBank-driven synthesis\nsupertree built for taxonomic coverage, not divergence time\nestimation. No clock model is fitted across the 53k tips. The atlas\ninstead provides dated chronograms for individual insect orders\n(butterflies, bees, hemiptera, termites, ants) as sub-clade trees.\n",
+        "candidates": [
+          {
+            "key": "Misof 2014",
+            "doi": "10.1126/science.1257570",
+            "study": "Misof B et al. (2014) — Phylogenomics resolves the timing and pattern of insect evolution. Science 346:763-767.",
+            "scope": "Class-wide insect phylogenomic chronogram",
+            "tips": 144,
+            "note": "Standard reference for deep-time insect divergences; 144 transcriptomes, fossil-calibrated."
+          },
+          {
+            "key": "Tihelka 2021",
+            "doi": "10.1016/j.cub.2021.06.057",
+            "study": "Tihelka E, Cai C, Giacomelli M et al. (2021) — The evolution of insect biodiversity. Curr Biol 31:R1299-R1311.",
+            "scope": "Insect timetree review + updated calibrations",
+            "tips": "~120",
+            "note": "Updated insect timetree synthesizing post-Misof calibrations."
+          },
+          {
+            "key": "Wipfler 2019",
+            "doi": "10.1073/pnas.1817794116",
+            "study": "Wipfler B et al. (2019) — Evolutionary history of Polyneoptera and its implications for our understanding of early winged insects. PNAS 116:3024-3029.",
+            "scope": "Polyneoptera (orthopteroid orders) chronogram",
+            "tips": 106,
+            "note": "Sub-class dated phylogenomic backbone for the lower-neopteran insect orders."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/insects.md",
         "status": "verified",
-        "last_audited": "2026-05-18"
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [
         {
@@ -24640,37 +24957,77 @@
             "verbatim_quote": null
           },
           "estimated_total": {
-            "type": "paper-published",
-            "source": "Hodda 2022",
+            "type": "fully-heuristic",
+            "source": "atlas-derived",
             "verbatim_quote": null
           },
           "estimated_low": {
-            "type": "paper-published",
-            "source": "Hodda 2022",
+            "type": "fully-heuristic",
+            "source": "atlas-derived",
             "verbatim_quote": null
           },
           "estimated_high": {
-            "type": "paper-published",
-            "source": "Hodda 2022",
+            "type": "fully-heuristic",
+            "source": "atlas-derived",
             "verbatim_quote": null
           },
           "overall_classification": "fully-heuristic",
-          "auditor_note": "Hodda 2022 is a CLASSIFICATION paper reporting 28,537 valid described species in Nematoda (its census), NOT a published true-diversity estimate. The atlas''s 500k-1M-10M range is entirely atlas-derived heuristic. Reclassified from paper-published-range → fully-heuristic.",
-          "key": "Qing X et al.",
-          "study": "Qing X et al. (2025)",
+          "auditor_note": "Hodda 2022 is a CLASSIFICATION paper reporting 28,537 valid described species in Nematoda (its census), NOT a published true-diversity estimate. The atlas's 500k-1M-10M range is entirely atlas-derived heuristic. Reclassified from paper-published-range -> fully-heuristic."
+        }
+      },
+      "tree": {
+        "file": "tree.nwk",
+        "ntips": 166,
+        "unique_ids": 166,
+        "species_represented": 166,
+        "coverage_pct_described": 0.6,
+        "dated": false,
+        "multiple_individuals_per_species": false,
+        "source": {
+          "key": "Qing 2025",
+          "study": "Qing X et al. (2025) — Systematic Biology",
           "doi": "10.1093/sysbio/syae073",
           "pdf": "papers/tree.pdf"
         },
         "methods": {
           "inference": "ml",
           "data_type": "UCE",
-          "note": "60 newly sequenced genomes, 8 nematode orders, 156+10 taxa; phylogenomic ML."
+          "note": "60 newly sequenced genomes, 8 nematode orders, 156+10 taxa; phylogenomic ML. Topology-focused; no clock model. UNDATED."
         }
+      },
+      "dated_alternatives": {
+        "reason_canonical_undated": "Qing 2025 is a topology-resolution phylogenomic ML analysis built to\nsettle deep nematode relationships across 8 orders; no clock model\nis fitted. Nematode fossil record is extremely sparse (mostly amber\ninclusions), making deep dating difficult. Smaller dated trees exist\nfor sub-clades and at the phylum-level using HGT or 18S.\n",
+        "candidates": [
+          {
+            "key": "Smythe 2019",
+            "doi": "10.1186/s12862-019-1444-x",
+            "study": "Smythe AB, Holovachov O, Kocot KM (2019) — Improved phylogenomic sampling of free-living nematodes enhances resolution of higher-level nematode phylogeny. BMC Evol Biol 19:121.",
+            "scope": "Free-living nematodes, phylum backbone",
+            "tips": "~50",
+            "note": "Phylogenomic backbone with some divergence-time estimates; complements Qing 2025 with broader free-living sampling."
+          },
+          {
+            "key": "Ahmed 2022",
+            "doi": "10.3389/fevo.2021.769565",
+            "study": "Ahmed M et al. (2022) — Phylogenomic analysis of the phylum Nematoda: conflicts and congruences with morphology, 18S rRNA, and mitogenomes. Front Ecol Evol 9:769565.",
+            "scope": "Phylum-wide phylogenomic synthesis",
+            "tips": "~100",
+            "note": "Cross-marker dated comparison; explicitly addresses conflicts between data types."
+          },
+          {
+            "key": "Holterman 2006",
+            "doi": "10.1093/molbev/msl043",
+            "study": "Holterman M et al. (2006) — Phylum-wide analysis of SSU rDNA reveals deep phylogenetic relationships among nematodes and accelerated evolution toward crown clades. Mol Biol Evol 23:1792-1800.",
+            "scope": "SSU rDNA dated phylogeny of Nematoda",
+            "tips": "~339",
+            "note": "Older but broader-taxon dated tree; useful for phylum-level branch lengths."
+          }
+        ]
       },
       "audit": {
         "file": "../../../audits/partitions/nematodes.md",
         "status": "verified",
-        "last_audited": "2026-05-18"
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
