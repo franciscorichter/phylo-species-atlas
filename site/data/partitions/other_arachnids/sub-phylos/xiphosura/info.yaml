@@ -1,0 +1,28 @@
+slug: xiphosura
+taxon: Xiphosura (horseshoe crabs)
+parent: other_arachnids
+parent_category: Arthropods
+
+tree:
+  file: tree.nwk
+  ntips: 4
+  dated: true
+  source:
+    key: Obst 2012
+    study: "Obst M, Faurby S, Bussarawit S, Funch P (2012) - Molecular phylogeny of extant horseshoe crabs (Xiphosura, Limulidae) indicates Paleogene diversification of Asian species. Mol Phyl Evol 62:21-26."
+    doi: 10.1016/j.ympev.2011.08.025
+    pdf: null
+    url: https://doi.org/10.1016/j.ympev.2011.08.025
+  methods:
+    inference: bayesian
+    software: ["BEAST"]
+    data_type: mitogenome+nuclear
+    dating_method: "Relaxed molecular clock with chelicerate fossil calibrations. Hand-encoded Newick with branch lengths from Obst 2012 Fig. 2: Limulus-Asian split ~136 Ma; Carcinoscorpius-Tachypleus ~33 Ma; T. tridentatus-T. gigas ~15 Ma."
+    support_metric: posterior_probability
+    divergence_ci_available: true
+    note: "Hand-built 4-tip chronogram covering all extant horseshoe crab species (Limulus polyphemus + Tachypleus tridentatus + T. gigas + Carcinoscorpius rotundicauda). Installed as sub-clade of 'Other arachnids' on 2026-05-19. Note: Xiphosura is NOT an arachnid sensu stricto — it's sister to Arachnida within Chelicerata — but folded here as the closest catch-all partition rather than creating a 4-species top-level partition."
+
+species_count:
+  source: Sekiguchi 1988 / ITIS / WoRMS
+  described: 4
+  coverage_pct_described: 100.0

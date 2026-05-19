@@ -3,17 +3,17 @@ slug: other_arachnids
 category: Arthropods
 
 estimate:
-  described: 12000
-  low: 15000
-  total: 25000
-  high: 50000
+  described: 12004
+  low: 15004
+  total: 25004
+  high: 50004
   confidence: Low
   source:
     key: CoL
     doi: null
     pdf: null
     url: https://www.catalogueoflife.org/
-    note: "Catalogue of Life live database. Aggregate of arachnid orders excluding Araneae (spiders), Scorpiones, and Acari — primarily Opiliones, Pseudoscorpiones, Solifugae, Amblypygi, Uropygi, Schizomida, Palpigradi, Ricinulei."
+    note: "Catalogue of Life live database. Catch-all for chelicerates outside the dedicated atlas partitions (Spiders, Scorpiones, Acari, Pycnogonida) — primarily Opiliones, Pseudoscorpiones, Solifugae, Amblypygi, Uropygi, Schizomida, Palpigradi, Ricinulei, plus the 4 extant Xiphosura folded here as a sub-clade. Note: technically Xiphosura is sister to Arachnida (not nested within it), but the partition is data-driven catch-all rather than a strict cladistic group."
   interval_provenance:
     described:
       type: database
@@ -78,4 +78,5 @@ audit:
   status: verified
   last_audited: 2026-05-19
 
-sub_phylos: []
+sub_phylos:
+  - slug: xiphosura
