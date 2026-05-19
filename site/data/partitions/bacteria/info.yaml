@@ -10,9 +10,10 @@ estimate:
   confidence: Low
   source:
     key: Curtis 2002
-    doi: null
+    doi: 10.1073/pnas.142680199
+    study: "Curtis TP, Sloan WT, Scannell JW (2002) — Estimating prokaryotic diversity and its limits. PNAS 99:10494-10499."
     pdf: null
-    url: null
+    url: https://doi.org/10.1073/pnas.142680199
   interval_provenance:
     described:
       type: database

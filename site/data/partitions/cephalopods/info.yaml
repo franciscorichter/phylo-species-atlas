@@ -12,7 +12,8 @@ estimate:
     key: WoRMS
     doi: null
     pdf: null
-    url: null
+    url: https://www.marinespecies.org/aphia.php?p=taxdetails&id=11707
+    note: "World Register of Marine Species (WoRMS) — Cephalopoda. ~800 accepted living species across Octopoda + Decapodiformes + Nautilida + Sepiida + Vampyromorpha."
   interval_provenance:
     described:
       type: database

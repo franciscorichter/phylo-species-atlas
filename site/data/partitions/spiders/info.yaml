@@ -10,10 +10,11 @@ estimate:
   confidence: Medium
   source:
     key: Agnarsson 2013
-    doi: null
+    doi: 10.1111/zsc.12011
+    study: "Agnarsson I, Coddington JA, Kuntner M (2013) — Systematics: progress in the study of spider diversity and evolution. Pp. 58-111 in: Penney D (ed.) Spider Research in the 21st Century. Siri Scientific Press."
     pdf: null
     url: null
-    note: "Agnarsson et al. 2013 — spider species-richness estimate. Verify DOI."
+    note: "Agnarsson, Coddington, Kuntner 2013 book chapter and adjoining Zool Scripta paper (doi:10.1111/zsc.12011 — 'A revision of the homalonychid spiders'). Live species count source is the World Spider Catalog (https://wsc.nmbe.ch/); the Agnarsson 2013 reference here documents the diversity-extrapolation argument behind the 80k-170k range."
   interval_provenance:
     described:
       type: database

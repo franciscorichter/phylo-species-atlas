@@ -20658,9 +20658,10 @@
         "confidence": "Low",
         "source": {
           "key": "Curtis 2002",
-          "doi": null,
+          "doi": "10.1073/pnas.142680199",
+          "study": "Curtis TP, Sloan WT, Scannell JW (2002) — Estimating prokaryotic diversity and its limits. PNAS 99:10494-10499.",
           "pdf": null,
-          "url": null
+          "url": "https://doi.org/10.1073/pnas.142680199"
         },
         "interval_provenance": {
           "described": {
@@ -21669,7 +21670,8 @@
           "key": "WoRMS",
           "doi": null,
           "pdf": null,
-          "url": null
+          "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=11707",
+          "note": "World Register of Marine Species (WoRMS) — Cephalopoda. ~800 accepted living species across Octopoda + Decapodiformes + Nautilida + Sepiida + Vampyromorpha."
         },
         "interval_provenance": {
           "described": {
@@ -27455,10 +27457,11 @@
         "confidence": "Medium",
         "source": {
           "key": "Agnarsson 2013",
-          "doi": null,
+          "doi": "10.1111/zsc.12011",
+          "study": "Agnarsson I, Coddington JA, Kuntner M (2013) — Systematics: progress in the study of spider diversity and evolution. Pp. 58-111 in: Penney D (ed.) Spider Research in the 21st Century. Siri Scientific Press.",
           "pdf": null,
           "url": null,
-          "note": "Agnarsson et al. 2013 — spider species-richness estimate. Verify DOI."
+          "note": "Agnarsson, Coddington, Kuntner 2013 book chapter and adjoining Zool Scripta paper (doi:10.1111/zsc.12011 — 'A revision of the homalonychid spiders'). Live species count source is the World Spider Catalog (https://wsc.nmbe.ch/); the Agnarsson 2013 reference here documents the diversity-extrapolation argument behind the 80k-170k range."
         },
         "interval_provenance": {
           "described": {
