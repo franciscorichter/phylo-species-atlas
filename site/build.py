@@ -919,6 +919,35 @@ def main() -> None:
         (r.get("described_species") or 0)
         for r in coverage_rows if r.get("is_partition_canonical")
     )
+    # Coverage: partitions that ship a tree (chart rows that are NOT
+    # is_unrepresented). The complementary set is the "dark matter" partitions
+    # where only an estimate is shown.
+    summary["n_partitions_with_tree"] = sum(
+        1 for r in coverage_rows
+        if r.get("is_partition_canonical") and not r.get("is_unrepresented")
+    )
+    # Unique species represented across all shipped partition canonicals.
+    # Sum of tips on canonical (with-tree) rows — partitions are mutually
+    # exclusive, so this is an upper bound on actual unique species; close
+    # enough for the dashboard headline.
+    summary["unique_species_in_trees"] = sum(
+        (r.get("tips") or 0)
+        for r in coverage_rows
+        if r.get("is_partition_canonical") and not r.get("is_unrepresented")
+    )
+    # Estimated true-diversity range across all partitions
+    summary["estimated_total_low"] = sum(
+        (r.get("estimated_low") or 0)
+        for r in coverage_rows if r.get("is_partition_canonical")
+    )
+    summary["estimated_total_high"] = sum(
+        (r.get("estimated_high") or 0)
+        for r in coverage_rows if r.get("is_partition_canonical")
+    )
+    summary["estimated_total_central"] = sum(
+        (r.get("estimated_total") or 0)
+        for r in coverage_rows if r.get("is_partition_canonical")
+    )
 
     # Apply broken-DOI substitution AND attach interval_provenance on coverage
     # rows when the audit has them.

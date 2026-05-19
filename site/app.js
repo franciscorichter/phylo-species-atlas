@@ -40,41 +40,51 @@ function renderSummary() {
     return String(n);
   };
 
-  // Per-category partition + verified counts from the coverage rows.
+  // Per-category partition counts (with tree / total partitions) for the
+  // mini-bar legend — same denominators as the chart.
   const catStats = new Map();
   for (const r of (STATE.data.coverage || [])) {
     if (!r.is_partition_canonical) continue;
     const c = r.category || "Other";
-    if (!catStats.has(c)) catStats.set(c, { total: 0, verified: 0 });
+    if (!catStats.has(c)) catStats.set(c, { total: 0, withTree: 0 });
     const entry = catStats.get(c);
     entry.total += 1;
-    const audit = STATE.data.audits?.[r.partition_group];
-    if (audit && (audit.audit || {}).status === "verified") entry.verified += 1;
+    if (!r.is_unrepresented) entry.withTree += 1;
   }
 
-  // Coverage stats — what the atlas COVERS.
+  const withTree = s.n_partitions_with_tree || 0;
+  const totalPart = s.n_partitions || 0;
+  const totalTrees = s.n_trees || 0;
+  const speciesInTrees = s.unique_species_in_trees || 0;
+  const described = s.total_described_species || 0;
+  const estLow = s.estimated_total_low || 0;
+  const estHigh = s.estimated_total_high || 0;
+
+  // Coverage block: drop the audit row entirely; replace partition + tree
+  // counts with the more informative "higher-level XX / 64" + subtrees,
+  // and stack the three species headline numbers vertically.
   const coverageRow = `
     <div class="stats-group">
       <div class="stats-group-label">Coverage</div>
       <div class="stats-row">
-        <div class="stat"><span class="value">${s.n_partitions || 0}</span><span class="label">Partitions</span></div>
-        <div class="stat"><span class="value">${fmt.format(s.n_trees)}</span><span class="label">Trees</span></div>
-        <div class="stat"><span class="value">${compact(s.total_described_species || 0)}</span><span class="label">Described species</span></div>
+        <div class="stat">
+          <span class="value">${withTree} / ${totalPart}</span>
+          <span class="label">Higher-level partitions w/ tree</span>
+        </div>
+        <div class="stat">
+          <span class="value">${fmt.format(totalTrees)}</span>
+          <span class="label">Trees (canonical + sub-clades)</span>
+        </div>
+        <div class="stat stat-stack">
+          <span class="value">${compact(speciesInTrees)}</span>
+          <span class="label">species sampled across trees</span>
+          <span class="sub">of ${compact(described)} described &middot; estimated true total ${compact(estLow)}–${compact(estHigh)}</span>
+        </div>
       </div>
     </div>`;
 
-  // Audit stats — what the atlas VERIFIED.
-  const auditRow = `
-    <div class="stats-group">
-      <div class="stats-group-label"><a href="audit.html" class="audit-link">Audit</a></div>
-      <div class="stats-row">
-        <div class="stat"><span class="value">${s.n_audits_verified || 0}/${s.n_audited || 0}</span><span class="label">Verified</span></div>
-        <div class="stat"><span class="value">${s.n_atlas_derived || 0}</span><span class="label">Atlas-derived trees</span></div>
-        <div class="stat"><span class="value">${s.n_paper_published_intervals || 0}</span><span class="label">Paper-published intervals</span></div>
-      </div>
-    </div>`;
-
-  // Category mini-bars: width = # partitions, filled portion = # verified.
+  // Category mini-bars: width = total partitions, filled portion =
+  // partitions with a shipped tree (the same definition the chart uses).
   const catOrder = ["Vertebrates", "Plants", "Arthropods", "Other animals", "Microbes & protists"];
   const maxTotal = Math.max(...catOrder.map(c => catStats.get(c)?.total || 0));
   const catRow = `
@@ -82,22 +92,22 @@ function renderSummary() {
       <div class="stats-group-label">By category</div>
       <div class="cat-bars">
         ${catOrder.map(c => {
-          const e = catStats.get(c) || { total: 0, verified: 0 };
+          const e = catStats.get(c) || { total: 0, withTree: 0 };
           const widthPct = maxTotal ? Math.round(100 * e.total / maxTotal) : 0;
-          const verifiedPct = e.total ? Math.round(100 * e.verified / e.total) : 0;
+          const fillPct = e.total ? Math.round(100 * e.withTree / e.total) : 0;
           return `
             <div class="cat-bar-row">
               <span class="cat-bar-label">${c}</span>
               <div class="cat-bar" style="width:${widthPct}%">
-                <div class="cat-bar-fill" style="width:${verifiedPct}%"></div>
+                <div class="cat-bar-fill" style="width:${fillPct}%"></div>
               </div>
-              <span class="cat-bar-count">${e.verified}/${e.total}</span>
+              <span class="cat-bar-count">${e.withTree}/${e.total}</span>
             </div>`;
         }).join("")}
       </div>
     </div>`;
 
-  document.getElementById("summary-stats").innerHTML = coverageRow + auditRow + catRow;
+  document.getElementById("summary-stats").innerHTML = coverageRow + catRow;
 }
 
 const FONT_STACK = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif";

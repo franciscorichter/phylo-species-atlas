@@ -90,6 +90,15 @@ header a:hover { text-decoration: underline; }
   letter-spacing: 0.04em;
   margin-top: 2px;
 }
+.stat.stat-stack { min-width: 230px; }
+.stat.stat-stack .sub {
+  font-size: 11px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  margin-top: 3px;
+  letter-spacing: 0;
+  text-transform: none;
+}
 
 /* Category mini-bars */
 .stats-group-cat { min-width: 280px; }

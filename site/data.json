@@ -17,7 +17,12 @@
     "n_paper_published_intervals": 12,
     "n_partly_heuristic_intervals": 38,
     "n_fully_heuristic_intervals": 11,
-    "total_described_species": 2878317
+    "total_described_species": 2878317,
+    "n_partitions_with_tree": 27,
+    "unique_species_in_trees": 598014,
+    "estimated_total_low": 7295654,
+    "estimated_total_high": 35400768,
+    "estimated_total_central": 15606025
   },
   "trees": [
     {
