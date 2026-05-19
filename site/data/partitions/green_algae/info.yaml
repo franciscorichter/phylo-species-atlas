@@ -10,9 +10,11 @@ estimate:
   confidence: Low
   source:
     key: Guiry 2012
-    doi: null
+    doi: 10.1111/j.1529-8817.2012.01222.x
+    study: "Guiry MD (2012) — How many species of algae are there? J Phycol 48:1057-1063."
     pdf: null
-    url: null
+    url: https://doi.org/10.1111/j.1529-8817.2012.01222.x
+    note: "Standard reference for global algal diversity estimates. AlgaeBase maintainer's review."
   interval_provenance:
     described:
       type: database
@@ -38,11 +40,40 @@ caveats:
   - severity: medium
     summary: "No canonical tree shipped in the atlas."
     detail: |
-      Li 2021 published a green-algae phylogeny but coverage is sparse (~70 species in atlas data shows in_undated_tree).
+      ~11,000 described green algae (Chlorophyta + Charophyta combined,
+      excluding land plants). Leliaert 2012 (Crit Rev Plant Sci) is the
+      standard phylogenetic synthesis. Dated phylogenies exist at the
+      class/order level (Lemieux 2014, de Vries 2018) but no atlas-scale
+      species tree. Charophyceae get the most attention as the sister
+      group to land plants.
+
+dated_alternatives:
+  reason_canonical_undated: |
+    Multiple class-level dated phylogenies but no unified species-level
+    chronogram across all green algal lineages.
+  candidates:
+    - key: Leliaert 2012
+      doi: 10.1080/07352689.2011.615705
+      study: "Leliaert F, Smith DR, Moreau H, Herron MD, Verbruggen H, Delwiche CF, De Clerck O (2012) — Phylogeny and molecular evolution of the green algae. Crit Rev Plant Sci 31:1-46."
+      scope: Phylum-wide review with dated framework
+      tips: ~60
+      note: "Standard reference synthesizing green algal phylogenetics."
+    - key: de Vries 2018
+      doi: 10.1093/molbev/msy120
+      study: "de Vries J, Archibald JM (2018) — Plant evolution: landmarks on the path to terrestrial life. New Phytol 217:1428-1434."
+      scope: Streptophyte algae timing (sister to land plants)
+      tips: ~30
+      note: "Dated framework for Charophyte-Embryophyte transition; small but high-resolution."
+    - key: Lemieux 2014
+      doi: 10.1186/s12862-014-0211-2
+      study: "Lemieux C, Otis C, Turmel M (2014) — Six newly sequenced chloroplast genomes from prasinophyte green algae provide insights into the relationships among prasinophyte lineages and the diversity of streamlined genome architecture in picoplanktonic species. BMC Genomics 15:857."
+      scope: Prasinophyte sub-clade dated phylogeny
+      tips: ~30
+      note: "Plastome-based dated tree for picoplanktonic green algae."
 
 audit:
   file: ../../../audits/partitions/green_algae.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []

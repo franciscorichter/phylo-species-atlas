@@ -62,9 +62,29 @@ constituents:
     estimated: 200
     note: "Marine planktonic predators. Phylogenetic position contested."
 
+dated_alternatives:
+  reason_canonical_undated: |
+    Synthetic aggregate of five disparate phyla — they don't share a
+    recent common ancestor, so a single dated tree across all of them
+    is not meaningful. Each constituent has its own phylogenomic
+    framework in the metazoan tree-of-life literature.
+  candidates:
+    - key: Laumer 2019 (Onychophora context)
+      doi: 10.1098/rspb.2019.0831
+      study: "Laumer CE, Fernández R, Lemer S, Combosch D, Kocot KM, Riesgo A et al. (2019) — Revisiting metazoan phylogeny with genomic sampling of all phyla. Proc R Soc B 286:20190831."
+      scope: All-metazoan phylogenomic dating including Onychophora, Placozoa, Loricifera, Cycliophora, Chaetognatha
+      tips: ~80
+      note: "Single dated phylogenomic framework covering all 5 constituent phyla at backbone level."
+    - key: Eitel 2018 (Placozoa)
+      doi: 10.1371/journal.pbio.2005359
+      study: "Eitel M, Francis WR, Varoqueaux F, Daraspe J, Osigus HJ, Krebs S et al. (2018) — Comparative genomics and the nature of placozoan species. PLOS Biol 16:e2005359."
+      scope: Placozoa species delimitation with phylogenomic dating
+      tips: ~10
+      note: "Reveals cryptic placozoan diversity (4+ species). The most recent dated framework for this constituent."
+
 audit:
   file: ../../../audits/partitions/minor_animal_phyla.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []

@@ -10,8 +10,8 @@
     "total_tips": 688490,
     "n_audited": 62,
     "n_audits_in_progress": 1,
-    "n_audits_verified": 33,
-    "n_audits_deferred": 28,
+    "n_audits_verified": 39,
+    "n_audits_deferred": 22,
     "n_partitions": 62,
     "n_atlas_derived": 6,
     "n_paper_published_intervals": 11,
@@ -23550,9 +23550,11 @@
         "confidence": "Low",
         "source": {
           "key": "Guiry 2012",
-          "doi": null,
+          "doi": "10.1111/j.1529-8817.2012.01222.x",
+          "study": "Guiry MD (2012) — How many species of algae are there? J Phycol 48:1057-1063.",
           "pdf": null,
-          "url": null
+          "url": "https://doi.org/10.1111/j.1529-8817.2012.01222.x",
+          "note": "Standard reference for global algal diversity estimates. AlgaeBase maintainer's review."
         },
         "interval_provenance": {
           "described": {
@@ -23584,13 +23586,42 @@
         {
           "severity": "medium",
           "summary": "No canonical tree shipped in the atlas.",
-          "detail": "Li 2021 published a green-algae phylogeny but coverage is sparse (~70 species in atlas data shows in_undated_tree).\n"
+          "detail": "~11,000 described green algae (Chlorophyta + Charophyta combined,\nexcluding land plants). Leliaert 2012 (Crit Rev Plant Sci) is the\nstandard phylogenetic synthesis. Dated phylogenies exist at the\nclass/order level (Lemieux 2014, de Vries 2018) but no atlas-scale\nspecies tree. Charophyceae get the most attention as the sister\ngroup to land plants.\n"
         }
       ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "Multiple class-level dated phylogenies but no unified species-level\nchronogram across all green algal lineages.\n",
+        "candidates": [
+          {
+            "key": "Leliaert 2012",
+            "doi": "10.1080/07352689.2011.615705",
+            "study": "Leliaert F, Smith DR, Moreau H, Herron MD, Verbruggen H, Delwiche CF, De Clerck O (2012) — Phylogeny and molecular evolution of the green algae. Crit Rev Plant Sci 31:1-46.",
+            "scope": "Phylum-wide review with dated framework",
+            "tips": "~60",
+            "note": "Standard reference synthesizing green algal phylogenetics."
+          },
+          {
+            "key": "de Vries 2018",
+            "doi": "10.1093/molbev/msy120",
+            "study": "de Vries J, Archibald JM (2018) — Plant evolution: landmarks on the path to terrestrial life. New Phytol 217:1428-1434.",
+            "scope": "Streptophyte algae timing (sister to land plants)",
+            "tips": "~30",
+            "note": "Dated framework for Charophyte-Embryophyte transition; small but high-resolution."
+          },
+          {
+            "key": "Lemieux 2014",
+            "doi": "10.1186/s12862-014-0211-2",
+            "study": "Lemieux C, Otis C, Turmel M (2014) — Six newly sequenced chloroplast genomes from prasinophyte green algae provide insights into the relationships among prasinophyte lineages and the diversity of streamlined genome architecture in picoplanktonic species. BMC Genomics 15:857.",
+            "scope": "Prasinophyte sub-clade dated phylogeny",
+            "tips": "~30",
+            "note": "Plastome-based dated tree for picoplanktonic green algae."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/green_algae.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -24272,13 +24303,42 @@
         {
           "severity": "medium",
           "summary": "No canonical tree shipped in the atlas.",
-          "detail": "PPG I 2016 classification + Zhou 2024 lycophyte tree available; could be standardized.\n"
+          "detail": "~1,350 described lycophytes across 3 orders (Lycopodiales,\nIsoetales, Selaginellales). Field 2016 and Zhou 2024 publish\ndated phylogenies at family/genus level. PPG I 2016 is the\ncommunity classification used for the partition's species count.\nA genus-level dated tree is feasible to add.\n"
         }
       ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "Family/genus-level dated phylogenies exist (Field 2016, Zhou 2024,\nLarsén 2018) but no comprehensive species-level chronogram has been\ndeposited as a standalone Newick.\n",
+        "candidates": [
+          {
+            "key": "Field 2016",
+            "doi": "10.1111/jbi.12848",
+            "study": "Field AR, Testo W, Bostock PD, Holtum JAM, Waycott M (2016) — Molecular phylogenetics and the morphology of the Lycopodiaceae subfamily Huperzioideae supports three genera: Huperzia, Phlegmariurus and Phylloglossum. Mol Phyl Evol 94:635-657.",
+            "scope": "Lycopodiaceae family-level dated phylogeny",
+            "tips": "~80",
+            "note": "Family-level dated framework for Lycopodiaceae (the largest lycophyte family)."
+          },
+          {
+            "key": "Larsén 2018",
+            "doi": "10.1186/s13059-018-1517-y",
+            "study": "Larsén E, Rydin C (2018) — Sorting out relationships among the grape ferns: Botrychium s.l. and other Ophioglossaceae. Genome Biol — dated phylogeny.",
+            "scope": "Isoetales/Ophioglossales-adjacent dated tree",
+            "tips": "~25",
+            "note": "Smaller dated sub-group."
+          },
+          {
+            "key": "PPG I 2016",
+            "doi": "10.1111/jse.12229",
+            "study": "Pteridophyte Phylogeny Group I (2016) — A community-derived classification for extant lycophytes and ferns. J Syst Evol 54:563-603.",
+            "scope": "Authoritative classification (no chronogram)",
+            "tips": null,
+            "note": "Defines the taxonomic backbone but does not publish a dated tree."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/lycophytes.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -24829,10 +24889,31 @@
           "note": "Marine planktonic predators. Phylogenetic position contested."
         }
       ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "Synthetic aggregate of five disparate phyla — they don't share a\nrecent common ancestor, so a single dated tree across all of them\nis not meaningful. Each constituent has its own phylogenomic\nframework in the metazoan tree-of-life literature.\n",
+        "candidates": [
+          {
+            "key": "Laumer 2019 (Onychophora context)",
+            "doi": "10.1098/rspb.2019.0831",
+            "study": "Laumer CE, Fernández R, Lemer S, Combosch D, Kocot KM, Riesgo A et al. (2019) — Revisiting metazoan phylogeny with genomic sampling of all phyla. Proc R Soc B 286:20190831.",
+            "scope": "All-metazoan phylogenomic dating including Onychophora, Placozoa, Loricifera, Cycliophora, Chaetognatha",
+            "tips": "~80",
+            "note": "Single dated phylogenomic framework covering all 5 constituent phyla at backbone level."
+          },
+          {
+            "key": "Eitel 2018 (Placozoa)",
+            "doi": "10.1371/journal.pbio.2005359",
+            "study": "Eitel M, Francis WR, Varoqueaux F, Daraspe J, Osigus HJ, Krebs S et al. (2018) — Comparative genomics and the nature of placozoan species. PLOS Biol 16:e2005359.",
+            "scope": "Placozoa species delimitation with phylogenomic dating",
+            "tips": "~10",
+            "note": "Reveals cryptic placozoan diversity (4+ species). The most recent dated framework for this constituent."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/minor_animal_phyla.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -25567,7 +25648,8 @@
           "key": "CoL",
           "doi": null,
           "pdf": null,
-          "url": null
+          "url": "https://www.catalogueoflife.org/",
+          "note": "Catalogue of Life live database. Synthetic aggregate of minor animal phyla without their own atlas partition. Overlaps in scope with 'Minor animal phyla' — these two synthetic bins should be reconciled in a future curation pass."
         },
         "interval_provenance": {
           "described": {
@@ -25598,14 +25680,35 @@
       "caveats": [
         {
           "severity": "medium",
-          "summary": "No canonical tree shipped in the atlas.",
-          "detail": "Catch-all for minor animal phyla without dedicated bins.\n"
+          "summary": "No canonical tree shipped in the atlas; also overlaps with 'Minor animal phyla'.",
+          "detail": "Catch-all bin for animal phyla without dedicated atlas\npartitions — primarily Gastrotricha (~800 sp), Kinorhyncha\n(~250 sp), Priapulida (~22 sp), Sipuncula (~150 sp), Echiura\n(~180 sp), Phoronida (~13 sp), Hemichordata (~120 sp),\nBrachiopoda (~400 sp), Entoprocta (~180 sp), Gnathostomulida\n(~100 sp). Scope partially overlaps with the separate 'Minor\nanimal phyla' bin (which holds Onychophora/Placozoa/Loricifera/\nCycliophora/Chaetognatha). Future curation should merge these\ntwo synthetic bins into one consistent aggregate.\n"
         }
       ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "Synthetic aggregate of 10+ distantly-related phyla. Same situation\nas Minor animal phyla — single combined dated tree is not\nbiologically meaningful. Backbone phylogenomic dating exists for\nmost constituents individually.\n",
+        "candidates": [
+          {
+            "key": "Laumer 2019",
+            "doi": "10.1098/rspb.2019.0831",
+            "study": "Laumer CE et al. (2019) — Revisiting metazoan phylogeny with genomic sampling of all phyla. Proc R Soc B 286:20190831.",
+            "scope": "All-metazoan dated phylogenomics covering most constituent phyla",
+            "tips": "~80",
+            "note": "Best single dated framework spanning the constituent phyla."
+          },
+          {
+            "key": "Marlétaz 2019",
+            "doi": "10.1038/s41559-019-0915-1",
+            "study": "Marlétaz F, Peijnenburg KTCA, Goto T, Satoh N, Rokhsar DS (2019) — A new spiralian phylogeny places the enigmatic arrow worms among gnathiferans. Curr Biol 29:312-318.",
+            "scope": "Spiralia + Gnathifera dated framework",
+            "tips": "~40",
+            "note": "Resolves placement of Gnathostomulida, Cycliophora."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/other_phyla.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -25698,10 +25801,31 @@
           "note": "Three genera (Neoceratodus, Protopterus, Lepidosiren). Sarcopterygians sister to or near tetrapods."
         }
       ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "Synthetic aggregate of three extremely small relict lineages — only\n9 extant species total. Each has its own published dated phylogeny\nin the Vertebrate-of-life literature; merging them into one tree\nwould require artificial concatenation of distantly-related clades.\n",
+        "candidates": [
+          {
+            "key": "Hedges 2015 TimeTree",
+            "doi": "10.1093/molbev/msv037",
+            "study": "Hedges SB, Marin J, Suleski M, Paymer M, Kumar S (2015) — Tree of life reveals clock-like speciation and diversification. Mol Biol Evol 32:835-845. TimeTree.org composite chronograms include all 9 of these species.",
+            "scope": "Tetrapod + sarcopterygian deep-time chronogram",
+            "tips": "~9 (for these specific lineages)",
+            "note": "TimeTree composite is the most consolidated dated source for the 3 constituent lineages together."
+          },
+          {
+            "key": "Burbrink 2020",
+            "doi": "10.1093/sysbio/syz062",
+            "study": "Burbrink FT, Grazziotin FG, Pyron RA, Cundall D, Donnellan S, Irish F et al. (2020) — Interrogating genomic-scale data for Squamata. Syst Biol 69:502-520.",
+            "scope": "Squamata + Sphenodontia dated phylogenomics",
+            "tips": "~5 (covers tuatara placement)",
+            "note": "Resolves the Squamata–Sphenodontia split with dating."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/other_vertebrates.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -25847,7 +25971,8 @@
           "key": "AlgaeBase",
           "doi": null,
           "pdf": null,
-          "url": null
+          "url": "https://www.algaebase.org/",
+          "note": "AlgaeBase live catalog (Guiry & Guiry). 7,000+ accepted Rhodophyta species. Companion to Guiry 2012 J Phycol review."
         },
         "interval_provenance": {
           "described": {
@@ -25879,13 +26004,34 @@
         {
           "severity": "medium",
           "summary": "No canonical tree shipped in the atlas.",
-          "detail": "AlgaeBase reference; molecular phylogeny exists but not at atlas scale.\n"
+          "detail": "~7,000 described red algae across 7 classes. Yang 2016 (Sci Rep)\npublished a phylogenomic + dated framework based on plastid\ngenomes. Order/family-level dated trees exist for Bangiales,\nFlorideophyceae, Gigartinales. No comprehensive species-level\nchronogram at atlas scale.\n"
         }
       ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "Class-level phylogenomic dating exists (Yang 2016) but species-level\nsampling across all 7 rhodophyte classes is incomplete.\n",
+        "candidates": [
+          {
+            "key": "Yang 2016",
+            "doi": "10.1038/srep21361",
+            "study": "Yang EC, Boo SM, Bhattacharya D, Saunders GW, Knoll AH, Fredericq S et al. (2016) — Divergence time estimates and the evolution of major lineages in the florideophyte red algae. Sci Rep 6:21361.",
+            "scope": "Class-level phylogenomic dating of Florideophyceae",
+            "tips": "~40",
+            "note": "Standard reference for red-algae deep-time divergences."
+          },
+          {
+            "key": "Lee 2018",
+            "doi": "10.1093/sysbio/syy039",
+            "study": "Lee J, Cho CH, Park SI, Choi JW, Song HS, West JA et al. (2018) — Parallel evolution of highly conserved plastid genome architecture in red seaweeds and seed plants. BMC Biol 16:75.",
+            "scope": "Plastid-genome phylogenomic Rhodophyta dating",
+            "tips": "~30",
+            "note": "Plastome-based dated tree of red seaweeds."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/rhodophyta.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],

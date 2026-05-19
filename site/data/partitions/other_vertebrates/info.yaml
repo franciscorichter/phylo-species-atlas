@@ -54,9 +54,29 @@ constituents:
     estimated: 6
     note: "Three genera (Neoceratodus, Protopterus, Lepidosiren). Sarcopterygians sister to or near tetrapods."
 
+dated_alternatives:
+  reason_canonical_undated: |
+    Synthetic aggregate of three extremely small relict lineages — only
+    9 extant species total. Each has its own published dated phylogeny
+    in the Vertebrate-of-life literature; merging them into one tree
+    would require artificial concatenation of distantly-related clades.
+  candidates:
+    - key: Hedges 2015 TimeTree
+      doi: 10.1093/molbev/msv037
+      study: "Hedges SB, Marin J, Suleski M, Paymer M, Kumar S (2015) — Tree of life reveals clock-like speciation and diversification. Mol Biol Evol 32:835-845. TimeTree.org composite chronograms include all 9 of these species."
+      scope: Tetrapod + sarcopterygian deep-time chronogram
+      tips: ~9 (for these specific lineages)
+      note: "TimeTree composite is the most consolidated dated source for the 3 constituent lineages together."
+    - key: Burbrink 2020
+      doi: 10.1093/sysbio/syz062
+      study: "Burbrink FT, Grazziotin FG, Pyron RA, Cundall D, Donnellan S, Irish F et al. (2020) — Interrogating genomic-scale data for Squamata. Syst Biol 69:502-520."
+      scope: Squamata + Sphenodontia dated phylogenomics
+      tips: ~5 (covers tuatara placement)
+      note: "Resolves the Squamata–Sphenodontia split with dating."
+
 audit:
   file: ../../../audits/partitions/other_vertebrates.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []

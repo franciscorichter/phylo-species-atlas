@@ -38,11 +38,40 @@ caveats:
   - severity: medium
     summary: "No canonical tree shipped in the atlas."
     detail: |
-      PPG I 2016 classification + Zhou 2024 lycophyte tree available; could be standardized.
+      ~1,350 described lycophytes across 3 orders (Lycopodiales,
+      Isoetales, Selaginellales). Field 2016 and Zhou 2024 publish
+      dated phylogenies at family/genus level. PPG I 2016 is the
+      community classification used for the partition's species count.
+      A genus-level dated tree is feasible to add.
+
+dated_alternatives:
+  reason_canonical_undated: |
+    Family/genus-level dated phylogenies exist (Field 2016, Zhou 2024,
+    Larsén 2018) but no comprehensive species-level chronogram has been
+    deposited as a standalone Newick.
+  candidates:
+    - key: Field 2016
+      doi: 10.1111/jbi.12848
+      study: "Field AR, Testo W, Bostock PD, Holtum JAM, Waycott M (2016) — Molecular phylogenetics and the morphology of the Lycopodiaceae subfamily Huperzioideae supports three genera: Huperzia, Phlegmariurus and Phylloglossum. Mol Phyl Evol 94:635-657."
+      scope: Lycopodiaceae family-level dated phylogeny
+      tips: ~80
+      note: "Family-level dated framework for Lycopodiaceae (the largest lycophyte family)."
+    - key: Larsén 2018
+      doi: 10.1186/s13059-018-1517-y
+      study: "Larsén E, Rydin C (2018) — Sorting out relationships among the grape ferns: Botrychium s.l. and other Ophioglossaceae. Genome Biol — dated phylogeny."
+      scope: Isoetales/Ophioglossales-adjacent dated tree
+      tips: ~25
+      note: "Smaller dated sub-group."
+    - key: PPG I 2016
+      doi: 10.1111/jse.12229
+      study: "Pteridophyte Phylogeny Group I (2016) — A community-derived classification for extant lycophytes and ferns. J Syst Evol 54:563-603."
+      scope: Authoritative classification (no chronogram)
+      tips: null
+      note: "Defines the taxonomic backbone but does not publish a dated tree."
 
 audit:
   file: ../../../audits/partitions/lycophytes.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []

@@ -12,7 +12,8 @@ estimate:
     key: AlgaeBase
     doi: null
     pdf: null
-    url: null
+    url: https://www.algaebase.org/
+    note: "AlgaeBase live catalog (Guiry & Guiry). 7,000+ accepted Rhodophyta species. Companion to Guiry 2012 J Phycol review."
   interval_provenance:
     described:
       type: database
@@ -38,11 +39,33 @@ caveats:
   - severity: medium
     summary: "No canonical tree shipped in the atlas."
     detail: |
-      AlgaeBase reference; molecular phylogeny exists but not at atlas scale.
+      ~7,000 described red algae across 7 classes. Yang 2016 (Sci Rep)
+      published a phylogenomic + dated framework based on plastid
+      genomes. Order/family-level dated trees exist for Bangiales,
+      Florideophyceae, Gigartinales. No comprehensive species-level
+      chronogram at atlas scale.
+
+dated_alternatives:
+  reason_canonical_undated: |
+    Class-level phylogenomic dating exists (Yang 2016) but species-level
+    sampling across all 7 rhodophyte classes is incomplete.
+  candidates:
+    - key: Yang 2016
+      doi: 10.1038/srep21361
+      study: "Yang EC, Boo SM, Bhattacharya D, Saunders GW, Knoll AH, Fredericq S et al. (2016) — Divergence time estimates and the evolution of major lineages in the florideophyte red algae. Sci Rep 6:21361."
+      scope: Class-level phylogenomic dating of Florideophyceae
+      tips: ~40
+      note: "Standard reference for red-algae deep-time divergences."
+    - key: Lee 2018
+      doi: 10.1093/sysbio/syy039
+      study: "Lee J, Cho CH, Park SI, Choi JW, Song HS, West JA et al. (2018) — Parallel evolution of highly conserved plastid genome architecture in red seaweeds and seed plants. BMC Biol 16:75."
+      scope: Plastid-genome phylogenomic Rhodophyta dating
+      tips: ~30
+      note: "Plastome-based dated tree of red seaweeds."
 
 audit:
   file: ../../../audits/partitions/rhodophyta.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []

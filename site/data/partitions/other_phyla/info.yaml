@@ -12,7 +12,8 @@ estimate:
     key: CoL
     doi: null
     pdf: null
-    url: null
+    url: https://www.catalogueoflife.org/
+    note: "Catalogue of Life live database. Synthetic aggregate of minor animal phyla without their own atlas partition. Overlaps in scope with 'Minor animal phyla' — these two synthetic bins should be reconciled in a future curation pass."
   interval_provenance:
     described:
       type: database
@@ -36,13 +37,41 @@ estimate:
 tree: null
 caveats:
   - severity: medium
-    summary: "No canonical tree shipped in the atlas."
+    summary: "No canonical tree shipped in the atlas; also overlaps with 'Minor animal phyla'."
     detail: |
-      Catch-all for minor animal phyla without dedicated bins.
+      Catch-all bin for animal phyla without dedicated atlas
+      partitions — primarily Gastrotricha (~800 sp), Kinorhyncha
+      (~250 sp), Priapulida (~22 sp), Sipuncula (~150 sp), Echiura
+      (~180 sp), Phoronida (~13 sp), Hemichordata (~120 sp),
+      Brachiopoda (~400 sp), Entoprocta (~180 sp), Gnathostomulida
+      (~100 sp). Scope partially overlaps with the separate 'Minor
+      animal phyla' bin (which holds Onychophora/Placozoa/Loricifera/
+      Cycliophora/Chaetognatha). Future curation should merge these
+      two synthetic bins into one consistent aggregate.
+
+dated_alternatives:
+  reason_canonical_undated: |
+    Synthetic aggregate of 10+ distantly-related phyla. Same situation
+    as Minor animal phyla — single combined dated tree is not
+    biologically meaningful. Backbone phylogenomic dating exists for
+    most constituents individually.
+  candidates:
+    - key: Laumer 2019
+      doi: 10.1098/rspb.2019.0831
+      study: "Laumer CE et al. (2019) — Revisiting metazoan phylogeny with genomic sampling of all phyla. Proc R Soc B 286:20190831."
+      scope: All-metazoan dated phylogenomics covering most constituent phyla
+      tips: ~80
+      note: "Best single dated framework spanning the constituent phyla."
+    - key: Marlétaz 2019
+      doi: 10.1038/s41559-019-0915-1
+      study: "Marlétaz F, Peijnenburg KTCA, Goto T, Satoh N, Rokhsar DS (2019) — A new spiralian phylogeny places the enigmatic arrow worms among gnathiferans. Curr Biol 29:312-318."
+      scope: Spiralia + Gnathifera dated framework
+      tips: ~40
+      note: "Resolves placement of Gnathostomulida, Cycliophora."
 
 audit:
   file: ../../../audits/partitions/other_phyla.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []
