@@ -804,6 +804,47 @@ def main() -> None:
                 if u["estimated_total"]:
                     row_out["coverage_pct_estimated"] = _est_pct(tree_meta["ntips"], u["estimated_total"])
                 coverage_rows.append(row_out)
+                # Also push into the trees[] list so selectTree() in the viewer
+                # can locate the tree by filename (the viewer reads from trees,
+                # not coverage). Keys mirror what build_trees creates above.
+                source = (tree_meta.get("source") or {})
+                trees.append({
+                    "filename": f"{partition_slug}.nwk",
+                    "group": partition_slug,
+                    "provenance_group": partition_slug,
+                    "partition_group": u["group"],
+                    "category": u_cat,
+                    "is_partition_anchor": False,
+                    "study": source.get("study") or source.get("key") or "",
+                    "ntips": tree_meta.get("ntips"),
+                    "dated": bool(tree_meta.get("dated")),
+                    "size_bytes": tree_path.stat().st_size,
+                    "year": None,
+                    "journal": None,
+                    "doi": source.get("doi"),
+                    "crown_ma": None,
+                    "described_species": u["described"],
+                    "described_source": None,
+                    "coverage_pct": tree_meta.get("coverage_pct_described"),
+                    "data_source": None,
+                    "download_url": source.get("url"),
+                    "methods_brief": (tree_meta.get("methods") or {}).get("note"),
+                    "notes": None,
+                    "estimate": {
+                        "category": u_cat,
+                        "estimated_total": u["estimated_total"],
+                        "estimated_low": u["estimated_low"],
+                        "estimated_high": u["estimated_high"],
+                        "estimate_source": u["estimate_source"],
+                        "estimate_confidence": u["estimate_confidence"],
+                    },
+                    "described_source_info": None,
+                    "estimate_source_info": None,
+                    "tip_taxonomy": None,
+                    "tree_url_override": row_out["tree_url_override"],
+                    "tip_taxonomy_override": None,
+                    "is_partition_canonical": True,
+                })
                 continue
         # Default: no tree shipped — render as dark-matter bar.
         row_out = {

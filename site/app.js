@@ -1199,14 +1199,21 @@ function drawLinear(root, width, nLeaves) {
       .attr("font-size", 10)
       .attr("fill", "#555")
       .text(age => age === 0 ? "0" : age);
-    // Axis caption
+    // Axis caption. Branch-length units aren't recorded per tree in the
+    // atlas pipeline — most chronograms are in Ma but some standardized
+    // files (e.g. turtles, max ~10) appear to carry rate-normalized
+    // distances. Heuristic: max > 30 → likely Ma; otherwise generic.
+    const captionText = maxRootDist > 30
+      ? "Time before present (Ma)"
+      : "Root-to-tip distance (branch-length units; not all source trees publish in Ma)";
     axisG.append("text")
+      .attr("class", "tree-time-axis-caption")
       .attr("x", innerW / 2)
       .attr("y", 28)
       .attr("text-anchor", "middle")
       .attr("font-size", 10)
       .attr("fill", "#777")
-      .text("Time before present (Ma, if branch lengths are in millions of years)");
+      .text(captionText);
   }
 }
 
