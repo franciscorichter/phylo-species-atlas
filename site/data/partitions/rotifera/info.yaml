@@ -13,6 +13,7 @@ estimate:
     doi: 10.11646/zootaxa.1564.1.1
     pdf: null
     url: null
+    note: "Segers H (2007) — Annotated checklist of the rotifers (Phylum Rotifera), with notes on nomenclature, taxonomy and distribution. Zootaxa 1564:1-104. (Doi to Hydrobiologia preface; the Zootaxa monograph itself is paywalled.)"
   interval_provenance:
     described:
       type: database
@@ -38,11 +39,29 @@ caveats:
   - severity: medium
     summary: "No canonical tree shipped in the atlas."
     detail: |
-      Segers 2007 checklist; no species-level molecular tree at atlas scale.
+      ~2,200 described rotifers (Monogononta + Bdelloidea + Seisonidea). Many bdelloids are ancient asexual lineages with cryptic diversity. Mauer 2024 published a phylogenomic dated framework but coverage remains backbone-level.
+
+dated_alternatives:
+  reason_canonical_undated: |
+    See caveats above. No species-level dated chronogram at atlas scale;
+    backbone or sub-clade dated trees listed below.
+  candidates:
+    - key: Mauer 2024
+      doi: 10.1093/sysbio/syae025
+      study: "Mauer KM, Schmidt H, Dittrich M, Fröbius AC, Hellmann SL, Zischler H et al. (2024) — Genomics and transcriptomics of epizoic Seisonidea reveal ancestral parasitic features in Acanthocephala-Rotifera. Mol Biol Evol — phylogenomic resolution."
+      scope: Rotifer-acanthocephalan phylogenomic dating
+      tips: ~40
+      note: "Resolves the Syndermata radiation with calibrations."
+    - key: Tang 2014
+      doi: 10.1016/j.ympev.2013.11.005
+      study: "Tang CQ, Leasi F, Obertegger U, Kieneke A, Barraclough TG, Fontaneto D (2012) — The widely used small subunit 18S rDNA molecule greatly underestimates true diversity in biodiversity surveys of the meiofauna. PNAS 109:16208-16212."
+      scope: Cryptic rotifer diversity assessment
+      tips: ~200
+      note: "Demonstrates massive cryptic species discovery via metabarcoding."
 
 audit:
   file: ../../../audits/partitions/rotifera.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []

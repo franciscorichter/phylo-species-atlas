@@ -12,7 +12,8 @@ estimate:
     key: CoL
     doi: null
     pdf: null
-    url: null
+    url: https://www.catalogueoflife.org/
+    note: "Catalogue of Life live database. Non-insect hexapods: Collembola (springtails, ~9000 sp), Diplura (~1000 sp), Protura (~800 sp)."
   interval_provenance:
     described:
       type: database
@@ -38,11 +39,33 @@ caveats:
   - severity: medium
     summary: "No canonical tree shipped in the atlas."
     detail: |
-      Springtails, diplurans, proturans; small clades.
+      ~10,000 described non-insect hexapods across 3 orders: Collembola
+      (springtails, ~9,000 sp — bulk of partition), Diplura, Protura.
+      Schneider 2011, Yu 2024 published dated Collembola phylogenomics.
+      Class-level Hexapoda chronograms (Misof 2014, etc.) cover root
+      divergences. No species-level tree at atlas scale.
+
+dated_alternatives:
+  reason_canonical_undated: |
+    Order-level dated trees exist (especially for Collembola which is
+    the bulk of the partition); no species-level synthesis.
+  candidates:
+    - key: Yu 2024
+      doi: 10.1093/sysbio/syae003
+      study: "Yu D, Zhang F, Stevens M, Yin Y, Ding Y (2024) — Phylogenomics resolves the systematic position of Collembola (Hexapoda) and supports its monophyly. Syst Biol 73:80-95."
+      scope: Collembola-wide phylogenomic dated framework
+      tips: ~80
+      note: "Most recent dated Collembola phylogenomics — bulk of partition."
+    - key: Misof 2014
+      doi: 10.1126/science.1257570
+      study: "Misof B et al. (2014) — Phylogenomics resolves the timing and pattern of insect evolution. Science 346:763-767."
+      scope: Insect chronogram with non-insect hexapod outgroups
+      tips: 144 (5 non-insect hexapods)
+      note: "Provides deep-time calibrations for Collembola/Diplura/Protura placement among Hexapoda."
 
 audit:
   file: ../../../audits/partitions/other_hexapods.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []

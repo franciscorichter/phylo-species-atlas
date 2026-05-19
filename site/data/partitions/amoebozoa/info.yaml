@@ -10,9 +10,10 @@ estimate:
   confidence: Low
   source:
     key: Adl 2007
-    doi: null
+    doi: 10.1111/j.1550-7408.2007.00263.x
     pdf: null
     url: null
+    note: "Adl SM, Simpson AGB, Farmer MA, Andersen RA, Anderson OR, Barta JR et al. (2007) — Diversity, nomenclature, and taxonomy of protists. Syst Biol 56:684-689. Foundational eukaryote classification used as basis for Amoebozoa species counts."
   interval_provenance:
     described:
       type: database
@@ -38,11 +39,29 @@ caveats:
   - severity: medium
     summary: "No canonical tree shipped in the atlas."
     detail: |
-      Tekle 2022 amoebae phylogenomics; sparse genome data limits species-level resolution.
+      ~2,400 described Amoebozoa (slime molds + lobose amoebae). True diversity may be 10x higher — single-cell eukaryotes are systematically undersampled. Kang 2017 (Curr Biol) and Cavalier-Smith 2015 published phylogenomic dated frameworks.
+
+dated_alternatives:
+  reason_canonical_undated: |
+    See caveats above. No species-level dated chronogram at atlas scale;
+    backbone or sub-clade dated trees listed below.
+  candidates:
+    - key: Kang 2017
+      doi: 10.1016/j.cub.2017.01.022
+      study: "Kang S, Tice AK, Spiegel FW, Silberman JD, Pánek T, Cepicka I et al. (2017) — Between a pod and a hard test: the deep evolution of amoebae. Mol Biol Evol 34:2258-2270."
+      scope: Phylum-wide phylogenomic dated framework
+      tips: ~50
+      note: "Standard reference for amoebozoan deep-time divergences."
+    - key: Cavalier-Smith 2015
+      doi: 10.1016/j.protis.2015.07.002
+      study: "Cavalier-Smith T, Chao EE, Lewis R (2015) — Multiple origins of Heliozoa from flagellate ancestors: New cryptist subphylum Corbihelia, superclass Corbistoma, and monophyly of Haptista, Cryptista, Hacrobia and Chromista. Mol Phyl Evol 93:331-362."
+      scope: Eukaryote-wide framework including Amoebozoa
+      tips: ~80
+      note: "Broader eukaryotic context for amoebozoan placement."
 
 audit:
   file: ../../../audits/partitions/amoebozoa.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []

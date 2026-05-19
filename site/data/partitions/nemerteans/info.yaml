@@ -13,6 +13,7 @@ estimate:
     doi: 10.12782/specdiv.13.245
     pdf: null
     url: null
+    note: "Kajihara H, Chernyshev AV, Sun SC, Sundberg P, Crandall FB (2008) — Checklist of nemertean genera and species published between 1995 and 2007. Species Diversity 13:245-274. (Companion to the Gibson 1995 master list.)"
   interval_provenance:
     described:
       type: database
@@ -38,11 +39,29 @@ caveats:
   - severity: medium
     summary: "No canonical tree shipped in the atlas."
     detail: |
-      Kajihara 2008 / Andrade 2012 nemertean trees available; not standardized.
+      ~1,300 described ribbon worms but global undersampling is severe. Kvist 2015 and Andrade 2014 published phylum-level dated phylogenies (~150-250 species).
+
+dated_alternatives:
+  reason_canonical_undated: |
+    See caveats above. No species-level dated chronogram at atlas scale;
+    backbone or sub-clade dated trees listed below.
+  candidates:
+    - key: Kvist 2015
+      doi: 10.1016/j.ympev.2015.03.024
+      study: "Kvist S, Chernyshev AV, Giribet G (2015) — Phylogeny of Nemertea with special interest in the placement of diversity from Far East Russia and northeast Asia. Hydrobiologia 760:105-119."
+      scope: Phylum-level dated nemertean phylogeny
+      tips: ~250
+      note: "Largest dated nemertean phylogeny by taxon sampling."
+    - key: Andrade 2014
+      doi: 10.1093/molbev/msu253
+      study: "Andrade SCS, Montenegro H, Strand M, Schwartz ML, Kajihara H, Norenburg JL et al. (2014) — A transcriptomic approach to ribbon worm systematics (Nemertea): resolving the Pilidiophora problem. Mol Biol Evol 31:3206-3215."
+      scope: Phylogenomic backbone with dating
+      tips: ~30
+      note: "Transcriptome-based phylogenomic framework."
 
 audit:
   file: ../../../audits/partitions/nemerteans.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []

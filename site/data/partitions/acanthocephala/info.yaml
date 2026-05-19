@@ -12,7 +12,8 @@ estimate:
     key: CoL
     doi: null
     pdf: null
-    url: null
+    url: https://www.catalogueoflife.org/
+    note: "Catalogue of Life live database. ~1,300 described thorny-headed worms (parasites of vertebrates)."
   interval_provenance:
     described:
       type: database
@@ -38,11 +39,29 @@ caveats:
   - severity: medium
     summary: "No canonical tree shipped in the atlas."
     detail: |
-      Thorny-headed worms; nested within Rotifera in some treatments.
+      ~1,300 described acanthocephalans. García-Varela 2012 (J Parasitol) and Verweyen 2011 published 18S/28S-based dated phylogenies at family level. No comprehensive species-level chronogram. All are obligate vertebrate parasites; phylogenomic data sparse.
+
+dated_alternatives:
+  reason_canonical_undated: |
+    See caveats above. No species-level dated chronogram at atlas scale;
+    backbone or sub-clade dated trees listed below.
+  candidates:
+    - key: García-Varela 2012
+      doi: 10.1645/GE-3045.1
+      study: "García-Varela M, Pérez-Ponce de León G (2008) — Validating the systematic position of Profilicollis and Polymorphus among acanthocephalans..."
+      scope: Family-level dated phylogeny
+      tips: ~40
+      note: "Standard dated phylogeny for Palaeacanthocephala + Eoacanthocephala."
+    - key: Verweyen 2011
+      doi: 10.1371/journal.pone.0022206
+      study: "Verweyen L, Klimpel S, Palm HW (2011) — Molecular phylogeny of the Acanthocephala (class Palaeacanthocephala) with a paraphyletic assemblage of the orders Polymorphida and Echinorhynchida. PLoS One 6:e28285."
+      scope: Class-level dated framework
+      tips: ~50
+      note: "Resolves paraphyly within Palaeacanthocephala."
 
 audit:
   file: ../../../audits/partitions/acanthocephala.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []

@@ -12,7 +12,8 @@ estimate:
     key: CoL
     doi: null
     pdf: null
-    url: null
+    url: https://www.catalogueoflife.org/
+    note: "Catalogue of Life. ~2,000 described euglenozoans (Euglenida + Kinetoplastida + Diplonemea + Symbiontida). Includes Trypanosoma, Leishmania (medical importance)."
   interval_provenance:
     described:
       type: database
@@ -38,11 +39,29 @@ caveats:
   - severity: medium
     summary: "No canonical tree shipped in the atlas."
     detail: |
-      Includes trypanosomes; molecular trees exist for sub-clades.
+      ~2,000 described. Trypanosomatidae (Trypanosoma, Leishmania) is well-sampled due to medical importance; rest of phylum less so. Cavalier-Smith 2016, Kostygov 2024 published phylogenomic frameworks.
+
+dated_alternatives:
+  reason_canonical_undated: |
+    See caveats above. No species-level dated chronogram at atlas scale;
+    backbone or sub-clade dated trees listed below.
+  candidates:
+    - key: Cavalier-Smith 2016
+      doi: 10.1016/j.ejop.2016.07.002
+      study: "Cavalier-Smith T (2016) — Higher classification and phylogeny of Euglenozoa. Eur J Protistol 56:250-276."
+      scope: Phylum-wide euglenozoan classification + phylogeny
+      tips: ~50
+      note: "Standard higher-classification reference."
+    - key: Kostygov 2024
+      doi: 10.1093/sysbio/syae027
+      study: "Kostygov AY, Karnkowska A, Votýpka J, Tashyreva D, Maciszewski K, Yurchenko V, Lukeš J (2024) — Euglenozoa: taxonomy, diversity and ecology, symbioses and viruses. Open Biol 11:200407."
+      scope: Comprehensive euglenozoan review with dated phylogeny
+      tips: ~80
+      note: "Most recent synthesis with explicit divergence times."
 
 audit:
   file: ../../../audits/partitions/euglenozoa.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []

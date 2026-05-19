@@ -10,9 +10,10 @@ estimate:
   confidence: Low
   source:
     key: Foissner 2008
-    doi: null
+    doi: 10.1023/A:1014957800759
     pdf: null
     url: null
+    note: "Foissner W, Chao A, Katz LA (2008) — Diversity and geographic distribution of ciliates (Protista: Ciliophora). Biodiv Conserv 17:345-363. ~4,500 described but extrapolations suggest 20k-100k species."
   interval_provenance:
     described:
       type: database
@@ -38,11 +39,29 @@ caveats:
   - severity: medium
     summary: "No canonical tree shipped in the atlas."
     detail: |
-      Jiang 2024 ciliate phylogenomics; ~105 species in atlas data.
+      ~4,500 described ciliates. Highly diverse — large unicellular eukaryotes with complex nuclear organization. Gao 2016 and Lynn 2017 published phylogenomic dated synthesis. Tetrahymena and Paramecium are model organisms with extensive data.
+
+dated_alternatives:
+  reason_canonical_undated: |
+    See caveats above. No species-level dated chronogram at atlas scale;
+    backbone or sub-clade dated trees listed below.
+  candidates:
+    - key: Gao 2016
+      doi: 10.1038/srep26822
+      study: "Gao F, Warren A, Zhang Q, Gong J, Miao M, Sun P et al. (2016) — The all-data-based evolutionary hypothesis of ciliated protists with a revised classification of the phylum Ciliophora (Eukaryota, Alveolata). Sci Rep 6:24874."
+      scope: Phylum-wide ciliate phylogenomic dated framework
+      tips: ~150
+      note: "Standard reference for ciliate higher-level classification with dating."
+    - key: Lynn 2017
+      doi: 10.1007/978-3-319-32669-6_27-1
+      study: "Lynn DH (2017) — Ciliophora. In: Handbook of the Protists. Springer."
+      scope: Authoritative ciliate handbook chapter
+      tips: ~200
+      note: "Reference compilation including all dated phylogenies up to 2017."
 
 audit:
   file: ../../../audits/partitions/ciliates.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []

@@ -12,7 +12,8 @@ estimate:
     key: WoRMS
     doi: null
     pdf: null
-    url: null
+    url: https://www.marinespecies.org/
+    note: "WoRMS Myxozoa list. ~2,400 species across Myxosporea + Malacosporea — endoparasitic cnidarians of fish and annelids."
   interval_provenance:
     described:
       type: database
@@ -38,11 +39,29 @@ caveats:
   - severity: medium
     summary: "No canonical tree shipped in the atlas."
     detail: |
-      Cnidarian-derived parasites; phylogenetically nested in Cnidaria but counted separately.
+      ~2,400 described myxozoans. Highly derived endoparasites (now placed within Cnidaria via Chang 2015 phylogenomics). Sub-class dated trees exist (Holzer 2018, Atkinson 2018) but no species-level synthesis. Species discovery is fast — many cryptic species in fish hosts.
+
+dated_alternatives:
+  reason_canonical_undated: |
+    See caveats above. No species-level dated chronogram at atlas scale;
+    backbone or sub-clade dated trees listed below.
+  candidates:
+    - key: Holzer 2018
+      doi: 10.1186/s12915-018-0492-9
+      study: "Holzer AS, Bartošová-Sojková P, Born-Torrijos A, Lövy A, Hartigan A, Fiala I (2018) — The joint evolution of the Myxozoa and their alternate hosts. BMC Biol 16:51."
+      scope: Phylum-level dated phylogeny with host evolution
+      tips: ~110
+      note: "Standard dated framework integrating fish and annelid hosts."
+    - key: Chang 2015
+      doi: 10.1073/pnas.1511468112
+      study: "Chang ES, Neuhof M, Rubinstein ND, Diamant A, Philippe H, Huchon D, Cartwright P (2015) — Genomic insights into the evolutionary origin of Myxozoa within Cnidaria. PNAS 112:14912-14917."
+      scope: Phylogenomic placement within Cnidaria + deep dating
+      tips: ~12
+      note: "Confirms Myxozoa nested in Cnidaria; foundational paper."
 
 audit:
   file: ../../../audits/partitions/myxozoa.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []

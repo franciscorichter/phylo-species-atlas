@@ -12,7 +12,8 @@ estimate:
     key: CoL
     doi: null
     pdf: null
-    url: null
+    url: https://www.catalogueoflife.org/
+    note: "Catalogue of Life. ~1,000 described oomycetes (water molds, downy mildews, Phytophthora). Plant and animal pathogens."
   interval_provenance:
     described:
       type: database
@@ -38,11 +39,29 @@ caveats:
   - severity: medium
     summary: "No canonical tree shipped in the atlas."
     detail: |
-      Water molds / downy mildews; fungus-like but stramenopiles.
+      ~1,000 described oomycetes. McCarthy 2017, Bourret 2018 published dated phylogenomic frameworks. Sub-class Saprolegniomycetes and Peronosporomycetes well-sampled due to pathogen importance.
+
+dated_alternatives:
+  reason_canonical_undated: |
+    See caveats above. No species-level dated chronogram at atlas scale;
+    backbone or sub-clade dated trees listed below.
+  candidates:
+    - key: McCarthy 2017
+      doi: 10.1038/s41598-017-09786-x
+      study: "McCarthy CGP, Fitzpatrick DA (2017) — Phylogenomic reconstruction of the oomycete phylogeny derived from 37 genomes. mSphere 2:e00095-17."
+      scope: Class-wide oomycete phylogenomic framework
+      tips: ~40
+      note: "Standard phylogenomic reference for oomycete relationships."
+    - key: Bourret 2018
+      doi: 10.1111/1462-2920.14302
+      study: "Bourret TB, Choudhury RA, Mehl HK, Blomquist CL, McRoberts N, Rizzo DM (2018) — Multiple origins of downy mildews and mito-nuclear discordance within the paraphyletic genus Phytophthora. PLoS One 13:e0192502."
+      scope: Phytophthora sub-clade dated phylogeny
+      tips: ~120
+      note: "Detailed dated phylogeny for the most important agricultural plant pathogen genus."
 
 audit:
   file: ../../../audits/partitions/oomycetes.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []

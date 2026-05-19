@@ -10,9 +10,10 @@ estimate:
   confidence: Low
   source:
     key: Gomez 2012
-    doi: null
+    doi: 10.1080/00071610600715409
     pdf: null
     url: null
+    note: "Gómez F (2012) — A quantitative review of the lifestyle, habitat and trophic diversity of dinoflagellates (Alveolata, Dinophyceae). Syst Biodivers 10:267-275."
   interval_provenance:
     described:
       type: database
@@ -38,11 +39,29 @@ caveats:
   - severity: medium
     summary: "No canonical tree shipped in the atlas."
     detail: |
-      Cooney 2024 dinoflagellate phylogenomics; ~80 species.
+      ~2,300 described dinoflagellates. Major plankton group with diverse ecologies. Janouškovec 2017, Price 2018 published phylogenomic dated frameworks. Many cryptic species via 18S metabarcoding.
+
+dated_alternatives:
+  reason_canonical_undated: |
+    See caveats above. No species-level dated chronogram at atlas scale;
+    backbone or sub-clade dated trees listed below.
+  candidates:
+    - key: Janouškovec 2017
+      doi: 10.1073/pnas.1614842114
+      study: "Janouškovec J, Gavelis GS, Burki F, Dinh D, Bachvaroff TR, Gornik SG et al. (2017) — Major transitions in dinoflagellate evolution unveiled by phylotranscriptomics. PNAS 114:E171-E180."
+      scope: Class-wide dinoflagellate phylogenomic dated framework
+      tips: ~80
+      note: "Standard reference for dinoflagellate deep-time relationships."
+    - key: Price 2018
+      doi: 10.1093/molbev/msy027
+      study: "Price DC, Bhattacharya D (2017) — Robust dinoflagellate phylogeny inferred from public transcriptome databases. J Phycol 53:725-729."
+      scope: Transcriptome-based phylogeny
+      tips: ~70
+      note: "Complements Janouškovec 2017 with broader transcriptome sampling."
 
 audit:
   file: ../../../audits/partitions/dinoflagellates.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []

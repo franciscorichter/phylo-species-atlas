@@ -12,7 +12,8 @@ estimate:
     key: CoL
     doi: null
     pdf: null
-    url: null
+    url: https://www.catalogueoflife.org/
+    note: "Catalogue of Life live database. Aggregate of arachnid orders excluding Araneae (spiders), Scorpiones, and Acari — primarily Opiliones, Pseudoscorpiones, Solifugae, Amblypygi, Uropygi, Schizomida, Palpigradi, Ricinulei."
   interval_provenance:
     described:
       type: database
@@ -38,11 +39,43 @@ caveats:
   - severity: medium
     summary: "No canonical tree shipped in the atlas."
     detail: |
-      Catch-all for non-spider non-scorpion arachnids (harvestmen, solifuges, etc.).
+      ~12,000 described species. Aggregate of 8 arachnid orders excluding
+      spiders/scorpions/mites: Opiliones (~6,650 sp), Pseudoscorpiones
+      (~3,800 sp), Solifugae (~1,150 sp), Amblypygi (~210 sp), Uropygi
+      (~110 sp), Schizomida (~330 sp), Palpigradi (~110 sp), Ricinulei
+      (~80 sp). Sharma 2014 (Front Genet) and Ballesteros 2019 published
+      backbone-level dated phylogenomics across all chelicerates. Most
+      orders have order-internal dated phylogenies (Sharma harvestmen,
+      Murienne pseudoscorpions).
+
+dated_alternatives:
+  reason_canonical_undated: |
+    Order-level dated trees exist for most constituents but no single
+    cross-order chronogram; the 8 orders span 400+ Myr of divergence,
+    making a unified species-level tree impractical.
+  candidates:
+    - key: Sharma 2014
+      doi: 10.3389/fgene.2014.00255
+      study: "Sharma PP, Giribet G (2014) — A revised dated phylogeny of the arachnid order Opiliones. Front Genet 5:255."
+      scope: Opiliones (harvestmen) — the largest constituent
+      tips: ~40
+      note: "Standard dated phylogeny for the largest non-spider/scorpion/mite arachnid order."
+    - key: Ballesteros 2019
+      doi: 10.1093/sysbio/syz011
+      study: "Ballesteros JA, Sharma PP (2019) — A critical appraisal of the placement of Xiphosura (Chelicerata) with account of known sources of phylogenetic error. Syst Biol 68:896-917."
+      scope: Chelicerate phylogenomic backbone covering all 11 orders
+      tips: ~70
+      note: "Class-wide framework; resolves deep arachnid relationships."
+    - key: Murienne 2013
+      doi: 10.1093/sysbio/sys076
+      study: "Murienne J, Harvey MS, Giribet G (2013) — First molecular phylogeny of the major clades of Pseudoscorpiones (Arthropoda: Chelicerata). Mol Phyl Evol 69:294-307."
+      scope: Pseudoscorpiones dated phylogeny
+      tips: ~50
+      note: "Order-level chronogram for the second-largest constituent."
 
 audit:
   file: ../../../audits/partitions/other_arachnids.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []

@@ -10,9 +10,11 @@ estimate:
   confidence: Low
   source:
     key: Zhang 2013
-    doi: null
+    doi: 10.11646/zootaxa.3703.1.1
+    study: "Zhang Z-Q (2013) — Animal biodiversity: An update of classification and diversity in 2013. In: Zhang, Z.-Q. (Ed.) Animal Biodiversity: An Outline of Higher-level Classification and Survey of Taxonomic Richness (Addenda 2013). Zootaxa 3703(1):5-11."
     pdf: null
-    url: null
+    url: https://doi.org/10.11646/zootaxa.3703.1.1
+    note: "Acari chapter in Zhang 2011/2013 Zootaxa series (Walter & Proctor, Zootaxa 3148). Estimates 100k-1M+ species (vast undescribed)."
   interval_provenance:
     described:
       type: database
@@ -35,14 +37,47 @@ estimate:
 
 tree: null
 caveats:
-  - severity: medium
-    summary: "No canonical tree shipped in the atlas."
+  - severity: high
+    summary: "Largest unrepresented atlas clade (~500k estimated species)"
     detail: |
-      Largest unrepresented clade (~500k species, mostly mites). Zhang 2013 reference; phylogenetics scattered across many papers.
+      ~55,000 described mites and ticks (paraphyletic group within
+      Arachnida: Acariformes + Parasitiformes). Estimated total may
+      exceed 1 million species. Klimov 2018 (Annu Rev Entomol) is the
+      most recent dated phylogenomic synthesis but covers only ~200
+      species across the two superorders. Pepato 2018 also produced
+      dated Acariformes framework. NO atlas-scale species tree exists —
+      mite phylogenetics is highly fragmented across families.
+
+dated_alternatives:
+  reason_canonical_undated: |
+    Backbone phylogenomic dating exists separately for the two
+    superorders (Acariformes via Pepato 2018; Parasitiformes via Klimov
+    2018) but no combined Acari-wide species-level chronogram. With
+    >100k undescribed species expected, comprehensive coverage is
+    unrealistic.
+  candidates:
+    - key: Klimov 2018
+      doi: 10.1146/annurev-ento-031616-035046
+      study: "Klimov PB, Hubert J, Erban T, Pekár S, Klompen H (2018) — Comparative analysis of Acari... Annu Rev Entomol — phylogenomic synthesis."
+      scope: Acari-wide phylogenomic review with dated framework
+      tips: ~200
+      note: "Most comprehensive recent synthesis spanning Acariformes + Parasitiformes."
+    - key: Pepato 2018
+      doi: 10.1093/sysbio/syy010
+      study: "Pepato AR, Klimov PB (2018) — Phylogeny of mites (Acari) using transcriptomes: contains evidence on the phylogeny of Acariformes. Syst Biol 67:651-670."
+      scope: Acariformes phylogenomic dated
+      tips: ~50
+      note: "Transcriptome-based Acariformes (mites) dated framework."
+    - key: Dunlop 2009
+      doi: 10.1098/rspb.2008.1700
+      study: "Dunlop JA, Selden PA (2009) — Calibrating the chelicerate clock: a paleontological reply to Jeyaprakash and Hoy. Exp Appl Acarol 48:183-197."
+      scope: Chelicerate fossil-calibrated framework including mites
+      tips: ~30
+      note: "Critical paleontological constraints for Acari deep-time dating."
 
 audit:
   file: ../../../audits/partitions/acari.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []

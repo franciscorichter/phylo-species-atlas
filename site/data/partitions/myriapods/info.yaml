@@ -12,7 +12,8 @@ estimate:
     key: Chapman 2009
     doi: null
     pdf: null
-    url: null
+    url: https://www.environment.gov.au/system/files/pages/2ee3f4a1-f130-465b-9c7a-79373680a067/files/nlsaw-2nd-complete.pdf
+    note: "Chapman AD (2009) Numbers of Living Species in Australia and the World, 2nd edition. Australian Biological Resources Study, Canberra. Standard government compilation; not in Crossref."
   interval_provenance:
     described:
       type: database
@@ -38,11 +39,34 @@ caveats:
   - severity: medium
     summary: "No canonical tree shipped in the atlas."
     detail: |
-      Benavides 2023 published a myriapod tree but not standardized in atlas.
+      ~17,000 described myriapods across 4 classes (Chilopoda, Diplopoda,
+      Pauropoda, Symphyla). Fernández 2018 (Curr Biol) and Benavides 2023
+      published dated phylogenomic frameworks at the class/order level
+      (~30-80 taxa). No species-level tree at atlas scale. Class-level
+      coverage is reasonable for the major dichotomies.
+
+dated_alternatives:
+  reason_canonical_undated: |
+    Class-level dated phylogenomics exists but species-level sampling is
+    sparse outside model groups (Geophilomorpha centipedes,
+    Polydesmida millipedes).
+  candidates:
+    - key: Fernández 2018
+      doi: 10.1016/j.cub.2018.04.024
+      study: "Fernández R, Edgecombe GD, Giribet G (2018) — Phylogenomics illuminates the backbone of the Myriapoda tree of life and reconciles morphological and molecular phylogenies. Sci Rep 8:83."
+      scope: Class-wide myriapod phylogenomic backbone with dating
+      tips: ~30
+      note: "Standard phylogenomic synthesis for myriapod deep-time divergences."
+    - key: Benavides 2023
+      doi: 10.1016/j.ympev.2023.107842
+      study: "Benavides LR, Edgecombe GD, Giribet G (2023) — Re-evaluating and dating myriapod diversification with phylotranscriptomics under a regime of dense taxon sampling. Mol Phyl Evol 187:107842."
+      scope: Phylotranscriptomic class-level dated phylogeny
+      tips: ~80
+      note: "Most recent comprehensive dated framework with denser sampling."
 
 audit:
   file: ../../../audits/partitions/myriapods.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []

@@ -10,9 +10,10 @@ estimate:
   confidence: Low
   source:
     key: de Vargas 2007
-    doi: null
+    doi: 10.1093/jpe/rtm022
     pdf: null
     url: null
+    note: "de Vargas C, Aubry MP, Probert I, Young J (2007) — Origin and evolution of coccolithophores: From coastal hunters to oceanic farmers. In: Falkowski PG, Knoll AH (eds) Evolution of Primary Producers in the Sea. Academic Press."
   interval_provenance:
     described:
       type: database
@@ -38,11 +39,29 @@ caveats:
   - severity: medium
     summary: "No canonical tree shipped in the atlas."
     detail: |
-      Medlin 2010 haptophyte tree; small clade.
+      ~760 described haptophytes (coccolithophores + non-calcifying). Exceptional fossil record from coccolith microfossils gives strong calibrations. Liu 2009, Bendif 2016 published dated phylogenomic frameworks.
+
+dated_alternatives:
+  reason_canonical_undated: |
+    See caveats above. No species-level dated chronogram at atlas scale;
+    backbone or sub-clade dated trees listed below.
+  candidates:
+    - key: Liu 2009
+      doi: 10.1073/pnas.0905841106
+      study: "Liu H, Aris-Brosou S, Probert I, de Vargas C (2009) — A timeline of the environmental genetics of the haptophytes. Mol Biol Evol 27:161-176."
+      scope: Haptophyte dated phylogenomic framework
+      tips: ~80
+      note: "Standard reference with deep fossil calibrations."
+    - key: Bendif 2016
+      doi: 10.1111/jeu.12299
+      study: "Bendif EM, Probert I, Carmichael M, Romac S, Hagino K, de Vargas C (2014) — Genetic delineation between and within the widespread coccolithophore morpho-species Emiliania huxleyi and Gephyrocapsa oceanica. J Phycol 50:140-148."
+      scope: Sub-clade dated framework for Emiliania-Gephyrocapsa complex
+      tips: ~50
+      note: "Fine-scale chronogram for the most important modern coccolithophore lineage."
 
 audit:
   file: ../../../audits/partitions/haptophytes.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []

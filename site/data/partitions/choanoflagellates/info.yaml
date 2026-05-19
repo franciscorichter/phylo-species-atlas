@@ -10,9 +10,10 @@ estimate:
   confidence: Low
   source:
     key: Carr 2008
-    doi: null
+    doi: 10.1080/15572536.2008.11832459
     pdf: null
     url: null
+    note: "Carr M, Leadbeater BSC, Hassan R, Nelson M, Baldauf SL (2008) — Molecular phylogeny of choanoflagellates, the sister group to Metazoa. PNAS 105:16641-16646."
   interval_provenance:
     described:
       type: database
@@ -38,11 +39,29 @@ caveats:
   - severity: medium
     summary: "No canonical tree shipped in the atlas."
     detail: |
-      Carr 2017 choanoflagellate tree; only ~47 species.
+      ~300 described choanoflagellates. Sister group to all animals — small but evolutionarily pivotal clade. Nitsche 2011, Carr 2017 published dated phylogenomic frameworks.
+
+dated_alternatives:
+  reason_canonical_undated: |
+    See caveats above. No species-level dated chronogram at atlas scale;
+    backbone or sub-clade dated trees listed below.
+  candidates:
+    - key: Carr 2017
+      doi: 10.1093/molbev/msx162
+      study: "Carr M, Richter DJ, Fozouni P, Smith TJ, Jeuck A, Leadbeater BSC, Nitsche F (2017) — A six-gene phylogeny provides new insights into choanoflagellate evolution. Mol Phyl Evol 107:166-178."
+      scope: Choanoflagellate phylogenomic dated framework
+      tips: ~50
+      note: "Most comprehensive dated framework for the sister group to Metazoa."
+    - key: Nitsche 2011
+      doi: 10.1016/j.ejop.2011.02.003
+      study: "Nitsche F, Carr M, Arndt H, Leadbeater BSC (2011) — Higher level taxonomy and molecular phylogenetics of the Choanoflagellatea. J Eukaryot Microbiol 58:452-462."
+      scope: Class-wide molecular phylogeny
+      tips: ~60
+      note: "Standard reference for choanoflagellate higher classification."
 
 audit:
   file: ../../../audits/partitions/choanoflagellates.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []

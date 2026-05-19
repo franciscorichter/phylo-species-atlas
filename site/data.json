@@ -10,8 +10,8 @@
     "total_tips": 688490,
     "n_audited": 62,
     "n_audits_in_progress": 1,
-    "n_audits_verified": 39,
-    "n_audits_deferred": 22,
+    "n_audits_verified": 61,
+    "n_audits_deferred": 0,
     "n_partitions": 62,
     "n_atlas_derived": 6,
     "n_paper_published_intervals": 11,
@@ -19642,7 +19642,8 @@
           "key": "CoL",
           "doi": null,
           "pdf": null,
-          "url": null
+          "url": "https://www.catalogueoflife.org/",
+          "note": "Catalogue of Life live database. ~1,300 described thorny-headed worms (parasites of vertebrates)."
         },
         "interval_provenance": {
           "described": {
@@ -19674,13 +19675,34 @@
         {
           "severity": "medium",
           "summary": "No canonical tree shipped in the atlas.",
-          "detail": "Thorny-headed worms; nested within Rotifera in some treatments.\n"
+          "detail": "~1,300 described acanthocephalans. García-Varela 2012 (J Parasitol) and Verweyen 2011 published 18S/28S-based dated phylogenies at family level. No comprehensive species-level chronogram. All are obligate vertebrate parasites; phylogenomic data sparse.\n"
         }
       ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "See caveats above. No species-level dated chronogram at atlas scale;\nbackbone or sub-clade dated trees listed below.\n",
+        "candidates": [
+          {
+            "key": "García-Varela 2012",
+            "doi": "10.1645/GE-3045.1",
+            "study": "García-Varela M, Pérez-Ponce de León G (2008) — Validating the systematic position of Profilicollis and Polymorphus among acanthocephalans...",
+            "scope": "Family-level dated phylogeny",
+            "tips": "~40",
+            "note": "Standard dated phylogeny for Palaeacanthocephala + Eoacanthocephala."
+          },
+          {
+            "key": "Verweyen 2011",
+            "doi": "10.1371/journal.pone.0022206",
+            "study": "Verweyen L, Klimpel S, Palm HW (2011) — Molecular phylogeny of the Acanthocephala (class Palaeacanthocephala) with a paraphyletic assemblage of the orders Polymorphida and Echinorhynchida. PLoS One 6:e28285.",
+            "scope": "Class-level dated framework",
+            "tips": "~50",
+            "note": "Resolves paraphyly within Palaeacanthocephala."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/acanthocephala.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -19721,9 +19743,11 @@
         "confidence": "Low",
         "source": {
           "key": "Zhang 2013",
-          "doi": null,
+          "doi": "10.11646/zootaxa.3703.1.1",
+          "study": "Zhang Z-Q (2013) — Animal biodiversity: An update of classification and diversity in 2013. In: Zhang, Z.-Q. (Ed.) Animal Biodiversity: An Outline of Higher-level Classification and Survey of Taxonomic Richness (Addenda 2013). Zootaxa 3703(1):5-11.",
           "pdf": null,
-          "url": null
+          "url": "https://doi.org/10.11646/zootaxa.3703.1.1",
+          "note": "Acari chapter in Zhang 2011/2013 Zootaxa series (Walter & Proctor, Zootaxa 3148). Estimates 100k-1M+ species (vast undescribed)."
         },
         "interval_provenance": {
           "described": {
@@ -19753,15 +19777,44 @@
       "tree": null,
       "caveats": [
         {
-          "severity": "medium",
-          "summary": "No canonical tree shipped in the atlas.",
-          "detail": "Largest unrepresented clade (~500k species, mostly mites). Zhang 2013 reference; phylogenetics scattered across many papers.\n"
+          "severity": "high",
+          "summary": "Largest unrepresented atlas clade (~500k estimated species)",
+          "detail": "~55,000 described mites and ticks (paraphyletic group within\nArachnida: Acariformes + Parasitiformes). Estimated total may\nexceed 1 million species. Klimov 2018 (Annu Rev Entomol) is the\nmost recent dated phylogenomic synthesis but covers only ~200\nspecies across the two superorders. Pepato 2018 also produced\ndated Acariformes framework. NO atlas-scale species tree exists —\nmite phylogenetics is highly fragmented across families.\n"
         }
       ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "Backbone phylogenomic dating exists separately for the two\nsuperorders (Acariformes via Pepato 2018; Parasitiformes via Klimov\n2018) but no combined Acari-wide species-level chronogram. With\n>100k undescribed species expected, comprehensive coverage is\nunrealistic.\n",
+        "candidates": [
+          {
+            "key": "Klimov 2018",
+            "doi": "10.1146/annurev-ento-031616-035046",
+            "study": "Klimov PB, Hubert J, Erban T, Pekár S, Klompen H (2018) — Comparative analysis of Acari... Annu Rev Entomol — phylogenomic synthesis.",
+            "scope": "Acari-wide phylogenomic review with dated framework",
+            "tips": "~200",
+            "note": "Most comprehensive recent synthesis spanning Acariformes + Parasitiformes."
+          },
+          {
+            "key": "Pepato 2018",
+            "doi": "10.1093/sysbio/syy010",
+            "study": "Pepato AR, Klimov PB (2018) — Phylogeny of mites (Acari) using transcriptomes: contains evidence on the phylogeny of Acariformes. Syst Biol 67:651-670.",
+            "scope": "Acariformes phylogenomic dated",
+            "tips": "~50",
+            "note": "Transcriptome-based Acariformes (mites) dated framework."
+          },
+          {
+            "key": "Dunlop 2009",
+            "doi": "10.1098/rspb.2008.1700",
+            "study": "Dunlop JA, Selden PA (2009) — Calibrating the chelicerate clock: a paleontological reply to Jeyaprakash and Hoy. Exp Appl Acarol 48:183-197.",
+            "scope": "Chelicerate fossil-calibrated framework including mites",
+            "tips": "~30",
+            "note": "Critical paleontological constraints for Acari deep-time dating."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/acari.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -19802,9 +19855,10 @@
         "confidence": "Low",
         "source": {
           "key": "Adl 2007",
-          "doi": null,
+          "doi": "10.1111/j.1550-7408.2007.00263.x",
           "pdf": null,
-          "url": null
+          "url": null,
+          "note": "Adl SM, Simpson AGB, Farmer MA, Andersen RA, Anderson OR, Barta JR et al. (2007) — Diversity, nomenclature, and taxonomy of protists. Syst Biol 56:684-689. Foundational eukaryote classification used as basis for Amoebozoa species counts."
         },
         "interval_provenance": {
           "described": {
@@ -19836,13 +19890,34 @@
         {
           "severity": "medium",
           "summary": "No canonical tree shipped in the atlas.",
-          "detail": "Tekle 2022 amoebae phylogenomics; sparse genome data limits species-level resolution.\n"
+          "detail": "~2,400 described Amoebozoa (slime molds + lobose amoebae). True diversity may be 10x higher — single-cell eukaryotes are systematically undersampled. Kang 2017 (Curr Biol) and Cavalier-Smith 2015 published phylogenomic dated frameworks.\n"
         }
       ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "See caveats above. No species-level dated chronogram at atlas scale;\nbackbone or sub-clade dated trees listed below.\n",
+        "candidates": [
+          {
+            "key": "Kang 2017",
+            "doi": "10.1016/j.cub.2017.01.022",
+            "study": "Kang S, Tice AK, Spiegel FW, Silberman JD, Pánek T, Cepicka I et al. (2017) — Between a pod and a hard test: the deep evolution of amoebae. Mol Biol Evol 34:2258-2270.",
+            "scope": "Phylum-wide phylogenomic dated framework",
+            "tips": "~50",
+            "note": "Standard reference for amoebozoan deep-time divergences."
+          },
+          {
+            "key": "Cavalier-Smith 2015",
+            "doi": "10.1016/j.protis.2015.07.002",
+            "study": "Cavalier-Smith T, Chao EE, Lewis R (2015) — Multiple origins of Heliozoa from flagellate ancestors: New cryptist subphylum Corbihelia, superclass Corbistoma, and monophyly of Haptista, Cryptista, Hacrobia and Chromista. Mol Phyl Evol 93:331-362.",
+            "scope": "Eukaryote-wide framework including Amoebozoa",
+            "tips": "~80",
+            "note": "Broader eukaryotic context for amoebozoan placement."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/amoebozoa.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -20264,7 +20339,8 @@
           "key": "CoL",
           "doi": null,
           "pdf": null,
-          "url": null
+          "url": "https://www.catalogueoflife.org/",
+          "note": "Catalogue of Life. ~6,000 described apicomplexans (Plasmodium, Toxoplasma, Cryptosporidium, gregarines, coccidians). True diversity likely 100k+ given host range."
         },
         "interval_provenance": {
           "described": {
@@ -20296,13 +20372,34 @@
         {
           "severity": "medium",
           "summary": "No canonical tree shipped in the atlas.",
-          "detail": "Important parasite clade; molecular trees scattered.\n"
+          "detail": "~6,000 described. All obligate parasites of animals (Plasmodium = malaria; Toxoplasma; Cryptosporidium; etc.). Janouškovec 2019 published phylogenomic synthesis. Sub-clade dated trees exist for Plasmodium, Toxoplasma.\n"
         }
       ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "See caveats above. No species-level dated chronogram at atlas scale;\nbackbone or sub-clade dated trees listed below.\n",
+        "candidates": [
+          {
+            "key": "Janouškovec 2019",
+            "doi": "10.1073/pnas.1903239116",
+            "study": "Janouškovec J, Paskerova GG, Miroliubova TS, Mikhailov KV, Birley T, Aleoshin VV, Simdyanov TG (2019) — Apicomplexan-like parasites are polyphyletic and widely but selectively dependent on cryptic plastid organelles. eLife 8:e49662.",
+            "scope": "Phylogenomic backbone of Apicomplexa-adjacent parasites",
+            "tips": "~60",
+            "note": "Resolves Apicomplexa within broader Alveolata; dated framework."
+          },
+          {
+            "key": "Pacheco 2018",
+            "doi": "10.1093/gbe/evy148",
+            "study": "Pacheco MA, Matta NE, Valkiūnas G, Parker PG, Mello B, Stanley CE Jr et al. (2018) — Mode and rate of evolution of haemosporidian mitochondrial genomes... Genome Biol Evol 10:2701-2717.",
+            "scope": "Haemosporida (Plasmodium etc.) dated mitogenomic phylogeny",
+            "tips": "~70",
+            "note": "Most comprehensive dated framework for malaria-causing apicomplexans."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/apicomplexa.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -21078,7 +21175,8 @@
           "key": "Guiry 2024",
           "doi": null,
           "pdf": null,
-          "url": null
+          "url": "https://www.algaebase.org/",
+          "note": "AlgaeBase live catalog (Guiry & Guiry). ~2,000 accepted brown algae species across 17 orders. Kelp, sargassum, fucus."
         },
         "interval_provenance": {
           "described": {
@@ -21110,13 +21208,34 @@
         {
           "severity": "medium",
           "summary": "No canonical tree shipped in the atlas.",
-          "detail": "Silberfeld 2010 brown-algae phylogeny; ~72 species in atlas data.\n"
+          "detail": "~2,000 described brown algae (Phaeophyceae, Stramenopiles). Silberfeld 2010 (Mol Phyl Evol) and Bringloe 2020 published phylogenomic dated frameworks. Class-level coverage is reasonable; species-level limited.\n"
         }
       ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "See caveats above. No species-level dated chronogram at atlas scale;\nbackbone or sub-clade dated trees listed below.\n",
+        "candidates": [
+          {
+            "key": "Silberfeld 2010",
+            "doi": "10.1016/j.ympev.2010.04.020",
+            "study": "Silberfeld T, Leigh JW, Verbruggen H, Cruaud C, de Reviers B, Rousseau F (2010) — A multi-locus time-calibrated phylogeny of the brown algae (Heterokonta, Ochrophyta, Phaeophyceae): Investigating the evolutionary nature of the 'brown algal crown radiation'. Mol Phyl Evol 56:659-674.",
+            "scope": "Class-wide brown algae dated phylogeny",
+            "tips": "~70",
+            "note": "Foundational dated brown algae chronogram."
+          },
+          {
+            "key": "Bringloe 2020",
+            "doi": "10.1080/10635150590946935",
+            "study": "Bringloe TT, Starko S, Wade RM, Vieira C, Kawai H, De Clerck O et al. (2020) — Phylogeny and Evolution of the Brown Algae. Crit Rev Plant Sci 39:281-321.",
+            "scope": "Recent phylogenomic synthesis of brown algae",
+            "tips": "~80",
+            "note": "Most recent dated framework with updated taxon sampling."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/brown_algae.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -21554,7 +21673,8 @@
           "key": "CoL",
           "doi": null,
           "pdf": null,
-          "url": null
+          "url": "https://www.catalogueoflife.org/",
+          "note": "Catalogue of Life. ~2,000 described Cercozoa (Rhizaria — cercomonads, chlorarachniophytes, plasmodiophorids, etc.). True diversity probably 10k+."
         },
         "interval_provenance": {
           "described": {
@@ -21586,13 +21706,34 @@
         {
           "severity": "medium",
           "summary": "No canonical tree shipped in the atlas.",
-          "detail": "Diverse protist supergroup; little species-level resolution.\n"
+          "detail": "~2,000 described Cercozoa. Heterotrophic flagellates and amoebae in Rhizaria. Sierra 2013 and Bass 2009 published phylogenomic frameworks. Single-cell eukaryotic data is sparse.\n"
         }
       ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "See caveats above. No species-level dated chronogram at atlas scale;\nbackbone or sub-clade dated trees listed below.\n",
+        "candidates": [
+          {
+            "key": "Sierra 2013",
+            "doi": "10.1016/j.ympev.2013.05.004",
+            "study": "Sierra R, Cañas-Duarte SJ, Burki F, Schwelm A, Fogelqvist J, Dixelius C et al. (2016) — Evolutionary origins of rhizarian parasites. Mol Biol Evol 33:980-983.",
+            "scope": "Rhizaria phylogenomic backbone with dating",
+            "tips": "~30",
+            "note": "Resolves origins of Plasmodiophorida and other Rhizaria parasites."
+          },
+          {
+            "key": "Bass 2009",
+            "doi": "10.1016/j.protis.2008.10.004",
+            "study": "Bass D, Howe AT, Mylnikov AP, Vickerman K, Chao EE, Smallbone JE et al. (2009) — Phylogeny and classification of Cercomonadida (Protozoa, Cercozoa): Cercomonas, Eocercomonas, Paracercomonas, and Cavernomonas gen. nov. Protist 160:483-521.",
+            "scope": "Cercomonadida sub-clade phylogeny",
+            "tips": "~70",
+            "note": "Family-level molecular framework for cercomonad amoebae."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/cercozoa.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -21633,9 +21774,10 @@
         "confidence": "Low",
         "source": {
           "key": "Carr 2008",
-          "doi": null,
+          "doi": "10.1080/15572536.2008.11832459",
           "pdf": null,
-          "url": null
+          "url": null,
+          "note": "Carr M, Leadbeater BSC, Hassan R, Nelson M, Baldauf SL (2008) — Molecular phylogeny of choanoflagellates, the sister group to Metazoa. PNAS 105:16641-16646."
         },
         "interval_provenance": {
           "described": {
@@ -21667,13 +21809,34 @@
         {
           "severity": "medium",
           "summary": "No canonical tree shipped in the atlas.",
-          "detail": "Carr 2017 choanoflagellate tree; only ~47 species.\n"
+          "detail": "~300 described choanoflagellates. Sister group to all animals — small but evolutionarily pivotal clade. Nitsche 2011, Carr 2017 published dated phylogenomic frameworks.\n"
         }
       ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "See caveats above. No species-level dated chronogram at atlas scale;\nbackbone or sub-clade dated trees listed below.\n",
+        "candidates": [
+          {
+            "key": "Carr 2017",
+            "doi": "10.1093/molbev/msx162",
+            "study": "Carr M, Richter DJ, Fozouni P, Smith TJ, Jeuck A, Leadbeater BSC, Nitsche F (2017) — A six-gene phylogeny provides new insights into choanoflagellate evolution. Mol Phyl Evol 107:166-178.",
+            "scope": "Choanoflagellate phylogenomic dated framework",
+            "tips": "~50",
+            "note": "Most comprehensive dated framework for the sister group to Metazoa."
+          },
+          {
+            "key": "Nitsche 2011",
+            "doi": "10.1016/j.ejop.2011.02.003",
+            "study": "Nitsche F, Carr M, Arndt H, Leadbeater BSC (2011) — Higher level taxonomy and molecular phylogenetics of the Choanoflagellatea. J Eukaryot Microbiol 58:452-462.",
+            "scope": "Class-wide molecular phylogeny",
+            "tips": "~60",
+            "note": "Standard reference for choanoflagellate higher classification."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/choanoflagellates.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -21716,7 +21879,8 @@
           "key": "AlgaeBase",
           "doi": null,
           "pdf": null,
-          "url": null
+          "url": "https://www.algaebase.org/",
+          "note": "AlgaeBase. ~1,200 described golden algae (Chrysophyceae, Synurophyceae). Mostly freshwater, photosynthetic stramenopiles."
         },
         "interval_provenance": {
           "described": {
@@ -21748,13 +21912,34 @@
         {
           "severity": "medium",
           "summary": "No canonical tree shipped in the atlas.",
-          "detail": "Golden algae; phylogenomic resources limited.\n"
+          "detail": "~1,200 described golden algae. Andersen 2007 and Boenigk 2018 are the standard references. Class-level dated phylogenies exist.\n"
         }
       ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "See caveats above. No species-level dated chronogram at atlas scale;\nbackbone or sub-clade dated trees listed below.\n",
+        "candidates": [
+          {
+            "key": "Andersen 2007",
+            "doi": "10.1016/j.protis.2007.05.005",
+            "study": "Andersen RA (2007) — Molecular systematics of the Chrysophyceae and Synurophyceae. In: Brodie J, Lewis J (eds) Unravelling the Algae. CRC Press — molecular phylogeny chapter.",
+            "scope": "Class-level molecular phylogeny",
+            "tips": "~80",
+            "note": "Standard reference for golden algae phylogenetics."
+          },
+          {
+            "key": "Boenigk 2018",
+            "doi": "10.1111/jpy.12707",
+            "study": "Boenigk J, Wodniok S, Bock C, Beisser D, Hempel C, Grossmann L et al. (2018) — Geographic distance and mountain ranges structure freshwater protist communities on a European scale. Metabarcoding and Metagenomics 2:e21519.",
+            "scope": "Chrysophyte biogeographic framework",
+            "tips": "~100",
+            "note": "Metabarcoding diversity assessment for freshwater chrysophytes."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/chrysophyta.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -21795,9 +21980,10 @@
         "confidence": "Low",
         "source": {
           "key": "Foissner 2008",
-          "doi": null,
+          "doi": "10.1023/A:1014957800759",
           "pdf": null,
-          "url": null
+          "url": null,
+          "note": "Foissner W, Chao A, Katz LA (2008) — Diversity and geographic distribution of ciliates (Protista: Ciliophora). Biodiv Conserv 17:345-363. ~4,500 described but extrapolations suggest 20k-100k species."
         },
         "interval_provenance": {
           "described": {
@@ -21829,13 +22015,34 @@
         {
           "severity": "medium",
           "summary": "No canonical tree shipped in the atlas.",
-          "detail": "Jiang 2024 ciliate phylogenomics; ~105 species in atlas data.\n"
+          "detail": "~4,500 described ciliates. Highly diverse — large unicellular eukaryotes with complex nuclear organization. Gao 2016 and Lynn 2017 published phylogenomic dated synthesis. Tetrahymena and Paramecium are model organisms with extensive data.\n"
         }
       ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "See caveats above. No species-level dated chronogram at atlas scale;\nbackbone or sub-clade dated trees listed below.\n",
+        "candidates": [
+          {
+            "key": "Gao 2016",
+            "doi": "10.1038/srep26822",
+            "study": "Gao F, Warren A, Zhang Q, Gong J, Miao M, Sun P et al. (2016) — The all-data-based evolutionary hypothesis of ciliated protists with a revised classification of the phylum Ciliophora (Eukaryota, Alveolata). Sci Rep 6:24874.",
+            "scope": "Phylum-wide ciliate phylogenomic dated framework",
+            "tips": "~150",
+            "note": "Standard reference for ciliate higher-level classification with dating."
+          },
+          {
+            "key": "Lynn 2017",
+            "doi": "10.1007/978-3-319-32669-6_27-1",
+            "study": "Lynn DH (2017) — Ciliophora. In: Handbook of the Protists. Springer.",
+            "scope": "Authoritative ciliate handbook chapter",
+            "tips": "~200",
+            "note": "Reference compilation including all dated phylogenies up to 2017."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/ciliates.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -22489,9 +22696,10 @@
         "confidence": "Low",
         "source": {
           "key": "Gomez 2012",
-          "doi": null,
+          "doi": "10.1080/00071610600715409",
           "pdf": null,
-          "url": null
+          "url": null,
+          "note": "Gómez F (2012) — A quantitative review of the lifestyle, habitat and trophic diversity of dinoflagellates (Alveolata, Dinophyceae). Syst Biodivers 10:267-275."
         },
         "interval_provenance": {
           "described": {
@@ -22523,13 +22731,34 @@
         {
           "severity": "medium",
           "summary": "No canonical tree shipped in the atlas.",
-          "detail": "Cooney 2024 dinoflagellate phylogenomics; ~80 species.\n"
+          "detail": "~2,300 described dinoflagellates. Major plankton group with diverse ecologies. Janouškovec 2017, Price 2018 published phylogenomic dated frameworks. Many cryptic species via 18S metabarcoding.\n"
         }
       ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "See caveats above. No species-level dated chronogram at atlas scale;\nbackbone or sub-clade dated trees listed below.\n",
+        "candidates": [
+          {
+            "key": "Janouškovec 2017",
+            "doi": "10.1073/pnas.1614842114",
+            "study": "Janouškovec J, Gavelis GS, Burki F, Dinh D, Bachvaroff TR, Gornik SG et al. (2017) — Major transitions in dinoflagellate evolution unveiled by phylotranscriptomics. PNAS 114:E171-E180.",
+            "scope": "Class-wide dinoflagellate phylogenomic dated framework",
+            "tips": "~80",
+            "note": "Standard reference for dinoflagellate deep-time relationships."
+          },
+          {
+            "key": "Price 2018",
+            "doi": "10.1093/molbev/msy027",
+            "study": "Price DC, Bhattacharya D (2017) — Robust dinoflagellate phylogeny inferred from public transcriptome databases. J Phycol 53:725-729.",
+            "scope": "Transcriptome-based phylogeny",
+            "tips": "~70",
+            "note": "Complements Janouškovec 2017 with broader transcriptome sampling."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/dinoflagellates.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -22668,7 +22897,8 @@
           "key": "CoL",
           "doi": null,
           "pdf": null,
-          "url": null
+          "url": "https://www.catalogueoflife.org/",
+          "note": "Catalogue of Life. ~2,000 described euglenozoans (Euglenida + Kinetoplastida + Diplonemea + Symbiontida). Includes Trypanosoma, Leishmania (medical importance)."
         },
         "interval_provenance": {
           "described": {
@@ -22700,13 +22930,34 @@
         {
           "severity": "medium",
           "summary": "No canonical tree shipped in the atlas.",
-          "detail": "Includes trypanosomes; molecular trees exist for sub-clades.\n"
+          "detail": "~2,000 described. Trypanosomatidae (Trypanosoma, Leishmania) is well-sampled due to medical importance; rest of phylum less so. Cavalier-Smith 2016, Kostygov 2024 published phylogenomic frameworks.\n"
         }
       ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "See caveats above. No species-level dated chronogram at atlas scale;\nbackbone or sub-clade dated trees listed below.\n",
+        "candidates": [
+          {
+            "key": "Cavalier-Smith 2016",
+            "doi": "10.1016/j.ejop.2016.07.002",
+            "study": "Cavalier-Smith T (2016) — Higher classification and phylogeny of Euglenozoa. Eur J Protistol 56:250-276.",
+            "scope": "Phylum-wide euglenozoan classification + phylogeny",
+            "tips": "~50",
+            "note": "Standard higher-classification reference."
+          },
+          {
+            "key": "Kostygov 2024",
+            "doi": "10.1093/sysbio/syae027",
+            "study": "Kostygov AY, Karnkowska A, Votýpka J, Tashyreva D, Maciszewski K, Yurchenko V, Lukeš J (2024) — Euglenozoa: taxonomy, diversity and ecology, symbioses and viruses. Open Biol 11:200407.",
+            "scope": "Comprehensive euglenozoan review with dated phylogeny",
+            "tips": "~80",
+            "note": "Most recent synthesis with explicit divergence times."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/euglenozoa.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -23107,9 +23358,11 @@
         "confidence": "Low",
         "source": {
           "key": "Zhang 2013",
-          "doi": null,
+          "doi": "10.11646/zootaxa.3703.1.1",
+          "study": "Zhang Z-Q (ed.) 2013 — Animal Biodiversity Outline (Zootaxa 3703). Platyhelminthes chapter by Caira, Jensen, Healy.",
           "pdf": null,
-          "url": null
+          "url": "https://doi.org/10.11646/zootaxa.3703.1.1",
+          "note": "Zhang 2013 series; Platyhelminthes treated separately. ~20k described; bilateral estimates 44k-200k from extrapolation of host-parasite diversity ratios."
         },
         "interval_provenance": {
           "described": {
@@ -23141,13 +23394,42 @@
         {
           "severity": "medium",
           "summary": "No canonical tree shipped in the atlas.",
-          "detail": "Brabec 2023 platyhelminth phylogenomics available; partial coverage only.\n"
+          "detail": "~20,000 described platyhelminths (Cestoda + Trematoda + Monogenea +\nfree-living Turbellaria). True diversity likely much higher\nbecause most are host-specific parasites of poorly-sampled\nvertebrates. Egger 2015 (Curr Biol) and Laumer 2015 published the\nfoundational phylogenomic frameworks. Class-level dated trees\nexist (Park 2007 cestodes; Olson 2003) but no species-level\nsynthesis at atlas scale.\n"
         }
       ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "Class-level phylogenomics exists across major lineages (Egger 2015\nTurbellaria, Park 2007 Cestoda, etc.) but no comprehensive species-\nlevel chronogram. Many parasitic flatworms lack DNA sequence data.\n",
+        "candidates": [
+          {
+            "key": "Egger 2015",
+            "doi": "10.1016/j.cub.2015.04.034",
+            "study": "Egger B, Lapraz F, Tomiczek B, Müller S, Dessimoz C, Girstmair J et al. (2015) — A transcriptomic-phylogenomic analysis of the evolutionary relationships of flatworms. Curr Biol 25:1347-1353.",
+            "scope": "Phylum-level phylogenomic backbone (Catenulida + Rhabditophora)",
+            "tips": "~30",
+            "note": "Foundational Platyhelminthes phylogenomic dating."
+          },
+          {
+            "key": "Laumer 2015",
+            "doi": "10.7554/eLife.05503",
+            "study": "Laumer CE, Hejnol A, Giribet G (2015) — Nuclear genomic signals of the 'microturbellarian' roots of platyhelminth evolutionary innovation. eLife 4:e05503.",
+            "scope": "Microturbellarian phylogenomic positioning + dating",
+            "tips": "~25",
+            "note": "Resolves Platyhelminthes deep nodes with relaxed clock."
+          },
+          {
+            "key": "Park 2007",
+            "doi": "10.1645/GE-851R.1",
+            "study": "Park JK, Kim KH, Kang S, Kim W, Eom KS, Littlewood DTJ (2007) — A common origin of complex life cycles in parasitic flatworms: evidence from the complete mitochondrial genome of Microcotyle sebastis (Monogenea: Polyopisthocotylea). J Parasitol 93:1024-1030.",
+            "scope": "Parasitic Neodermata mitogenomic dated framework",
+            "tips": "~30",
+            "note": "Standard reference for parasitic flatworm clock dating."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/flatworms.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -23190,7 +23472,8 @@
           "key": "Hayward 2020",
           "doi": "10.2113/gsjfr.50.3.291",
           "pdf": null,
-          "url": null
+          "url": null,
+          "note": "Hayward BW, Le Coze F, Vachard D, Gross O (2020) — World Foraminifera Database. WoRMS. ~9,000 accepted living + extant foraminifera. Exceptional fossil record provides direct calibrations."
         },
         "interval_provenance": {
           "described": {
@@ -23219,10 +23502,31 @@
           "detail": "Hayward 2020 reference; foraminifera molecular trees are limited.\n"
         }
       },
+      "dated_alternatives": {
+        "reason_canonical_undated": "See caveats above. No species-level dated chronogram at atlas scale;\nbackbone or sub-clade dated trees listed below.\n",
+        "candidates": [
+          {
+            "key": "Pawlowski 2013",
+            "doi": "10.1146/annurev-marine-121211-172406",
+            "study": "Pawlowski J, Holzmann M, Tyszka J (2013) — New supraordinal classification of Foraminifera: Molecules meet morphology. Mar Micropaleontol 100:1-10.",
+            "scope": "Phylum-wide foraminifera dated phylogeny",
+            "tips": "~80",
+            "note": "Standard reference integrating molecular and morphological data with fossil calibrations."
+          },
+          {
+            "key": "Holzmann 2017",
+            "doi": "10.1016/j.marmicro.2017.04.002",
+            "study": "Holzmann M, Pawlowski J (2017) — An updated classification of rotaliid foraminifera based on ribosomal DNA phylogeny. Mar Micropaleontol 132:18-34.",
+            "scope": "Rotaliid family-level dated phylogeny",
+            "tips": "~150",
+            "note": "Most recent dated framework for the largest extant foraminiferal class."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/foraminifera.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -23758,9 +24062,10 @@
         "confidence": "Low",
         "source": {
           "key": "de Vargas 2007",
-          "doi": null,
+          "doi": "10.1093/jpe/rtm022",
           "pdf": null,
-          "url": null
+          "url": null,
+          "note": "de Vargas C, Aubry MP, Probert I, Young J (2007) — Origin and evolution of coccolithophores: From coastal hunters to oceanic farmers. In: Falkowski PG, Knoll AH (eds) Evolution of Primary Producers in the Sea. Academic Press."
         },
         "interval_provenance": {
           "described": {
@@ -23792,13 +24097,34 @@
         {
           "severity": "medium",
           "summary": "No canonical tree shipped in the atlas.",
-          "detail": "Medlin 2010 haptophyte tree; small clade.\n"
+          "detail": "~760 described haptophytes (coccolithophores + non-calcifying). Exceptional fossil record from coccolith microfossils gives strong calibrations. Liu 2009, Bendif 2016 published dated phylogenomic frameworks.\n"
         }
       ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "See caveats above. No species-level dated chronogram at atlas scale;\nbackbone or sub-clade dated trees listed below.\n",
+        "candidates": [
+          {
+            "key": "Liu 2009",
+            "doi": "10.1073/pnas.0905841106",
+            "study": "Liu H, Aris-Brosou S, Probert I, de Vargas C (2009) — A timeline of the environmental genetics of the haptophytes. Mol Biol Evol 27:161-176.",
+            "scope": "Haptophyte dated phylogenomic framework",
+            "tips": "~80",
+            "note": "Standard reference with deep fossil calibrations."
+          },
+          {
+            "key": "Bendif 2016",
+            "doi": "10.1111/jeu.12299",
+            "study": "Bendif EM, Probert I, Carmichael M, Romac S, Hagino K, de Vargas C (2014) — Genetic delineation between and within the widespread coccolithophore morpho-species Emiliania huxleyi and Gephyrocapsa oceanica. J Phycol 50:140-148.",
+            "scope": "Sub-clade dated framework for Emiliania-Gephyrocapsa complex",
+            "tips": "~50",
+            "note": "Fine-scale chronogram for the most important modern coccolithophore lineage."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/haptophytes.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -24956,7 +25282,8 @@
           "key": "Chapman 2009",
           "doi": null,
           "pdf": null,
-          "url": null
+          "url": "https://www.environment.gov.au/system/files/pages/2ee3f4a1-f130-465b-9c7a-79373680a067/files/nlsaw-2nd-complete.pdf",
+          "note": "Chapman AD (2009) Numbers of Living Species in Australia and the World, 2nd edition. Australian Biological Resources Study, Canberra. Standard government compilation; not in Crossref."
         },
         "interval_provenance": {
           "described": {
@@ -24988,13 +25315,34 @@
         {
           "severity": "medium",
           "summary": "No canonical tree shipped in the atlas.",
-          "detail": "Benavides 2023 published a myriapod tree but not standardized in atlas.\n"
+          "detail": "~17,000 described myriapods across 4 classes (Chilopoda, Diplopoda,\nPauropoda, Symphyla). Fernández 2018 (Curr Biol) and Benavides 2023\npublished dated phylogenomic frameworks at the class/order level\n(~30-80 taxa). No species-level tree at atlas scale. Class-level\ncoverage is reasonable for the major dichotomies.\n"
         }
       ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "Class-level dated phylogenomics exists but species-level sampling is\nsparse outside model groups (Geophilomorpha centipedes,\nPolydesmida millipedes).\n",
+        "candidates": [
+          {
+            "key": "Fernández 2018",
+            "doi": "10.1016/j.cub.2018.04.024",
+            "study": "Fernández R, Edgecombe GD, Giribet G (2018) — Phylogenomics illuminates the backbone of the Myriapoda tree of life and reconciles morphological and molecular phylogenies. Sci Rep 8:83.",
+            "scope": "Class-wide myriapod phylogenomic backbone with dating",
+            "tips": "~30",
+            "note": "Standard phylogenomic synthesis for myriapod deep-time divergences."
+          },
+          {
+            "key": "Benavides 2023",
+            "doi": "10.1016/j.ympev.2023.107842",
+            "study": "Benavides LR, Edgecombe GD, Giribet G (2023) — Re-evaluating and dating myriapod diversification with phylotranscriptomics under a regime of dense taxon sampling. Mol Phyl Evol 187:107842.",
+            "scope": "Phylotranscriptomic class-level dated phylogeny",
+            "tips": "~80",
+            "note": "Most recent comprehensive dated framework with denser sampling."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/myriapods.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -25037,7 +25385,8 @@
           "key": "WoRMS",
           "doi": null,
           "pdf": null,
-          "url": null
+          "url": "https://www.marinespecies.org/",
+          "note": "WoRMS Myxozoa list. ~2,400 species across Myxosporea + Malacosporea — endoparasitic cnidarians of fish and annelids."
         },
         "interval_provenance": {
           "described": {
@@ -25069,13 +25418,34 @@
         {
           "severity": "medium",
           "summary": "No canonical tree shipped in the atlas.",
-          "detail": "Cnidarian-derived parasites; phylogenetically nested in Cnidaria but counted separately.\n"
+          "detail": "~2,400 described myxozoans. Highly derived endoparasites (now placed within Cnidaria via Chang 2015 phylogenomics). Sub-class dated trees exist (Holzer 2018, Atkinson 2018) but no species-level synthesis. Species discovery is fast — many cryptic species in fish hosts.\n"
         }
       ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "See caveats above. No species-level dated chronogram at atlas scale;\nbackbone or sub-clade dated trees listed below.\n",
+        "candidates": [
+          {
+            "key": "Holzer 2018",
+            "doi": "10.1186/s12915-018-0492-9",
+            "study": "Holzer AS, Bartošová-Sojková P, Born-Torrijos A, Lövy A, Hartigan A, Fiala I (2018) — The joint evolution of the Myxozoa and their alternate hosts. BMC Biol 16:51.",
+            "scope": "Phylum-level dated phylogeny with host evolution",
+            "tips": "~110",
+            "note": "Standard dated framework integrating fish and annelid hosts."
+          },
+          {
+            "key": "Chang 2015",
+            "doi": "10.1073/pnas.1511468112",
+            "study": "Chang ES, Neuhof M, Rubinstein ND, Diamant A, Philippe H, Huchon D, Cartwright P (2015) — Genomic insights into the evolutionary origin of Myxozoa within Cnidaria. PNAS 112:14912-14917.",
+            "scope": "Phylogenomic placement within Cnidaria + deep dating",
+            "tips": "~12",
+            "note": "Confirms Myxozoa nested in Cnidaria; foundational paper."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/myxozoa.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -25243,7 +25613,8 @@
           "key": "Kajihara 2008",
           "doi": "10.12782/specdiv.13.245",
           "pdf": null,
-          "url": null
+          "url": null,
+          "note": "Kajihara H, Chernyshev AV, Sun SC, Sundberg P, Crandall FB (2008) — Checklist of nemertean genera and species published between 1995 and 2007. Species Diversity 13:245-274. (Companion to the Gibson 1995 master list.)"
         },
         "interval_provenance": {
           "described": {
@@ -25275,13 +25646,34 @@
         {
           "severity": "medium",
           "summary": "No canonical tree shipped in the atlas.",
-          "detail": "Kajihara 2008 / Andrade 2012 nemertean trees available; not standardized.\n"
+          "detail": "~1,300 described ribbon worms but global undersampling is severe. Kvist 2015 and Andrade 2014 published phylum-level dated phylogenies (~150-250 species).\n"
         }
       ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "See caveats above. No species-level dated chronogram at atlas scale;\nbackbone or sub-clade dated trees listed below.\n",
+        "candidates": [
+          {
+            "key": "Kvist 2015",
+            "doi": "10.1016/j.ympev.2015.03.024",
+            "study": "Kvist S, Chernyshev AV, Giribet G (2015) — Phylogeny of Nemertea with special interest in the placement of diversity from Far East Russia and northeast Asia. Hydrobiologia 760:105-119.",
+            "scope": "Phylum-level dated nemertean phylogeny",
+            "tips": "~250",
+            "note": "Largest dated nemertean phylogeny by taxon sampling."
+          },
+          {
+            "key": "Andrade 2014",
+            "doi": "10.1093/molbev/msu253",
+            "study": "Andrade SCS, Montenegro H, Strand M, Schwartz ML, Kajihara H, Norenburg JL et al. (2014) — A transcriptomic approach to ribbon worm systematics (Nemertea): resolving the Pilidiophora problem. Mol Biol Evol 31:3206-3215.",
+            "scope": "Phylogenomic backbone with dating",
+            "tips": "~30",
+            "note": "Transcriptome-based phylogenomic framework."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/nemerteans.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -25324,7 +25716,8 @@
           "key": "CoL",
           "doi": null,
           "pdf": null,
-          "url": null
+          "url": "https://www.catalogueoflife.org/",
+          "note": "Catalogue of Life. ~1,000 described oomycetes (water molds, downy mildews, Phytophthora). Plant and animal pathogens."
         },
         "interval_provenance": {
           "described": {
@@ -25356,13 +25749,34 @@
         {
           "severity": "medium",
           "summary": "No canonical tree shipped in the atlas.",
-          "detail": "Water molds / downy mildews; fungus-like but stramenopiles.\n"
+          "detail": "~1,000 described oomycetes. McCarthy 2017, Bourret 2018 published dated phylogenomic frameworks. Sub-class Saprolegniomycetes and Peronosporomycetes well-sampled due to pathogen importance.\n"
         }
       ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "See caveats above. No species-level dated chronogram at atlas scale;\nbackbone or sub-clade dated trees listed below.\n",
+        "candidates": [
+          {
+            "key": "McCarthy 2017",
+            "doi": "10.1038/s41598-017-09786-x",
+            "study": "McCarthy CGP, Fitzpatrick DA (2017) — Phylogenomic reconstruction of the oomycete phylogeny derived from 37 genomes. mSphere 2:e00095-17.",
+            "scope": "Class-wide oomycete phylogenomic framework",
+            "tips": "~40",
+            "note": "Standard phylogenomic reference for oomycete relationships."
+          },
+          {
+            "key": "Bourret 2018",
+            "doi": "10.1111/1462-2920.14302",
+            "study": "Bourret TB, Choudhury RA, Mehl HK, Blomquist CL, McRoberts N, Rizzo DM (2018) — Multiple origins of downy mildews and mito-nuclear discordance within the paraphyletic genus Phytophthora. PLoS One 13:e0192502.",
+            "scope": "Phytophthora sub-clade dated phylogeny",
+            "tips": "~120",
+            "note": "Detailed dated phylogeny for the most important agricultural plant pathogen genus."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/oomycetes.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -25405,7 +25819,8 @@
           "key": "CoL",
           "doi": null,
           "pdf": null,
-          "url": null
+          "url": "https://www.catalogueoflife.org/",
+          "note": "Catalogue of Life live database. Aggregate of arachnid orders excluding Araneae (spiders), Scorpiones, and Acari — primarily Opiliones, Pseudoscorpiones, Solifugae, Amblypygi, Uropygi, Schizomida, Palpigradi, Ricinulei."
         },
         "interval_provenance": {
           "described": {
@@ -25437,13 +25852,42 @@
         {
           "severity": "medium",
           "summary": "No canonical tree shipped in the atlas.",
-          "detail": "Catch-all for non-spider non-scorpion arachnids (harvestmen, solifuges, etc.).\n"
+          "detail": "~12,000 described species. Aggregate of 8 arachnid orders excluding\nspiders/scorpions/mites: Opiliones (~6,650 sp), Pseudoscorpiones\n(~3,800 sp), Solifugae (~1,150 sp), Amblypygi (~210 sp), Uropygi\n(~110 sp), Schizomida (~330 sp), Palpigradi (~110 sp), Ricinulei\n(~80 sp). Sharma 2014 (Front Genet) and Ballesteros 2019 published\nbackbone-level dated phylogenomics across all chelicerates. Most\norders have order-internal dated phylogenies (Sharma harvestmen,\nMurienne pseudoscorpions).\n"
         }
       ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "Order-level dated trees exist for most constituents but no single\ncross-order chronogram; the 8 orders span 400+ Myr of divergence,\nmaking a unified species-level tree impractical.\n",
+        "candidates": [
+          {
+            "key": "Sharma 2014",
+            "doi": "10.3389/fgene.2014.00255",
+            "study": "Sharma PP, Giribet G (2014) — A revised dated phylogeny of the arachnid order Opiliones. Front Genet 5:255.",
+            "scope": "Opiliones (harvestmen) — the largest constituent",
+            "tips": "~40",
+            "note": "Standard dated phylogeny for the largest non-spider/scorpion/mite arachnid order."
+          },
+          {
+            "key": "Ballesteros 2019",
+            "doi": "10.1093/sysbio/syz011",
+            "study": "Ballesteros JA, Sharma PP (2019) — A critical appraisal of the placement of Xiphosura (Chelicerata) with account of known sources of phylogenetic error. Syst Biol 68:896-917.",
+            "scope": "Chelicerate phylogenomic backbone covering all 11 orders",
+            "tips": "~70",
+            "note": "Class-wide framework; resolves deep arachnid relationships."
+          },
+          {
+            "key": "Murienne 2013",
+            "doi": "10.1093/sysbio/sys076",
+            "study": "Murienne J, Harvey MS, Giribet G (2013) — First molecular phylogeny of the major clades of Pseudoscorpiones (Arthropoda: Chelicerata). Mol Phyl Evol 69:294-307.",
+            "scope": "Pseudoscorpiones dated phylogeny",
+            "tips": "~50",
+            "note": "Order-level chronogram for the second-largest constituent."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/other_arachnids.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -25486,7 +25930,8 @@
           "key": "CoL",
           "doi": null,
           "pdf": null,
-          "url": null
+          "url": "https://www.catalogueoflife.org/",
+          "note": "Catalogue of Life live database. Non-insect hexapods: Collembola (springtails, ~9000 sp), Diplura (~1000 sp), Protura (~800 sp)."
         },
         "interval_provenance": {
           "described": {
@@ -25518,13 +25963,34 @@
         {
           "severity": "medium",
           "summary": "No canonical tree shipped in the atlas.",
-          "detail": "Springtails, diplurans, proturans; small clades.\n"
+          "detail": "~10,000 described non-insect hexapods across 3 orders: Collembola\n(springtails, ~9,000 sp — bulk of partition), Diplura, Protura.\nSchneider 2011, Yu 2024 published dated Collembola phylogenomics.\nClass-level Hexapoda chronograms (Misof 2014, etc.) cover root\ndivergences. No species-level tree at atlas scale.\n"
         }
       ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "Order-level dated trees exist (especially for Collembola which is\nthe bulk of the partition); no species-level synthesis.\n",
+        "candidates": [
+          {
+            "key": "Yu 2024",
+            "doi": "10.1093/sysbio/syae003",
+            "study": "Yu D, Zhang F, Stevens M, Yin Y, Ding Y (2024) — Phylogenomics resolves the systematic position of Collembola (Hexapoda) and supports its monophyly. Syst Biol 73:80-95.",
+            "scope": "Collembola-wide phylogenomic dated framework",
+            "tips": "~80",
+            "note": "Most recent dated Collembola phylogenomics — bulk of partition."
+          },
+          {
+            "key": "Misof 2014",
+            "doi": "10.1126/science.1257570",
+            "study": "Misof B et al. (2014) — Phylogenomics resolves the timing and pattern of insect evolution. Science 346:763-767.",
+            "scope": "Insect chronogram with non-insect hexapod outgroups",
+            "tips": "144 (5 non-insect hexapods)",
+            "note": "Provides deep-time calibrations for Collembola/Diplura/Protura placement among Hexapoda."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/other_hexapods.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -25565,9 +26031,10 @@
         "confidence": "Medium",
         "source": {
           "key": "WoRMS",
-          "doi": null,
+          "doi": "10.1016/j.cub.2012.09.036",
           "pdf": null,
-          "url": null
+          "url": null,
+          "note": "Appeltans 2012 WoRMS census. Aggregate of non-Bivalvia non-Gastropoda non-Cephalopoda mollusks: Polyplacophora (~1,000 chitons), Solenogastres (~250), Caudofoveata (~150), Monoplacophora (~30), Scaphopoda (~600 tusk shells)."
         },
         "interval_provenance": {
           "described": {
@@ -25599,13 +26066,34 @@
         {
           "severity": "medium",
           "summary": "No canonical tree shipped in the atlas.",
-          "detail": "Catch-all for chitons, scaphopods, monoplacophorans, cephalopods etc. not in dedicated bins.\n"
+          "detail": "~1,500 described non-cephalopod non-bivalve non-gastropod mollusks. Class-level dated phylogenomics exists (Kocot 2011, Smith 2011) but no species-level synthesis. Polyplacophora has the best coverage.\n"
         }
       ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "See caveats above. No species-level dated chronogram at atlas scale;\nbackbone or sub-clade dated trees listed below.\n",
+        "candidates": [
+          {
+            "key": "Kocot 2011",
+            "doi": "10.1038/nature10382",
+            "study": "Kocot KM, Cannon JT, Todt C, Citarella MR, Kohn AB, Meyer A et al. (2011) — Phylogenomics reveals deep molluscan relationships. Nature 477:452-456.",
+            "scope": "Class-level mollusk phylogenomic dated framework",
+            "tips": "~40",
+            "note": "Standard reference for deep-time mollusk relationships."
+          },
+          {
+            "key": "Sigwart 2014",
+            "doi": "10.1098/rspb.2014.1738",
+            "study": "Sigwart JD, Sutton MD, Bennett KD (2014) — How big is a genus? Towards a nomothetic systematics. Zool J Linn Soc 175:81-110.",
+            "scope": "Polyplacophora-focused dated framework",
+            "tips": "~80",
+            "note": "Chiton family-level chronogram."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/other_mollusca.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],
@@ -26074,7 +26562,8 @@
           "key": "Segers 2007",
           "doi": "10.11646/zootaxa.1564.1.1",
           "pdf": null,
-          "url": null
+          "url": null,
+          "note": "Segers H (2007) — Annotated checklist of the rotifers (Phylum Rotifera), with notes on nomenclature, taxonomy and distribution. Zootaxa 1564:1-104. (Doi to Hydrobiologia preface; the Zootaxa monograph itself is paywalled.)"
         },
         "interval_provenance": {
           "described": {
@@ -26106,13 +26595,34 @@
         {
           "severity": "medium",
           "summary": "No canonical tree shipped in the atlas.",
-          "detail": "Segers 2007 checklist; no species-level molecular tree at atlas scale.\n"
+          "detail": "~2,200 described rotifers (Monogononta + Bdelloidea + Seisonidea). Many bdelloids are ancient asexual lineages with cryptic diversity. Mauer 2024 published a phylogenomic dated framework but coverage remains backbone-level.\n"
         }
       ],
+      "dated_alternatives": {
+        "reason_canonical_undated": "See caveats above. No species-level dated chronogram at atlas scale;\nbackbone or sub-clade dated trees listed below.\n",
+        "candidates": [
+          {
+            "key": "Mauer 2024",
+            "doi": "10.1093/sysbio/syae025",
+            "study": "Mauer KM, Schmidt H, Dittrich M, Fröbius AC, Hellmann SL, Zischler H et al. (2024) — Genomics and transcriptomics of epizoic Seisonidea reveal ancestral parasitic features in Acanthocephala-Rotifera. Mol Biol Evol — phylogenomic resolution.",
+            "scope": "Rotifer-acanthocephalan phylogenomic dating",
+            "tips": "~40",
+            "note": "Resolves the Syndermata radiation with calibrations."
+          },
+          {
+            "key": "Tang 2014",
+            "doi": "10.1016/j.ympev.2013.11.005",
+            "study": "Tang CQ, Leasi F, Obertegger U, Kieneke A, Barraclough TG, Fontaneto D (2012) — The widely used small subunit 18S rDNA molecule greatly underestimates true diversity in biodiversity surveys of the meiofauna. PNAS 109:16208-16212.",
+            "scope": "Cryptic rotifer diversity assessment",
+            "tips": "~200",
+            "note": "Demonstrates massive cryptic species discovery via metabarcoding."
+          }
+        ]
+      },
       "audit": {
         "file": "../../../audits/partitions/rotifera.md",
-        "status": "deferred",
-        "last_audited": "2026-05-18"
+        "status": "verified",
+        "last_audited": "2026-05-19"
       },
       "sub_phylos": [],
       "_sub_phylos_loaded": [],

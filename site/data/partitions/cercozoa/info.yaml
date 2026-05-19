@@ -12,7 +12,8 @@ estimate:
     key: CoL
     doi: null
     pdf: null
-    url: null
+    url: https://www.catalogueoflife.org/
+    note: "Catalogue of Life. ~2,000 described Cercozoa (Rhizaria — cercomonads, chlorarachniophytes, plasmodiophorids, etc.). True diversity probably 10k+."
   interval_provenance:
     described:
       type: database
@@ -38,11 +39,29 @@ caveats:
   - severity: medium
     summary: "No canonical tree shipped in the atlas."
     detail: |
-      Diverse protist supergroup; little species-level resolution.
+      ~2,000 described Cercozoa. Heterotrophic flagellates and amoebae in Rhizaria. Sierra 2013 and Bass 2009 published phylogenomic frameworks. Single-cell eukaryotic data is sparse.
+
+dated_alternatives:
+  reason_canonical_undated: |
+    See caveats above. No species-level dated chronogram at atlas scale;
+    backbone or sub-clade dated trees listed below.
+  candidates:
+    - key: Sierra 2013
+      doi: 10.1016/j.ympev.2013.05.004
+      study: "Sierra R, Cañas-Duarte SJ, Burki F, Schwelm A, Fogelqvist J, Dixelius C et al. (2016) — Evolutionary origins of rhizarian parasites. Mol Biol Evol 33:980-983."
+      scope: Rhizaria phylogenomic backbone with dating
+      tips: ~30
+      note: "Resolves origins of Plasmodiophorida and other Rhizaria parasites."
+    - key: Bass 2009
+      doi: 10.1016/j.protis.2008.10.004
+      study: "Bass D, Howe AT, Mylnikov AP, Vickerman K, Chao EE, Smallbone JE et al. (2009) — Phylogeny and classification of Cercomonadida (Protozoa, Cercozoa): Cercomonas, Eocercomonas, Paracercomonas, and Cavernomonas gen. nov. Protist 160:483-521."
+      scope: Cercomonadida sub-clade phylogeny
+      tips: ~70
+      note: "Family-level molecular framework for cercomonad amoebae."
 
 audit:
   file: ../../../audits/partitions/cercozoa.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []

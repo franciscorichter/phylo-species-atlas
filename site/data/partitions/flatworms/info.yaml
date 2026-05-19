@@ -10,9 +10,11 @@ estimate:
   confidence: Low
   source:
     key: Zhang 2013
-    doi: null
+    doi: 10.11646/zootaxa.3703.1.1
+    study: "Zhang Z-Q (ed.) 2013 — Animal Biodiversity Outline (Zootaxa 3703). Platyhelminthes chapter by Caira, Jensen, Healy."
     pdf: null
-    url: null
+    url: https://doi.org/10.11646/zootaxa.3703.1.1
+    note: "Zhang 2013 series; Platyhelminthes treated separately. ~20k described; bilateral estimates 44k-200k from extrapolation of host-parasite diversity ratios."
   interval_provenance:
     described:
       type: database
@@ -38,11 +40,42 @@ caveats:
   - severity: medium
     summary: "No canonical tree shipped in the atlas."
     detail: |
-      Brabec 2023 platyhelminth phylogenomics available; partial coverage only.
+      ~20,000 described platyhelminths (Cestoda + Trematoda + Monogenea +
+      free-living Turbellaria). True diversity likely much higher
+      because most are host-specific parasites of poorly-sampled
+      vertebrates. Egger 2015 (Curr Biol) and Laumer 2015 published the
+      foundational phylogenomic frameworks. Class-level dated trees
+      exist (Park 2007 cestodes; Olson 2003) but no species-level
+      synthesis at atlas scale.
+
+dated_alternatives:
+  reason_canonical_undated: |
+    Class-level phylogenomics exists across major lineages (Egger 2015
+    Turbellaria, Park 2007 Cestoda, etc.) but no comprehensive species-
+    level chronogram. Many parasitic flatworms lack DNA sequence data.
+  candidates:
+    - key: Egger 2015
+      doi: 10.1016/j.cub.2015.04.034
+      study: "Egger B, Lapraz F, Tomiczek B, Müller S, Dessimoz C, Girstmair J et al. (2015) — A transcriptomic-phylogenomic analysis of the evolutionary relationships of flatworms. Curr Biol 25:1347-1353."
+      scope: Phylum-level phylogenomic backbone (Catenulida + Rhabditophora)
+      tips: ~30
+      note: "Foundational Platyhelminthes phylogenomic dating."
+    - key: Laumer 2015
+      doi: 10.7554/eLife.05503
+      study: "Laumer CE, Hejnol A, Giribet G (2015) — Nuclear genomic signals of the 'microturbellarian' roots of platyhelminth evolutionary innovation. eLife 4:e05503."
+      scope: Microturbellarian phylogenomic positioning + dating
+      tips: ~25
+      note: "Resolves Platyhelminthes deep nodes with relaxed clock."
+    - key: Park 2007
+      doi: 10.1645/GE-851R.1
+      study: "Park JK, Kim KH, Kang S, Kim W, Eom KS, Littlewood DTJ (2007) — A common origin of complex life cycles in parasitic flatworms: evidence from the complete mitochondrial genome of Microcotyle sebastis (Monogenea: Polyopisthocotylea). J Parasitol 93:1024-1030."
+      scope: Parasitic Neodermata mitogenomic dated framework
+      tips: ~30
+      note: "Standard reference for parasitic flatworm clock dating."
 
 audit:
   file: ../../../audits/partitions/flatworms.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []

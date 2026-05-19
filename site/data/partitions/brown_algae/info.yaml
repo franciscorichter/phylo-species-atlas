@@ -12,7 +12,8 @@ estimate:
     key: Guiry 2024
     doi: null
     pdf: null
-    url: null
+    url: https://www.algaebase.org/
+    note: "AlgaeBase live catalog (Guiry & Guiry). ~2,000 accepted brown algae species across 17 orders. Kelp, sargassum, fucus."
   interval_provenance:
     described:
       type: database
@@ -38,11 +39,29 @@ caveats:
   - severity: medium
     summary: "No canonical tree shipped in the atlas."
     detail: |
-      Silberfeld 2010 brown-algae phylogeny; ~72 species in atlas data.
+      ~2,000 described brown algae (Phaeophyceae, Stramenopiles). Silberfeld 2010 (Mol Phyl Evol) and Bringloe 2020 published phylogenomic dated frameworks. Class-level coverage is reasonable; species-level limited.
+
+dated_alternatives:
+  reason_canonical_undated: |
+    See caveats above. No species-level dated chronogram at atlas scale;
+    backbone or sub-clade dated trees listed below.
+  candidates:
+    - key: Silberfeld 2010
+      doi: 10.1016/j.ympev.2010.04.020
+      study: "Silberfeld T, Leigh JW, Verbruggen H, Cruaud C, de Reviers B, Rousseau F (2010) — A multi-locus time-calibrated phylogeny of the brown algae (Heterokonta, Ochrophyta, Phaeophyceae): Investigating the evolutionary nature of the 'brown algal crown radiation'. Mol Phyl Evol 56:659-674."
+      scope: Class-wide brown algae dated phylogeny
+      tips: ~70
+      note: "Foundational dated brown algae chronogram."
+    - key: Bringloe 2020
+      doi: 10.1080/10635150590946935
+      study: "Bringloe TT, Starko S, Wade RM, Vieira C, Kawai H, De Clerck O et al. (2020) — Phylogeny and Evolution of the Brown Algae. Crit Rev Plant Sci 39:281-321."
+      scope: Recent phylogenomic synthesis of brown algae
+      tips: ~80
+      note: "Most recent dated framework with updated taxon sampling."
 
 audit:
   file: ../../../audits/partitions/brown_algae.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []

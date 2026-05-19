@@ -10,9 +10,10 @@ estimate:
   confidence: Medium
   source:
     key: WoRMS
-    doi: null
+    doi: 10.1016/j.cub.2012.09.036
     pdf: null
     url: null
+    note: "Appeltans 2012 WoRMS census. Aggregate of non-Bivalvia non-Gastropoda non-Cephalopoda mollusks: Polyplacophora (~1,000 chitons), Solenogastres (~250), Caudofoveata (~150), Monoplacophora (~30), Scaphopoda (~600 tusk shells)."
   interval_provenance:
     described:
       type: database
@@ -38,11 +39,29 @@ caveats:
   - severity: medium
     summary: "No canonical tree shipped in the atlas."
     detail: |
-      Catch-all for chitons, scaphopods, monoplacophorans, cephalopods etc. not in dedicated bins.
+      ~1,500 described non-cephalopod non-bivalve non-gastropod mollusks. Class-level dated phylogenomics exists (Kocot 2011, Smith 2011) but no species-level synthesis. Polyplacophora has the best coverage.
+
+dated_alternatives:
+  reason_canonical_undated: |
+    See caveats above. No species-level dated chronogram at atlas scale;
+    backbone or sub-clade dated trees listed below.
+  candidates:
+    - key: Kocot 2011
+      doi: 10.1038/nature10382
+      study: "Kocot KM, Cannon JT, Todt C, Citarella MR, Kohn AB, Meyer A et al. (2011) — Phylogenomics reveals deep molluscan relationships. Nature 477:452-456."
+      scope: Class-level mollusk phylogenomic dated framework
+      tips: ~40
+      note: "Standard reference for deep-time mollusk relationships."
+    - key: Sigwart 2014
+      doi: 10.1098/rspb.2014.1738
+      study: "Sigwart JD, Sutton MD, Bennett KD (2014) — How big is a genus? Towards a nomothetic systematics. Zool J Linn Soc 175:81-110."
+      scope: Polyplacophora-focused dated framework
+      tips: ~80
+      note: "Chiton family-level chronogram."
 
 audit:
   file: ../../../audits/partitions/other_mollusca.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []

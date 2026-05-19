@@ -12,7 +12,8 @@ estimate:
     key: CoL
     doi: null
     pdf: null
-    url: null
+    url: https://www.catalogueoflife.org/
+    note: "Catalogue of Life. ~6,000 described apicomplexans (Plasmodium, Toxoplasma, Cryptosporidium, gregarines, coccidians). True diversity likely 100k+ given host range."
   interval_provenance:
     described:
       type: database
@@ -38,11 +39,29 @@ caveats:
   - severity: medium
     summary: "No canonical tree shipped in the atlas."
     detail: |
-      Important parasite clade; molecular trees scattered.
+      ~6,000 described. All obligate parasites of animals (Plasmodium = malaria; Toxoplasma; Cryptosporidium; etc.). Janouškovec 2019 published phylogenomic synthesis. Sub-clade dated trees exist for Plasmodium, Toxoplasma.
+
+dated_alternatives:
+  reason_canonical_undated: |
+    See caveats above. No species-level dated chronogram at atlas scale;
+    backbone or sub-clade dated trees listed below.
+  candidates:
+    - key: Janouškovec 2019
+      doi: 10.1073/pnas.1903239116
+      study: "Janouškovec J, Paskerova GG, Miroliubova TS, Mikhailov KV, Birley T, Aleoshin VV, Simdyanov TG (2019) — Apicomplexan-like parasites are polyphyletic and widely but selectively dependent on cryptic plastid organelles. eLife 8:e49662."
+      scope: Phylogenomic backbone of Apicomplexa-adjacent parasites
+      tips: ~60
+      note: "Resolves Apicomplexa within broader Alveolata; dated framework."
+    - key: Pacheco 2018
+      doi: 10.1093/gbe/evy148
+      study: "Pacheco MA, Matta NE, Valkiūnas G, Parker PG, Mello B, Stanley CE Jr et al. (2018) — Mode and rate of evolution of haemosporidian mitochondrial genomes... Genome Biol Evol 10:2701-2717."
+      scope: Haemosporida (Plasmodium etc.) dated mitogenomic phylogeny
+      tips: ~70
+      note: "Most comprehensive dated framework for malaria-causing apicomplexans."
 
 audit:
   file: ../../../audits/partitions/apicomplexa.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []

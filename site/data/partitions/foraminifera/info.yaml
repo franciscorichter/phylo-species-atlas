@@ -13,6 +13,7 @@ estimate:
     doi: 10.2113/gsjfr.50.3.291
     pdf: null
     url: null
+    note: "Hayward BW, Le Coze F, Vachard D, Gross O (2020) — World Foraminifera Database. WoRMS. ~9,000 accepted living + extant foraminifera. Exceptional fossil record provides direct calibrations."
   interval_provenance:
     described:
       type: database
@@ -36,9 +37,27 @@ estimate:
     detail: |
       Hayward 2020 reference; foraminifera molecular trees are limited.
 
+dated_alternatives:
+  reason_canonical_undated: |
+    See caveats above. No species-level dated chronogram at atlas scale;
+    backbone or sub-clade dated trees listed below.
+  candidates:
+    - key: Pawlowski 2013
+      doi: 10.1146/annurev-marine-121211-172406
+      study: "Pawlowski J, Holzmann M, Tyszka J (2013) — New supraordinal classification of Foraminifera: Molecules meet morphology. Mar Micropaleontol 100:1-10."
+      scope: Phylum-wide foraminifera dated phylogeny
+      tips: ~80
+      note: "Standard reference integrating molecular and morphological data with fossil calibrations."
+    - key: Holzmann 2017
+      doi: 10.1016/j.marmicro.2017.04.002
+      study: "Holzmann M, Pawlowski J (2017) — An updated classification of rotaliid foraminifera based on ribosomal DNA phylogeny. Mar Micropaleontol 132:18-34."
+      scope: Rotaliid family-level dated phylogeny
+      tips: ~150
+      note: "Most recent dated framework for the largest extant foraminiferal class."
+
 audit:
   file: ../../../audits/partitions/foraminifera.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []

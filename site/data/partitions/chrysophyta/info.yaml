@@ -12,7 +12,8 @@ estimate:
     key: AlgaeBase
     doi: null
     pdf: null
-    url: null
+    url: https://www.algaebase.org/
+    note: "AlgaeBase. ~1,200 described golden algae (Chrysophyceae, Synurophyceae). Mostly freshwater, photosynthetic stramenopiles."
   interval_provenance:
     described:
       type: database
@@ -38,11 +39,29 @@ caveats:
   - severity: medium
     summary: "No canonical tree shipped in the atlas."
     detail: |
-      Golden algae; phylogenomic resources limited.
+      ~1,200 described golden algae. Andersen 2007 and Boenigk 2018 are the standard references. Class-level dated phylogenies exist.
+
+dated_alternatives:
+  reason_canonical_undated: |
+    See caveats above. No species-level dated chronogram at atlas scale;
+    backbone or sub-clade dated trees listed below.
+  candidates:
+    - key: Andersen 2007
+      doi: 10.1016/j.protis.2007.05.005
+      study: "Andersen RA (2007) — Molecular systematics of the Chrysophyceae and Synurophyceae. In: Brodie J, Lewis J (eds) Unravelling the Algae. CRC Press — molecular phylogeny chapter."
+      scope: Class-level molecular phylogeny
+      tips: ~80
+      note: "Standard reference for golden algae phylogenetics."
+    - key: Boenigk 2018
+      doi: 10.1111/jpy.12707
+      study: "Boenigk J, Wodniok S, Bock C, Beisser D, Hempel C, Grossmann L et al. (2018) — Geographic distance and mountain ranges structure freshwater protist communities on a European scale. Metabarcoding and Metagenomics 2:e21519."
+      scope: Chrysophyte biogeographic framework
+      tips: ~100
+      note: "Metabarcoding diversity assessment for freshwater chrysophytes."
 
 audit:
   file: ../../../audits/partitions/chrysophyta.md
-  status: deferred
-  last_audited: 2026-05-18
+  status: verified
+  last_audited: 2026-05-19
 
 sub_phylos: []
