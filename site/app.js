@@ -12,7 +12,7 @@ const STATE = {
 
 const TREES_BASE = "../standardized/trees/"; // patched by CI for Pages deploy
 const NAMES_BASE = "../standardized/names/"; // patched by CI for Pages deploy
-const TIP_RENDER_LIMIT = 5000; // above this, we sample for rendering
+const TIP_RENDER_LIMIT = 12000; // above this, we sample for rendering. Covers fish/birds/squamates/amphibians/ferns/mammals/frogs at full resolution; only seed_plants (~342k) still gets sampled.
 
 const fmt = new Intl.NumberFormat("en-US");
 
