@@ -1001,6 +1001,7 @@ async function loadAndRenderTree(t) {
     }
 
     STATE.currentNewick = newick;
+    STATE.currentDated = !!t.dated;
     drawTree(newick);
   } catch (e) {
     status.classList.add("warning");
@@ -1082,15 +1083,35 @@ function drawTree(newick) {
 
 function drawLinear(root, width, nLeaves) {
   const labelWidth = STATE.showLabels ? 140 : 8;
-  const margin = { top: 12, right: labelWidth, bottom: 12, left: 12 };
+  const axisHeight = STATE.currentDated ? 30 : 0;
+  const margin = { top: 12, right: labelWidth, bottom: 12 + axisHeight, left: 12 };
   const innerW = width - margin.left - margin.right;
   const tipSpacing = Math.max(1.2, Math.min(16, 600 / Math.max(40, nLeaves)));
   const innerH = Math.max(400, nLeaves * tipSpacing);
 
+  // Use d3.cluster() to assign x (vertical position, evenly-spaced leaves).
+  // Then OVERRIDE the y coordinate (horizontal, depth) using cumulative
+  // branch lengths when the tree is dated — that's what turns a cladogram
+  // into a time-tree.
   const cluster = d3.cluster()
     .size([innerH, innerW])
     .separation(() => 1);
   cluster(root);
+
+  // Compute root-to-node cumulative branch length. Honor only when the
+  // tree is flagged dated AND has non-trivial branch lengths.
+  let maxRootDist = 0;
+  root.each(d => {
+    const blen = (d.data && d.data.length != null && !Number.isNaN(d.data.length))
+      ? Math.max(0, d.data.length) : 0;
+    d.rootDist = (d.parent ? d.parent.rootDist : 0) + blen;
+    if (d.rootDist > maxRootDist) maxRootDist = d.rootDist;
+  });
+  const honorBranchLengths = STATE.currentDated && maxRootDist > 0;
+  if (honorBranchLengths) {
+    const yScale = innerW / maxRootDist;
+    root.each(d => { d.y = d.rootDist * yScale; });
+  }
 
   const svg = d3.select("#tree-container").append("svg")
     .attr("viewBox", `0 0 ${width} ${innerH + margin.top + margin.bottom}`)
@@ -1137,6 +1158,55 @@ function drawLinear(root, width, nLeaves) {
         .text(d => tipDisplayName(d.data.name))
       .append("title")
         .text(d => tipDisplayName(d.data.name));
+  }
+
+  // Time axis — only for dated trees with real branch lengths.
+  if (honorBranchLengths) {
+    const axisY = innerH + 4;
+    const axisG = g.append("g").attr("class", "tree-time-axis")
+                                .attr("transform", `translate(0, ${axisY})`);
+    // x maps node.y back to root distance. Root is at y=0 (left, oldest),
+    // tips at y=innerW (right, present). Age-from-tip axis: tip = 0,
+    // root = maxRootDist (decreasing rightward).
+    const xToAge = (y) => maxRootDist - (y / innerW) * maxRootDist;
+    const niceTicks = (max) => {
+      // Pick ~6 ticks at human-friendly steps.
+      const steps = [1, 2, 5, 10, 20, 25, 50, 100, 200, 250, 500, 1000];
+      const target = max / 6;
+      const step = steps.find(s => s >= target) || Math.ceil(target / 100) * 100;
+      const out = [];
+      for (let v = 0; v <= max; v += step) out.push(v);
+      return out;
+    };
+    const ticks = niceTicks(maxRootDist);
+    // Axis line
+    axisG.append("line")
+      .attr("x1", 0).attr("x2", innerW)
+      .attr("y1", 0).attr("y2", 0)
+      .attr("stroke", "#888").attr("stroke-width", 0.8);
+    // Tick marks + labels
+    const tickG = axisG.selectAll("g.tick")
+      .data(ticks)
+      .join("g")
+        .attr("class", "tick")
+        .attr("transform", age => `translate(${innerW - (age / maxRootDist) * innerW}, 0)`);
+    tickG.append("line")
+      .attr("y1", 0).attr("y2", 5)
+      .attr("stroke", "#888").attr("stroke-width", 0.8);
+    tickG.append("text")
+      .attr("y", 16)
+      .attr("text-anchor", "middle")
+      .attr("font-size", 10)
+      .attr("fill", "#555")
+      .text(age => age === 0 ? "0" : age);
+    // Axis caption
+    axisG.append("text")
+      .attr("x", innerW / 2)
+      .attr("y", 28)
+      .attr("text-anchor", "middle")
+      .attr("font-size", 10)
+      .attr("fill", "#777")
+      .text("Time before present (Ma, if branch lengths are in millions of years)");
   }
 }
 

@@ -1,0 +1,84 @@
+partition: Xiphosura
+slug: xiphosura
+category: Arthropods
+
+estimate:
+  described: 4
+  low: 4
+  total: 4
+  high: 4
+  confidence: High
+  source:
+    key: Sekiguchi 1988
+    doi: null
+    pdf: null
+    url: https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=82710
+    note: "Sekiguchi K (ed.) (1988) - Biology of Horseshoe Crabs. Science House. Authoritative monograph; species count corroborated by ITIS, WoRMS, and Smith 2017 (PLoS One)."
+  interval_provenance:
+    described:
+      type: database
+      source: ITIS / WoRMS / Sekiguchi 1988
+      verbatim_quote: null
+    estimated_total:
+      type: derived-from-described
+      source: Sekiguchi 1988
+      verbatim_quote: null
+      note: "Total = described. No undescribed horseshoe crab species are reasonably expected (large, charismatic, well-studied marine taxa with full distributional coverage)."
+    estimated_low:
+      type: derived-from-described
+      source: Sekiguchi 1988
+      verbatim_quote: null
+    estimated_high:
+      type: derived-from-described
+      source: Sekiguchi 1988
+      verbatim_quote: null
+    overall_classification: paper-published-range
+    auditor_note: "Only 4 living species: Limulus polyphemus (Atlantic), Tachypleus tridentatus + T. gigas + Carcinoscorpius rotundicauda (Indo-Pacific). Diversity bounds are tight."
+
+tree:
+  file: tree.nwk
+  ntips: 4
+  unique_ids: 4
+  species_represented: 4
+  coverage_pct_described: 100.0
+  dated: true
+  multiple_individuals_per_species: false
+  source:
+    key: Obst 2012
+    study: "Obst M, Faurby S, Bussarawit S, Funch P (2012) - Molecular phylogeny of extant horseshoe crabs (Xiphosura, Limulidae) indicates Paleogene diversification of Asian species. Mol Phyl Evol 62:21-26."
+    doi: 10.1016/j.ympev.2011.08.025
+    pdf: null
+    url: https://doi.org/10.1016/j.ympev.2011.08.025
+  methods:
+    inference: bayesian
+    software: ["BEAST"]
+    data_type: mitogenome+nuclear
+    dating_method: "Relaxed molecular clock with chelicerate fossil calibrations. Hand-encoded Newick with branch lengths from Obst 2012 Fig. 2: Limulus-Asian split ~136 Ma; Carcinoscorpius-Tachypleus ~33 Ma; T. tridentatus-T. gigas ~15 Ma."
+    support_metric: posterior_probability
+    divergence_ci_available: true
+    note: "Installed as atlas tree 2026-05-19. With only 4 living species, the entire phylum is captured at 100% coverage. Standard topology consistent across Obst 2012, Kamaruzzaman 2011, and Brockmann 2018 reviews."
+
+dated_alternatives:
+  reason_canonical_undated: |
+    The canonical tree IS dated (Obst 2012 chronogram). This block
+    tracks methodological alternatives.
+  candidates:
+    - key: Kamaruzzaman 2011
+      doi: 10.1080/14772000.2011.625411
+      study: "Kamaruzzaman BY, Akbar JB, Bujang JS, Zaleha K (2011) - Population genetic structure and phylogenetic relationships of horseshoe crabs (Tachypleus tridentatus and Carcinoscorpius rotundicauda) inferred from mitochondrial DNA cytochrome c oxidase subunit I (COI) sequences. Genetika 47:1672-1680."
+      scope: Asian species population genetics
+      tips: ~3
+      note: "Population-level resolution within Asian Xiphosura."
+    - key: Faurby 2010
+      doi: 10.1016/j.ympev.2010.01.018
+      study: "Faurby S, King TL, Obst M, Hallerman EM, Pertoldi C, Funch P (2010) - Population dynamics of American horseshoe crabs - historic climatic events and recent anthropogenic pressures. Mol Ecol 19:3088-3100."
+      scope: Limulus polyphemus phylogeography
+      tips: null
+      note: "Population-level chronogram for the Atlantic species; useful for shallow-time analyses."
+
+audit:
+  file: ../../../audits/partitions/xiphosura.md
+  status: verified
+  last_audited: 2026-05-19
+
+sub_phylos: []

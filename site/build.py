@@ -766,6 +766,46 @@ def main() -> None:
     audit_categories = {p: a.get("category") for p, a in _audits_for_synth.items()}
     for u in list(unrepresented) + synthetic_partitions:
         u_cat = audit_categories.get(u["group"]) or u["category"]
+        # If the synthetic partition has its own info.yaml tree (e.g.,
+        # Xiphosura — hand-built 4-species dated chronogram with no upstream
+        # standardized counterpart), promote it from "unrepresented" to a
+        # full canonical row with tip count + dated flag from info.yaml.
+        partition_audit = _audits_for_synth.get(u["group"]) or {}
+        tree_meta = partition_audit.get("tree") or {}
+        has_synth_tree = isinstance(tree_meta, dict) and tree_meta.get("file")
+        if has_synth_tree:
+            partition_slug = u["group"].lower().replace(" ", "_")
+            tree_path = SITE_DATA / partition_slug / tree_meta["file"]
+            if tree_path.exists():
+                row_out = {
+                    "filename": f"{partition_slug}.nwk",
+                    "group": partition_slug,
+                    "provenance_group": partition_slug,
+                    "partition_group": u["group"],
+                    "category": u_cat,
+                    "study": (tree_meta.get("source") or {}).get("study") or (tree_meta.get("source") or {}).get("key"),
+                    "year": None,
+                    "tips": tree_meta.get("ntips"),
+                    "raw_tips": tree_meta.get("ntips"),
+                    "described_species": u["described"],
+                    "described_source": None,
+                    "coverage_pct": tree_meta.get("coverage_pct_described"),
+                    "dated": bool(tree_meta.get("dated")),
+                    "is_partition_anchor": False,
+                    "is_partition_canonical": True,
+                    "is_unrepresented": False,
+                    "tree_url_override": str(tree_path.relative_to(SITE_DATA.parent.parent)).replace("\\", "/"),
+                    "estimated_total": u["estimated_total"],
+                    "estimated_low": u["estimated_low"],
+                    "estimated_high": u["estimated_high"],
+                    "estimate_source": u["estimate_source"],
+                    "estimate_confidence": u["estimate_confidence"],
+                }
+                if u["estimated_total"]:
+                    row_out["coverage_pct_estimated"] = _est_pct(tree_meta["ntips"], u["estimated_total"])
+                coverage_rows.append(row_out)
+                continue
+        # Default: no tree shipped — render as dark-matter bar.
         row_out = {
             "filename": None,
             "group": u["group"].lower().replace(" ", "_"),
@@ -781,15 +821,14 @@ def main() -> None:
             "coverage_pct": None,
             "dated": False,
             "is_partition_anchor": False,
-            "is_partition_canonical": True,  # so the chart filter picks it up
-            "is_unrepresented": True,        # so the renderer can style differently
+            "is_partition_canonical": True,
+            "is_unrepresented": True,
             "estimated_total": u["estimated_total"],
             "estimated_low": u["estimated_low"],
             "estimated_high": u["estimated_high"],
             "estimate_source": u["estimate_source"],
             "estimate_confidence": u["estimate_confidence"],
         }
-        # No coverage_pct_estimated_* — those require tips. Skip.
         coverage_rows.append(row_out)
 
     summary = {
