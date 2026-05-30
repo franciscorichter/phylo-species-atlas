@@ -1,22 +1,44 @@
 # Phylogenetic Species Atlas
 
-A curated collection of empirical phylogenetic trees spanning the tree of life, with a standardized species dictionary linking 637,619 unique standardized labels across 264 tree files from 49 independent datasets.
+A curated, standardized collection of empirical species-level phylogenies across the tree of life, with per-tree provenance and an archival-uncertainty audit.
 
 ## Overview
 
-This atlas surveys the current state of publicly available, downloadable species-level molecular phylogenies across all major branches of life. It accompanies the paper:
+This atlas surveys publicly available, downloadable species-level empirical phylogenies across all major branches of life. It accompanies the paper:
 
-> **The phylogenetic dark matter: an atlas of empirical trees reveals vast asymmetries in species coverage across the tree of life**
+> **Where the tree of life is empirically resolved, and where it is not: an open atlas of species-level phylogenies and their archival uncertainty**
 >
-> Francisco Richter
+> Francisco Richter, Università della Svizzera italiana (USI)
+> Zenodo (concept DOI): https://doi.org/10.5281/zenodo.20127157
 
-### Key numbers
+### At a glance
 
-- **49 datasets** from peer-reviewed studies (2010--2026)
-- **637,619 unique standardized labels** in the standardized dictionary
-- **264 Newick files** with numeric tip labels
-- **~23% of described eukaryotic species** represented
-- Coverage spans vertebrates, arthropods, plants, fungi, protists, bacteria, and archaea
+| Item | Value |
+|---|---|
+| Standardized trees | **264** |
+| Atlas partitions | **62** (26 with shipped canonical + 36 unrepresented) |
+| Source datasets | **49** |
+| Taxonomic groups | **47** |
+| Decomposition | 26 partition-canonical + 218 Condamine family-level + 20 sub-clade |
+| Global dictionary | **637,619** standardized labels (493,978 eukaryotic + 143,641 prokaryotic) |
+| Time-calibrated | **246 of 264 (93%)** |
+| Eukaryotic coverage (headline C0) | **23.7%** of ~2.1 M described |
+| Sensitivity bound C1 (strict molecular-only on TACT-imputed trees) | **~10%** |
+| Sensitivity bound C2 (strictest non-imputed, non-OTL-pipeline) | **~6.6%** |
+| Archival uncertainty preserved | **7 of 28** non-Condamine dated source trees |
+| Catalogue of Life 2025 reconciliation | included |
+| Licence | CC-BY-4.0 (see `LICENSE`) |
+| Version | v1.0.3 (2026-05-30) |
+
+### Three-category tree classification
+
+Trees in the atlas are classified explicitly into three categories:
+
+1. **Direct empirical phylogenies** — inferred from molecular or genomic data in a primary study (e.g., Upham et al. 2019 mammals; Stein et al. 2018 sharks).
+2. **Peer-reviewed empirical syntheses** — clade-bounded trees that combine published input phylogenies, sometimes augmented with taxonomic placement, released as standalone peer-reviewed deliverables (e.g., McTavish et al. 2025 birds; Smith & Brown 2018 seed plants; Chesters 2017 insects). May use Open Tree of Life pipeline software, but the resulting tree is published, citable, and clade-bounded.
+3. **Excluded**: the live ~2.4M-tip Open Tree of Life synthesis product (its tips are placed predominantly by taxonomic descent and it lacks a clade-bounded primary methodology paper).
+
+Per-tree provenance — molecular-tip fraction, Open Tree pipeline involvement, dating regime, archival-uncertainty status — is documented in Supplementary Table S5 of the manuscript and in the per-partition `info.yaml` files at `Data/site/data/partitions/<slug>/`.
 
 ## Repository structure
 

@@ -1,9 +1,9 @@
 cff-version: 1.2.0
 message: "If you use this dataset, please cite both the paper and the specific Zenodo release."
-title: "Phylo-Species-Atlas: A Curated Collection of Standardized Empirical Phylogenies Across the Tree of Life"
-version: 1.0.0
-doi: "10.5281/zenodo.20127158"
-date-released: 2026-05-11
+title: "Where the tree of life is empirically resolved, and where it is not: an open atlas of species-level phylogenies and their archival uncertainty"
+version: 1.0.3
+doi: "10.5281/zenodo.20127157"
+date-released: 2026-05-30
 url: "https://github.com/franciscorichter/phylo-species-atlas"
 repository-code: "https://github.com/franciscorichter/phylo-species-atlas"
 license: CC-BY-4.0
@@ -16,7 +16,7 @@ authors:
 
 preferred-citation:
   type: article
-  title: "The phylogenetic dark matter: an atlas of empirical trees reveals vast asymmetries in species coverage across the tree of life"
+  title: "Where the tree of life is empirically resolved, and where it is not: an open atlas of species-level phylogenies and their archival uncertainty"
   authors:
     - family-names: "Richter"
       given-names: "Francisco"
@@ -28,9 +28,7 @@ keywords:
   - phylogenetic atlas
   - tree of life
   - species coverage
-  - biodiversity informatics
-  - standardization
-  - macroevolution
-  - phylogenetic comparative methods
+  - archival uncertainty
+  - comparative biology
 
-abstract: "A curated, standardized collection of 49 empirical phylogenetic datasets covering 47 taxonomic groups across Bacteria, Archaea, and Eukaryota. Provides tip-label normalized Newick trees with numeric identifiers, a global standardized-label dictionary (637,619 unique standardized labels), full label mappings, and metadata. Companion to the manuscript 'The phylogenetic dark matter: an atlas of empirical trees reveals vast asymmetries in species coverage across the tree of life' (Richter, 2026, under review)."
+abstract: "A curated, standardized collection of empirical phylogenetic datasets covering taxonomic groups across Bacteria, Archaea, and Eukaryota. Organized into 62 partitions yielding 264 standardized trees (26 partition-canonicals + 218 Condamine family-level + 20 sub-clade), with tip-label normalized Newick trees, a global standardized-label dictionary, full label mappings, and metadata. Companion to the manuscript 'Where the tree of life is empirically resolved, and where it is not: an open atlas of species-level phylogenies and their archival uncertainty' (Richter, 2026, under review)."
