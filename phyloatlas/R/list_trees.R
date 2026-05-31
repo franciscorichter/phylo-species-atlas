@@ -4,12 +4,19 @@
 #' name, study, number of tips, whether the tree is time-calibrated, plus
 #' provenance fields (year, journal, DOI, coverage) when available.
 #'
-#' @return A data frame with one row per tree, ordered by group.
+#' @return A data frame with one row per tree, ordered by group, with
+#'   columns `name`, `group`, `study`, `ntips`, `dated`, `year`, `journal`,
+#'   `doi`, `crown_ma`, `described_species`, `coverage_pct`, `data_source`,
+#'   `download_url`, `methods_brief`, `notes`, and `study_full` (the
+#'   long-form study citation from the provenance file). Returns `NULL`
+#'   with a single diagnostic message if the atlas metadata cannot be
+#'   downloaded (e.g. no internet); never throws on network failure.
 #'
+#' @family atlas
 #' @examples
 #' \donttest{
-#' trees <- try(list_trees(), silent = TRUE)
-#' if (!inherits(trees, "try-error")) {
+#' trees <- list_trees()
+#' if (!is.null(trees)) {
 #'   head(trees)
 #'   subset(trees, dated & ntips > 1000)
 #' }
@@ -18,6 +25,11 @@
 list_trees <- function() {
   md <- .load_metadata()
   prov <- .load_provenance()
+  if (is.null(md) || is.null(prov)) return(NULL)
+  if (nrow(md) == 0L) {
+    warning("Atlas metadata is empty.", call. = FALSE)
+    return(md[, character(0), drop = FALSE])
+  }
   prov_key <- .provenance_key(md$group, prov$group)
   prov_cols <- setdiff(
     names(prov),

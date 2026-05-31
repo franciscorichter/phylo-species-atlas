@@ -16,7 +16,10 @@ standardized species names from `dictionary.csv`. Set to `FALSE` to
 keep the raw integer IDs (faster, avoids downloading the dictionary).}
 }
 \value{
-An object of class `"phylo"` from the \pkg{ape} package.
+An object of class `"phylo"` from the \pkg{ape} package. If
+  `resolve_labels = TRUE` (the default), tip labels are species names
+  from the standardized dictionary; otherwise tip labels are integer
+  IDs as character strings.
 }
 \description{
 Downloads a standardized Newick tree from the atlas and resolves its
@@ -37,3 +40,10 @@ if (!inherits(tree, "try-error")) plot(tree, show.tip.label = FALSE)
 tree <- try(load_atlas_tree("birds", resolve_labels = FALSE), silent = TRUE)
 }
 }
+\seealso{
+Other atlas: 
+\code{\link{atlas_clear_cache}()},
+\code{\link{atlas_info}()},
+\code{\link{list_trees}()}
+}
+\concept{atlas}

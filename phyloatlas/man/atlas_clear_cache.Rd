@@ -7,10 +7,22 @@
 atlas_clear_cache()
 }
 \value{
-Invisibly `NULL`.
+Invisibly `NULL`. Called for its side effect of emptying the
+  internal cache environment.
 }
 \description{
 The dictionary and metadata files are downloaded once per R session and
 cached. Call this if you want to force a re-download (for example after
 switching `phyloatlas.base_url`).
 }
+\examples{
+# Safe to run unconditionally — just empties the in-session cache.
+atlas_clear_cache()
+}
+\seealso{
+Other atlas: 
+\code{\link{atlas_info}()},
+\code{\link{list_trees}()},
+\code{\link{load_atlas_tree}()}
+}
+\concept{atlas}

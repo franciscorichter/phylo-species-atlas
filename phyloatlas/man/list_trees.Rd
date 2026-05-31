@@ -7,7 +7,13 @@
 list_trees()
 }
 \value{
-A data frame with one row per tree, ordered by group.
+A data frame with one row per tree, ordered by group, with
+  columns `name`, `group`, `study`, `ntips`, `dated`, `year`, `journal`,
+  `doi`, `crown_ma`, `described_species`, `coverage_pct`, `data_source`,
+  `download_url`, `methods_brief`, `notes`, and `study_full` (the
+  long-form study citation from the provenance file). Returns `NULL`
+  with a single diagnostic message if the atlas metadata cannot be
+  downloaded (e.g. no internet); never throws on network failure.
 }
 \description{
 Returns a data frame describing every standardized tree in the atlas:
@@ -16,10 +22,17 @@ provenance fields (year, journal, DOI, coverage) when available.
 }
 \examples{
 \donttest{
-trees <- try(list_trees(), silent = TRUE)
-if (!inherits(trees, "try-error")) {
+trees <- list_trees()
+if (!is.null(trees)) {
   head(trees)
   subset(trees, dated & ntips > 1000)
 }
 }
 }
+\seealso{
+Other atlas: 
+\code{\link{atlas_clear_cache}()},
+\code{\link{atlas_info}()},
+\code{\link{load_atlas_tree}()}
+}
+\concept{atlas}

@@ -7,18 +7,29 @@
 atlas_info(name)
 }
 \arguments{
-\item{name}{Tree name without the `.nwk` extension.}
+\item{name}{Tree name without the `.nwk` extension (e.g. `"mammals"`,
+`"birds"`, `"seed_plants"`). Must be a length-1 non-`NA` character
+string. Use [list_trees()] to see all available names.}
 }
 \value{
-A one-row data frame with all available metadata fields, or
-  `NULL` (with a warning) if no tree by that name exists.
+A one-row data frame with all metadata columns from
+  [list_trees()], or `NULL` (with a warning) if no tree by that name
+  exists. Also returns `NULL` (with a diagnostic message, no warning)
+  if the atlas metadata cannot be downloaded.
 }
 \description{
 Get metadata for a single tree
 }
 \examples{
 \donttest{
-info <- try(atlas_info("mammals"), silent = TRUE)
-if (!inherits(info, "try-error")) info
+info <- atlas_info("mammals")
+if (!is.null(info)) info
 }
 }
+\seealso{
+Other atlas: 
+\code{\link{atlas_clear_cache}()},
+\code{\link{list_trees}()},
+\code{\link{load_atlas_tree}()}
+}
+\concept{atlas}

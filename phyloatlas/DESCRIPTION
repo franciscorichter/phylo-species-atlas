@@ -8,16 +8,17 @@ Authors@R:
            email = "richtf@usi.ch",
            role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-0924-4613"))
-Description: Convenience functions to fetch standardized phylogenetic
-    trees and per-tree provenance metadata from the 'Phylo-Species
-    Atlas' <https://github.com/franciscorichter/phylo-species-atlas>
-    directly from R. The atlas is a curated collection of empirical
+Description: Provides convenience functions to fetch standardized
+    phylogenetic trees and per-tree provenance metadata from the
+    'Phylo-Species Atlas'
+    <https://github.com/franciscorichter/phylo-species-atlas> directly
+    from R. The atlas is a curated collection of empirical
     species-level trees covering Bacteria, Archaea, and Eukaryota,
     organized into 62 partitions of life with tip labels normalized
     against a shared dictionary of standardized species identifiers.
-    Provides a single entry point to load any of the standardized
-    trees with species labels resolved from the dictionary, plus
-    helpers to list available trees and inspect provenance.
+    Functions load any of the standardized trees with species labels
+    resolved from the dictionary, list available trees, and inspect
+    per-tree provenance.
 License: MIT + file LICENSE
 Encoding: UTF-8
 URL: https://github.com/franciscorichter/phylo-species-atlas,
