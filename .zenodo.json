@@ -1,6 +1,6 @@
 {
-  "title": "Phylo-Species-Atlas: A Curated Collection of Standardized Empirical Phylogenies Across the Tree of Life",
-  "description": "A curated, standardized collection of 49 empirical phylogenetic datasets covering 47 taxonomic groups across Bacteria, Archaea, and Eukaryota. This collection provides tip-label normalized Newick trees with numeric identifiers, a global standardized-label dictionary (637,619 unique standardized labels), full label mappings, and metadata. The underlying trees are permanently archived in their original repositories (Dryad, Figshare, Zenodo, GitHub) as cited in the accompanying publication; this derivative collection enables cross-tree interoperability and standardization. The collection is version-controlled and will be updated as improved phylogenies become available. Releases are tagged via GitHub; users requiring a static snapshot for reproducibility should cite the specific release version and DOI. This dataset accompanies the manuscript \"The phylogenetic dark matter: an atlas of empirical trees reveals vast asymmetries in species coverage across the tree of life\" (Richter, under review).",
+  "title": "Phylo-Species-Atlas: a curated atlas of empirical species-level phylogenies and their archival uncertainty",
+  "description": "A curated, standardized collection of empirical phylogenetic datasets covering taxonomic groups across Bacteria, Archaea, and Eukaryota. Organized into 62 partitions yielding 264 standardized trees (26 partition-canonicals + 218 Condamine family-level + 20 sub-clade), with tip-label normalized Newick trees, a global standardized-label dictionary, full label mappings, and per-tree provenance (Supplementary Tables S5 and S7 of the accompanying manuscript). Companion deposit to the manuscript 'Where the tree of life is empirically resolved, and where it is not: an open atlas of species-level phylogenies and their archival uncertainty' (Richter, 2026, under review). The underlying trees are permanently archived in their original repositories (Dryad, Figshare, Zenodo, GitHub) as cited in the manuscript; this derivative deposit enables cross-tree interoperability, standardization, and reproducibility of the paper's headline numbers. Releases are tagged on GitHub and the version metadata is auto-populated by Zenodo at deposit time from the git tag. Cite the version-specific DOI for reproducibility; cite the concept DOI 10.5281/zenodo.20127157 when referring to the resource as a whole.",
   "creators": [
     {
       "name": "Richter, Francisco",
@@ -12,6 +12,7 @@
     "phylogenetic atlas",
     "tree of life",
     "species coverage",
+    "archival uncertainty",
     "biodiversity informatics",
     "standardization",
     "macroevolution",
@@ -21,8 +22,6 @@
   ],
   "license": "CC-BY-4.0",
   "upload_type": "dataset",
-  "publication_date": "2026-05-11",
-  "version": "1.0.0",
   "language": "eng",
   "related_identifiers": [
     {
