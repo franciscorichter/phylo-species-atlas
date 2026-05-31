@@ -13,12 +13,18 @@
 #' @return An object of class `"phylo"` from the \pkg{ape} package.
 #'
 #' @examples
-#' \dontrun{
-#' tree <- load_atlas_tree("mammals")
-#' plot(tree, show.tip.label = FALSE)
+#' # Offline demo using a small bundled tree (does not hit the network):
+#' demo_path <- system.file("extdata", "tree_demo.nwk", package = "phyloatlas")
+#' tree <- ape::read.tree(demo_path)
+#' tree
 #'
-#' # Keep integer IDs to avoid loading the 18 MB dictionary
-#' tree <- load_atlas_tree("birds", resolve_labels = FALSE)
+#' \donttest{
+#' # Live atlas fetch (requires internet):
+#' tree <- try(load_atlas_tree("mammals"), silent = TRUE)
+#' if (!inherits(tree, "try-error")) plot(tree, show.tip.label = FALSE)
+#'
+#' # Keep integer IDs to skip the 18 MB dictionary download:
+#' tree <- try(load_atlas_tree("birds", resolve_labels = FALSE), silent = TRUE)
 #' }
 #' @export
 load_atlas_tree <- function(name, resolve_labels = TRUE) {

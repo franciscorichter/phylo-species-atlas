@@ -7,10 +7,12 @@
 #' @return A data frame with one row per tree, ordered by group.
 #'
 #' @examples
-#' \dontrun{
-#' trees <- list_trees()
-#' head(trees)
-#' subset(trees, dated & ntips > 1000)
+#' \donttest{
+#' trees <- try(list_trees(), silent = TRUE)
+#' if (!inherits(trees, "try-error")) {
+#'   head(trees)
+#'   subset(trees, dated & ntips > 1000)
+#' }
 #' }
 #' @export
 list_trees <- function() {

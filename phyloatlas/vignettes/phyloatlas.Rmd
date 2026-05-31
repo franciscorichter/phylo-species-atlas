@@ -1,0 +1,135 @@
+---
+title: "Getting started with phyloatlas"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting started with phyloatlas}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+
+# All chunks that fetch from the network only execute when NOT_CRAN=true
+# (the convention used by CRAN's check farm). The vignette still renders
+# usefully on CRAN because the chunks that load the bundled demo tree
+# from inst/extdata are not gated.
+NOT_CRAN <- identical(Sys.getenv("NOT_CRAN"), "true")
+```
+
+## What this package does
+
+`phyloatlas` is a thin R client for the [Phylo-Species
+Atlas](https://github.com/franciscorichter/phylo-species-atlas), a curated
+collection of standardized empirical phylogenetic trees covering Bacteria,
+Archaea, and Eukaryota. The atlas itself lives on GitHub and is
+version-pinned via Zenodo. This R package gives you four convenience
+functions to fetch any of those trees with species labels resolved from
+the shared dictionary, plus helpers to list available trees and inspect
+their provenance.
+
+```{r api}
+library(phyloatlas)
+
+ls("package:phyloatlas")
+```
+
+## Loading a tree (offline demo)
+
+The package ships a small Newick file under `inst/extdata/` so you can
+explore the API without a network connection. In production you would
+call `load_atlas_tree("mammals")` (or any other tree name from
+`list_trees()`); the demo below shows the shape of the returned object.
+
+```{r demo-tree}
+demo_path <- system.file("extdata", "tree_demo.nwk", package = "phyloatlas")
+tree <- ape::read.tree(demo_path)
+tree
+```
+
+The returned object is a standard `ape::phylo`, so anything that works
+on `phylo` works here: `Ntip()`, `branching.times()`, `plot()`, etc.
+
+```{r demo-plot, fig.width = 6, fig.height = 3}
+plot(tree, cex = 0.8, no.margin = TRUE)
+```
+
+## Loading a real atlas tree (requires network)
+
+When you have an internet connection, `load_atlas_tree()` fetches a
+standardized Newick file from the live atlas and resolves its integer
+tip IDs to species names using the shared dictionary.
+
+```{r load-mammals, eval = NOT_CRAN}
+tree <- load_atlas_tree("mammals")
+tree
+head(tree$tip.label)
+```
+
+For large trees (e.g. seed plants, ~342 k tips), skip the 18 MB
+dictionary download by setting `resolve_labels = FALSE`:
+
+```{r load-seedplants, eval = NOT_CRAN}
+tree <- load_atlas_tree("seed_plants", resolve_labels = FALSE)
+```
+
+## Browsing available trees
+
+`list_trees()` returns a data frame with one row per tree and provenance
+columns merged in from the atlas's `data_provenance.csv`:
+
+```{r list-trees, eval = NOT_CRAN}
+trees <- list_trees()
+head(trees[, c("name", "study", "ntips", "dated", "year")])
+
+# Filter to dated trees with at least 1000 tips
+subset(trees, dated & ntips > 1000)
+```
+
+`atlas_info()` returns the same row for a single tree, useful for
+scripting:
+
+```{r atlas-info, eval = NOT_CRAN}
+atlas_info("birds")
+```
+
+## Pointing at a fork or local mirror
+
+The package fetches everything relative to a single base URL, which you
+can override per session:
+
+```{r config, eval = FALSE}
+options(
+  phyloatlas.base_url =
+    "https://raw.githubusercontent.com/yourfork/phylo-species-atlas/main"
+)
+atlas_clear_cache()  # forget cached dictionary/metadata
+```
+
+This is also the mechanism the package's own test suite uses to point
+at a `file://` URL containing a miniature mirror of the atlas, so the
+tests run completely offline.
+
+## Provenance and reproducibility
+
+Every tree in the atlas has a record in
+[Supplementary Table S5](https://github.com/franciscorichter/phylo-species-atlas/blob/main/audits/table_s5_canonical_tree_provenance.csv)
+(per-tree provenance) and the historical succession of canonicals is in
+[Supplementary Table S7](https://github.com/franciscorichter/phylo-species-atlas/blob/main/audits/table_s7_canonical_succession.csv).
+For reproducibility, cite the version-specific Zenodo DOI for the
+atlas release you used; the package version (`packageVersion("phyloatlas")`)
+identifies the client.
+
+```{r pkg-version}
+packageVersion("phyloatlas")
+```
+
+## Where to learn more
+
+- Atlas repository: <https://github.com/franciscorichter/phylo-species-atlas>
+- Live atlas browser: <https://franciscorichter.github.io/phylo-species-atlas/>
+- Per-partition wiki pages: <https://github.com/franciscorichter/phylo-species-atlas/wiki>
+- Bug reports / feature requests: <https://github.com/franciscorichter/phylo-species-atlas/issues>

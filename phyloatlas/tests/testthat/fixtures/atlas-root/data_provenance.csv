@@ -1,0 +1,4 @@
+group,study,year,journal,doi,crown_ma,described_species,coverage_pct,data_source,download_url,methods_brief,notes,tree_name,tips,dated,format_original,species_count_source
+mammals,Upham 2019 long form,2019,Nature,10.1038/s41586-019-1234,180,6500,0.62,VertLife,https://example.org/mammals,Bayesian MCMC,canonical mammal tree,mammals.nwk,4,TRUE,nwk,IUCN
+birds_mctavish,McTavish 2025 long form,2025,Nature,10.1038/birds-2025,150,11000,0.95,OpenTree,https://example.org/birds,Synthesis,merged bird tree,birds.nwk,2,TRUE,nwk,BirdLife
+condamine,Condamine 2019 long form,2019,Syst Biol,10.5061/dryad.condamine,80,2000,0.30,Dryad,https://example.org/condamine,RAxML,condamine clade set,condamine.nwk,3,FALSE,nwk,Catalogue of Life

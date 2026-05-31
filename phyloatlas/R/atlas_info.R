@@ -6,8 +6,9 @@
 #'   `NULL` (with a warning) if no tree by that name exists.
 #'
 #' @examples
-#' \dontrun{
-#' atlas_info("mammals")
+#' \donttest{
+#' info <- try(atlas_info("mammals"), silent = TRUE)
+#' if (!inherits(info, "try-error")) info
 #' }
 #' @export
 atlas_info <- function(name) {

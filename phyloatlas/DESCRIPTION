@@ -1,20 +1,37 @@
 Package: phyloatlas
 Type: Package
-Title: Load Trees from the Phylo-Species Atlas
+Title: Access to the 'Phylo-Species Atlas' of Empirical Phylogenies
 Version: 0.1.0
-Authors@R: person("Francisco", "Richter", email = "richtf@usi.ch", role = c("aut", "cre"))
-Description: Convenience functions to fetch phylogenetic trees and metadata
-    from the Phylo-Species Atlas
-    (<https://github.com/franciscorichter/phylo-species-atlas>) directly
-    from R. Provides a single entry point to load any of the standardized
-    trees with species labels resolved from the shared dictionary, plus
-    helpers to list available trees and inspect their provenance.
+Authors@R:
+    person(given = "Francisco",
+           family = "Richter",
+           email = "richtf@usi.ch",
+           role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-0924-4613"))
+Description: Convenience functions to fetch standardized phylogenetic
+    trees and per-tree provenance metadata from the 'Phylo-Species
+    Atlas' <https://github.com/franciscorichter/phylo-species-atlas>
+    directly from R. The atlas is a curated collection of empirical
+    species-level trees covering Bacteria, Archaea, and Eukaryota,
+    organized into 62 partitions of life with tip labels normalized
+    against a shared dictionary of standardized species identifiers.
+    Provides a single entry point to load any of the standardized
+    trees with species labels resolved from the dictionary, plus
+    helpers to list available trees and inspect provenance.
 License: MIT + file LICENSE
 Encoding: UTF-8
-URL: https://github.com/franciscorichter/phylo-species-atlas
+URL: https://github.com/franciscorichter/phylo-species-atlas,
+    https://franciscorichter.github.io/phylo-species-atlas/
 BugReports: https://github.com/franciscorichter/phylo-species-atlas/issues
 Depends: R (>= 4.0)
 Imports:
     ape,
     utils
-RoxygenNote: 7.3.2
+Suggests:
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0),
+    withr
+Config/testthat/edition: 3
+VignetteBuilder: knitr
+RoxygenNote: 7.3.3

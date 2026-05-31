@@ -1,0 +1,4 @@
+filename,group,study,ntips,dated
+mammals.nwk,mammals,Upham et al. 2019,4,TRUE
+birds.nwk,birds,McTavish et al. 2025,2,TRUE
+condamine_Vangidae.nwk,condamine_Vangidae,Condamine et al. 2019,3,FALSE
