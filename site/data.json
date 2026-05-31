@@ -1472,7 +1472,7 @@
       "is_partition_anchor": true,
       "study": "Orr RJS et al. (2022)",
       "ntips": 517,
-      "dated": true,
+      "dated": false,
       "size_bytes": 36176,
       "year": 2022,
       "journal": "Science Advances",
@@ -12966,7 +12966,7 @@
       "described_species": 6000,
       "described_source": null,
       "coverage_pct": 12.0,
-      "dated": true,
+      "dated": false,
       "is_partition_anchor": true,
       "is_partition_canonical": true,
       "estimated_total": 8000,
@@ -18892,7 +18892,7 @@
         "study": "Orr RJS et al. (2022)",
         "year": 2022,
         "tips": 517,
-        "dated": true,
+        "dated": false,
         "is_partition_anchor": true,
         "is_partition_canonical": true
       }
@@ -21462,7 +21462,7 @@
         "derivation": "Derived from the 720-tip Orr 2022 multi-individual MCC by pruning to a\nsingle representative per species (smallest numeric tip ID under each\nGenus_species). 27.8% subspecies/specimen-level redundancy in the\noriginal tree. Reproducible via scripts/derive_species_tree.py.\n",
         "species_represented": 517,
         "coverage_pct_described": 8.6,
-        "dated": true,
+        "dated": false,
         "multiple_individuals_per_species": false,
         "source": {
           "key": "Orr 2022",

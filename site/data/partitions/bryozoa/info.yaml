@@ -43,7 +43,7 @@ tree:
     original tree. Reproducible via scripts/derive_species_tree.py.
   species_represented: 517
   coverage_pct_described: 8.6
-  dated: true
+  dated: false      # CORRECTED 2026-05-31: the atlas ships the SI_Fig2 ML topology pruned to species; the source paper's MCMCtree chronogram was never deposited (see dated_alternatives.reason_canonical_undated below)
   multiple_individuals_per_species: false
   source:
     key: Orr 2022
