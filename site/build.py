@@ -416,6 +416,49 @@ def find_provenance_match(tree_group: str, tree_ntips, provenance: list[dict]):
     return candidates[0]
 
 
+def write_alternative_trees_table(trees: list[dict]) -> Path:
+    """Emit audits/table_s6_alternative_trees.csv from the classified trees list.
+
+    The "alternative trees" are the trees that are NON-canonical for their
+    partition AND are not the Condamine family-level set. Of these, the two
+    cross-cutting reference trees (groups `eukaryotes`, `timetree`) carry the
+    `backbone` role; every other alternative tree is a partition `sub-clade`.
+
+    Generated deterministically from is_partition_canonical / partition_group
+    so this deposited table can never drift from what build.py computes.
+    """
+    BACKBONE_GROUPS = {"eukaryotes", "timetree"}
+    rows = []
+    for t in trees:
+        if t.get("is_partition_canonical"):
+            continue
+        filename = t.get("filename") or ""
+        if "condamine" in filename.lower():
+            continue
+        group = t.get("group") or ""
+        role = "backbone" if group in BACKBONE_GROUPS else "sub-clade"
+        rows.append({
+            "filename": filename,
+            "group": group,
+            "partition": t.get("partition_group") or "",
+            "study": t.get("study") or "",
+            "ntips": t.get("ntips") if t.get("ntips") is not None else "",
+            "dated": "TRUE" if t.get("dated") else "FALSE",
+            "role": role,
+        })
+    rows.sort(key=lambda r: (r["role"], r["partition"], r["group"]))
+
+    out_path = ROOT / "audits" / "table_s6_alternative_trees.csv"
+    fieldnames = ["filename", "group", "partition", "study", "ntips", "dated", "role"]
+    with out_path.open("w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=fieldnames)
+        w.writeheader()
+        w.writerows(rows)
+    print(f"wrote {out_path.relative_to(ROOT)}: {len(rows)} alternative trees",
+          file=sys.stderr)
+    return out_path
+
+
 def main() -> None:
     metadata = read_csv(STD / "metadata.csv")
     provenance = read_csv(PROVENANCE)
@@ -984,6 +1027,10 @@ def main() -> None:
     size_kb = OUT.stat().st_size / 1024
     print(f"wrote {OUT.name}: {len(trees)} trees, {len(coverage_rows)} coverage rows, "
           f"{len(unrepresented)} unrepresented partitions, {size_kb:.1f} KB", file=sys.stderr)
+
+    # Regenerate audits/table_s6_alternative_trees.csv from the same classified
+    # trees list, so the deposited alternative-trees table can never drift.
+    write_alternative_trees_table(trees)
 
     # Name shards were already built (and counted) at the top of main().
     if shard_bytes:

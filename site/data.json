@@ -15757,54 +15757,6 @@
     },
     {
       "filename": null,
-      "group": "minor_animal_phyla",
-      "provenance_group": null,
-      "partition_group": "Minor animal phyla",
-      "category": "Other animals",
-      "study": null,
-      "year": null,
-      "tips": null,
-      "raw_tips": null,
-      "described_species": 376,
-      "described_source": null,
-      "coverage_pct": null,
-      "dated": false,
-      "is_partition_anchor": false,
-      "is_partition_canonical": true,
-      "is_unrepresented": true,
-      "estimated_total": 535,
-      "estimated_low": 376,
-      "estimated_high": 700,
-      "estimate_source": "Atlas-aggregated",
-      "estimate_confidence": "Medium",
-      "interval_provenance": {
-        "described": {
-          "type": "atlas-derived",
-          "source": "atlas-aggregated",
-          "verbatim_quote": null,
-          "note": "Sum of described counts across 5 constituent phyla."
-        },
-        "estimated_total": {
-          "type": "atlas-derived",
-          "source": "atlas-aggregated",
-          "verbatim_quote": null
-        },
-        "estimated_low": {
-          "type": "derived-from-described",
-          "source": "atlas-aggregated",
-          "verbatim_quote": null
-        },
-        "estimated_high": {
-          "type": "atlas-derived",
-          "source": "atlas-aggregated",
-          "verbatim_quote": null
-        },
-        "overall_classification": "derived",
-        "auditor_note": "Five small invertebrate phyla aggregated to keep the Other-animals\ncategory collectively exhaustive. Each has well-established species\ncounts from monographs but no atlas-scale phylogeny.\n"
-      }
-    },
-    {
-      "filename": null,
       "group": "other_vertebrates",
       "provenance_group": null,
       "partition_group": "Other vertebrates",
@@ -15849,6 +15801,54 @@
         },
         "overall_classification": "derived",
         "auditor_note": "Three vertebrate lineages with extremely small species counts and no\natlas partition: Tuatara, Coelacanths, Lungfishes. Aggregated here\nso the Vertebrates category is collectively exhaustive.\n"
+      }
+    },
+    {
+      "filename": null,
+      "group": "minor_animal_phyla",
+      "provenance_group": null,
+      "partition_group": "Minor animal phyla",
+      "category": "Other animals",
+      "study": null,
+      "year": null,
+      "tips": null,
+      "raw_tips": null,
+      "described_species": 376,
+      "described_source": null,
+      "coverage_pct": null,
+      "dated": false,
+      "is_partition_anchor": false,
+      "is_partition_canonical": true,
+      "is_unrepresented": true,
+      "estimated_total": 535,
+      "estimated_low": 376,
+      "estimated_high": 700,
+      "estimate_source": "Atlas-aggregated",
+      "estimate_confidence": "Medium",
+      "interval_provenance": {
+        "described": {
+          "type": "atlas-derived",
+          "source": "atlas-aggregated",
+          "verbatim_quote": null,
+          "note": "Sum of described counts across 5 constituent phyla."
+        },
+        "estimated_total": {
+          "type": "atlas-derived",
+          "source": "atlas-aggregated",
+          "verbatim_quote": null
+        },
+        "estimated_low": {
+          "type": "derived-from-described",
+          "source": "atlas-aggregated",
+          "verbatim_quote": null
+        },
+        "estimated_high": {
+          "type": "atlas-derived",
+          "source": "atlas-aggregated",
+          "verbatim_quote": null
+        },
+        "overall_classification": "derived",
+        "auditor_note": "Five small invertebrate phyla aggregated to keep the Other-animals\ncategory collectively exhaustive. Each has well-established species\ncounts from monographs but no atlas-scale phylogeny.\n"
       }
     }
   ],
@@ -19630,6 +19630,23 @@
         "citation": "Catalogue of Life."
       },
       "estimate_confidence": "Medium"
+    },
+    {
+      "group": "Other vertebrates",
+      "category": "Not yet represented",
+      "described": 9,
+      "estimated_total": 9,
+      "estimated_low": 9,
+      "estimated_high": 9,
+      "estimate_source": "Atlas-aggregated",
+      "estimate_source_info": {
+        "label": "Atlas-aggregated",
+        "type": null,
+        "doi": null,
+        "url": null,
+        "citation": null
+      },
+      "estimate_confidence": "High"
     }
   ],
   "audits": {
