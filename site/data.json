@@ -250,10 +250,10 @@
       "crown_ma": 368.0,
       "described_species": 36000,
       "described_source": "Eschmeyer's Catalog",
-      "coverage_pct": 87.5,
+      "coverage_pct": 32.2,
       "data_source": "FishTreeOfLife",
       "download_url": "https://fishtreeoflife.org/downloads/",
-      "methods_brief": "27-gene supermatrix, ML (RAxML), treePL dating, 130 fossil calibrations; coverage summary uses the corresponding 31,516-tip FishTreeOfLife chronogram with taxonomic imputation",
+      "methods_brief": "27-gene supermatrix, ML (RAxML), treePL dating, 130 fossil calibrations; coverage_pct is for the atlas-shipped 11,638-tip molecular-only subset (32.2% of ~36,000 described); the source 31,516-tip TACT-imputed FishTreeOfLife reaches 87.5%",
       "notes": "The dated 11,638-tip backbone is used for crown-age and LTT analyses; FishTreeOfLife also provides 100 full chronograms with taxonomic imputation",
       "estimate": {
         "estimated_total": 40000,
