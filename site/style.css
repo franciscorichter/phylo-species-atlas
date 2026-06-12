@@ -430,7 +430,7 @@ main {
 .tree-list .badge.dated { background: var(--dated); }
 .tree-list .badge.undated { background: var(--undated); }
 
-/* Dark-matter / unrepresented lineages */
+/* Dark-matter / unrepresented partitions */
 .tree-list .partition-header.dark-header {
   color: var(--muted);
   margin-top: 12px;

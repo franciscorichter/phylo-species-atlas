@@ -983,7 +983,7 @@ def main() -> None:
     OUT.write_text(json.dumps(bundle, indent=2, ensure_ascii=False, default=_json_default))
     size_kb = OUT.stat().st_size / 1024
     print(f"wrote {OUT.name}: {len(trees)} trees, {len(coverage_rows)} coverage rows, "
-          f"{len(unrepresented)} unrepresented lineages, {size_kb:.1f} KB", file=sys.stderr)
+          f"{len(unrepresented)} unrepresented partitions, {size_kb:.1f} KB", file=sys.stderr)
 
     # Name shards were already built (and counted) at the top of main().
     if shard_bytes:

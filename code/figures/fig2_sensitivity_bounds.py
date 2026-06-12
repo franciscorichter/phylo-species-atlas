@@ -27,7 +27,7 @@ Outputs:
 Headline-anchor verticals:
   C0 global = 23.7%   (dashed blue)
   C1 global = 10.0%   (dashed orange)
-  C2 global = 6.6%    (dashed red)
+  C2 global = 5.4%    (dashed red)
 Per-partition values differ substantially from these globals (which are
 weighted by described-species across the whole atlas); the verticals are
 visual anchors, not per-partition baselines.
@@ -60,7 +60,7 @@ EXCLUDED_C2_THRESHOLD = 1e-6   # treat coverage_c2_pct ≈ 0 as "excluded"
 # ── Headline anchors (atlas-wide) ──
 HEADLINE_C0 = 23.7
 HEADLINE_C1 = 10.0
-HEADLINE_C2 = 6.6
+HEADLINE_C2 = 5.4
 
 # ── Category display ──
 CAT_DISPLAY = {

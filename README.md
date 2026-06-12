@@ -24,11 +24,11 @@ This atlas surveys publicly available, downloadable species-level empirical phyl
 | Time-calibrated | **246 of 264 (93%)** |
 | Eukaryotic coverage (headline C0) | **23.7%** of ~2.1 M described |
 | Sensitivity bound C1 (strict molecular-only on TACT-imputed trees) | **~10%** |
-| Sensitivity bound C2 (strictest non-imputed, non-OTL-pipeline) | **~6.6%** |
-| Archival uncertainty preserved | **7 of 28** non-Condamine dated source trees |
+| Sensitivity bound C2 (strictest non-imputed, non-OTL-pipeline) | **~5.4%** |
+| Archival uncertainty preserved | **7 of 24** non-Condamine dated source trees |
 | Catalogue of Life 2025 reconciliation | included |
 | Licence | CC-BY-4.0 (see `LICENSE`) |
-| Version | v1.0.3 (2026-05-30) |
+| Version | v1.0.4 (2026-05-31) |
 
 ### Three-category tree classification
 
@@ -126,7 +126,7 @@ Labels were standardized by stripping family/order annotations, voucher codes, a
 | `col_family` | Family from CoL classification |
 | `match_type` | `exact`, `synonym`, `gtdb_only`, `genus_only`, `skip`, or `unmatched` |
 
-Match rates: **83.6% of matchable eukaryotic species** mapped to CoL (352K exact + 58K via synonym resolution). The 143K GTDB prokaryote entries use genome accession IDs not present in CoL.
+Match rates: **83.2% of matchable eukaryotic species** mapped to CoL (352K exact + 58K via synonym resolution). The 143K GTDB prokaryote entries use genome accession IDs not present in CoL.
 
 ## Full mapping
 
