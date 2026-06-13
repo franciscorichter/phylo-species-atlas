@@ -1,9 +1,9 @@
 cff-version: 1.2.0
 message: "If you use this dataset, please cite both the paper and the specific Zenodo release."
 title: "Where the tree of life is empirically resolved, and where it is not: an open atlas of species-level phylogenies and their archival uncertainty"
-version: 1.0.4
+version: 1.0.5
 doi: "10.5281/zenodo.20127157"
-date-released: 2026-05-31
+date-released: 2026-06-13
 url: "https://github.com/franciscorichter/phylo-species-atlas"
 repository-code: "https://github.com/franciscorichter/phylo-species-atlas"
 license: CC-BY-4.0
