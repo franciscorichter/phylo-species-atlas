@@ -917,8 +917,8 @@ def main() -> None:
 
     summary = {
         "n_trees": len(trees),
-        "n_dated": dated_count,
-        "n_undated": len(trees) - dated_count,
+        "n_dated": sum(1 for t in trees if t.get("dated")),
+        "n_undated": len(trees) - sum(1 for t in trees if t.get("dated")),
         "n_groups": len({r["group"] for r in trees}),
         "n_datasets": len(provenance),
         "total_tips": sum((r["ntips"] or 0) for r in trees),

@@ -42,32 +42,32 @@ caveats:
     detail: |
       ~55,000 described mites and ticks (paraphyletic group within
       Arachnida: Acariformes + Parasitiformes). Estimated total may
-      exceed 1 million species. Klimov 2018 (Annu Rev Entomol) is the
-      most recent dated phylogenomic synthesis but covers only ~200
-      species across the two superorders. Pepato 2018 also produced
-      dated Acariformes framework. NO atlas-scale species tree exists —
-      mite phylogenetics is highly fragmented across families.
+      exceed 1 million species. Klimov et al. 2018 (Mol Phylogenet Evol)
+      is a comprehensive Acariformes phylogeny; Pepato & Klimov 2018 also
+      produced a dated Acariformes framework. NO combined Acari-wide
+      species tree exists — mite phylogenetics is highly fragmented
+      across families.
 
 dated_alternatives:
   reason_canonical_undated: |
-    Backbone phylogenomic dating exists separately for the two
-    superorders (Acariformes via Pepato 2018; Parasitiformes via Klimov
-    2018) but no combined Acari-wide species-level chronogram. With
+    Backbone phylogenomic dating exists for Acariformes (Pepato & Klimov
+    2018; Klimov et al. 2018, Mol Phylogenet Evol) but no combined
+    Acari-wide species-level chronogram spanning Parasitiformes. With
     >100k undescribed species expected, comprehensive coverage is
     unrealistic.
   candidates:
     - key: Klimov 2018
-      doi: 10.1146/annurev-ento-031616-035046
-      study: "Klimov PB, Hubert J, Erban T, Pekár S, Klompen H (2018) — Comparative analysis of Acari... Annu Rev Entomol — phylogenomic synthesis."
-      scope: Acari-wide phylogenomic review with dated framework
+      doi: 10.1016/j.ympev.2017.10.017
+      study: "Klimov PB, OConnor BM, Chetverikov PE, Bolton SJ, Pepato AR, et al. (2018) — Comprehensive phylogeny of acariform mites (Acariformes) provides insights on the origin of the four-legged mites (Eriophyoidea). Mol Phylogenet Evol 119:105-117."
+      scope: Acariformes comprehensive phylogeny (dated)
       tips: ~200
-      note: "Most comprehensive recent synthesis spanning Acariformes + Parasitiformes."
+      note: "Comprehensive Acariformes phylogeny; does not cover Parasitiformes."
     - key: Pepato 2018
-      doi: 10.1093/sysbio/syy010
+      doi: null   # 10.1093/sysbio/syy010 resolved to an unrelated Myotis bat phylogeny; correct DOI must be re-verified via /bib before re-adding
       study: "Pepato AR, Klimov PB (2018) — Phylogeny of mites (Acari) using transcriptomes: contains evidence on the phylogeny of Acariformes. Syst Biol 67:651-670."
       scope: Acariformes phylogenomic dated
       tips: ~50
-      note: "Transcriptome-based Acariformes (mites) dated framework."
+      note: "Transcriptome-based Acariformes (mites) dated framework. DOI removed pending /bib re-verification."
     - key: Dunlop 2009
       doi: 10.1098/rspb.2008.1700
       study: "Dunlop JA, Selden PA (2009) — Calibrating the chelicerate clock: a paleontological reply to Jeyaprakash and Hoy. Exp Appl Acarol 48:183-197."

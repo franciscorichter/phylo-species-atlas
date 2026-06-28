@@ -190,7 +190,7 @@ HISTORY = {
         (2021, 1672, "Li et al. 2021", False),
     ],
     "Diatoms": [
-        (2018, 94, "Parks et al. 2018", False),
+        (2018, 244, "Nakov et al. 2018", True),
     ],
     "Ciliates": [
         (2024, 105, "Jiang et al. 2024", True),

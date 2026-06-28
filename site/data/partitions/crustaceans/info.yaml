@@ -36,11 +36,11 @@ estimate:
 
 tree:
   file: tree.nwk
-  ntips: 95
-  unique_ids: 95
-  species_represented: 95
+  ntips: 90
+  unique_ids: 90
+  species_represented: 90
   coverage_pct_described: 0.1
-  dated: true            # canonical IS dated — CSV flag mismatch; see dated_alternatives.note
+  dated: true            # time-calibrated CIR chronogram (Wolfe 2019 Fig 3, Dryad folder L) now shipped
   multiple_individuals_per_species: false
   source:
     key: Wolfe 2019
@@ -49,35 +49,34 @@ tree:
     pdf: papers/tree.pdf
   methods:
     inference: bayesian
-    software: ["Bayesian inference", "ML, ASTRAL"]
+    software: ["PhyloBayes (CIR relaxed clock)", "ML, ASTRAL"]
     data_type: UCE
     n_loci: 410
-    dating_method: "410-loci anchored hybrid enrichment; 94 species / 58 families."
+    dating_method: "PhyloBayes CIR relaxed-clock chronogram on the fixed 410-locus AA topology, fossil-calibrated (Wolfe 2019 Fig 3 / Dryad folder L, file 2_cir.chronogram); 90 decapod tips, root ~466 Ma."
     support_metric: posterior_probability
     divergence_ci_available: true
-    note: "DECAPODA ONLY — under-represents the Crustacea partition (~77k species). High-priority replacement candidate."
+    crown_ma: 465.9
+    note: "DECAPODA ONLY — under-represents the Crustacea partition (~77k species), but now time-calibrated."
 
 caveats:
   - severity: high
     summary: "Shipped tree is decapod-only — drastically narrower than the partition."
-    detail: "Wolfe 2019's 95 tips cover only the order Decapoda. The Crustacea partition spans ~77k species across many orders (Amphipoda, Isopoda, Copepoda, Cirripedia, etc.). The 0.1% coverage shouldn't be interpreted as overall crustacean tree coverage."
+    detail: "Wolfe 2019's 90 tips cover only the order Decapoda. The Crustacea partition spans ~77k species across many orders (Amphipoda, Isopoda, Copepoda, Cirripedia, etc.). The 0.1% coverage shouldn't be interpreted as overall crustacean tree coverage."
 
 dated_alternatives:
-  reason_canonical_undated: |
-    The canonical Wolfe 2019 tree IS time-calibrated — 410-locus
-    anchored hybrid enrichment with Bayesian dating and divergence CIs
-    (methods.divergence_ci_available: true; paper title includes
-    "evolutionary timeline"). The CSV's dated=FALSE flag is stale and
-    should be corrected at the build pipeline. The real limitation here
-    is taxonomic scope (Decapoda only, ~77k partition species), not
-    dating — see caveats[0].
+  reason_canonical_dated: |
+    RESOLVED 2026-06: the atlas now ships Wolfe 2019's time-calibrated
+    CIR chronogram (Figure 3; PhyloBayes relaxed clock on the fixed
+    410-locus AA topology, fossil-calibrated), retrieved from Dryad
+    folder L (doi:10.5061/dryad.k7505mn, 2_cir.chronogram). It carries 90
+    decapod tips with branch lengths in Myr; the root at ~466 Ma places
+    crown decapods in the Late Ordovician. Previously the atlas shipped
+    the 95-tip substitution-unit topology (Dryad folder J file 1), which
+    led the tree to be mis-described as undated. The remaining limitation
+    is taxonomic scope (Decapoda only, ~77k partition species) — see
+    caveats[0]. The candidates below are complementary dated trees for
+    crustacean lineages outside Decapoda.
   candidates:
-    - key: Wolfe 2019 (canonical)
-      doi: 10.1098/rspb.2019.0079
-      study: "Wolfe JM et al. (2019) — A phylogenomic framework, evolutionary timeline and genomic resources for comparative studies of decapod crustaceans. Proc R Soc B 286:20190079."
-      scope: Decapoda — same as the atlas canonical
-      tips: 94
-      note: "Canonical itself; the dating IS published — flag is wrong."
     - key: Oakley 2013
       doi: 10.1093/molbev/mss216
       study: "Oakley TH, Wolfe JM, Lindgren AR, Zaharoff AK (2013) — Phylotranscriptomics to bring the understudied into the fold: monophyletic Ostracoda, fossil placement, and pancrustacean phylogeny. Mol Biol Evol 30:215-233."

@@ -19,16 +19,16 @@ This atlas surveys publicly available, downloadable species-level empirical phyl
 | Atlas partitions | **62** (26 with shipped canonical + 36 unrepresented) |
 | Source datasets | **49** |
 | Taxonomic groups | **47** |
-| Decomposition | 26 partition-canonical + 218 Condamine family-level + 20 sub-clade |
+| Decomposition | 218 Condamine family-level + 25 further partition-canonical + 21 sub-clade/reference |
 | Global dictionary | **637,619** standardized labels (493,978 eukaryotic + 143,641 prokaryotic) |
-| Time-calibrated | **246 of 264 (93%)** |
+| Time-calibrated | **248 of 264 (94%)** |
 | Eukaryotic coverage (headline C0) | **23.7%** of ~2.1 M described |
 | Sensitivity bound C1 (strict molecular-only on TACT-imputed trees) | **~10%** |
 | Sensitivity bound C2 (strictest non-imputed, non-OTL-pipeline) | **~5.4%** |
 | Archival uncertainty preserved | **7 of 24** non-Condamine dated source trees |
 | Catalogue of Life 2025 reconciliation | included |
 | Licence | CC-BY-4.0 (see `LICENSE`) |
-| Version | v1.0.4 (2026-05-31) |
+| Version | v1.0.5 (2026-06-13) |
 
 ### Three-category tree classification
 

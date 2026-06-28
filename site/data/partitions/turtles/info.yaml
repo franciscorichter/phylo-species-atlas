@@ -78,14 +78,14 @@ estimate:
 # 100-tree posterior are linked from the uncertainty section below.
 tree:
   file: tree.nwk
-  ntips: 287                                 # atlas-derived: one tip per species
+  ntips: 274                                 # atlas-derived: one tip per species
   derivation: |
     Derived from the 591-individual Thomson 2021 MCC (standardized/trees/turtles.nwk)
     by pruning to a single representative per species — the smallest numeric tip
     ID under each Genus_species. Internal unary nodes collapsed by summing branch
     lengths. See scripts/derive_species_tree.py for the reproducible recipe.
-  species_represented: 287
-  coverage_pct_described: 79.7               # 287 / 360 (TTWG 2021)
+  species_represented: 274
+  coverage_pct_described: 76.1               # 287 / 360 (TTWG 2021)
   coverage_pct_described_ttwg_2025: 78.8     # 287 / 364 (TTWG 2025)
   dated: true
   multiple_individuals_per_species: false

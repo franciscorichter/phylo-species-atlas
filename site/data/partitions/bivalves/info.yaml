@@ -39,7 +39,7 @@ tree:
   unique_ids: 73
   species_represented: 73
   coverage_pct_described: 0.4
-  dated: true
+  dated: false
   multiple_individuals_per_species: false
   source:
     key: Pfeiffer JM
@@ -53,13 +53,14 @@ tree:
 
 dated_alternatives:
   reason_canonical_undated: |
-    info.yaml records dated=true for Pfeiffer 2019 (Unioverse probe set,
-    fossil-calibrated anchored hybrid enrichment), but the upstream
-    data_provenance.csv flag says FALSE — same CSV/override mismatch as
-    Bryozoa and Crustaceans. Functionally the canonical IS dated. The
-    real limitation is taxonomic scope: Pfeiffer 2019 covers only
-    Unionoida (freshwater mussels, ~840 species), while the Bivalvia
-    partition contains ~20k species.
+    Pfeiffer et al. 2019 ("Unioverse", Mol Phyl Evol 137:114-126) is a
+    probe-set resource paper presenting only ML/BI/ASTRAL topology — it
+    performs no divergence-time estimation and applies no fossil
+    calibration. The shipped canonical tree is therefore an undated,
+    non-ultrametric ML topology (data_provenance.csv dated=FALSE is
+    correct). A secondary limitation is taxonomic scope: Pfeiffer 2019
+    covers only Unionoida (freshwater mussels, ~840 species), while the
+    Bivalvia partition contains ~20k species.
   candidates:
     - key: Combosch 2016
       doi: 10.1016/j.ympev.2015.09.016

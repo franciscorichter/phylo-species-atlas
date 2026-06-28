@@ -42,7 +42,7 @@ tree:
   unique_ids: 533
   species_represented: 533
   coverage_pct_described: 2.2
-  dated: true
+  dated: false
   multiple_individuals_per_species: false
   source:
     key: Bechteler 2023

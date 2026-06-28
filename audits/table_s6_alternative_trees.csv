@@ -3,7 +3,7 @@ eukaryotes.nwk,eukaryotes,,Williamson 2025,100,FALSE,backbone
 timetree.nwk,timetree,,Hedges 2015,50645,FALSE,backbone
 frogs.nwk,frogs,Amphibians,Portik 2023,5326,TRUE,sub-clade
 salamanders.nwk,salamanders,Amphibians,Stewart 2025,796,TRUE,sub-clade
-parrots.nwk,parrots,Birds,Burgio 2019,413,TRUE,sub-clade
+parrots.nwk,parrots,Birds,"Burgio KR, Davis E. (2019)",413,TRUE,sub-clade
 neotropical_fish.nwk,neotropical_fish,Fish,Tagliacollo 2024,3167,TRUE,sub-clade
 ants.nwk,ants,Insects,Romiguier 2022,83,FALSE,sub-clade
 bees.nwk,bees,Insects,Henriquez-Piskulich 2024,4586,TRUE,sub-clade
@@ -11,12 +11,12 @@ butterflies.nwk,butterflies,Insects,Kawahara 2023,2258,TRUE,sub-clade
 hemiptera.nwk,hemiptera,Insects,Johnson 2018,193,FALSE,sub-clade
 termites.nwk,termites,Insects,2024 Nat Comms,138,FALSE,sub-clade
 carnivora.nwk,carnivora,Mammals,Nyakatura 2012,294,TRUE,sub-clade
-cetaceans.nwk,cetaceans,Mammals,McGowen 2020,85,TRUE,sub-clade
+cetaceans.nwk,cetaceans,Mammals,"McGowen MR, Tsagkogeorga G, Álvarez-Carretero S, dos Reis M et al. (2020)",85,TRUE,sub-clade
 primates.nwk,primates,Mammals,"Arnold C, Matthews LJ, Nunn CL (2010)",272,TRUE,sub-clade
 asteraceae.nwk,asteraceae,Seed plants,Mandel 2019,256,FALSE,sub-clade
-cacti.nwk,cacti,Seed plants,CactEcoDB 2026,1063,TRUE,sub-clade
+cacti.nwk,cacti,Seed plants,Thompson J et al. (2026) Scientific Data,1063,TRUE,sub-clade
 conifers.nwk,conifers,Seed plants,Ran 2018,16,TRUE,sub-clade
 eucalyptus.nwk,eucalyptus,Seed plants,Crisp 2024,399,FALSE,sub-clade
 grasses.nwk,grasses,Seed plants,GPWG III 2025,1153,FALSE,sub-clade
-orchids.nwk,orchids,Seed plants,Givnish 2023,1475,TRUE,sub-clade
-solanaceae.nwk,solanaceae,Seed plants,Sarkinen 2013,1076,TRUE,sub-clade
+orchids.nwk,orchids,Seed plants,"Thompson JB, Davis KE, Dodd HO, Wills MA, Priest NK (2023) PNAS",1475,TRUE,sub-clade
+solanaceae.nwk,solanaceae,Seed plants,"Sarkinen TE, Bohs L, Olmstead R, Knapp S (2013) BMC Evolutionary Biology",1076,TRUE,sub-clade

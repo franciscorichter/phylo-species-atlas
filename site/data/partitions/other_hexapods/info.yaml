@@ -51,8 +51,8 @@ dated_alternatives:
     the bulk of the partition); no species-level synthesis.
   candidates:
     - key: Yu 2024
-      doi: 10.1093/sysbio/syae003
-      study: "Yu D, Zhang F, Stevens M, Yin Y, Ding Y (2024) — Phylogenomics resolves the systematic position of Collembola (Hexapoda) and supports its monophyly. Syst Biol 73:80-95."
+      doi: 10.1016/j.ympev.2024.108169
+      study: "Yu D, Du S, Wei X, Zhu J, Ding Y, Hu F, Liu M, Zhang F (2024) — Whole-genome-based phylogenetic analyses provide new insights into the evolution of springtails (Hexapoda: Collembola). Molecular Phylogenetics and Evolution 200:108169."
       scope: Collembola-wide phylogenomic dated framework
       tips: ~80
       note: "Most recent dated Collembola phylogenomics — bulk of partition."

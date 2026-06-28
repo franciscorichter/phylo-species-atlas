@@ -85,7 +85,7 @@ caveats:
       time-calibrated tree as Fig 2 of the published paper. The
       chronogram FILE itself, however, is not in either of the paper's
       data archives — Dryad (10.5061/dryad.2v6wwpzp9) holds only the
-      18-locus sequence alignments and two ML topology Newick files
+      17-locus sequence alignments and two ML topology Newick files
       (SI_Fig1 BIG, SI_Fig2 TRIMMED), and the Zenodo record
       (10.5281/zenodo.5721078) contains only 311 MB of SEM image cards.
       The atlas-canonical Bryozoa tree shown here is therefore the
@@ -111,7 +111,7 @@ dated_alternatives:
       study: "Orr RJS et al. (2022) — Paleozoic origins of cheilostome bryozoans and their parental care inferred by a new genome-skimmed phylogeny. Sci Adv 8:eabm7452."
       scope: Cheilostomata (same scope as the atlas canonical)
       tips: ~720
-      note: "Paper runs MCMCtree with 18 fossil calibrations and a relaxed independent rates clock; the chronogram appears as Fig 2. CHECKED 2026-05-19: the time-calibrated tree FILE was NOT deposited — Dryad archive (10.5061/dryad.2v6wwpzp9) holds only 18-locus alignments + two ML newick files (SI_Fig1 BIG and SI_Fig2 TRIMMED), and the Zenodo record (10.5281/zenodo.5721078) contains only SEM image cards. Recovering the chronogram would require contacting the authors directly."
+      note: "Paper runs MCMCtree with 18 fossil calibrations and a relaxed independent rates clock; the chronogram appears as Fig 2. CHECKED 2026-05-19: the time-calibrated tree FILE was NOT deposited — Dryad archive (10.5061/dryad.2v6wwpzp9) holds only 17-locus alignments + two ML newick files (SI_Fig1 BIG and SI_Fig2 TRIMMED), and the Zenodo record (10.5281/zenodo.5721078) contains only SEM image cards. Recovering the chronogram would require contacting the authors directly."
     - key: Waeschenbach 2012
       doi: 10.1016/j.ympev.2012.06.011
       study: "Waeschenbach A, Taylor PD, Littlewood DTJ (2012) — A molecular phylogeny of bryozoans. Mol Phyl Evol 62:718-735."

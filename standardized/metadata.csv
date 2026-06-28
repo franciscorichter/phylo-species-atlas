@@ -18,7 +18,7 @@ crustaceans.nwk,crustaceans,Wolfe 2019,95,FALSE
 ants.nwk,ants,Romiguier 2022,83,FALSE
 seed_plants.nwk,seed_plants,Smith & Brown 2018,356305,TRUE
 ferns.nwk,ferns,Nitta 2022,6234,TRUE
-bryophytes.nwk,bryophytes,Bechteler 2023,533,TRUE
+bryophytes.nwk,bryophytes,Bechteler 2023,533,FALSE
 grasses.nwk,grasses,GPWG III 2025,1153,FALSE
 orchids.nwk,orchids,Givnish 2023,1475,TRUE
 asteraceae.nwk,asteraceae,Mandel 2019,256,FALSE

@@ -39,7 +39,7 @@ tree:
   unique_ids: 54
   species_represented: 54
   coverage_pct_described: 0.1
-  dated: true
+  dated: false
   multiple_individuals_per_species: false
   source:
     key: Zapata F et al.
@@ -53,13 +53,15 @@ tree:
 
 dated_alternatives:
   reason_canonical_undated: |
-    info.yaml claims dated=true for Zapata 2014, but data_provenance.csv
-    flags it FALSE — third instance of the CSV/override mismatch
-    (alongside Bryozoa, Crustaceans, Bivalves). Zapata 2014 *does* fit a
-    relaxed clock with fossil calibrations for the 5 main gastropod
-    clades, so the canonical IS dated. The real limitations are scope
-    (backbone only, 54 tips for ~65k partition species) and resolution
-    of within-clade timing. Several larger sub-clade dated trees exist.
+    Zapata et al. 2014 published a time-calibrated chronogram (MCMCTree,
+    relaxed clock with fossil calibrations) as Figure 4, but that
+    chronogram was never deposited as a tree file — the atlas ships the
+    transcriptome ML backbone phylogram (54 tips, substitution units),
+    which is therefore undated (data_provenance.csv dated=FALSE is
+    correct). Re-ingesting the calibrated tree would require obtaining the
+    chronogram from the authors. A further limitation is scope (backbone
+    only, 54 tips for ~65k partition species). Several larger sub-clade
+    dated trees exist (below).
   candidates:
     - key: Uribe 2019
       doi: 10.1016/j.ympev.2018.12.019

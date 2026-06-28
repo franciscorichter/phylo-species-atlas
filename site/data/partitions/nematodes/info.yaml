@@ -72,7 +72,7 @@ dated_alternatives:
       tips: ~100
       note: "Cross-marker dated comparison; explicitly addresses conflicts between data types."
     - key: Holterman 2006
-      doi: 10.1093/molbev/msl043
+      doi: 10.1093/molbev/msl044
       study: "Holterman M et al. (2006) — Phylum-wide analysis of SSU rDNA reveals deep phylogenetic relationships among nematodes and accelerated evolution toward crown clades. Mol Biol Evol 23:1792-1800."
       scope: SSU rDNA dated phylogeny of Nematoda
       tips: ~339
