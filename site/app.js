@@ -688,8 +688,15 @@ async function selectTree(filename, scrollIntoView) {
   renderUncertaintyPanel(t);
 
   const dl = document.getElementById("download-newick");
-  dl.href = t.tree_url_override || (TREES_BASE + filename);
-  dl.setAttribute("download", filename);
+  if (t.redistributed === false) {
+    // TimeTree-of-Life: cited reference, not redistributed — link to timetree.org.
+    dl.href = t.download_url || "https://timetree.org";
+    dl.removeAttribute("download");
+    dl.target = "_blank";
+  } else {
+    dl.href = t.tree_url_override || (TREES_BASE + filename);
+    dl.setAttribute("download", filename);
+  }
 
   renderRSnippet(t);
 
@@ -973,6 +980,13 @@ async function loadAndRenderTree(t) {
   STATE.currentNames = {};
 
   status.classList.remove("warning");
+
+  if (t.redistributed === false) {
+    status.classList.add("warning");
+    status.textContent = "Tree not redistributed at the TimeTree project's request — available at timetree.org (Hedges et al. 2015).";
+    return;
+  }
+
   status.textContent = `Loading ${t.filename}…`;
 
   try {

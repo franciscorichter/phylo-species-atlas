@@ -583,6 +583,9 @@ def main() -> None:
             "coverage_pct": coverage_pct,
             "data_source": prov.get("data_source") or None,
             "download_url": prov.get("download_url") or None,
+            # TimeTree-of-Life (Hedges 2015) is cited as a cross-cutting reference
+            # but not redistributed, at the TimeTree project's request.
+            "redistributed": False if group == "timetree" else True,
             "methods_brief": prov.get("methods_brief") or None,
             "notes": prov.get("notes") or None,
             "estimate": est,
