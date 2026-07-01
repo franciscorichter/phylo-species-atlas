@@ -13,7 +13,7 @@ the best tree available at year X — typically the most-tip-rich, dated tree.
 
 The historical record below is curated from the audit MDs (where they have
 `alternative` blocks), data_provenance.csv, and verified literature
-(DOI-checked via WebSearch in this session).
+(DOI-checked via web search).
 """
 from __future__ import annotations
 import csv
@@ -26,7 +26,7 @@ OUT_CSV = DATA.parent / "Paper" / "inputs" / "figN_atlas_growth.csv"
 # "Best available species-level tree for the partition" at the year of publication.
 # When a later study supersedes an earlier one, the later year's row uses the
 # later tip count.
-# Sources: verified via Crossref/PubMed WebSearch where uncertain;
+# Sources: verified via Crossref/PubMed web search where uncertain;
 # numbers reflect the published n_tips at the time of publication.
 HISTORY = {
     "Mammals": [
