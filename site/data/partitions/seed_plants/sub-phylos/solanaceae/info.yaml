@@ -18,3 +18,9 @@ species_count:
   source: 
   described: null
   coverage_pct_described: null
+
+# Dating method curated 2026-07-01 (verified from source study)
+dating_curated:
+  regime: BRC
+  method: "BEAST v1.7.4, uncorrelated relaxed clock"
+  source: "Sarkinen et al. 2013, BMC Evol Biol, DOI 10.1186/1471-2148-13-214"

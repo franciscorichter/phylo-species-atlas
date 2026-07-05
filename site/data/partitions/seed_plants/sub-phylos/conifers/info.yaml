@@ -31,3 +31,9 @@ note: |
   within the 383,671 of Seed plants. Relocated to this sub-phylo. The web
   app excludes Conifers from the main dotplot to avoid the overlap; users
   reach this tree via Seed plants → sub-clade chooser.
+
+# Dating method curated 2026-07-01 (verified from source study)
+dating_curated:
+  regime: BRC
+  method: "MCMCtree (PAML 4.9j), approximate-likelihood Bayesian relaxed clock; fossil root bound 153 Ma"
+  source: "Ran et al. 2018, MPE, DOI 10.1016/j.ympev.2018.08.011"

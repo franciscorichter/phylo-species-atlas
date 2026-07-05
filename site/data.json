@@ -13,7 +13,7 @@
     "n_audits_verified": 61,
     "n_audits_deferred": 0,
     "n_partitions": 62,
-    "n_atlas_derived": 13,
+    "n_atlas_derived": 12,
     "n_paper_published_intervals": 11,
     "n_partly_heuristic_intervals": 38,
     "n_fully_heuristic_intervals": 11,
@@ -2273,22 +2273,22 @@
       "partition_group": "Turtles",
       "category": "Vertebrates",
       "is_partition_anchor": true,
-      "study": "Thomson RC, Spinks PQ, Shaffer HB (2021)",
+      "study": "Thomson 2021",
       "ntips": 274,
       "dated": true,
-      "size_bytes": 18746,
+      "size_bytes": 8932,
       "year": 2021,
       "journal": "PNAS",
       "doi": "10.1073/pnas.2012215118",
       "crown_ma": 211.95,
       "described_species": 360,
       "described_source": "Reptile Database 2025",
-      "coverage_pct": 79.7,
+      "coverage_pct": 76.1,
       "data_source": "Dryad",
       "download_url": "https://datadryad.org/dataset/doi:10.5061/dryad.jh9w0vt8w",
       "redistributed": true,
-      "methods_brief": "13 loci for 294 species (80% all turtles), Bayesian (BEAST)",
-      "notes": "Multiple individuals per species; displayed coverage is capped at 100%; 100 posterior available",
+      "methods_brief": "15 nuclear loci (13,559 bp); atlas ships the Thomson 2021 species-level MCC chronogram (274 ultrametric tips, crown ~212 Ma, deposited posterior sample)",
+      "notes": "Species-level time-calibrated MCC chronogram (274 tips, ultrametric). Source reports 279 species from 591 individuals; atlas ships the 274-tip dated MCC. Coverage 274/360 = 76.1%.",
       "estimate": {
         "estimated_total": 360,
         "estimated_low": 360,
@@ -2312,21 +2312,14 @@
         "citation": "Turtle Taxonomy Working Group 2021. Turtles of the World: Annotated Checklist and Atlas of Taxonomy. Chelonian Research Monographs 8."
       },
       "tip_taxonomy": {
-        "unique_ids": 329,
-        "unique_species": 287,
-        "subspecies_tips": 30,
-        "redundancy": 42,
-        "binomial_format": true
-      },
-      "tree_url_override": "data/partitions/turtles/tree.nwk",
-      "tip_taxonomy_override": {
         "unique_ids": 274,
         "unique_species": 274,
         "subspecies_tips": 7,
         "redundancy": 0,
-        "binomial_format": true,
-        "total_tips": 274
+        "binomial_format": true
       },
+      "tree_url_override": null,
+      "tip_taxonomy_override": null,
       "is_partition_canonical": true
     },
     {
@@ -12750,13 +12743,13 @@
       "provenance_group": "turtles",
       "partition_group": "Turtles",
       "category": "Vertebrates",
-      "study": "Thomson RC, Spinks PQ, Shaffer HB (2021)",
+      "study": "Thomson 2021",
       "year": 2021,
       "tips": 274,
       "raw_tips": 274,
       "described_species": 360,
       "described_source": "Reptile Database 2025",
-      "coverage_pct": 79.7,
+      "coverage_pct": 76.1,
       "dated": true,
       "is_partition_anchor": true,
       "is_partition_canonical": true,
@@ -19224,7 +19217,7 @@
         "group": "turtles",
         "provenance_group": "turtles",
         "category": "Vertebrates",
-        "study": "Thomson RC, Spinks PQ, Shaffer HB (2021)",
+        "study": "Thomson 2021",
         "year": 2021,
         "tips": 274,
         "dated": true,
@@ -27277,6 +27270,11 @@
             "source": "Catalogue of Life 2025",
             "described": 1900,
             "coverage_pct_described": 55.9
+          },
+          "dating_curated": {
+            "regime": "PL",
+            "method": "treePL penalised likelihood; secondary angiosperm-derived crown/stem constraints",
+            "source": "Thompson et al. 2026, Scientific Data, DOI 10.1038/s41597-026-06936-7"
           }
         },
         {
@@ -27305,7 +27303,12 @@
             "described": 615,
             "coverage_pct_described": 2.6
           },
-          "note": "Conifers WAS a top-level partition in data_estimates.csv but it's a sub-\nclade of Seed plants (Spermatophyta), so its 615 species double-counted\nwithin the 383,671 of Seed plants. Relocated to this sub-phylo. The web\napp excludes Conifers from the main dotplot to avoid the overlap; users\nreach this tree via Seed plants → sub-clade chooser.\n"
+          "note": "Conifers WAS a top-level partition in data_estimates.csv but it's a sub-\nclade of Seed plants (Spermatophyta), so its 615 species double-counted\nwithin the 383,671 of Seed plants. Relocated to this sub-phylo. The web\napp excludes Conifers from the main dotplot to avoid the overlap; users\nreach this tree via Seed plants → sub-clade chooser.\n",
+          "dating_curated": {
+            "regime": "BRC",
+            "method": "MCMCtree (PAML 4.9j), approximate-likelihood Bayesian relaxed clock; fossil root bound 153 Ma",
+            "source": "Ran et al. 2018, MPE, DOI 10.1016/j.ympev.2018.08.011"
+          }
         },
         {
           "slug": "eucalyptus",
@@ -27401,6 +27404,11 @@
             "source": null,
             "described": null,
             "coverage_pct_described": null
+          },
+          "dating_curated": {
+            "regime": "BRC",
+            "method": "BEAST v1.7.4, uncorrelated relaxed clock",
+            "source": "Sarkinen et al. 2013, BMC Evol Biol, DOI 10.1186/1471-2148-13-214"
           }
         }
       ],

@@ -18,3 +18,9 @@ species_count:
   source: Catalogue of Life 2025
   described: 1900
   coverage_pct_described: 55.9
+
+# Dating method curated 2026-07-01 (verified from source study)
+dating_curated:
+  regime: PL
+  method: "treePL penalised likelihood; secondary angiosperm-derived crown/stem constraints"
+  source: "Thompson et al. 2026, Scientific Data, DOI 10.1038/s41597-026-06936-7"

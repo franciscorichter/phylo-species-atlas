@@ -2,13 +2,13 @@ group,category,estimated_total,described,in_dated_tree,in_undated_tree,estimate_
 Amphibians,Vertebrates,15000,8863,7239,0,Mora 2011,10000,20000,Medium
 Birds,Vertebrates,11195,11195,10824,0,IUCN,11195,11400,High
 Crocodilians,Vertebrates,28,27,23,0,IUCN CSG,27,30,High
-Fish,Vertebrates,40000,36000,31516,0,Mora 2011,36000,50000,Medium
+Fish,Vertebrates,40000,36000,11638,0,Mora 2011,36000,50000,Medium
 Hagfish,Vertebrates,100,82,33,0,Fernholm 2013,82,120,Medium
 Lampreys,Vertebrates,55,48,46,0,Potter 2015,48,65,High
 Mammals,Vertebrates,6736,6736,5912,0,Burgin 2018,6736,7500,High
 Sharks,Vertebrates,1450,1282,1192,0,Weigmann 2016,1300,1600,High
 Squamates,Vertebrates,12000,11744,9755,0,Uetz 2025,11744,13000,High
-Turtles,Vertebrates,360,360,360,0,TTWG 2021,360,370,High
+Turtles,Vertebrates,360,360,274,0,TTWG 2021,360,370,High
 Bryophytes,Plants,24000,24000,533,0,CoL 2025,24000,28000,Medium
 Conifers,Plants,640,615,578,0,Farjon 2017,615,680,High
 Ferns,Plants,13500,12000,6234,0,PPG I 2016,12000,15000,High
