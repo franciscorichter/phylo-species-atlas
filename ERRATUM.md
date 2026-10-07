@@ -1,0 +1,36 @@
+# Erratum: branch lengths in releases v1.0.3 to v1.0.8
+
+**Affected releases:** v1.0.3 (2026-05-12) through v1.0.8 (2026-07-05), on GitHub and on Zenodo
+(concept DOI 10.5281/zenodo.20127157). **Corrected in:** v1.0.9. Releases v1.0.0 to v1.0.2 are not
+affected.
+
+## What was wrong
+
+The step that relabelled tips with numeric dictionary ids, introduced in v1.0.3, rewrote digit
+runs elsewhere in the Newick strings. A digit run immediately followed by `,`, `)` or `:` was
+treated as a tip id: it was replaced through the old-to-new id map, or it lost its leading zeros.
+This changed:
+
+- **branch lengths**, e.g. `0.007143` became `0.7146` and `0.015603` became `0.15695`;
+- **numeric internal-node labels** followed by `:`, including support values and stored age
+  intervals, e.g. `11.1189_2.0251` became `11.1189_2.251`.
+
+Tip sets and topologies are unchanged. Root-edge lengths (followed by `;`) are unchanged.
+
+289 tree files carry the defect: trees in `standardized/trees/` and their copies under
+`site/data/partitions/`. Any analysis that used branch lengths, node ages or support values from
+these files in an affected release should be repeated with v1.0.9. Analyses that used only tip
+sets or topologies are not affected.
+
+## How it was corrected
+
+Each affected file was rebuilt from its pre-relabelling copy, replacing tip ids only and copying
+every other token verbatim. Every corrected file was checked to have the same tip multiset and the
+same topology as the file it replaces. The corrected branch lengths were checked against the
+original source files deposited by the studies that published the trees.
+
+## Effect on reported results
+
+Measures computed from branch lengths change: root-to-tip variation, the classification of trees
+as ultrametric, and crown ages. Counts of species and tips do not. Revised figures are reported in
+the next version of the accompanying manuscript.

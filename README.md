@@ -11,6 +11,9 @@ This atlas surveys publicly available, downloadable species-level empirical phyl
 > Francisco Richter, Università della Svizzera italiana (USI)
 > Zenodo (concept DOI): https://doi.org/10.5281/zenodo.20127157
 
+> **Branch lengths in releases v1.0.3 to v1.0.8 are corrupted.** Use v1.0.9 or later for any
+> analysis of branch lengths, node ages or support values. Details: [`ERRATUM.md`](ERRATUM.md).
+
 ### At a glance
 
 | Item | Value |
