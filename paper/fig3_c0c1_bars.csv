@@ -1,7 +1,7 @@
 partition,category,described,c0_units,coverage_C0_pct,coverage_C1_pct,is_structural_zero,is_chronogram,topology_assembly
 Birds,Vertebrates,11195,10469,93.5150,80.2144,no,yes,automated_synthesis
 Sharks,Vertebrates,1282,1150,89.7036,47.0359,no,yes,primary_analysis
-Fish,Vertebrates,36000,30973,86.0361,31.9722,no,yes,primary_analysis
+Fish,Vertebrates,36280,30973,85.3721,31.7255,no,yes,primary_analysis
 Mammals,Vertebrates,6736,5625,83.5065,58.5659,no,yes,primary_analysis
 Amphibians,Vertebrates,8863,6947,78.3820,45.0525,no,yes,primary_analysis
 Crocodilians,Vertebrates,27,20,74.0741,74.0741,no,yes,compiled

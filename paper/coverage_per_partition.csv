@@ -1,13 +1,13 @@
 partition,category,described,c0_units,f_mol,f_low,f_high,f_basis,coverage_C0_pct,coverage_C1_pct,is_chronogram,roottotip_cv,interval_kind,posterior_n,topology_assembly
 Birds,Vertebrates,11195,10469,0.853566,0.842572,0.853566,source_tree_intersection,93.5150,80.2144,yes,0.000000,,,automated_synthesis
 Sharks,Vertebrates,1282,1150,0.511745,0.511745,0.511745,source_tree_intersection,89.7036,47.0359,yes,0.000000,,,primary_analysis
-Fish,Vertebrates,36000,30973,0.369924,0.369924,0.369924,source_tree_intersection,86.0361,31.9722,yes,0.000000,,,primary_analysis
-Mammals,Vertebrates,6736,5625,0.693284,0.693284,0.693284,source_alignment_intersection,83.5065,58.5659,yes,0.000000,node_hpd_annotation,,primary_analysis
+Fish,Vertebrates,36280,30973,0.369924,0.369924,0.369924,source_tree_intersection,85.3721,31.7255,yes,0.000000,,,primary_analysis
+Mammals,Vertebrates,6736,5625,0.693284,0.693284,0.693284,source_alignment_intersection,83.5065,58.5659,yes,0.000000,,,primary_analysis
 Amphibians,Vertebrates,8863,6947,0.561067,0.561067,0.561067,source_tree_intersection,78.3820,45.0525,yes,0.000000,posterior_sample,10000,primary_analysis
 Crocodilians,Vertebrates,27,20,1.000000,1.000000,1.000000,asserted_no_imputation,74.0741,74.0741,yes,0.000000,,,compiled
-Squamates,Vertebrates,12108,8953,0.555157,0.555157,0.555157,source_tree_intersection,73.9428,42.0879,yes,0.000000,posterior_sample,10000,primary_analysis
+Squamates,Vertebrates,12108,8953,0.555157,0.555157,0.555157,source_tree_intersection,73.9428,42.0879,yes,0.000000,,,primary_analysis
 Seed plants,Plants,383671,279049,0.219808,0.219808,0.219808,source_tree_intersection,72.7313,18.4332,yes,0.000001,,,primary_analysis
-Turtles,Vertebrates,364,256,1.000000,1.000000,1.000000,asserted_no_imputation,70.3297,70.3297,yes,0.000000,node_hpd_annotation,,primary_analysis
+Turtles,Vertebrates,364,256,1.000000,1.000000,1.000000,asserted_no_imputation,70.3297,70.3297,yes,0.000000,,,primary_analysis
 Ferns,Plants,10578,6097,1.000000,1.000000,1.000000,source_alignment_intersection,57.6385,57.6385,yes,0.000000,,,primary_analysis
 Cephalopods,Other animals,800,80,1.000000,1.000000,1.000000,source_alignment_intersection,10.0000,10.0000,yes,0.000000,,,compiled
 Bryozoa,Other animals,6000,337,1.000000,1.000000,1.000000,source_alignment_intersection,5.6167,5.6167,no,0.617648,,,primary_analysis

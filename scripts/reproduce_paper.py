@@ -402,6 +402,8 @@ def fmt_pct(x):
 def name_list(names):
     """'A, B and C', as group names are printed in running text."""
     names = list(names)
+    if not names:
+        return ""
     return names[0] if len(names) == 1 else \
         ", ".join(names[:-1]) + " and " + names[-1]
 
@@ -1011,11 +1013,6 @@ def main(argv=None):
     R.macro(macros, "RuleWidthRatio", "%g" % WIDTH_RULE_RATIO)
     R.macro(macros, "RuleTipsOverNamedPct", "%.0f" % (100 * TIPS_OVER_NAMED))
     R.macro(macros, "RuleElasticityPct", "%.0f" % (100 * 0.2))
-    for lv, nm in (("C0", "CZero"), ("C1", "COne")):
-        R.macro(macros, "SensAllMinus%sPct" % nm,
-                fmt_pct(pct(lad[lv]["union"], den * (1 - 0.2))))
-        R.macro(macros, "SensAllPlus%sPct" % nm,
-                fmt_pct(pct(lad[lv]["union"], den * (1 + 0.2))))
     # Without the automated-synthesis tree
     prov = {r["partition_name"]: r for r in read_csv(path("registers", "tree_provenance.csv"))
             if r["is_partition_canonical"] in ("yes", "TRUE", "True", "true")}
@@ -1115,6 +1112,7 @@ def main(argv=None):
     # ------------------------------------------------------- crown ages ---
     R.section("Crown ages and intervals (registers/crown_intervals.csv)")
     crown_csv = {r["partition"]: r for r in read_csv(path("paper", "crown_ages.csv"))}
+    width_pct = {}
     rows = [p for p in sorted(E) if chron[p]]
     R.eq("absolute chronograms with a crown-age row", rows, sorted(crown_csv))
     for p in rows:
@@ -1146,6 +1144,10 @@ def main(argv=None):
             R.macro(macros, "CrownHi" + n, "%.1f" % hi)
             R.macro(macros, "CrownWidth" + n, "%.1f" % (hi - lo))
             R.macro(macros, "CrownWidthPct" + n, "%.1f" % (100.0 * (hi - lo) / age))
+            width_pct[p] = 100.0 * (hi - lo) / age
+    wc_ = [width_pct[p] for p in rows if bounded[p]]
+    R.macro(macros, "CrownWidthPctMinCounted", "%.1f" % min(wc_))
+    R.macro(macros, "CrownWidthPctMaxCounted", "%.1f" % max(wc_))
     R.macro(macros, "CrownNChron", fmt_int(len(rows)))
     R.macro(macros, "CrownNCounted", fmt_int(sum(bounded[p] for p in rows)))
     R.macro(macros, "CrownNamesCounted", name_list(sorted(p for p in rows if bounded[p])))
@@ -1162,6 +1164,12 @@ def main(argv=None):
                    ("SetNotCounted", oset)):
         R.macro(macros, "CrownN" + nm, fmt_int(len(ps)))
         R.macro(macros, "CrownNames" + nm, name_list(ps))
+    R.macro(macros, "CrownNamesNoInterval", name_list(sorted(p for p in rows
+                                                             if p not in intervals)))
+    R.macro(macros, "CrownNamesKind", name_list(sorted(
+        p for p in rows if p in intervals and why_of[p] == "kind")))
+    R.macro(macros, "CrownNamesCalib", name_list(sorted(
+        p for p in rows if p in intervals and why_of[p] and why_of[p] != "kind")))
 
     # ------------------------------------------------ Open Tree of Life ---
     R.section("Open Tree of Life synthesis 16.1: species placed by a phylogeny")
@@ -1195,7 +1203,8 @@ def main(argv=None):
             mnames = {dictionary.get(sid) for sid in mol_rows[p]} & set(tips[p])
             mkeys = {k for k in map(q, mnames) if k}
             macc = {unit_of[p][sid] for sid in mol_rows[p] if sid in unit_of[p]}
-            row.update(mkeys=len(mkeys), mand=len(mkeys & o), acc=len(macc),
+            row.update(mkeys=len(mkeys), mand=len(mkeys & o), okeys=len(o),
+                       acc=len(macc),
                        accand=len(macc & oa), accnot=len(macc - oa))
         ot_rows.append(row)
     euk_ot = as_int(cnt["__Eukaryota"]["ot_phylo_extant_species"])
@@ -1215,6 +1224,11 @@ def main(argv=None):
     R.macro(macros, "OTAccMolecularAndOTPct", fmt_pct(pct(
         sum(r["accand"] for r in enum), sum(r["acc"] for r in enum))))
     R.macro(macros, "OTNPartitionsCompared", fmt_int(len(enum)))
+    R.macro(macros, "OTKeysMolecularAndOTPct", fmt_pct(pct(
+        sum(r["mand"] for r in enum), sum(r["mkeys"] for r in enum))))
+    R.macro(macros, "OTKeysOTPhyloCompared", fmt_int(sum(r["okeys"] for r in enum)))
+    R.macro(macros, "OTKeysMolecularAndOTOfOTPct", fmt_pct(pct(
+        sum(r["mand"] for r in enum), sum(r["okeys"] for r in enum))))
     for r in enum:
         R.macro(macros, "OTNotOTSharePct" + macro_name(r["partition"]),
                 fmt_pct(pct(r["accnot"], accnot)))
@@ -1372,6 +1386,108 @@ def main(argv=None):
     R.macro(macros, "WEPolyRRatioMax", "%.2f" % max(allr))
     R.macro(macros, "WEPolyNBoundary", fmt_int(nb))
     R.macro(macros, "WEPolyNRejected", fmt_int(nrj))
+    # The fits repeated over the tree sets the sources archive
+    # (registers/worked_example_tree_sets.csv; code/rebuild/worked_example_sets.R).
+    # Each row is checked against the rules of the paper: the fractions are
+    # tips over described species, a pruned tree keeps exactly the molecular
+    # tips, the statistic is twice the log-likelihood difference, and the two
+    # fits obey the likelihood's identity (same model inside the restriction,
+    # mu = 0 only outside it).
+    SET_TAG = {"posterior": ("Posterior", "posterior set"),
+               "date_random": ("DateRandom", "date assignment, random dates"),
+               "date_mean": ("DateMean", "date assignment, mean dates"),
+               "prior": ("Prior", "root ages drawn from the prior"),
+               "molecular_only": ("MolOnly", "source's tree of sequenced species")}
+    set_reg = read_csv(path("registers", "worked_example_tree_sets.csv"))
+    set_fit = read_csv(os.path.join(a.fits, "worked_example_bd_sets.csv"))
+    R.eq("tree-set fits: every row belongs to a register set",
+         sorted({(r["partition"], r["set"]) for r in set_fit}),
+         sorted({(x["partition"], x["set"]) for x in set_reg}))
+
+    def med(v):
+        v = sorted(v)
+        k = len(v) // 2
+        return v[k] if len(v) % 2 else (v[k - 1] + v[k]) / 2.0
+
+    def rng2(lo_v, hi_v, f="%.2f"):
+        lo_, hi_ = f % lo_v, f % hi_v
+        return lo_ if lo_ == hi_ else "%s--%s" % (lo_, hi_)
+    set_rows, set_sum = [], OrderedDict()
+    for x in set_reg:
+        p, st = x["partition"], x["set"]
+        R.eq("tree set %s %s: eligible group, known set" % (p, st),
+             p in elig and st in SET_TAG, True)
+        d = float(bmap[p]["described"])
+        rf_want = float(bmap[p]["labels_unique"]) / d
+        rs = [r for r in set_fit if r["partition"] == p and r["set"] == st]
+        R.eq("tree set %s %s: trees fitted" % (p, st), len(rs), int(x["n_select"]))
+        bad = []
+        for r in rs:
+            n_ = int(r["n_tips"])
+            rm_, rf_ = float(r["rho_matching"]), float(r["rho_full"])
+            em_, ef_ = float(r["epsilon_matching"]), float(r["epsilon_full_rho"])
+            lr_ = float(r["lr_statistic"])
+            ok = (abs(rm_ - n_ / d) <= 1e-7 * rm_ and abs(rf_ - rf_want) <= 1e-7 * rf_
+                  and abs(lr_ - max(0.0, 2.0 * (float(r["loglik_matching"])
+                                                - float(r["loglik_full_rho"])))) <= 2e-3
+                  and (x["tips"] != "molecular" or n_ == len(mol_rows[p])))
+            edge = 1.0 - rm_ / rf_
+            if em_ > edge + 1e-3:
+                ok = ok and lr_ <= 2e-3 and abs((1 - ef_) - (1 - em_) * rf_ / rm_) <= 2e-3
+            if ef_ < 1e-6 and lr_ > 2e-3:
+                ok = ok and em_ < edge + 1e-3
+            if not ok:
+                bad.append(r["tree_index"])
+        R.eq("tree set %s %s: fractions, tips, statistic and identity" % (p, st),
+             bad, [])
+        eps_ = [float(r["epsilon_matching"]) for r in rs]
+        lrs_ = [float(r["lr_statistic"]) for r in rs]
+        rr_ = [float(r["r_full_tree"]) / float(r["r_matching"])
+               for r in rs if r["r_full_tree"]]
+        nrej_ = sum(1 for v in lrs_ if v > WE_LR_CRIT)
+        set_sum[(p, st)] = (x["tips"], len(rs), nrej_, rr_)
+        n = macro_name(p) + SET_TAG[st][0]
+        R.macro(macros, "WESetN" + n, fmt_int(len(rs)))
+        R.macro(macros, "WESetEpsMin" + n, "%.2f" % min(eps_))
+        R.macro(macros, "WESetEpsMax" + n, "%.2f" % max(eps_))
+        R.macro(macros, "WESetLRMin" + n, "%.1f" % min(lrs_))
+        R.macro(macros, "WESetLRMax" + n, "%.1f" % max(lrs_))
+        R.macro(macros, "WESetNRejected" + n, fmt_int(nrej_))
+        if rr_:
+            R.macro(macros, "WESetRRatioMin" + n, "%.2f" % min(rr_))
+            R.macro(macros, "WESetRRatioMax" + n, "%.2f" % max(rr_))
+        ft_, fc_ = fits[(p,) + M], fits[(p,) + MC]
+        set_rows.append(OrderedDict([
+            ("partition", p), ("set", SET_TAG[st][1]), ("n_trees", str(len(rs))),
+            ("tips_pruned", "/".join(str(v) for v in sorted({int(r["n_tips"]) for r in rs}))),
+            ("tips_full", "/".join(str(v) for v in sorted({int(r["n_tips_full_tree"])
+                                                            for r in rs if r["n_tips_full_tree"]}))),
+            ("epsilon_matching", "%.2f (%.2f--%.2f)" % (med(eps_), min(eps_), max(eps_))),
+            ("lr", rng2(min(lrs_), max(lrs_))), ("n_rejected", str(nrej_)),
+            ("r_ratio", rng2(min(rr_), max(rr_)) if rr_ else ""),
+            ("summary_epsilon_matching", "%.2f" % float(ft_["epsilon"])),
+            ("summary_lr", "%.2f" % round(max(0.0, 2.0 * (float(ft_["loglik"])
+                                                          - float(fc_["loglik"]))), 4))]))
+    held, partial, none_ = [], [], []
+    for p in elig:
+        ft_, fc_ = fits[(p,) + M], fits[(p,) + MC]
+        lr_ = max(0.0, 2.0 * (float(ft_["loglik"]) - float(fc_["loglik"])))
+        if not (float(fc_["epsilon"]) < 1e-6 and lr_ > WE_LR_CRIT):
+            continue
+        own = [v for (q, _), v in set_sum.items() if q == p and v[0] == "molecular"]
+        if own:
+            (held if all(v[2] == v[1] for v in own) else
+             none_ if all(v[2] == 0 for v in own) else partial).append(p)
+    grp_ = sorted({p for p, _ in set_sum})
+    R.macro(macros, "WESetNGroups", fmt_int(len(grp_)))
+    R.macro(macros, "WESetNamesGroups", name_list(grp_))
+    R.macro(macros, "WESetNRejectHolds", fmt_int(len(held)))
+    R.macro(macros, "WESetNamesRejectHolds", name_list(sorted(held)))
+    R.macro(macros, "WESetNamesRejectPartial", name_list(sorted(partial)))
+    R.macro(macros, "WESetNamesRejectNone", name_list(sorted(none_)))
+    allrr_ = [v for t in set_sum.values() for v in t[3]]
+    R.macro(macros, "WESetRRatioMin", "%.2f" % min(allrr_))
+    R.macro(macros, "WESetRRatioMax", "%.2f" % max(allrr_))
     sf = [float(x["time_scale_factor"]) for x in sel]
     R.macro(macros, "WEScaleMin", "%.2f" % min(sf))
     R.macro(macros, "WEScaleMax", "%.2f" % max(sf))
@@ -1617,6 +1733,10 @@ def main(argv=None):
     sm("SuppSynonymLabelsN", fmt_int(sum(r["synonym"] for r in got.values())))
     sm("SuppMergedNamesN", fmt_int(sum(r["merged"] for r in got.values())))
     sm("SuppOverridesN", fmt_int(len(read_csv(path("standardized", "name_overrides.csv")))))
+    n_ovr = sum(r["override"] for r in got.values())
+    sm("SuppOverridesResolvedN", fmt_int(n_ovr))
+    sm("SuppOverridesUnresolvedN", fmt_int(
+        len(read_csv(path("standardized", "name_overrides.csv"))) - n_ovr))
     sm("SuppRejectedTargetsN", fmt_int(len(read_csv(
         path("standardized", "name_rejected_targets.csv")))))
     sm("SuppSupraGeneraN", fmt_int(len(SUPRA_GENERA)))
@@ -1753,9 +1873,6 @@ def main(argv=None):
     for key, sgn in (("insects_minus", -1), ("insects_plus", 1)):
         d_ = den + sgn * int(round(ELASTIC * d_ins))
         got[key] = srow(key, d_, ladder_pcts(E, d_))
-    for key, sgn in (("all_minus", -1), ("all_plus", 1)):
-        d_ = den * (1 + sgn * ELASTIC)
-        got[key] = srow(key, d_, ladder_pcts(E, d_))
     got["col_filled"] = srow("col_filled", den_col, ladder_pcts(E, den_col))
     got["col_base"] = srow("col_base", den_base, ladder_pcts(E, den_base))
     got["rep"] = srow("rep", den_rep, ladder_pcts(E, den_rep))
@@ -1879,10 +1996,10 @@ def main(argv=None):
             ("f_median", "%.2f" % med), ("f_max", "%.2f" % fs[-1]),
             ("f_pooled", rho_fmt(pooled)),
             ("rho_uniform", rho_fmt(float(ft["rho"]))),
-            ("r_first", "%.4f" % float(fo["first"]["r"])),
-            ("r_last", "%.4f" % float(fo["last"]["r"])),
-            ("epsilon_first", "%.3f" % float(fo["first"]["epsilon"])),
-            ("epsilon_last", "%.3f" % float(fo["last"]["epsilon"]))])
+            ("r_first", "%.5f" % float(fo["first"]["r"])),
+            ("r_last", "%.5f" % float(fo["last"]["r"])),
+            ("epsilon_first", "%.4f" % float(fo["first"]["epsilon"])),
+            ("epsilon_last", "%.4f" % float(fo["last"]["epsilon"]))])
         R.eq("%s: family likelihood at equal fractions = uniform likelihood, "
              "within %g" % (p, UNIFORM_TOL),
              abs(float(fm["family_uniform_check"])) <= UNIFORM_TOL, True)
@@ -1894,13 +2011,20 @@ def main(argv=None):
     sm("SuppFamOrderMaxRDiffPct", "%.1f" % (100 * max(
         abs(float(v["last"]["r"]) - float(v["first"]["r"])) / float(v["first"]["r"])
         for v in fo.values())))
-    sm("SuppFamOrderMaxEpsDiff", "%.3f" % max(
+    sm("SuppFamOrderMaxEpsDiff", "%.4f" % max(
         abs(float(v["last"]["epsilon"]) - float(v["first"]["epsilon"]))
         for v in fo.values()))
     sm("SuppFamOrderMaxDLL", "%.1f" % max(
         abs(float(v["first"]["loglik_last_at_first_mle"]) - float(v["first"]["loglik"]))
         for v in fo.values()))
     supp_eq("supp_worked_polytomy", poly_rows, "partition")
+    want_sets = supp_rows("supp_worked_sets")
+    R.eq("supp_worked_sets: rows, in order",
+         [(r["partition"], r["set"]) for r in set_rows],
+         [(r["partition"], r["set"]) for r in want_sets])
+    for r, w_ in zip(set_rows, want_sets):
+        R.eq("supp_worked_sets: %s %s" % (r["partition"], r["set"]),
+             {c: (v, w_.get(c)) for c, v in r.items() if v != w_.get(c)}, {})
     sm("SuppPolySeedsN", fmt_int(len({sd_ for p in poly for sd_ in poly[p]})))
     chk = read_csv(os.path.join(a.fits, "worked_example_bd_crosscheck.csv"))
     rd = 0.0

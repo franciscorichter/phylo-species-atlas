@@ -5,7 +5,7 @@ Fungi,Microbes & protists,155000,1396,1.000000,1.000000,1.000000,source_alignmen
 Crustaceans,Arthropods,77000,65,1.000000,1.000000,1.000000,per_tip_evidence,0.0844,0.0844,primary_analysis,no,Crustaceans
 Gastropods,Other animals,65000,39,1.000000,1.000000,1.000000,source_alignment_intersection,0.0600,0.0600,primary_analysis,yes,Gastropods
 Spiders,Arthropods,52249,888,1.000000,1.000000,1.000000,asserted_no_imputation,1.6996,1.6996,primary_analysis,yes,Spiders
-Fish,Vertebrates,36000,30973,0.369924,0.369924,0.369924,source_tree_intersection,86.0361,31.9722,primary_analysis,yes,Fish
+Fish,Vertebrates,36280,30973,0.369924,0.369924,0.369924,source_tree_intersection,85.3721,31.7255,primary_analysis,yes,Fish
 Nematodes,Other animals,28537,101,1.000000,1.000000,1.000000,source_tree_intersection,0.3539,0.3539,primary_analysis,no,Nematodes
 Bryophytes,Plants,24000,505,1.000000,1.000000,1.000000,source_alignment_intersection,2.1042,2.1042,primary_analysis,yes,Bryophytes
 Diatoms,Microbes & protists,20000,39,1.000000,1.000000,1.000000,source_alignment_intersection,0.1950,0.1950,primary_analysis,yes,Diatoms

@@ -183,8 +183,10 @@ def iter_tree_strings(path):
                     if s.endswith(";"):
                         in_tr = False
                     continue
-                m = re.match(r"^u?tree\b[^=]*=\s*(?:\[[^\]]*\]\s*)*(\(.*)$",
-                             s, re.I)
+                # a bracketed comment between the name and '=' (BEAST:
+                # 'tree STATE_1 [&posterior=...] = [&R] (...)') may hold '='
+                m = re.match(r"^u?tree\b(?:[^=\[]|\[[^\]]*\])*=\s*"
+                             r"(?:\[[^\]]*\]\s*)*(\(.*)$", s, re.I)
                 if m:
                     buf = m.group(1)
                     if buf.endswith(";"):

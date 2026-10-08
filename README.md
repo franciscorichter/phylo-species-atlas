@@ -14,7 +14,7 @@ from this repository by
 python3 scripts/reproduce_paper.py
 ```
 
-> **Branch lengths in releases v1.0.3 to v1.0.8 are corrupted.** Use v1.0.9 or later for any
+> **Branch lengths in releases v1.0.3 to v1.0.8 are corrupted.** Use v1.1.0 or later for any
 > analysis of branch lengths, node ages or support values. Details: [`ERRATUM.md`](ERRATUM.md).
 
 Zenodo concept DOI (all versions): [10.5281/zenodo.20127157](https://doi.org/10.5281/zenodo.20127157).
@@ -36,7 +36,7 @@ Licence: CC BY 4.0 (`LICENSE`); the source trees keep the terms of their origina
 
 ## The four coverage levels
 
-The 2,148,519 described eukaryotic species are divided into 60 groups; 24 of them have a
+The 2,148,799 described eukaryotic species are divided into 60 groups; 24 of them have a
 species-level phylogeny, and for each the largest one found is the group's reference tree. A
 described species is counted at four nested levels:
 
@@ -45,11 +45,10 @@ described species is counted at four nested levels:
 | Named | its Catalogue of Life (COL26.9) accepted name is a tip of its group's reference tree | 395,517 | 18.4 |
 | Molecular | it is named, and the tip is in the molecular analysis from which the tree was built | 157,201 | 7.3 |
 | Dated | it is molecular, and the reference tree is a chronogram in absolute time | 113,180 | 5.3 |
-| Interval | it is dated, and the source archive carries a divergence-time interval for the focal crown that a calibration does not set | 13,649 | 0.64 |
+| Interval | it is dated, and the source archive carries a divergence-time interval for the focal crown that a calibration does not set | 4,352 | 0.20 |
 
-A species named in two groups' trees counts once. The interval level is 1.7% when every archived
-interval is counted, whatever its kind, and 0.20% when an interval at least as wide as its two-sided
-calibration prior, or with a calibration that was not checked, is not counted. Bacteria and Archaea are counted separately, in GTDB
+A species named in two groups' trees counts once. The interval level is 1.6% when every archived
+interval is counted, whatever its kind, and 0.70% when intervals set by a calibration are counted. Bacteria and Archaea are counted separately, in GTDB
 species clusters, and enter no eukaryotic number. The values above are those of
 `paper/headline_numbers.json`, which `scripts/reproduce_paper.py` recomputes.
 
@@ -118,22 +117,27 @@ The figures: `python3 code/figures/fig_coverage_cascade.py` and the four other s
 
 ## Loading a tree
 
-From R, with the `phyloatlas` package:
-
-```r
-pak::pkg_install("franciscorichter/phylo-species-atlas/phyloatlas")
-library(phyloatlas)
-list_trees()
-tree <- load_atlas_tree("mammals")
-```
-
-Or with ape alone, from a clone:
+With ape, from a clone of this release:
 
 ```r
 library(ape)
 tree <- read.tree("standardized/trees/mammals.nwk")
 dict <- read.csv("standardized/dictionary.csv")
 tree$tip.label <- dict$standardized_name[match(as.integer(tree$tip.label), dict$id)]
+```
+
+The `phyloatlas` R package loads a tree by name over the network. It reads the files of the
+branch or tag named by the option `phyloatlas.base_url`, which defaults to the `main` branch of
+this repository, not to this release. To read the files of this release, set the option to its
+tag before loading:
+
+```r
+pak::pkg_install("franciscorichter/phylo-species-atlas/phyloatlas")
+library(phyloatlas)
+options(phyloatlas.base_url =
+  "https://raw.githubusercontent.com/franciscorichter/phylo-species-atlas/v1.1.0")
+list_trees()
+tree <- load_atlas_tree("mammals")
 ```
 
 ## The browser site

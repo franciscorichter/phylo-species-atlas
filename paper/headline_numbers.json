@@ -26,7 +26,7 @@
   "denominators": {
     "eukaryotic": {
       "n_partitions": 60,
-      "described": 2148519,
+      "described": 2148799,
       "note": "THE denominator for every rung."
     },
     "prokaryotic": {
@@ -35,9 +35,9 @@
     },
     "all_life": {
       "n_partitions": 62,
-      "described": 2292133,
+      "described": 2292413,
       "estimated_total": 15606049,
-      "estimated_low": 7284654,
+      "estimated_low": 7284934,
       "estimated_high": 35400794,
       "note": "SI and Figure 1 ONLY, and it must be labelled all-life there. NEVER a coverage denominator."
     }
@@ -47,12 +47,12 @@
       "definition": "NAMED: the tip label occurs in a retained eukaryotic canonical tree",
       "numerator_sum": 395517.0,
       "numerator_sum_rounded": 395517,
-      "denominator": 2148519,
-      "percent": 18.408820215227326,
+      "denominator": 2148799,
+      "percent": 18.406421447515566,
       "n_partitions_contributing": 24,
       "unit": "species",
       "numerator_union": 395517,
-      "percent_union": 18.408820215227326,
+      "percent_union": 18.406421447515566,
       "shared_labels": 0,
       "headline_convention": "union"
     },
@@ -60,8 +60,8 @@
       "definition": "MOLECULAR: C0 and the tip is in the molecular analysis behind that tree",
       "numerator_sum": 157201.0,
       "numerator_sum_rounded": 157201,
-      "denominator": 2148519,
-      "percent": 7.316714443763355,
+      "denominator": 2148799,
+      "percent": 7.315761036746573,
       "n_partitions_contributing": 24,
       "unit": "tip-equivalents",
       "c1_bases": {
@@ -70,15 +70,15 @@
         "expectation": 0
       },
       "numerator_union": 157201,
-      "percent_union": 7.316714443763355,
+      "percent_union": 7.315761036746573,
       "shared_labels": 0
     },
     "C1d": {
       "definition": "DATED: C1 and the shipped canonical tree is a measured chronogram",
       "numerator_sum": 113180.0,
       "numerator_sum_rounded": 113180,
-      "denominator": 2148519,
-      "percent": 5.267814713297858,
+      "denominator": 2148799,
+      "percent": 5.267128288872063,
       "n_partitions_contributing": 18,
       "unit": "tip-equivalents",
       "c1_bases": {
@@ -87,24 +87,24 @@
         "expectation": 0
       },
       "numerator_union": 113180,
-      "percent_union": 5.267814713297858,
+      "percent_union": 5.267128288872063,
       "shared_labels": 0
     },
     "C1b": {
       "definition": "BOUNDED: C1d and the divergence-time interval is recoverable from the source deposit",
-      "numerator_sum": 13649.0,
-      "numerator_sum_rounded": 13649,
-      "denominator": 2148519,
-      "percent": 0.6352748102297443,
-      "n_partitions_contributing": 7,
+      "numerator_sum": 4352.0,
+      "numerator_sum_rounded": 4352,
+      "denominator": 2148799,
+      "percent": 0.20253173982303604,
+      "n_partitions_contributing": 4,
       "unit": "tip-equivalents",
       "c1_bases": {
-        "enumerated": 6,
-        "all_tips": 1,
+        "enumerated": 4,
+        "all_tips": 0,
         "expectation": 0
       },
-      "numerator_union": 13649,
-      "percent_union": 0.6352748102297443,
+      "numerator_union": 4352,
+      "percent_union": 0.20253173982303604,
       "shared_labels": 0
     }
   },
@@ -119,17 +119,17 @@
   "units": "C0 counts SPECIES. C1 and below count TIP-EQUIVALENTS wherever the partition is not enumerated in Data/molecular_tips.csv. Do not write 'species' at C1 or below for a partition that is not listed there.",
   "per_category_eukaryotic": {
     "Vertebrates": {
-      "described": 76714,
-      "denominator": 76714,
+      "described": 76994,
+      "denominator": 76994,
       "n_partitions": 11,
       "C0_sum": 64393,
-      "C0_pct": 83.93904632791929,
+      "C0_pct": 83.63378964594644,
       "C1_sum_exact": 34403.0,
       "C1_sum": 34403,
-      "C1_pct": 44.845790859556274,
+      "C1_pct": 44.68270254825051,
       "C1d_sum_exact": 34403.0,
       "C1d_sum": 34403,
-      "C1d_pct": 44.845790859556274
+      "C1d_pct": 44.68270254825051
     },
     "Plants": {
       "described": 437587,
@@ -268,64 +268,64 @@
           "C0": {
             "numerator": 395517,
             "numerator_sum": 395517.0,
-            "denominator": 2148519,
-            "percent": 18.408820215227326,
+            "denominator": 2148799,
+            "percent": 18.406421447515566,
             "numerator_union": 395517,
-            "percent_union": 18.408820215227326
+            "percent_union": 18.406421447515566
           },
           "C1": {
             "numerator": 157085,
             "numerator_sum": 157085.3369,
-            "denominator": 2148519,
-            "percent": 7.311331056416071
+            "denominator": 2148799,
+            "percent": 7.310378350883447
           },
           "C1d": {
             "numerator": 113064,
             "numerator_sum": 113064.3369,
-            "denominator": 2148519,
-            "percent": 5.2624313259505735
+            "denominator": 2148799,
+            "percent": 5.2617456030089365
           },
           "C1b": {
-            "numerator": 13649,
-            "numerator_sum": 13649.0,
-            "denominator": 2148519,
-            "percent": 0.6352748102297443,
-            "numerator_union": 13649,
-            "percent_union": 0.6352748102297443
+            "numerator": 4352,
+            "numerator_sum": 4352.0,
+            "denominator": 2148799,
+            "percent": 0.20253173982303604,
+            "numerator_union": 4352,
+            "percent_union": 0.20253173982303604
           }
         },
         "at_f_high": {
           "C0": {
             "numerator": 395517,
             "numerator_sum": 395517.0,
-            "denominator": 2148519,
-            "percent": 18.408820215227326,
+            "denominator": 2148799,
+            "percent": 18.406421447515566,
             "numerator_union": 395517,
-            "percent_union": 18.408820215227326
+            "percent_union": 18.406421447515566
           },
           "C1": {
             "numerator": 157201,
             "numerator_sum": 157201.0,
-            "denominator": 2148519,
-            "percent": 7.316714443763355,
+            "denominator": 2148799,
+            "percent": 7.315761036746573,
             "numerator_union": 157201,
-            "percent_union": 7.316714443763355
+            "percent_union": 7.315761036746573
           },
           "C1d": {
             "numerator": 113180,
             "numerator_sum": 113180.0,
-            "denominator": 2148519,
-            "percent": 5.267814713297858,
+            "denominator": 2148799,
+            "percent": 5.267128288872063,
             "numerator_union": 113180,
-            "percent_union": 5.267814713297858
+            "percent_union": 5.267128288872063
           },
           "C1b": {
-            "numerator": 13649,
-            "numerator_sum": 13649.0,
-            "denominator": 2148519,
-            "percent": 0.6352748102297443,
-            "numerator_union": 13649,
-            "percent_union": 0.6352748102297443
+            "numerator": 4352,
+            "numerator_sum": 4352.0,
+            "denominator": 2148799,
+            "percent": 0.20253173982303604,
+            "numerator_union": 4352,
+            "percent_union": 0.20253173982303604
           }
         },
         "propagates_to_C1d": true,
@@ -346,31 +346,31 @@
           "C0": {
             "numerator": 10469,
             "numerator_sum": 10469.0,
-            "denominator": 2148519,
-            "percent": 0.48726587942671207,
+            "denominator": 2148799,
+            "percent": 0.4872023860770598,
             "numerator_union": 10469,
-            "percent_union": 0.48726587942671207
+            "percent_union": 0.4872023860770598
           },
           "C1": {
             "numerator": 8980,
             "numerator_sum": 8980.0,
-            "denominator": 2148519,
-            "percent": 0.41796232660730487,
+            "denominator": 2148799,
+            "percent": 0.4179078638811727,
             "numerator_union": 8980,
-            "percent_union": 0.41796232660730487
+            "percent_union": 0.4179078638811727
           },
           "C1d": {
             "numerator": 8980,
             "numerator_sum": 8980.0,
-            "denominator": 2148519,
-            "percent": 0.41796232660730487,
+            "denominator": 2148799,
+            "percent": 0.4179078638811727,
             "numerator_union": 8980,
-            "percent_union": 0.41796232660730487
+            "percent_union": 0.4179078638811727
           },
           "C1b": {
             "numerator": 0,
             "numerator_sum": 0.0,
-            "denominator": 2148519,
+            "denominator": 2148799,
             "percent": 0.0
           }
         }
@@ -384,31 +384,31 @@
           "C0": {
             "numerator": 100,
             "numerator_sum": 100.0,
-            "denominator": 2148519,
-            "percent": 0.004654368893177114,
+            "denominator": 2148799,
+            "percent": 0.0046537624040219674,
             "numerator_union": 100,
-            "percent_union": 0.004654368893177114
+            "percent_union": 0.0046537624040219674
           },
           "C1": {
             "numerator": 100,
             "numerator_sum": 100.0,
-            "denominator": 2148519,
-            "percent": 0.004654368893177114,
+            "denominator": 2148799,
+            "percent": 0.0046537624040219674,
             "numerator_union": 100,
-            "percent_union": 0.004654368893177114
+            "percent_union": 0.0046537624040219674
           },
           "C1d": {
             "numerator": 100,
             "numerator_sum": 100.0,
-            "denominator": 2148519,
-            "percent": 0.004654368893177114,
+            "denominator": 2148799,
+            "percent": 0.0046537624040219674,
             "numerator_union": 100,
-            "percent_union": 0.004654368893177114
+            "percent_union": 0.0046537624040219674
           },
           "C1b": {
             "numerator": 0,
             "numerator_sum": 0.0,
-            "denominator": 2148519,
+            "denominator": 2148799,
             "percent": 0.0
           }
         }
@@ -441,34 +441,34 @@
           "C0": {
             "numerator": 384948,
             "numerator_sum": 384948.0,
-            "denominator": 2148519,
-            "percent": 17.916899966907437,
+            "denominator": 2148799,
+            "percent": 17.914565299034486,
             "numerator_union": 384948,
-            "percent_union": 17.916899966907437
+            "percent_union": 17.914565299034486
           },
           "C1": {
             "numerator": 148121,
             "numerator_sum": 148121.0,
-            "denominator": 2148519,
-            "percent": 6.894097748262873,
+            "denominator": 2148799,
+            "percent": 6.893199410461379,
             "numerator_union": 148121,
-            "percent_union": 6.894097748262873
+            "percent_union": 6.893199410461379
           },
           "C1d": {
             "numerator": 104100,
             "numerator_sum": 104100.0,
-            "denominator": 2148519,
-            "percent": 4.845198017797376,
+            "denominator": 2148799,
+            "percent": 4.844566662586868,
             "numerator_union": 104100,
-            "percent_union": 4.845198017797376
+            "percent_union": 4.844566662586868
           },
           "C1b": {
-            "numerator": 13649,
-            "numerator_sum": 13649.0,
-            "denominator": 2148519,
-            "percent": 0.6352748102297443,
-            "numerator_union": 13649,
-            "percent_union": 0.6352748102297443
+            "numerator": 4352,
+            "numerator_sum": 4352.0,
+            "denominator": 2148799,
+            "percent": 0.20253173982303604,
+            "numerator_union": 4352,
+            "percent_union": 0.20253173982303604
           }
         }
       },
@@ -480,34 +480,34 @@
           "C0": {
             "numerator": 385048,
             "numerator_sum": 385048.0,
-            "denominator": 2148519,
-            "percent": 17.921554335800614,
+            "denominator": 2148799,
+            "percent": 17.919219061438508,
             "numerator_union": 385048,
-            "percent_union": 17.921554335800614
+            "percent_union": 17.919219061438508
           },
           "C1": {
             "numerator": 148221,
             "numerator_sum": 148221.0,
-            "denominator": 2148519,
-            "percent": 6.89875211715605,
+            "denominator": 2148799,
+            "percent": 6.897853172865401,
             "numerator_union": 148221,
-            "percent_union": 6.89875211715605
+            "percent_union": 6.897853172865401
           },
           "C1d": {
             "numerator": 104200,
             "numerator_sum": 104200.0,
-            "denominator": 2148519,
-            "percent": 4.849852386690553,
+            "denominator": 2148799,
+            "percent": 4.84922042499089,
             "numerator_union": 104200,
-            "percent_union": 4.849852386690553
+            "percent_union": 4.84922042499089
           },
           "C1b": {
-            "numerator": 13649,
-            "numerator_sum": 13649.0,
-            "denominator": 2148519,
-            "percent": 0.6352748102297443,
-            "numerator_union": 13649,
-            "percent_union": 0.6352748102297443
+            "numerator": 4352,
+            "numerator_sum": 4352.0,
+            "denominator": 2148799,
+            "percent": 0.20253173982303604,
+            "numerator_union": 4352,
+            "percent_union": 0.20253173982303604
           }
         }
       },
@@ -520,34 +520,34 @@
           "C0": {
             "numerator": 395417,
             "numerator_sum": 395417.0,
-            "denominator": 2148519,
-            "percent": 18.40416584633415,
+            "denominator": 2148799,
+            "percent": 18.401767685111544,
             "numerator_union": 395417,
-            "percent_union": 18.40416584633415
+            "percent_union": 18.401767685111544
           },
           "C1": {
             "numerator": 157101,
             "numerator_sum": 157101.0,
-            "denominator": 2148519,
-            "percent": 7.312060074870178,
+            "denominator": 2148799,
+            "percent": 7.311107274342551,
             "numerator_union": 157101,
-            "percent_union": 7.312060074870178
+            "percent_union": 7.311107274342551
           },
           "C1d": {
             "numerator": 113080,
             "numerator_sum": 113080.0,
-            "denominator": 2148519,
-            "percent": 5.263160344404681,
+            "denominator": 2148799,
+            "percent": 5.262474526468041,
             "numerator_union": 113080,
-            "percent_union": 5.263160344404681
+            "percent_union": 5.262474526468041
           },
           "C1b": {
-            "numerator": 13649,
-            "numerator_sum": 13649.0,
-            "denominator": 2148519,
-            "percent": 0.6352748102297443,
-            "numerator_union": 13649,
-            "percent_union": 0.6352748102297443
+            "numerator": 4352,
+            "numerator_sum": 4352.0,
+            "denominator": 2148799,
+            "percent": 0.20253173982303604,
+            "numerator_union": 4352,
+            "percent_union": 0.20253173982303604
           }
         }
       },
@@ -579,31 +579,31 @@
           "C0": {
             "numerator": 10569,
             "numerator_sum": 10569.0,
-            "denominator": 2148519,
-            "percent": 0.4919202483198892,
+            "denominator": 2148799,
+            "percent": 0.4918561484810818,
             "numerator_union": 10569,
-            "percent_union": 0.4919202483198892
+            "percent_union": 0.4918561484810818
           },
           "C1": {
             "numerator": 9080,
             "numerator_sum": 9080.0,
-            "denominator": 2148519,
-            "percent": 0.422616695500482,
+            "denominator": 2148799,
+            "percent": 0.42256162628519467,
             "numerator_union": 9080,
-            "percent_union": 0.422616695500482
+            "percent_union": 0.42256162628519467
           },
           "C1d": {
             "numerator": 9080,
             "numerator_sum": 9080.0,
-            "denominator": 2148519,
-            "percent": 0.422616695500482,
+            "denominator": 2148799,
+            "percent": 0.42256162628519467,
             "numerator_union": 9080,
-            "percent_union": 0.422616695500482
+            "percent_union": 0.42256162628519467
           },
           "C1b": {
             "numerator": 0,
             "numerator_sum": 0.0,
-            "denominator": 2148519,
+            "denominator": 2148799,
             "percent": 0.0
           }
         }
@@ -611,79 +611,79 @@
     },
     "denominator": {
       "full_denominator": {
-        "described": 2148519,
+        "described": 2148799,
         "n_partitions": 60,
         "rungs": {
           "C0": {
             "numerator": 395517,
             "numerator_sum": 395517.0,
-            "denominator": 2148519,
-            "percent": 18.408820215227326,
+            "denominator": 2148799,
+            "percent": 18.406421447515566,
             "numerator_union": 395517,
-            "percent_union": 18.408820215227326
+            "percent_union": 18.406421447515566
           },
           "C1": {
             "numerator": 157201,
             "numerator_sum": 157201.0,
-            "denominator": 2148519,
-            "percent": 7.316714443763355,
+            "denominator": 2148799,
+            "percent": 7.315761036746573,
             "numerator_union": 157201,
-            "percent_union": 7.316714443763355
+            "percent_union": 7.315761036746573
           },
           "C1d": {
             "numerator": 113180,
             "numerator_sum": 113180.0,
-            "denominator": 2148519,
-            "percent": 5.267814713297858,
+            "denominator": 2148799,
+            "percent": 5.267128288872063,
             "numerator_union": 113180,
-            "percent_union": 5.267814713297858
+            "percent_union": 5.267128288872063
           },
           "C1b": {
-            "numerator": 13649,
-            "numerator_sum": 13649.0,
-            "denominator": 2148519,
-            "percent": 0.6352748102297443,
-            "numerator_union": 13649,
-            "percent_union": 0.6352748102297443
+            "numerator": 4352,
+            "numerator_sum": 4352.0,
+            "denominator": 2148799,
+            "percent": 0.20253173982303604,
+            "numerator_union": 4352,
+            "percent_union": 0.20253173982303604
           }
         }
       },
       "represented_partitions_only": {
-        "described": 1938273,
+        "described": 1938553,
         "n_partitions": 24,
         "note": "the denominator restricted to partitions that have a canonical tree at all; the structural zeros are removed from BOTH sides",
         "rungs": {
           "C0": {
             "numerator": 395517,
             "numerator_sum": 395517.0,
-            "denominator": 1938273,
-            "percent": 20.40563945326587,
+            "denominator": 1938553,
+            "percent": 20.4026921110746,
             "numerator_union": 395517,
-            "percent_union": 20.40563945326587
+            "percent_union": 20.4026921110746
           },
           "C1": {
             "numerator": 157201,
             "numerator_sum": 157201.0,
-            "denominator": 1938273,
-            "percent": 8.11036422629836,
+            "denominator": 1938553,
+            "percent": 8.109192784515049,
             "numerator_union": 157201,
-            "percent_union": 8.11036422629836
+            "percent_union": 8.109192784515049
           },
           "C1d": {
             "numerator": 113180,
             "numerator_sum": 113180.0,
-            "denominator": 1938273,
-            "percent": 5.8392187271865215,
+            "denominator": 1938553,
+            "percent": 5.838375324275375,
             "numerator_union": 113180,
-            "percent_union": 5.8392187271865215
+            "percent_union": 5.838375324275375
           },
           "C1b": {
-            "numerator": 13649,
-            "numerator_sum": 13649.0,
-            "denominator": 1938273,
-            "percent": 0.7041835696003608,
-            "numerator_union": 13649,
-            "percent_union": 0.7041835696003608
+            "numerator": 4352,
+            "numerator_sum": 4352.0,
+            "denominator": 1938553,
+            "percent": 0.2244973441530874,
+            "numerator_union": 4352,
+            "percent_union": 0.2244973441530874
           }
         }
       },
@@ -717,19 +717,19 @@
               "percent_union": 5.67855695013627
             },
             "C1b": {
-              "numerator": 13649,
-              "numerator_sum": 13649.0,
+              "numerator": 4352,
+              "numerator_sum": 4352.0,
               "denominator": 1993112,
-              "percent": 0.6848084804065201,
-              "numerator_union": 13649,
-              "percent_union": 0.6848084804065201
+              "percent": 0.2183520043028189,
+              "numerator_union": 4352,
+              "percent_union": 0.2183520043028189
             }
           },
           "rungs_pct_1dp": {
             "C0": 19.8,
             "C1": 7.9,
             "C1d": 5.7,
-            "C1b": 0.7
+            "C1b": 0.2
           },
           "per_partition": {
             "Amphibians": {
@@ -805,9 +805,9 @@
               "C0_pct_col": 48.9
             },
             "Fish": {
-              "described_primary": 36000,
+              "described_primary": 36280,
               "described_col": 35750,
-              "C0_pct_primary": 86.0,
+              "C0_pct_primary": 85.4,
               "C0_pct_col": 86.6
             },
             "Fungi": {
@@ -915,19 +915,19 @@
               "percent_union": 5.6710595080438555
             },
             "C1b": {
-              "numerator": 13649,
-              "numerator_sum": 13649.0,
+              "numerator": 4352,
+              "numerator_sum": 4352.0,
               "denominator": 1995747,
-              "percent": 0.6839043225418853,
-              "numerator_union": 13649,
-              "percent_union": 0.6839043225418853
+              "percent": 0.2180637124845985,
+              "numerator_union": 4352,
+              "percent_union": 0.2180637124845985
             }
           },
           "rungs_pct_1dp": {
             "C0": 19.8,
             "C1": 7.9,
             "C1d": 5.7,
-            "C1b": 0.7
+            "C1b": 0.2
           },
           "per_partition": {
             "Amphibians": {
@@ -1003,9 +1003,9 @@
               "C0_pct_col": 48.9
             },
             "Fish": {
-              "described_primary": 36000,
+              "described_primary": 36280,
               "described_col": 35703,
-              "C0_pct_primary": 86.0,
+              "C0_pct_primary": 85.4,
               "C0_pct_col": 86.8
             },
             "Fungi": {
@@ -1080,7 +1080,7 @@
           "C0": 18.4,
           "C1": 7.3,
           "C1d": 5.3,
-          "C1b": 0.6
+          "C1b": 0.2
         },
         "source": "Data/col_denominators.csv; COL26.9 (ChecklistBank 316321, doi:10.48580/dgz5n, issued 2026-09-11)"
       },
@@ -1088,7 +1088,7 @@
         "partition": "Insects",
         "described": 1000000,
         "described_source": "Catalogue of Life 2025",
-        "share_of_denominator_pct": 46.54368893177114,
+        "share_of_denominator_pct": 46.537624040219676,
         "note": "one round number from a single compilation carries this share of the whole eukaryotic denominator; every printed decimal in the paper is elastic to it"
       },
       "elasticity_demonstration": {
@@ -1097,76 +1097,76 @@
         "warning": "AN ELASTICITY DEMONSTRATION, NOT A RICHNESS CLAIM. The perturbation is a device for showing how much of every printed decimal rests on one round number.",
         "results": {
           "minus_20_pct": {
-            "denominator": 1948519,
+            "denominator": 1948799,
             "rungs": {
               "C0": {
                 "numerator": 395517,
                 "numerator_sum": 395517.0,
-                "denominator": 1948519.0,
-                "percent": 20.298339405466407,
+                "denominator": 1948799.0,
+                "percent": 20.295422975894382,
                 "numerator_union": 395517,
-                "percent_union": 20.298339405466407
+                "percent_union": 20.295422975894382
               },
               "C1": {
                 "numerator": 157201,
                 "numerator_sum": 157201.0,
-                "denominator": 1948519.0,
-                "percent": 8.067717071273105,
+                "denominator": 1948799.0,
+                "percent": 8.066557915926682,
                 "numerator_union": 157201,
-                "percent_union": 8.067717071273105
+                "percent_union": 8.066557915926682
               },
               "C1d": {
                 "numerator": 113180,
                 "numerator_sum": 113180.0,
-                "denominator": 1948519.0,
-                "percent": 5.808514056060012,
+                "denominator": 1948799.0,
+                "percent": 5.8076794990145215,
                 "numerator_union": 113180,
-                "percent_union": 5.808514056060012
+                "percent_union": 5.8076794990145215
               },
               "C1b": {
-                "numerator": 13649,
-                "numerator_sum": 13649.0,
-                "denominator": 1948519.0,
-                "percent": 0.7004807240781332,
-                "numerator_union": 13649,
-                "percent_union": 0.7004807240781332
+                "numerator": 4352,
+                "numerator_sum": 4352.0,
+                "denominator": 1948799.0,
+                "percent": 0.22331702756415617,
+                "numerator_union": 4352,
+                "percent_union": 0.22331702756415617
               }
             }
           },
           "plus_20_pct": {
-            "denominator": 2348519,
+            "denominator": 2348799,
             "rungs": {
               "C0": {
                 "numerator": 395517,
                 "numerator_sum": 395517.0,
-                "denominator": 2348519.0,
-                "percent": 16.841124129717496,
+                "denominator": 2348799.0,
+                "percent": 16.839116501667448,
                 "numerator_union": 395517,
-                "percent_union": 16.841124129717496
+                "percent_union": 16.839116501667448
               },
               "C1": {
                 "numerator": 157201,
                 "numerator_sum": 157201.0,
-                "denominator": 2348519.0,
-                "percent": 6.693622661771099,
+                "denominator": 2348799.0,
+                "percent": 6.692824715950577,
                 "numerator_union": 157201,
-                "percent_union": 6.693622661771099
+                "percent_union": 6.692824715950577
               },
               "C1d": {
                 "numerator": 113180,
                 "numerator_sum": 113180.0,
-                "denominator": 2348519.0,
-                "percent": 4.819207338752635,
+                "denominator": 2348799.0,
+                "percent": 4.818632841720386,
                 "numerator_union": 113180,
-                "percent_union": 4.819207338752635
+                "percent_union": 4.818632841720386
               },
               "C1b": {
-                "numerator": 13649,
-                "numerator_sum": 13649.0,
-                "denominator": 2348519.0,
-                "percent": 0.5811747744003775,
-                "numerator_union": 13649,
-                "percent_union": 0.5811747744003775
+                "numerator": 4352,
+                "numerator_sum": 4352.0,
+                "denominator": 2348799.0,
+                "percent": 0.18528618242770029,
+                "numerator_union": 4352,
+                "percent_union": 0.18528618242770029
               }
             }
           }
@@ -1180,34 +1180,34 @@
         "C0": {
           "numerator": 395517,
           "numerator_sum": 395517.0,
-          "denominator": 2148519,
-          "percent": 18.408820215227326,
+          "denominator": 2148799,
+          "percent": 18.406421447515566,
           "numerator_union": 395517,
-          "percent_union": 18.408820215227326
+          "percent_union": 18.406421447515566
         },
         "C1": {
           "numerator": 147438,
           "numerator_sum": 147438.1234,
-          "denominator": 2148519,
-          "percent": 6.862314152213688
+          "denominator": 2148799,
+          "percent": 6.861419955984716
         },
         "C1d": {
           "numerator": 103417,
           "numerator_sum": 103417.1234,
-          "denominator": 2148519,
-          "percent": 4.81341442174819
+          "denominator": 2148799,
+          "percent": 4.812787208110205
         },
         "C1b": {
-          "numerator": 13383,
-          "numerator_sum": 13382.7756,
-          "denominator": 2148519,
-          "percent": 0.6228837445700969
+          "numerator": 4257,
+          "numerator_sum": 4256.7324,
+          "denominator": 2148799,
+          "percent": 0.198098212071022
         }
       },
       "difference_pp": {
-        "C1": 0.4544,
-        "C1d": 0.4544,
-        "C1b": 0.0124
+        "C1": 0.4543,
+        "C1d": 0.4543,
+        "C1b": 0.0044
       },
       "per_partition": {
         "Amphibians": {
@@ -1338,41 +1338,44 @@
         "Bryophytes",
         "Cephalopods",
         "Diatoms",
+        "Mammals",
         "Sharks",
-        "Sponges"
+        "Sponges",
+        "Squamates",
+        "Turtles"
       ],
       "rungs": {
         "C0": {
           "numerator": 395517,
           "numerator_sum": 395517.0,
-          "denominator": 2148519,
-          "percent": 18.408820215227326,
+          "denominator": 2148799,
+          "percent": 18.406421447515566,
           "numerator_union": 395517,
-          "percent_union": 18.408820215227326
+          "percent_union": 18.406421447515566
         },
         "C1": {
           "numerator": 157201,
           "numerator_sum": 157201.0,
-          "denominator": 2148519,
-          "percent": 7.316714443763355,
+          "denominator": 2148799,
+          "percent": 7.315761036746573,
           "numerator_union": 157201,
-          "percent_union": 7.316714443763355
+          "percent_union": 7.315761036746573
         },
         "C1d": {
           "numerator": 113180,
           "numerator_sum": 113180.0,
-          "denominator": 2148519,
-          "percent": 5.267814713297858,
+          "denominator": 2148799,
+          "percent": 5.267128288872063,
           "numerator_union": 113180,
-          "percent_union": 5.267814713297858
+          "percent_union": 5.267128288872063
         },
         "C1b": {
           "numerator": 14962,
           "numerator_sum": 14962.0,
-          "denominator": 2148519,
-          "percent": 0.6963866737971598,
+          "denominator": 2148799,
+          "percent": 0.6962959308897668,
           "numerator_union": 14962,
-          "percent_union": 0.6963866737971598
+          "percent_union": 0.6962959308897668
         }
       }
     },
@@ -1384,90 +1387,9 @@
         "Cephalopods",
         "Diatoms",
         "Fish",
-        "Sharks",
-        "Sponges"
-      ],
-      "rungs": {
-        "C0": {
-          "numerator": 395517,
-          "numerator_sum": 395517.0,
-          "denominator": 2148519,
-          "percent": 18.408820215227326,
-          "numerator_union": 395517,
-          "percent_union": 18.408820215227326
-        },
-        "C1": {
-          "numerator": 157201,
-          "numerator_sum": 157201.0,
-          "denominator": 2148519,
-          "percent": 7.316714443763355,
-          "numerator_union": 157201,
-          "percent_union": 7.316714443763355
-        },
-        "C1d": {
-          "numerator": 113180,
-          "numerator_sum": 113180.0,
-          "denominator": 2148519,
-          "percent": 5.267814713297858,
-          "numerator_union": 113180,
-          "percent_union": 5.267814713297858
-        },
-        "C1b": {
-          "numerator": 35452,
-          "numerator_sum": 35452.0,
-          "denominator": 2148519,
-          "percent": 1.6500668600091506,
-          "numerator_union": 35452,
-          "percent_union": 1.6500668600091506
-        }
-      }
-    },
-    "c1b_width_rule": {
-      "rule": "C1b with an interval at least 1 times as wide as the range of a two-sided prior on its node counted as set by the calibration",
-      "width_ratio_min": 1.0,
-      "partitions_removed": [
-        "Mammals"
-      ],
-      "rungs": {
-        "C0": {
-          "numerator": 395517,
-          "numerator_sum": 395517.0,
-          "denominator": 2148519,
-          "percent": 18.408820215227326,
-          "numerator_union": 395517,
-          "percent_union": 18.408820215227326
-        },
-        "C1": {
-          "numerator": 157201,
-          "numerator_sum": 157201.0,
-          "denominator": 2148519,
-          "percent": 7.316714443763355,
-          "numerator_union": 157201,
-          "percent_union": 7.316714443763355
-        },
-        "C1d": {
-          "numerator": 113180,
-          "numerator_sum": 113180.0,
-          "denominator": 2148519,
-          "percent": 5.267814713297858,
-          "numerator_union": 113180,
-          "percent_union": 5.267814713297858
-        },
-        "C1b": {
-          "numerator": 9704,
-          "numerator_sum": 9704.0,
-          "denominator": 2148519,
-          "percent": 0.45165995739390713,
-          "numerator_union": 9704,
-          "percent_union": 0.45165995739390713
-        }
-      }
-    },
-    "c1b_strict": {
-      "rule": "C1b with an interval at least 1 times as wide as the range of a two-sided prior on its node counted as set by the calibration; intervals whose crown calibration was not checked not counted",
-      "width_ratio_min": 1.0,
-      "partitions_removed": [
         "Mammals",
+        "Sharks",
+        "Sponges",
         "Squamates",
         "Turtles"
       ],
@@ -1475,34 +1397,112 @@
         "C0": {
           "numerator": 395517,
           "numerator_sum": 395517.0,
-          "denominator": 2148519,
-          "percent": 18.408820215227326,
+          "denominator": 2148799,
+          "percent": 18.406421447515566,
           "numerator_union": 395517,
-          "percent_union": 18.408820215227326
+          "percent_union": 18.406421447515566
         },
         "C1": {
           "numerator": 157201,
           "numerator_sum": 157201.0,
-          "denominator": 2148519,
-          "percent": 7.316714443763355,
+          "denominator": 2148799,
+          "percent": 7.315761036746573,
           "numerator_union": 157201,
-          "percent_union": 7.316714443763355
+          "percent_union": 7.315761036746573
         },
         "C1d": {
           "numerator": 113180,
           "numerator_sum": 113180.0,
-          "denominator": 2148519,
-          "percent": 5.267814713297858,
+          "denominator": 2148799,
+          "percent": 5.267128288872063,
           "numerator_union": 113180,
-          "percent_union": 5.267814713297858
+          "percent_union": 5.267128288872063
+        },
+        "C1b": {
+          "numerator": 35452,
+          "numerator_sum": 35452.0,
+          "denominator": 2148799,
+          "percent": 1.649851847473868,
+          "numerator_union": 35452,
+          "percent_union": 1.649851847473868
+        }
+      }
+    },
+    "c1b_width_rule": {
+      "rule": "C1b with an interval at least 1 times as wide as the range of a two-sided prior on its node counted as set by the calibration",
+      "width_ratio_min": 1.0,
+      "partitions_removed": [],
+      "rungs": {
+        "C0": {
+          "numerator": 395517,
+          "numerator_sum": 395517.0,
+          "denominator": 2148799,
+          "percent": 18.406421447515566,
+          "numerator_union": 395517,
+          "percent_union": 18.406421447515566
+        },
+        "C1": {
+          "numerator": 157201,
+          "numerator_sum": 157201.0,
+          "denominator": 2148799,
+          "percent": 7.315761036746573,
+          "numerator_union": 157201,
+          "percent_union": 7.315761036746573
+        },
+        "C1d": {
+          "numerator": 113180,
+          "numerator_sum": 113180.0,
+          "denominator": 2148799,
+          "percent": 5.267128288872063,
+          "numerator_union": 113180,
+          "percent_union": 5.267128288872063
         },
         "C1b": {
           "numerator": 4352,
           "numerator_sum": 4352.0,
-          "denominator": 2148519,
-          "percent": 0.202558134231068,
+          "denominator": 2148799,
+          "percent": 0.20253173982303604,
           "numerator_union": 4352,
-          "percent_union": 0.202558134231068
+          "percent_union": 0.20253173982303604
+        }
+      }
+    },
+    "c1b_strict": {
+      "rule": "C1b with an interval at least 1 times as wide as the range of a two-sided prior on its node counted as set by the calibration; intervals whose crown calibration was not checked not counted",
+      "width_ratio_min": 1.0,
+      "partitions_removed": [],
+      "rungs": {
+        "C0": {
+          "numerator": 395517,
+          "numerator_sum": 395517.0,
+          "denominator": 2148799,
+          "percent": 18.406421447515566,
+          "numerator_union": 395517,
+          "percent_union": 18.406421447515566
+        },
+        "C1": {
+          "numerator": 157201,
+          "numerator_sum": 157201.0,
+          "denominator": 2148799,
+          "percent": 7.315761036746573,
+          "numerator_union": 157201,
+          "percent_union": 7.315761036746573
+        },
+        "C1d": {
+          "numerator": 113180,
+          "numerator_sum": 113180.0,
+          "denominator": 2148799,
+          "percent": 5.267128288872063,
+          "numerator_union": 113180,
+          "percent_union": 5.267128288872063
+        },
+        "C1b": {
+          "numerator": 4352,
+          "numerator_sum": 4352.0,
+          "denominator": 2148799,
+          "percent": 0.20253173982303604,
+          "numerator_union": 4352,
+          "percent_union": 0.20253173982303604
         }
       }
     },
@@ -1517,9 +1517,9 @@
       "unmatched_tips_resolved_by_gbif": 31947,
       "species_added": 27834,
       "numerator": 423351,
-      "denominator": 2148519,
-      "percent": 19.704317252954244,
-      "percent_C0": 18.408820215227326,
+      "denominator": 2148799,
+      "percent": 19.70174967505104,
+      "percent_C0": 18.406421447515566,
       "per_partition": {
         "Amphibians": {
           "unmatched_tips": 39,
@@ -1591,7 +1591,7 @@
           "unmatched_tips": 67,
           "gbif_species_added": 44,
           "c0_with_gbif": 31017,
-          "percent_with_gbif": 86.15833333333333
+          "percent_with_gbif": 85.49338478500552
         },
         "Fungi": {
           "unmatched_tips": 79,
@@ -1669,7 +1669,7 @@
       "C1d_total": 113180.0,
       "share_of_C1d_pct": 62.48718854921364,
       "contribution_to_C1b": 0.0,
-      "C1b_total": 13649.0,
+      "C1b_total": 4352.0,
       "share_of_C1b_pct": 0.0,
       "note": "state this and frame the asymmetry as the finding, not as a caveat"
     },
@@ -1741,7 +1741,7 @@
       "n_partitions": 36,
       "of_eukaryotic_partitions": 60,
       "described": 210246,
-      "share_of_denominator_pct": 9.785624423149155,
+      "share_of_denominator_pct": 9.784349303960026,
       "partitions": [
         "Acanthocephala",
         "Acari",
@@ -1783,11 +1783,11 @@
       "note": "a STRUCTURAL zero, not a criterion-dependent one -- and now computable from the deposit file itself, because these partitions are rows of coverage_basis.csv."
     },
     "dark_matter": {
-      "no_tip_anywhere": 1753002,
-      "no_tip_anywhere_pct": 81.59117978477268,
-      "no_molecular_placement": 1991318,
-      "no_molecular_placement_exact": 1991318.0,
-      "no_molecular_placement_pct": 92.68328555623664,
+      "no_tip_anywhere": 1753282,
+      "no_tip_anywhere_pct": 81.59357855248443,
+      "no_molecular_placement": 1991598,
+      "no_molecular_placement_exact": 1991598.0,
+      "no_molecular_placement_pct": 92.68423896325342,
       "convention": "formed on the C0 UNION numerator (395517), never on the per-partition sum",
       "replaces": "the retired 23.7 % figure, which was a hard-coded literal reachable from no numerator/denominator pair in the deposit. WITHDRAWN, not adjusted."
     },
@@ -2060,13 +2060,13 @@
         "partition": "Fish",
         "f_mol": 0.369924,
         "topology_assembly": "primary_analysis",
-        "described": 36000,
-        "denominator": 36000,
+        "described": 36280,
+        "denominator": 36280,
         "c0_units": 30973,
-        "C0_pct": 86.03611111111111,
+        "C0_pct": 85.37210584343991,
         "C1_tip_equivalents": 11510.0,
-        "C1_pct": 31.97222222222222,
-        "old_strict_pct": 31.97222222222222
+        "C1_pct": 31.725468577728776,
+        "old_strict_pct": 31.725468577728776
       },
       {
         "partition": "Seed plants",
@@ -2803,18 +2803,18 @@
       },
       "C0_resolved_labels": {
         "numerator": 426036,
-        "denominator": 2148519,
-        "percent": 19.82928705773605
+        "denominator": 2148799,
+        "percent": 19.82670319559903
       },
       "C0_distinct_accepted_names_sum": {
         "numerator": 395517,
-        "denominator": 2148519,
-        "percent": 18.408820215227326
+        "denominator": 2148799,
+        "percent": 18.406421447515566
       },
       "C0_distinct_accepted_names_union": {
         "numerator": 395517,
-        "denominator": 2148519,
-        "percent": 18.408820215227326
+        "denominator": 2148799,
+        "percent": 18.406421447515566
       }
     },
     "per_partition": {
@@ -3245,16 +3245,16 @@
   "crown_ages": {
     "definition": "crown age of the focal clade (Data/crown_clades.csv, D21) by decision D20: the deposit's annotated median height, or the median height over its dated tree set, else the focal node's height in the deposited chronogram, else the canonical root height; the interval is the one the deposit carries (Data/crown_intervals.csv, scripts/crown_intervals.py). An interval counts for C1b when its kind counts and it is neither degenerate nor at a calibration bound (D22) nor a reproduction of the focal node's calibration prior (D25, Data/calibration_register.csv).",
     "n_absolute_chronograms": 18,
-    "n_with_counted_interval": 7,
+    "n_with_counted_interval": 4,
     "n_degenerate_counted_intervals": 0,
     "n_excluded_from_c1b": {
       "at_bound": 1,
       "degenerate": 1,
       "kind": 2,
-      "prior_reproduced": 3
+      "prior_reproduced": 6
     },
     "n_age_differs_from_geometry": 7,
-    "n_crown_inside_interval": 7,
+    "n_crown_inside_interval": 4,
     "per_partition": {
       "Amphibians": {
         "canonical_tree": "amphibians.nwk",
@@ -3491,22 +3491,22 @@
         "canonical_tree": "mammals.nwk",
         "crown_clade": "Mammalia",
         "crown_age_ma": "187.3458",
-        "age_statistic": "annotated height_median",
+        "age_statistic": "median over 10000 trees",
         "geometry_root_ma": "180.8472",
-        "interval_kind": "node_hpd_annotation",
-        "counts_for_c1b": "yes",
-        "c1b_exclusion": "",
-        "interval_lo_ma": "166.7172",
+        "interval_kind": "posterior_sample",
+        "counts_for_c1b": "no",
+        "c1b_exclusion": "prior_reproduced",
+        "interval_lo_ma": "168.5571",
         "interval_center_ma": "187.3458",
-        "interval_hi_ma": "210.9306",
-        "center_statistic": "height_median",
-        "n_trees": "1",
-        "interval_width_myr": "44.2134",
+        "interval_hi_ma": "213.4921",
+        "center_statistic": "median",
+        "n_trees": "10000",
+        "interval_width_myr": "44.9350",
         "degenerate": "no",
         "at_bound": "no",
         "calibration": "two_sided",
-        "prior_reproduced": "no",
-        "interval_source": "raw/mammals/upham2019_mammal_MCC_5911sp.tre"
+        "prior_reproduced": "yes",
+        "interval_source": "raw/revision-2026-10/mammals/vertlife_2026-10-08/Completed_5911sp_topoCons_NDexp/MamPhy_BDvr_Completed_5911sp_topoCons_NDexp_v2_tree*.tre"
       },
       "Seed plants": {
         "canonical_tree": "seed_plants.nwk",
@@ -3599,8 +3599,8 @@
         "age_statistic": "median over 10000 trees",
         "geometry_root_ma": "189.9633",
         "interval_kind": "posterior_sample",
-        "counts_for_c1b": "yes",
-        "c1b_exclusion": "",
+        "counts_for_c1b": "no",
+        "c1b_exclusion": "prior_reproduced",
         "interval_lo_ma": "176.9718",
         "interval_center_ma": "186.4151",
         "interval_hi_ma": "203.0625",
@@ -3609,30 +3609,30 @@
         "interval_width_myr": "26.0907",
         "degenerate": "no",
         "at_bound": "no",
-        "calibration": "not_checked",
-        "prior_reproduced": "no",
+        "calibration": "two_sided",
+        "prior_reproduced": "yes",
         "interval_source": "raw/revision-2026-10/squamates/posterior/squam_shl_new_Posterior_9755.*.trees"
       },
       "Turtles": {
         "canonical_tree": "turtles.nwk",
         "crown_clade": "Testudines",
-        "crown_age_ma": "211.8380",
-        "age_statistic": "annotated height_median",
+        "crown_age_ma": "205.4186",
+        "age_statistic": "median over 100 trees",
         "geometry_root_ma": "211.9547",
-        "interval_kind": "node_hpd_annotation",
-        "counts_for_c1b": "yes",
-        "c1b_exclusion": "",
-        "interval_lo_ma": "185.4373",
-        "interval_center_ma": "211.8380",
-        "interval_hi_ma": "239.4741",
-        "center_statistic": "height_median",
-        "n_trees": "1",
-        "interval_width_myr": "54.0368",
+        "interval_kind": "posterior_sample",
+        "counts_for_c1b": "no",
+        "c1b_exclusion": "prior_reproduced",
+        "interval_lo_ma": "179.3065",
+        "interval_center_ma": "205.4186",
+        "interval_hi_ma": "231.3629",
+        "center_statistic": "median",
+        "n_trees": "100",
+        "interval_width_myr": "52.0564",
         "degenerate": "no",
         "at_bound": "no",
-        "calibration": "not_checked",
-        "prior_reproduced": "no",
-        "interval_source": "raw/turtles/thomson2021_turtle_bd_mcc.tre"
+        "calibration": "two_sided",
+        "prior_reproduced": "yes",
+        "interval_source": "raw/revision-2026-10/turtles/dryad_2026-10-08/sampleFromPosterior.100.tre"
       }
     }
   },
@@ -3662,7 +3662,7 @@
         "Microbes & protists": 39
       },
       "C1b": {
-        "Vertebrates": 13290,
+        "Vertebrates": 3993,
         "Plants": 0,
         "Arthropods": 0,
         "Other animals": 359,
@@ -3675,7 +3675,7 @@
       "RelTime": 42078,
       "NoInterval": 77728,
       "Kind": 20490,
-      "Calib": 1313
+      "Calib": 10610
     }
   },
   "union_bound_S09": {
@@ -3684,14 +3684,14 @@
     "names_added": 4031,
     "C0_canonical": 395517,
     "C0_union": 399548,
-    "C0_canonical_pct": 18.408820215227326,
-    "C0_union_pct": 18.596437825311295,
+    "C0_canonical_pct": 18.406421447515566,
+    "C0_union_pct": 18.59401461002169,
     "C1_canonical": 157201.0,
     "C1_union_low": 157201.0,
     "C1_union_high": 161232.0,
-    "C1_union_low_pct": 7.316714443763355,
-    "C1_union_high_pct": 7.504332053847325,
-    "denominator": 2148519,
+    "C1_union_low_pct": 7.315761036746573,
+    "C1_union_high_pct": 7.503354199252699,
+    "denominator": 2148799,
     "per_partition": {
       "Amphibians": {
         "C0_canonical": 6947,
@@ -3781,8 +3781,8 @@
         "C0_canonical": 30973,
         "names_added_by_other_trees": 183,
         "C0_union": 31156,
-        "C0_canonical_pct": 86.03611111111111,
-        "C0_union_pct": 86.54444444444445
+        "C0_canonical_pct": 85.37210584343991,
+        "C0_union_pct": 85.87651598676958
       },
       "Fungi": {
         "C0_canonical": 1396,
@@ -5056,14 +5056,14 @@
     "ot_tips_all_life": 2385875,
     "ot_phylo_all_life": 159925,
     "ot_phylo_extant_species_eukaryota": 129889,
-    "ot_phylo_extant_species_eukaryota_pct": 6.045513211658822,
+    "ot_phylo_extant_species_eukaryota_pct": 6.044725448960094,
     "n_partitions_compared": 24,
     "ot_phylo_extant_species_in_atlas_clades": 128530,
-    "ot_phylo_extant_species_in_atlas_clades_pct": 5.982260338400545,
+    "ot_phylo_extant_species_in_atlas_clades_pct": 5.981480817889435,
     "atlas_C1_in_compared_partitions": 157201.0,
-    "atlas_C1_in_compared_partitions_pct": 7.316714443763355,
+    "atlas_C1_in_compared_partitions_pct": 7.315761036746573,
     "atlas_C1_over_ot_phylo": 1.2231,
-    "denominator": 2148519,
+    "denominator": 2148799,
     "keys": {
       "keys_both": 100583,
       "keys_union": 495474,
@@ -5357,7 +5357,7 @@
         "accepted_molecular_not_in_ot": 2635
       },
       "Fish": {
-        "described": 36000,
+        "described": 36280,
         "atlas_C0": 30973,
         "atlas_C1": 11510.0,
         "atlas_C1_tips_enumerated": "yes",
@@ -5661,14 +5661,14 @@
         "rho_full_rejected": true
       },
       "Fish": {
-        "rho_tips": 0.32211111,
-        "rho_full": 0.87075,
-        "epsilon_rho_tips": 0.745534,
-        "epsilon_rho_full": 0.31212,
+        "rho_tips": 0.31962514,
+        "rho_full": 0.86402977,
+        "epsilon_rho_tips": 0.747498,
+        "epsilon_rho_full": 0.317428,
         "lambda_ratio_full_over_tips": 0.3699,
-        "mu_rho_tips": 0.140625,
-        "mu_rho_full": 0.0217786,
-        "r_ratio_full_over_tips": 0.999996,
+        "mu_rho_tips": 0.142092,
+        "mu_rho_full": 0.0223212,
+        "r_ratio_full_over_tips": 0.999994,
         "epsilon_intervals_overlap": false,
         "identity_lambda_ratio_predicted": 0.369924,
         "loglik_rho_tips": -45366.4545,
@@ -5791,21 +5791,21 @@
           "epsilon_intervals_overlap_uniform": true
         },
         "Fish": {
-          "lambda": 0.151591,
-          "mu": 0.0991789,
+          "lambda": 0.151595,
+          "mu": 0.0991834,
           "r": 0.0524119,
-          "r_lo": 0.050472,
-          "r_hi": 0.05437,
-          "epsilon": 0.654254,
-          "epsilon_lo": 0.631763,
-          "epsilon_hi": 0.675569,
-          "loglik": -45269.2453,
+          "r_lo": 0.0504719,
+          "r_hi": 0.0543699,
+          "epsilon": 0.654264,
+          "epsilon_lo": 0.631775,
+          "epsilon_hi": 0.675579,
+          "loglik": -45269.2986,
           "n_tips": 11596.0,
           "n_tips_family_fraction": 11550.0,
-          "family_uniform_check": 5.09e-11,
+          "family_uniform_check": 8.73e-11,
           "epsilon_ci": "interior",
-          "epsilon_uniform_tips": 0.745534,
-          "r_uniform_tips": 0.047998,
+          "epsilon_uniform_tips": 0.747498,
+          "r_uniform_tips": 0.0479981,
           "epsilon_intervals_overlap_uniform": false
         },
         "Mammals": {
@@ -5909,11 +5909,11 @@
         },
         "Fish": {
           "r_full": 0.0434104,
-          "r_molecular": 0.047998,
+          "r_molecular": 0.0479981,
           "r_ratio_full_over_molecular": 0.9044,
           "r_intervals_overlap": false,
-          "epsilon_full": 0.797254,
-          "epsilon_molecular": 0.745534,
+          "epsilon_full": 0.798819,
+          "epsilon_molecular": 0.747498,
           "epsilon_intervals_overlap": false
         },
         "Mammals": {
@@ -6140,30 +6140,30 @@
         "resolved": {
           "1": {
             "r_full": 0.0434104,
-            "r_molecular": 0.047998,
+            "r_molecular": 0.0479981,
             "r_ratio_full_over_molecular": 0.9044,
-            "epsilon_rho_tips": 0.745534,
-            "epsilon_rho_full": 0.31212,
+            "epsilon_rho_tips": 0.747498,
+            "epsilon_rho_full": 0.317428,
             "lr_statistic": 0.0,
             "boundary": false,
             "rejected": false
           },
           "2": {
             "r_full": 0.0434104,
-            "r_molecular": 0.047998,
+            "r_molecular": 0.0479981,
             "r_ratio_full_over_molecular": 0.9044,
-            "epsilon_rho_tips": 0.745534,
-            "epsilon_rho_full": 0.31212,
+            "epsilon_rho_tips": 0.747498,
+            "epsilon_rho_full": 0.317428,
             "lr_statistic": 0.0,
             "boundary": false,
             "rejected": false
           },
           "3": {
             "r_full": 0.0434104,
-            "r_molecular": 0.047998,
+            "r_molecular": 0.0479981,
             "r_ratio_full_over_molecular": 0.9044,
-            "epsilon_rho_tips": 0.745534,
-            "epsilon_rho_full": 0.31212,
+            "epsilon_rho_tips": 0.747498,
+            "epsilon_rho_full": 0.317428,
             "lr_statistic": 0.0,
             "boundary": false,
             "rejected": false
@@ -6371,6 +6371,212 @@
         }
       }
     },
+    "tree_sets": {
+      "Amphibians|posterior": {
+        "partition": "Amphibians",
+        "set": "posterior",
+        "tips": "molecular",
+        "n_trees": 100,
+        "n_tips_pruned": [
+          4061
+        ],
+        "n_tips_full": [
+          7238
+        ],
+        "max_polytomy_events": 0,
+        "epsilon_matching_min": 0.266442,
+        "epsilon_matching_median": 0.381915,
+        "epsilon_matching_max": 0.464655,
+        "lr_min": 0.0,
+        "lr_median": 3.26805,
+        "lr_max": 24.8909,
+        "n_boundary": 95,
+        "n_rejected": 54,
+        "r_ratio_min": 0.971659701074717,
+        "r_ratio_max": 1.0452122877897063,
+        "summary_tree_classification": "boundary",
+        "summary_tree_lr": 11.0334,
+        "summary_tree_epsilon_matching": 0.330065
+      },
+      "Birds|date_random": {
+        "partition": "Birds",
+        "set": "date_random",
+        "tips": "molecular",
+        "n_trees": 100,
+        "n_tips_pruned": [
+          9239
+        ],
+        "n_tips_full": [
+          10824
+        ],
+        "max_polytomy_events": 3,
+        "epsilon_matching_min": 0.0983569,
+        "epsilon_matching_median": 0.203366,
+        "epsilon_matching_max": 0.274003,
+        "lr_min": 0.0,
+        "lr_median": 0.0,
+        "lr_max": 2.2767,
+        "n_boundary": 2,
+        "n_rejected": 0,
+        "r_ratio_min": 0.9967917077986179,
+        "r_ratio_max": 1.0185117913512791,
+        "summary_tree_classification": "boundary",
+        "summary_tree_lr": 4.8814,
+        "summary_tree_epsilon_matching": 0.0754435
+      },
+      "Birds|date_mean": {
+        "partition": "Birds",
+        "set": "date_mean",
+        "tips": "molecular",
+        "n_trees": 100,
+        "n_tips_pruned": [
+          9239
+        ],
+        "n_tips_full": [
+          10824
+        ],
+        "max_polytomy_events": 0,
+        "epsilon_matching_min": 0.182719,
+        "epsilon_matching_median": 0.18599749999999998,
+        "epsilon_matching_max": 0.190737,
+        "lr_min": 0.0,
+        "lr_median": 0.0,
+        "lr_max": 0.0,
+        "n_boundary": 0,
+        "n_rejected": 0,
+        "r_ratio_min": 0.9922193375816223,
+        "r_ratio_max": 1.0141989900497121,
+        "summary_tree_classification": "boundary",
+        "summary_tree_lr": 4.8814,
+        "summary_tree_epsilon_matching": 0.0754435
+      },
+      "Mammals|posterior": {
+        "partition": "Mammals",
+        "set": "posterior",
+        "tips": "molecular",
+        "n_trees": 100,
+        "n_tips_pruned": [
+          4098
+        ],
+        "n_tips_full": [
+          5911
+        ],
+        "max_polytomy_events": 0,
+        "epsilon_matching_min": 0.647964,
+        "epsilon_matching_median": 0.671894,
+        "epsilon_matching_max": 0.698461,
+        "lr_min": 0.0,
+        "lr_median": 0.0,
+        "lr_max": 0.0,
+        "n_boundary": 0,
+        "n_rejected": 0,
+        "r_ratio_min": 0.9239277564651962,
+        "r_ratio_max": 0.9810837935401154,
+        "summary_tree_classification": "identity",
+        "summary_tree_lr": 0.0,
+        "summary_tree_epsilon_matching": 0.688414
+      },
+      "Mammals|molecular_only": {
+        "partition": "Mammals",
+        "set": "molecular_only",
+        "tips": "all",
+        "n_trees": 100,
+        "n_tips_pruned": [
+          4099
+        ],
+        "n_tips_full": [],
+        "max_polytomy_events": 0,
+        "epsilon_matching_min": 0.671873,
+        "epsilon_matching_median": 0.7004535000000001,
+        "epsilon_matching_max": 0.737107,
+        "lr_min": 0.0,
+        "lr_median": 0.0,
+        "lr_max": 0.0,
+        "n_boundary": 0,
+        "n_rejected": 0,
+        "r_ratio_min": null,
+        "r_ratio_max": null,
+        "summary_tree_classification": "identity",
+        "summary_tree_lr": 0.0,
+        "summary_tree_epsilon_matching": 0.688414
+      },
+      "Sharks|prior": {
+        "partition": "Sharks",
+        "set": "prior",
+        "tips": "molecular",
+        "n_trees": 100,
+        "n_tips_pruned": [
+          610
+        ],
+        "n_tips_full": [
+          1192
+        ],
+        "max_polytomy_events": 0,
+        "epsilon_matching_min": 0.601564,
+        "epsilon_matching_median": 0.6745805,
+        "epsilon_matching_max": 0.762964,
+        "lr_min": 0.0,
+        "lr_median": 0.0,
+        "lr_max": 0.0,
+        "n_boundary": 0,
+        "n_rejected": 0,
+        "r_ratio_min": 0.8864813754344845,
+        "r_ratio_max": 1.0614687615869485,
+        "summary_tree_classification": "identity",
+        "summary_tree_lr": 0.0,
+        "summary_tree_epsilon_matching": 0.640059
+      },
+      "Sharks|molecular_only": {
+        "partition": "Sharks",
+        "set": "molecular_only",
+        "tips": "all",
+        "n_trees": 100,
+        "n_tips_pruned": [
+          610
+        ],
+        "n_tips_full": [],
+        "max_polytomy_events": 0,
+        "epsilon_matching_min": 0.483423,
+        "epsilon_matching_median": 0.5809875,
+        "epsilon_matching_max": 0.64757,
+        "lr_min": 0.0,
+        "lr_median": 0.0,
+        "lr_max": 0.0045,
+        "n_boundary": 1,
+        "n_rejected": 0,
+        "r_ratio_min": null,
+        "r_ratio_max": null,
+        "summary_tree_classification": "identity",
+        "summary_tree_lr": 0.0,
+        "summary_tree_epsilon_matching": 0.640059
+      },
+      "Squamates|posterior": {
+        "partition": "Squamates",
+        "set": "posterior",
+        "tips": "molecular",
+        "n_trees": 100,
+        "n_tips_pruned": [
+          5415
+        ],
+        "n_tips_full": [
+          9754
+        ],
+        "max_polytomy_events": 0,
+        "epsilon_matching_min": 0.182034,
+        "epsilon_matching_median": 0.2815995,
+        "epsilon_matching_max": 0.368038,
+        "lr_min": 7.8612,
+        "lr_median": 30.97435,
+        "lr_max": 69.8185,
+        "n_boundary": 100,
+        "n_rejected": 100,
+        "r_ratio_min": 0.9151113755317168,
+        "r_ratio_max": 0.9940670220029514,
+        "summary_tree_classification": "boundary",
+        "summary_tree_lr": 88.357,
+        "summary_tree_epsilon_matching": 0.143334
+      }
+    },
     "family_child_order": {
       "Amphibians": {
         "r_first": 0.0428009,
@@ -6397,13 +6603,13 @@
       "Fish": {
         "r_first": 0.0524119,
         "r_last": 0.0524016,
-        "epsilon_first": 0.654254,
-        "epsilon_last": 0.654165,
-        "loglik_first": -45269.2453,
-        "loglik_last_at_first_mle": -45261.3414,
+        "epsilon_first": 0.654264,
+        "epsilon_last": 0.654175,
+        "loglik_first": -45269.2986,
+        "loglik_last_at_first_mle": -45261.369,
         "r_rel_diff": 0.0001965202558960429,
         "epsilon_abs_diff": 8.900000000000574e-05,
-        "loglik_abs_diff_at_mle": 7.903900000004796
+        "loglik_abs_diff_at_mle": 7.92960000000312
       },
       "Mammals": {
         "r_first": 0.086439,
@@ -6631,15 +6837,15 @@
         "n_tips": "31347",
         "crown_age_ma": "368.027",
         "time_scale_factor": "1",
-        "rho": "0.87075",
-        "lambda": "0.214112",
-        "mu": "0.170702",
+        "rho": "0.86402977",
+        "lambda": "0.215778",
+        "mu": "0.172368",
         "r": "0.0434104",
         "r_lo": "0.0417217",
         "r_hi": "0.0451246",
-        "epsilon": "0.797254",
-        "epsilon_lo": "0.78705",
-        "epsilon_hi": "0.807162",
+        "epsilon": "0.798819",
+        "epsilon_lo": "0.788694",
+        "epsilon_hi": "0.808651",
         "epsilon_ci": "interior",
         "loglik": "-101696.3477",
         "n_tips_family_fraction": "",
@@ -6653,15 +6859,15 @@
         "n_tips": "11596",
         "crown_age_ma": "368.027",
         "time_scale_factor": "1",
-        "rho": "0.32211111",
-        "lambda": "0.188623",
-        "mu": "0.140625",
-        "r": "0.047998",
+        "rho": "0.31962514",
+        "lambda": "0.19009",
+        "mu": "0.142092",
+        "r": "0.0479981",
         "r_lo": "0.0460785",
         "r_hi": "0.0499458",
-        "epsilon": "0.745534",
-        "epsilon_lo": "0.728513",
-        "epsilon_hi": "0.761693",
+        "epsilon": "0.747498",
+        "epsilon_lo": "0.730609",
+        "epsilon_hi": "0.763532",
         "epsilon_ci": "interior",
         "loglik": "-45366.4545",
         "n_tips_family_fraction": "",
@@ -6675,15 +6881,15 @@
         "n_tips": "11596",
         "crown_age_ma": "368.027",
         "time_scale_factor": "1",
-        "rho": "0.87075",
-        "lambda": "0.0697764",
-        "mu": "0.0217786",
+        "rho": "0.86402977",
+        "lambda": "0.070319",
+        "mu": "0.0223212",
         "r": "0.0479978",
         "r_lo": "0.0460785",
         "r_hi": "0.0499442",
-        "epsilon": "0.31212",
-        "epsilon_lo": "0.266126",
-        "epsilon_hi": "0.355793",
+        "epsilon": "0.317428",
+        "epsilon_lo": "0.271783",
+        "epsilon_hi": "0.360765",
         "epsilon_ci": "interior",
         "loglik": "-45366.4545",
         "n_tips_family_fraction": "",
@@ -6698,18 +6904,18 @@
         "crown_age_ma": "368.027",
         "time_scale_factor": "1",
         "rho": "",
-        "lambda": "0.151591",
-        "mu": "0.0991789",
+        "lambda": "0.151595",
+        "mu": "0.0991834",
         "r": "0.0524119",
-        "r_lo": "0.050472",
-        "r_hi": "0.05437",
-        "epsilon": "0.654254",
-        "epsilon_lo": "0.631763",
-        "epsilon_hi": "0.675569",
+        "r_lo": "0.0504719",
+        "r_hi": "0.0543699",
+        "epsilon": "0.654264",
+        "epsilon_lo": "0.631775",
+        "epsilon_hi": "0.675579",
         "epsilon_ci": "interior",
-        "loglik": "-45269.2453",
+        "loglik": "-45269.2986",
         "n_tips_family_fraction": "11550",
-        "family_uniform_check": "5.09e-11",
+        "family_uniform_check": "8.73e-11",
         "n_events": "11595",
         "n_polytomy_nodes": "0",
         "n_polytomy_events": "0",

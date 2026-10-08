@@ -161,7 +161,7 @@ for r in rows:
                 ha="left" if right else "right", va="center",
                 fontsize=6.5, color="#333333", zorder=4)
 
-ax.set_xlabel("Molecular fraction (molecular tips / tips of the reference tree)")
+ax.set_xlabel("Molecular fraction (sequenced tips / tips of the reference tree)")
 ax.set_ylabel("Named coverage (% of the group's described species, log scale)")
 ax.set_yticks([0.1, 1, 10, 100])
 ax.set_yticklabels(["0.1", "1", "10", "100"])

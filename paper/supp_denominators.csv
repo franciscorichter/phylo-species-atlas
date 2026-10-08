@@ -1,5 +1,5 @@
 partition,category,described,described_source,col_count,col_filled_from,named_pct,named_col_pct,named_all_trees_pct
-Fish,Vertebrates,36000,Eschmeyer's Catalog of Fishes,35750,Holostei base 9 < 0.50 x XR 56,86.0,86.6,86.5
+Fish,Vertebrates,36280,Eschmeyer's Catalog of Fishes (21 Sep. 2026),35750,Holostei base 9 < 0.50 x XR 56,85.4,86.6,85.9
 Squamates,Vertebrates,12108,"Reptile Database, September 2025 release (Uetz et al. 2025)",12251,,73.9,73.1,74.0
 Birds,Vertebrates,11195,IUCN Red List 2025,10868,,93.5,96.3,96.1
 Amphibians,Vertebrates,8863,AmphibiaWeb 2025,8916,,78.4,77.9,88.1

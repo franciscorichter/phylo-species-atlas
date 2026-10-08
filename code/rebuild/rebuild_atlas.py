@@ -592,6 +592,13 @@ def tex_escape(s):
     return "".join(out)
 
 
+def median(xs):
+    """Median of a list of numbers (mean of the two middle values)."""
+    s_ = sorted(xs)
+    k = len(s_) // 2
+    return s_[k] if len(s_) % 2 else (s_[k - 1] + s_[k]) / 2.0
+
+
 def thousands(n):
     """LaTeX-safe thousands separator matching the supplement's house style."""
     if n is None or n == "":
@@ -4280,6 +4287,13 @@ def build_crown_ages_macros(head, warnings):
             out.append("\\newcommand{\\CrownWidth%s}{%.1f}" % (n, hi - lo))
             out.append("\\newcommand{\\CrownWidthPct%s}{%.1f}"
                        % (n, 100.0 * (hi - lo) / age))
+    # round F2: the range of widths of the usable intervals
+    wc = [100.0 * (as_float(v["interval_hi_ma"]) - as_float(v["interval_lo_ma"]))
+          / as_float(v["crown_age_ma"])
+          for v in head["crown_ages"]["per_partition"].values()
+          if v["counts_for_c1b"] == "yes"]
+    out.append("\\newcommand{\\CrownWidthPctMinCounted}{%.1f}" % min(wc))
+    out.append("\\newcommand{\\CrownWidthPctMaxCounted}{%.1f}" % max(wc))
     return "\n".join(out) + "\n"
 
 
@@ -4433,11 +4447,6 @@ def build_number_macros(head, basis, warnings):
     # every denominator lowered and raised by the elasticity fraction
     f_el = ELASTICITY_FRACTION
     m["RuleElasticityPct"] = "%.0f" % (100 * f_el)
-    d_all = head["denominators"]["eukaryotic"]["described"]
-    for key, nm in (("C0", "CZero"), ("C1", "COne")):
-        n_ = rg[key]["numerator_union"]
-        m["SensAllMinus%sPct" % nm] = macro_pct(pct(n_, d_all * (1 - f_el)))
-        m["SensAllPlus%sPct" % nm] = macro_pct(pct(n_, d_all * (1 + f_el)))
     nob = s["leave_assembly_class_out"]["drop_automated_synthesis"]["rungs"]
     m["SensNoBirdsCZeroPct"] = macro_pct(nob["C0"]["percent_union"])
     m["SensNoBirdsCOnePct"] = macro_pct(nob["C1"]["percent_union"])
@@ -4456,6 +4465,12 @@ def build_number_macros(head, basis, warnings):
     m["OTAccMolecularAndOTPct"] = macro_pct(pct(me["accepted_molecular_and_ot"],
                                                 me["accepted_molecular"]))
     m["OTNPartitionsCompared"] = macro_int(len(me["partitions"]))
+    # round F2 (F2-38): each overlap over its own base, in both directions
+    m["OTKeysMolecularAndOTPct"] = macro_pct(pct(me["keys_molecular_and_ot"],
+                                                 me["keys_atlas_molecular"]))
+    m["OTKeysOTPhyloCompared"] = macro_int(me["keys_ot_phylo"])
+    m["OTKeysMolecularAndOTOfOTPct"] = macro_pct(pct(me["keys_molecular_and_ot"],
+                                                     me["keys_ot_phylo"]))
 
     ca = head["crown_ages"]
     m["CrownNChron"] = macro_int(ca["n_absolute_chronograms"])
@@ -4488,6 +4503,16 @@ def build_number_macros(head, basis, warnings):
     m["CrownNamesCountedSummary"] = name_list(csum)
     m["CrownNSetNotCounted"] = macro_int(len(oset))
     m["CrownNamesSetNotCounted"] = name_list(oset)
+    # round F2: the groups behind each loss of dated coverage, named
+    pp = ca["per_partition"]
+    m["CrownNamesNoInterval"] = name_list(sorted(
+        p for p, v in pp.items() if not v["interval_kind"]))
+    m["CrownNamesKind"] = name_list(sorted(
+        p for p, v in pp.items() if v["interval_kind"]
+        and v["c1b_exclusion"] == "kind"))
+    m["CrownNamesCalib"] = name_list(sorted(
+        p for p, v in pp.items() if v["interval_kind"]
+        and v["c1b_exclusion"] not in ("", None, "kind")))
 
     # declared rule parameters the Methods state (rules, not results)
     import crown_intervals as _ci
@@ -4603,6 +4628,46 @@ def build_number_macros(head, basis, warnings):
     m["WEPolyNRejected"] = macro_int(sum(
         all(v["rejected"] for v in po[p]["resolved"].values())
         for p in w["eligible"]))
+    # round F2: the fits repeated over the archived tree sets
+    ts = w["tree_sets"]
+    for v in ts.values():
+        n = crown_macro_name(v["partition"]) + WORKED_SET_TAG[v["set"]][0]
+        m["WESetN" + n] = macro_int(v["n_trees"])
+        m["WESetEpsMin" + n] = "%.2f" % v["epsilon_matching_min"]
+        m["WESetEpsMax" + n] = "%.2f" % v["epsilon_matching_max"]
+        m["WESetLRMin" + n] = "%.1f" % v["lr_min"]
+        m["WESetLRMax" + n] = "%.1f" % v["lr_max"]
+        m["WESetNRejected" + n] = macro_int(v["n_rejected"])
+        if v["r_ratio_min"] is not None:
+            m["WESetRRatioMin" + n] = "%.2f" % v["r_ratio_min"]
+            m["WESetRRatioMax" + n] = "%.2f" % v["r_ratio_max"]
+    # a boundary group whose summary-tree rejection holds in every tree of
+    # every archived set of its own trees (molecular-only sets excluded)
+    bgroups = [p for p in w["eligible"]
+               if eff[p]["classification"] == "boundary"
+               and eff[p]["lr_statistic"] > WORKED_LR_CUTOFF]
+    held, partial, none_ = [], [], []
+    for p in bgroups:
+        own = [v for v in ts.values() if v["partition"] == p
+               and v["tips"] == "molecular"]
+        if not own:
+            continue
+        if all(v["n_rejected"] == v["n_trees"] for v in own):
+            held.append(p)
+        elif all(v["n_rejected"] == 0 for v in own):
+            none_.append(p)
+        else:
+            partial.append(p)
+    m["WESetNGroups"] = macro_int(len({v["partition"] for v in ts.values()}))
+    m["WESetNamesGroups"] = name_list(sorted({v["partition"] for v in ts.values()}))
+    m["WESetNRejectHolds"] = macro_int(len(held))
+    m["WESetNamesRejectHolds"] = name_list(sorted(held))
+    m["WESetNamesRejectPartial"] = name_list(sorted(partial))
+    m["WESetNamesRejectNone"] = name_list(sorted(none_))
+    allrr = [x for v in ts.values() if v["r_ratio_min"] is not None
+             for x in (v["r_ratio_min"], v["r_ratio_max"])]
+    m["WESetRRatioMin"] = "%.2f" % min(allrr)
+    m["WESetRRatioMax"] = "%.2f" % max(allrr)
 
     for r in basis:
         if not is_euk(r) or as_int(r.get("c0_units"), 0) <= 0:
@@ -4727,6 +4792,8 @@ TABLE1_INTERVAL_CODE = OrderedDict([
 def name_list(names):
     """'A, B and C': group names in running text."""
     names = list(names)
+    if not names:
+        return ""
     return names[0] if len(names) == 1 else \
         ", ".join(names[:-1]) + " and " + names[-1]
 
@@ -5392,6 +5459,19 @@ WORKED_POLY = os.path.join(ROOT, "Paper", "inputs",
                            "worked_example_bd_polytomy.csv")
 WORKED_FORDER = os.path.join(ROOT, "Paper", "inputs",
                              "worked_example_bd_family_order.csv")
+WORKED_SETS = os.path.join(ROOT, "Paper", "inputs",
+                           "worked_example_bd_sets.csv")
+WORKED_SETS_REGISTER = os.path.join(ROOT, "Data",
+                                    "worked_example_tree_sets.csv")
+# round F2 (F2-04, F2-05, F2-35): the tree sets the fits are repeated on, in
+# register order, with the name each takes in macros and in Table S-sets
+WORKED_SET_TAG = OrderedDict([
+    ("posterior", ("Posterior", "posterior set")),
+    ("date_random", ("DateRandom", "date assignment, random dates")),
+    ("date_mean", ("DateMean", "date assignment, mean dates")),
+    ("prior", ("Prior", "root ages drawn from the prior")),
+    ("molecular_only", ("MolOnly", "source's tree of sequenced species")),
+])
 WORKED_FAMILY_MIN_TIPS = 20   # D23: families this large enter the dispersion
 # A15.  The rho identity: two fits on one tree are the same fit when their
 # log-likelihoods agree to the 4 dp the script writes and lambda scales by the
@@ -5572,6 +5652,7 @@ def worked_example(basis, mol, shipped, crown, warnings):
         ])
         families[part] = family_sampling(part, elig[part], shipped)
     polytomy = worked_polytomy(list(elig), per)
+    tree_sets = worked_sets(list(elig), rho_effect)
     family_order = worked_family_order(list(elig))
     ratios = [v["r_ratio_full_over_molecular"] for v in imputation.values()]
     return OrderedDict([
@@ -5633,6 +5714,7 @@ def worked_example(basis, mol, shipped, crown, warnings):
         ])),
         ("molecular_fraction_by_family", families),
         ("polytomies", polytomy),
+        ("tree_sets", tree_sets),
         ("family_child_order", family_order),
         ("fits", per),
     ])
@@ -5690,6 +5772,58 @@ def worked_polytomy(elig, per):
                                             as_int(x["n_events"]))),
             ])
         out[p] = OrderedDict([("events", ev), ("resolved", seeds)])
+    return out
+
+
+def worked_sets(elig, eff):
+    """Round F2 (F2-04, F2-05, F2-35).  The fits of worked_example_sets.R on
+    the tree sets the sources archive (Data/worked_example_tree_sets.csv),
+    summarised per set: trees fitted, tips, the extinction fraction of the
+    matching fit, the likelihood-ratio statistic of the full tree's fraction
+    and the trees in which the restriction is rejected, and, where the full
+    tree is fitted too, the ratio of r on the full to r on the pruned tree."""
+    for f_ in (WORKED_SETS, WORKED_SETS_REGISTER):
+        if not os.path.exists(f_):
+            die("%s is missing; run Rscript Paper/code/analysis/"
+                "worked_example_sets.R" % rel(f_))
+    reg = read_csv(WORKED_SETS_REGISTER)
+    rows = read_csv(WORKED_SETS)
+    out = OrderedDict()
+    for g in reg:
+        p, st = g["partition"], g["set"]
+        if p not in elig:
+            die("%s: %s is not an eligible group" % (rel(WORKED_SETS_REGISTER), p))
+        if st not in WORKED_SET_TAG:
+            die("%s: unknown set %r" % (rel(WORKED_SETS_REGISTER), st))
+        rs = [r for r in rows if r["partition"] == p and r["set"] == st]
+        if not rs:
+            die("%s has no rows for %s %s" % (rel(WORKED_SETS), p, st))
+        eps = [as_float(r["epsilon_matching"]) for r in rs]
+        lrs = [as_float(r["lr_statistic"]) for r in rs]
+        rr = [as_float(r["r_full_tree"]) / as_float(r["r_matching"])
+              for r in rs if r["r_full_tree"] not in ("", None)]
+        bound = [as_float(r["epsilon_full_rho"]) < WORKED_EPS_BOUNDARY
+                 and as_float(r["lr_statistic"]) > 2 * WORKED_IDENTITY_LL_TOL
+                 for r in rs]
+        out["%s|%s" % (p, st)] = OrderedDict([
+            ("partition", p), ("set", st), ("tips", g["tips"]),
+            ("n_trees", len(rs)),
+            ("n_tips_pruned", sorted({as_int(r["n_tips"]) for r in rs})),
+            ("n_tips_full", sorted({as_int(r["n_tips_full_tree"]) for r in rs
+                                    if r["n_tips_full_tree"] not in ("", None)})),
+            ("max_polytomy_events", max(as_int(r["n_polytomy_events"]) for r in rs)),
+            ("epsilon_matching_min", min(eps)),
+            ("epsilon_matching_median", median(eps)),
+            ("epsilon_matching_max", max(eps)),
+            ("lr_min", min(lrs)), ("lr_median", median(lrs)), ("lr_max", max(lrs)),
+            ("n_boundary", sum(bound)),
+            ("n_rejected", sum(1 for x in lrs if x > WORKED_LR_CUTOFF)),
+            ("r_ratio_min", min(rr) if rr else None),
+            ("r_ratio_max", max(rr) if rr else None),
+            ("summary_tree_classification", eff[p]["classification"]),
+            ("summary_tree_lr", eff[p]["lr_statistic"]),
+            ("summary_tree_epsilon_matching", eff[p]["epsilon_rho_tips"]),
+        ])
     return out
 
 
@@ -5776,8 +5910,6 @@ SUPP_SENS_ROWS = OrderedDict([
     ("reported", "Reported"),
     ("insects_minus", "Insect count $-$\\SuppElasticityPct\\%"),
     ("insects_plus", "Insect count $+$\\SuppElasticityPct\\%"),
-    ("all_minus", "Every count $-$\\SuppElasticityPct\\%"),
-    ("all_plus", "Every count $+$\\SuppElasticityPct\\%"),
     ("col_filled", "Catalogue of Life count for every group"),
     ("col_base", "Catalogue of Life count where the base release has one"),
     ("rep", "Groups with a tree only"),
@@ -6056,8 +6188,6 @@ def _supp_sensitivity_rows(head, basis):
         _rung_pcts(el["minus_20_pct"]["rungs"]))
     add("insects_plus", el["plus_20_pct"]["denominator"],
         _rung_pcts(el["plus_20_pct"]["rungs"]))
-    add("all_minus", D * (1 - f), _rung_pcts(rg, D * (1 - f)))
-    add("all_plus", D * (1 + f), _rung_pcts(rg, D * (1 + f)))
     col = ds["col_single_authority"]
     add("col_filled", col["filled"]["denominator"],
         _rung_pcts(col["filled"]["rungs"]))
@@ -6243,10 +6373,10 @@ def _supp_family_rows(head):
             ("f_max", "%.2f" % fs[-1]),
             ("f_pooled", rho_fmt(pooled)),
             ("rho_uniform", rho_fmt(as_float(ft["rho"]))),
-            ("r_first", "%.4f" % fo["r_first"]),
-            ("r_last", "%.4f" % fo["r_last"]),
-            ("epsilon_first", "%.3f" % fo["epsilon_first"]),
-            ("epsilon_last", "%.3f" % fo["epsilon_last"]),
+            ("r_first", "%.5f" % fo["r_first"]),
+            ("r_last", "%.5f" % fo["r_last"]),
+            ("epsilon_first", "%.4f" % fo["epsilon_first"]),
+            ("epsilon_last", "%.4f" % fo["epsilon_last"]),
         ]))
         if abs(as_float(fm["family_uniform_check"])) > WORKED_UNIFORM_TOL:
             die("Supplement S9: %s family likelihood at equal fractions differs "
@@ -6332,6 +6462,10 @@ def build_supp_macros(head, basis, shipped, warnings):
     nm = _supp_names_rows(head, basis)
     m["SuppSynonymLabelsN"] = macro_int(sum(r["synonym"] for r in nm))
     m["SuppMergedNamesN"] = macro_int(sum(r["merged"] for r in nm))
+    # round F2 (F2-17): register rows whose binomial resolves, the rest
+    m["SuppOverridesResolvedN"] = macro_int(sum(r["override"] for r in nm))
+    m["SuppOverridesUnresolvedN"] = macro_int(
+        len(read_csv(NAME_OVERRIDES)) - sum(r["override"] for r in nm))
     g = head["sensitivities"]["c0_gbif_unmatched"]
     m["SuppGbifQueriedN"] = macro_int(g["unmatched_tips"])
     m["SuppGbifResolvedN"] = macro_int(g["unmatched_tips_resolved_by_gbif"])
@@ -6389,7 +6523,7 @@ def build_supp_macros(head, basis, shipped, warnings):
         w["polytomies"].values()))["resolved"]))
     fo = w["family_child_order"].values()
     m["SuppFamOrderMaxRDiffPct"] = "%.1f" % (100 * max(v["r_rel_diff"] for v in fo))
-    m["SuppFamOrderMaxEpsDiff"] = "%.3f" % max(v["epsilon_abs_diff"] for v in fo)
+    m["SuppFamOrderMaxEpsDiff"] = "%.4f" % max(v["epsilon_abs_diff"] for v in fo)
     m["SuppFamOrderMaxDLL"] = "%.1f" % max(v["loglik_abs_diff_at_mle"] for v in fo)
     # each rate's difference relative to the speciation rate, the scale of
     # both rates: a small extinction rate is set by the likelihood no more
@@ -6725,6 +6859,63 @@ def _t_poly(head, basis, shipped, tex):
         r["epsilon_matching"], r["epsilon_matching_resolved"], r["lr"],
         r["lr_resolved"], SUPP_POLY_OUTCOME[r["outcome_resolved"]]], 12,
         category_key=None)
+
+
+def _tips_cell(v):
+    """Tip counts of a set: one count, or several joined by '/'."""
+    if v in ("", None):
+        return "---"
+    return "/".join(thousands(x) for x in v.split("/"))
+
+
+def _supp_sets_rows(head):
+    """Round F2: one row per archived tree set the fits are repeated on."""
+    ts = head["worked_example_S13"]["tree_sets"]
+
+    def rng(a, b, fmt):
+        lo, hi = fmt % a, fmt % b
+        return lo if lo == hi else "%s--%s" % (lo, hi)
+    rows = []
+    for v in ts.values():
+        rows.append(OrderedDict([
+            ("partition", v["partition"]),
+            ("set", WORKED_SET_TAG[v["set"]][1]),
+            ("n_trees", v["n_trees"]),
+            ("tips_pruned", "/".join(str(x) for x in v["n_tips_pruned"])),
+            ("tips_full", "/".join(str(x) for x in v["n_tips_full"])),
+            ("epsilon_matching", "%s (%s--%s)" % (
+                "%.2f" % v["epsilon_matching_median"],
+                "%.2f" % v["epsilon_matching_min"],
+                "%.2f" % v["epsilon_matching_max"])),
+            ("lr", rng(v["lr_min"], v["lr_max"], "%.2f")),
+            ("n_rejected", v["n_rejected"]),
+            ("r_ratio", "" if v["r_ratio_min"] is None else
+             rng(v["r_ratio_min"], v["r_ratio_max"], "%.2f")),
+            ("summary_epsilon_matching", "%.2f" % v["summary_tree_epsilon_matching"]),
+            ("summary_lr", "%.2f" % v["summary_tree_lr"]),
+        ]))
+    return rows
+
+
+@supp_table("supp_worked_sets", ["partition", "set", "n_trees", "tips_pruned",
+                                 "tips_full", "epsilon_matching", "lr",
+                                 "n_rejected", "r_ratio",
+                                 "summary_epsilon_matching", "summary_lr"])
+def _t_sets(head, basis, shipped, tex):
+    rows = _supp_sets_rows(head)
+    if not tex:
+        return rows
+    out, prev = [], None
+    for r in rows:
+        grp = tex_escape(r["partition"]) if r["partition"] != prev else ""
+        prev = r["partition"]
+        out.append(" & ".join([
+            grp, tex_escape(r["set"]), thousands(r["n_trees"]),
+            _tips_cell(r["tips_pruned"]), _tips_cell(r["tips_full"]),
+            r["epsilon_matching"], r["lr"], thousands(r["n_rejected"]),
+            _dash(r["r_ratio"]), r["summary_epsilon_matching"],
+            r["summary_lr"]]) + r" \\")
+    return "\n".join(out) + "\n"
 
 
 @supp_table("supp_worked_families", ["partition", "families",
@@ -7416,14 +7607,20 @@ def main(argv=None):
     head["union_bound_S09"] = union_bound(truth, basis, shipped, warnings)
     head["opentree_P01"] = opentree_comparison(basis, shipped, mol)
     if args.crown_ages_only:
-        txt = build_crown_ages_csv(head, warnings)
-        summarise_change(OUT["crown_ages.csv"], txt, args.quiet)
+        # the inputs of worked_example_bd.R that the rebuild writes: the crown
+        # ages and the basis table (described species, tips)
+        for name, txt in (("crown_ages.csv", build_crown_ages_csv(head, warnings)),
+                          ("coverage_basis.csv",
+                           build_coverage_basis(basis, warnings))):
+            summarise_change(OUT[name], txt, args.quiet)
+            if not args.dry_run:
+                with open(OUT[name], "w", encoding="utf-8") as fh:
+                    fh.write(txt)
         if not args.dry_run:
-            with open(OUT["crown_ages.csv"], "w", encoding="utf-8") as fh:
-                fh.write(txt)
-            print("wrote %s only; now run Rscript "
+            print("wrote %s and %s only; now run Rscript "
                   "Paper/code/analysis/worked_example_bd.R and the full "
-                  "rebuild" % rel(OUT["crown_ages.csv"]))
+                  "rebuild" % (rel(OUT["crown_ages.csv"]),
+                               rel(OUT["coverage_basis.csv"])))
         return 0
     head["worked_example_S13"] = worked_example(basis, mol, shipped,
                                                 head["crown_ages"], warnings)

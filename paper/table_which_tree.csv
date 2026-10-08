@@ -1,12 +1,12 @@
 partition,category,bibkey,flags,tips,named_pct,molecular_tips,molecular_basis,molecular_pct,time_scale,crown_age_ma,interval_lo_ma,interval_hi_ma,interval_kind,interval_status,rho_full,rho_molecular,described,study_dating,molecular_only_tree,molecular_share,tips_exceed_named
 Birds,Vertebrates,mctavish2025complete,,10824,93.5,9239,enumerated,80.2,absolute,99.3,72.0,133.0,date_assignment_sample,kind,0.97,0.83,11195,absolute_deposited,yes,0.85,no
 Sharks,Vertebrates,stein2018global,,1192,89.7,610,enumerated,47.0,absolute,377.8,353.4,437.5,calibration_prior_sample,prior_reproduced,0.93,0.48,1282,absolute_deposited,yes,0.51,no
-Fish,Vertebrates,rabosky2018inverse,,31347,86.0,11596,enumerated,32.0,absolute,368.0,368.0,368.0,taxon_addition_sample,kind,0.87,0.32,36000,absolute_deposited,yes,0.37,no
-Mammals,Vertebrates,upham2019inferring,,5911,83.5,4098,enumerated,58.6,absolute,187.3,166.7,210.9,node_hpd_annotation,counted,0.88,0.61,6736,absolute_deposited,yes,0.69,no
+Fish,Vertebrates,rabosky2018inverse,,31347,85.4,11596,enumerated,31.7,absolute,368.0,368.0,368.0,taxon_addition_sample,kind,0.86,0.32,36280,absolute_deposited,yes,0.37,no
+Mammals,Vertebrates,upham2019inferring,,5911,83.5,4098,enumerated,58.6,absolute,187.3,168.6,213.5,posterior_sample,prior_reproduced,0.88,0.61,6736,absolute_deposited,yes,0.69,no
 Amphibians,Vertebrates,jetz2018interplay,,7238,78.4,4061,enumerated,45.1,absolute,311.4,273.7,338.6,posterior_sample,counted,0.82,0.46,8863,absolute_deposited,yes,0.56,no
 Crocodilians,Vertebrates,condamine2019assessing,,25,74.1,25,all_tips,74.1,absolute,87.1,,,,none,0.93,0.93,27,absolute_deposited,no,1.00,yes
-Squamates,Vertebrates,tonini2016fully,,9754,73.9,5415,enumerated,42.1,absolute,186.4,177.0,203.1,posterior_sample,counted,0.81,0.45,12108,absolute_deposited,yes,0.56,no
-Turtles,Vertebrates,thomson2021global,,283,70.3,283,all_tips,70.3,absolute,211.8,185.4,239.5,node_hpd_annotation,counted,0.78,0.78,364,absolute_deposited,no,1.00,yes
+Squamates,Vertebrates,tonini2016fully,,9754,73.9,5415,enumerated,42.1,absolute,186.4,177.0,203.1,posterior_sample,prior_reproduced,0.81,0.45,12108,absolute_deposited,yes,0.56,no
+Turtles,Vertebrates,thomson2021global,,283,70.3,283,all_tips,70.3,absolute,205.4,179.3,231.4,posterior_sample,prior_reproduced,0.78,0.78,364,absolute_deposited,no,1.00,yes
 Seed plants,Plants,smith2018constructing,,348886,72.7,76688,enumerated,18.4,absolute,325.1,,,,none,0.91,0.20,383671,absolute_deposited,yes,0.22,yes
 Ferns,Plants,nitta2022open,,6216,57.6,6216,enumerated,57.6,absolute,421.8,,,,none,0.59,0.59,10578,absolute_deposited,no,1.00,no
 Bryophytes,Plants,bechteler2023comprehensive,,533,2.1,533,enumerated,2.1,absolute,515.0,515.0,515.0,bootstrap_dating_sample,degenerate,0.022,0.022,24000,absolute_deposited,no,1.00,no

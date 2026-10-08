@@ -1,7 +1,7 @@
 # Erratum: branch lengths in releases v1.0.3 to v1.0.8
 
 **Affected releases:** v1.0.3 (2026-05-12) through v1.0.8 (2026-07-05), on GitHub and on Zenodo
-(concept DOI 10.5281/zenodo.20127157). **Corrected in:** v1.0.9. Releases v1.0.0 to v1.0.2 are not
+(concept DOI 10.5281/zenodo.20127157). **Corrected in:** v1.1.0. Releases v1.0.0 to v1.0.2 are not
 affected.
 
 ## What was wrong
@@ -17,10 +17,17 @@ This changed:
 
 Tip sets and topologies are unchanged. Root-edge lengths (followed by `;`) are unchanged.
 
-289 tree files carry the defect: trees in `standardized/trees/` and their copies under
-`site/data/partitions/`. Any analysis that used branch lengths, node ages or support values from
-these files in an affected release should be repeated with v1.0.9. Analyses that used only tip
-sets or topologies are not affected.
+Every redistributed tree that carried the defect is corrected in v1.1.0. The register
+`registers/restored_branch_lengths.csv` lists every file the restoration checked, one row per file,
+with `changed` = `yes` where the file differed from its pre-relabelling copy. Its `file` column
+gives the path in the repository that builds this release: `Data/standardized/trees/<name>` is
+`standardized/trees/<name>` here, and `Data/site/...` is `site/...`. Of its rows,
+256 changed files are trees redistributed in `standardized/trees/`, 1 is `timetree.nwk`, which
+was restored and is no longer redistributed (`standardized/withdrawn.csv`), and 42 are the copies
+of trees under `site/data/partitions/`; 7 files of `standardized/trees/` were checked and found
+unchanged. Any analysis that used branch lengths, node ages or support values from these files in
+an affected release should be repeated with v1.1.0. Analyses that used only tip sets or
+topologies are not affected.
 
 ## How it was corrected
 

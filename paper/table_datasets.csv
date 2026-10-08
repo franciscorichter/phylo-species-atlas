@@ -1,5 +1,5 @@
 section,group,filename,bibkey,year,journal,is_canonical,tips,accepted_names,described,coverage_pct,dated,roottotip_cv,described_source,flags
-Vertebrates,Fish,fish.nwk,rabosky2018inverse,2018,Nature,yes,31347,30973,36000,86.0,yes,0.000000,Eschmeyer's Catalog of Fishes,
+Vertebrates,Fish,fish.nwk,rabosky2018inverse,2018,Nature,yes,31347,30973,36280,85.4,yes,0.000000,Eschmeyer's Catalog of Fishes (21 Sep. 2026),
 Vertebrates,Birds,birds.nwk,mctavish2025complete,2025,PNAS,yes,10824,10469,11195,93.5,yes,0.000000,IUCN Red List 2025,
 Vertebrates,Squamates,squamates.nwk,tonini2016fully,2016,Biol Conserv,yes,9754,8953,12108,73.9,yes,0.000000,"Reptile Database, September 2025 release (Uetz et al. 2025)",
 Vertebrates,Amphibians,amphibians.nwk,jetz2018interplay,2018,Nat Ecol Evol,yes,7238,6947,8863,78.4,yes,0.000000,AmphibiaWeb 2025,

@@ -54,7 +54,7 @@ for y, r in enumerate(rows):
         bx.plot(f(k), y + dy, "o", color=c, markersize=3.6)
 ax.set_yticks(range(len(rows)))
 ax.set_yticklabels([r["partition"] for r in rows])
-ax.set_xlabel(r"Extinction fraction $\varepsilon = \mu/\lambda$, molecular tree")
+ax.set_xlabel(r"Extinction fraction $\varepsilon = \mu/\lambda$, pruned tree")
 ax.set_xlim(left=-0.03)
 bx.set_xlabel(r"Net diversification $r = \lambda - \mu$ (per Myr)")
 for a in (ax, bx):
@@ -62,15 +62,15 @@ for a in (ax, bx):
     a.set_axisbelow(True)
     a.spines[["top", "right"]].set_visible(False)
 ax.set_title("(a) Same tree, two sampling fractions", loc="left", fontsize=7.5)
-bx.set_title("(b) Full against molecular tree", loc="left", fontsize=7.5)
+bx.set_title("(b) Full against pruned tree", loc="left", fontsize=7.5)
 ax.legend(handles=[
-    mlines.Line2D([], [], color=C_MATCH, marker="o", label="molecular tips / described"),
+    mlines.Line2D([], [], color=C_MATCH, marker="o", label="sequenced tips / described"),
     mlines.Line2D([], [], color=C_NAMED, marker="o", label="full-tree tips / described")],
     loc="lower right", fontsize=6, frameon=False)
 bx.legend(handles=[
     mlines.Line2D([], [], color=C_FULL, marker="o", label="full tree, tips / described"),
     mlines.Line2D([], [], color=C_MOL, marker="o",
-                  label="molecular tree, molecular tips / described")],
+                  label="pruned tree, sequenced tips / described")],
     loc="upper right", fontsize=6, frameon=False)
 
 afc.savefig(plt, afc.FIGURES_DIR, "figure_worked_example")

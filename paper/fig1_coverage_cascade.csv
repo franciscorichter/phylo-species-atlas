@@ -14,7 +14,7 @@ level,C1d,Plants,77325
 level,C1d,Arthropods,888
 level,C1d,Other animals,525
 level,C1d,Microbes & protists,39
-level,C1b,Vertebrates,13290
+level,C1b,Vertebrates,3993
 level,C1b,Plants,0
 level,C1b,Arthropods,0
 level,C1b,Other animals,359
@@ -24,4 +24,4 @@ loss,C1>C1d,NotChron,1943
 loss,C1>C1d,RelTime,42078
 loss,C1d>C1b,NoInterval,77728
 loss,C1d>C1b,Kind,20490
-loss,C1d>C1b,Calib,1313
+loss,C1d>C1b,Calib,10610

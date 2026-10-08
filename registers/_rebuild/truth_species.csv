@@ -1,5 +1,5 @@
 partition,group,category,is_prokaryotic,described,described_source,estimated_low,estimated_high,estimate_source,is_unrepresented,conflict_note
-Fish,fish,Vertebrates,False,36000,Eschmeyer's Catalog of Fishes,36000,50000,Mora 2011,False,
+Fish,fish,Vertebrates,False,36280,Eschmeyer's Catalog of Fishes (21 Sep. 2026),36280,50000,Mora 2011,False,
 Squamates,squamates,Vertebrates,False,12108,"Reptile Database, September 2025 release (Uetz et al. 2025)",12108,13000,Uetz 2025,False,
 Birds,birds,Vertebrates,False,11195,IUCN Red List 2025,11195,11400,IUCN,False,
 Amphibians,amphibians,Vertebrates,False,8863,AmphibiaWeb 2025,10000,20000,Mora 2011,False,
