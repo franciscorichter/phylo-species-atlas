@@ -135,6 +135,10 @@ CATEGORY_ORDER = ["Vertebrates", "Plants", "Arthropods", "Other animals",
 LEVELS = ("C0", "C1", "C1d", "C1b")
 LOSS_REASONS = ("NotChron", "RelTime", "NoInterval", "Kind", "Calib")
 UNREP_NAMED = 4                     # largest groups without a tree, named
+# Agreement the Supplement states as tolerances (the differences themselves are
+# rounding noise that changes between machines)
+UNIFORM_TOL = 1e-6                  # family vs uniform log-likelihood at equal f
+CROSSCHECK_RTOL = 1e-4              # rates against phytools::fit.bd, relative
 TEST_LEVEL = 0.05                   # level of the test for mu = 0
 # Under mu = 0 the statistic is an equal mixture of a point mass at zero and a
 # chi-squared with one degree of freedom, so its critical value at level a is
@@ -1658,8 +1662,10 @@ def main(argv=None):
             ("tips_with_family", as_int(fm["n_tips_family_fraction"])),
             ("tips", as_int(ft["n_tips"])), ("f_min", "%.2f" % fs[0]),
             ("f_median", "%.2f" % med), ("f_max", "%.2f" % fs[-1]),
-            ("rho_uniform", rho_fmt(float(ft["rho"]))),
-            ("uniform_check", "%.1e" % float(fm["family_uniform_check"]))])
+            ("rho_uniform", rho_fmt(float(ft["rho"])))])
+        R.eq("%s: family likelihood at equal fractions = uniform likelihood, "
+             "within %g" % (p, UNIFORM_TOL),
+             abs(float(fm["family_uniform_check"])) <= UNIFORM_TOL, True)
     supp_eq("supp_worked_families", got, "partition")
     sm("SuppFamilyMinTips", fmt_int(min(r["tips_with_family"] for r in got.values())))
     chk = read_csv(os.path.join(a.fits, "worked_example_bd_crosscheck.csv"))
@@ -1670,7 +1676,10 @@ def main(argv=None):
             if max(abs(x), abs(y)) > 1e-6:
                 rd = max(rd, abs(x - y) / max(abs(x), abs(y)))
     sm("SuppCrossCheckN", fmt_int(len(chk)))
-    sm("SuppCrossCheckMaxRelDiffPct", "%.3f" % (100 * rd))
+    R.eq("rates agree with phytools within %g (relative)" % CROSSCHECK_RTOL,
+         rd <= CROSSCHECK_RTOL, True)
+    sm("SuppCrossCheckTolPct", "%g" % (100 * CROSSCHECK_RTOL))
+    sm("SuppUniformCheckTol", r"$10^{%d}$" % round(math.log10(UNIFORM_TOL)))
     sm("SuppCrossCheckMaxTips", fmt_int(int(rule_from_code(
         "worked_example_bd.R", "CROSSCHECK_MAX_TIPS", r_assign=True))))
     sm("SuppProfileCutoff", "%.2f" % (NormalDist().inv_cdf(0.5 + INTERVAL_PCT / 200.0) ** 2 / 2))

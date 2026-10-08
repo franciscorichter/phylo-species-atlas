@@ -5955,8 +5955,10 @@ def _supp_family_rows(head):
             ("f_min", "%.2f" % fs[0]), ("f_median", "%.2f" % med),
             ("f_max", "%.2f" % fs[-1]),
             ("rho_uniform", rho_fmt(as_float(ft["rho"]))),
-            ("uniform_check", "%.1e" % as_float(fm["family_uniform_check"])),
         ]))
+        if abs(as_float(fm["family_uniform_check"])) > WORKED_UNIFORM_TOL:
+            die("Supplement S9: %s family likelihood at equal fractions differs "
+                "from the uniform one by %s" % (p, fm["family_uniform_check"]))
     return rows
 
 
@@ -6097,7 +6099,10 @@ def build_supp_macros(head, basis, shipped, warnings):
             x, y = as_float(r[a]), as_float(r[b])
             if max(abs(x), abs(y)) > 1e-6:
                 rd = max(rd, abs(x - y) / max(abs(x), abs(y)))
-    m["SuppCrossCheckMaxRelDiffPct"] = "%.3f" % (100 * rd)
+    if rd > WORKED_CROSSCHECK_RTOL:
+        die("Supplement S9: rates differ from phytools by %.2g (relative)" % rd)
+    m["SuppCrossCheckTolPct"] = "%g" % (100 * WORKED_CROSSCHECK_RTOL)
+    m["SuppUniformCheckTol"] = r"$10^{%d}$" % round(math.log10(WORKED_UNIFORM_TOL))
     m["SuppProfileCutoff"] = "%.2f" % (_chisq1_quantile(WORKED_INTERVAL_LEVEL)
                                        / 2.0)
     with open(os.path.join(SCRIPT_DIR, "col_denominators.py"),
@@ -6132,6 +6137,12 @@ def build_supp_macros(head, basis, shipped, warnings):
 # every worked-example interval is half of it (worked_example_bd.R, D30); the
 # level is the rule parameter WORKED_INTERVAL_LEVEL.
 WORKED_INTERVAL_LEVEL = 0.95
+# Agreement the Supplement states, as tolerances: the differences themselves
+# are rounding noise that changes between machines (a refit on another host
+# moved the largest cross-check difference from 0.003 % to 0.002 % and the
+# family-uniform differences by orders of magnitude below 1e-9).
+WORKED_UNIFORM_TOL = 1e-6        # family log-likelihood at equal f vs uniform
+WORKED_CROSSCHECK_RTOL = 1e-4    # rates against phytools::fit.bd, relative
 
 
 def _chisq1_quantile(level):
@@ -6386,20 +6397,17 @@ def _t_fits(head, basis, shipped, tex):
 
 @supp_table("supp_worked_families", ["partition", "families",
                                      "tips_with_family", "tips", "f_min",
-                                     "f_median", "f_max", "rho_uniform",
-                                     "uniform_check"])
+                                     "f_median", "f_max", "rho_uniform"])
 def _t_fam(head, basis, shipped, tex):
     rows = _supp_family_rows(head)
     if not tex:
         return rows
     out = []
     for r in rows:
-        mant, ex = r["uniform_check"].split("e")
         out.append(" & ".join([
             tex_escape(r["partition"]), thousands(r["families"]),
             thousands(r["tips_with_family"]), thousands(r["tips"]),
-            r["f_min"], r["f_median"], r["f_max"], r["rho_uniform"],
-            r"$%s \times 10^{%d}$" % (mant, int(ex))]) + r" \\")
+            r["f_min"], r["f_median"], r["f_max"], r["rho_uniform"]]) + r" \\")
     return "\n".join(out) + "\n"
 
 

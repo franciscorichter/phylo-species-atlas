@@ -213,6 +213,7 @@ WORKED_FAMILY_FRACTIONS = P("Paper", "inputs",
                             "worked_example_bd_family_fractions.csv")
 COL_FAMILY_COUNTS = P("Data", "standardized", "col269_family_species_counts.csv")
 WORKED_UNIFORM_TOL = 1e-6      # clade likelihood at equal f == uniform one
+WORKED_CROSSCHECK_RTOL = 1e-4  # rates against phytools, relative (Supplement S9)
 WORKED_EPS_BOUNDARY = 1e-6     # = EPS_BOUNDARY in worked_example_bd.R
 WORKED_IDENTITY_LL_TOL = 1e-3  # log-likelihoods are written at 4 dp
 WORKED_IDENTITY_RATIO_RTOL = 1e-4
@@ -6579,9 +6580,12 @@ def check_supplement(ctx):
         if fs:
             R.eq("Supplement S9 %s min/max fraction" % g["partition"],
                  (g["f_min"], g["f_max"]), ("%.2f" % fs[0], "%.2f" % fs[-1]))
-        R.eq("Supplement S9 %s family likelihood = uniform at equal f"
-             % g["partition"], abs(as_float(g["uniform_check"]))
-             <= WORKED_UNIFORM_TOL, True)
+    for f in read_csv(WORKED_FITS):
+        if f["rho_convention"] == "family":
+            R.eq("Supplement S9 %s family likelihood = uniform at equal f, "
+                 "within the stated tolerance" % f["partition"],
+                 abs(as_float(f["family_uniform_check"])) <= WORKED_UNIFORM_TOL,
+                 True)
 
     # ---- data and code ----------------------------------------------------
     R.eq("Supplement check list = verify's CHECKS",
@@ -6616,6 +6620,18 @@ def check_supplement(ctx):
     R.eq("macro SuppProfileCutoff", mac["SuppProfileCutoff"],
          "%.2f" % (WORKED_CI_CUTOFF / 2.0))
     R.eq("macro SuppVerifyChecksN", num("SuppVerifyChecksN"), len(CHECKS))
+    R.eq("macro SuppUniformCheckTol", mac["SuppUniformCheckTol"],
+         r"$10^{%d}$" % round(math.log10(WORKED_UNIFORM_TOL)))
+    R.eq("macro SuppCrossCheckTolPct", mac["SuppCrossCheckTolPct"],
+         "%g" % (100 * WORKED_CROSSCHECK_RTOL))
+    rd = 0.0
+    for r in read_csv(WORKED_CHECK):
+        for a_, b_ in (("this_lambda", "phytools_lambda"), ("this_mu", "phytools_mu")):
+            x, y = as_float(r[a_]), as_float(r[b_])
+            if max(abs(x), abs(y)) > 1e-6:
+                rd = max(rd, abs(x - y) / max(abs(x), abs(y)))
+    R.eq("phytools cross-check within the stated tolerance",
+         rd <= WORKED_CROSSCHECK_RTOL, True)
     sel = Counter(r["selection"] for r in reg.values())
     for code in SUPP_SELECTION:
         nm = "SuppSel" + "".join(w.capitalize() for w in code.split("_"))
@@ -6814,9 +6830,10 @@ def release_paths():
         out = OrderedDict()
         for r in read_csv(RELEASE_MAP):
             out[r["release_path"]] = r["working_path"]
-        for d, _, files in os.walk(RELEASE_FILES):
+        for d, dirs, files in os.walk(RELEASE_FILES):
+            dirs[:] = [x for x in dirs if x != "__pycache__"]
             for f in files:
-                if f != ".DS_Store":
+                if f != ".DS_Store" and not f.endswith(".pyc"):
                     out[os.path.relpath(os.path.join(d, f), RELEASE_FILES)
                         .replace(os.sep, "/")] = None
         _RELEASE_PATHS = out
