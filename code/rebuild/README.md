@@ -6,6 +6,9 @@ unchanged from the paper's working repository, where the files of this repositor
 The source deposits are not redistributed: they remain in their original archives, cited in
 `registers/tree_provenance.csv` and in the headers of `registers/molecular_sources/`.
 
+`release/path_map.csv` of the working repository lists every file of this repository that the
+pipeline writes, with its path there; `scripts/build_release.py` copies them here.
+
 `scripts/reproduce_paper.py` is independent of these scripts: it recomputes the paper's numbers
 from this repository by the stated rules and does not import them.
 
@@ -17,10 +20,12 @@ from this repository by the stated rules and does not import them.
 | `Data/standardized/col_resolution.csv` | `standardized/col_resolution.csv.gz` (gzip) |
 | `Data/standardized/names/<file>.json` | not stored; `site/build.py` writes the same id -> name maps from `dictionary.csv` |
 | `Data/_archive/2026-10-revision/canonical_sources/` | `standardized/canonical_sources/` |
+| `Data/_archive/2026-10-revision/superseded_canonicals/trees/` | `standardized/superseded_canonicals/` |
 | `Data/<register>.csv`, `Data/molecular_sources/`, `Data/canonical_source_crosswalks/`, `Data/external/`, `Data/_rebuild/` | `registers/` (same names) |
 | `Paper/inputs/` | `paper/` |
 | `Paper/audit-2026-08-20/code/common.py` | `code/rebuild/audit_common.py` |
 | `Paper/code/analysis/worked_example_bd.R` | `code/rebuild/worked_example_bd.R` |
+| `Data/_archive/2026-10-revision/corrupted_branch_lengths/RESTORED.csv` | `registers/restored_branch_lengths.csv` |
 | `Data/raw/` | not redistributed |
 
 ## Scripts

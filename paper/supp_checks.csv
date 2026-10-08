@@ -1,0 +1,36 @@
+check,title
+INPUTS,every required file exists
+TREES,re-measure the shipped .nwk files
+BRANCHLEN,every shipped tree reproduces its declared reference
+FILE-TRUTH,dated <=> ultrametric in every ledger of record
+DECISIONS,"D4, D7 and D8 re-derived from their registers"
+NAMES,S05 CoL name resolution re-derived
+UNION,"S09 union of all distributed trees, recomputed"
+COLDEN,S08 CoL single-authority denominators
+OPENTREE,P01 Open Tree comparison recomputed
+CROWN,S02 crown ages and their deposited intervals
+CROWNREG,A13 one crown-age register
+PREAUDIT,ground truth describes the pre-audit ledgers correctly
+INVARIANTS,"described/estimated/tips bounds, per partition"
+BASIS,coverage_basis.csv's 62-row deposit contract
+FMOL,every f_mol re-measured from the source analysis
+HEADLINES,every headline recomputed independently
+PERCENTS,every percentage reaches a numerator and a denominator
+MONOTONICITY,a stricter setting never increases coverage
+MOLTIPS,molecular_tips.csv enumerates the measured tip sets
+C1COUNT,C1 counted as accepted names among molecular tips
+WORKED,S13 worked example run on the current deposit
+GBIF,C0 with GBIF-resolved unmatched tips (A10)
+UNITS,species at C0 only; tip-equivalents below
+CROSSLEDGER,no field holds two different values
+NOLITERALS,no coverage number hard-coded in a figure script
+NOABSPATHS,no absolute home-directory path in code
+RETIRED,no retired figure survives outside a disclosure
+DATASETS,the dataset table re-derived from the basis
+FIGURES,every manuscript figure exists and has a script
+NUMMACROS,every prose number macro re-derived
+TABLES,Tables 1-3 and the Figure 1 cascade re-derived
+PROSELIT,no numeric literal in the revised manuscript text
+SUPPLEMENT,"the Supplement's sections, tables and macros re-derived"
+RELEASE,every path the paper prints is in the data release
+BIORXIV,"the bioRxiv wrappers build the revised, named preprint"

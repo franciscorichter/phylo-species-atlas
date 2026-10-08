@@ -13,6 +13,7 @@ The redistributed trees, with numeric tip ids, and the name layer that resolves 
 | `col269_family_species_counts.csv` | Accepted species per family in COL26.9 (the family sampling fractions of the worked example). |
 | `col269_suprageneric_genera.txt` | Genera of COL26.9 whose names end in a family-level suffix (`Xerophyta`, `Elapsoidea`, ...), read by the species-key rule so that these are not taken for family names. |
 | `name_overrides.csv` | Tips whose label carries no binomial (lineage codes) or a documented misspelling, with the query used and its evidence. |
+| `name_rejected_targets.csv` | Catalogue of Life targets that a tip's label reaches but that name a different organism (a homonym the kingdom rule cannot separate), with the evidence; the resolution drops them. |
 | `canonical_sources/` | The unpruned, id-labelled source of each reference tree. |
 | `superseded_canonicals/` | The former reference trees of seven groups (Birds, Bryophytes, Diatoms, Fish, Gastropods, Sharks, Turtles), replaced by a tree the same source deposited: a chronogram where the study archived one, the tree with usable branch lengths (Diatoms), the full all-taxon tree (Fish), the maximum-clade-credibility tree of the posterior set (Sharks). Kept so that every label of the dictionary occurs in a distributed file. |
 | `tree_references.csv` | For every redistributed tree and canonical source, the file its branch lengths were checked against and the rule of the check. |

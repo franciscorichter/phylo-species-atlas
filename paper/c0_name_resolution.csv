@@ -14,7 +14,7 @@ Ferns,yes,6216,6116,100,1.6088,6097,accepted=6034; accepted_orthographic=7; ambi
 Fish,yes,31347,31256,91,0.2903,30973,accepted=29015; ambiguous=14; synonym=2241; unmatched=67; unresolved_label=10
 Fungi,yes,1620,1414,206,12.7160,1396,accepted=1232; accepted_orthographic=14; ambiguous=2; synonym=168; unmatched=79; unresolved_label=125
 Gastropods,yes,40,39,1,2.5000,39,accepted=37; synonym=2; unresolved_label=1
-Insects,yes,53373,42300,11073,20.7464,42079,accepted=41413; accepted_orthographic=5; ambiguous=57; provisional=407; synonym=475; unmatched=11008; unresolved_label=8
+Insects,yes,53373,42299,11074,20.7483,42078,accepted=41413; accepted_orthographic=5; ambiguous=57; provisional=407; synonym=474; unmatched=11009; unresolved_label=8
 Mammals,yes,5911,5739,172,2.9098,5625,accepted=5306; provisional=3; synonym=430; unmatched=172
 Nematodes,yes,156,101,55,35.2564,101,accepted=98; synonym=3; unmatched=30; unresolved_label=25
 Seed plants,yes,348886,308454,40432,11.5889,279049,accepted=254597; accepted_orthographic=237; ambiguous=4239; other_kingdom=11; provisional=151; synonym=53389; synonym_orthographic=80; unmatched=24918; unresolved_label=11264

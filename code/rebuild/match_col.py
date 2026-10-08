@@ -28,6 +28,10 @@ RULE, applied to every tip of every eukaryotic canonical tree:
   4. A comparison that ignores hyphens and case is tried when 2-3 find
      nothing ('Pseudonitzschia' / 'Pseudo-nitzschia').
   5. Otherwise 'unmatched'.
+  A target listed for a tip in Data/standardized/name_rejected_targets.csv
+  is dropped from steps 2-3 for that tip (each row cites its evidence that
+  the label and the target name different organisms, e.g. a homonym in
+  another order of the same kingdom that the kingdom rule cannot separate).
 A resolved tip counts under its accepted name; tips resolving to one accepted
 name count once (C0, decision on S05).
 
@@ -72,6 +76,7 @@ INDEX = os.path.join(DATA, "raw", "col", "col269_species_index.tsv")
 OUT = os.path.join(STD, "col_resolution.csv")
 OUT_NONCANON = os.path.join(STD, "col_resolution_noncanonical.csv")
 OVERRIDES = os.path.join(STD, "name_overrides.csv")
+REJECTED = os.path.join(STD, "name_rejected_targets.csv")
 OT_SPECIES = os.path.join(DATA, "external", "opentree16.1_phylo_species.tsv.gz")
 OT_OUT = os.path.join(DATA, "external", "opentree16.1_phylo_species_col.csv")
 RELEASE = "COL26.9 base release (ChecklistBank 316321, doi:10.48580/dgz5n)"
@@ -193,7 +198,7 @@ def candidates(rows, by_key, by_id):
     return acc, syn
 
 
-def resolve_ids(ids, names, override, by_key, by_loose, by_id):
+def resolve_ids(ids, names, override, by_key, by_loose, by_id, reject=None):
     """Resolve one tree's ids by the rule in the module docstring.  The
     kingdom used to separate homonyms is the majority kingdom of the tree's
     unambiguous accepted matches.  Returns (rows, kingdom)."""
@@ -217,6 +222,9 @@ def resolve_ids(ids, names, override, by_key, by_loose, by_id):
             acc, syn = candidates(by_loose.get(loose(g, e)) or [],
                                   by_key, by_id)
             loosed = bool(acc or syn)
+        if reject and sid in reject:
+            acc = [r for r in acc if r["id"] not in reject[sid]]
+            syn = [r for r in syn if r["id"] not in reject[sid]]
         cand[sid] = (acc, syn, loosed)
         if len({r["id"] for r in acc}) == 1:
             kcount[acc[0]["kingdom"]] += 1
@@ -333,6 +341,11 @@ def main(argv=None):
         with open(OVERRIDES, newline="", encoding="utf-8") as fh:
             for r in csv.DictReader(fh):
                 override[r["standardized_id"].strip()] = r["query"].strip()
+    reject = defaultdict(set)
+    if os.path.exists(REJECTED):
+        with open(REJECTED, newline="", encoding="utf-8") as fh:
+            for r in csv.DictReader(fh):
+                reject[r["standardized_id"].strip()].add(r["col_id"].strip())
     prok = set()
     with open(os.path.join(DATA, "_rebuild", "truth_species.csv"), newline="",
               encoding="utf-8") as fh:
@@ -351,7 +364,7 @@ def main(argv=None):
                   encoding="utf-8") as fh:
             ids = sorted(json.load(fh), key=int)
         rows, kingdom = resolve_ids(ids, names, override, by_key, by_loose,
-                                    by_id)
+                                    by_id, reject)
         for row in rows:
             row["partition"] = part
         out += rows
@@ -380,7 +393,8 @@ def main(argv=None):
         with open(os.path.join(STD, "names", fn + ".json"),
                   encoding="utf-8") as fh:
             ids = sorted(json.load(fh), key=int)
-        rows, _k = resolve_ids(ids, names, override, by_key, by_loose, by_id)
+        rows, _k = resolve_ids(ids, names, override, by_key, by_loose, by_id,
+                               reject)
         for row in rows:
             row["filename"] = fn
         out2 += rows

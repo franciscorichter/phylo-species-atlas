@@ -34,7 +34,7 @@ Gastropods,gastropods,Other animals,no,65000,WoRMS / Appeltans 2012,no,gastropod
 Green algae,green_algae,Plants,no,11000,Guiry 2012,yes,,0,0,0,0,,,,,,,,,,,,,,,
 Hagfish,hagfish,Vertebrates,no,82,Fernholm 2013,yes,,0,0,0,0,,,,,,,,,,,,,,,
 Haptophytes,haptophytes,Microbes & protists,no,760,de Vargas 2007,yes,,0,0,0,0,,,,,,,,,,,,,,,
-Insects,insects,Arthropods,no,1000000,Catalogue of Life 2025,no,insects.nwk,53373,53373,42079,11073,1.000000,source_alignment_intersection,1.000000,1.000000,42079,enumerated,Data/molecular_sources/insects.taxa.txt,no,relative,0.000002,no,,,compiled,otl=collection_backed|inference=synthesis|tree_class=peer_reviewed_empirical_synthesis
+Insects,insects,Arthropods,no,1000000,Catalogue of Life 2025,no,insects.nwk,53373,53373,42078,11074,1.000000,source_alignment_intersection,1.000000,1.000000,42078,enumerated,Data/molecular_sources/insects.taxa.txt,no,relative,0.000002,no,,,compiled,otl=collection_backed|inference=synthesis|tree_class=peer_reviewed_empirical_synthesis
 Lampreys,lampreys,Vertebrates,no,48,Potter 2015,yes,,0,0,0,0,,,,,,,,,,,,,,,
 Lycophytes,lycophytes,Plants,no,1350,PPG I 2016,yes,,0,0,0,0,,,,,,,,,,,,,,,
 Mammals,mammals,Vertebrates,no,6736,"Mammal Diversity Database (MDD, 2024+)",no,mammals.nwk,5911,5911,5625,172,0.693284,source_alignment_intersection,0.693284,0.693284,3945,enumerated,Data/molecular_sources/mammals.taxa.txt,yes,absolute,0.000000,yes,node_hpd_annotation,,primary_analysis,otl=none|inference=bayesian|tree_class=direct_empirical

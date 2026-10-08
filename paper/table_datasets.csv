@@ -24,7 +24,7 @@ Plants,Cacti,cacti.nwk,thompson2026cacti,2026,Sci Data,no,1063,1014,1900,53.4,ul
 Plants,Eucalyptus,eucalyptus.nwk,crisp2024eucalyptus,2024,J Syst Evol,no,399,103,,,no,0.879137,,
 Plants,Asteraceae,asteraceae.nwk,mandel2019asteraceae,2019,PNAS,no,256,210,34000,0.6,no,0.260240,CoL,
 Plants,Pinaceae (in Seed plants),conifers.nwk,ran2018pinaceae,2018,MPE,no,16,0,,,ultrametric,0.000000,,genus_level
-Arthropods,Insects,insects.nwk,chesters2023launching,2023,Mol Ecol Res,yes,53373,42079,1000000,4.2,relative,0.000002,Catalogue of Life 2025,
+Arthropods,Insects,insects.nwk,chesters2023launching,2023,Mol Ecol Res,yes,53373,42078,1000000,4.2,relative,0.000002,Catalogue of Life 2025,
 Arthropods,Spiders,spiders.nwk,macias2020spider,2020,Diversity,yes,1431,888,52249,1.7,yes,0.000000,World Spider Catalog 2025,
 Arthropods,Crustaceans,crustaceans.nwk,wolfe2019phylogenomic,2019,Proc R Soc B,yes,95,65,77000,0.1,no,0.588734,World Register of Marine Species (WoRMS),
 Arthropods,Bees,bees.nwk,henriquez2024bee,2024,MPE,no,4586,4369,20507,21.3,ultrametric,0.000000,Discover Life,

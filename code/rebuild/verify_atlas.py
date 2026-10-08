@@ -75,6 +75,19 @@ WHAT IT CHECKS  (each is a named check; --list prints them)
                   Table-1 numerator, "17/16/18 dated trees") survives in live
                   figure code or live manuscript sources, except inside an
                   explicit retirement disclosure
+    SUPPLEMENT    the Supplement has one section per Supplement number the
+                  article cites, in order of first citation; every supp_*.csv
+                  table and supp_macros.tex value is re-derived; each reference
+                  tree's archived source reproduces the branch lengths of the
+                  source file Data/reference_tree_sources.csv names
+    RELEASE       release/path_map.csv names an existing file for every file of
+                  the public data release; every path the paper prints, and
+                  every generated file it inputs, is in the release; the
+                  release's citation metadata carries the paper's title and
+                  the release named in the text
+    BIORXIV       the bioRxiv wrappers read the revised body, metadata and
+                  Supplement, are named, carry no review-only element, and
+                  print the data and code statements
 
 CONVENTIONS THIS SCRIPT ENFORCES, stated so a failure can be read
     * a chronogram is a tree whose root-to-tip CV is <= CHRONOGRAM_TOLERANCE;
@@ -204,6 +217,7 @@ WORKED_EPS_BOUNDARY = 1e-6     # = EPS_BOUNDARY in worked_example_bd.R
 WORKED_IDENTITY_LL_TOL = 1e-3  # log-likelihoods are written at 4 dp
 WORKED_IDENTITY_RATIO_RTOL = 1e-4
 WORKED_LR_CUTOFF = 2.705543    # qchisq(0.90, 1): 5% point of the 50:50 chi2(0):chi2(1) mixture (D27)
+WORKED_TEST_LEVEL = 0.05
 WORKED_RESOLVED = ("accepted", "provisional", "synonym", "accepted_orthographic",
                    "provisional_orthographic", "synonym_orthographic")
 CROWN_SOURCES = P("Data", "crown_interval_sources.csv")
@@ -2170,6 +2184,110 @@ def check_opentree(ctx):
 WORKED_FAMILY_MIN_TIPS = 20     # D23
 
 
+WORKED_CI_CUTOFF = 3.841459    # qchisq(0.95, 1): every profile interval (D30)
+WORKED_LIKELIHOOD_MAX_TIPS = 15000   # independent likelihood re-derivation
+
+
+def _worked_branching_times(path, keep, scale):
+    """Branching times of the tree at `path` restricted to the tips in `keep`
+    (None: all), scaled by `scale`; a node with k kept children contributes
+    k - 1 events (worked_example_bd.R branching_events after keep.tip)."""
+    with open(path, encoding="utf-8") as fh:
+        root = COMMON.parse_newick(normalize_newick(fh.read()))
+    out, tip_depth = [], [None]
+
+    def walk(node, depth):
+        kids, name, bl = node
+        if not kids:
+            ok = keep is None or name in keep
+            if ok and (tip_depth[0] is None or depth > tip_depth[0]):
+                tip_depth[0] = depth
+            return ok
+        n_kept = 0
+        for k in kids:
+            kb = k[2] if k[2] == k[2] else 0.0
+            n_kept += 1 if walk(k, depth + kb) else 0
+        if n_kept >= 2:
+            out.extend([depth] * (n_kept - 1))
+        return n_kept > 0
+    import sys as _sys
+    _sys.setrecursionlimit(max(_sys.getrecursionlimit(), 100000))
+    walk(root, 0.0)
+    h = tip_depth[0]          # the deepest kept tip, as node.depth.edgelength
+    return sorted((max(h - d, 0.0) * scale for d in out), reverse=True)
+
+
+def _worked_loglik(r, eps, x, rho):
+    """Stadler (2009) constant-rate birth-death log-likelihood with uniform
+    sampling, conditioned on the crown age and survival of both crown
+    lineages: an implementation independent of worked_example_bd.R."""
+    lam = r / (1.0 - eps)
+    mu = eps * lam
+    n = len(x) + 1
+    tot = 0.0
+    for i, t in enumerate(x):
+        e = math.exp(-r * t)
+        den = rho * lam + (lam * (1.0 - rho) - mu) * e
+        lp1 = math.log(rho) + 2.0 * math.log(r) - r * t - 2.0 * math.log(den)
+        tot += 2.0 * lp1 if i == 0 else lp1
+        if i == 0:
+            l1p0 = math.log(rho) + math.log(r) - math.log(den)
+    return (n - 2) * math.log(lam) + tot - 2.0 * l1p0
+
+
+def _worked_profile_eps(eps, x, rho, r0):
+    """max over r of the log-likelihood at fixed epsilon (golden section on
+    log r around r0)."""
+    a, b = math.log(r0) - 4.0, math.log(r0) + 4.0
+    g = (math.sqrt(5.0) - 1.0) / 2.0
+    f = lambda q: _worked_loglik(math.exp(q), eps, x, rho)
+    c, d = b - g * (b - a), a + g * (b - a)
+    fc, fd = f(c), f(d)
+    for _ in range(120):
+        if fc > fd:
+            b, d, fd = d, c, fc
+            c = b - g * (b - a)
+            fc = f(c)
+        else:
+            a, c, fc = c, d, fd
+            d = a + g * (b - a)
+            fd = f(d)
+    return max(fc, fd)
+
+
+def check_worked_likelihood(ctx, fits, mol, sel):
+    """D30.  For every uniform-sampling fit of up to
+    WORKED_LIKELIHOOD_MAX_TIPS tips, the log-likelihood is recomputed here
+    from the tree file with an independent implementation, and the epsilon
+    interval is checked against the cutoff qchisq(0.95, 1) at each end that
+    is not the parameter bound: the profile likelihood-ratio statistic at a
+    reported end is 3.84 whether or not the estimate is at 0."""
+    for f in fits:
+        if f["rho_convention"] == "family" \
+                or as_int(f["n_tips"]) > WORKED_LIKELIHOOD_MAX_TIPS:
+            continue
+        p = f["partition"]
+        keep = None if f["tree"] == "full" else mol[p]
+        x = _worked_branching_times(os.path.join(STD_TREES, f["canonical_tree"]),
+                                    keep, as_float(sel[p]["time_scale_factor"]))
+        R.eq("S13 %s %s %s branching times = tips - 1"
+             % (p, f["tree"], f["rho_convention"]), len(x) + 1,
+             as_int(f["n_tips"]))
+        rho, r0 = as_float(f["rho"]), as_float(f["r"])
+        ll = _worked_profile_eps(as_float(f["epsilon"]), x, rho, r0)
+        R.eq("S13 %s %s %s log-likelihood, independent implementation"
+             % (p, f["tree"], f["rho_convention"]), round(ll, 2),
+             round(as_float(f["loglik"]), 2), atol=0.02)
+        for end in ("epsilon_lo", "epsilon_hi"):
+            v = as_float(f[end])
+            if v <= 0.0 or v >= 1.0 - 1e-6:
+                continue
+            lr = 2.0 * (as_float(f["loglik"]) - _worked_profile_eps(v, x, rho, r0))
+            R.eq("S13 %s %s %s %s: profile statistic = qchisq(0.95, 1)"
+                 % (p, f["tree"], f["rho_convention"], end), round(lr, 2),
+                 round(WORKED_CI_CUTOFF, 2), atol=0.03)
+
+
 def check_worked(ctx):
     """S13 (D23).  The worked example (Paper/code/analysis/worked_example_bd.R).
     The fits need R; what is checked here is that they were run on the
@@ -2237,12 +2355,12 @@ def check_worked(ctx):
             rho = n / d if conv == "tips" else len(canon) / d
             R.eq("S13 %s %s %s rho" % (p, tree, conv), as_float(f["rho"]),
                  min(rho, 1.0), atol=WORKED_TOL * max(rho, 1e-12))
-        # A15: a boundary MLE gets the one-sided interval
+        # D30: one cutoff for every interval; an estimate at 0 gets [0, upper]
         bnd = as_float(f["epsilon"]) < WORKED_EPS_BOUNDARY
         R.eq("S13 %s %s %s epsilon_ci" % (p, tree, conv), f.get("epsilon_ci"),
-             "one-sided boundary" if bnd else "two-sided")
+             "estimate at 0" if bnd else "interior")
         if bnd:
-            R.eq("S13 %s %s %s one-sided epsilon interval starts at 0"
+            R.eq("S13 %s %s %s epsilon interval at an estimate of 0 starts at 0"
                  % (p, tree, conv), as_float(f["epsilon_lo"]), 0.0)
         if tree == "full":
             R.eq("S13 %s crown age = crown_ages.csv" % p,
@@ -2255,6 +2373,7 @@ def check_worked(ctx):
             if None in (x, a, z) or not (a <= x <= z):
                 R.fail("S13 %s %s %s: %s=%s outside its interval [%s, %s]"
                        % (p, tree, conv, v, f[v], f[lo], f[hi]))
+    check_worked_likelihood(ctx, fits, mol, sel)
     for c in read_csv(WORKED_CHECK, required=False):
         for a, b in (("this_lambda", "phytools_lambda"),
                      ("this_mu", "phytools_mu")):
@@ -2333,6 +2452,22 @@ def check_worked(ctx):
              round(2 * (lt - lc), 4), atol=1e-9)
         R.eq("S13 %s rho_C0 rejected" % p, e.get("rho_full_rejected"),
              (not ident) and 2 * (lt - lc) > WORKED_LR_CUTOFF)
+        # D30: the fits are nested.  In the parameters of the matching fit,
+        # the fit at rho_full is the same model restricted to
+        # epsilon >= 1 - rho_tips / rho_full (its mu >= 0), so the pair is a
+        # boundary case exactly when the matching estimate lies below that
+        # edge, and an interior pair maps epsilon by
+        # 1 - eps' = (1 - eps) rho_full / rho_tips.
+        et = G(p, "molecular", "tips", "epsilon")
+        edge = 1.0 - rt / rc
+        R.eq("S13 %s boundary iff matching epsilon below 1 - rho_tips/rho_full"
+             % p, e.get("classification"),
+             "boundary" if et < edge else "identity")
+        R.eq("S13 %s restriction edge inside (0, 1)" % p, 0.0 < edge < 1.0, True)
+        if ident:
+            R.eq("S13 %s epsilon at rho_full from the nesting map" % p,
+                 G(p, "molecular", "full_misapplied", "epsilon"),
+                 1.0 - (1.0 - et) * rc / rt, atol=1e-4)
         R.bump()
         if not ident and G(p, "molecular", "full_misapplied", "epsilon") \
                 >= WORKED_EPS_BOUNDARY:
@@ -5174,12 +5309,10 @@ def check_datasets(ctx):
              r"\input{../shared/manuscript_body_v2.tex}" in s, True)
         R.eq("%s does not input a hand-maintained table" % rel(w),
              "main_table_rows" in s, False)
-    supp = [f for f in glob.glob(P("Paper", "MEE", "supplementary*.tex"))
-            if "table_datasets.tex" in open(f, encoding="utf-8").read()]
-    if not supp:
-        R.note("the generated dataset table (Paper/inputs/table_datasets.tex) "
-               "is Supplement S2 of the revised article but no MEE supplement "
-               "wrapper inputs it yet; wire it when the supplement is rewritten")
+    sbody = P("Paper", "shared", "supplementary_body_v2.tex")
+    R.eq("the Supplement inputs the generated dataset table",
+         os.path.exists(sbody) and "{../inputs/table_datasets.tex}"
+         in open(sbody, encoding="utf-8").read(), True)
 
 
 # ------------------------------------------------------------- FIGURES ---
@@ -5187,7 +5320,7 @@ FIGURE_DIR = P("Paper", "figures")
 FIGURE_CODE = P("Paper", "code", "figures")
 MANUSCRIPT_BODY = P("Paper", "shared", "manuscript_body_v2.tex")
 MANUSCRIPT_META = P("Paper", "shared", "metadata_v2.tex")
-MANUSCRIPT_TEX = [MANUSCRIPT_BODY, MANUSCRIPT_META] + MEE_WRAPPERS
+MANUSCRIPT_TEX = [MANUSCRIPT_BODY, MANUSCRIPT_META] + MEE_WRAPPERS + [P("Paper", "bioRxiv", "main.tex")]
 
 
 def check_figures(ctx):
@@ -5372,6 +5505,7 @@ def check_crownreg(ctx):
 
     handlers = {
         TABLE_WHICH: h_whichtree,
+        P("Paper", "inputs", "supp_crown.csv"): h_whichtree,
         CROWN_AGES_CSV: h_self,
         CROWN_POINTS: h_points,
         CROWN_MANIFEST: h_manifest,
@@ -5575,6 +5709,11 @@ def check_numbermacros(ctx):
     for key, nm in names:
         w["SeedPlantsShare" + nm] = _mpct(100.0 * sp_vals[key]
                                           / rg[key]["numerator_sum"])
+    # the levels without the seed-plant tree and its described species
+    for key, nm in names[:3]:
+        w["ExclSeedPlants" + nm + "Pct"] = _mpct(
+            100.0 * (rg[key]["numerator_sum"] - sp_vals[key])
+            / (D - as_int(sp["described"], 0)))
     for cat, v in h["per_category_eukaryotic"].items():
         cn = crown_macro_name(cat)
         for key, nm in names[:3]:
@@ -5661,6 +5800,8 @@ def check_numbermacros(ctx):
     crows = read_csv(CROWN_AGES_CSV)
     w["CrownNChron"] = _mint(len(crows))
     w["CrownNCounted"] = _mint(sum(r["counts_for_c1b"] == "yes" for r in crows))
+    cn = sorted(r["partition"] for r in crows if r["counts_for_c1b"] == "yes")
+    w["CrownNamesCounted"] = ", ".join(cn[:-1]) + " and " + cn[-1]
     excl = Counter(r["c1b_exclusion"] for r in crows if r["c1b_exclusion"])
     for k in sorted(excl):
         w["CrownExcl" + crown_macro_name(k)] = _mint(excl[k])
@@ -5728,18 +5869,33 @@ def check_numbermacros(ctx):
 
     eff = we["rho_effect_same_tree"]
     w["WENEligible"] = _mint(len(we["eligible"]))
+    el = sorted(we["eligible"])
+    w["WENamesEligible"] = ", ".join(el[:-1]) + " and " + el[-1]
     w["WENIdentity"] = _mint(sum(v["classification"] == "identity"
                                  for v in eff.values()))
     w["WENBoundary"] = _mint(sum(v["classification"] == "boundary"
                                  for v in eff.values()))
     w["WENRejected"] = _mint(sum(v["lr_statistic"] > WORKED_LR_CUTOFF
                                  for v in eff.values()))
-    dll = {p: as_float(fits[p + "|molecular|family"]["loglik"])
-           - as_float(fits[p + "|molecular|tips"]["loglik"])
-           for p in we["eligible"]}
-    w["WENFamilyBetter"] = _mint(sum(v > 0 for v in dll.values()))
-    w["WENFamilyWorse"] = _mint(sum(v < 0 for v in dll.values()))
+    # D30: family and uniform fits side by side, no likelihood comparison
+    epsd = {p: (as_float(fits[p + "|molecular|family"]["epsilon"]),
+                as_float(fits[p + "|molecular|tips"]["epsilon"]))
+            for p in we["eligible"]}
+    w["WENFamilyEpsLower"] = _mint(sum(a < b for a, b in epsd.values()))
+    w["WENFamilyEpsHigher"] = _mint(sum(a > b for a, b in epsd.values()))
+    R.bump()
+    if "loglik_family_minus_uniform" in json.dumps(we):
+        R.fail("S13: the headline still carries a family-minus-uniform "
+               "log-likelihood difference, which is not a model comparison "
+               "(D30)")
     w["RuleLRCritical"] = "%.2f" % WORKED_LR_CUTOFF
+    # the cutoff is the critical value of the equal chi2(0):chi2(1) mixture at
+    # the stated level: P(chi2_1 > c) = 2 * level
+    import statistics as _st
+    R.eq("LR cutoff = critical value of the mixture at the test level",
+         round(WORKED_LR_CUTOFF, 5),
+         round(_st.NormalDist().inv_cdf(1.0 - WORKED_TEST_LEVEL) ** 2, 5))
+    w["RuleTestLevelPct"] = "%g" % (100 * WORKED_TEST_LEVEL)
     rf = {p: (as_float(fits[p + "|full|tips"]["r"]),
               as_float(fits[p + "|molecular|tips"]["r"])) for p in we["eligible"]}
     w["WENFullGreater"] = _mint(sum(a > b for a, b in rf.values()))
@@ -5772,7 +5928,7 @@ def check_numbermacros(ctx):
         w["WERMol" + n] = "%.3f" % as_float(ft["r"])
         w["WERRatio" + n] = "%.2f" % (as_float(ff["r"]) / as_float(ft["r"]))
         w["WEEpsFamily" + n] = "%.2f" % as_float(fm["epsilon"])
-        w["WEFamilyDLL" + n] = "%.1f" % round(dll[p], 4)
+        w["WERFamily" + n] = "%.3f" % as_float(fm["r"])
     for r in canon_e:
         n = crown_macro_name(r["partition"])
         d = as_int(r["described"], 0)
@@ -5948,9 +6104,14 @@ def check_tables(ctx):
              "%.2f" % (as_float(fc["lambda"]) / as_float(ft["lambda"])))
         lr = max(0.0, 2.0 * (as_float(ft["loglik"]) - as_float(fc["loglik"])))
         R.eq("Table 3 %s LR" % p, r["lr"], "%.2f" % lr)
-        R.eq("Table 3 %s family minus uniform log-likelihood" % p,
-             r["dll_family"], "%.1f" % round(as_float(fm["loglik"])
-                                             - as_float(ft["loglik"]), 4))
+        for col_, k in (("r_family", "r"), ("r_family_lo", "r_lo"),
+                        ("r_family_hi", "r_hi"), ("eps_family_lo", "epsilon_lo"),
+                        ("eps_family_hi", "epsilon_hi")):
+            R.eq("Table 3 %s %s" % (p, col_), r[col_],
+                 ("%.3f" if col_.startswith("r_") else "%.2f")
+                 % as_float(fm[k]))
+        R.eq("Table 3 %s has no log-likelihood comparison column" % p,
+             "dll_family" in r, False)
         R.eq("Table 3 %s rejected" % p, r["classification"].endswith(
             "(rejected)"), lr > WORKED_LR_CUTOFF)
 
@@ -5985,6 +6146,501 @@ def check_tables(ctx):
              h["rungs"][a]["numerator_union"] - h["rungs"][b]["numerator_union"])
 
 
+# --------------------------------------------------------------------------
+# SUPPLEMENT: the Supporting Information, its numbering and its tables
+# --------------------------------------------------------------------------
+SUPP_BODY = P("Paper", "shared", "supplementary_body_v2.tex")
+SUPP_META = P("Paper", "shared", "supplementary_metadata_v2.tex")
+SUPP_MACROS = P("Paper", "inputs", "supp_macros.tex")
+SUPP_IN = lambda name: P("Paper", "inputs", name)          # noqa: E731
+REFERENCE_TREE_SOURCES = P("Data", "reference_tree_sources.csv")
+CANONICAL_SOURCE_PREP = P("Data", "canonical_source_prep.csv")
+SUPP_SELECTION = {"as_archived", "release", "study_chronogram",
+                  "more_branch_lengths", "first_of_set", "mcc_of_set"}
+# the decision a prepared source cites -> the selection it implies
+SUPP_PREP_DECISION = {"D8": "study_chronogram", "D15": "more_branch_lengths",
+                      "D16": "first_of_set", "D17": "mcc_of_set"}
+SUPP_EDGE_RTOL = 1e-9
+SUPP_WRAPPERS = [P("Paper", "MEE", "supplementary.tex"),
+                 P("Paper", "MEE", "supplementary_anon.tex"),
+                 P("Paper", "bioRxiv", "supplementary.tex")]
+
+
+def _supp_first_tree_text(path, index=1):
+    """The index-th tree of a Newick or NEXUS file, comments removed."""
+    with open(path, encoding="utf-8", errors="replace") as fh:
+        text = fh.read()
+    text = re.sub(r"\[[^\]]*\]", "", text)
+    if text.lstrip().upper().startswith("#NEXUS"):
+        trees = re.findall(r"(?im)^\s*tree\s+[^=]+=\s*(\(.*?;)", text, re.S)
+    else:
+        trees = [t + ";" for t in text.split(";") if "(" in t]
+    if len(trees) < index:
+        return None
+    return trees[index - 1]
+
+
+def _supp_edges(text):
+    return sorted(float(x) for x in
+                  re.findall(r":\s*([-+0-9.eE]+|nan|NaN)", text)
+                  if x.lower() != "nan")
+
+
+def _supp_csv(name):
+    return read_csv(SUPP_IN(name + ".csv"))
+
+
+def _supp_cmp_table(name, want_rows, keys):
+    got = _supp_csv(name)
+    R.eq("Supplement %s rows" % name, [r[keys[0]] for r in got],
+         [str(w[keys[0]]) for w in want_rows])
+    gotk = {r[keys[0]]: r for r in got}
+    for w in want_rows:
+        g = gotk.get(str(w[keys[0]]))
+        if g is None:
+            continue
+        for k in keys[1:]:
+            R.eq("Supplement %s %s %s" % (name, w[keys[0]], k), g.get(k),
+                 str(w[k]))
+
+
+def _supp_mpct(x):
+    return "--" if x is None else ("%.1f" % x if abs(x) >= 1.0 else "%.2f" % x)
+
+
+def check_supplement(ctx):
+    """The Supporting Information: (1) it has exactly one section per
+    Supplement number the main text cites, numbered in order of first
+    citation, and the wrappers read the revised body; (2) every generated
+    table it inputs exists, and each supp_*.csv is re-derived here, cell by
+    cell, from the registers, the shipped trees and the source files; (3) the
+    reference trees' archived sources reproduce the branch lengths of the
+    source files the register names; (4) its macros are re-derived."""
+    meta = open(MANUSCRIPT_META, encoding="utf-8").read()
+    body = strip_tex_comments(open(MANUSCRIPT_BODY, encoding="utf-8").read())
+    ids = re.findall(r"^\\newcommand\{\\(IdSupp\w+)\}\{S(\d+)\}", meta, re.M)
+    nums = [int(n) for _k, n in ids]
+    R.eq("Supplement numbers are S1..Sn in definition order", nums,
+         list(range(1, len(ids) + 1)))
+    text = body + "\n" + strip_tex_comments(meta)
+    first = {}
+    for k, _n in ids:
+        m = re.search(r"\\%s(?![A-Za-z])" % k,
+                      re.sub(r"^\\newcommand\{\\IdSupp\w+\}\{S\d+\}\s*$", "",
+                             text, flags=re.M))
+        R.eq("Supplement %s is cited in the article" % k, m is not None, True)
+        if m is not None:
+            # first citation: the body counts in reading order; a citation
+            # only in a caption or statement counts after the body
+            mb = re.search(r"\\%s(?![A-Za-z])" % k, body)
+            first[k] = mb.start() if mb else len(body) + m.start()
+    order = [k for k, _n in sorted(first.items(), key=lambda kv: kv[1])]
+    R.eq("Supplement numbers follow the order of first citation", order,
+         [k for k, _n in ids])
+    sb = strip_tex_comments(open(SUPP_BODY, encoding="utf-8").read())
+    secs = re.findall(r"\\section\{Supplement \\(IdSupp\w+)", sb)
+    R.eq("Supplement sections = the cited numbers, in order", secs,
+         [k for k, _n in ids])
+    for w in SUPP_WRAPPERS:
+        t = strip_tex_comments(open(w, encoding="utf-8").read())
+        R.eq("%s inputs the revised supplement body" % rel(w),
+             "supplementary_body_v2" in t and "supplementary_body}" not in t
+             and "supplementary_body.tex" not in t, True)
+    inputs = re.findall(r"\\inputtable\{\.\./inputs/([\w.]+)\}", sb)
+    for f in inputs:
+        R.eq("Supplement input %s exists" % f, os.path.exists(SUPP_IN(f)), True)
+    for f in sorted(os.listdir(P("Paper", "inputs"))):
+        if f.startswith("supp_") and f.endswith(".tex") and f != "supp_macros.tex":
+            R.eq("generated %s is used by the Supplement" % f, f in inputs, True)
+    # every macro the Supplement uses is defined
+    defined = set()
+    for f in GENERATED_MACRO_FILES + (MANUSCRIPT_META, SUPP_META, SUPP_MACROS):
+        if os.path.exists(f):
+            defined |= set(re.findall(r"\\(?:newcommand|providecommand)"
+                                      r"\{\\([A-Za-z]+)\}", open(f).read()))
+    for name in sorted(set(re.findall(r"\\((?:Supp|Id|C[A-Z]|Sens|WE|OT|"
+                                      r"Crown|Rule|Num|Described|DT|Labels|"
+                                      r"Unresolved)[A-Za-z]*)", sb))):
+        R.eq("Supplement macro \\%s is defined" % name, name in defined, True)
+
+    basis = ctx.basis_rows
+    canon_e = [r for r in basis if r["is_prokaryotic"] == "no"
+               and as_int(r["c0_units"], 0) > 0]
+    h = ctx.head
+
+    # ---- reference trees: register and source files -------------------
+    reg = {r["partition"]: r for r in read_csv(REFERENCE_TREE_SOURCES)}
+    prep = {r["filename"]: r for r in read_csv(CANONICAL_SOURCE_PREP)}
+    dsreg = {r["filename"]: r for r in read_csv(DATASET_REGISTRY)}
+    R.eq("reference_tree_sources.csv covers the reference trees",
+         sorted(reg), sorted(r["partition"] for r in canon_e))
+    for b in canon_e:
+        p, fn = b["partition"], b["canonical_tree"]
+        r = reg.get(p)
+        if r is None:
+            continue
+        R.eq("%s register filename" % p, r["filename"], fn)
+        R.eq("%s selection known" % p, r["selection"] in SUPP_SELECTION, True)
+        R.eq("%s register evidence present" % p,
+             bool((r.get("evidence") or "").strip()), True)
+        if fn in prep:
+            R.eq("%s source = prepared source" % p, r["source_file"],
+                 prep[fn]["raw_source"])
+            dec = re.match(r"\s*(D\d+)", prep[fn]["evidence"])
+            dec = dec.group(1) if dec else None
+            if dec == "D6":   # 'D6/D16'
+                dec = "D16"
+            want = SUPP_PREP_DECISION.get(dec, "release")
+            R.eq("%s selection follows the prepared source's rule" % p,
+                 r["selection"], want)
+            continue
+        R.eq("%s is not a prepared source -> as archived or release" % p,
+             r["selection"] in ("as_archived", "release"), True)
+        sp = P("Data", *r["source_file"].split("/"))
+        cp = P(*ctx.canon_sources.get(fn, "").split("/"))
+        R.eq("%s source file exists" % p, os.path.exists(sp), True)
+        if not (os.path.exists(sp) and os.path.exists(cp)):
+            continue
+        idx = as_int(r.get("tree_index"), 1) or 1
+        a = _supp_edges(_supp_first_tree_text(sp, idx) or "")
+        c = _supp_edges(_supp_first_tree_text(cp) or "")
+        R.bump()
+        if len(a) != len(c) or any(abs(x - y) > SUPP_EDGE_RTOL * max(1.0, abs(x))
+                                   for x, y in zip(a, c)):
+            R.fail("%s: the archived source %s does not reproduce the branch "
+                   "lengths of %s (%d vs %d edges)"
+                   % (p, rel(cp), r["source_file"], len(c), len(a)))
+    order = lambda rows: sorted(rows, key=lambda x: (            # noqa: E731
+        CATEGORY_ORDER.index(x["category"]), x["partition"]))
+    want = order([OrderedDict([
+        ("partition", b["partition"]), ("category", b["category"]),
+        ("filename", b["canonical_tree"]),
+        ("bibkey", dsreg[b["canonical_tree"]]["bibkey"]),
+        ("source_file", os.path.basename(reg[b["partition"]]["source_file"])),
+        ("selection", reg[b["partition"]]["selection"]),
+        ("tree_used", reg[b["partition"]]["tree_used"])])
+        for b in canon_e if b["partition"] in reg])
+    _supp_cmp_table("supp_reference_trees", want,
+                    ["partition", "filename", "bibkey", "source_file",
+                     "selection", "tree_used"])
+
+    # ---- removed and merged tips ---------------------------------------
+    rows = []
+    for b in canon_e:
+        p, fn = b["partition"], b["canonical_tree"]
+        src = ctx.source_leaves.get(fn)
+        tips = as_int(b["labels_unique"])
+        nokey = sum(1 for nm, sid in ctx.idmap[p].items()
+                    if d4_species_key(nm, sid) is None)
+        rows.append(OrderedDict([
+            ("partition", p), ("category", b["category"]),
+            ("source_tips", src), ("removed_outside", ctx.n_pruned.get(fn, 0)),
+            ("merged_same_species", None if src is None
+             else src - ctx.n_pruned.get(fn, 0) - tips),
+            ("tips", tips), ("unresolved_labels_kept", nokey)]))
+    _supp_cmp_table("supp_pruned", order(rows),
+                    ["partition", "source_tips", "removed_outside",
+                     "merged_same_species", "tips", "unresolved_labels_kept"])
+
+    # ---- name resolution, from col_resolution.csv ----------------------
+    gb = h["sensitivities"]["c0_gbif_unmatched"]["per_partition"]
+    rows = []
+    for b in canon_e:
+        p = b["partition"]
+        cr = ctx.col_rows.get(p, {})
+        mt = Counter(r["match_type"] for r in cr.values())
+        res = [r for r in cr.values() if r["match_type"] in
+               COL_RESOLUTION_RESOLVED and r["col_id"]]
+        acc = sum(n for k, n in mt.items() if k.startswith(("accepted",
+                                                             "provisional")))
+        syn = sum(n for k, n in mt.items() if k.startswith("synonym"))
+        n = len(cr)
+        named = len({r["col_id"] for r in res})
+        rows.append(OrderedDict([
+            ("partition", p), ("category", b["category"]), ("labels", n),
+            ("accepted", acc), ("synonym", syn), ("unresolved", n - len(res)),
+            ("unresolved_pct", "%.1f" % (100.0 * (n - len(res)) / n)),
+            ("named_species", named), ("merged", len(res) - named),
+            ("gbif_added", (gb.get(p) or {}).get("gbif_species_added", 0))]))
+        R.eq("%s named species = c0_units" % p, named, as_int(b["c0_units"]))
+    _supp_cmp_table("supp_names", order(rows),
+                    ["partition", "labels", "accepted", "synonym", "unresolved",
+                     "unresolved_pct", "named_species", "merged", "gbif_added"])
+
+    # ---- molecular tips --------------------------------------------------
+    nmol = Counter(r["partition"] for r in read_csv(MOLECULAR_TIPS_CSV))
+    ev = h["molecular_evidence"]
+    mo = {r["partition"] for r in read_csv(MOLECULAR_ONLY_TREES)}
+    rows = []
+    for b in canon_e:
+        p = b["partition"]
+        tips = as_int(b["labels_unique"])
+        mt = nmol[p] if b["c1_basis"] == "enumerated" else tips
+        ex = ev[p].get("exact_label_intersection")
+        rows.append(OrderedDict([
+            ("partition", p), ("category", b["category"]),
+            ("f_basis", b["f_basis"]),
+            ("source_file", os.path.basename(b["molecular_source_file"] or "")),
+            ("tips", tips), ("molecular_tips", mt),
+            ("molecular_fraction", "%.3f" % (mt / tips)),
+            ("exact_label_tips", "" if ex is None else int(ex)),
+            ("molecular_species", int(round(as_float(b["c1_units"])))),
+            ("product", "%.1f" % (as_int(b["c0_units"]) * as_float(b["f_mol"]))),
+            ("molecular_only_tree", "yes" if p in mo else "no")]))
+    _supp_cmp_table("supp_molecular", order(rows),
+                    ["partition", "f_basis", "source_file", "tips",
+                     "molecular_tips", "molecular_fraction", "exact_label_tips",
+                     "molecular_species", "product", "molecular_only_tree"])
+
+    # ---- time scale ------------------------------------------------------
+    sdv = {r["partition"]: (r.get("study_dating") or "").strip()
+           for r in read_csv(DATING_DEPOSIT_CHECKS)}
+    rows = []
+    for b in canon_e:
+        p, fn = b["partition"], b["canonical_tree"]
+        m = ctx.measured.get(fn, {})
+        rows.append(OrderedDict([
+            ("partition", p), ("category", b["category"]),
+            ("roottotip_cv", "%.4f" % m.get("cv", float("nan"))),
+            ("ultrametric", "yes" if m.get("cv", 1.0) <= CHRONOGRAM_TOLERANCE
+             else "no"),
+            ("root_height", "%.4g" % m.get("root_height", float("nan"))),
+            ("time_scale", b["time_scale"]),
+            ("study_dating", sdv.get(p) or (
+                "absolute_deposited" if b["is_chronogram"] == "yes"
+                else "relative_only"))]))
+    _supp_cmp_table("supp_time_scale", order(rows),
+                    ["partition", "roottotip_cv", "ultrametric", "root_height",
+                     "time_scale", "study_dating"])
+
+    # ---- crown ages and intervals ----------------------------------------
+    cat = {r["partition"]: r["category"] for r in basis}
+    rows = []
+    for c in read_csv(CROWN_AGES_CSV):
+        p, kind = c["partition"], c["interval_kind"]
+        iv = ctx.crown.get(p, {})
+        st = ("none" if not kind else "counted"
+              if c["counts_for_c1b"] == "yes" else c["c1b_exclusion"])
+        f1 = lambda x: "%.1f" % as_float(x) if x else ""     # noqa: E731
+        rows.append(OrderedDict([
+            ("partition", p), ("category", cat[p]),
+            ("crown_clade", c["crown_clade"]),
+            ("crown_age_ma", f1(c["crown_age_ma"])),
+            ("interval_lo_ma", f1(c["interval_lo_ma"]) if kind else ""),
+            ("interval_hi_ma", f1(c["interval_hi_ma"]) if kind else ""),
+            ("interval_kind", kind),
+            ("calibration", c["calibration"] if kind else ""),
+            ("prior_lo_ma", f1(iv.get("prior_lo_ma"))),
+            ("prior_hi_ma", f1(iv.get("prior_hi_ma"))),
+            ("prior_containment_pct", "%.0f" % (100 * as_float(
+                iv["prior_containment"])) if iv.get("prior_containment")
+             else ""),
+            ("status", st)]))
+        if st == "prior_reproduced" and iv.get("prior_containment"):
+            R.eq("%s prior rule: containment and width ratio" % p,
+                 as_float(iv["prior_containment"]) >= PRIOR_CONTAINMENT_MIN
+                 and as_float(iv["prior_width_ratio"]) >= PRIOR_WIDTH_RATIO_MIN,
+                 True)
+    _supp_cmp_table("supp_crown", order(rows),
+                    ["partition", "crown_clade", "crown_age_ma",
+                     "interval_lo_ma", "interval_hi_ma", "interval_kind",
+                     "calibration", "prior_lo_ma", "prior_hi_ma",
+                     "prior_containment_pct", "status"])
+
+    # ---- sensitivity: the alternatives recomputed from the basis --------
+    D = sum(as_int(r["described"], 0) for r in basis
+            if r["is_prokaryotic"] == "no")
+    crown_ok = {r["partition"]: r["counts_for_c1b"] == "yes"
+                for r in read_csv(CROWN_AGES_CSV)}
+
+    def levels(rows_, keep=lambda r: True):
+        out = OrderedDict((k, 0.0) for k in RUNGS)
+        for r in rows_:
+            if not keep(r):
+                continue
+            out["C0"] += as_int(r["c0_units"], 0)
+            c1 = as_float(r["c1_units"]) or 0.0
+            out["C1"] += c1
+            if r["is_chronogram"] == "yes" and r["time_scale"] == "absolute":
+                out["C1d"] += c1
+                if crown_ok.get(r["partition"]):
+                    out["C1b"] += c1
+        return out
+
+    L = levels(canon_e)
+    sens = {r["alternative"]: r for r in _supp_csv("supp_sensitivity")}
+
+    def check_row(key, den, lv):
+        r = sens.get(key)
+        R.eq("Supplement S7 row %s present" % key, r is not None, True)
+        if r is None:
+            return
+        R.eq("Supplement S7 %s denominator" % key, as_int(r["denominator"]),
+             int(round(den)))
+        for k in RUNGS:
+            if lv.get(k) is not None:
+                R.eq("Supplement S7 %s %s" % (key, k), r[k],
+                     _supp_mpct(100.0 * lv[k] / den))
+
+    check_row("reported", D, L)
+    f = ELASTICITY_FRACTION
+    ins = [r for r in basis if r["partition"] ==
+           h["sensitivities"]["denominator"]["largest_single_count"]["partition"]]
+    di = as_int(ins[0]["described"])
+    check_row("insects_minus", D - f * di, L)
+    check_row("insects_plus", D + f * di, L)
+    check_row("all_minus", D * (1 - f), L)
+    check_row("all_plus", D * (1 + f), L)
+    col = {r["partition"]: r for r in read_csv(COL_DENOMINATORS)}
+    dcol = sum(as_int(col[r["partition"]]["col_filled"], 0) or
+               as_int(r["described"], 0) for r in basis
+               if r["is_prokaryotic"] == "no")
+    check_row("col_filled", dcol, L)
+    check_row("rep", sum(as_int(r["described"], 0) for r in canon_e), L)
+    dom = max(canon_e, key=lambda r: as_int(r["c0_units"], 0))
+    check_row("no_seed", D - as_int(dom["described"]),
+              levels(canon_e, lambda r: r is not dom))
+    asm = {r["partition"]: r["topology_assembly"] for r in canon_e}
+    for cls in ("automated_synthesis", "compiled", "primary_analysis"):
+        check_row("drop_" + cls, D,
+                  levels(canon_e, lambda r, c=cls: asm[r["partition"]] != c))
+        check_row("retain_only_" + cls, D,
+                  levels(canon_e, lambda r, c=cls: asm[r["partition"]] == c))
+    u = h["union_bound_S09"]
+    check_row("union", D, OrderedDict([("C0", u["C0_union"]),
+                                       ("C1", u["C1_union_high"])]))
+
+    # ---- denominators by group -------------------------------------------
+    uni = u["per_partition"]
+    rows = []
+    for b in basis:
+        if b["is_prokaryotic"] != "no":
+            continue
+        p, d = b["partition"], as_int(b["described"], 0)
+        n0 = as_int(b["c0_units"], 0)
+        cf = as_int(col[p]["col_filled"], 0)
+        rows.append(OrderedDict([
+            ("partition", p), ("category", b["category"]), ("described", d),
+            ("col_count", cf),
+            ("named_pct", _supp_mpct(100.0 * n0 / d) if n0 else ""),
+            ("named_col_pct", _supp_mpct(100.0 * n0 / cf) if n0 and cf else ""),
+            ("named_all_trees_pct", _supp_mpct(100.0 * uni[p]["C0_union"] / d)
+             if p in uni else "")]))
+    rows.sort(key=lambda x: (CATEGORY_ORDER.index(x["category"]),
+                             -x["described"], x["partition"]))
+    _supp_cmp_table("supp_denominators", rows,
+                    ["partition", "described", "col_count", "named_pct",
+                     "named_col_pct", "named_all_trees_pct"])
+
+    # ---- Open Tree --------------------------------------------------------
+    rows = []
+    for r in read_csv(OT_CSV):
+        if r["atlas_C1_tips_enumerated"] != "yes":
+            continue
+        am, both = as_int(r["accepted_molecular"]), as_int(
+            r["accepted_molecular_and_ot"])
+        rows.append(OrderedDict([
+            ("partition", r["partition"]), ("category", cat[r["partition"]]),
+            ("molecular_species", am), ("both", both),
+            ("molecular_not_ot", am - both),
+            ("both_pct", "%.1f" % (100.0 * both / am) if am else "")]))
+    _supp_cmp_table("supp_opentree", order(rows),
+                    ["partition", "molecular_species", "both",
+                     "molecular_not_ot", "both_pct"])
+    R.eq("Supplement S8 groups = groups with listed molecular tips",
+         len(rows), sum(1 for b in canon_e if b["c1_basis"] == "enumerated"))
+
+    # ---- worked example ----------------------------------------------------
+    fits = read_csv(WORKED_FITS)
+    got = _supp_csv("supp_worked_fits")
+    R.eq("Supplement S9 one row per fit", len(got), len(fits))
+    byk = {(r["partition"], r["tree"], r["rho_convention"]): r for r in fits}
+    for g in got:
+        fr = byk.get((g["partition"], g["tree"], g["rho_convention"]))
+        R.eq("Supplement S9 fit %s/%s/%s exists" % (g["partition"], g["tree"],
+                                                 g["rho_convention"]),
+             fr is not None, True)
+        if fr is None:
+            continue
+        for k, fmt in (("r", "%.4f"), ("r_lo", "%.4f"), ("r_hi", "%.4f"),
+                       ("epsilon", "%.3f"), ("epsilon_lo", "%.3f"),
+                       ("epsilon_hi", "%.3f"), ("loglik", "%.2f")):
+            R.eq("Supplement S9 %s %s %s %s" % (g["partition"], g["tree"],
+                                                 g["rho_convention"], k),
+                 g[k], fmt % as_float(fr[k]))
+        R.eq("Supplement S9 %s %s tips" % (g["partition"], g["tree"]),
+             as_int(g["n_tips"]), as_int(fr["n_tips"]))
+    fam = read_csv(WORKED_FAMILY_FRACTIONS)
+    for g in _supp_csv("supp_worked_families"):
+        fs = sorted(as_float(r["f"]) for r in fam
+                    if r["partition"] == g["partition"])
+        R.eq("Supplement S9 %s families" % g["partition"], as_int(g["families"]),
+             len(fs))
+        if fs:
+            R.eq("Supplement S9 %s min/max fraction" % g["partition"],
+                 (g["f_min"], g["f_max"]), ("%.2f" % fs[0], "%.2f" % fs[-1]))
+        R.eq("Supplement S9 %s family likelihood = uniform at equal f"
+             % g["partition"], abs(as_float(g["uniform_check"]))
+             <= WORKED_UNIFORM_TOL, True)
+
+    # ---- data and code ----------------------------------------------------
+    R.eq("Supplement check list = verify's CHECKS",
+         [(r["check"], r["title"]) for r in _supp_csv("supp_checks")],
+         [tuple(c) for c in CHECKS])
+    hdr = set(basis[0].keys())
+    for r in _supp_csv("supp_terms"):
+        for c in [x.strip() for x in r["columns"].split(";") if x.strip()]:
+            R.eq("Supplement term column %s is in the basis" % c, c in hdr, True)
+        if r["file"]:
+            R.eq("Supplement term file %s is in the release" % r["file"],
+                 release_path_known(r["file"]), True)
+
+    # ---- macros -------------------------------------------------------------
+    mac = OrderedDict(_macros_in(SUPP_MACROS))
+    num = lambda k: int(mac[k].replace("{,}", ""))           # noqa: E731
+    pr = _supp_csv("supp_pruned")
+    for k, col_ in (("SuppRemovedN", "removed_outside"),
+                    ("SuppMergedN", "merged_same_species"),
+                    ("SuppOpenLabelsN", "unresolved_labels_kept"),
+                    ("SuppSourceTipsN", "source_tips"), ("SuppTipsN", "tips")):
+        R.eq("macro %s = sum of Table S3" % k, num(k),
+             sum(as_int(r[col_]) for r in pr))
+    R.eq("macro SuppTipsN = LabelsEukN", num("SuppTipsN"),
+         sum(as_int(r["labels_unique"]) for r in canon_e))
+    R.eq("macro SuppOverridesN", num("SuppOverridesN"),
+         len(read_csv(NAME_OVERRIDES)))
+    R.eq("macro SuppRejectedTargetsN", num("SuppRejectedTargetsN"),
+         len(read_csv(P("Data", "standardized", "name_rejected_targets.csv"))))
+    R.eq("macro SuppSupraGeneraN", num("SuppSupraGeneraN"),
+         len(D4_SUPRA_GENERA))
+    R.eq("macro SuppProfileCutoff", mac["SuppProfileCutoff"],
+         "%.2f" % (WORKED_CI_CUTOFF / 2.0))
+    R.eq("macro SuppVerifyChecksN", num("SuppVerifyChecksN"), len(CHECKS))
+    sel = Counter(r["selection"] for r in reg.values())
+    for code in SUPP_SELECTION:
+        nm = "SuppSel" + "".join(w.capitalize() for w in code.split("_"))
+        R.eq("macro %s" % nm, num(nm), sel.get(code, 0))
+    ts = _supp_csv("supp_time_scale")
+    ul = [as_float(r["roottotip_cv"]) for r in ts if r["ultrametric"] == "yes"]
+    ot = [as_float(r["roottotip_cv"]) for r in ts if r["ultrametric"] == "no"]
+    R.eq("macro SuppMaxCVUltrametric", mac["SuppMaxCVUltrametric"],
+         "%.4f" % max(ul))
+    R.eq("macro SuppMinCVOther", mac["SuppMinCVOther"], "%.4f" % min(ot))
+    R.eq("ultrametric and other CVs are separated by the rule",
+         max(ul) <= CHRONOGRAM_TOLERANCE < min(ot), True)
+    shipped = {f for f in os.listdir(STD_TREES) if f.endswith(".nwk")}
+    rest = [r for r in read_csv(P("Data", "_archive", "2026-10-revision",
+                                  "corrupted_branch_lengths", "RESTORED.csv"))
+            if r["file"].startswith("Data/standardized/trees/")
+            and r["changed"] == "yes"
+            and os.path.basename(r["file"]) in shipped]
+    R.eq("macro SuppRestoredTreesN", num("SuppRestoredTreesN"), len(rest))
+    R.eq("macro SuppRestoredBranchLengthsN", num("SuppRestoredBranchLengthsN"),
+         sum(as_int(r["branch_lengths_restored"], 0) for r in rest))
+    R.eq("macro SuppShippedTreesN", num("SuppShippedTreesN"), len(shipped))
+
+
+
 CATEGORY_NAMES_FIG = ("Vertebrates", "Plants", "Arthropods", "Other animals",
                       "Microbes & protists")
 
@@ -5993,7 +6649,9 @@ CATEGORY_NAMES_FIG = ("Vertebrates", "Plants", "Arthropods", "Other animals",
 # PROSELIT: no numeric literal in the revised manuscript text
 # --------------------------------------------------------------------------
 PROSE_V2 = [P("Paper", "shared", "manuscript_body_v2.tex"),
-            P("Paper", "shared", "metadata_v2.tex")]
+            P("Paper", "shared", "metadata_v2.tex"),
+            P("Paper", "shared", "supplementary_body_v2.tex"),
+            P("Paper", "shared", "supplementary_metadata_v2.tex")]
 # Constructs whose digits are not reported quantities: citations and
 # cross-references, file inputs, URLs, layout lengths and column specs.
 PROSE_STRIP = [
@@ -6073,13 +6731,213 @@ def check_proselit(ctx):
                                       r"\{\\([A-Za-z]+)\}", open(f).read()))
     generated_like = re.compile(r"^(?:C(?:Zero|One)|COneD|COneB|Num|Described|"
                                 r"Sens|Lost|WE|OT|Crown|Cat|FMol|Rule|"
-                                r"Unresolved|Labels|DT|SeedPlantsShare)")
+                                r"Unresolved|Labels|DT|SeedPlantsShare|Excl|"
+                                r"TipsNotNamed|Unrep|Study|NMol|NGroups)")
     for name in sorted(used):
         if generated_like.match(name):
             R.bump()
             if name not in defined:
                 R.fail("the manuscript uses \\%s, which no generated macro "
                        "file defines" % name)
+    check_text_facts()
+
+
+AI_DISCLOSURE = P("Paper", "MEE", "ai_disclosure.txt")
+GBIF_UNMATCHED = P("Data", "external", "gbif_unmatched.csv")
+
+
+def _expand_ids(text, ids):
+    for k, v in sorted(ids.items(), key=lambda kv: -len(kv[0])):
+        text = re.sub(r"\\%s(?:\{\})?(?![A-Za-z])" % k, lambda _m: v, text)
+    return text
+
+
+def check_text_facts():
+    """Statements the text makes about its own numbers and companion files
+    (round-3 findings): the label arithmetic of the Names paragraph closes;
+    the AI statement filed with the submission is the Methods statement word
+    for word; every code printed in Table 1 is decoded in its caption; the
+    GBIF query date names every date on which a query was made."""
+    mac = OrderedDict(_macros_in(NUMBER_MACROS))
+    num = lambda k: int(mac[k].replace("{,}", ""))
+    R.eq("Names: tip labels - tips not named = named species",
+         num("LabelsEukN") - num("TipsNotNamedN"), num("CZeroN"))
+    meta = open(PROSE_V2[1], encoding="utf-8").read()
+    ids = dict(re.findall(r"^\\newcommand\{\\(Id\w+)\}\{(.*)\}\s*$", meta,
+                          re.M))
+    m = re.search(r"^\\newcommand\{\\PaperAIStatement\}\{(.*)\}\s*$", meta,
+                  re.M)
+    R.eq("AI statement macro present", bool(m), True)
+    if m:
+        want = _expand_ids(m.group(1), ids).replace("~", " ")
+        got = ""
+        if os.path.exists(AI_DISCLOSURE):
+            lines = open(AI_DISCLOSURE, encoding="utf-8").read().split("\n")
+            got = " ".join(x.strip() for x in lines[1:] if x.strip())
+        R.eq("Paper/MEE/ai_disclosure.txt = the Methods AI statement", got, want)
+    k = meta.find("\\newcommand{\\TabWhichTreeCaption}")
+    cap = meta[k:meta.find("\n\\newcommand", k + 1)] if k >= 0 else ""
+    codes = set()
+    with open(P("Paper", "inputs", "table_which_tree.tex"), encoding="utf-8") as fh:
+        for ln in fh:
+            c = [x.strip() for x in ln.split("&")]
+            if len(c) == 12:
+                codes |= {c[8], c[9]}
+    for code in sorted(codes - {"---"}):
+        R.eq("Table 1 code %s decoded in the caption" % code,
+             bool(re.search(r"(?<![A-Za-z])%s," % re.escape(code), cap)), True)
+    dates = sorted({r["queried_on"] for r in read_csv(GBIF_UNMATCHED)})
+    gd = ids.get("IdGbifDate", "")
+    months = ["January", "February", "March", "April", "May", "June", "July",
+              "August", "September", "October", "November", "December"]
+    for d in dates:
+        y, mo, dd = (int(x) for x in d.split("-"))
+        R.eq("IdGbifDate names the query date %s" % d,
+             bool(re.search(r"(?<!\d)%d(?!\d)" % dd, gd)) and months[mo - 1] in gd
+             and str(y) in gd, True)
+
+
+# --------------------------------------------------------------------------
+# RELEASE: the public data release the paper names
+# --------------------------------------------------------------------------
+RELEASE_MAP = P("release", "path_map.csv")
+RELEASE_FILES = P("release", "files")
+RELEASE_TEX = PROSE_V2 + [P("Paper", "bioRxiv", "main.tex"),
+                          P("Paper", "bioRxiv", "supplementary.tex")] + MEE_WRAPPERS
+_RELEASE_PATHS = None
+
+
+def release_paths():
+    """{release path: (working path or None for a release-only file)}."""
+    global _RELEASE_PATHS
+    if _RELEASE_PATHS is None:
+        out = OrderedDict()
+        for r in read_csv(RELEASE_MAP):
+            out[r["release_path"]] = r["working_path"]
+        for d, _, files in os.walk(RELEASE_FILES):
+            for f in files:
+                if f != ".DS_Store":
+                    out[os.path.relpath(os.path.join(d, f), RELEASE_FILES)
+                        .replace(os.sep, "/")] = None
+        _RELEASE_PATHS = out
+    return _RELEASE_PATHS
+
+
+def release_path_known(path):
+    """A file of the release, or a directory holding at least one."""
+    rp = release_paths()
+    if path.endswith("/"):
+        return any(k.startswith(path) for k in rp)
+    return path in rp
+
+
+def check_release(ctx):
+    """The paper names data release \\IdDataRelease and prints paths in it.
+    scripts/build_release.py writes the release from release/path_map.csv
+    (one row per mapped file) and release/files/ (files only the release
+    holds).  Every mapped working file exists and is listed once; every path
+    the paper prints (\\nolinkurl, the terms table) is a file or directory of
+    the release; every generated file the wrappers or bodies input from
+    Paper/inputs/ is mapped into the release; the release's CITATION.cff
+    carries the paper's title and the release version printed in the text."""
+    rows = read_csv(RELEASE_MAP)
+    seen = Counter(r["release_path"] for r in rows)
+    R.eq("path_map.csv lists each release path once",
+         sorted(k for k, n in seen.items() if n > 1), [])
+    missing = [r["working_path"] for r in rows
+               if not os.path.isfile(P(*r["working_path"].split("/")))]
+    R.eq("every mapped working file exists", missing, [])
+    R.eq("path_map.csv transforms are copy or gzip",
+         sorted({r["transform"] for r in rows} - {"copy", "gzip"}), [])
+    only = [k for k, v in release_paths().items() if v is None]
+    R.eq("no release path is both mapped and release-only",
+         sorted(set(only) & set(seen)), [])
+    by_working = {r["working_path"]: r["release_path"] for r in rows}
+
+    printed, inputs = set(), set()
+    for path in RELEASE_TEX:
+        if not os.path.exists(path):
+            continue
+        t = strip_tex_comments(open(path, encoding="utf-8").read())
+        printed.update(re.findall(r"\\nolinkurl\{([^}]*)\}", t))
+        for m in re.finditer(r"\\(?:input|inputtable)\{\.\./inputs/([^}]+)\}", t):
+            inputs.add("Paper/inputs/" + m.group(1))
+    for r in read_csv(SUPP_IN("supp_terms.csv")):
+        if r["file"]:
+            printed.add(r["file"])
+    R.eq("the paper prints at least one release path", bool(printed), True)
+    for p_ in sorted(printed):
+        R.eq("printed path %s is in the release" % p_, release_path_known(p_), True)
+    R.eq("the wrappers input generated files", bool(inputs), True)
+    for w in sorted(inputs):
+        R.eq("generated input %s is in the release" % w, w in by_working, True)
+
+    cff = os.path.join(RELEASE_FILES, "CITATION.cff")
+    meta = open(MANUSCRIPT_META, encoding="utf-8").read()
+    title = re.search(r"\\newcommand\{\\PaperTitle\}\{(.*)\}\s*$", meta, re.M)
+    rel_id = re.search(r"\\newcommand\{\\IdDataRelease\}\{v?([^}]*)\}", meta)
+    R.eq("metadata_v2.tex defines PaperTitle and IdDataRelease",
+         bool(title and rel_id), True)
+    if title and rel_id and os.path.exists(cff):
+        c = open(cff, encoding="utf-8").read()
+        m = re.search(r"preferred-citation:.*?\n\s+title:\s*\"([^\"]*)\"", c, re.S)
+        R.eq("CITATION.cff preferred-citation title = PaperTitle",
+             m.group(1) if m else None, title.group(1))
+        m = re.search(r"^version:\s*\"?([^\"\s]+)", c, re.M)
+        R.eq("CITATION.cff version = IdDataRelease",
+             m.group(1) if m else None, rel_id.group(1))
+
+
+# --------------------------------------------------------------------------
+# BIORXIV: the preprint wrappers
+# --------------------------------------------------------------------------
+BIORXIV_MAIN = P("Paper", "bioRxiv", "main.tex")
+BIORXIV_SUPP = P("Paper", "bioRxiv", "supplementary.tex")
+BIORXIV_REVIEW_ONLY = (r"\paperanontrue", r"\AnonDataLink", r"\PaperRunningHead",
+                       r"\PaperDataReviewStatement", r"\linenumberstrue",
+                       r"\PaperAbstractPoints", "main_table_rows")
+
+
+def check_biorxiv(ctx):
+    """The bioRxiv preprint is the named build of the revised article: the
+    main wrapper reads manuscript_body_v2.tex and metadata_v2.tex, the
+    Supplement wrapper supplementary_body_v2.tex; neither carries an element
+    that only the journal review needs (anonymisation, running head, review
+    link statement, line numbers switched on, the numbered abstract, the
+    hand-maintained table); the main wrapper prints the abstract, the data
+    and code statements and the author block.  The data statement names the
+    repository, the release, its version DOI and the concept DOI; while the
+    version DOI is not yet minted, a note says so."""
+    m = strip_tex_comments(open(BIORXIV_MAIN, encoding="utf-8").read())
+    s = strip_tex_comments(open(BIORXIV_SUPP, encoding="utf-8").read())
+    for need in (r"\input{../shared/manuscript_body_v2.tex}",
+                 r"\input{../shared/metadata_v2.tex}", r"\PaperAbstract",
+                 r"\PaperDataAvailability", r"\PaperCodeAvailability",
+                 r"\PaperAuthorName", r"\PaperAffiliation", r"\PaperORCID",
+                 r"\PaperCompetingInterests", r"\PaperFunding"):
+        R.eq("bioRxiv main.tex has %s" % need, need in m, True)
+    for need in (r"\input{../shared/supplementary_body_v2.tex}",
+                 r"\input{../shared/metadata_v2.tex}",
+                 r"\input{../shared/supplementary_metadata_v2.tex}",
+                 r"\PaperAuthorName"):
+        R.eq("bioRxiv supplementary.tex has %s" % need, need in s, True)
+    for bad in BIORXIV_REVIEW_ONLY:
+        R.eq("bioRxiv main.tex has no %s" % bad, bad in m, False)
+        R.eq("bioRxiv supplementary.tex has no %s" % bad, bad in s, False)
+    meta = open(MANUSCRIPT_META, encoding="utf-8").read()
+    da = re.search(r"\\newcommand\{\\PaperDataAvailability\}\{(.*)\}\s*$", meta, re.M)
+    R.eq("metadata_v2.tex defines PaperDataAvailability", bool(da), True)
+    if da:
+        for need in ("https://github.com/franciscorichter/phylo-species-atlas",
+                     "https://doi.org/10.5281/zenodo.20127157",
+                     r"\IdDataRelease", r"\DataVersionDOI"):
+            R.eq("the data statement names %s" % need, need in da.group(1), True)
+    v = re.search(r"\\newcommand\{\\DataVersionDOI\}\{(.*)\}\s*$", meta, re.M)
+    R.eq("metadata_v2.tex defines DataVersionDOI", bool(v), True)
+    if v and "doi.org/10.5281/zenodo." not in v.group(1):
+        R.note("the version DOI of the data release is not yet in the text: "
+               "\\DataVersionDOI reads '%s'; Zenodo mints it when the release "
+               "is published" % v.group(1))
 
 
 CHECKS = [
@@ -6115,6 +6973,9 @@ CHECKS = [
     ("NUMMACROS", "every prose number macro re-derived"),
     ("TABLES", "Tables 1-3 and the Figure 1 cascade re-derived"),
     ("PROSELIT", "no numeric literal in the revised manuscript text"),
+    ("SUPPLEMENT", "the Supplement's sections, tables and macros re-derived"),
+    ("RELEASE", "every path the paper prints is in the data release"),
+    ("BIORXIV", "the bioRxiv wrappers build the revised, named preprint"),
 ]
 
 
@@ -6198,6 +7059,12 @@ def run(args):
               check_tables, ctx)
     run_check("PROSELIT", "no numeric literal in the revised manuscript text",
               check_proselit, ctx)
+    run_check("SUPPLEMENT", "the Supplement's sections, tables and macros "
+              "re-derived", check_supplement, ctx)
+    run_check("RELEASE", "every path the paper prints is in the data release",
+              check_release, ctx)
+    run_check("BIORXIV", "the bioRxiv wrappers build the revised, named preprint",
+              check_biorxiv, ctx)
 
     # ---- the report ---------------------------------------------------
     sys.stdout.write("%s\n" % ("-" * 78))

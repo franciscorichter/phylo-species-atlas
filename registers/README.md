@@ -16,6 +16,7 @@ compares it with `paper/`.
 
 | File | What it holds |
 |---|---|
+| `reference_tree_sources.csv` | For each eukaryotic reference tree, the source file it is built from, the tree used, the rule that chose it (as archived, the release the study names, the study's chronogram, the tree with more usable branch lengths, the first tree of a set, the maximum-clade-credibility tree of a posterior set) and the archive, with the evidence. |
 | `canonical_sources.csv` | For each reference tree, the unpruned source it is built from (`standardized/canonical_sources/`) and where that source came from. |
 | `canonical_source_prep.csv`, `canonical_source_crosswalks/` | How the sources taken from a deposit other than an earlier redistributed file were relabelled: deposited file, tree index, branch-length scale, label crosswalk. |
 | `pruned_tips.csv` | Tips outside their group (outgroups, misplaced taxa), removed before counting, with the reason for each. |
@@ -52,6 +53,12 @@ compares it with `paper/`.
 | `external/gbif_unmatched.csv` | GBIF backbone matches of the tip names the Catalogue of Life leaves unmatched (`code/rebuild/gbif_unmatched.py`), with the query date. |
 | `external/opentree16.1_counts.csv`, `opentree16.1_phylo_species.tsv.gz`, `opentree16.1_phylo_species_col.csv` | Open Tree of Life synthesis 16.1: tips and phylogeny-placed species per group, the species list, and its Catalogue of Life resolution (`code/rebuild/opentree_extract.py`, `match_col.py --opentree`). |
 | `opentree_clades.csv` | The Open Tree taxonomy ids of each group's clade. |
+
+## Branch-length restoration
+
+| File | What it holds |
+|---|---|
+| `restored_branch_lengths.csv` | Every tree file whose branch lengths and numeric node labels release v1.0.9 restored (`ERRATUM.md`), the file it was checked against, and the numbers of branch lengths and internal labels restored. Paths are those of the pipeline (`code/rebuild/README.md`). |
 
 ## Inputs of the rebuild
 

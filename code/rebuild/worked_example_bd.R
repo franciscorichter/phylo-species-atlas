@@ -44,11 +44,14 @@
 # with k children contributes k-1 branching events at its age (a polytomy is
 # read as simultaneous splits).  Parameters are fitted as r > 0 and
 # epsilon = mu / lambda in [0, 1); 95% intervals by profile likelihood
-# (likelihood-ratio cutoff qchisq(0.95, 1) / 2).  Where the MLE of epsilon is
-# on its boundary (epsilon = 0) the likelihood-ratio statistic is a 50:50
-# mixture of chi2(0) and chi2(1) (Self & Liang 1987), so the interval is
-# one-sided, [0, upper], with cutoff qchisq(0.90, 1) / 2; the column
-# epsilon_ci says which.
+# (likelihood-ratio cutoff qchisq(0.95, 1) / 2, the same for every
+# interval).  Where the MLE of epsilon is on its boundary (epsilon = 0) the
+# interval is [0, upper]: 0 is never rejected (its statistic is 0), and every
+# epsilon > 0 is an interior value whose statistic is chi2(1), so the cutoff
+# that gives 95% coverage there is the ordinary one.  (A cutoff of
+# qchisq(0.90, 1) / 2 applied only when the MLE is at 0 chooses the interval
+# from the data and covers an interior epsilon with probability 0.90; it is
+# not used.)  The column epsilon_ci says whether the MLE is at 0.
 #
 # THE IDENTITY.  The likelihood above depends on lambda and rho only through
 # lambda * rho and r (Stadler 2009).  Changing rho to rho' with r fixed
@@ -59,8 +62,21 @@
 # rho-epsilon confounding (Stadler 2009; Cusimano & Renner 2010 Syst. Biol.
 # 59:458; Hoehna, Stadler, Ronquist & Britton 2011 Mol. Biol. Evol. 28:2577).
 # When lambda rho / rho' < r the identity cannot hold, mu is forced to 0, and
-# the likelihood drops: there the data reject the misapplied rho.  The rebuild
-# classifies each pair from these outputs.
+# the likelihood drops.  The fits are nested: in the parameters of the fit at
+# rho, the fit at rho' > rho is the same model restricted to
+# epsilon >= 1 - rho / rho' (its mu' >= 0), a half-space whose edge lies
+# inside (0, 1).  The test of that restriction (H0: the pruned tree was
+# sampled with rho') has, at the least favourable point epsilon =
+# 1 - rho / rho', the 50:50 mixture of chi2(0) and chi2(1) as its null
+# distribution (Chernoff 1954; Self & Liang 1987), 5% point qchisq(0.90, 1).
+# The rebuild classifies each pair from these outputs and verify_atlas.py
+# checks the nesting (boundary iff epsilon at rho < 1 - rho / rho').
+#
+# The family fit below is reported beside the uniform fit, not compared with
+# it: the two likelihoods carry different probabilities of sampling the same
+# tips (prod f_i against rho^n), terms that do not depend on the rates, and
+# the family fractions are computed from the tips themselves; their
+# difference is not a model comparison.
 #
 # NON-UNIFORM SAMPLING.  rho = tips/described assumes every species is in the
 # tree with the same probability.  The deposit contradicts that (the
@@ -101,7 +117,6 @@ root <- if (length(args)) args[1] else {
 P <- function(...) file.path(root, ...)
 
 CUTOFF <- qchisq(0.95, 1) / 2      # profile-likelihood 95% interval
-CUTOFF_BOUNDARY <- qchisq(0.90, 1) / 2  # one-sided 95%, 50:50 chi2(0):chi2(1)
 EPS_BOUNDARY <- 1e-6               # an epsilon MLE below this is on the boundary
 EPS_MAX <- 1 - 1e-9                # epsilon < 1 (mu < lambda)
 # phytools::fit.bd (the cross-check) exhausts 16 GB above ~1e4 tips; it is run
@@ -257,8 +272,7 @@ profile_ci <- function(x, rho, m, which, ll = function(r, e) loglik(r, e, x, rho
     -o$objective
   }
   at <- if (which == "r") m$r else m$eps
-  cut <- if (which == "eps" && at < EPS_BOUNDARY) CUTOFF_BOUNDARY else CUTOFF
-  g <- function(v) m$ll - prof(v) - cut
+  g <- function(v) m$ll - prof(v) - CUTOFF
   lo <- hi <- NA
   if (which == "r") {
     lo <- tryCatch(uniroot(g, c(at * 1e-3, at))$root, error = function(e) NA)
@@ -324,7 +338,7 @@ for (i in seq_len(nrow(elig))) {
       r = signif(m$r, 6), r_lo = signif(ci_r[1], 6), r_hi = signif(ci_r[2], 6),
       epsilon = signif(m$eps, 6), epsilon_lo = signif(ci_e[1], 6),
       epsilon_hi = signif(ci_e[2], 6),
-      epsilon_ci = if (m$eps < EPS_BOUNDARY) "one-sided boundary" else "two-sided",
+      epsilon_ci = if (m$eps < EPS_BOUNDARY) "estimate at 0" else "interior",
       loglik = round(m$ll, 4),
       n_tips_family_fraction = n_tip_family,
       family_uniform_check = signif(uni_check, 3),

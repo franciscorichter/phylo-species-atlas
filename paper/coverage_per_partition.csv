@@ -11,7 +11,7 @@ Turtles,Vertebrates,360,256,1.000000,1.000000,1.000000,asserted_no_imputation,71
 Ferns,Plants,12000,6097,1.000000,1.000000,1.000000,source_alignment_intersection,50.8083,50.8083,yes,0.000000,,,primary_analysis
 Cephalopods,Other animals,800,80,1.000000,1.000000,1.000000,source_alignment_intersection,10.0000,10.0000,yes,0.000000,,,primary_analysis
 Bryozoa,Other animals,6000,337,1.000000,1.000000,1.000000,source_alignment_intersection,5.6167,5.6167,no,0.617648,,,primary_analysis
-Insects,Arthropods,1000000,42079,1.000000,1.000000,1.000000,source_alignment_intersection,4.2079,4.2079,no,0.000002,,,compiled
+Insects,Arthropods,1000000,42078,1.000000,1.000000,1.000000,source_alignment_intersection,4.2078,4.2078,no,0.000002,,,compiled
 Cnidaria,Other animals,11800,258,1.000000,1.000000,1.000000,per_tip_evidence,2.1864,2.1864,yes,0.000000,node_hpd_annotation,,primary_analysis
 Bryophytes,Plants,24000,505,1.000000,1.000000,1.000000,source_alignment_intersection,2.1042,2.1042,yes,0.000000,,,primary_analysis
 Spiders,Arthropods,52249,888,1.000000,1.000000,1.000000,asserted_no_imputation,1.6996,1.6996,yes,0.000000,,,primary_analysis

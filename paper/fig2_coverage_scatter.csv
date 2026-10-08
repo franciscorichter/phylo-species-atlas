@@ -1,5 +1,5 @@
 partition,category,described,c0_units,f_mol,f_low,f_high,f_basis,coverage_C0_pct,coverage_C1_pct,topology_assembly,is_chronogram,label
-Insects,Arthropods,1000000,42079,1.000000,1.000000,1.000000,source_alignment_intersection,4.2079,4.2079,compiled,no,Insects
+Insects,Arthropods,1000000,42078,1.000000,1.000000,1.000000,source_alignment_intersection,4.2078,4.2078,compiled,no,Insects
 Seed plants,Plants,383671,279049,0.219808,0.219808,0.219808,source_tree_intersection,72.7313,18.4332,primary_analysis,yes,Seed plants
 Fungi,Microbes & protists,155000,1396,1.000000,1.000000,1.000000,source_alignment_intersection,0.9006,0.9006,primary_analysis,no,Fungi
 Crustaceans,Arthropods,77000,65,1.000000,1.000000,1.000000,per_tip_evidence,0.0844,0.0844,primary_analysis,no,Crustaceans

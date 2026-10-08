@@ -4,11 +4,11 @@ Published species-level phylogenies of eukaryotes, redistributed with numeric ti
 name layer resolved to the Catalogue of Life, and the registers from which the coverage of
 described species by these trees is counted. It is the data and code of the paper
 
-> Richter F. *Coverage of described eukaryotic species by the largest species-level phylogeny of
-> each group: molecular data, dates and date uncertainty.* bioRxiv,
+> Richter F. *Described eukaryotic species in published species-level phylogenies: placement by molecular data, dates and date uncertainty.* bioRxiv,
 > doi:[10.64898/2026.05.31.729127](https://doi.org/10.64898/2026.05.31.729127).
 
-Every number in the text, tables and figures of the paper is recomputed from this repository by
+Every number in the text, tables and figures of the paper and of its Supplement is recomputed
+from this repository by
 
 ```sh
 python3 scripts/reproduce_paper.py
@@ -73,7 +73,7 @@ How each level is decided, tip by tip:
 ## Reproducing the paper
 
 ```sh
-python3 scripts/reproduce_paper.py            # about 15 s; exits 0 when every number agrees
+python3 scripts/reproduce_paper.py            # under a minute; exits 0 when every number agrees
 python3 scripts/reproduce_paper.py --quiet    # failures and summary only
 ```
 
@@ -88,7 +88,9 @@ pipeline, and checks:
   losses between levels, every sensitivity analysis the paper prints, the crown ages and the interval
   classification, the Open Tree comparison, and the inputs of the worked example;
 - every number printed in the text (all macros of `paper/*_macros.tex`), the three main-text
-  tables cell by cell, and the data of Figures 1 to 5.
+  tables cell by cell, and the data of Figures 1 to 5;
+- every table of Supplement S1 to S10 cell by cell (`paper/supp_*.csv`, with the counts its
+  `.tex` twin prints) and every number the Supplement's text prints (`paper/supp_macros.tex`).
 
 The birth-death fits of the worked example are made in R:
 

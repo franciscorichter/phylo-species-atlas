@@ -1,0 +1,307 @@
+file,reference,changed,branch_lengths,branch_lengths_restored,internal_labels_restored
+Data/site/data/partitions/amphibians/sub-phylos/frogs/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/amphibians/sub-phylos/salamanders/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/amphibians/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/archaea/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/bacteria/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/birds/sub-phylos/parrots/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/birds/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/bivalves/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/bryophytes/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/bryozoa/uncertainty/multi-individual.tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/cephalopods/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/cnidaria/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/crustaceans/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/echinoderms/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/ferns/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/fish/sub-phylos/neotropical_fish/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/fish/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/fungi/uncertainty/multi-individual.tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/gastropods/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/insects/sub-phylos/ants/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/insects/sub-phylos/bees/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/insects/sub-phylos/butterflies/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/insects/sub-phylos/hemiptera/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/insects/sub-phylos/termites/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/insects/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/mammals/sub-phylos/cetaceans/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/mammals/sub-phylos/primates/uncertainty/multi-individual.tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/mammals/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/nematodes/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/seed_plants/sub-phylos/asteraceae/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/seed_plants/sub-phylos/cacti/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/seed_plants/sub-phylos/conifers/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/seed_plants/sub-phylos/eucalyptus/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/seed_plants/sub-phylos/grasses/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/seed_plants/sub-phylos/orchids/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/seed_plants/sub-phylos/solanaceae/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/seed_plants/uncertainty/multi-individual.tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/sharks/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/spiders/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/sponges/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/squamates/tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/site/data/partitions/turtles/uncertainty/multi-individual.tree.nwk,(copy of the restored shipped tree),yes,,,
+Data/standardized/trees/amphibians.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/amphibians.nwk,yes,11134,1480,0
+Data/standardized/trees/ants.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/ants.nwk,yes,164,20,0
+Data/standardized/trees/archaea.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/archaea.nwk,yes,13934,13839,0
+Data/standardized/trees/asteraceae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/asteraceae.nwk,yes,509,427,0
+Data/standardized/trees/bacteria.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/bacteria.nwk,yes,273290,272038,0
+Data/standardized/trees/bees.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/bees.nwk,yes,9170,5832,0
+Data/standardized/trees/birds.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/birds.nwk,yes,21647,12491,0
+Data/standardized/trees/bivalves.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/bivalves.nwk,yes,70,9,0
+Data/standardized/trees/bryophytes.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/bryophytes.nwk,yes,1064,119,0
+Data/standardized/trees/bryozoa.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/bryozoa.nwk,yes,1437,840,0
+Data/standardized/trees/butterflies.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/butterflies.nwk,yes,4515,2765,0
+Data/standardized/trees/cacti.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/cacti.nwk,yes,2124,995,0
+Data/standardized/trees/carnivora.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/carnivora.nwk,no,565,0,0
+Data/standardized/trees/cephalopods.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/cephalopods.nwk,yes,161,13,0
+Data/standardized/trees/cetaceans.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/cetaceans.nwk,yes,168,167,0
+Data/standardized/trees/condamine_Acanthizidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Acanthizidae.nwk,yes,124,16,0
+Data/standardized/trees/condamine_Accipitridae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Accipitridae.nwk,yes,482,44,0
+Data/standardized/trees/condamine_Acrocephalidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Acrocephalidae.nwk,yes,102,17,0
+Data/standardized/trees/condamine_Aegithalidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Aegithalidae.nwk,yes,18,1,0
+Data/standardized/trees/condamine_Alaudidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Alaudidae.nwk,yes,180,19,0
+Data/standardized/trees/condamine_Alcedinidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Alcedinidae.nwk,yes,180,18,0
+Data/standardized/trees/condamine_Alcidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Alcidae.nwk,yes,44,3,0
+Data/standardized/trees/condamine_Alsodidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Alsodidae.nwk,yes,39,36,3
+Data/standardized/trees/condamine_Alytidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Alytidae.nwk,yes,19,17,1
+Data/standardized/trees/condamine_Anatidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Anatidae.nwk,yes,312,40,0
+Data/standardized/trees/condamine_Apodidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Apodidae.nwk,yes,196,22,0
+Data/standardized/trees/condamine_Ardeidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Ardeidae.nwk,yes,120,13,0
+Data/standardized/trees/condamine_Artamidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Artamidae.nwk,no,20,0,0
+Data/standardized/trees/condamine_Atelidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Atelidae.nwk,yes,46,3,0
+Data/standardized/trees/condamine_Bathyergidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Bathyergidae.nwk,yes,26,3,0
+Data/standardized/trees/condamine_Bernieridae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Bernieridae.nwk,no,20,0,0
+Data/standardized/trees/condamine_Bombinatoridae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Bombinatoridae.nwk,yes,19,17,2
+Data/standardized/trees/condamine_Bovidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Bovidae.nwk,yes,274,31,0
+Data/standardized/trees/condamine_Bucconidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Bucconidae.nwk,yes,68,9,0
+Data/standardized/trees/condamine_Bucerotidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Bucerotidae.nwk,yes,108,8,0
+Data/standardized/trees/condamine_Cacatuidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Cacatuidae.nwk,yes,40,2,0
+Data/standardized/trees/condamine_Caecilidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Caecilidae.nwk,yes,61,49,5
+Data/standardized/trees/condamine_Campephagidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Campephagidae.nwk,yes,158,22,0
+Data/standardized/trees/condamine_Canidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Canidae.nwk,yes,66,9,0
+Data/standardized/trees/condamine_Capitonidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Capitonidae.nwk,yes,26,1,0
+Data/standardized/trees/condamine_Caprimulgidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Caprimulgidae.nwk,yes,174,22,0
+Data/standardized/trees/condamine_Capromyidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Capromyidae.nwk,yes,26,1,0
+Data/standardized/trees/condamine_Cardinalidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Cardinalidae.nwk,yes,134,15,0
+Data/standardized/trees/condamine_Caviidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Caviidae.nwk,yes,30,5,0
+Data/standardized/trees/condamine_Cebidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Cebidae.nwk,yes,94,10,0
+Data/standardized/trees/condamine_Cercopithecidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Cercopithecidae.nwk,yes,252,37,0
+Data/standardized/trees/condamine_Certhiidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Certhiidae.nwk,yes,18,3,0
+Data/standardized/trees/condamine_Cervidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Cervidae.nwk,yes,88,9,0
+Data/standardized/trees/condamine_Cettiidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Cettiidae.nwk,yes,62,6,0
+Data/standardized/trees/condamine_Chamaeleonidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Chamaeleonidae.nwk,yes,283,191,0
+Data/standardized/trees/condamine_Charadriidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Charadriidae.nwk,yes,126,10,0
+Data/standardized/trees/condamine_Cheirogaleidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Cheirogaleidae.nwk,yes,28,5,0
+Data/standardized/trees/condamine_Chloropseidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Chloropseidae.nwk,yes,20,2,0
+Data/standardized/trees/condamine_Chrysochloridae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Chrysochloridae.nwk,yes,32,7,0
+Data/standardized/trees/condamine_Ciconiidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Ciconiidae.nwk,yes,36,2,0
+Data/standardized/trees/condamine_Cisticolidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Cisticolidae.nwk,yes,282,31,0
+Data/standardized/trees/condamine_Colubridae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Colubridae.nwk,yes,1077,727,0
+Data/standardized/trees/condamine_Columbidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Columbidae.nwk,yes,610,70,0
+Data/standardized/trees/condamine_Conopophagidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Conopophagidae.nwk,yes,20,1,0
+Data/standardized/trees/condamine_Coraciidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Coraciidae.nwk,yes,22,1,0
+Data/standardized/trees/condamine_Cordylidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Cordylidae.nwk,yes,83,54,0
+Data/standardized/trees/condamine_Corvidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Corvidae.nwk,yes,238,19,0
+Data/standardized/trees/condamine_Cotingidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Cotingidae.nwk,yes,128,14,0
+Data/standardized/trees/condamine_Cracidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Cracidae.nwk,yes,98,11,0
+Data/standardized/trees/condamine_Cracticidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Cracticidae.nwk,yes,22,5,0
+Data/standardized/trees/condamine_Cricetidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Cricetidae.nwk,yes,1238,148,0
+Data/standardized/trees/condamine_Crocodylia.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Crocodylia.nwk,yes,48,4,0
+Data/standardized/trees/condamine_Crotaphytidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Crotaphytidae.nwk,yes,21,10,0
+Data/standardized/trees/condamine_Ctenomyidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Ctenomyidae.nwk,yes,100,16,0
+Data/standardized/trees/condamine_Cuculidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Cuculidae.nwk,yes,274,29,0
+Data/standardized/trees/condamine_Dasypodidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Dasypodidae.nwk,yes,38,1,0
+Data/standardized/trees/condamine_Dasyproctidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Dasyproctidae.nwk,yes,24,4,0
+Data/standardized/trees/condamine_Dasyuridae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Dasyuridae.nwk,yes,124,11,0
+Data/standardized/trees/condamine_Delphinidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Delphinidae.nwk,yes,66,7,0
+Data/standardized/trees/condamine_Dicaeidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Dicaeidae.nwk,yes,88,6,0
+Data/standardized/trees/condamine_Dicruridae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Dicruridae.nwk,yes,46,10,0
+Data/standardized/trees/condamine_Didelphidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Didelphidae.nwk,yes,166,13,0
+Data/standardized/trees/condamine_Diomedeidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Diomedeidae.nwk,yes,40,3,0
+Data/standardized/trees/condamine_Dipodidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Dipodidae.nwk,yes,100,13,0
+Data/standardized/trees/condamine_Echimyidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Echimyidae.nwk,yes,136,16,0
+Data/standardized/trees/condamine_Eleutherodactylidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Eleutherodactylidae.nwk,yes,289,267,13
+Data/standardized/trees/condamine_Emballonuridae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Emballonuridae.nwk,yes,96,1,0
+Data/standardized/trees/condamine_Emberizidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Emberizidae.nwk,yes,324,36,0
+Data/standardized/trees/condamine_Erethizontidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Erethizontidae.nwk,no,26,0,0
+Data/standardized/trees/condamine_Erinaceidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Erinaceidae.nwk,yes,42,1,0
+Data/standardized/trees/condamine_Estrildidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Estrildidae.nwk,yes,278,31,0
+Data/standardized/trees/condamine_Eurylaimidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Eurylaimidae.nwk,yes,38,3,0
+Data/standardized/trees/condamine_Falconidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Falconidae.nwk,yes,126,12,0
+Data/standardized/trees/condamine_Felidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Felidae.nwk,yes,78,7,0
+Data/standardized/trees/condamine_Formicariidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Formicariidae.nwk,yes,22,3,0
+Data/standardized/trees/condamine_Fringillidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Fringillidae.nwk,yes,386,41,0
+Data/standardized/trees/condamine_Furnariidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Furnariidae.nwk,yes,602,73,0
+Data/standardized/trees/condamine_Galagidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Galagidae.nwk,no,34,0,0
+Data/standardized/trees/condamine_Galbulidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Galbulidae.nwk,yes,34,1,0
+Data/standardized/trees/condamine_Geomyidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Geomyidae.nwk,yes,74,7,0
+Data/standardized/trees/condamine_Gerrhosauridae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Gerrhosauridae.nwk,yes,55,35,0
+Data/standardized/trees/condamine_Glareolidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Glareolidae.nwk,yes,32,2,0
+Data/standardized/trees/condamine_Gliridae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Gliridae.nwk,yes,52,3,0
+Data/standardized/trees/condamine_Grallariidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Grallariidae.nwk,yes,96,12,0
+Data/standardized/trees/condamine_Gruidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Gruidae.nwk,yes,28,6,0
+Data/standardized/trees/condamine_Haematopodidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Haematopodidae.nwk,yes,20,2,0
+Data/standardized/trees/condamine_Herpestidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Herpestidae.nwk,yes,64,4,0
+Data/standardized/trees/condamine_Heteromyidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Heteromyidae.nwk,yes,114,7,0
+Data/standardized/trees/condamine_Hipposideridae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Hipposideridae.nwk,yes,146,13,0
+Data/standardized/trees/condamine_Hirundinidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Hirundinidae.nwk,yes,164,17,0
+Data/standardized/trees/condamine_Hydrobatidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Hydrobatidae.nwk,yes,42,9,0
+Data/standardized/trees/condamine_Hylobatidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Hylobatidae.nwk,yes,26,1,0
+Data/standardized/trees/condamine_Hynobiidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Hynobiidae.nwk,yes,91,82,4
+Data/standardized/trees/condamine_Hystricidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Hystricidae.nwk,yes,20,1,0
+Data/standardized/trees/condamine_Icteridae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Icteridae.nwk,yes,202,20,0
+Data/standardized/trees/condamine_Iguanidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Iguanidae.nwk,yes,61,38,0
+Data/standardized/trees/condamine_Indicatoridae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Indicatoridae.nwk,yes,32,12,0
+Data/standardized/trees/condamine_Indriidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Indriidae.nwk,yes,18,1,0
+Data/standardized/trees/condamine_Laniidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Laniidae.nwk,yes,56,3,0
+Data/standardized/trees/condamine_Laridae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Laridae.nwk,yes,196,28,0
+Data/standardized/trees/condamine_Leiothrichidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Leiothrichidae.nwk,yes,252,28,0
+Data/standardized/trees/condamine_Lemuridae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Lemuridae.nwk,yes,36,3,0
+Data/standardized/trees/condamine_Leporidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Leporidae.nwk,yes,114,4,0
+Data/standardized/trees/condamine_Locustellidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Locustellidae.nwk,yes,104,9,0
+Data/standardized/trees/condamine_Lybiidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Lybiidae.nwk,yes,80,14,0
+Data/standardized/trees/condamine_Macropodidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Macropodidae.nwk,yes,110,11,0
+Data/standardized/trees/condamine_Macroscelididae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Macroscelididae.nwk,yes,28,3,0
+Data/standardized/trees/condamine_Macrosphenidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Macrosphenidae.nwk,yes,34,2,0
+Data/standardized/trees/condamine_Malaconotidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Malaconotidae.nwk,yes,90,13,0
+Data/standardized/trees/condamine_Maluridae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Maluridae.nwk,yes,52,6,0
+Data/standardized/trees/condamine_Megalaimidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Megalaimidae.nwk,yes,54,6,0
+Data/standardized/trees/condamine_Megapodiidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Megapodiidae.nwk,yes,40,7,0
+Data/standardized/trees/condamine_Melanocharitidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Melanocharitidae.nwk,yes,18,3,0
+Data/standardized/trees/condamine_Meliphagidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Meliphagidae.nwk,yes,352,36,0
+Data/standardized/trees/condamine_Mephitidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Mephitidae.nwk,yes,22,1,0
+Data/standardized/trees/condamine_Meropidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Meropidae.nwk,yes,50,7,0
+Data/standardized/trees/condamine_Mimidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Mimidae.nwk,yes,66,2,0
+Data/standardized/trees/condamine_Molossidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Molossidae.nwk,yes,194,17,0
+Data/standardized/trees/condamine_Momotidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Momotidae.nwk,yes,18,1,0
+Data/standardized/trees/condamine_Monarchidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Monarchidae.nwk,yes,172,30,0
+Data/standardized/trees/condamine_Motacillidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Motacillidae.nwk,yes,122,12,0
+Data/standardized/trees/condamine_Muridae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Muridae.nwk,yes,1358,149,0
+Data/standardized/trees/condamine_Muscicapidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Muscicapidae.nwk,yes,556,61,0
+Data/standardized/trees/condamine_Musophagidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Musophagidae.nwk,yes,44,1,0
+Data/standardized/trees/condamine_Mustelidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Mustelidae.nwk,yes,116,9,0
+Data/standardized/trees/condamine_Nectariniidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Nectariniidae.nwk,yes,252,33,0
+Data/standardized/trees/condamine_Nesomyidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Nesomyidae.nwk,yes,108,16,0
+Data/standardized/trees/condamine_Nycteridae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Nycteridae.nwk,yes,30,5,0
+Data/standardized/trees/condamine_Ochotonidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Ochotonidae.nwk,yes,54,2,0
+Data/standardized/trees/condamine_Octodontidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Octodontidae.nwk,yes,18,3,0
+Data/standardized/trees/condamine_Odontophoridae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Odontophoridae.nwk,yes,66,10,0
+Data/standardized/trees/condamine_Oriolidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Oriolidae.nwk,yes,58,5,0
+Data/standardized/trees/condamine_Otariidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Otariidae.nwk,yes,30,7,0
+Data/standardized/trees/condamine_Otididae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Otididae.nwk,yes,48,2,0
+Data/standardized/trees/condamine_Pachycephalidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Pachycephalidae.nwk,yes,98,12,0
+Data/standardized/trees/condamine_Paradisaeidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Paradisaeidae.nwk,yes,78,6,0
+Data/standardized/trees/condamine_Paridae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Paridae.nwk,yes,104,15,0
+Data/standardized/trees/condamine_Parulidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Parulidae.nwk,yes,216,18,0
+Data/standardized/trees/condamine_Passeridae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Passeridae.nwk,yes,94,8,0
+Data/standardized/trees/condamine_Pellorneidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Pellorneidae.nwk,yes,130,15,0
+Data/standardized/trees/condamine_Peramelidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Peramelidae.nwk,yes,32,3,0
+Data/standardized/trees/condamine_Petauridae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Petauridae.nwk,yes,20,1,0
+Data/standardized/trees/condamine_Petroicidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Petroicidae.nwk,yes,86,12,0
+Data/standardized/trees/condamine_Phalacrocoracidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Phalacrocoracidae.nwk,yes,64,6,0
+Data/standardized/trees/condamine_Phalangeridae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Phalangeridae.nwk,yes,42,1,0
+Data/standardized/trees/condamine_Phasianidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Phasianidae.nwk,yes,350,36,0
+Data/standardized/trees/condamine_Phocidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Phocidae.nwk,yes,34,5,0
+Data/standardized/trees/condamine_Phrynosomatidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Phrynosomatidae.nwk,yes,227,160,0
+Data/standardized/trees/condamine_Phylloscopidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Phylloscopidae.nwk,yes,140,13,0
+Data/standardized/trees/condamine_Phyllostomidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Phyllostomidae.nwk,yes,298,17,0
+Data/standardized/trees/condamine_Picidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Picidae.nwk,yes,444,49,0
+Data/standardized/trees/condamine_Pipidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Pipidae.nwk,yes,45,43,4
+Data/standardized/trees/condamine_Pipridae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Pipridae.nwk,yes,102,14,0
+Data/standardized/trees/condamine_Pitheciidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Pitheciidae.nwk,yes,72,5,0
+Data/standardized/trees/condamine_Pittidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Pittidae.nwk,yes,60,6,0
+Data/standardized/trees/condamine_Platysteiridae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Platysteiridae.nwk,yes,58,4,0
+Data/standardized/trees/condamine_Plethodontidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Plethodontidae.nwk,yes,555,524,17
+Data/standardized/trees/condamine_Ploceidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Ploceidae.nwk,yes,214,33,0
+Data/standardized/trees/condamine_Podargidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Podargidae.nwk,no,28,0,0
+Data/standardized/trees/condamine_Podicipedidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Podicipedidae.nwk,no,36,0,0
+Data/standardized/trees/condamine_Polioptilidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Polioptilidae.nwk,yes,28,6,0
+Data/standardized/trees/condamine_Procellariidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Procellariidae.nwk,yes,160,13,0
+Data/standardized/trees/condamine_Procyonidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Procyonidae.nwk,yes,26,2,0
+Data/standardized/trees/condamine_Prunellidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Prunellidae.nwk,yes,24,2,0
+Data/standardized/trees/condamine_Pseudocheiridae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Pseudocheiridae.nwk,yes,30,1,0
+Data/standardized/trees/condamine_Psittacidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Psittacidae.nwk,yes,658,63,0
+Data/standardized/trees/condamine_Psophodidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Psophodidae.nwk,yes,24,5,0
+Data/standardized/trees/condamine_Pteroclidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Pteroclidae.nwk,yes,30,5,0
+Data/standardized/trees/condamine_Pteropodidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Pteropodidae.nwk,yes,346,38,0
+Data/standardized/trees/condamine_Ptilonorhynchidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Ptilonorhynchidae.nwk,yes,36,1,0
+Data/standardized/trees/condamine_Pycnonotidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Pycnonotidae.nwk,yes,246,31,0
+Data/standardized/trees/condamine_Pythonidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Pythonidae.nwk,yes,51,34,0
+Data/standardized/trees/condamine_Rallidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Rallidae.nwk,yes,248,32,0
+Data/standardized/trees/condamine_Ramphastidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Ramphastidae.nwk,yes,68,7,0
+Data/standardized/trees/condamine_Ranidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Ranidae.nwk,yes,435,398,14
+Data/standardized/trees/condamine_Remizidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Remizidae.nwk,yes,22,2,0
+Data/standardized/trees/condamine_Rhinocryptidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Rhinocryptidae.nwk,yes,104,12,0
+Data/standardized/trees/condamine_Rhinolophidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Rhinolophidae.nwk,yes,144,22,0
+Data/standardized/trees/condamine_Rhipiduridae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Rhipiduridae.nwk,yes,82,2,0
+Data/standardized/trees/condamine_Salamandridae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Salamandridae.nwk,yes,83,54,0
+Data/standardized/trees/condamine_Sciuridae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Sciuridae.nwk,yes,550,53,0
+Data/standardized/trees/condamine_Scolopacidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Scolopacidae.nwk,yes,176,32,0
+Data/standardized/trees/condamine_Sittidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Sittidae.nwk,yes,46,4,0
+Data/standardized/trees/condamine_Soricidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Soricidae.nwk,yes,656,65,0
+Data/standardized/trees/condamine_Spalacidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Spalacidae.nwk,yes,60,4,0
+Data/standardized/trees/condamine_Spheniscidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Spheniscidae.nwk,yes,34,7,0
+Data/standardized/trees/condamine_Strigidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Strigidae.nwk,yes,380,58,0
+Data/standardized/trees/condamine_Sturnidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Sturnidae.nwk,yes,216,31,0
+Data/standardized/trees/condamine_Suidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Suidae.nwk,yes,34,2,0
+Data/standardized/trees/condamine_Sulidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Sulidae.nwk,yes,18,7,0
+Data/standardized/trees/condamine_Sylviidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Sylviidae.nwk,yes,122,13,0
+Data/standardized/trees/condamine_Talpidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Talpidae.nwk,yes,76,4,0
+Data/standardized/trees/condamine_Tenrecidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Tenrecidae.nwk,yes,48,5,0
+Data/standardized/trees/condamine_Testudines.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Testudines.nwk,yes,464,31,0
+Data/standardized/trees/condamine_Thamnophilidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Thamnophilidae.nwk,yes,436,45,0
+Data/standardized/trees/condamine_Thraupidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Thraupidae.nwk,yes,738,102,0
+Data/standardized/trees/condamine_Threskiornithidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Threskiornithidae.nwk,yes,66,4,0
+Data/standardized/trees/condamine_Timaliidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Timaliidae.nwk,yes,108,11,0
+Data/standardized/trees/condamine_Tinamidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Tinamidae.nwk,yes,92,12,0
+Data/standardized/trees/condamine_Tityridae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Tityridae.nwk,yes,80,10,0
+Data/standardized/trees/condamine_Trochilidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Trochilidae.nwk,yes,666,85,0
+Data/standardized/trees/condamine_Troglodytidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Troglodytidae.nwk,yes,156,10,0
+Data/standardized/trees/condamine_Trogonidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Trogonidae.nwk,yes,82,6,0
+Data/standardized/trees/condamine_Tupaiidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Tupaiidae.nwk,yes,36,3,0
+Data/standardized/trees/condamine_Turdidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Turdidae.nwk,yes,338,35,0
+Data/standardized/trees/condamine_Turnicidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Turnicidae.nwk,yes,30,3,0
+Data/standardized/trees/condamine_Tyrannidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Tyrannidae.nwk,yes,836,98,0
+Data/standardized/trees/condamine_Tytonidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Tytonidae.nwk,yes,28,1,0
+Data/standardized/trees/condamine_Vangidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Vangidae.nwk,yes,40,9,0
+Data/standardized/trees/condamine_Varanidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Varanidae.nwk,yes,105,72,0
+Data/standardized/trees/condamine_Vespertilionidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Vespertilionidae.nwk,yes,770,68,0
+Data/standardized/trees/condamine_Viduidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Viduidae.nwk,yes,38,3,0
+Data/standardized/trees/condamine_Viperidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Viperidae.nwk,yes,417,275,0
+Data/standardized/trees/condamine_Vireonidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Vireonidae.nwk,yes,114,20,0
+Data/standardized/trees/condamine_Viverridae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Viverridae.nwk,yes,66,1,0
+Data/standardized/trees/condamine_Xantusiidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Xantusiidae.nwk,yes,51,42,0
+Data/standardized/trees/condamine_Ziphiidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Ziphiidae.nwk,yes,38,2,0
+Data/standardized/trees/condamine_Zosteropidae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/condamine_Zosteropidae.nwk,yes,238,33,0
+Data/standardized/trees/conifers.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/conifers.nwk,yes,30,21,0
+Data/standardized/trees/corals.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/corals.nwk,yes,577,68,0
+Data/standardized/trees/crustaceans.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/crustaceans.nwk,yes,186,185,0
+Data/standardized/trees/diatoms.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/diatoms.nwk,yes,186,17,0
+Data/standardized/trees/echinoderms.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/echinoderms.nwk,yes,130,91,37
+Data/standardized/trees/eucalyptus.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/eucalyptus.nwk,yes,795,795,0
+Data/standardized/trees/eukaryotes.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/eukaryotes.nwk,yes,197,175,0
+Data/standardized/trees/ferns.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/ferns.nwk,yes,12466,9094,0
+Data/standardized/trees/fish.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/fish.nwk,yes,23274,16056,0
+Data/standardized/trees/frogs.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/frogs.nwk,yes,10650,6929,0
+Data/standardized/trees/fungi.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/fungi.nwk,yes,3341,2602,0
+Data/standardized/trees/gastropods.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/gastropods.nwk,yes,106,77,0
+Data/standardized/trees/grasses.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/grasses.nwk,yes,2304,2304,0
+Data/standardized/trees/hemiptera.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/hemiptera.nwk,yes,383,269,0
+Data/standardized/trees/insects.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/insects.nwk,yes,107189,107161,0
+Data/standardized/trees/mammals.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/mammals.nwk,yes,11822,1252,0
+Data/standardized/trees/nematodes.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/nematodes.nwk,yes,329,196,0
+Data/standardized/trees/neotropical_fish.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/neotropical_fish.nwk,yes,6331,4418,0
+Data/standardized/trees/orchids.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/orchids.nwk,yes,2948,2316,0
+Data/standardized/trees/parrots.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/parrots.nwk,yes,724,553,0
+Data/standardized/trees/primates.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/primates.nwk,yes,594,416,0
+Data/standardized/trees/salamanders.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/salamanders.nwk,yes,1590,1065,0
+Data/standardized/trees/seed_plants.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/seed_plants.nwk,yes,440711,376154,0
+Data/standardized/trees/sharks.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/sharks.nwk,yes,2382,259,0
+Data/standardized/trees/solanaceae.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/solanaceae.nwk,yes,2150,199,0
+Data/standardized/trees/spiders.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/spiders.nwk,yes,2910,1329,0
+Data/standardized/trees/sponges.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/sponges.nwk,yes,238,139,62
+Data/standardized/trees/squamates.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/squamates.nwk,yes,15460,1939,0
+Data/standardized/trees/termites.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/termites.nwk,yes,263,236,0
+Data/standardized/trees/timetree.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/timetree.nwk,yes,101264,44293,0
+Data/standardized/trees/turtles.nwk,Paper/archived/wrong_root_standardized_20260512_012852/trees/turtles.nwk,yes,1165,1162,441

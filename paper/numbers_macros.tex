@@ -36,6 +36,9 @@
 \newcommand{\SeedPlantsShareCOne}{45.0}
 \newcommand{\SeedPlantsShareCOneD}{62.5}
 \newcommand{\SeedPlantsShareCOneB}{0.00}
+\newcommand{\ExclSeedPlantsCZeroPct}{6.6}
+\newcommand{\ExclSeedPlantsCOnePct}{4.9}
+\newcommand{\ExclSeedPlantsCOneDPct}{2.4}
 \newcommand{\CatVertebratesCZeroPct}{84.3}
 \newcommand{\CatVertebratesCOnePct}{45.1}
 \newcommand{\CatVertebratesCOneDPct}{45.1}
@@ -51,7 +54,7 @@
 \newcommand{\CatMicrobesProtistsCZeroPct}{0.69}
 \newcommand{\CatMicrobesProtistsCOnePct}{0.69}
 \newcommand{\CatMicrobesProtistsCOneDPct}{0.02}
-\newcommand{\TipsNotNamedN}{85{,}711}
+\newcommand{\TipsNotNamedN}{85{,}712}
 \newcommand{\SensTipsCZeroPct}{22.3}
 \newcommand{\TipsNotNamedAmphibians}{291}
 \newcommand{\TipsNotNamedBirds}{355}
@@ -68,7 +71,7 @@
 \newcommand{\TipsNotNamedFish}{374}
 \newcommand{\TipsNotNamedFungi}{224}
 \newcommand{\TipsNotNamedGastropods}{1}
-\newcommand{\TipsNotNamedInsects}{11{,}294}
+\newcommand{\TipsNotNamedInsects}{11{,}295}
 \newcommand{\TipsNotNamedMammals}{286}
 \newcommand{\TipsNotNamedNematodes}{55}
 \newcommand{\TipsNotNamedSeedPlants}{69{,}837}
@@ -85,7 +88,7 @@
 \newcommand{\StudyDatingRelativeN}{2}
 \newcommand{\StudyDatingNotDatedN}{1}
 \newcommand{\LabelsEukN}{481{,}229}
-\newcommand{\UnresolvedLabelsN}{55{,}192}
+\newcommand{\UnresolvedLabelsN}{55{,}193}
 \newcommand{\UnresolvedLabelsPct}{11.5}
 \newcommand{\SensGbifSpeciesAdded}{27{,}834}
 \newcommand{\SensGbifCZeroPct}{19.6}
@@ -116,13 +119,14 @@
 \newcommand{\OTKeysBoth}{100{,}583}
 \newcommand{\OTKeysMolecular}{174{,}256}
 \newcommand{\OTKeysMolecularAndOT}{74{,}935}
-\newcommand{\OTAccMolecular}{156{,}038}
+\newcommand{\OTAccMolecular}{156{,}037}
 \newcommand{\OTAccMolecularAndOT}{74{,}000}
-\newcommand{\OTAccMolecularNotOT}{82{,}038}
+\newcommand{\OTAccMolecularNotOT}{82{,}037}
 \newcommand{\OTAccMolecularAndOTPct}{47.4}
 \newcommand{\OTNPartitionsCompared}{21}
 \newcommand{\CrownNChron}{18}
 \newcommand{\CrownNCounted}{7}
+\newcommand{\CrownNamesCounted}{Amphibians, Cnidaria, Echinoderms, Gastropods, Mammals, Squamates and Turtles}
 \newcommand{\CrownExclAtBound}{1}
 \newcommand{\CrownExclDegenerate}{1}
 \newcommand{\CrownExclKind}{2}
@@ -170,6 +174,7 @@
 \newcommand{\WEScaleMin}{0.95}
 \newcommand{\WEScaleMax}{1.04}
 \newcommand{\WENEligible}{7}
+\newcommand{\WENamesEligible}{Amphibians, Birds, Fish, Mammals, Seed plants, Sharks and Squamates}
 \newcommand{\WENIdentity}{4}
 \newcommand{\WENBoundary}{3}
 \newcommand{\WENRejected}{3}
@@ -177,9 +182,10 @@
 \newcommand{\WENFullSmaller}{4}
 \newcommand{\WENFullOverlap}{3}
 \newcommand{\WENFamilyOverlap}{5}
-\newcommand{\WENFamilyBetter}{4}
-\newcommand{\WENFamilyWorse}{3}
+\newcommand{\WENFamilyEpsLower}{6}
+\newcommand{\WENFamilyEpsHigher}{1}
 \newcommand{\RuleLRCritical}{2.71}
+\newcommand{\RuleTestLevelPct}{5}
 \newcommand{\WERhoTipsAmphibians}{0.46}
 \newcommand{\WERhoFullAmphibians}{0.82}
 \newcommand{\WEEpsTipsAmphibians}{0.33}
@@ -190,7 +196,7 @@
 \newcommand{\WERMolAmphibians}{0.041}
 \newcommand{\WERRatioAmphibians}{0.82}
 \newcommand{\WEEpsFamilyAmphibians}{0.24}
-\newcommand{\WEFamilyDLLAmphibians}{110.5}
+\newcommand{\WERFamilyAmphibians}{0.043}
 \newcommand{\WERhoTipsBirds}{0.83}
 \newcommand{\WERhoFullBirds}{0.97}
 \newcommand{\WEEpsTipsBirds}{0.08}
@@ -201,7 +207,7 @@
 \newcommand{\WERMolBirds}{0.146}
 \newcommand{\WERRatioBirds}{1.01}
 \newcommand{\WEEpsFamilyBirds}{0.05}
-\newcommand{\WEFamilyDLLBirds}{97.8}
+\newcommand{\WERFamilyBirds}{0.149}
 \newcommand{\WERhoTipsFish}{0.32}
 \newcommand{\WERhoFullFish}{0.87}
 \newcommand{\WEEpsTipsFish}{0.75}
@@ -212,7 +218,7 @@
 \newcommand{\WERMolFish}{0.048}
 \newcommand{\WERRatioFish}{0.90}
 \newcommand{\WEEpsFamilyFish}{0.65}
-\newcommand{\WEFamilyDLLFish}{97.2}
+\newcommand{\WERFamilyFish}{0.052}
 \newcommand{\WERhoTipsMammals}{0.61}
 \newcommand{\WERhoFullMammals}{0.88}
 \newcommand{\WEEpsTipsMammals}{0.69}
@@ -223,7 +229,7 @@
 \newcommand{\WERMolMammals}{0.085}
 \newcommand{\WERRatioMammals}{0.96}
 \newcommand{\WEEpsFamilyMammals}{0.67}
-\newcommand{\WEFamilyDLLMammals}{-12.2}
+\newcommand{\WERFamilyMammals}{0.086}
 \newcommand{\WERhoTipsSeedPlants}{0.20}
 \newcommand{\WERhoFullSeedPlants}{0.91}
 \newcommand{\WEEpsTipsSeedPlants}{0.97}
@@ -234,7 +240,7 @@
 \newcommand{\WERMolSeedPlants}{0.047}
 \newcommand{\WERRatioSeedPlants}{1.30}
 \newcommand{\WEEpsFamilySeedPlants}{0.97}
-\newcommand{\WEFamilyDLLSeedPlants}{-2215.1}
+\newcommand{\WERFamilySeedPlants}{0.050}
 \newcommand{\WERhoTipsSharks}{0.48}
 \newcommand{\WERhoFullSharks}{0.93}
 \newcommand{\WEEpsTipsSharks}{0.64}
@@ -245,7 +251,7 @@
 \newcommand{\WERMolSharks}{0.016}
 \newcommand{\WERRatioSharks}{1.05}
 \newcommand{\WEEpsFamilySharks}{0.62}
-\newcommand{\WEFamilyDLLSharks}{0.7}
+\newcommand{\WERFamilySharks}{0.017}
 \newcommand{\WERhoTipsSquamates}{0.46}
 \newcommand{\WERhoFullSquamates}{0.83}
 \newcommand{\WEEpsTipsSquamates}{0.12}
@@ -256,7 +262,7 @@
 \newcommand{\WERMolSquamates}{0.071}
 \newcommand{\WERRatioSquamates}{0.80}
 \newcommand{\WEEpsFamilySquamates}{0.13}
-\newcommand{\WEFamilyDLLSquamates}{-66.1}
+\newcommand{\WERFamilySquamates}{0.072}
 \newcommand{\DescribedAmphibians}{8{,}863}
 \newcommand{\CZeroNAmphibians}{6{,}947}
 \newcommand{\CZeroPctAmphibians}{78.4}
@@ -348,9 +354,9 @@
 \newcommand{\COnePctGastropods}{0.06}
 \newcommand{\FMolGastropods}{1.00}
 \newcommand{\DescribedInsects}{1{,}000{,}000}
-\newcommand{\CZeroNInsects}{42{,}079}
+\newcommand{\CZeroNInsects}{42{,}078}
 \newcommand{\CZeroPctInsects}{4.2}
-\newcommand{\COneNInsects}{42{,}079}
+\newcommand{\COneNInsects}{42{,}078}
 \newcommand{\COnePctInsects}{4.2}
 \newcommand{\FMolInsects}{1.00}
 \newcommand{\DescribedMammals}{6{,}736}

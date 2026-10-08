@@ -1,0 +1,25 @@
+partition,category,filename,bibkey,source_file,tree_index,selection,tree_used,archive
+Amphibians,Vertebrates,amphibians.nwk,jetz2018interplay,jetz_pyron_2018_consensus_7238sp.tre,,as_archived,"amph_shl_new_Consensus_7238.tre, consensus chronogram",doi:10.5061/dryad.cc3n6j5
+Birds,Vertebrates,birds.nwk,mctavish2025complete,summary_dated_clements.nex,1,release,"Aves 1.3, Clements 2021: summary_dated_clements.nex",github.com/McTavishLab/AvesData
+Crocodilians,Vertebrates,condamine_Crocodylia.nwk,condamine2019assessing,Crocodylia.tre,,as_archived,Crocodylia tree of FamilyCrocoTurtleTrees.Rdata,doi:10.6084/m9.figshare.9555842
+Fish,Vertebrates,fish.nwk,rabosky2018inverse,actinopt_full.trees,1,first_of_set,"actinopt_full.trees, tree 1",fishtreeoflife.org
+Mammals,Vertebrates,mammals.nwk,upham2019inferring,upham2019_mammal_MCC_5911sp.tre,,as_archived,NDexp MCC chronogram,doi:10.5061/dryad.tb03d03
+Sharks,Vertebrates,sharks.nwk,stein2018global,sharks_1cal_mcc_tree7847.nwk,1,mcc_of_set,MCC tree of 1.cal.tree.nex,data.vertlife.org/sharktree
+Squamates,Vertebrates,squamates.nwk,tonini2016fully,tonini2016_squamate_consensus_9755sp.tre,,as_archived,all-compatible consensus chronogram,doi:10.5061/dryad.db005
+Turtles,Vertebrates,turtles.nwk,thomson2021global,thomson2021_turtle_bd_mcc.tre,1,study_chronogram,"bd.mcc.median_heights.tre, MCC chronogram",doi:10.5061/dryad.jh9w0vt8w
+Bryophytes,Plants,bryophytes.nwk,bechteler2023comprehensive,GoFlag_Bryo_July2021_treePL_config-v8.tre,1,study_chronogram,"GoFlag_Bryo_July2021_treePL_config-v8.tre, treePL chronogram",doi:10.5061/dryad.3j9kd51qm
+Ferns,Plants,ferns.nwk,nitta2022open,ftol_sanger_con_dated.tre,,release,"ftol_sanger_con_dated.tre, release v1.8.0",github.com/fernphy/ftol_data
+Seed plants,Plants,seed_plants.nwk,smith2018constructing,ALLMB.tre,,as_archived,"ALLMB.tre, treePL chronogram",github.com/FePhyFoFum/big_seed_plant_trees
+Crustaceans,Arthropods,crustaceans.nwk,wolfe2019phylogenomic,wolfe2019_decapoda_bayesian_94sp.tre,,as_archived,PhyloBayes CAT-GTR tree,doi:10.5061/dryad.k7505mn
+Insects,Arthropods,insects.nwk,chesters2023launching,insectphylo_insecta_v2.nwk,,release,Insecta_v2,insectphylo.org
+Spiders,Arthropods,spiders.nwk,macias2020spider,garrison2016_spider_dated_1456sp.tre,,as_archived,"BLc128_tc_cal.tre, preferred chronogram",doi:10.5281/zenodo.3941712
+Bivalves,Other animals,bivalves.nwk,pfeiffer2019bivalve,unioverse2019_bivalve_astral.tre,,as_archived,ASTRAL species tree,doi:10.5061/dryad.8575jr5
+Bryozoa,Other animals,bryozoa.nwk,orr2022bryozoa,SI_Fig2(TRIMMED).newick,,as_archived,"SI_Fig2(TRIMMED).newick, trimmed ML tree",doi:10.5061/dryad.2v6wwpzp9
+Cephalopods,Other animals,cephalopods.nwk,basava2024cephalopod,cephalopod_consensus.tre,,as_archived,"consensus_cephnov28.tree, consensus chronogram",github.com/kcbasava/ceph-brain-evolution
+Cnidaria,Other animals,corals.nwk,vaga2025coral,coral_scleractinia_mcc.nex,,as_archived,"scle.mcc.mean.nex, MCC chronogram",doi:10.6084/m9.figshare.29242487
+Echinoderms,Other animals,echinoderms.nwk,koch2022phylogenomic,koch2022_echinoid_chronogram.tre,,as_archived,PhyloBayes chronogram,doi:10.5061/dryad.brv15dv9t
+Gastropods,Other animals,gastropods.nwk,zapata2014gastropod,Chronogram.tre,1,study_chronogram,"data/Chronogram.tre, MCMCTree chronogram",bitbucket.org/caseywdunn/gastropoda
+Nematodes,Other animals,nematodes.nwk,qing2025nematode,nematoda_50p_aa_ML.tre,,as_archived,ML tree of the 50% amino-acid matrix,doi:10.5061/dryad.b2rbnzsnt
+Sponges,Other animals,sponges.nwk,lavrov2023phylomitogenomics,lavrov2023_demosponge_chronogram.tre,,as_archived,"timing2_sample.chronogram.tre, PhyloBayes chronogram",github.com/LavrovLab/Demosponge-phylogeny-supplementary-data
+Diatoms,Microbes & protists,diatoms.nwk,nakov2018accelerated,all.dated.trees,1,more_branch_lengths,"all.dated.trees, tree 1: treePL-dated best ML tree",doi:10.5281/zenodo.583628
+Fungi,Microbes & protists,fungi.nwk,li2021genome,li2021_fungi_1672sp.tre,,as_archived,species tree as archived,doi:10.6084/m9.figshare.12751736

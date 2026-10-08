@@ -1,0 +1,25 @@
+partition,category,source_tips,removed_outside,merged_same_species,tips,unresolved_labels_kept
+Amphibians,Vertebrates,7239,1,0,7238,0
+Birds,Vertebrates,10824,0,0,10824,0
+Crocodilians,Vertebrates,25,0,0,25,25
+Fish,Vertebrates,31516,0,169,31347,10
+Mammals,Vertebrates,5912,1,0,5911,0
+Sharks,Vertebrates,1192,0,0,1192,2
+Squamates,Vertebrates,9755,1,0,9754,0
+Turtles,Vertebrates,288,2,3,283,4
+Bryophytes,Plants,533,0,0,533,9
+Ferns,Plants,6234,18,0,6216,0
+Seed plants,Plants,356305,282,7137,348886,11264
+Crustaceans,Arthropods,95,0,0,95,95
+Insects,Arthropods,53596,223,0,53373,8
+Spiders,Arthropods,1456,0,25,1431,506
+Bivalves,Other animals,73,0,0,73,23
+Bryozoa,Other animals,720,20,135,565,193
+Cephalopods,Other animals,81,0,0,81,0
+Cnidaria,Other animals,289,0,0,289,14
+Echinoderms,Other animals,66,1,0,65,1
+Gastropods,Other animals,54,14,0,40,1
+Nematodes,Other animals,166,10,0,156,25
+Sponges,Other animals,120,0,1,119,24
+Diatoms,Microbes & protists,1171,20,38,1113,341
+Fungi,Microbes & protists,1672,28,24,1620,125

@@ -1,0 +1,16 @@
+term,columns,file
+group,partition; category,
+described species,described; described_source,
+reference tree,canonical_tree,standardized/trees/
+tips,labels_unique,
+named coverage (level C0),c0_units,
+tip labels resolving to no accepted species,c0_unresolved_labels,standardized/col_resolution.csv.gz
+molecular coverage (level C1),c1_units,
+how the molecular tips are known,c1_basis; f_basis; molecular_source_file,
+molecular fraction,f_mol; f_low; f_high,
+molecular tips,,registers/molecular_tips.csv
+chronogram,is_chronogram; roottotip_cv,
+dated in absolute time (level C1d),time_scale,
+interval coverage (level C1b),interval_recoverable; interval_kind,registers/crown_intervals.csv
+how the tree was assembled,topology_assembly,
+crown age,,paper/crown_ages.csv
