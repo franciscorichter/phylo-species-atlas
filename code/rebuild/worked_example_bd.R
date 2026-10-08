@@ -27,10 +27,14 @@
 # ELIGIBLE: eukaryotic canonical chronograms in absolute time whose molecular
 # tips are enumerated and fewer than all tips (so the pruned tree differs).
 #
-# TIME SCALE.  Each tree is rescaled so that its root height equals the crown
-# age reported in Paper/inputs/crown_ages.csv (decision D20: the deposit's own
-# summary of the crown node, e.g. TreeAnnotator's annotated median height),
-# not the branch-length geometry of a summary tree.  The factor is reported.
+# TIME SCALE (round F3, F3-04; decision D42).  Each tree is fitted with the
+# branch lengths its source archived (time_scale_factor = 1).  Where the
+# source summarises the crown over a tree set, the summary tree's root height
+# (geometry_root_ma) differs from that crown age (crown_age_ma, D20); the
+# ratio is reported, not applied.  Multiplying every branch length by c
+# divides r, lambda and mu by c and adds -(n - 2) log c to every
+# log-likelihood of the tree, so epsilon, the likelihood-ratio statistics and
+# the boundary classification do not depend on it.
 #
 # MODEL.  Constant-rate birth-death with uniform random sampling of extant
 # species with probability rho (Stadler 2009 J. Theor. Biol. 261:58-66, eq. 2;
@@ -161,7 +165,7 @@ elig <- elig[order(elig$partition), ]
 elig$crown_age_ma <- ages$crown_age_ma[match(elig$partition, ages$partition)]
 elig$geometry_root_ma <- ages$geometry_root_ma[match(elig$partition,
                                                      ages$partition)]
-elig$time_scale_factor <- elig$crown_age_ma / elig$geometry_root_ma
+elig$time_scale_factor <- 1   # D42: the archived branch lengths, unscaled
 elig$rho_C0 <- elig$c0_units / elig$described
 elig$rho_full <- elig$labels_unique / elig$described
 

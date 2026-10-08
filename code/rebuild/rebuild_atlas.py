@@ -2497,48 +2497,37 @@ def c1b_calibration_sensitivity(basis, shipped, truth):
     ])
 
 
-# Round F1 (F1-04, F1-05).  Two stricter classifications of the counted
-# intervals, each a rule on the register: an interval at least as wide as the
-# range of a two-sided calibration prior on its node is set by that
-# calibration (the data did not narrow it), and an interval whose crown
-# calibration could not be checked is not counted.
-C1B_WIDTH_RULE_RATIO = 1.0
+# Round F3 (F3-07).  The stricter classification that can move interval
+# coverage.  Rules that act on a two-sided or an unchecked crown calibration
+# (round F1: an interval as wide as its two-sided prior; unchecked
+# calibrations left out) cannot change it while every counted interval sits
+# on a crown with no calibration or a one-sided bound; the register says so
+# ('counted_two_sided_or_unchecked', printed by the text as a fact and
+# checked by verify_atlas.py).  The variant reported instead leaves out every
+# counted interval whose crown carries any calibration, one-sided included.
+C1B_CROWN_CALIBRATED = ("one_sided", "two_sided", "not_checked")
 
 
-def _c1b_stricter(basis, shipped, truth, unchecked):
+def c1b_crown_calibrated_sensitivity(basis, shipped, truth):
     reg = crown_intervals()
-    drop = set()
-    for p, iv in reg.items():
-        if iv.get("counts_for_c1b") != "yes":
-            continue
-        if iv.get("calibration") == "two_sided" and iv.get("prior_width_ratio") \
-                and float(iv["prior_width_ratio"]) >= C1B_WIDTH_RULE_RATIO:
-            drop.add(p)
-        if unchecked and iv.get("calibration") == "not_checked":
-            drop.add(p)
+    counted = {p: iv for p, iv in reg.items()
+               if iv.get("counts_for_c1b") == "yes"}
+    drop = sorted(p for p, iv in counted.items()
+                  if iv.get("calibration") in C1B_CROWN_CALIBRATED)
     alt = [dict(r) for r in basis]
     for r in alt:
         if r["partition"] in drop:
             r["interval_recoverable"] = "no"
     return OrderedDict([
-        ("rule", "C1b with an interval at least %g times as wide as the range "
-                 "of a two-sided prior on its node counted as set by the "
-                 "calibration%s" % (C1B_WIDTH_RULE_RATIO,
-                                    "; intervals whose crown calibration was "
-                                    "not checked not counted" if unchecked
-                                    else "")),
-        ("width_ratio_min", C1B_WIDTH_RULE_RATIO),
-        ("partitions_removed", sorted(drop)),
+        ("rule", "C1b with every counted interval whose crown node carries a "
+                 "calibration (%s) not counted" % ", ".join(C1B_CROWN_CALIBRATED)),
+        ("partitions_removed", drop),
+        ("partitions_kept", sorted(p for p in counted if p not in drop)),
+        ("counted_two_sided_or_unchecked",
+         sorted(p for p, iv in counted.items()
+                if iv.get("calibration") in ("two_sided", "not_checked"))),
         ("rungs", _rung_percents(compute_rungs(alt, shipped, truth))),
     ])
-
-
-def c1b_width_rule_sensitivity(basis, shipped, truth):
-    return _c1b_stricter(basis, shipped, truth, unchecked=False)
-
-
-def c1b_strict_sensitivity(basis, shipped, truth):
-    return _c1b_stricter(basis, shipped, truth, unchecked=True)
 
 
 def c1b_all_intervals_sensitivity(basis, shipped, truth):
@@ -3335,6 +3324,35 @@ def build_table_s6_fig1_tex(truth, pt, warnings):
 # for NON-canonical trees only, a described-species count with its source.
 # Canonical rows take `described` and `described_source` from the basis table.
 DATASET_REGISTRY = os.path.join(ROOT, "Data", "dataset_table_registry.csv")
+# Round F3 (F3-06): larger trees of a group or a subclade that the May 2026
+# search missed and that are not counted (decision D40); Table 1 marks each
+# group with one and its caption names the tree and its size as the source
+# states it.
+LARGER_TREES = os.path.join(ROOT, "Data", "larger_trees_not_counted.csv")
+
+
+def larger_trees_not_counted():
+    out = defaultdict(list)
+    for r in read_csv(LARGER_TREES):
+        out[r["partition"]].append(r)
+    return out
+
+
+def larger_tree_note():
+    """The Table 1 caption note: per group, each larger tree not counted."""
+    parts = []
+    for p, rs in sorted(larger_trees_not_counted().items()):
+        items = []
+        for r in rs:
+            n = ("%s " % r["n_qualifier"] if r["n_qualifier"] else "") \
+                + thousands(r["n"])
+            items.append(r"\citet{%s}, %s %s of %s%s"
+                         % (r["bibkey"], n, r["unit"], r["clade"],
+                            ", dated" if r["dated"] == "yes" else ""))
+        parts.append("%s: %s" % (p, " and ".join(items)))
+    return "; ".join(parts)
+
+
 REFERENCES_BIB = os.path.join(ROOT, "Paper", "references.bib")
 DATASET_SECTION_CROSS = "Cross-cutting"
 DATASET_HEADER = ["section", "group", "filename", "bibkey", "year", "journal",
@@ -3914,9 +3932,8 @@ def compute_headline(truth, basis, shipped, mol, ledger, pt, warnings):
              c1b_calibration_sensitivity(basis, shipped, truth)),
             ("c1b_all_intervals",
              c1b_all_intervals_sensitivity(basis, shipped, truth)),
-            ("c1b_width_rule",
-             c1b_width_rule_sensitivity(basis, shipped, truth)),
-            ("c1b_strict", c1b_strict_sensitivity(basis, shipped, truth)),
+            ("c1b_crown_calibrated",
+             c1b_crown_calibrated_sensitivity(basis, shipped, truth)),
             ("c0_gbif_unmatched", c0_gbif_sensitivity(basis, shipped)),
         ])),
         ("disclosures", disc),
@@ -4434,16 +4451,17 @@ def build_number_macros(head, basis, warnings):
     m["SensAllIntCOneBPct"] = macro_pct(alli["percent_union"])
     m["SensCalibCOneBN"] = macro_int(cal["numerator_union"])
     m["SensCalibCOneBPct"] = macro_pct(cal["percent_union"])
-    for key, nm in (("c1b_width_rule", "Width"), ("c1b_strict", "Strict")):
-        e = s[key]["rungs"]["C1b"]
-        m["Sens%sCOneBN" % nm] = macro_int(e["numerator_union"])
-        m["Sens%sCOneBPct" % nm] = macro_pct(e["percent_union"])
-    m["SensWidthNames"] = name_list(s["c1b_width_rule"]["partitions_removed"])
-    m["SensUncheckedNames"] = name_list(sorted(
-        set(s["c1b_strict"]["partitions_removed"])
-        - set(s["c1b_width_rule"]["partitions_removed"])))
-    m["RuleWidthRatio"] = "%g" % C1B_WIDTH_RULE_RATIO
+    cc = s["c1b_crown_calibrated"]
+    if cc["counted_two_sided_or_unchecked"]:
+        die("a counted interval sits on a two-sided or unchecked crown "
+            "calibration (%s); the text states that none does"
+            % ", ".join(cc["counted_two_sided_or_unchecked"]))
+    m["SensCrownCalCOneBN"] = macro_int(cc["rungs"]["C1b"]["numerator_union"])
+    m["SensCrownCalCOneBPct"] = macro_pct(cc["rungs"]["C1b"]["percent_union"])
+    m["SensCrownCalNames"] = name_list(cc["partitions_removed"])
+    m["SensCrownUncalNames"] = name_list(cc["partitions_kept"])
     m["RuleTipsOverNamedPct"] = "%.0f" % (100 * TABLE1_TIPS_OVER_NAMED)
+    m["TabWhichTreeLargerNote"] = larger_tree_note()
     # every denominator lowered and raised by the elasticity fraction
     f_el = ELASTICITY_FRACTION
     m["RuleElasticityPct"] = "%.0f" % (100 * f_el)
@@ -4471,6 +4489,19 @@ def build_number_macros(head, basis, warnings):
     m["OTKeysOTPhyloCompared"] = macro_int(me["keys_ot_phylo"])
     m["OTKeysMolecularAndOTOfOTPct"] = macro_pct(pct(me["keys_molecular_and_ot"],
                                                      me["keys_ot_phylo"]))
+    # round F3 (F3-08): how the Open Tree species of the compared groups, of
+    # the groups whose molecular tips are not listed, and of no group add up
+    # to the eukaryotic count
+    pp = ot["per_partition"]
+    cmp_ = sum(pp[x]["ot_phylo_extant_species"] for x in me["partitions"])
+    notc = sorted(x for x in pp if x not in me["partitions"])
+    m["OTPhyloCompared"] = macro_int(cmp_)
+    m["OTPhyloNotComparedN"] = macro_int(sum(pp[x]["ot_phylo_extant_species"]
+                                             for x in notc))
+    m["OTPhyloNotComparedNames"] = name_list(notc)
+    m["OTPhyloOutsideGroups"] = macro_int(
+        ot["ot_phylo_extant_species_eukaryota"]
+        - ot["ot_phylo_extant_species_in_atlas_clades"])
 
     ca = head["crown_ages"]
     m["CrownNChron"] = macro_int(ca["n_absolute_chronograms"])
@@ -4551,9 +4582,11 @@ def build_number_macros(head, basis, warnings):
         m["OTNotOTSharePct" + crown_macro_name(p)] = macro_pct(
             pct(v["accepted_molecular_not_in_ot"], notot))
 
-    # the scaling of each fitted tree to its source's crown age (R2-30)
+    # crown age over the root height of each fitted tree (R2-30, F3-04):
+    # reported, not applied (D42)
     with open(WORKED_SEL, newline="", encoding="utf-8") as fh:
-        sf = [float(r["time_scale_factor"]) for r in csv.DictReader(fh)]
+        sf = [float(r["crown_age_ma"]) / float(r["geometry_root_ma"])
+              for r in csv.DictReader(fh)]
     m["WEScaleMin"] = "%.2f" % min(sf)
     m["WEScaleMax"] = "%.2f" % max(sf)
 
@@ -4748,7 +4781,8 @@ WHICH_TREE_HEADER = ["partition", "category", "bibkey", "flags", "tips",
                      "interval_lo_ma", "interval_hi_ma", "interval_kind",
                      "interval_status", "rho_full", "rho_molecular",
                      "described", "study_dating", "molecular_only_tree",
-                     "molecular_share", "tips_exceed_named"]
+                     "molecular_share", "tips_exceed_named",
+                     "larger_tree_not_counted"]
 # Round F1 (F1-11, F1-17): Table 1 flags a group whose tips exceed its named
 # species by more than this fraction, where tips over described species
 # overstates the share of the group's species that the tree samples.
@@ -4817,6 +4851,7 @@ def _which_tree_rows(head, basis):
     crown = head["crown_ages"]["per_partition"]
     sd = _study_dating()
     molonly = _molecular_only_trees()
+    larger = larger_trees_not_counted()
     rows = []
     for r in basis:
         if not is_euk(r) or as_int(r.get("c0_units"), 0) <= 0:
@@ -4872,6 +4907,8 @@ def _which_tree_rows(head, basis):
             ("molecular_share", "%.2f" % (mtips / tips)),
             ("tips_exceed_named", "yes" if tips > (1 + TABLE1_TIPS_OVER_NAMED)
              * as_int(r["c0_units"], 0) else "no"),
+            ("larger_tree_not_counted", ";".join(
+                x["bibkey"] for x in larger.get(p, []))),
         ]))
         if not rows[-1]["study_dating"]:
             die("Table 1: %s is not a chronogram and has no study_dating "
@@ -4907,6 +4944,8 @@ def build_which_tree_tex(head, basis, warnings):
         b = next(x for x in basis if x["partition"] == r["partition"])
         if b.get("topology_assembly") == ASSEMBLY_AUTOMATED:
             src += r"$^{b}$"
+        if r["larger_tree_not_counted"]:
+            src += r"$^{f}$"
         mt = thousands(r["molecular_tips"])
         if r["molecular_basis"] == "all_tips":
             mt += r"$^{a}$"
@@ -5922,10 +5961,7 @@ SUPP_SENS_ROWS = OrderedDict([
     ("retain_only_primary_analysis", "Primary analyses only"),
     ("bird_band_low", "Bird molecular fraction at its lower end"),
     ("union", "Named species of all trees"),
-    ("width_rule", "Interval as wide as its two-sided prior set by the "
-                   "calibration"),
-    ("strict", "As above, and intervals with an unchecked calibration not "
-               "counted"),
+    ("crown_calibrated", "Intervals on a calibrated crown not counted"),
 ])
 
 
@@ -6211,7 +6247,7 @@ def _supp_sensitivity_rows(head, basis):
     add("union", D, OrderedDict([("C0", pct(u["C0_union"], D)),
                                  ("C1", pct(u["C1_union_high"], D)),
                                  ("C1d", None), ("C1b", None)]))
-    for key, sk in (("width_rule", "c1b_width_rule"), ("strict", "c1b_strict")):
+    for key, sk in (("crown_calibrated", "c1b_crown_calibrated"),):
         e = s[sk]["rungs"]["C1b"]
         add(key, D, OrderedDict([("C0", None), ("C1", None), ("C1d", None),
                                  ("C1b", pct(e["numerator_union"], D))]))
@@ -6264,8 +6300,11 @@ def _supp_opentree_rows(head, basis):
             ("molecular_species", am), ("both", both),
             ("molecular_not_ot", as_int(r["accepted_molecular_not_in_ot"], 0)),
             ("both_pct", fnum(pct(both, am), 1) if am else ""),
-            ("molecular_keys", km), ("keys_both", kb),
+            ("molecular_keys", km),
+            ("ot_keys", as_int(r["keys_ot_phylo"], 0)), ("keys_both", kb),
             ("keys_both_pct", fnum(pct(kb, km), 1) if km else ""),
+            ("keys_both_ot_pct", fnum(pct(kb, as_int(r["keys_ot_phylo"], 0)), 1)
+             if as_int(r["keys_ot_phylo"], 0) else ""),
         ]))
     rows.sort(key=lambda x: (CATEGORY_ORDER.index(x["category"]),
                              x["partition"]))
@@ -6760,7 +6799,7 @@ def _t_sens(head, basis, shipped, tex):
     for r in rows:
         if r["alternative"] in ("insects_minus", "col_filled", "rep",
                                 "drop_automated_synthesis", "bird_band_low",
-                                "width_rule"):
+                                "crown_calibrated"):
             out.append(r"\midrule")
         out.append(" & ".join(
             [SUPP_SENS_ROWS[r["alternative"]], thousands(r["denominator"])]
@@ -6787,8 +6826,9 @@ def _t_den(head, basis, shipped, tex):
 
 @supp_table("supp_opentree", ["partition", "category", "ot_phylo_species",
                               "molecular_species", "both", "molecular_not_ot",
-                              "both_pct", "molecular_keys", "keys_both",
-                              "keys_both_pct"])
+                              "both_pct", "molecular_keys", "ot_keys",
+                              "keys_both", "keys_both_pct",
+                              "keys_both_ot_pct"])
 def _t_ot(head, basis, shipped, tex):
     rows = _supp_opentree_rows(head, basis)
     if not tex:
@@ -6797,8 +6837,9 @@ def _t_ot(head, basis, shipped, tex):
         tex_escape(r["partition"]), thousands(r["ot_phylo_species"]),
         thousands(r["molecular_species"]), thousands(r["both"]),
         thousands(r["molecular_not_ot"]), _dash(r["both_pct"]),
-        thousands(r["molecular_keys"]), thousands(r["keys_both"]),
-        _dash(r["keys_both_pct"])], 9)
+        thousands(r["molecular_keys"]), thousands(r["ot_keys"]),
+        thousands(r["keys_both"]), _dash(r["keys_both_pct"]),
+        _dash(r["keys_both_ot_pct"])], 11)
 
 
 SUPP_FIT_LABEL = OrderedDict([

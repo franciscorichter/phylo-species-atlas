@@ -1,25 +1,25 @@
-partition,category,bibkey,flags,tips,named_pct,molecular_tips,molecular_basis,molecular_pct,time_scale,crown_age_ma,interval_lo_ma,interval_hi_ma,interval_kind,interval_status,rho_full,rho_molecular,described,study_dating,molecular_only_tree,molecular_share,tips_exceed_named
-Birds,Vertebrates,mctavish2025complete,,10824,93.5,9239,enumerated,80.2,absolute,99.3,72.0,133.0,date_assignment_sample,kind,0.97,0.83,11195,absolute_deposited,yes,0.85,no
-Sharks,Vertebrates,stein2018global,,1192,89.7,610,enumerated,47.0,absolute,377.8,353.4,437.5,calibration_prior_sample,prior_reproduced,0.93,0.48,1282,absolute_deposited,yes,0.51,no
-Fish,Vertebrates,rabosky2018inverse,,31347,85.4,11596,enumerated,31.7,absolute,368.0,368.0,368.0,taxon_addition_sample,kind,0.86,0.32,36280,absolute_deposited,yes,0.37,no
-Mammals,Vertebrates,upham2019inferring,,5911,83.5,4098,enumerated,58.6,absolute,187.3,168.6,213.5,posterior_sample,prior_reproduced,0.88,0.61,6736,absolute_deposited,yes,0.69,no
-Amphibians,Vertebrates,jetz2018interplay,,7238,78.4,4061,enumerated,45.1,absolute,311.4,273.7,338.6,posterior_sample,counted,0.82,0.46,8863,absolute_deposited,yes,0.56,no
-Crocodilians,Vertebrates,condamine2019assessing,,25,74.1,25,all_tips,74.1,absolute,87.1,,,,none,0.93,0.93,27,absolute_deposited,no,1.00,yes
-Squamates,Vertebrates,tonini2016fully,,9754,73.9,5415,enumerated,42.1,absolute,186.4,177.0,203.1,posterior_sample,prior_reproduced,0.81,0.45,12108,absolute_deposited,yes,0.56,no
-Turtles,Vertebrates,thomson2021global,,283,70.3,283,all_tips,70.3,absolute,205.4,179.3,231.4,posterior_sample,prior_reproduced,0.78,0.78,364,absolute_deposited,no,1.00,yes
-Seed plants,Plants,smith2018constructing,,348886,72.7,76688,enumerated,18.4,absolute,325.1,,,,none,0.91,0.20,383671,absolute_deposited,yes,0.22,yes
-Ferns,Plants,nitta2022open,,6216,57.6,6216,enumerated,57.6,absolute,421.8,,,,none,0.59,0.59,10578,absolute_deposited,no,1.00,no
-Bryophytes,Plants,bechteler2023comprehensive,,533,2.1,533,enumerated,2.1,absolute,515.0,515.0,515.0,bootstrap_dating_sample,degenerate,0.022,0.022,24000,absolute_deposited,no,1.00,no
-Insects,Arthropods,chesters2023launching,,53373,4.2,53373,enumerated,4.2,relative,,,,,,0.053,0.053,1000000,relative_only,no,1.00,yes
-Spiders,Arthropods,macias2020spider,,1431,1.7,1431,all_tips,1.7,absolute,366.1,,,,none,0.027,0.027,52249,absolute_deposited,no,1.00,yes
-Crustaceans,Arthropods,wolfe2019phylogenomic,,95,0.08,95,enumerated,0.08,not_ultrametric,,,,,,0.0012,0.0012,77000,absolute_deposited_fewer_tips,no,1.00,yes
-Cephalopods,Other animals,basava2024cephalopod,preprint,81,10.0,81,enumerated,10.0,absolute,240.0,236.6,249.6,posterior_sample,prior_reproduced,0.10,0.10,800,absolute_deposited,no,1.00,no
-Bryozoa,Other animals,orr2022bryozoa,,565,5.6,565,enumerated,5.6,not_ultrametric,,,,,,0.094,0.094,6000,absolute_not_deposited,no,1.00,yes
-Cnidaria,Other animals,vaga2025coral,,289,2.2,289,enumerated,2.2,absolute,459.7,404.1,516.5,node_hpd_annotation,counted,0.024,0.024,11800,absolute_deposited,no,1.00,yes
-Sponges,Other animals,lavrov2023phylomitogenomics,,119,0.91,119,enumerated,0.91,absolute,526.4,514.6,540.8,node_label_interval,prior_reproduced,0.013,0.013,9470,absolute_deposited,no,1.00,yes
-Echinoderms,Other animals,koch2022phylogenomic,,65,0.82,65,enumerated,0.82,absolute,511.9,498.8,525.0,node_label_interval,counted,0.0086,0.0086,7550,absolute_deposited,no,1.00,no
-Bivalves,Other animals,pfeiffer2019bivalve,,73,0.44,73,enumerated,0.44,not_ultrametric,,,,,,0.0073,0.0073,10043,not_dated,no,1.00,yes
-Nematodes,Other animals,qing2025nematode,,156,0.35,156,enumerated,0.35,not_ultrametric,,,,,,0.0055,0.0055,28537,absolute_not_read,no,1.00,yes
-Gastropods,Other animals,zapata2014gastropod,,40,0.06,40,enumerated,0.06,absolute,479.6,434.2,528.8,node_hpd_annotation,counted,0.00062,0.00062,65000,absolute_deposited,no,1.00,no
-Fungi,Microbes & protists,li2021genome,,1620,0.90,1620,enumerated,0.90,not_ultrametric,,,,,,0.010,0.010,155000,relative_only,no,1.00,yes
-Diatoms,Microbes & protists,nakov2018accelerated,,1113,0.20,1113,enumerated,0.20,absolute,190.0,190.0,228.8,bootstrap_dating_sample,at_bound,0.056,0.056,20000,absolute_deposited,no,1.00,yes
+partition,category,bibkey,flags,tips,named_pct,molecular_tips,molecular_basis,molecular_pct,time_scale,crown_age_ma,interval_lo_ma,interval_hi_ma,interval_kind,interval_status,rho_full,rho_molecular,described,study_dating,molecular_only_tree,molecular_share,tips_exceed_named,larger_tree_not_counted
+Birds,Vertebrates,mctavish2025complete,,10824,93.5,9239,enumerated,80.2,absolute,99.3,72.0,133.0,date_assignment_sample,kind,0.97,0.83,11195,absolute_deposited,yes,0.85,no,
+Sharks,Vertebrates,stein2018global,,1192,89.7,610,enumerated,47.0,absolute,377.8,353.4,437.5,calibration_prior_sample,prior_reproduced,0.93,0.48,1282,absolute_deposited,yes,0.51,no,
+Fish,Vertebrates,rabosky2018inverse,,31347,85.4,11596,enumerated,31.7,absolute,368.0,368.0,368.0,taxon_addition_sample,kind,0.86,0.32,36280,absolute_deposited,yes,0.37,no,
+Mammals,Vertebrates,upham2019inferring,,5911,83.5,4098,enumerated,58.6,absolute,187.3,168.6,213.5,posterior_sample,prior_reproduced,0.88,0.61,6736,absolute_deposited,yes,0.69,no,
+Amphibians,Vertebrates,jetz2018interplay,,7238,78.4,4061,enumerated,45.1,absolute,311.4,273.7,338.6,posterior_sample,counted,0.82,0.46,8863,absolute_deposited,yes,0.56,no,
+Crocodilians,Vertebrates,condamine2019assessing,,25,74.1,25,all_tips,74.1,absolute,87.1,,,,none,0.93,0.93,27,absolute_deposited,no,1.00,yes,
+Squamates,Vertebrates,tonini2016fully,,9754,73.9,5415,enumerated,42.1,absolute,186.4,177.0,203.1,posterior_sample,prior_reproduced,0.81,0.45,12108,absolute_deposited,yes,0.56,no,
+Turtles,Vertebrates,thomson2021global,,283,70.3,283,all_tips,70.3,absolute,205.4,179.3,231.4,posterior_sample,prior_reproduced,0.78,0.78,364,absolute_deposited,no,1.00,yes,
+Seed plants,Plants,smith2018constructing,,348886,72.7,76688,enumerated,18.4,absolute,325.1,,,,none,0.91,0.20,383671,absolute_deposited,yes,0.22,yes,
+Ferns,Plants,nitta2022open,,6216,57.6,6216,enumerated,57.6,absolute,421.8,,,,none,0.59,0.59,10578,absolute_deposited,no,1.00,no,
+Bryophytes,Plants,bechteler2023comprehensive,,533,2.1,533,enumerated,2.1,absolute,515.0,515.0,515.0,bootstrap_dating_sample,degenerate,0.022,0.022,24000,absolute_deposited,no,1.00,no,
+Insects,Arthropods,chesters2023launching,,53373,4.2,53373,enumerated,4.2,relative,,,,,,0.053,0.053,1000000,relative_only,no,1.00,yes,
+Spiders,Arthropods,macias2020spider,,1431,1.7,1431,all_tips,1.7,absolute,366.1,,,,none,0.027,0.027,52249,absolute_deposited,no,1.00,yes,
+Crustaceans,Arthropods,wolfe2019phylogenomic,,95,0.08,95,enumerated,0.08,not_ultrametric,,,,,,0.0012,0.0012,77000,absolute_deposited_fewer_tips,no,1.00,yes,wolfe2023convergent;copilas2020late
+Cephalopods,Other animals,basava2024cephalopod,preprint,81,10.0,81,enumerated,10.0,absolute,240.0,236.6,249.6,posterior_sample,prior_reproduced,0.10,0.10,800,absolute_deposited,no,1.00,no,
+Bryozoa,Other animals,orr2022bryozoa,,565,5.6,565,enumerated,5.6,not_ultrametric,,,,,,0.094,0.094,6000,absolute_not_deposited,no,1.00,yes,
+Cnidaria,Other animals,vaga2025coral,,289,2.2,289,enumerated,2.2,absolute,459.7,404.1,516.5,node_hpd_annotation,counted,0.024,0.024,11800,absolute_deposited,no,1.00,yes,huang2015future
+Sponges,Other animals,lavrov2023phylomitogenomics,,119,0.91,119,enumerated,0.91,absolute,526.4,514.6,540.8,node_label_interval,prior_reproduced,0.013,0.013,9470,absolute_deposited,no,1.00,yes,redmond2013phylogeny
+Echinoderms,Other animals,koch2022phylogenomic,,65,0.82,65,enumerated,0.82,absolute,511.9,498.8,525.0,node_label_interval,counted,0.0086,0.0086,7550,absolute_deposited,no,1.00,no,ohara2017restructuring
+Bivalves,Other animals,pfeiffer2019bivalve,,73,0.44,73,enumerated,0.44,not_ultrametric,,,,,,0.0073,0.0073,10043,not_dated,no,1.00,yes,
+Nematodes,Other animals,qing2025nematode,,156,0.35,156,enumerated,0.35,not_ultrametric,,,,,,0.0055,0.0055,28537,absolute_not_read,no,1.00,yes,vanmegen2009phylogenetic
+Gastropods,Other animals,zapata2014gastropod,,40,0.06,40,enumerated,0.06,absolute,479.6,434.2,528.8,node_hpd_annotation,counted,0.00062,0.00062,65000,absolute_deposited,no,1.00,no,puillandre2014molecular
+Fungi,Microbes & protists,li2021genome,,1620,0.90,1620,enumerated,0.90,not_ultrametric,,,,,,0.010,0.010,155000,relative_only,no,1.00,yes,varga2019megaphylogeny
+Diatoms,Microbes & protists,nakov2018accelerated,,1113,0.20,1113,enumerated,0.20,absolute,190.0,190.0,228.8,bootstrap_dating_sample,at_bound,0.056,0.056,20000,absolute_deposited,no,1.00,yes,

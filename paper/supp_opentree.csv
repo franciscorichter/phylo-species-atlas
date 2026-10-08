@@ -1,22 +1,22 @@
-partition,category,ot_phylo_species,molecular_species,both,molecular_not_ot,both_pct,molecular_keys,keys_both,keys_both_pct
-Amphibians,Vertebrates,6547,3993,3832,161,96.0,4061,3739,92.1
-Birds,Vertebrates,10204,8980,7922,1058,88.2,9239,7304,79.1
-Fish,Vertebrates,12121,11510,9887,1623,85.9,11586,9755,84.2
-Mammals,Vertebrates,3801,3945,2771,1174,70.2,4098,2707,66.1
-Sharks,Vertebrates,536,603,517,86,85.7,610,482,79.0
-Squamates,Vertebrates,4136,5096,3754,1342,73.7,5415,3829,70.7
-Bryophytes,Plants,536,505,206,299,40.8,524,189,36.1
-Ferns,Plants,3835,6097,3462,2635,56.8,6216,3104,49.9
-Seed plants,Plants,54671,70723,32730,37993,46.3,75692,33580,44.4
-Crustaceans,Arthropods,1730,65,24,41,36.9,76,22,28.9
-Insects,Arthropods,23509,42078,8082,33996,19.2,53365,9342,17.5
-Bivalves,Other animals,29,44,0,44,0.0,50,0,0.0
-Bryozoa,Other animals,168,337,153,184,45.4,372,160,43.0
-Cephalopods,Other animals,284,80,41,39,51.2,81,41,50.6
-Cnidaria,Other animals,1747,258,200,58,77.5,275,196,71.3
-Echinoderms,Other animals,45,62,13,49,21.0,64,13,20.3
-Gastropods,Other animals,332,39,2,37,5.1,39,1,2.6
-Nematodes,Other animals,196,101,43,58,42.6,131,54,41.2
-Sponges,Other animals,498,86,66,20,76.7,95,67,70.5
-Diatoms,Microbes & protists,113,39,1,38,2.6,772,92,11.9
-Fungi,Microbes & protists,2994,1396,294,1102,21.1,1495,258,17.3
+partition,category,ot_phylo_species,molecular_species,both,molecular_not_ot,both_pct,molecular_keys,ot_keys,keys_both,keys_both_pct,keys_both_ot_pct
+Amphibians,Vertebrates,6547,3993,3832,161,96.0,4061,6546,3739,92.1,57.1
+Birds,Vertebrates,10204,8980,7922,1058,88.2,9239,10203,7304,79.1,71.6
+Fish,Vertebrates,12121,11510,9887,1623,85.9,11586,12094,9755,84.2,80.7
+Mammals,Vertebrates,3801,3945,2771,1174,70.2,4098,3769,2707,66.1,71.8
+Sharks,Vertebrates,536,603,517,86,85.7,610,536,482,79.0,89.9
+Squamates,Vertebrates,4136,5096,3754,1342,73.7,5415,4136,3829,70.7,92.6
+Bryophytes,Plants,536,505,206,299,40.8,524,530,189,36.1,35.7
+Ferns,Plants,3835,6097,3462,2635,56.8,6216,3818,3104,49.9,81.3
+Seed plants,Plants,54671,70723,32730,37993,46.3,75692,54475,33580,44.4,61.6
+Crustaceans,Arthropods,1730,65,24,41,36.9,76,1646,22,28.9,1.3
+Insects,Arthropods,23509,42078,8082,33996,19.2,53365,22991,9342,17.5,40.6
+Bivalves,Other animals,29,44,0,44,0.0,50,29,0,0.0,0.0
+Bryozoa,Other animals,168,337,153,184,45.4,372,168,160,43.0,95.2
+Cephalopods,Other animals,284,80,41,39,51.2,81,242,41,50.6,16.9
+Cnidaria,Other animals,1747,258,200,58,77.5,275,1711,196,71.3,11.5
+Echinoderms,Other animals,45,62,13,49,21.0,64,45,13,20.3,28.9
+Gastropods,Other animals,332,39,2,37,5.1,39,332,1,2.6,0.3
+Nematodes,Other animals,196,101,43,58,42.6,131,182,54,41.2,29.7
+Sponges,Other animals,498,86,66,20,76.7,95,371,67,70.5,18.1
+Diatoms,Microbes & protists,113,39,1,38,2.6,772,99,92,11.9,92.9
+Fungi,Microbes & protists,2994,1396,294,1102,21.1,1495,2981,258,17.3,8.7

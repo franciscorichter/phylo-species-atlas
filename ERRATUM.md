@@ -21,11 +21,11 @@ Every redistributed tree that carried the defect is corrected in v1.1.0. The reg
 `registers/restored_branch_lengths.csv` lists every file the restoration checked, one row per file,
 with `changed` = `yes` where the file differed from its pre-relabelling copy. Its `file` column
 gives the path in the repository that builds this release: `Data/standardized/trees/<name>` is
-`standardized/trees/<name>` here, and `Data/site/...` is `site/...`. Of its rows,
-256 changed files are trees redistributed in `standardized/trees/`, 1 is `timetree.nwk`, which
-was restored and is no longer redistributed (`standardized/withdrawn.csv`), and 42 are the copies
-of trees under `site/data/partitions/`; 7 files of `standardized/trees/` were checked and found
-unchanged. Any analysis that used branch lengths, node ages or support values from these files in
+`standardized/trees/<name>` here, and `Data/site/...` is `site/...`. Of its 306 rows, 299 have
+`changed` = `yes`: 256 are trees redistributed in `standardized/trees/`, 1 is `timetree.nwk`,
+which was restored and is no longer redistributed (`standardized/withdrawn.csv`), and 42 are the
+copies of trees under `site/data/partitions/`. The other 7 rows are files of `standardized/trees/`
+that were checked and found unchanged. Any analysis that used branch lengths, node ages or support values from these files in
 an affected release should be repeated with v1.1.0. Analyses that used only tip sets or
 topologies are not affected.
 

@@ -40,6 +40,7 @@ compares it with `paper/`.
 |---|---|
 | `time_scale_checks.csv` | For each ultrametric reference tree, whether its branch lengths are in absolute or relative time, and the evidence. |
 | `dating_deposit_checks.csv` | What each source study dated and what its archive holds (`study_dating`). |
+| `larger_trees_not_counted.csv` | Larger trees of a group or a subclade that the search did not find and that are not counted, with their size as the source states it and the quotation (Table 1, note f). |
 | `crown_clades.csv` | The focal clade whose crown age is reported for each chronogram. |
 | `crown_interval_sources.csv` | The archived tree set or annotated tree from which each crown interval is read, its kind and burn-in. |
 | `crown_intervals.csv` | The crown interval of each source archive, its kind, and the tests that decide whether it counts (degenerate, at a calibration bound, reproducing the calibration prior). Written by `code/rebuild/crown_intervals.py`. |
@@ -58,7 +59,7 @@ compares it with `paper/`.
 
 | File | What it holds |
 |---|---|
-| `restored_branch_lengths.csv` | Every tree file whose branch lengths and numeric node labels release v1.0.9 restored (`ERRATUM.md`), the file it was checked against, and the numbers of branch lengths and internal labels restored. Paths are those of the pipeline (`code/rebuild/README.md`). |
+| `restored_branch_lengths.csv` | Every tree file the branch-length restoration checked, with `changed` = `yes` where its branch lengths and numeric node labels were restored, the file it was checked against, and the numbers of branch lengths and internal labels restored; `ERRATUM.md` gives its counts. Paths are those of the pipeline (`code/rebuild/README.md`). |
 
 ## Inputs of the rebuild
 

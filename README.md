@@ -101,6 +101,21 @@ python3 code/rebuild/run_worked_example.py    # R with ape (and phytools); a few
 It runs `code/rebuild/worked_example_bd.R` on this repository's files and then checks every
 printed worked-example number against the fresh fits.
 
+The fits repeated over the dated tree sets the sources archive (`paper/worked_example_bd_sets.csv`,
+Supplement S9 and Table S13) need those sets, which are not redistributed here, so
+`run_worked_example.py` does not rerun them and checks that block against the committed copy.
+To refit them, download the sets listed in `registers/worked_example_tree_sets.csv` into the paths
+its `source` column gives under a `Data/` directory beside a copy of this repository's
+`registers/` and `standardized/` files, and run `code/rebuild/worked_example_sets.R` (R with ape):
+
+| Group | Set | Where it is archived |
+|---|---|---|
+| Amphibians | posterior, 10,000 trees | VertLife, `data.vertlife.org/amphibiantree` (Jetz & Pyron 2018) |
+| Squamates | posterior, 10,000 trees | VertLife, `data.vertlife.org/squamatetree` (Tonini et al. 2016) |
+| Mammals | NDexp completed and DNA-only sets, 10,000 trees each | VertLife, `data.vertlife.org/mammaltree` (Upham et al. 2019) |
+| Birds | date-assignment sets, 100 trees each | AvesData release 1.3, `github.com/McTavishLab/AvesData`, `Tree_versions/Aves_1.3/Clements2021` (McTavish et al. 2025) |
+| Sharks | 1-fossil set (10,000 trees) and the 500-tree set of sequenced species | VertLife, `data.vertlife.org/sharktree` (Stein et al. 2018) |
+
 The figures: `python3 code/figures/fig_coverage_cascade.py` and the four other scripts in
 `code/figures/` write Figures 1 to 5 to `paper/figures/`.
 

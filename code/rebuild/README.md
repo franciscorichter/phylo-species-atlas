@@ -34,7 +34,7 @@ from this repository by the stated rules and does not import them.
 |---|---|---|
 | `canonical_trees.py` | the reference trees in `standardized/trees/` from `standardized/canonical_sources/` by the rule in `standardized/README.md` | this repository |
 | `prepare_canonical_sources.py` | the canonical sources taken from a deposit (`registers/canonical_source_prep.csv`) | the deposits |
-| `restore_branch_lengths.py` | the trees restored in v1.0.9 (`ERRATUM.md`) | the pre-relabelling copies |
+| `restore_branch_lengths.py` | the trees with restored branch lengths (`ERRATUM.md`; first released in v1.1.0) | the pre-relabelling copies |
 | `alignment_taxa.py` | `registers/molecular_sources/<group>.taxa.txt` from the cited alignments; its docstring gives the call for each group | the alignments (GTDB, Dryad, Zenodo, Figshare, GitHub, as cited in each header) |
 | `export_source_tree_taxa.py` | `registers/molecular_sources/source_trees/` from the trees of sequenced species | the source trees |
 | `match_col.py` | `standardized/col_resolution*.csv`, `col269_*` | the COL26.9 release (ChecklistBank 316321) |
@@ -42,7 +42,8 @@ from this repository by the stated rules and does not import them.
 | `gbif_unmatched.py` | `registers/external/gbif_unmatched.csv` | the GBIF API |
 | `opentree_extract.py` | `registers/external/opentree16.1_*` | Open Tree synthesis 16.1 and OTT 3.7.3 |
 | `crown_intervals.py` | `registers/crown_intervals.csv` | the archived tree sets and annotated trees (`registers/crown_interval_sources.csv`) |
-| `worked_example_bd.R` | `paper/worked_example_bd*.csv` | R with ape (phytools for the cross-check); this repository. `run_worked_example.py` runs it from this repository and compares the result |
+| `worked_example_bd.R` | `paper/worked_example_bd*.csv` except `worked_example_bd_sets.csv` | R with ape (phytools for the cross-check); this repository. `run_worked_example.py` runs it from this repository and compares the result |
+| `worked_example_sets.R` | `paper/worked_example_bd_sets.csv` | R with ape; the archived tree sets of `registers/worked_example_tree_sets.csv` (VertLife, AvesData), not redistributed; see `README.md` |
 | `rebuild_atlas.py` | `registers/coverage_basis.csv`, `molecular_tips.csv` and every file of `paper/` | the paper repository layout, PyYAML |
 | `verify_atlas.py` | nothing; the acceptance test of the paper repository (re-derives every generated file) | the paper repository layout |
 

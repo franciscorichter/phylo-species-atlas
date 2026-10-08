@@ -324,7 +324,9 @@ FRAC_DP = 6                      # published precision of f_mol / roottotip_cv
 PCT_DP = 4                       # published precision of percentages in CSVs
 ELASTICITY_FRACTION = 0.20       # denominator elasticity demonstration
 # Round F1 rule parameters (declared here as in rebuild_atlas.py)
-C1B_WIDTH_RULE_RATIO = 1.0       # interval/prior width at which the prior sets it
+# Round F3 (F3-07): crown calibrations whose counted intervals the stricter
+# interval sensitivity leaves out (= C1B_CROWN_CALIBRATED in rebuild_atlas.py)
+C1B_CROWN_CALIBRATED = ("one_sided", "two_sided", "not_checked")
 TABLE1_TIPS_OVER_NAMED = 0.10    # Table 1 flag: tips exceed named species by this
 ZERO_BRANCH_TOL = 1e-6           # = ZERO_BRANCH_TOL in worked_example_bd.R
 WORKED_POLY = P("Paper", "inputs", "worked_example_bd_polytomy.csv")
@@ -2384,9 +2386,13 @@ def check_worked(ctx):
                "reports every eligible partition")
     for p in elig:
         a = ages.get(p) or {}
-        f = as_float(a.get("crown_age_ma")) / as_float(a.get("geometry_root_ma"))
-        R.eq("S13 %s time_scale_factor = crown age / geometry root" % p,
-             as_float(sel[p]["time_scale_factor"]), f, atol=1e-9)
+        R.eq("S13 %s fitted unscaled (time_scale_factor = 1, D42)" % p,
+             as_float(sel[p]["time_scale_factor"]), 1.0, atol=1e-12)
+        R.eq("S13 %s selection crown age and root height = crown-age register"
+             % p, (as_float(sel[p]["crown_age_ma"]),
+                   as_float(sel[p]["geometry_root_ma"])),
+             (as_float(a.get("crown_age_ma")),
+              as_float(a.get("geometry_root_ma"))))
         R.eq("S13 %s rho_C0" % p, as_float(sel[p]["rho_C0"]),
              as_int(ctx.basis[p]["c0_units"]) / as_int(ctx.basis[p]["described"]),
              atol=1e-9)
@@ -2428,9 +2434,12 @@ def check_worked(ctx):
             R.eq("S13 %s %s %s epsilon interval at an estimate of 0 starts at 0"
                  % (p, tree, conv), as_float(f["epsilon_lo"]), 0.0)
         if tree == "full":
-            R.eq("S13 %s crown age = crown_ages.csv" % p,
+            # D42: the archived tree is fitted unscaled, so the fitted root
+            # height is the tree's own root height (geometry_root_ma)
+            R.eq("S13 %s fitted root height = archived root height "
+                 "(crown_ages.csv geometry_root_ma)" % p,
                  as_float(f["crown_age_ma"]),
-                 as_float((ages.get(p) or {}).get("crown_age_ma")), atol=1e-3)
+                 as_float((ages.get(p) or {}).get("geometry_root_ma")), atol=1e-3)
         for v, lo, hi in (("r", "r_lo", "r_hi"),
                           ("epsilon", "epsilon_lo", "epsilon_hi")):
             R.bump()
@@ -5546,8 +5555,9 @@ def check_crownreg(ctx):
                 R.fail("%s: partition %r has no crown_ages.csv row"
                        % (rel(path), r.get("partition")))
             elif r.get("tree") == "full":
-                R.eq("%s worked-example full-tree crown age" % r["partition"],
-                     r.get("crown_age_ma"), ages[r["partition"]]["crown_age_ma"],
+                R.eq("%s worked-example full-tree root height = archived "
+                     "root height (D42)" % r["partition"],
+                     r.get("crown_age_ma"), ages[r["partition"]]["geometry_root_ma"],
                      atol=tol)
 
     def h_whichtree(path, rows):
@@ -6092,24 +6102,35 @@ def check_numbermacros(ctx):
     cal = s["c1b_calibration_fixed"]["rungs"]["C1b"]
     w["SensCalibCOneBN"] = _mint(cal["numerator_union"])
     w["SensCalibCOneBPct"] = _mpct(100.0 * cal["numerator_union"] / D)
-    # round F1: stricter interval classifications, from the register
+    # round F3 (F3-07): the stricter interval classification, from the register
     civ = {r["partition"]: r for r in read_csv(CROWN_INTERVALS)}
-    wide = sorted(p_ for p_, r in civ.items() if r["counts_for_c1b"] == "yes"
-                  and r["calibration"] == "two_sided" and r["prior_width_ratio"]
-                  and as_float(r["prior_width_ratio"]) >= C1B_WIDTH_RULE_RATIO)
-    unch = sorted(p_ for p_, r in civ.items() if r["counts_for_c1b"] == "yes"
-                  and r["calibration"] == "not_checked")
-    for nm, drop in (("Width", set(wide)), ("Strict", set(wide) | set(unch))):
-        num = sum(as_float(r["c1_units"]) for r in canon_e
-                  if r["is_chronogram"] == "yes" and r["time_scale"] == "absolute"
-                  and r["interval_recoverable"] == "yes"
-                  and r["partition"] not in drop)
-        w["Sens%sCOneBN" % nm] = _mint(num)
-        w["Sens%sCOneBPct" % nm] = _mpct(100.0 * num / D)
-    w["SensWidthNames"] = _names(wide)
-    w["SensUncheckedNames"] = _names([x for x in unch if x not in wide])
-    w["RuleWidthRatio"] = "%g" % C1B_WIDTH_RULE_RATIO
+    cnt_ = {p_: r for p_, r in civ.items() if r["counts_for_c1b"] == "yes"}
+    R.eq("F3-07 no counted interval sits on a two-sided or unchecked crown "
+         "calibration (the text states it; rules acting on those cannot move "
+         "interval coverage)",
+         sorted(p_ for p_, r in cnt_.items()
+                if r["calibration"] in ("two_sided", "not_checked")), [])
+    ccal = set(p_ for p_, r in cnt_.items()
+               if r["calibration"] in C1B_CROWN_CALIBRATED)
+    num = sum(as_float(r["c1_units"]) for r in canon_e
+              if r["is_chronogram"] == "yes" and r["time_scale"] == "absolute"
+              and r["interval_recoverable"] == "yes"
+              and r["partition"] not in ccal)
+    w["SensCrownCalCOneBN"] = _mint(num)
+    w["SensCrownCalCOneBPct"] = _mpct(100.0 * num / D)
+    w["SensCrownCalNames"] = _names(sorted(ccal))
+    w["SensCrownUncalNames"] = _names(sorted(set(cnt_) - ccal))
     w["RuleTipsOverNamedPct"] = "%.0f" % (100 * TABLE1_TIPS_OVER_NAMED)
+    lt = defaultdict(list)
+    for x in read_csv(LARGER_TREES):
+        lt[x["partition"]].append(x)
+    w["TabWhichTreeLargerNote"] = "; ".join(
+        "%s: %s" % (p_, " and ".join(
+            "\\citet{%s}, %s%s %s of %s%s" % (
+                x["bibkey"], x["n_qualifier"] + " " if x["n_qualifier"] else "",
+                _mint(as_int(x["n"])), x["unit"], x["clade"],
+                ", dated" if x["dated"] == "yes" else "") for x in xs))
+        for p_, xs in sorted(lt.items()))
     w["RuleElasticityPct"] = "%.0f" % (100 * ELASTICITY_FRACTION)
     nob = s["leave_assembly_class_out"]["drop_automated_synthesis"]["rungs"]
     for key, nm in names[:2]:
@@ -6138,6 +6159,24 @@ def check_numbermacros(ctx):
               "opentree_comparison.csv")) if r["partition"] in me["partitions"])
     w["OTKeysOTPhyloCompared"] = _mint(kot)
     w["OTKeysMolecularAndOTOfOTPct"] = _mpct(100.0 * me["keys_molecular_and_ot"] / kot)
+    # round F3 (F3-08): the Open Tree counts reconciled, from the comparison CSV
+    otc = read_csv(P("Paper", "inputs", "opentree_comparison.csv"))
+    cmpn = sum(as_int(r["ot_phylo_extant_species"]) for r in otc
+               if r["partition"] in me["partitions"])
+    notc = [r for r in otc if r["partition"] not in me["partitions"]]
+    w["OTPhyloCompared"] = _mint(cmpn)
+    w["OTPhyloNotComparedN"] = _mint(sum(as_int(r["ot_phylo_extant_species"])
+                                         for r in notc))
+    w["OTPhyloNotComparedNames"] = _names(sorted(r["partition"] for r in notc))
+    w["OTPhyloOutsideGroups"] = _mint(ot["ot_phylo_extant_species_eukaryota"]
+                                      - sum(as_int(r["ot_phylo_extant_species"])
+                                            for r in otc))
+    R.eq("F3-08 Open Tree species: compared + not compared + outside every "
+         "group = eukaryotic total",
+         cmpn + sum(as_int(r["ot_phylo_extant_species"]) for r in notc)
+         + ot["ot_phylo_extant_species_eukaryota"]
+         - sum(as_int(r["ot_phylo_extant_species"]) for r in otc),
+         ot["ot_phylo_extant_species_eukaryota"])
     crows = read_csv(CROWN_AGES_CSV)
     w["CrownNChron"] = _mint(len(crows))
     w["CrownNCounted"] = _mint(sum(r["counts_for_c1b"] == "yes" for r in crows))
@@ -6212,13 +6251,14 @@ def check_numbermacros(ctx):
         w["OTNotOTSharePct" + crown_macro_name(p)] = _mpct(
             100.0 * per_[p]["accepted_molecular_not_in_ot"]
             / me_["accepted_molecular_not_in_ot"])
-    # crown-age scaling of the fitted trees (R2-30), recomputed from ages
+    # crown age over the fitted tree's root height (R2-30, F3-04): reported,
+    # not applied (D42), recomputed from the ages
     sel = read_csv(WORKED_SEL)
     sf = []
     for r in sel:
         sf.append(as_float(r["crown_age_ma"]) / as_float(r["geometry_root_ma"]))
-        R.eq("worked example %s scale factor" % r["partition"],
-             as_float(r["time_scale_factor"]), sf[-1], atol=1e-9)
+        R.eq("worked example %s fitted unscaled" % r["partition"],
+             as_float(r["time_scale_factor"]), 1.0, atol=1e-12)
     w["WEScaleMin"] = "%.2f" % min(sf)
     w["WEScaleMax"] = "%.2f" % max(sf)
     we = h["worked_example_S13"]
@@ -6318,6 +6358,7 @@ def check_numbermacros(ctx):
 # TABLES: the three tables and the Figure 1 projection of the revised text
 # --------------------------------------------------------------------------
 TABLE_WHICH = P("Paper", "inputs", "table_which_tree.csv")
+LARGER_TREES = P("Data", "larger_trees_not_counted.csv")
 TABLE_SENS = P("Paper", "inputs", "table_rungs_sensitivity.csv")
 TABLE_WORKED = P("Paper", "inputs", "table_worked_example.csv")
 FIG_CASCADE = P("Paper", "inputs", "fig1_coverage_cascade.csv")
@@ -6398,6 +6439,32 @@ def check_tables(ctx):
              g["tips_exceed_named"],
              "yes" if tips > (1 + TABLE1_TIPS_OVER_NAMED) * as_int(b["c0_units"])
              else "no")
+        R.eq("Table 1 %s larger tree not counted (F3-06)" % p,
+             g["larger_tree_not_counted"],
+             ";".join(x["bibkey"] for x in read_csv(LARGER_TREES)
+                      if x["partition"] == p))
+    # F3-06: every larger tree not counted belongs to a group of Table 1, is
+    # cited in references.bib, and is marked f in the rendered table
+    ltn = read_csv(LARGER_TREES)
+    R.eq("F3-06 larger trees not counted: groups in Table 1",
+         sorted({x["partition"] for x in ltn} - set(got)), [])
+    with open(P("Paper", "references.bib"), encoding="utf-8") as fh:
+        bib = fh.read()
+    R.eq("F3-06 larger trees not counted: bibkeys in references.bib",
+         sorted(x["bibkey"] for x in ltn if "{%s," % x["bibkey"] not in bib), [])
+    R.eq("F3-06 larger trees not counted: each is larger than the reference "
+         "tree's tips",
+         sorted(x["partition"] for x in ltn
+                if as_int(x["n"]) <= as_int(got[x["partition"]]["tips"])), [])
+    with open(P("Paper", "inputs", "table_which_tree.tex"), encoding="utf-8") as fh:
+        t1tex = fh.read()
+    for x in sorted({x["partition"] for x in ltn}):
+        R.eq("F3-06 Table 1 %s source cell carries f" % x,
+             any(ln.startswith(x + " & ") and "$^{f}$" in ln.split(" & ")[1]
+                 for ln in t1tex.splitlines()), True)
+    R.eq("F3-06 Table 1 rows with f = groups with a larger tree",
+         sum("$^{f}$" in ln for ln in t1tex.splitlines()),
+         len({x["partition"] for x in ltn}))
     # the molecular tip counts behind rho equal the worked-example fits
     fits = ctx.head["worked_example_S13"]["fits"]
     for p in ctx.head["worked_example_S13"]["eligible"]:
@@ -6882,12 +6949,9 @@ def check_supplement(ctx):
     check_row("union", D, OrderedDict([("C0", u["C0_union"]),
                                        ("C1", u["C1_union_high"])]))
     civ = {r["partition"]: r for r in read_csv(CROWN_INTERVALS)}
-    wide = {p_ for p_, r in civ.items() if r["counts_for_c1b"] == "yes"
-            and r["calibration"] == "two_sided" and r["prior_width_ratio"]
-            and as_float(r["prior_width_ratio"]) >= C1B_WIDTH_RULE_RATIO}
-    unch = {p_ for p_, r in civ.items() if r["counts_for_c1b"] == "yes"
-            and r["calibration"] == "not_checked"}
-    for key, drop in (("width_rule", wide), ("strict", wide | unch)):
+    ccal = {p_ for p_, r in civ.items() if r["counts_for_c1b"] == "yes"
+            and r["calibration"] in C1B_CROWN_CALIBRATED}
+    for key, drop in (("crown_calibrated", ccal),):
         lv = levels(canon_e, lambda r, d_=drop: r["partition"] not in d_)
         check_row(key, D, OrderedDict([("C1b", lv["C1b"])]))
         R.eq("Supplement S7 %s prints the interval level only" % key,
@@ -6926,10 +6990,15 @@ def check_supplement(ctx):
             ("partition", r["partition"]), ("category", cat[r["partition"]]),
             ("molecular_species", am), ("both", both),
             ("molecular_not_ot", am - both),
-            ("both_pct", "%.1f" % (100.0 * both / am) if am else "")]))
+            ("both_pct", "%.1f" % (100.0 * both / am) if am else ""),
+            ("ot_keys", as_int(r["keys_ot_phylo"])),
+            ("keys_both_ot_pct", "%.1f" % (100.0 * as_int(
+                r["keys_molecular_and_ot"]) / as_int(r["keys_ot_phylo"]))
+             if as_int(r["keys_ot_phylo"]) else "")]))
     _supp_cmp_table("supp_opentree", order(rows),
                     ["partition", "molecular_species", "both",
-                     "molecular_not_ot", "both_pct"])
+                     "molecular_not_ot", "both_pct", "ot_keys",
+                     "keys_both_ot_pct"])
     R.eq("Supplement S8 groups = groups with listed molecular tips",
          len(rows), sum(1 for b in canon_e if b["c1_basis"] == "enumerated"))
 
@@ -7357,13 +7426,15 @@ def _check_release_erratum():
            sum(1 for r in tr if r["changed"] != "yes"))
     t = open(os.path.join(RELEASE_FILES, "ERRATUM.md"), encoding="utf-8").read()
     t = re.sub(r"\s+", " ", t)
-    m = re.search(r"Of its rows, (\d+) changed files are trees redistributed in "
-                  r"`standardized/trees/`, (\d+) is `timetree.nwk`.*? and (\d+) "
-                  r"are the copies of trees under `site/data/partitions/`; (\d+) "
-                  r"files of `standardized/trees/` were checked and found "
-                  r"unchanged", t)
-    R.eq("ERRATUM.md counts = restoration register",
-         tuple(int(x) for x in m.groups()) if m else None, got)
+    m = re.search(r"Of its (\d+) rows, (\d+) have `changed` = `yes`: (\d+) are "
+                  r"trees redistributed in `standardized/trees/`, (\d+) is "
+                  r"`timetree.nwk`.*? and (\d+) are the copies of trees under "
+                  r"`site/data/partitions/`\. The other (\d+) rows are files of "
+                  r"`standardized/trees/` that were checked and found unchanged", t)
+    R.eq("ERRATUM.md counts = restoration register (rows, changed, trees, "
+         "withdrawn, site copies, unchanged)",
+         tuple(int(x) for x in m.groups()) if m else None,
+         (len(rows), sum(1 for r in rows if r["changed"] == "yes")) + got)
 
 
 def check_release(ctx):

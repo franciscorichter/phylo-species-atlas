@@ -994,23 +994,24 @@ def main(argv=None):
     cal = ladder(E, den, calset)
     R.macro(macros, "SensCalibCOneBN", fmt_int(cal["C1b"]["union"]))
     R.macro(macros, "SensCalibCOneBPct", fmt_pct(cal["C1b"]["pct_union"]))
-    # Stricter classifications: an interval at least as wide as the range of a
-    # two-sided prior on its node is set by the calibration; intervals whose
-    # calibration was not checked are left out as well
-    WIDTH_RULE_RATIO = 1.0
-    wide = sorted(p for p in c0 if bounded[p] and intervals[p]["calibration"] == "two_sided"
-                  and float(intervals[p]["prior_width_ratio"]) >= WIDTH_RULE_RATIO)
-    unch = sorted(p for p in c0 if bounded[p]
-                  and intervals[p]["calibration"] == "not_checked")
+    # Stricter classification (F3-07): every counted interval whose crown node
+    # carries a calibration (one-sided, two-sided or not checked) left out.
+    # No counted interval sits on a two-sided or unchecked calibration, so
+    # rules acting on those alone cannot move interval coverage.
+    CROWN_CALIBRATED = ("one_sided", "two_sided", "not_checked")
+    R.eq("no counted interval on a two-sided or unchecked crown calibration",
+         sorted(p for p in c0 if bounded[p]
+                and intervals[p]["calibration"] in ("two_sided", "not_checked")), [])
+    ccal = sorted(p for p in c0 if bounded[p]
+                  and intervals[p]["calibration"] in CROWN_CALIBRATED)
     strict_sets = {}
-    for nm, drop in (("Width", set(wide)), ("Strict", set(wide) | set(unch))):
-        lad_ = ladder(E, den, {p: bounded[p] and p not in drop for p in c0})
-        strict_sets[nm] = lad_
-        R.macro(macros, "Sens%sCOneBN" % nm, fmt_int(lad_["C1b"]["union"]))
-        R.macro(macros, "Sens%sCOneBPct" % nm, fmt_pct(lad_["C1b"]["pct_union"]))
-    R.macro(macros, "SensWidthNames", name_list(wide))
-    R.macro(macros, "SensUncheckedNames", name_list([p for p in unch if p not in wide]))
-    R.macro(macros, "RuleWidthRatio", "%g" % WIDTH_RULE_RATIO)
+    lad_ = ladder(E, den, {p: bounded[p] and p not in ccal for p in c0})
+    strict_sets["CrownCal"] = lad_
+    R.macro(macros, "SensCrownCalCOneBN", fmt_int(lad_["C1b"]["union"]))
+    R.macro(macros, "SensCrownCalCOneBPct", fmt_pct(lad_["C1b"]["pct_union"]))
+    R.macro(macros, "SensCrownCalNames", name_list(ccal))
+    R.macro(macros, "SensCrownUncalNames",
+            name_list(sorted(p for p in c0 if bounded[p] and p not in ccal)))
     R.macro(macros, "RuleTipsOverNamedPct", "%.0f" % (100 * TIPS_OVER_NAMED))
     R.macro(macros, "RuleElasticityPct", "%.0f" % (100 * 0.2))
     # Without the automated-synthesis tree
@@ -1229,6 +1230,12 @@ def main(argv=None):
     R.macro(macros, "OTKeysOTPhyloCompared", fmt_int(sum(r["okeys"] for r in enum)))
     R.macro(macros, "OTKeysMolecularAndOTOfOTPct", fmt_pct(pct(
         sum(r["mand"] for r in enum), sum(r["okeys"] for r in enum))))
+    notc = [r for r in ot_rows if not r["enum"]]
+    R.macro(macros, "OTPhyloCompared", fmt_int(sum(r["otp"] for r in enum)))
+    R.macro(macros, "OTPhyloNotComparedN", fmt_int(sum(r["otp"] for r in notc)))
+    R.macro(macros, "OTPhyloNotComparedNames",
+            name_list(sorted(r["partition"] for r in notc)))
+    R.macro(macros, "OTPhyloOutsideGroups", fmt_int(euk_ot - tot_ot))
     for r in enum:
         R.macro(macros, "OTNotOTSharePct" + macro_name(r["partition"]),
                 fmt_pct(pct(r["accnot"], accnot)))
@@ -1399,7 +1406,17 @@ def main(argv=None):
                "prior": ("Prior", "root ages drawn from the prior"),
                "molecular_only": ("MolOnly", "source's tree of sequenced species")}
     set_reg = read_csv(path("registers", "worked_example_tree_sets.csv"))
-    set_fit = read_csv(os.path.join(a.fits, "worked_example_bd_sets.csv"))
+    # The fits over archived tree sets (code/rebuild/worked_example_sets.R)
+    # need the sources' posterior sets, which this repository does not
+    # redistribute; a --fits directory without them is checked against the
+    # committed copy in paper/.
+    sets_csv = os.path.join(a.fits, "worked_example_bd_sets.csv")
+    if not os.path.exists(sets_csv):
+        print("  note: %s has no worked_example_bd_sets.csv; the tree-set fits "
+              "are checked from paper/ (they need the archived tree sets of "
+              "registers/worked_example_tree_sets.csv)" % a.fits)
+        sets_csv = path("paper", "worked_example_bd_sets.csv")
+    set_fit = read_csv(sets_csv)
     R.eq("tree-set fits: every row belongs to a register set",
          sorted({(r["partition"], r["set"]) for r in set_fit}),
          sorted({(x["partition"], x["set"]) for x in set_reg}))
@@ -1488,14 +1505,15 @@ def main(argv=None):
     allrr_ = [v for t in set_sum.values() for v in t[3]]
     R.macro(macros, "WESetRRatioMin", "%.2f" % min(allrr_))
     R.macro(macros, "WESetRRatioMax", "%.2f" % max(allrr_))
-    sf = [float(x["time_scale_factor"]) for x in sel]
+    # crown age over the root height of the fitted tree: reported, not
+    # applied; every tree is fitted with its archived branch lengths
+    sf = [float(crown_csv[x["partition"]]["crown_age_ma"])
+          / facts[bmap[x["partition"]]["canonical_tree"]]["root"] for x in sel]
     R.macro(macros, "WEScaleMin", "%.2f" % min(sf))
     R.macro(macros, "WEScaleMax", "%.2f" % max(sf))
     for x in sel:
-        p = x["partition"]
-        R.eq("%s: time-scale factor = crown age / root height" % p,
-             "%.6f" % (float(crown_csv[p]["crown_age_ma"]) / facts[bmap[p]["canonical_tree"]]["root"]),
-             "%.6f" % float(x["time_scale_factor"]))
+        R.eq("%s: fitted with the archived branch lengths (factor 1)" % x["partition"],
+             float(x["time_scale_factor"]), 1.0)
 
     # ------------------------------------------------- main-text tables ---
     R.section("Main-text tables (paper/table_*.csv), cell by cell")
@@ -1514,6 +1532,17 @@ def main(argv=None):
             R.eq("%s: %s" % (name, k), bad, {})
 
     reg_by_file = {g["filename"]: g for g in reg}
+    # larger trees of a group or a subclade the search missed, not counted
+    larger = defaultdict(list)
+    for x in read_csv(path("registers", "larger_trees_not_counted.csv")):
+        larger[x["partition"]].append(x)
+    R.macro(macros, "TabWhichTreeLargerNote", "; ".join(
+        "%s: %s" % (p, " and ".join(
+            "\\citet{%s}, %s%s %s of %s%s" % (
+                x["bibkey"], x["n_qualifier"] + " " if x["n_qualifier"] else "",
+                fmt_int(x["n"]), x["unit"], x["clade"],
+                ", dated" if x["dated"] == "yes" else "") for x in xs))
+        for p, xs in sorted(larger.items())))
     t1 = OrderedDict()
     for p in E:
         b = bmap[p]
@@ -1545,6 +1574,7 @@ def main(argv=None):
             ("molecular_share", "%.2f" % (mt / float(len(tips[p])))),
             ("tips_exceed_named", "yes" if len(tips[p]) > (1 + TIPS_OVER_NAMED)
              * len(c0[p]) else "no"),
+            ("larger_tree_not_counted", ";".join(x["bibkey"] for x in larger.get(p, []))),
         ])
     table_eq("table_which_tree.csv", t1, "partition")
 
@@ -1898,7 +1928,7 @@ def main(argv=None):
     got["union"] = srow("union", den, OrderedDict(
         [("C0", pct(lad["C0"]["sum"] + n_add, den)),
          ("C1", pct(lad["C1"]["sum"] + n_add, den)), ("C1d", None), ("C1b", None)]))
-    for key, nm in (("width_rule", "Width"), ("strict", "Strict")):
+    for key, nm in (("crown_calibrated", "CrownCal"),):
         got[key] = srow(key, den, OrderedDict(
             [("C0", None), ("C1", None), ("C1d", None),
              ("C1b", strict_sets[nm]["C1b"]["pct_union"])]))
@@ -1933,8 +1963,10 @@ def main(argv=None):
             ("ot_phylo_species", r["otp"]), ("molecular_species", r["acc"]),
             ("both", r["accand"]), ("molecular_not_ot", r["accnot"]),
             ("both_pct", fix(pct(r["accand"], r["acc"]), 1) if r["acc"] else ""),
-            ("molecular_keys", r["mkeys"]), ("keys_both", r["mand"]),
-            ("keys_both_pct", fix(pct(r["mand"], r["mkeys"]), 1) if r["mkeys"] else "")])
+            ("molecular_keys", r["mkeys"]), ("ot_keys", r["okeys"]),
+            ("keys_both", r["mand"]),
+            ("keys_both_pct", fix(pct(r["mand"], r["mkeys"]), 1) if r["mkeys"] else ""),
+            ("keys_both_ot_pct", fix(pct(r["mand"], r["okeys"]), 1) if r["okeys"] else "")])
     supp_eq("supp_opentree", got, "partition")
 
     # S9: every fit and the family sampling fractions
@@ -2049,6 +2081,29 @@ def main(argv=None):
                 if r["file"].startswith("Data/standardized/trees/") and r["changed"] == "yes"
                 and os.path.basename(r["file"]) in files]
     sm("SuppRestoredTreesN", fmt_int(len(restored)))
+    # ERRATUM.md states the counts of the same register
+    reg_ = read_csv(path("registers", "restored_branch_lengths.csv"))
+    wd_ = {os.path.basename(r.get("filename") or r.get("file") or "")
+           for r in read_csv(path("standardized", "withdrawn.csv"))}
+    tr_ = [r for r in reg_ if r["file"].startswith("Data/standardized/trees/")]
+    st_ = [r for r in reg_ if r["file"].startswith("Data/site/")]
+    with open(path("ERRATUM.md"), encoding="utf-8") as fh:
+        et_ = re.sub(r"\s+", " ", fh.read())
+    m_ = re.search(r"Of its (\d+) rows, (\d+) have `changed` = `yes`: (\d+) are "
+                   r"trees redistributed in `standardized/trees/`, (\d+) is "
+                   r"`timetree.nwk`.*? and (\d+) are the copies of trees under "
+                   r"`site/data/partitions/`\. The other (\d+) rows are files of "
+                   r"`standardized/trees/` that were checked and found unchanged", et_)
+    R.eq("ERRATUM.md: rows, changed, redistributed trees, withdrawn, site copies, "
+         "unchanged = registers/restored_branch_lengths.csv",
+         tuple(int(x) for x in m_.groups()) if m_ else None,
+         (len(reg_), sum(r["changed"] == "yes" for r in reg_),
+          sum(r["changed"] == "yes" and os.path.basename(r["file"]) not in wd_
+              and os.path.basename(r["file"]) in files for r in tr_),
+          sum(r["changed"] == "yes" and os.path.basename(r["file"]) in wd_ for r in tr_),
+          sum(r["changed"] == "yes" and os.path.exists(path(*r["file"].split("/")[1:]))
+              for r in st_),
+          sum(r["changed"] != "yes" and os.path.basename(r["file"]) in files for r in tr_)))
     sm("SuppRestoredBranchLengthsN", fmt_int(sum(as_int(r["branch_lengths_restored"])
                                                  for r in restored)))
     sm("SuppShippedTreesN", fmt_int(len(files)))

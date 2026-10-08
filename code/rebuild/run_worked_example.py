@@ -10,6 +10,13 @@ each output table, the largest relative difference of any number from the
 committed copy in paper/ (the optimiser's last printed digit can differ
 between machines) and any text column that differs.
 
+The fits over the archived tree sets (worked_example_sets.R, written to
+paper/worked_example_bd_sets.csv) are not rerun here: they read the sources'
+posterior and date-assignment sets, which are not redistributed
+(registers/worked_example_tree_sets.csv names each set and where it is
+archived; README.md, "Rebuilding the fits").  reproduce_paper.py --fits
+checks that block against the committed copy.
+
     python3 code/rebuild/run_worked_example.py [--keep DIR]
 
 The fits take minutes per large tree; run it on a machine with 16 GB or more.
@@ -103,6 +110,8 @@ def main(argv=None):
         for t in text[:10]:
             print("    " + t)
         failed += worst is None or bool(text)
+    print("worked_example_bd_sets.csv: not refitted (needs the archived tree "
+          "sets of registers/worked_example_tree_sets.csv); checked from paper/")
     rc = subprocess.call([sys.executable, "-I",
                           os.path.join(ROOT, "scripts", "reproduce_paper.py"),
                           "--quiet", "--fits", os.path.join(work, "Paper", "inputs")])
