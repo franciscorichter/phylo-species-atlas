@@ -245,15 +245,29 @@ PRIOR_WIDTH_RATIO_MIN = 0.5  # ... and not even halved by the data
 CAL_CLASSES = ("two_sided", "one_sided", "none", "not_checked")
 
 
+def d52_prior_range(cal):
+    """D25, D52, implemented independently of crown_intervals.py: the range
+    rule (p) uses -- the crown's own two-sided calibration, else the band the
+    register gives from the calibrations on the nodes around the crown."""
+    if not cal:
+        return None, None, ""
+    if cal.get("calibration") == "two_sided":
+        return float(cal["prior_lo_ma"]), float(cal["prior_hi_ma"]), "calibration"
+    lo_, hi_ = as_float(cal.get("band_lo_ma")), as_float(cal.get("band_hi_ma"))
+    if lo_ is not None and hi_ is not None:
+        return lo_, hi_, "band"
+    return None, None, ""
+
+
 def d25_prior_test(lo, hi, cal):
     """D25, implemented independently of crown_intervals.py: (class, p_lo,
     p_hi, containment, width_ratio, reproduced)."""
     if not cal:
         return "", None, None, None, None, False
     k = cal.get("calibration")
-    if k != "two_sided":
+    plo, phi, _src = d52_prior_range(cal)
+    if plo is None:
         return k, None, None, None, None, False
-    plo, phi = float(cal["prior_lo_ma"]), float(cal["prior_hi_ma"])
     ov = min(hi, phi) - max(lo, plo)
     ov = ov if ov > 0 else 0.0
     cont = ov / (hi - lo) if hi > lo else 1.0
@@ -1802,6 +1816,16 @@ def check_crown(ctx):
                                        "prior_hi_ma": "201.5"})[5], False)
     R.eq("D25 self-test one-sided",
          d25_prior_test(498.8, 525.0, {"calibration": "one_sided"})[5], False)
+    # D52 self-test: an interval inside the band that calibrations on the
+    # nodes around an uncalibrated crown allow is tested like a prior
+    R.eq("D52 self-test band",
+         d25_prior_test(273.7, 338.6, {"calibration": "none",
+                                       "band_lo_ma": "245",
+                                       "band_hi_ma": "350.1"})[5], True)
+    R.eq("D52 self-test no band",
+         d25_prior_test(273.7, 338.6, {"calibration": "none",
+                                       "band_lo_ma": "245",
+                                       "band_hi_ma": ""})[5], False)
     cals = OrderedDict((r["partition"], r)
                        for r in read_csv(CALIBRATION_REGISTER))
     for part, c in cals.items():
@@ -1813,6 +1837,16 @@ def check_crown(ctx):
             lo_, hi_ = as_float(c.get("prior_lo_ma")), as_float(c.get("prior_hi_ma"))
             R.eq("%s two-sided prior range numeric and ordered" % part,
                  lo_ is not None and hi_ is not None and lo_ < hi_, True)
+        else:
+            # D52: every crown without its own two-sided calibration records
+            # the calibrations below it, and a band only with evidence
+            R.eq("%s child calibration class known (D52)" % part,
+                 c.get("child_calibration") in CAL_CLASSES, True)
+            blo, bhi = as_float(c.get("band_lo_ma")), as_float(c.get("band_hi_ma"))
+            R.eq("%s band both ends or neither, ordered, with evidence (D52)" % part,
+                 ((blo is None) == (bhi is None))
+                 and (blo is None or blo < bhi) and bool(c.get("band_evidence")),
+                 True)
     data_root = P("Data")
     for r in reg:
         part, kind = r["partition"], r["kind"]
@@ -1837,6 +1871,8 @@ def check_crown(ctx):
         R.eq("%s calibration class" % part, o.get("calibration", ""), klass)
         R.eq("%s prior_reproduced" % part, o.get("prior_reproduced"),
              "yes" if repro else "no")
+        R.eq("%s prior_range (D52)" % part, o.get("prior_range", ""),
+             d52_prior_range(cals.get(part))[2])
         for k, v in (("prior_lo_ma", plo), ("prior_hi_ma", phi),
                      ("prior_containment", cont), ("prior_width_ratio", ratio)):
             R.eq("%s %s" % (part, k), as_float(o.get(k)), v, atol=1e-6)
@@ -4920,6 +4956,9 @@ BENIGN_CONTEXT = (
     "subplots_adjust", "rcparams", "zorder", "width=", "height=", "color",
     "labelsize", "titlesize", "elinewidth", "capsize", "rotation", "vmin",
     "vmax", "aspect", "gridspec", "margins", "tick_params", "cm(", "alpha=",
+    # round F4 (F4-14): a ggplot font specification and a matplotlib figure
+    # height, geometry of the same kind as fontsize and figsize above
+    "element_text(", "fig_h =",
 )
 
 def grouped(digits):
@@ -5128,9 +5167,12 @@ def check_noliterals(ctx):
     # SELF-TEST.  A coverage value that rounds to a whole number at one
     # decimal ("86.0", "10.0", "100.0") is still a reported value and must be
     # caught; the percent scale factor "100.0 * n / d" must not be.
+    # The probe is drawn from the values literal_hits() accuses: a literal
+    # below 1.0 is never compared (round F4: interval coverage, 0.02%,
+    # rounds to 0.0 at one decimal, which the rule exempts by design).
     whole = sorted((v, why) for (dp, v), why in
                    ((k, w) for k, w in forbidden.items() if k[0] == 1)
-                   if v == int(v))
+                   if v == int(v) and v >= 1.0)
     R.bump()
     if not whole:
         R.note("NOLITERALS self-test: no coverage value rounds to a whole "
@@ -6198,7 +6240,7 @@ def check_numbermacros(ctx):
     w["SensCrownCalCOneBPct"] = _mpct(100.0 * num / D)
     w["SensCrownCalNames"] = _names(sorted(ccal))
     w["SensCrownCalOwnNames"] = _names(sorted(cown))
-    w["SensCrownCalParentNames"] = _names(sorted(cpar))
+    w["SensCrownCalParentNames"] = _names(sorted(cpar)) or "none"
     w["SensCrownUncalNames"] = _names(sorted(set(cnt_) - ccal))
     for k_, nm_ in (("none", "NoCal"), ("one_sided", "OneSided"),
                     ("two_sided", "TwoSided")):
@@ -6323,6 +6365,10 @@ def check_numbermacros(ctx):
     w["CrownNamesSetCalib"] = _names([r["partition"] for r in crows
                                       if r["partition"] in oset
                                       and r["c1b_exclusion"] not in ("", "kind")])
+    w["CrownNamesPostCalib"] = _names([r["partition"] for r in crows
+                                       if r["partition"] in oset
+                                       and r["c1b_exclusion"] not in ("", "kind")
+                                       and r["interval_kind"] == "posterior_sample"])
     w["CrownNamesNoInterval"] = _names([r["partition"] for r in crows
                                         if not r["interval_kind"]])
     w["CrownNamesKind"] = _names([r["partition"] for r in crows if r["interval_kind"]
@@ -6502,6 +6548,10 @@ def check_numbermacros(ctx):
         w["WERRatio" + n] = "%.2f" % (as_float(ff["r"]) / as_float(ft["r"]))
         w["WEEpsFamily" + n] = "%.2f" % as_float(fm["epsilon"])
         w["WERFamily" + n] = "%.3f" % as_float(fm["r"])
+        # F4-12: the edge of the restriction and the matching profile interval
+        w["WEEdge" + n] = "%.2f" % (1.0 - as_float(ft["rho"]) / as_float(fc["rho"]))
+        w["WEEpsTipsLo" + n] = "%.2f" % as_float(ft["epsilon_lo"])
+        w["WEEpsTipsHi" + n] = "%.2f" % as_float(ft["epsilon_hi"])
     # round F1 (F1-14): polytomies and the fits with them resolved
     w.update(_worked_poly_macros(we["eligible"], fits))
     # round F2: the fits over the archived tree sets
@@ -6701,22 +6751,60 @@ def check_tables(ctx):
     we = h["worked_example_S13"]
     t3 = {r["partition"]: r for r in read_csv(TABLE_WORKED)}
     R.eq("Table 3 lists every eligible group", sorted(t3), sorted(we["eligible"]))
+    # F4-10 (D54): a group whose source archives a posterior set, else a set
+    # with dates drawn at random, is reported over that set (median, range)
+    srows_ = read_csv(WORKED_SETS)
     for p in we["eligible"]:
         r = t3[p]
         ft, fc = fits[p + "|molecular|tips"], fits[p + "|molecular|full_misapplied"]
         ff, fm = fits[p + "|full|tips"], fits[p + "|molecular|family"]
+        st_ = next((x for x in ("posterior", "date_random")
+                    if any(q["partition"] == p and q["set"] == x
+                           for q in srows_)), None)
+        R.eq("Table 3 %s basis (D54)" % p, r["basis"], st_ or "summary")
         for col_, f, k, fmt in (("rho_molecular", ft, "rho", "%.2f"),
                                 ("rho_fulltree", fc, "rho", "%.2f"),
-                                ("eps_molecular", ft, "epsilon", "%.2f"),
-                                ("eps_fullrho", fc, "epsilon", "%.2f"),
-                                ("r_full", ff, "r", "%.3f"),
-                                ("r_molecular", ft, "r", "%.3f"),
                                 ("eps_family", fm, "epsilon", "%.2f")):
             R.eq("Table 3 %s %s" % (p, col_), r[col_], fmt % as_float(f[k]))
-        R.eq("Table 3 %s lambda ratio" % p, r["lambda_ratio"],
-             "%.2f" % (as_float(fc["lambda"]) / as_float(ft["lambda"])))
         lr = max(0.0, 2.0 * (as_float(ft["loglik"]) - as_float(fc["loglik"])))
-        R.eq("Table 3 %s LR" % p, r["lr"], "%.2f" % lr)
+        if st_ is None:
+            for col_, f, k, fmt in (("eps_molecular", ft, "epsilon", "%.2f"),
+                                    ("eps_fullrho", fc, "epsilon", "%.2f"),
+                                    ("r_full", ff, "r", "%.3f"),
+                                    ("r_molecular", ft, "r", "%.3f")):
+                R.eq("Table 3 %s %s" % (p, col_), r[col_], fmt % as_float(f[k]))
+            R.eq("Table 3 %s lambda ratio" % p, r["lambda_ratio"],
+                 "%.2f" % (as_float(fc["lambda"]) / as_float(ft["lambda"])))
+            R.eq("Table 3 %s LR" % p, r["lr"], "%.2f" % lr)
+            R.eq("Table 3 %s rejected" % p, r["classification"].endswith(
+                "(rejected)"), lr > _crit_corrected(len(we["eligible"])))
+        else:
+            qs = [q for q in srows_ if q["partition"] == p and q["set"] == st_]
+
+            def _med(xs):
+                xs = sorted(xs)
+                k_ = len(xs) // 2
+                return xs[k_] if len(xs) % 2 else 0.5 * (xs[k_ - 1] + xs[k_])
+            for col_, k, fmt in (("eps_molecular", "epsilon_matching", "%.2f"),
+                                 ("eps_fullrho", "epsilon_full_rho", "%.2f"),
+                                 ("r_full", "r_full_tree", "%.3f"),
+                                 ("r_molecular", "r_matching", "%.3f"),
+                                 ("lr", "lr_statistic", "%.2f")):
+                xs = [as_float(q[k]) for q in qs]
+                R.eq("Table 3 %s %s median (range) over the %s set" % (p, col_, st_),
+                     (r[col_], r[col_ + "_lo"], r[col_ + "_hi"]),
+                     (fmt % _med(xs), fmt % min(xs), fmt % max(xs)))
+            lam_ = [(as_float(q["r_full_rho"]) / (1 - as_float(q["epsilon_full_rho"])))
+                    / (as_float(q["r_matching"]) / (1 - as_float(q["epsilon_matching"])))
+                    for q in qs]
+            R.eq("Table 3 %s lambda ratio median over the set" % p,
+                 r["lambda_ratio"], "%.2f" % _med(lam_))
+            nb_ = sum(1 for q in qs if as_float(q["epsilon_full_rho"]) < 1e-6
+                      and as_float(q["lr_statistic"]) > 2e-3)
+            R.eq("Table 3 %s trees and trees that bind" % p,
+                 (r["n_trees"], r["n_boundary"], r["classification"]),
+                 (str(len(qs)), str(nb_), "boundary" if nb_ == len(qs)
+                  else "identity" if nb_ == 0 else "mixed"))
         for col_, k in (("r_family", "r"), ("r_family_lo", "r_lo"),
                         ("r_family_hi", "r_hi"), ("eps_family_lo", "epsilon_lo"),
                         ("eps_family_hi", "epsilon_hi")):
@@ -6725,8 +6813,6 @@ def check_tables(ctx):
                  % as_float(fm[k]))
         R.eq("Table 3 %s has no log-likelihood comparison column" % p,
              "dll_family" in r, False)
-        R.eq("Table 3 %s rejected" % p, r["classification"].endswith(
-            "(rejected)"), lr > _crit_corrected(len(we["eligible"])))
 
     # Figure 1 cascade: per-category levels and the losses, on the union
     # convention, cell by cell against union_losses() (R2-15)
@@ -7075,6 +7161,9 @@ def check_supplement(ctx):
              if kind else ""),
             ("parent_calibration", (cregs.get(p, {}).get("parent_calibration")
                                     or "") if kind else ""),
+            ("child_calibration", (cregs.get(p, {}).get("child_calibration")
+                                   or "") if kind else ""),
+            ("prior_range", d52_prior_range(cregs.get(p))[2] if kind else ""),
             ("status", st)]))
         for k_ in ("prior_q_lo", "prior_q_center", "prior_q_hi"):
             R.eq("%s crown_intervals.csv %s (F3-14)" % (p, k_),
@@ -7090,7 +7179,8 @@ def check_supplement(ctx):
                      "interval_lo_ma", "interval_hi_ma", "interval_kind",
                      "calibration", "prior_lo_ma", "prior_hi_ma",
                      "prior_containment_pct", "prior_q_lo", "prior_q_center",
-                     "prior_q_hi", "parent_calibration", "status"])
+                     "prior_q_hi", "parent_calibration", "child_calibration",
+                     "prior_range", "status"])
 
     # ---- sensitivity: the alternatives recomputed from the basis --------
     D = sum(as_int(r["described"], 0) for r in basis

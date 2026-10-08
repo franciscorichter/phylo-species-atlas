@@ -775,7 +775,10 @@ def main(argv=None):
         at_bound = (not degenerate and c is not None
                     and (c - lo < BOUND_TOL_MYR or hi - c < BOUND_TOL_MYR))
         repro = False
-        if iv["calibration"] == "two_sided":
+        # rule (p) compares the interval with the crown's own two-sided
+        # calibration, or, for a crown without one, with the band that the
+        # calibrations on the nodes around it allow (D52, prior_range band)
+        if iv.get("prior_range") in ("calibration", "band"):
             plo, phi = float(iv["prior_lo_ma"]), float(iv["prior_hi_ma"])
             cont = max(0.0, min(hi, phi) - max(lo, plo)) / w if w > 0 else 1.0
             ratio = w / (phi - plo)
@@ -797,12 +800,20 @@ def main(argv=None):
     for p, iv in sorted(intervals.items()):
         if INTERVAL_KIND_COUNTS[iv["kind"]]:
             cr = calreg.get(p, {})
-            # the prior range enters the test only for a two-sided calibration
+            # the range enters the test for a two-sided calibration on the
+            # crown, otherwise for the band the register records (D52)
             two = cr.get("calibration") == "two_sided"
-            f6 = lambda x: "%.6f" % float(x) if x and two else ""
-            R.eq("%s: calibration and prior range as in the calibration register" % p,
-                 (iv["calibration"], f6(iv["prior_lo_ma"]), f6(iv["prior_hi_ma"])),
-                 (cr.get("calibration"), f6(cr.get("prior_lo_ma")), f6(cr.get("prior_hi_ma"))))
+            band = (not two and bool(cr.get("band_lo_ma"))
+                    and bool(cr.get("band_hi_ma")))
+            src = "calibration" if two else "band" if band else ""
+            f6 = lambda x: "%.6f" % float(x) if x else ""
+            want = ((cr.get("prior_lo_ma"), cr.get("prior_hi_ma")) if two
+                    else (cr.get("band_lo_ma"), cr.get("band_hi_ma")) if band
+                    else ("", ""))
+            got = ((iv["prior_lo_ma"], iv["prior_hi_ma"]) if src else ("", ""))
+            R.eq("%s: calibration, range and its source as in the calibration register" % p,
+                 (iv["calibration"], iv.get("prior_range", ""), f6(got[0]), f6(got[1])),
+                 (cr.get("calibration"), src, f6(want[0]), f6(want[1])))
     bounded = {p: chron.get(p, False) and counts.get(p, False) for p in c0}
 
     # Per-group table columns
@@ -1063,7 +1074,7 @@ def main(argv=None):
     R.macro(macros, "SensCrownCalCOneBPct", fmt_pct(lad_["C1b"]["pct_union"]))
     R.macro(macros, "SensCrownCalNames", name_list(ccal))
     R.macro(macros, "SensCrownCalOwnNames", name_list(cown))
-    R.macro(macros, "SensCrownCalParentNames", name_list(cpar))
+    R.macro(macros, "SensCrownCalParentNames", name_list(cpar) or "none")
     R.macro(macros, "SensCrownUncalNames",
             name_list(sorted(p for p in c0 if bounded[p] and p not in ccal)))
     for k_, nm_ in (("none", "NoCal"), ("one_sided", "OneSided"),
@@ -1286,6 +1297,9 @@ def main(argv=None):
     # is of the crown only)
     R.macro(macros, "CrownNamesSetCalib", name_list(sorted(
         p for p in oset if why_of[p] and why_of[p] != "kind")))
+    R.macro(macros, "CrownNamesPostCalib", name_list(sorted(
+        p for p in oset if why_of[p] and why_of[p] != "kind"
+        and intervals[p]["kind"] == "posterior_sample")))
 
     # ------------------------------------------------ Open Tree of Life ---
     R.section("Open Tree of Life synthesis 16.1: species placed by a phylogeny")
@@ -1435,6 +1449,11 @@ def main(argv=None):
         R.macro(macros, "WERRatio" + n, "%.2f" % rr)
         R.macro(macros, "WEEpsFamily" + n, "%.2f" % g(p, *FM, k="epsilon"))
         R.macro(macros, "WERFamily" + n, "%.3f" % g(p, *FM, k="r"))
+        # the edge of the restriction, 1 - rho_m/rho_f, and the profile
+        # interval of the matching extinction fraction on the summary tree
+        R.macro(macros, "WEEdge" + n, "%.2f" % (1.0 - rho_t / rho_c))
+        R.macro(macros, "WEEpsTipsLo" + n, "%.2f" % g(p, *M, k="epsilon_lo"))
+        R.macro(macros, "WEEpsTipsHi" + n, "%.2f" % g(p, *M, k="epsilon_hi"))
     R.macro(macros, "WENEligible", fmt_int(len(elig)))
     R.macro(macros, "WENIdentity", fmt_int(n_ident))
     R.macro(macros, "WENBoundary", fmt_int(n_bound))
@@ -1767,7 +1786,36 @@ def main(argv=None):
             ("eps_family_hi", f2(fm["epsilon_hi"])),
             ("r_family", f3(fm["r"])), ("r_family_lo", f3(fm["r_lo"])),
             ("r_family_hi", f3(fm["r_hi"])),
+            ("basis", "summary"), ("n_trees", ""), ("n_boundary", ""),
+            ("lr_lo", ""), ("lr_hi", ""),
         ])
+        # A group whose source archives a posterior set, else a set with
+        # dates drawn at random, is reported in Table 3 as the median and
+        # range over that set; its summary-tree fits are in the Supplement.
+        st_ = next((x_ for x_ in ("posterior", "date_random")
+                    if any(r_["partition"] == p and r_["set"] == x_
+                           for r_ in set_fit)), None)
+        if st_:
+            rs_ = [r_ for r_ in set_fit if r_["partition"] == p and r_["set"] == st_]
+            row_ = t3[p]
+            for key_, col_, ff_ in (("eps_molecular", "epsilon_matching", f2),
+                                    ("eps_fullrho", "epsilon_full_rho", f2),
+                                    ("r_full", "r_full_tree", f3),
+                                    ("r_molecular", "r_matching", f3),
+                                    ("lr", "lr_statistic", f2)):
+                xs_ = [float(r_[col_]) for r_ in rs_]
+                row_[key_] = ff_(med(xs_))
+                row_[key_ + "_lo"], row_[key_ + "_hi"] = ff_(min(xs_)), ff_(max(xs_))
+            lam_ = [(float(r_["r_full_rho"]) / (1 - float(r_["epsilon_full_rho"])))
+                    / (float(r_["r_matching"]) / (1 - float(r_["epsilon_matching"])))
+                    for r_ in rs_]
+            row_["lambda_ratio"] = "%.2f" % med(lam_)
+            nb_ = sum(1 for r_ in rs_ if float(r_["epsilon_full_rho"]) < 1e-6
+                      and float(r_["lr_statistic"]) > 2e-3)
+            row_["classification"] = ("boundary" if nb_ == len(rs_) else
+                                      "identity" if nb_ == 0 else "mixed")
+            row_["basis"], row_["n_trees"], row_["n_boundary"] = (
+                st_, str(len(rs_)), str(nb_))
     table_eq("table_worked_example.csv", t3, "partition")
 
     R.section("Figure source data (paper/fig*_*.csv)")
@@ -2006,6 +2054,12 @@ def main(argv=None):
                                           float(iv["interval_hi_ma"]))
              if kind and calreg.get(p, {}).get("prior_density") else ""),
             ("parent_calibration", calreg.get(p, {}).get("parent_calibration", "")
+             if kind else ""),
+            ("child_calibration", calreg.get(p, {}).get("child_calibration", "")
+             if kind else ""),
+            ("prior_range", ("calibration" if calreg.get(p, {}).get("calibration")
+                             == "two_sided" else "band"
+                             if calreg.get(p, {}).get("band_lo_ma") else "")
              if kind else ""),
             ("status", status)])
         for k_ in ("prior_q_lo", "prior_q_center", "prior_q_hi"):

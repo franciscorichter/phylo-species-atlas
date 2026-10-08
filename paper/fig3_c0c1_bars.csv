@@ -11,19 +11,19 @@ Turtles,Vertebrates,364,256,70.3297,70.3297,no,yes,primary_analysis
 Ferns,Plants,10578,6097,57.6385,57.6385,no,yes,primary_analysis
 Cephalopods,Other animals,800,80,10.0000,10.0000,no,yes,compiled
 Bryozoa,Other animals,6000,337,5.6167,5.6167,no,no,primary_analysis
-Insects,Arthropods,1000000,42078,4.2078,4.2078,no,no,primary_analysis
+Insects,Arthropods,929676,42078,4.5261,4.5261,no,no,primary_analysis
+Bryophytes,Plants,19273,505,2.6202,2.6202,no,yes,primary_analysis
 Cnidaria,Other animals,11800,258,2.1864,2.1864,no,yes,primary_analysis
-Bryophytes,Plants,24000,505,2.1042,2.1042,no,yes,primary_analysis
 Spiders,Arthropods,52249,888,1.6996,1.6996,no,yes,primary_analysis
 Sponges,Other animals,9470,86,0.9081,0.9081,no,yes,primary_analysis
-Fungi,Microbes & protists,155000,1396,0.9006,0.9006,no,no,primary_analysis
+Fungi,Microbes & protists,156891,1396,0.8898,0.8898,no,no,primary_analysis
 Echinoderms,Other animals,7550,62,0.8212,0.8212,no,yes,primary_analysis
 Bivalves,Other animals,10043,44,0.4381,0.4381,no,no,primary_analysis
 Nematodes,Other animals,28537,101,0.3539,0.3539,no,no,primary_analysis
 Diatoms,Microbes & protists,20000,39,0.1950,0.1950,no,yes,primary_analysis
 Crustaceans,Arthropods,77000,65,0.0844,0.0844,no,no,primary_analysis
 Gastropods,Other animals,65000,39,0.0600,0.0600,no,yes,primary_analysis
-Acanthocephala,Other animals,1300,0,0.0000,0.0000,yes,,
+Acanthocephala,Other animals,1325,0,0.0000,0.0000,yes,,
 Acari,Arthropods,55000,0,0.0000,0.0000,yes,,
 Amoebozoa,Microbes & protists,2400,0,0.0000,0.0000,yes,,
 Annelids,Other animals,21000,0,0.0000,0.0000,yes,,
@@ -36,7 +36,7 @@ Ciliates,Microbes & protists,4500,0,0.0000,0.0000,yes,,
 Ctenophores,Other animals,200,0,0.0000,0.0000,yes,,
 Dinoflagellates,Microbes & protists,2300,0,0.0000,0.0000,yes,,
 Euglenozoa,Microbes & protists,2000,0,0.0000,0.0000,yes,,
-Flatworms,Other animals,20000,0,0.0000,0.0000,yes,,
+Flatworms,Other animals,29487,0,0.0000,0.0000,yes,,
 Foraminifera,Microbes & protists,9000,0,0.0000,0.0000,yes,,
 Green algae,Plants,11000,0,0.0000,0.0000,yes,,
 Hagfish,Vertebrates,82,0,0.0000,0.0000,yes,,
@@ -47,11 +47,11 @@ Minor animal phyla,Other animals,376,0,0.0000,0.0000,yes,,
 Myriapods,Arthropods,17000,0,0.0000,0.0000,yes,,
 Myxozoa,Other animals,2400,0,0.0000,0.0000,yes,,
 Nemerteans,Other animals,1300,0,0.0000,0.0000,yes,,
-Oomycetes,Microbes & protists,1000,0,0.0000,0.0000,yes,,
+Oomycetes,Microbes & protists,1673,0,0.0000,0.0000,yes,,
 Other Mollusca,Other animals,1500,0,0.0000,0.0000,yes,,
-Other arachnids,Arthropods,12000,0,0.0000,0.0000,yes,,
-Other hexapods,Arthropods,10000,0,0.0000,0.0000,yes,,
-Other phyla,Other animals,4300,0,0.0000,0.0000,yes,,
+Other arachnids,Arthropods,12765,0,0.0000,0.0000,yes,,
+Other hexapods,Arthropods,10138,0,0.0000,0.0000,yes,,
+Other phyla,Other animals,3442,0,0.0000,0.0000,yes,,
 Other vertebrates,Vertebrates,9,0,0.0000,0.0000,yes,,
 Pycnogonida,Arthropods,1400,0,0.0000,0.0000,yes,,
 Rhodophyta,Plants,7000,0,0.0000,0.0000,yes,,

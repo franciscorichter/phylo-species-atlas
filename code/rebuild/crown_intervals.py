@@ -81,7 +81,14 @@ PRIOR_WIDTH_RATIO_MIN (the data did not even halve its width).  The prior
 range is the effective (marginal) prior from a run of the source's own input
 file sampling from the prior where one exists (prior_basis
 effective_prior_run), otherwise the calibration as specified.  A one-sided,
-absent or unchecked calibration is recorded and does not exclude.
+absent or unchecked calibration is recorded and does not exclude by itself.
+BAND (round F4, F4-09; decision D52).  Where the crown carries no two-sided
+calibration of its own, calibrations on the nodes around it can still
+confine it: the crown is no younger than the oldest minimum on it or on a
+node below it, and no older than the youngest maximum on it or on a node
+above it.  The register records that band (band_lo_ma, band_hi_ma, with
+child_calibration and band_evidence), and the same test is applied to it
+(prior_range = band); with no band the interval is compared with no prior.
 A row counts for C1b only when its kind counts AND it is neither degenerate
 nor at a bound (decision D22) nor reproduces its prior (D25); c1b_exclusion
 names the reason otherwise.
@@ -142,7 +149,7 @@ OUT_HEADER = ["partition", "kind", "counts_for_c1b", "source",
               "source_root_height_ma", "calibration", "prior_lo_ma",
               "prior_hi_ma", "prior_containment", "prior_width_ratio",
               "prior_reproduced", "prior_q_lo", "prior_q_center",
-              "prior_q_hi"]
+              "prior_q_hi", "prior_range"]
 
 csv.field_size_limit(1 << 30)
 TOKEN_RE = re.compile(r"\[[^\]]*\]|'(?:[^']|'')*'|[(),;:]|[^(),;:\['\s]+")
@@ -431,6 +438,24 @@ def measure(row, data_root, jobs):
     return out
 
 
+def prior_range(cal):
+    """D25, D52.  (p_lo, p_hi, source) of the range rule (p) compares an
+    interval with: the crown's own two-sided calibration ('calibration'),
+    otherwise the band the calibrations on the nodes around it allow
+    ('band'), otherwise none."""
+    if not cal:
+        return None, None, ""
+    if cal["calibration"] == "two_sided":
+        return float(cal["prior_lo_ma"]), float(cal["prior_hi_ma"]), "calibration"
+    blo = (cal.get("band_lo_ma") or "").strip()
+    bhi = (cal.get("band_hi_ma") or "").strip()
+    if blo and bhi:
+        if float(blo) >= float(bhi):
+            sys.exit("calibration band %s-%s is not ordered" % (blo, bhi))
+        return float(blo), float(bhi), "band"
+    return None, None, ""
+
+
 def prior_test(lo, hi, cal):
     """D25.  (calibration, p_lo, p_hi, containment, width_ratio, reproduced)
     for one interval and its calibration-register row (None: no row)."""
@@ -439,9 +464,9 @@ def prior_test(lo, hi, cal):
     klass = cal["calibration"]
     if klass not in CAL_CLASSES:
         sys.exit("unknown calibration class %r" % klass)
-    if klass != "two_sided":
+    plo, phi, _src = prior_range(cal)
+    if plo is None:
         return klass, None, None, None, None, False
-    plo, phi = float(cal["prior_lo_ma"]), float(cal["prior_hi_ma"])
     w = hi - lo
     ov = max(0.0, min(hi, phi) - max(lo, plo))
     cont = ov / w if w > 0 else 1.0
@@ -540,6 +565,7 @@ def flags(kind, lo, center, hi, point, cal=None):
                 prior_containment=cont, prior_width_ratio=ratio,
                 prior_reproduced="yes" if repro else "no",
                 **prior_quantiles(lo, center, hi, point, cal),
+                prior_range=prior_range(cal)[2],
                 c1b_exclusion=why,
                 counts_for_c1b="yes" if not why else "no")
 

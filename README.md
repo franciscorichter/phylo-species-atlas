@@ -36,19 +36,19 @@ Licence: CC BY 4.0 (`LICENSE`); the source trees keep the terms of their origina
 
 ## The four coverage levels
 
-The 2,148,799 described eukaryotic species are divided into 60 groups; 24 of them have a
+The 2,085,869 described eukaryotic species are divided into 60 groups; 24 of them have a
 species-level phylogeny, and for each the largest one found is the group's reference tree. A
 described species is counted at four nested levels:
 
 | Level | A species counts when | Species | % of described |
 |---|---|---:|---:|
-| Named | its Catalogue of Life (COL26.9) accepted name is a tip of its group's reference tree | 395,517 | 18.4 |
-| Molecular | it is named, and the tip is in the molecular analysis from which the tree was built | 157,201 | 7.3 |
-| Dated | it is molecular, and the reference tree is a chronogram in absolute time | 113,180 | 5.3 |
-| Interval | it is dated, and the source archive carries a divergence-time interval for the focal crown that a calibration does not set | 4,352 | 0.20 |
+| Named | its Catalogue of Life (COL26.9) accepted name is a tip of its group's reference tree | 395,517 | 19.0 |
+| Molecular | it is named, and the tip is in the molecular analysis from which the tree was built | 157,201 | 7.5 |
+| Dated | it is molecular, and the reference tree is a chronogram in absolute time | 113,180 | 5.4 |
+| Interval | it is dated, and the source archive carries a divergence-time interval for the focal crown that a calibration does not set | 320 | 0.02 |
 
-A species named in two groups' trees counts once. The interval level is 1.6% when every archived
-interval is counted, whatever its kind, and 0.70% when intervals set by a calibration are counted. Bacteria and Archaea are counted separately, in GTDB
+A species named in two groups' trees counts once. The interval level is 1.7% when every archived
+interval is counted, whatever its kind, and 0.72% when intervals set by a calibration are counted. Bacteria and Archaea are counted separately, in GTDB
 species clusters, and enter no eukaryotic number. The values above are those of
 `paper/headline_numbers.json`, which `scripts/reproduce_paper.py` recomputes.
 
@@ -66,9 +66,11 @@ How each level is decided, tip by tip:
   (the insect tree is ultrametric in relative time and does not count).
 - **Interval**: `registers/crown_intervals.csv` records the interval each source archive carries
   for the focal crown; it counts unless its spread describes something other than dating error
-  (date assignment, taxon addition), it is degenerate or held at a calibration bound, or it
-  reproduces the calibration prior on that node (`registers/calibration_register.csv`), as a tree
-  set dated under root ages drawn from the prior does.
+  (date assignment, taxon addition), it is degenerate or held at a calibration bound, it lies within the range calibrations
+  allow the crown (a two-sided prior on it, or the band set by calibrations on the nodes above and
+  below it) without being narrowed below half that range's width
+  (`registers/calibration_register.csv`), or it comes from a tree set dated under root ages drawn
+  from the calibration prior.
 
 ## Reproducing the paper
 

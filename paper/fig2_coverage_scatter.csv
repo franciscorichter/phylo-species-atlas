@@ -1,14 +1,14 @@
 partition,category,described,c0_units,f_mol,f_low,f_high,f_basis,coverage_C0_pct,coverage_C1_pct,topology_assembly,is_chronogram,label
-Insects,Arthropods,1000000,42078,1.000000,1.000000,1.000000,source_alignment_intersection,4.2078,4.2078,primary_analysis,no,Insects
+Insects,Arthropods,929676,42078,1.000000,1.000000,1.000000,source_alignment_intersection,4.5261,4.5261,primary_analysis,no,Insects
 Seed plants,Plants,383671,279049,0.219808,0.219808,0.219808,source_tree_intersection,72.7313,18.4332,primary_analysis,yes,Seed plants
-Fungi,Microbes & protists,155000,1396,1.000000,1.000000,1.000000,source_alignment_intersection,0.9006,0.9006,primary_analysis,no,Fungi
+Fungi,Microbes & protists,156891,1396,1.000000,1.000000,1.000000,source_alignment_intersection,0.8898,0.8898,primary_analysis,no,Fungi
 Crustaceans,Arthropods,77000,65,1.000000,1.000000,1.000000,per_tip_evidence,0.0844,0.0844,primary_analysis,no,Crustaceans
 Gastropods,Other animals,65000,39,1.000000,1.000000,1.000000,source_alignment_intersection,0.0600,0.0600,primary_analysis,yes,Gastropods
 Spiders,Arthropods,52249,888,1.000000,1.000000,1.000000,asserted_no_imputation,1.6996,1.6996,primary_analysis,yes,Spiders
 Fish,Vertebrates,36280,30973,0.369924,0.369924,0.369924,source_tree_intersection,85.3721,31.7255,primary_analysis,yes,Fish
 Nematodes,Other animals,28537,101,1.000000,1.000000,1.000000,source_tree_intersection,0.3539,0.3539,primary_analysis,no,Nematodes
-Bryophytes,Plants,24000,505,1.000000,1.000000,1.000000,source_alignment_intersection,2.1042,2.1042,primary_analysis,yes,Bryophytes
 Diatoms,Microbes & protists,20000,39,1.000000,1.000000,1.000000,source_alignment_intersection,0.1950,0.1950,primary_analysis,yes,Diatoms
+Bryophytes,Plants,19273,505,1.000000,1.000000,1.000000,source_alignment_intersection,2.6202,2.6202,primary_analysis,yes,Bryophytes
 Squamates,Vertebrates,12108,8953,0.555157,0.555157,0.555157,source_tree_intersection,73.9428,42.0879,primary_analysis,yes,Squamates
 Cnidaria,Other animals,11800,258,1.000000,1.000000,1.000000,per_tip_evidence,2.1864,2.1864,primary_analysis,yes,Cnidaria
 Birds,Vertebrates,11195,10469,0.853566,0.842572,0.853566,source_tree_intersection,93.5150,80.2144,automated_synthesis,yes,Birds

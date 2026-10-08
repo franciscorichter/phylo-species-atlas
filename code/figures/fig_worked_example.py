@@ -2,8 +2,12 @@
 (a) extinction fraction epsilon = mu / lambda on the molecular tree under the
 sampling fraction that matches it (molecular tips / described) and under the
 full tree's fraction (tips / described, decision D27); (b) net diversification r = lambda - mu on the full tree and on the
-molecular tree, each at its own sampling fraction.  Bars are 95% profile-
-likelihood intervals, conditional on the single tree fitted.
+molecular tree, each at its own sampling fraction.  For a group whose source
+archives a posterior set, else a set with dates drawn at random (column basis
+of the table, decision D54), the point is the median and the bar the range
+over the trees of that set (square markers); otherwise the point is the
+summary-tree estimate and the bar its 95% profile-likelihood interval,
+conditional on that one tree (round markers).
 
 Input, written by scripts/rebuild_atlas.py:
   Paper/inputs/table_worked_example.csv
@@ -34,26 +38,35 @@ C_FULL, C_MOL = "#555555", "#009E73"
 off = 0.17
 fig, (ax, bx) = plt.subplots(1, 2, figsize=(7.2, 2.9), sharey=True,
                              constrained_layout=True)
+SET_MARK = {"posterior": "\u2020", "date_random": "\u2021"}
 for y, r in enumerate(rows):
     f = lambda k: float(r[k])
+    is_set = r["basis"] != "summary"
+    mk = "s" if is_set else "o"
     for dy, k, c in ((off, "eps_molecular", C_MATCH),
                      (-off, "eps_fullrho", C_NAMED)):
         ax.plot([f(k + "_lo"), f(k + "_hi")], [y + dy] * 2, color=c,
                 linewidth=1.6)
-        ax.plot(f(k), y + dy, "o", color=c, markersize=3.6)
-    if r["classification"].startswith("boundary"):
+        ax.plot(f(k), y + dy, mk, color=c, markersize=3.6)
+    if is_set and int(r["n_boundary"]):
+        label = (f"\u03bc forced to zero in {r['n_boundary']} of {r['n_trees']} "
+                 f"trees; LR median {f('lr'):.2f}")
+    elif not is_set and r["classification"].startswith("boundary"):
         mark = "rejected" if r["classification"].endswith("(rejected)") \
             else "not rejected"
-        ax.annotate(f"\u03bc forced to zero; LR {f('lr'):.2f}, {mark} on this tree",
-                    (f("eps_fullrho_hi"), y - off), xytext=(4, 0),
+        label = f"\u03bc forced to zero; LR {f('lr'):.2f}, {mark} on this tree"
+    else:
+        label = ""
+    if label:
+        ax.annotate(label, (f("eps_fullrho_hi"), y - off), xytext=(4, 0),
                     textcoords="offset points", va="center", fontsize=5.6,
                     color=C_NAMED)
     for dy, k, c in ((off, "r_full", C_FULL), (-off, "r_molecular", C_MOL)):
         bx.plot([f(k + "_lo"), f(k + "_hi")], [y + dy] * 2, color=c,
                 linewidth=1.6)
-        bx.plot(f(k), y + dy, "o", color=c, markersize=3.6)
+        bx.plot(f(k), y + dy, mk, color=c, markersize=3.6)
 ax.set_yticks(range(len(rows)))
-ax.set_yticklabels([r["partition"] for r in rows])
+ax.set_yticklabels([r["partition"] + SET_MARK.get(r["basis"], "") for r in rows])
 ax.set_xlabel(r"Extinction fraction $\varepsilon = \mu/\lambda$, pruned tree")
 ax.set_xlim(left=-0.03)
 bx.set_xlabel(r"Net diversification $r = \lambda - \mu$ (per Myr)")
@@ -66,7 +79,7 @@ bx.set_title("(b) Full against pruned tree", loc="left", fontsize=7.5)
 ax.legend(handles=[
     mlines.Line2D([], [], color=C_MATCH, marker="o", label="sequenced tips / described"),
     mlines.Line2D([], [], color=C_NAMED, marker="o", label="full-tree tips / described")],
-    loc="lower right", fontsize=6, frameon=False)
+    loc="upper left", fontsize=6, frameon=False)
 bx.legend(handles=[
     mlines.Line2D([], [], color=C_FULL, marker="o", label="full tree, tips / described"),
     mlines.Line2D([], [], color=C_MOL, marker="o",

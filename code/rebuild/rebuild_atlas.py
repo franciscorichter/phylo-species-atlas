@@ -4559,7 +4559,7 @@ def build_number_macros(head, basis, warnings):
     m["SensCrownCalOwnNames"] = name_list(
         cc["partitions_removed_own_calibration"])
     m["SensCrownCalParentNames"] = name_list(
-        cc["partitions_removed_parent_calibration"])
+        cc["partitions_removed_parent_calibration"]) or "none"
     m["SensCrownUncalNames"] = name_list(cc["partitions_kept"])
     m["CrownCountedNoCalNames"] = name_list(bycal["none"])
     m["CrownCountedOneSidedNames"] = name_list(bycal["one_sided"])
@@ -4665,6 +4665,12 @@ def build_number_macros(head, basis, warnings):
     m["CrownNamesSetCalib"] = name_list(sorted(
         p for p in oset if ca["per_partition"][p]["c1b_exclusion"]
         not in ("", None, "kind")))
+    # F4-13: of those, the posterior sets (their node-age variation at other
+    # nodes was not assessed)
+    m["CrownNamesPostCalib"] = name_list(sorted(
+        p for p in oset if ca["per_partition"][p]["c1b_exclusion"]
+        not in ("", None, "kind")
+        and ca["per_partition"][p]["interval_kind"] == "posterior_sample"))
     # round F2: the groups behind each loss of dated coverage, named
     pp = ca["per_partition"]
     m["CrownNamesNoInterval"] = name_list(sorted(
@@ -4772,6 +4778,13 @@ def build_number_macros(head, basis, warnings):
         m["WERMol" + n] = "%.3f" % f["r_molecular"]
         m["WERRatio" + n] = "%.2f" % f["r_ratio_full_over_molecular"]
         m["WEEpsFamily" + n] = "%.2f" % fa["epsilon"]
+        # F4-12: the edge of the restriction, 1 - rho_m/rho_f, and the
+        # profile interval of the matching extinction fraction on the
+        # summary tree, which can include it
+        m["WEEdge" + n] = "%.2f" % (1.0 - e["rho_tips"] / e["rho_full"])
+        ftm = w["fits"][p + "|molecular|tips"]
+        m["WEEpsTipsLo" + n] = "%.2f" % as_float(ftm["epsilon_lo"])
+        m["WEEpsTipsHi" + n] = "%.2f" % as_float(ftm["epsilon_hi"])
         m["WERFamily" + n] = "%.3f" % fa["r"]
     # round F1 (F1-14): polytomies of the fitted trees and the fits with them
     # resolved at random
@@ -5227,12 +5240,39 @@ WORKED_HEADER = ["partition", "tips_full", "tips_molecular", "rho_molecular",
                  "r_full", "r_full_lo", "r_full_hi", "r_molecular",
                  "r_molecular_lo", "r_molecular_hi", "eps_family",
                  "eps_family_lo", "eps_family_hi", "r_family", "r_family_lo",
-                 "r_family_hi"]
+                 "r_family_hi", "basis", "n_trees", "n_boundary", "lr_lo",
+                 "lr_hi"]
+# Round F4 (F4-10, D54).  Where the source archives the dated trees its
+# summary tree summarises, Table 3 and Figure 5 report the median and range
+# over that set: the posterior set, else the set with dates drawn at random
+# (Birds).  Consensus summaries carry polytomies whose ages come from the
+# summary, and their profile intervals describe that one tree.  A set dated
+# under root ages drawn from the prior (Sharks) varies the prior, not the
+# data, and is not used.  The summary-tree fits stay in the Supplement.
+WORKED_TABLE_SETS = ("posterior", "date_random")
+
+
+def worked_table_set(p, rows=None):
+    """(set name, rows of worked_example_bd_sets.csv) Table 3 uses for p,
+    or (None, [])."""
+    rows = read_csv(WORKED_SETS) if rows is None else rows
+    for st in WORKED_TABLE_SETS:
+        rs = [r for r in rows if r["partition"] == p and r["set"] == st]
+        if rs:
+            return st, rs
+    return None, []
+
+
+def _set_lambda_ratio(r):
+    lm = as_float(r["r_matching"]) / (1.0 - as_float(r["epsilon_matching"]))
+    lf = as_float(r["r_full_rho"]) / (1.0 - as_float(r["epsilon_full_rho"]))
+    return lf / lm
 
 
 def _worked_rows(head):
     w = head["worked_example_S13"]
     fits, eff = w["fits"], w["rho_effect_same_tree"]
+    srows = read_csv(WORKED_SETS)
     rows = []
     for p in w["eligible"]:
         ft, fc = fits[p + "|molecular|tips"], fits[p + "|molecular|full_misapplied"]
@@ -5266,7 +5306,29 @@ def _worked_rows(head):
             ("eps_family_hi", f2(fm["epsilon_hi"])),
             ("r_family", f3(fm["r"])), ("r_family_lo", f3(fm["r_lo"])),
             ("r_family_hi", f3(fm["r_hi"])),
+            ("basis", "summary"), ("n_trees", ""), ("n_boundary", ""),
+            ("lr_lo", ""), ("lr_hi", ""),
         ]))
+        st, rs = worked_table_set(p, srows)
+        if st:
+            row = rows[-1]
+
+            def put(key, col, fmt):
+                xs = [as_float(r[col]) for r in rs]
+                row[key] = fmt(median(xs))
+                row[key + "_lo"], row[key + "_hi"] = fmt(min(xs)), fmt(max(xs))
+            put("eps_molecular", "epsilon_matching", f2)
+            put("eps_fullrho", "epsilon_full_rho", f2)
+            put("r_full", "r_full_tree", f3)
+            put("r_molecular", "r_matching", f3)
+            put("lr", "lr_statistic", lambda x: "%.2f" % x)
+            nb = sum(1 for r in rs
+                     if as_float(r["epsilon_full_rho"]) < WORKED_EPS_BOUNDARY
+                     and as_float(r["lr_statistic"]) > 2 * WORKED_IDENTITY_LL_TOL)
+            row["lambda_ratio"] = "%.2f" % median([_set_lambda_ratio(r) for r in rs])
+            row["classification"] = ("boundary" if nb == len(rs) else
+                                     "identity" if nb == 0 else "mixed")
+            row["basis"], row["n_trees"], row["n_boundary"] = st, str(len(rs)), str(nb)
     return rows
 
 
@@ -5279,18 +5341,30 @@ def build_worked_table_tex(head, warnings):
     fits is printed as 'rescaled' (the identity holds) or 'mu = 0' (the
     misapplied fraction forces extinction to zero)."""
     out = []
+    mark = {"posterior": r"$^{\dagger}$", "date_random": r"$^{\ddagger}$"}
     for r in _worked_rows(head):
         def ci(k):
             return r"%s (%s--%s)" % (r[k], r[k + "_lo"], r[k + "_hi"])
-        cls = r["classification"].replace(" (rejected)", r"$^{*}$")
-        cls = cls.replace("identity", "rescaled").replace(
-            "boundary", r"$\mu = 0$")
+        if r["basis"] == "summary":
+            cls = r["classification"].replace(" (rejected)", r"$^{*}$")
+            cls = cls.replace("identity", "rescaled").replace(
+                "boundary", r"$\mu = 0$")
+            lr = r["lr"] + " " + cls
+            fam = (ci("eps_family"), ci("r_family"))
+        else:
+            # F4-10, F4-11: over the set, the statistic's median (range) and
+            # the trees in which the restriction binds; the family fit is of
+            # the summary tree only ($^{s}$)
+            lr = r"%s (%s--%s), $\mu = 0$ in %s/%s" % (
+                r["lr"], r["lr_lo"], r["lr_hi"], r["n_boundary"], r["n_trees"])
+            fam = (ci("eps_family") + r"$^{s}$", ci("r_family") + r"$^{s}$")
         out.append(" & ".join([
-            tex_escape(r["partition"]), thousands(r["tips_full"]),
+            tex_escape(r["partition"]) + mark.get(r["basis"], ""),
+            thousands(r["tips_full"]),
             thousands(r["tips_molecular"]), r["rho_molecular"],
             r["rho_fulltree"], r["lambda_ratio"], ci("eps_molecular"),
-            ci("eps_fullrho"), r["lr"] + " " + cls, ci("r_full"),
-            ci("r_molecular"), ci("eps_family"), ci("r_family")]) + r" \\")
+            ci("eps_fullrho"), lr, ci("r_full"),
+            ci("r_molecular"), fam[0], fam[1]]) + r" \\")
     return "\n".join(out) + "\n"
 
 
@@ -6413,6 +6487,12 @@ def _supp_crown_rows(head, basis):
             # F3-19: the calibration on the node above the crown
             ("parent_calibration", (calreg.get(p, {}).get(
                 "parent_calibration") or "") if kind else ""),
+            # F4-09 (D52): the calibrations below the crown, and whether the
+            # range rule (p) used is the crown's own prior or the band that
+            # the calibrations around an uncalibrated crown allow
+            ("child_calibration", (calreg.get(p, {}).get(
+                "child_calibration") or "") if kind else ""),
+            ("prior_range", iv.get("prior_range") or "" if kind else ""),
             ("status", status),
         ]))
     rows.sort(key=lambda x: (CATEGORY_ORDER.index(x["category"]),
@@ -7004,7 +7084,8 @@ def _t_time(head, basis, shipped, tex):
                            "prior_lo_ma", "prior_hi_ma",
                            "prior_containment_pct", "prior_width_ratio",
                            "prior_q_lo", "prior_q_center", "prior_q_hi",
-                           "parent_calibration", "status"])
+                           "parent_calibration", "child_calibration",
+                           "prior_range", "status"])
 def _t_crown(head, basis, shipped, tex):
     rows = _supp_crown_rows(head, basis)
     if not tex:
@@ -7013,7 +7094,9 @@ def _t_crown(head, basis, shipped, tex):
     def render(r):
         iv = ("%s--%s" % (r["interval_lo_ma"], r["interval_hi_ma"])
               if r["interval_kind"] else "---")
-        pr = ("%s--%s" % (r["prior_lo_ma"], r["prior_hi_ma"])
+        pr = ("%s--%s%s" % (r["prior_lo_ma"], r["prior_hi_ma"],
+                            "\\textsuperscript{b}"
+                            if r["prior_range"] == "band" else "")
               if r["prior_lo_ma"] else "---")
         return [tex_escape(r["partition"]), tex_escape(r["crown_clade"]),
                 r["crown_age_ma"], iv, _dash(r["interval_width_myr"]),
@@ -7026,8 +7109,9 @@ def _t_crown(head, basis, shipped, tex):
                            ("prior_q_lo", "prior_q_center", "prior_q_hi"))
                  if r["prior_q_center"] else "---"),
                 SUPP_CAL_CODE.get(r["parent_calibration"], "---"),
+                SUPP_CAL_CODE.get(r["child_calibration"], "---"),
                 TABLE1_INTERVAL_CODE[r["status"]]]
-    return _supp_tex_rows(rows, render, 14)
+    return _supp_tex_rows(rows, render, 15)
 
 
 def _tex_quantile(q):
