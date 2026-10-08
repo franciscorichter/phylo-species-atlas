@@ -24,7 +24,7 @@ afc.apply_style(mpl, size=7)
 STATUS = OrderedDict([
     ("counted", ("#0072B2", "o", "interval usable")),
     ("kind", ("#E69F00", "s", "interval describes other variation")),
-    ("fixed", ("#D55E00", "D", "interval set by a calibration")),
+    ("fixed", ("#D55E00", "D", "excluded by a calibration rule")),
     ("none", ("#999999", "x", "no interval archived")),
 ])
 

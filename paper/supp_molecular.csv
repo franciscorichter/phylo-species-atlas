@@ -1,25 +1,25 @@
-partition,category,f_basis,source_file,tips,molecular_tips,molecular_fraction,exact_label_tips,molecular_species,product,f_low,f_high,molecular_only_tree
-Amphibians,Vertebrates,source_tree_intersection,jetz_pyron_2018_ML_4061sp.tre,7238,4061,0.561,4061,3993,3897.7,0.561,0.561,yes
-Birds,Vertebrates,source_tree_intersection,phylo_only_clements_labels.tre,10824,9239,0.854,9239,8980,8936.0,0.843,0.854,yes
-Crocodilians,Vertebrates,asserted_no_imputation,,25,25,1.000,,20,20.0,1.000,1.000,no
-Fish,Vertebrates,source_tree_intersection,actinopt_12k_treePL.tre,31347,11596,0.370,11561,11510,11457.7,0.370,0.370,yes
-Mammals,Vertebrates,source_alignment_intersection,mammals.taxa.txt,5911,4098,0.693,0,3945,3899.7,0.693,0.693,yes
-Sharks,Vertebrates,source_tree_intersection,Chond.610sp.1Cal.500TreeSet.tre,1192,610,0.512,610,603,588.5,0.512,0.512,yes
-Squamates,Vertebrates,source_tree_intersection,tonini2016_squamate_ML.tre,9754,5415,0.555,5415,5096,4970.3,0.555,0.555,yes
-Turtles,Vertebrates,asserted_no_imputation,,283,283,1.000,,256,256.0,1.000,1.000,no
-Bryophytes,Plants,source_alignment_intersection,bryophytes.taxa.txt,533,533,1.000,532,505,505.0,1.000,1.000,no
-Ferns,Plants,source_alignment_intersection,ferns.taxa.txt,6216,6216,1.000,6216,6097,6097.0,1.000,1.000,no
-Seed plants,Plants,source_tree_intersection,GBMB.tre,348886,76688,0.220,76341,70723,61337.2,0.220,0.220,yes
-Crustaceans,Arthropods,per_tip_evidence,molecular_tip_evidence.csv,95,95,1.000,,65,65.0,1.000,1.000,no
-Insects,Arthropods,source_alignment_intersection,insects.taxa.txt,53373,53373,1.000,53373,42078,42078.0,1.000,1.000,no
-Spiders,Arthropods,asserted_no_imputation,,1431,1431,1.000,,888,888.0,1.000,1.000,no
-Bivalves,Other animals,source_alignment_intersection,bivalves.taxa.txt,73,73,1.000,73,44,44.0,1.000,1.000,no
-Bryozoa,Other animals,source_alignment_intersection,bryozoa.taxa.txt,565,565,1.000,565,337,337.0,1.000,1.000,no
-Cephalopods,Other animals,source_alignment_intersection,cephalopods.taxa.txt,81,81,1.000,81,80,80.0,1.000,1.000,no
-Cnidaria,Other animals,per_tip_evidence,molecular_tip_evidence.csv,289,289,1.000,,258,258.0,1.000,1.000,no
-Echinoderms,Other animals,per_tip_evidence,molecular_tip_evidence.csv,65,65,1.000,,62,62.0,1.000,1.000,no
-Gastropods,Other animals,source_alignment_intersection,gastropods.taxa.txt,40,40,1.000,40,39,39.0,1.000,1.000,no
-Nematodes,Other animals,source_tree_intersection,nematoda_50p_aa_ML.tre,156,156,1.000,148,101,101.0,1.000,1.000,no
-Sponges,Other animals,source_alignment_intersection,sponges.taxa.txt,119,119,1.000,111,86,86.0,1.000,1.000,no
-Diatoms,Microbes & protists,source_alignment_intersection,diatoms.taxa.txt,1113,1113,1.000,0,39,39.0,1.000,1.000,no
-Fungi,Microbes & protists,source_alignment_intersection,fungi.taxa.txt,1620,1620,1.000,1563,1396,1396.0,1.000,1.000,no
+partition,category,f_basis,source_file,tips,molecular_tips,molecular_fraction,exact_label_tips,molecular_species,product,f_low,f_high,molecular_only_tree,molecular_only_dated
+Amphibians,Vertebrates,source_tree_intersection,jetz_pyron_2018_ML_4061sp.tre,7238,4061,0.561,4061,3993,3897.7,0.561,0.561,yes,no
+Birds,Vertebrates,source_tree_intersection,phylo_only_clements_labels.tre,10824,9239,0.854,9239,8980,8936.0,0.843,0.854,yes,no
+Crocodilians,Vertebrates,asserted_no_imputation,,25,25,1.000,,20,20.0,1.000,1.000,no,
+Fish,Vertebrates,source_tree_intersection,actinopt_12k_treePL.tre,31347,11596,0.370,11561,11510,11457.7,0.370,0.370,yes,yes
+Mammals,Vertebrates,source_alignment_intersection,mammals.taxa.txt,5911,4098,0.693,0,3945,3899.7,0.693,0.693,yes,yes
+Sharks,Vertebrates,source_tree_intersection,Chond.610sp.10Cal.500TreeSet.tre,1192,610,0.512,610,603,588.5,0.512,0.512,yes,yes
+Squamates,Vertebrates,source_tree_intersection,tonini2016_squamate_ML.tre,9754,5415,0.555,5415,5096,4970.3,0.555,0.555,yes,no
+Turtles,Vertebrates,asserted_no_imputation,,283,283,1.000,,256,256.0,1.000,1.000,no,
+Bryophytes,Plants,source_alignment_intersection,bryophytes.taxa.txt,533,533,1.000,532,505,505.0,1.000,1.000,no,
+Ferns,Plants,source_alignment_intersection,ferns.taxa.txt,6216,6216,1.000,6216,6097,6097.0,1.000,1.000,no,
+Seed plants,Plants,source_tree_intersection,GBMB.tre,348886,76688,0.220,76341,70723,61337.2,0.220,0.220,yes,yes
+Crustaceans,Arthropods,per_tip_evidence,molecular_tip_evidence.csv,95,95,1.000,,65,65.0,1.000,1.000,no,
+Insects,Arthropods,source_alignment_intersection,insects.taxa.txt,53373,53373,1.000,53373,42078,42078.0,1.000,1.000,no,
+Spiders,Arthropods,asserted_no_imputation,,1431,1431,1.000,,888,888.0,1.000,1.000,no,
+Bivalves,Other animals,source_alignment_intersection,bivalves.taxa.txt,73,73,1.000,73,44,44.0,1.000,1.000,no,
+Bryozoa,Other animals,source_alignment_intersection,bryozoa.taxa.txt,565,565,1.000,565,337,337.0,1.000,1.000,no,
+Cephalopods,Other animals,source_alignment_intersection,cephalopods.taxa.txt,81,81,1.000,81,80,80.0,1.000,1.000,no,
+Cnidaria,Other animals,per_tip_evidence,molecular_tip_evidence.csv,289,289,1.000,,258,258.0,1.000,1.000,no,
+Echinoderms,Other animals,per_tip_evidence,molecular_tip_evidence.csv,65,65,1.000,,62,62.0,1.000,1.000,no,
+Gastropods,Other animals,source_alignment_intersection,gastropods.taxa.txt,40,40,1.000,40,39,39.0,1.000,1.000,no,
+Nematodes,Other animals,source_tree_intersection,nematoda_50p_aa_ML.tre,156,156,1.000,148,101,101.0,1.000,1.000,no,
+Sponges,Other animals,source_alignment_intersection,sponges.taxa.txt,119,119,1.000,111,86,86.0,1.000,1.000,no,
+Diatoms,Microbes & protists,source_alignment_intersection,diatoms.taxa.txt,1113,1113,1.000,0,39,39.0,1.000,1.000,no,
+Fungi,Microbes & protists,source_alignment_intersection,fungi.taxa.txt,1620,1620,1.000,1563,1396,1396.0,1.000,1.000,no,

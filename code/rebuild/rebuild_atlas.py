@@ -2497,35 +2497,76 @@ def c1b_calibration_sensitivity(basis, shipped, truth):
     ])
 
 
-# Round F3 (F3-07).  The stricter classification that can move interval
-# coverage.  Rules that act on a two-sided or an unchecked crown calibration
-# (round F1: an interval as wide as its two-sided prior; unchecked
-# calibrations left out) cannot change it while every counted interval sits
-# on a crown with no calibration or a one-sided bound; the register says so
-# ('counted_two_sided_or_unchecked', printed by the text as a fact and
-# checked by verify_atlas.py).  The variant reported instead leaves out every
-# counted interval whose crown carries any calibration, one-sided included.
+# Round F3 (F3-07, F3-19).  The stricter classification that can move
+# interval coverage: every counted interval whose crown node carries a
+# calibration of its own (one-sided bounds included), or whose crown lies
+# directly below a node with a two-sided calibration, is not counted.  A
+# crown without a calibration of its own can still be held between a
+# two-sided prior one node up and a minimum one node down (Amphibians:
+# Data/calibration_register.csv, parent_calibration).
 C1B_CROWN_CALIBRATED = ("one_sided", "two_sided", "not_checked")
+C1B_PARENT_CALIBRATED = ("two_sided",)
+CALIBRATION_REGISTER = os.path.join(ROOT, "Data", "calibration_register.csv")
+
+
+def calibration_register():
+    return {r["partition"]: r for r in read_csv(CALIBRATION_REGISTER)}
 
 
 def c1b_crown_calibrated_sensitivity(basis, shipped, truth):
     reg = crown_intervals()
+    cal = calibration_register()
     counted = {p: iv for p, iv in reg.items()
                if iv.get("counts_for_c1b") == "yes"}
-    drop = sorted(p for p, iv in counted.items()
-                  if iv.get("calibration") in C1B_CROWN_CALIBRATED)
+    for p in counted:
+        if (cal.get(p, {}).get("parent_calibration") or "") not in (
+                "two_sided", "one_sided", "none", "not_checked"):
+            die("%s: counted interval of %s has no parent_calibration"
+                % (rel(CALIBRATION_REGISTER), p))
+    own = sorted(p for p, iv in counted.items()
+                 if iv.get("calibration") in C1B_CROWN_CALIBRATED)
+    parent = sorted(p for p in counted if p not in own and cal[p][
+        "parent_calibration"] in C1B_PARENT_CALIBRATED)
+    drop = sorted(own + parent)
     alt = [dict(r) for r in basis]
     for r in alt:
         if r["partition"] in drop:
             r["interval_recoverable"] = "no"
     return OrderedDict([
         ("rule", "C1b with every counted interval whose crown node carries a "
-                 "calibration (%s) not counted" % ", ".join(C1B_CROWN_CALIBRATED)),
+                 "calibration (%s), or whose parent node carries a %s "
+                 "calibration, not counted"
+                 % (", ".join(C1B_CROWN_CALIBRATED),
+                    " or ".join(C1B_PARENT_CALIBRATED))),
         ("partitions_removed", drop),
+        ("partitions_removed_own_calibration", own),
+        ("partitions_removed_parent_calibration", parent),
         ("partitions_kept", sorted(p for p in counted if p not in drop)),
-        ("counted_two_sided_or_unchecked",
-         sorted(p for p, iv in counted.items()
-                if iv.get("calibration") in ("two_sided", "not_checked"))),
+        ("counted_by_crown_calibration", OrderedDict(
+            (k, sorted(p for p, iv in counted.items()
+                       if iv.get("calibration") == k))
+            for k in ("none", "one_sided", "two_sided", "not_checked"))),
+        ("rungs", _rung_percents(compute_rungs(alt, shipped, truth))),
+    ])
+
+
+def c1b_rule_p_sensitivity(basis, shipped, truth):
+    """Round F3 (F3-14).  Rule (p) tests containment in the prior's range and
+    the width ratio; it does not test where in the prior the interval lies.
+    This prints C1b with the intervals that rule (p)'s test excludes counted
+    (a set dated under root ages drawn from the prior, D29, stays excluded:
+    its interval is the prior by construction)."""
+    reg = crown_intervals()
+    added = sorted(p for p, iv in reg.items()
+                   if iv.get("c1b_exclusion") == "prior_reproduced"
+                   and iv.get("kind") not in C1B_SENSITIVITY_KINDS)
+    alt = [dict(r) for r in basis]
+    for r in alt:
+        if r["partition"] in added:
+            r["interval_recoverable"] = "yes"
+    return OrderedDict([
+        ("rule", "C1b if the intervals excluded by the D25 test (p) counted"),
+        ("partitions_added", added),
         ("rungs", _rung_percents(compute_rungs(alt, shipped, truth))),
     ])
 
@@ -3934,6 +3975,8 @@ def compute_headline(truth, basis, shipped, mol, ledger, pt, warnings):
              c1b_all_intervals_sensitivity(basis, shipped, truth)),
             ("c1b_crown_calibrated",
              c1b_crown_calibrated_sensitivity(basis, shipped, truth)),
+            ("c1b_rule_p_counted",
+             c1b_rule_p_sensitivity(basis, shipped, truth)),
             ("c0_gbif_unmatched", c0_gbif_sensitivity(basis, shipped)),
         ])),
         ("disclosures", disc),
@@ -4286,6 +4329,30 @@ def crown_macro_name(partition):
                                                          partition) if w)
 
 
+def lr_mixture_p(lr):
+    """P(T >= lr) for T the 50:50 mixture of a point mass at zero and
+    chi2(1): 0.5 * P(chi2(1) >= lr) for lr > 0."""
+    if lr <= 0:
+        return 1.0
+    return 0.5 * math.erfc(math.sqrt(lr / 2.0))
+
+
+def p_fmt(p):
+    """A p-value for math mode: three decimals, or a power of ten below 0.001."""
+    if p >= 0.001:
+        return "%.3f" % p
+    e = int(math.floor(math.log10(p)))
+    return "%.1f \\times 10^{%d}" % (p / 10 ** e, e)
+
+
+def prior_q_tex(q):
+    """A prior quantile in prose: two decimals, or '$>$0.975' beyond a soft
+    bound."""
+    if q[:1] in "<>":
+        return "$%s$%s" % (q[0], q[1:])
+    return "%.2f" % float(q)
+
+
 def build_crown_ages_macros(head, warnings):
     """Audit A13.  Every crown age, interval and width the prose or a caption
     quotes is a macro read from the one register (crown_ages.csv), so no
@@ -4304,6 +4371,24 @@ def build_crown_ages_macros(head, warnings):
             out.append("\\newcommand{\\CrownWidth%s}{%.1f}" % (n, hi - lo))
             out.append("\\newcommand{\\CrownWidthPct%s}{%.1f}"
                        % (n, 100.0 * (hi - lo) / age))
+    # round F3 (F3-14, F3-11): where each interval with a stated prior
+    # density lies in it, and the D25 measures of every two-sided prior
+    for part, iv in sorted(crown_intervals().items()):
+        n = crown_macro_name(part)
+        if iv.get("prior_q_center"):
+            for k, nm in (("prior_q_lo", "Lo"), ("prior_q_center", "Center"),
+                          ("prior_q_hi", "Hi")):
+                out.append("\\newcommand{\\CrownPriorQ%s%s}{%s}"
+                           % (nm, n, prior_q_tex(iv[k])))
+        if iv.get("prior_containment"):
+            out.append("\\newcommand{\\CrownPriorIn%s}{%.0f}"
+                       % (n, 100 * as_float(iv["prior_containment"])))
+            out.append("\\newcommand{\\CrownPriorRatio%s}{%.2f}"
+                       % (n, as_float(iv["prior_width_ratio"])))
+            out.append("\\newcommand{\\CrownPriorLo%s}{%.1f}"
+                       % (n, as_float(iv["prior_lo_ma"])))
+            out.append("\\newcommand{\\CrownPriorHi%s}{%.1f}"
+                       % (n, as_float(iv["prior_hi_ma"])))
     # round F2: the range of widths of the usable intervals
     wc = [100.0 * (as_float(v["interval_hi_ma"]) - as_float(v["interval_lo_ma"]))
           / as_float(v["crown_age_ma"])
@@ -4413,6 +4498,16 @@ def build_number_macros(head, basis, warnings):
             % (rel(MOLECULAR_ONLY_TREES), sorted(molonly), taxo))
     m["NGroupsTaxonomicTips"] = macro_int(len(taxo))
     m["NMolOnlyTrees"] = macro_int(len(molonly))
+    # F3-16: which of those trees are dated, undated phylograms, or carry no
+    # branch lengths, measured on the distributed files
+    mod = _molecular_only_dating()
+    m["NMolOnlyDated"] = macro_int(sum(v == "time" for v in mod.values()))
+    m["MolOnlyDatedNames"] = name_list(sorted(p for p, v in mod.items()
+                                              if v == "time"))
+    m["MolOnlyPhylogramNames"] = name_list(sorted(
+        p for p, v in mod.items() if v == "substitutions"))
+    m["MolOnlyNoLengthNames"] = name_list(sorted(
+        p for p, v in mod.items() if v == "none"))
     # R1-09: what the study behind each reference tree that is not an
     # absolute chronogram did about dating
     sd = _study_dating()
@@ -4452,14 +4547,35 @@ def build_number_macros(head, basis, warnings):
     m["SensCalibCOneBN"] = macro_int(cal["numerator_union"])
     m["SensCalibCOneBPct"] = macro_pct(cal["percent_union"])
     cc = s["c1b_crown_calibrated"]
-    if cc["counted_two_sided_or_unchecked"]:
-        die("a counted interval sits on a two-sided or unchecked crown "
-            "calibration (%s); the text states that none does"
-            % ", ".join(cc["counted_two_sided_or_unchecked"]))
+    bycal = cc["counted_by_crown_calibration"]
+    if bycal["not_checked"]:
+        die("a counted interval sits on an unchecked crown calibration "
+            "(%s); the text states that none does"
+            % ", ".join(bycal["not_checked"]))
     m["SensCrownCalCOneBN"] = macro_int(cc["rungs"]["C1b"]["numerator_union"])
     m["SensCrownCalCOneBPct"] = macro_pct(cc["rungs"]["C1b"]["percent_union"])
     m["SensCrownCalNames"] = name_list(cc["partitions_removed"])
+    m["SensCrownCalOwnNames"] = name_list(
+        cc["partitions_removed_own_calibration"])
+    m["SensCrownCalParentNames"] = name_list(
+        cc["partitions_removed_parent_calibration"])
     m["SensCrownUncalNames"] = name_list(cc["partitions_kept"])
+    m["CrownCountedNoCalNames"] = name_list(bycal["none"])
+    m["CrownCountedOneSidedNames"] = name_list(bycal["one_sided"])
+    m["CrownCountedTwoSidedNames"] = name_list(bycal["two_sided"])
+    # F3-12: the group that carries most of interval coverage, and its share
+    c1b_by = sorted(((as_float(r["c1_units"]), r["partition"]) for r in basis
+                     if is_euk(r) and r.get("interval_recoverable") == "yes"
+                     and r.get("is_chronogram") == "yes"
+                     and r.get("time_scale") == "absolute"), reverse=True)
+    m["COneBLargestName"] = c1b_by[0][1]
+    m["COneBLargestN"] = macro_int(c1b_by[0][0])
+    m["COneBLargestSharePct"] = "%.0f" % (100.0 * c1b_by[0][0]
+                                          / sum(x for x, _ in c1b_by))
+    rp = s["c1b_rule_p_counted"]
+    m["SensRulePCOneBN"] = macro_int(rp["rungs"]["C1b"]["numerator_union"])
+    m["SensRulePCOneBPct"] = macro_pct(rp["rungs"]["C1b"]["percent_union"])
+    m["SensRulePNames"] = name_list(rp["partitions_added"])
     m["RuleTipsOverNamedPct"] = "%.0f" % (100 * TABLE1_TIPS_OVER_NAMED)
     m["TabWhichTreeLargerNote"] = larger_tree_note()
     # every denominator lowered and raised by the elasticity fraction
@@ -4614,6 +4730,14 @@ def build_number_macros(head, basis, warnings):
         v["epsilon"] < v["epsilon_uniform_tips"] for v in fam.values()))
     m["WENFamilyEpsHigher"] = macro_int(sum(
         v["epsilon"] > v["epsilon_uniform_tips"] for v in fam.values()))
+    # F3-15: the summary-tree rejections under a Bonferroni correction over
+    # the groups whose restriction binds (the only tests that can reject)
+    nb = sum(v["classification"] == "boundary" for v in eff.values())
+    bonf = WORKED_TEST_LEVEL / nb
+    m["RuleBonferroniLevel"] = "%.4f" % bonf
+    m["WENRejectedBonferroni"] = macro_int(sum(
+        v["classification"] == "boundary"
+        and lr_mixture_p(v["lr_statistic"]) < bonf for v in eff.values()))
     m["RuleLRCritical"] = "%.2f" % WORKED_LR_CUTOFF
     m["RuleTestLevelPct"] = "%g" % (100 * WORKED_TEST_LEVEL)
     for p in w["eligible"]:
@@ -4625,6 +4749,10 @@ def build_number_macros(head, basis, warnings):
         m["WEEpsFull" + n] = "%.2f" % e["epsilon_rho_full"]
         m["WELambdaRatio" + n] = "%.2f" % e["lambda_ratio_full_over_tips"]
         m["WELR" + n] = "%.2f" % e["lr_statistic"]
+        # F3-15: the p-value of the statistic under the 50:50 mixture of a
+        # point mass at zero and chi2(1) (Self & Liang 1987)
+        if e["classification"] == "boundary":
+            m["WEP" + n] = p_fmt(lr_mixture_p(e["lr_statistic"]))
         m["WERFull" + n] = "%.3f" % f["r_full"]
         m["WERMol" + n] = "%.3f" % f["r_molecular"]
         m["WERRatio" + n] = "%.2f" % f["r_ratio_full_over_molecular"]
@@ -4762,6 +4890,50 @@ def _molecular_only_trees():
     return out
 
 
+MOLONLY_BRANCH_CLASSES = ("time", "substitutions", "none")
+
+
+def _molecular_only_dating():
+    """Round F3 (F3-16).  What the tree of sequenced species each source
+    distributes carries as branch lengths, measured on the file
+    (Data/molecular_only_trees.csv columns branch_lengths, roottotip_cv,
+    measured_file): 'none' when every branch length is zero or absent,
+    'time' when the root-to-tip CV is within the chronogram rule
+    (CHRONOGRAM_TOLERANCE), 'substitutions' otherwise.  A file held here is
+    re-measured and must agree with the register; a file held elsewhere
+    (the mammal DNA-only set) keeps its committed measurement."""
+    out = OrderedDict()
+    for r in read_csv(MOLECULAR_ONLY_TREES):
+        p = r["partition"]
+        klass = (r.get("branch_lengths") or "").strip()
+        if klass not in MOLONLY_BRANCH_CLASSES:
+            die("%s: %s has branch_lengths %r"
+                % (rel(MOLECULAR_ONLY_TREES), p, klass))
+        f = os.path.join(ROOT, "Data", (r.get("measured_file") or "").strip())
+        if r.get("measured_file") and os.path.exists(f):
+            text = read_first_tree(f)
+            root = PARSE_NEWICK(normalize_newick(text))
+            stack, nonzero = [(root, True)], 0
+            while stack:
+                (kids, _, bl), top = stack.pop()
+                if not top and bl == bl and bl != 0:
+                    nonzero += 1
+                for k in kids:
+                    stack.append((k, False))
+            _, depths = tree_facts(text)
+            cv = coefficient_of_variation(depths) if nonzero else None
+            got = ("none" if not nonzero
+                   else "time" if cv <= CHRONOGRAM_TOLERANCE
+                   else "substitutions")
+            if got != klass or (cv is not None and abs(
+                    cv - as_float(r["roottotip_cv"], -1)) > CV_RECHECK_TOL):
+                die("%s: %s measures %s (CV %s) on %s; the register says %s "
+                    "(CV %s)" % (rel(MOLECULAR_ONLY_TREES), p, got, cv,
+                                 r["measured_file"], klass, r["roottotip_cv"]))
+        out[p] = klass
+    return out
+
+
 def _study_dating():
     """R1-09: what the study behind each tree did about dating
     (Data/dating_deposit_checks.csv, column study_dating)."""
@@ -4781,6 +4953,7 @@ WHICH_TREE_HEADER = ["partition", "category", "bibkey", "flags", "tips",
                      "interval_lo_ma", "interval_hi_ma", "interval_kind",
                      "interval_status", "rho_full", "rho_molecular",
                      "described", "study_dating", "molecular_only_tree",
+                     "molecular_only_dated",
                      "molecular_share", "tips_exceed_named",
                      "larger_tree_not_counted"]
 # Round F1 (F1-11, F1-17): Table 1 flags a group whose tips exceed its named
@@ -4851,6 +5024,7 @@ def _which_tree_rows(head, basis):
     crown = head["crown_ages"]["per_partition"]
     sd = _study_dating()
     molonly = _molecular_only_trees()
+    modat = _molecular_only_dating()
     larger = larger_trees_not_counted()
     rows = []
     for r in basis:
@@ -4902,6 +5076,9 @@ def _which_tree_rows(head, basis):
                 and r["time_scale"] == "absolute" else "relative_only"
                 if r["time_scale"] == "relative" else "")),
             ("molecular_only_tree", "yes" if p in molonly else "no"),
+            # F3-16: whether that tree is dated (measured on the file)
+            ("molecular_only_dated", ("yes" if modat.get(p) == "time"
+                                      else "no") if p in molonly else ""),
             # molecular tips over tips: the molecular fraction of the tree,
             # which the text quotes (R2-17), beside the sampling fractions
             ("molecular_share", "%.2f" % (mtips / tips)),
@@ -4950,7 +5127,8 @@ def build_which_tree_tex(head, basis, warnings):
         if r["molecular_basis"] == "all_tips":
             mt += r"$^{a}$"
         if r["molecular_only_tree"] == "yes":
-            mt += r"$^{d}$"
+            mt += (r"$^{d}$" if r["molecular_only_dated"] == "yes"
+                   else r"$^{g}$")
         if r["time_scale"] in ("absolute", "relative"):
             dates = TABLE1_DATES_CODE[r["time_scale"]]
         else:
@@ -5961,7 +6139,9 @@ SUPP_SENS_ROWS = OrderedDict([
     ("retain_only_primary_analysis", "Primary analyses only"),
     ("bird_band_low", "Bird molecular fraction at its lower end"),
     ("union", "Named species of all trees"),
-    ("crown_calibrated", "Intervals on a calibrated crown not counted"),
+    ("rule_p_counted", "Intervals excluded by rule (p) counted"),
+    ("crown_calibrated", "Intervals on a calibrated crown or below a "
+                         "two-sided calibration not counted"),
 ])
 
 
@@ -6088,6 +6268,7 @@ def _supp_molecular_rows(head, basis):
     ev = head["molecular_evidence"]
     prod = head["sensitivities"]["c1_definition"]["per_partition"]
     molonly = _molecular_only_trees()
+    modat = _molecular_only_dating()
     nmol = _molecular_tip_counts()
     rows = []
     for b in basis:
@@ -6114,6 +6295,8 @@ def _supp_molecular_rows(head, basis):
             ("f_low", "%.3f" % as_float(b["f_low"])),
             ("f_high", "%.3f" % as_float(b["f_high"])),
             ("molecular_only_tree", "yes" if p in molonly else "no"),
+            ("molecular_only_dated", ("yes" if modat.get(p) == "time" else "no")
+             if p in molonly else ""),
         ]))
     rows.sort(key=lambda x: (CATEGORY_ORDER.index(x["category"]),
                              x["partition"]))
@@ -6149,6 +6332,7 @@ def _supp_time_rows(head, basis):
 def _supp_crown_rows(head, basis):
     ca = head["crown_ages"]["per_partition"]
     civ = crown_intervals()
+    calreg = calibration_register()
     cat = {r["partition"]: r["category"] for r in basis}
     rows = []
     for p, c in ca.items():
@@ -6181,6 +6365,14 @@ def _supp_crown_rows(head, basis):
             ("prior_containment_pct", "%.0f" % (100 * as_float(pc))
              if pc else ""),
             ("prior_width_ratio", "%.2f" % as_float(pw) if pw else ""),
+            # F3-14: where the interval and its centre lie in the specified
+            # prior density (Data/calibration_register.csv prior_density)
+            ("prior_q_lo", iv.get("prior_q_lo") or "" if kind else ""),
+            ("prior_q_center", iv.get("prior_q_center") or "" if kind else ""),
+            ("prior_q_hi", iv.get("prior_q_hi") or "" if kind else ""),
+            # F3-19: the calibration on the node above the crown
+            ("parent_calibration", (calreg.get(p, {}).get(
+                "parent_calibration") or "") if kind else ""),
             ("status", status),
         ]))
     rows.sort(key=lambda x: (CATEGORY_ORDER.index(x["category"]),
@@ -6247,7 +6439,8 @@ def _supp_sensitivity_rows(head, basis):
     add("union", D, OrderedDict([("C0", pct(u["C0_union"], D)),
                                  ("C1", pct(u["C1_union_high"], D)),
                                  ("C1d", None), ("C1b", None)]))
-    for key, sk in (("crown_calibrated", "c1b_crown_calibrated"),):
+    for key, sk in (("rule_p_counted", "c1b_rule_p_counted"),
+                    ("crown_calibrated", "c1b_crown_calibrated")):
         e = s[sk]["rungs"]["C1b"]
         add(key, D, OrderedDict([("C0", None), ("C1", None), ("C1d", None),
                                  ("C1b", pct(e["numerator_union"], D))]))
@@ -6722,7 +6915,8 @@ def _t_names(head, basis, shipped, tex):
                                "source_file", "tips", "molecular_tips",
                                "molecular_fraction", "exact_label_tips",
                                "molecular_species", "product", "f_low",
-                               "f_high", "molecular_only_tree"])
+                               "f_high", "molecular_only_tree",
+                               "molecular_only_dated"])
 def _t_molecular(head, basis, shipped, tex):
     rows = _supp_molecular_rows(head, basis)
     if not tex:
@@ -6733,7 +6927,8 @@ def _t_molecular(head, basis, shipped, tex):
                if r["source_file"] else "---")
         mt = thousands(r["molecular_tips"])
         if r["molecular_only_tree"] == "yes":
-            mt += r"$^{d}$"
+            mt += (r"$^{d}$" if r["molecular_only_dated"] == "yes"
+                   else r"$^{g}$")
         return [tex_escape(r["partition"]),
                 SUPP_MOLSOURCE_CODE[r["f_basis"]], src, thousands(r["tips"]),
                 mt, r["molecular_fraction"],
@@ -6767,7 +6962,8 @@ def _t_time(head, basis, shipped, tex):
                            "interval_kind", "n_trees", "calibration",
                            "prior_lo_ma", "prior_hi_ma",
                            "prior_containment_pct", "prior_width_ratio",
-                           "status"])
+                           "prior_q_lo", "prior_q_center", "prior_q_hi",
+                           "parent_calibration", "status"])
 def _t_crown(head, basis, shipped, tex):
     rows = _supp_crown_rows(head, basis)
     if not tex:
@@ -6785,8 +6981,21 @@ def _t_crown(head, basis, shipped, tex):
                 SUPP_CAL_CODE.get(r["calibration"], "---"), pr,
                 _dash(r["prior_containment_pct"]),
                 _dash(r["prior_width_ratio"]),
+                (", ".join(_tex_quantile(r[k]) for k in
+                           ("prior_q_lo", "prior_q_center", "prior_q_hi"))
+                 if r["prior_q_center"] else "---"),
+                SUPP_CAL_CODE.get(r["parent_calibration"], "---"),
                 TABLE1_INTERVAL_CODE[r["status"]]]
-    return _supp_tex_rows(rows, render, 12)
+    return _supp_tex_rows(rows, render, 14)
+
+
+def _tex_quantile(q):
+    """A prior quantile for the Supplement: '<0.025' and '>0.975' as math."""
+    if q.startswith("<"):
+        return "$<$%s" % q[1:]
+    if q.startswith(">"):
+        return "$>$%s" % q[1:]
+    return "%.2f" % float(q)
 
 
 @supp_table("supp_sensitivity", ["alternative", "denominator"]
@@ -6799,7 +7008,7 @@ def _t_sens(head, basis, shipped, tex):
     for r in rows:
         if r["alternative"] in ("insects_minus", "col_filled", "rep",
                                 "drop_automated_synthesis", "bird_band_low",
-                                "crown_calibrated"):
+                                "rule_p_counted"):
             out.append(r"\midrule")
         out.append(" & ".join(
             [SUPP_SENS_ROWS[r["alternative"]], thousands(r["denominator"])]

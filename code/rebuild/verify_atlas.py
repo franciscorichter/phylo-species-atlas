@@ -5626,6 +5626,27 @@ def check_crownreg(ctx):
     wc = [100.0 * (as_float(a["interval_hi_ma"]) - as_float(a["interval_lo_ma"]))
           / as_float(a["crown_age_ma"]) for a in ages.values()
           if a.get("counts_for_c1b") == "yes"]
+    civ_ = {r["partition"]: r for r in read_csv(CROWN_INTERVALS)}
+    creg_ = {r["partition"]: r for r in read_csv(CALIBRATION_REGISTER)}
+
+    def _qtex(q):
+        return "$%s$%s" % (q[0], q[1:]) if q[:1] in "<>" else "%.2f" % float(q)
+    for part, iv in civ_.items():
+        n = crown_macro_name(part)
+        spec = creg_.get(part, {}).get("prior_density")
+        if spec:
+            cx = (as_float(iv["interval_center_ma"]) if iv["interval_center_ma"]
+                  else as_float(iv["source_point_height_ma"]))
+            for nm, x in (("Lo", as_float(iv["interval_lo_ma"])),
+                          ("Center", cx), ("Hi", as_float(iv["interval_hi_ma"]))):
+                want["CrownPriorQ%s%s" % (nm, n)] = _qtex(_prior_q(spec, x))
+        if iv.get("prior_containment"):
+            want["CrownPriorIn" + n] = "%.0f" % (100 * as_float(
+                iv["prior_containment"]))
+            want["CrownPriorRatio" + n] = "%.2f" % as_float(
+                iv["prior_width_ratio"])
+            want["CrownPriorLo" + n] = "%.1f" % as_float(iv["prior_lo_ma"])
+            want["CrownPriorHi" + n] = "%.1f" % as_float(iv["prior_hi_ma"])
     want["CrownWidthPctMinCounted"] = "%.1f" % min(wc)
     want["CrownWidthPctMaxCounted"] = "%.1f" % max(wc)
     got = {}
@@ -5730,6 +5751,38 @@ def union_losses(ctx, canon_e, crows):
         elif sp not in u["C1b"]:
             lost[reason(p)] += 1
     return lost, levels
+
+
+def _prior_q(spec, x):
+    """F3-14, implemented here independently of crown_intervals.py: the
+    quantile of x under the register's prior_density, as text."""
+    if not spec or x is None:
+        return ""
+    form, _, rest = spec.partition("(")
+    a = [float(v) for v in rest.rstrip(") ").split(",")]
+    form = form.strip()
+    if form == "uniform":
+        q = (x - a[0]) / (a[1] - a[0])
+        q = 0.0 if q < 0 else 1.0 if q > 1 else q
+    elif form == "soft_uniform":
+        if x < a[0]:
+            return "<0.025"
+        if x > a[1]:
+            return ">0.975"
+        q = 0.025 + 0.95 * (x - a[0]) / (a[1] - a[0])
+    elif form == "offset_exp_q95":
+        # the exponential whose 95% quantile lies (max - min) above min
+        q = 0.0 if x <= a[0] else 1.0 - 0.05 ** ((x - a[0]) / (a[1] - a[0]))
+    elif form == "offset_gamma":
+        z = max(0.0, (x - a[0]) / a[2])
+        term, tail = math.exp(-z), 0.0
+        for k in range(int(a[1])):           # Poisson(z) mass below shape
+            tail += term
+            term *= z / (k + 1)
+        q = 1.0 - tail
+    else:
+        return "unknown:" + form
+    return "%.3f" % q
 
 
 def _names(ps):
@@ -6063,6 +6116,26 @@ def check_numbermacros(ctx):
          "taxonomically placed tips", sorted(mo), taxo)
     w["NGroupsTaxonomicTips"] = _mint(len(taxo))
     w["NMolOnlyTrees"] = _mint(len(mo))
+    # F3-16: the branch lengths of each tree of sequenced species, measured
+    # here on every file held on this computer
+    for r in read_csv(MOLECULAR_ONLY_TREES):
+        f_ = P("Data", r.get("measured_file") or "")
+        if not r.get("measured_file") or not os.path.exists(f_):
+            R.note("[F3-16] %s: %s not held here; its committed branch-length "
+                   "class (%s) is not re-measured"
+                   % (r["partition"], r.get("measured_file"),
+                      r["branch_lengths"]))
+            continue
+        dep = leaf_depths_text(read_first_tree(f_))[0]
+        mean_ = sum(dep) / len(dep)
+        if mean_ == 0:
+            got_ = "none"
+        else:
+            cv_ = math.sqrt(sum((x - mean_) ** 2 for x in dep) / len(dep)) / mean_
+            got_ = "time" if cv_ <= CHRONOGRAM_TOLERANCE else "substitutions"
+        R.eq("F3-16 %s tree of sequenced species: branch lengths measured on "
+             "%s" % (r["partition"], r["measured_file"]),
+             r["branch_lengths"], got_)
     sdv = {r["partition"]: (r.get("study_dating") or "").strip()
            for r in read_csv(DATING_DEPOSIT_CHECKS)}
     for key, nm in STUDY_DATING_MACRO.items():
@@ -6102,16 +6175,24 @@ def check_numbermacros(ctx):
     cal = s["c1b_calibration_fixed"]["rungs"]["C1b"]
     w["SensCalibCOneBN"] = _mint(cal["numerator_union"])
     w["SensCalibCOneBPct"] = _mpct(100.0 * cal["numerator_union"] / D)
-    # round F3 (F3-07): the stricter interval classification, from the register
+    # round F3 (F3-07, F3-19): the stricter interval classification, from
+    # the crown-interval and calibration registers: counted intervals on a
+    # crown with a calibration of its own, or below a two-sided calibration
     civ = {r["partition"]: r for r in read_csv(CROWN_INTERVALS)}
+    creg = {r["partition"]: r for r in read_csv(CALIBRATION_REGISTER)}
     cnt_ = {p_: r for p_, r in civ.items() if r["counts_for_c1b"] == "yes"}
-    R.eq("F3-07 no counted interval sits on a two-sided or unchecked crown "
-         "calibration (the text states it; rules acting on those cannot move "
-         "interval coverage)",
+    R.eq("F3-07 no counted interval sits on an unchecked crown calibration",
          sorted(p_ for p_, r in cnt_.items()
-                if r["calibration"] in ("two_sided", "not_checked")), [])
-    ccal = set(p_ for p_, r in cnt_.items()
+                if r["calibration"] == "not_checked"), [])
+    R.eq("F3-19 every counted interval records the calibration of the node "
+         "above its crown", sorted(p_ for p_ in cnt_ if creg.get(p_, {}).get(
+             "parent_calibration") not in ("two_sided", "one_sided", "none",
+                                           "not_checked")), [])
+    cown = set(p_ for p_, r in cnt_.items()
                if r["calibration"] in C1B_CROWN_CALIBRATED)
+    cpar = set(p_ for p_ in cnt_ if p_ not in cown
+               and creg[p_]["parent_calibration"] == "two_sided")
+    ccal = cown | cpar
     num = sum(as_float(r["c1_units"]) for r in canon_e
               if r["is_chronogram"] == "yes" and r["time_scale"] == "absolute"
               and r["interval_recoverable"] == "yes"
@@ -6119,7 +6200,43 @@ def check_numbermacros(ctx):
     w["SensCrownCalCOneBN"] = _mint(num)
     w["SensCrownCalCOneBPct"] = _mpct(100.0 * num / D)
     w["SensCrownCalNames"] = _names(sorted(ccal))
+    w["SensCrownCalOwnNames"] = _names(sorted(cown))
+    w["SensCrownCalParentNames"] = _names(sorted(cpar))
     w["SensCrownUncalNames"] = _names(sorted(set(cnt_) - ccal))
+    for k_, nm_ in (("none", "NoCal"), ("one_sided", "OneSided"),
+                    ("two_sided", "TwoSided")):
+        w["CrownCounted%sNames" % nm_] = _names(sorted(
+            p_ for p_, r in cnt_.items() if r["calibration"] == k_))
+    # F3-12: the group that carries most of interval coverage
+    by_ = sorted(((as_float(r["c1_units"]), r["partition"]) for r in canon_e
+                  if r["is_chronogram"] == "yes" and r["time_scale"] == "absolute"
+                  and r["interval_recoverable"] == "yes"), reverse=True)
+    w["COneBLargestName"] = by_[0][1]
+    w["COneBLargestN"] = _mint(by_[0][0])
+    w["COneBLargestSharePct"] = "%.0f" % (100.0 * by_[0][0]
+                                          / sum(x for x, _ in by_))
+    # F3-14: interval coverage with the intervals rule (p) excludes counted
+    # (a set dated under root ages drawn from the prior stays excluded)
+    rp_add = set(p_ for p_, r in civ.items()
+                 if r["c1b_exclusion"] == "prior_reproduced"
+                 and r["kind"] != "calibration_prior_sample")
+    num = sum(as_float(r["c1_units"]) for r in canon_e
+              if r["is_chronogram"] == "yes" and r["time_scale"] == "absolute"
+              and (r["interval_recoverable"] == "yes"
+                   or r["partition"] in rp_add))
+    w["SensRulePCOneBN"] = _mint(num)
+    w["SensRulePCOneBPct"] = _mpct(100.0 * num / D)
+    w["SensRulePNames"] = _names(sorted(rp_add))
+    # F3-16: the trees of sequenced species, by what their branch lengths are
+    mo_d = {r["partition"]: r["branch_lengths"]
+            for r in read_csv(MOLECULAR_ONLY_TREES)}
+    w["NMolOnlyDated"] = _mint(sum(v == "time" for v in mo_d.values()))
+    w["MolOnlyDatedNames"] = _names(sorted(p_ for p_, v in mo_d.items()
+                                           if v == "time"))
+    w["MolOnlyPhylogramNames"] = _names(sorted(
+        p_ for p_, v in mo_d.items() if v == "substitutions"))
+    w["MolOnlyNoLengthNames"] = _names(sorted(p_ for p_, v in mo_d.items()
+                                              if v == "none"))
     w["RuleTipsOverNamedPct"] = "%.0f" % (100 * TABLE1_TIPS_OVER_NAMED)
     lt = defaultdict(list)
     for x in read_csv(LARGER_TREES):
@@ -6293,6 +6410,24 @@ def check_numbermacros(ctx):
          round(WORKED_LR_CUTOFF, 5),
          round(_st.NormalDist().inv_cdf(1.0 - WORKED_TEST_LEVEL) ** 2, 5))
     w["RuleTestLevelPct"] = "%g" % (100 * WORKED_TEST_LEVEL)
+    # F3-15: p-values under the 50:50 mixture: P(T >= x) = Phi(-sqrt(x))
+    def _pmix(x):
+        return 1.0 if x <= 0 else _st.NormalDist().cdf(-math.sqrt(x))
+
+    def _pfmt(q):
+        if q >= 0.001:
+            return "%.3f" % q
+        e_ = int(math.floor(math.log10(q)))
+        return "%.1f \\times 10^{%d}" % (q / 10 ** e_, e_)
+    lrv = {p: max(0.0, 2.0 * (as_float(fits[p + "|molecular|tips"]["loglik"])
+                              - as_float(fits[p + "|molecular|full_misapplied"]
+                                         ["loglik"]))) for p in we["eligible"]}
+    bnd = [p for p in we["eligible"] if eff[p]["classification"] == "boundary"]
+    for p in bnd:
+        w["WEP" + crown_macro_name(p)] = _pfmt(_pmix(lrv[p]))
+    w["RuleBonferroniLevel"] = "%.4f" % (WORKED_TEST_LEVEL / len(bnd))
+    w["WENRejectedBonferroni"] = _mint(sum(
+        _pmix(lrv[p]) < WORKED_TEST_LEVEL / len(bnd) for p in bnd))
     rf = {p: (as_float(fits[p + "|full|tips"]["r"]),
               as_float(fits[p + "|molecular|tips"]["r"])) for p in we["eligible"]}
     w["WENFullGreater"] = _mint(sum(a > b for a, b in rf.values()))
@@ -6433,6 +6568,11 @@ def check_tables(ctx):
         mo = {r["partition"] for r in read_csv(MOLECULAR_ONLY_TREES)}
         R.eq("Table 1 %s molecular-only tree" % p, g["molecular_only_tree"],
              "yes" if p in mo else "no")
+        mod_ = {r["partition"]: r["branch_lengths"]
+                for r in read_csv(MOLECULAR_ONLY_TREES)}
+        R.eq("Table 1 %s molecular-only tree dated (F3-16)" % p,
+             g["molecular_only_dated"], ("yes" if mod_[p] == "time" else "no")
+             if p in mod_ else "")
         R.eq("Table 1 %s rho full" % p, g["rho_full"], _rho(tips / d))
         R.eq("Table 1 %s rho molecular" % p, g["rho_molecular"], _rho(mt / d))
         R.eq("Table 1 %s tips exceed named species by the flag fraction" % p,
@@ -6811,6 +6951,8 @@ def check_supplement(ctx):
     nmol = Counter(r["partition"] for r in read_csv(MOLECULAR_TIPS_CSV))
     ev = h["molecular_evidence"]
     mo = {r["partition"] for r in read_csv(MOLECULAR_ONLY_TREES)}
+    mod_ = {r["partition"]: r["branch_lengths"]
+            for r in read_csv(MOLECULAR_ONLY_TREES)}
     rows = []
     for b in canon_e:
         p = b["partition"]
@@ -6826,11 +6968,14 @@ def check_supplement(ctx):
             ("exact_label_tips", "" if ex is None else int(ex)),
             ("molecular_species", int(round(as_float(b["c1_units"])))),
             ("product", "%.1f" % (as_int(b["c0_units"]) * as_float(b["f_mol"]))),
-            ("molecular_only_tree", "yes" if p in mo else "no")]))
+            ("molecular_only_tree", "yes" if p in mo else "no"),
+            ("molecular_only_dated", ("yes" if mod_[p] == "time" else "no")
+             if p in mo else "")]))
     _supp_cmp_table("supp_molecular", order(rows),
                     ["partition", "f_basis", "source_file", "tips",
                      "molecular_tips", "molecular_fraction", "exact_label_tips",
-                     "molecular_species", "product", "molecular_only_tree"])
+                     "molecular_species", "product", "molecular_only_tree",
+                     "molecular_only_dated"])
 
     # ---- time scale ------------------------------------------------------
     sdv = {r["partition"]: (r.get("study_dating") or "").strip()
@@ -6855,6 +7000,7 @@ def check_supplement(ctx):
 
     # ---- crown ages and intervals ----------------------------------------
     cat = {r["partition"]: r["category"] for r in basis}
+    cregs = {r["partition"]: r for r in read_csv(CALIBRATION_REGISTER)}
     rows = []
     for c in read_csv(CROWN_AGES_CSV):
         p, kind = c["partition"], c["interval_kind"]
@@ -6875,7 +7021,23 @@ def check_supplement(ctx):
             ("prior_containment_pct", "%.0f" % (100 * as_float(
                 iv["prior_containment"])) if iv.get("prior_containment")
              else ""),
+            ("prior_q_lo", _prior_q(cregs.get(p, {}).get("prior_density"),
+                                    as_float(iv.get("interval_lo_ma")))
+             if kind else ""),
+            ("prior_q_center", _prior_q(
+                cregs.get(p, {}).get("prior_density"),
+                as_float(iv.get("interval_center_ma")) if iv.get(
+                    "interval_center_ma") else as_float(
+                    iv.get("source_point_height_ma"))) if kind else ""),
+            ("prior_q_hi", _prior_q(cregs.get(p, {}).get("prior_density"),
+                                    as_float(iv.get("interval_hi_ma")))
+             if kind else ""),
+            ("parent_calibration", (cregs.get(p, {}).get("parent_calibration")
+                                    or "") if kind else ""),
             ("status", st)]))
+        for k_ in ("prior_q_lo", "prior_q_center", "prior_q_hi"):
+            R.eq("%s crown_intervals.csv %s (F3-14)" % (p, k_),
+                 iv.get(k_, "") if kind else "", rows[-1][k_])
         if st == "prior_reproduced" and iv.get("prior_containment") \
                 and iv.get("kind") != "calibration_prior_sample":
             R.eq("%s prior rule: containment and width ratio" % p,
@@ -6886,7 +7048,8 @@ def check_supplement(ctx):
                     ["partition", "crown_clade", "crown_age_ma",
                      "interval_lo_ma", "interval_hi_ma", "interval_kind",
                      "calibration", "prior_lo_ma", "prior_hi_ma",
-                     "prior_containment_pct", "status"])
+                     "prior_containment_pct", "prior_q_lo", "prior_q_center",
+                     "prior_q_hi", "parent_calibration", "status"])
 
     # ---- sensitivity: the alternatives recomputed from the basis --------
     D = sum(as_int(r["described"], 0) for r in basis
@@ -6949,13 +7112,24 @@ def check_supplement(ctx):
     check_row("union", D, OrderedDict([("C0", u["C0_union"]),
                                        ("C1", u["C1_union_high"])]))
     civ = {r["partition"]: r for r in read_csv(CROWN_INTERVALS)}
+    cr_ = {r["partition"]: r for r in read_csv(CALIBRATION_REGISTER)}
     ccal = {p_ for p_, r in civ.items() if r["counts_for_c1b"] == "yes"
-            and r["calibration"] in C1B_CROWN_CALIBRATED}
+            and (r["calibration"] in C1B_CROWN_CALIBRATED
+                 or cr_.get(p_, {}).get("parent_calibration") == "two_sided")}
     for key, drop in (("crown_calibrated", ccal),):
         lv = levels(canon_e, lambda r, d_=drop: r["partition"] not in d_)
         check_row(key, D, OrderedDict([("C1b", lv["C1b"])]))
         R.eq("Supplement S7 %s prints the interval level only" % key,
              [sens[key][k] for k in ("C0", "C1", "C1d")], ["", "", ""])
+    # F3-14: the intervals rule (p) excludes, counted
+    rp_ = {p_ for p_, r in civ.items() if r["c1b_exclusion"] ==
+           "prior_reproduced" and r["kind"] != "calibration_prior_sample"}
+    c1b_rp = sum(as_float(r["c1_units"]) or 0.0 for r in canon_e
+                 if r["is_chronogram"] == "yes" and r["time_scale"] == "absolute"
+                 and (crown_ok.get(r["partition"]) or r["partition"] in rp_))
+    check_row("rule_p_counted", D, OrderedDict([("C1b", c1b_rp)]))
+    R.eq("Supplement S7 rule_p_counted prints the interval level only",
+         [sens["rule_p_counted"][k] for k in ("C0", "C1", "C1d")], ["", "", ""])
 
     # ---- denominators by group -------------------------------------------
     uni = u["per_partition"]

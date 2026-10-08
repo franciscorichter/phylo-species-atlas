@@ -82,6 +82,10 @@
 \newcommand{\TipsNotNamedTurtles}{27}
 \newcommand{\NGroupsTaxonomicTips}{7}
 \newcommand{\NMolOnlyTrees}{7}
+\newcommand{\NMolOnlyDated}{4}
+\newcommand{\MolOnlyDatedNames}{Fish, Mammals, Seed plants and Sharks}
+\newcommand{\MolOnlyPhylogramNames}{Amphibians and Squamates}
+\newcommand{\MolOnlyNoLengthNames}{Birds}
 \newcommand{\StudyDatingFewerTipsN}{1}
 \newcommand{\StudyDatingNotDepositedN}{1}
 \newcommand{\StudyDatingNotReadN}{1}
@@ -111,12 +115,23 @@
 \newcommand{\SensAllIntCOneBPct}{1.6}
 \newcommand{\SensCalibCOneBN}{14{,}962}
 \newcommand{\SensCalibCOneBPct}{0.70}
-\newcommand{\SensCrownCalCOneBN}{4{,}251}
-\newcommand{\SensCrownCalCOneBPct}{0.20}
-\newcommand{\SensCrownCalNames}{Echinoderms and Gastropods}
-\newcommand{\SensCrownUncalNames}{Amphibians and Cnidaria}
+\newcommand{\SensCrownCalCOneBN}{258}
+\newcommand{\SensCrownCalCOneBPct}{0.01}
+\newcommand{\SensCrownCalNames}{Amphibians, Echinoderms and Gastropods}
+\newcommand{\SensCrownCalOwnNames}{Echinoderms and Gastropods}
+\newcommand{\SensCrownCalParentNames}{Amphibians}
+\newcommand{\SensCrownUncalNames}{Cnidaria}
+\newcommand{\CrownCountedNoCalNames}{Amphibians and Cnidaria}
+\newcommand{\CrownCountedOneSidedNames}{Gastropods}
+\newcommand{\CrownCountedTwoSidedNames}{Echinoderms}
+\newcommand{\COneBLargestName}{Amphibians}
+\newcommand{\COneBLargestN}{3{,}993}
+\newcommand{\COneBLargestSharePct}{92}
+\newcommand{\SensRulePCOneBN}{13{,}815}
+\newcommand{\SensRulePCOneBPct}{0.64}
+\newcommand{\SensRulePNames}{Cephalopods, Mammals, Sponges, Squamates and Turtles}
 \newcommand{\RuleTipsOverNamedPct}{10}
-\newcommand{\TabWhichTreeLargerNote}{Cnidaria: \citet{huang2015future}, 1{,}547 species of Scleractinia, dated; Crustaceans: \citet{wolfe2023convergent}, 344 tips of Brachyura, dated and \citet{copilas2020late}, 201 ingroup terminals of Amphipoda, dated; Echinoderms: \citet{ohara2017restructuring}, 576 species of Ophiuroidea, dated; Fungi: \citet{varga2019megaphylogeny}, 5{,}284 species of Agaricomycetes, dated; Gastropods: \citet{puillandre2014molecular}, 320 species of Conus; Nematodes: \citet{vanmegen2009phylogenetic}, 1{,}215 SSU rDNA sequences of Nematoda; Sponges: \citet{redmond2013phylogeny}, more than 500 new 18S sequences of Demospongiae}
+\newcommand{\TabWhichTreeLargerNote}{Birds: \citet{mctavish2025complete}, 11{,}017 tips of Aves in the Clements 2023 taxonomy (same AvesData 1.3 release), dated; Cnidaria: \citet{huang2015future}, 1{,}547 species of Scleractinia, dated; Crustaceans: \citet{copilas2020late}, 201 ingroup terminals of Amphipoda, dated and \citet{wolfe2023convergent}, 344 tips of Brachyura, dated; Echinoderms: \citet{ohara2017restructuring}, 576 species of Ophiuroidea, dated; Fungi: \citet{varga2019megaphylogeny}, 5{,}284 species of Agaricomycetes, dated; Gastropods: \citet{puillandre2014molecular}, 320 species of Conus; Nematodes: \citet{vanmegen2009phylogenetic}, 1{,}215 SSU rDNA sequences of Nematoda; Sponges: \citet{redmond2013phylogeny}, more than 500 new 18S sequences of Demospongiae}
 \newcommand{\RuleElasticityPct}{20}
 \newcommand{\SensNoBirdsCZeroPct}{17.9}
 \newcommand{\SensNoBirdsCOnePct}{6.9}
@@ -194,19 +209,21 @@
 \newcommand{\OTNotOTSharePctSharks}{0.10}
 \newcommand{\OTNotOTSharePctSponges}{0.02}
 \newcommand{\OTNotOTSharePctSquamates}{1.6}
-\newcommand{\WEScaleMin}{0.95}
+\newcommand{\WEScaleMin}{0.98}
 \newcommand{\WEScaleMax}{1.04}
 \newcommand{\WENEligible}{7}
 \newcommand{\WENamesEligible}{Amphibians, Birds, Fish, Mammals, Seed plants, Sharks and Squamates}
 \newcommand{\WENIdentity}{4}
 \newcommand{\WENBoundary}{3}
 \newcommand{\WENRejected}{3}
-\newcommand{\WENFullGreater}{3}
-\newcommand{\WENFullSmaller}{4}
+\newcommand{\WENFullGreater}{2}
+\newcommand{\WENFullSmaller}{5}
 \newcommand{\WENFullOverlap}{3}
 \newcommand{\WENFamilyOverlap}{5}
 \newcommand{\WENFamilyEpsLower}{7}
 \newcommand{\WENFamilyEpsHigher}{0}
+\newcommand{\RuleBonferroniLevel}{0.0167}
+\newcommand{\WENRejectedBonferroni}{3}
 \newcommand{\RuleLRCritical}{2.71}
 \newcommand{\RuleTestLevelPct}{5}
 \newcommand{\WERhoTipsAmphibians}{0.46}
@@ -215,6 +232,7 @@
 \newcommand{\WEEpsFullAmphibians}{0.00}
 \newcommand{\WELambdaRatioAmphibians}{0.62}
 \newcommand{\WELRAmphibians}{11.03}
+\newcommand{\WEPAmphibians}{4.5 \times 10^{-4}}
 \newcommand{\WERFullAmphibians}{0.033}
 \newcommand{\WERMolAmphibians}{0.041}
 \newcommand{\WERRatioAmphibians}{0.82}
@@ -226,6 +244,7 @@
 \newcommand{\WEEpsFullBirds}{0.00}
 \newcommand{\WELambdaRatioBirds}{0.89}
 \newcommand{\WELRBirds}{4.88}
+\newcommand{\WEPBirds}{0.014}
 \newcommand{\WERFullBirds}{0.148}
 \newcommand{\WERMolBirds}{0.146}
 \newcommand{\WERRatioBirds}{1.01}
@@ -266,21 +285,22 @@
 \newcommand{\WERFamilySeedPlants}{0.050}
 \newcommand{\WERhoTipsSharks}{0.48}
 \newcommand{\WERhoFullSharks}{0.93}
-\newcommand{\WEEpsTipsSharks}{0.64}
-\newcommand{\WEEpsFullSharks}{0.30}
+\newcommand{\WEEpsTipsSharks}{0.52}
+\newcommand{\WEEpsFullSharks}{0.07}
 \newcommand{\WELambdaRatioSharks}{0.51}
 \newcommand{\WELRSharks}{0.00}
-\newcommand{\WERFullSharks}{0.016}
-\newcommand{\WERMolSharks}{0.015}
-\newcommand{\WERRatioSharks}{1.05}
-\newcommand{\WEEpsFamilySharks}{0.62}
-\newcommand{\WERFamilySharks}{0.016}
+\newcommand{\WERFullSharks}{0.021}
+\newcommand{\WERMolSharks}{0.021}
+\newcommand{\WERRatioSharks}{0.97}
+\newcommand{\WEEpsFamilySharks}{0.50}
+\newcommand{\WERFamilySharks}{0.022}
 \newcommand{\WERhoTipsSquamates}{0.45}
 \newcommand{\WERhoFullSquamates}{0.81}
 \newcommand{\WEEpsTipsSquamates}{0.14}
 \newcommand{\WEEpsFullSquamates}{0.00}
 \newcommand{\WELambdaRatioSquamates}{0.70}
 \newcommand{\WELRSquamates}{88.36}
+\newcommand{\WEPSquamates}{2.7 \times 10^{-21}}
 \newcommand{\WERFullSquamates}{0.057}
 \newcommand{\WERMolSquamates}{0.070}
 \newcommand{\WERRatioSquamates}{0.81}
@@ -347,19 +367,19 @@
 \newcommand{\WESetLRMaxMammalsMolOnly}{0.0}
 \newcommand{\WESetNRejectedMammalsMolOnly}{0}
 \newcommand{\WESetNSharksPrior}{100}
-\newcommand{\WESetEpsMinSharksPrior}{0.60}
-\newcommand{\WESetEpsMaxSharksPrior}{0.76}
+\newcommand{\WESetEpsMinSharksPrior}{0.29}
+\newcommand{\WESetEpsMaxSharksPrior}{0.71}
 \newcommand{\WESetLRMinSharksPrior}{0.0}
-\newcommand{\WESetLRMaxSharksPrior}{0.0}
-\newcommand{\WESetNRejectedSharksPrior}{0}
+\newcommand{\WESetLRMaxSharksPrior}{5.6}
+\newcommand{\WESetNRejectedSharksPrior}{2}
 \newcommand{\WESetRRatioMinSharksPrior}{0.89}
-\newcommand{\WESetRRatioMaxSharksPrior}{1.06}
+\newcommand{\WESetRRatioMaxSharksPrior}{1.07}
 \newcommand{\WESetNSharksMolOnly}{100}
-\newcommand{\WESetEpsMinSharksMolOnly}{0.48}
-\newcommand{\WESetEpsMaxSharksMolOnly}{0.65}
+\newcommand{\WESetEpsMinSharksMolOnly}{0.06}
+\newcommand{\WESetEpsMaxSharksMolOnly}{0.62}
 \newcommand{\WESetLRMinSharksMolOnly}{0.0}
-\newcommand{\WESetLRMaxSharksMolOnly}{0.0}
-\newcommand{\WESetNRejectedSharksMolOnly}{0}
+\newcommand{\WESetLRMaxSharksMolOnly}{18.9}
+\newcommand{\WESetNRejectedSharksMolOnly}{4}
 \newcommand{\WESetNSquamatesPosterior}{100}
 \newcommand{\WESetEpsMinSquamatesPosterior}{0.18}
 \newcommand{\WESetEpsMaxSquamatesPosterior}{0.37}
@@ -375,7 +395,7 @@
 \newcommand{\WESetNamesRejectPartial}{Amphibians}
 \newcommand{\WESetNamesRejectNone}{Birds}
 \newcommand{\WESetRRatioMin}{0.89}
-\newcommand{\WESetRRatioMax}{1.06}
+\newcommand{\WESetRRatioMax}{1.07}
 \newcommand{\DescribedAmphibians}{8{,}863}
 \newcommand{\CZeroNAmphibians}{6{,}947}
 \newcommand{\CZeroPctAmphibians}{78.4}

@@ -118,6 +118,48 @@ INTERVAL_KIND_COUNTS = {            # does the spread estimate a divergence time
     "calibration_prior_sample": False, "taxon_addition_sample": False,
     "date_assignment_sample": False}
 PRIOR_SAMPLE_KINDS = {"calibration_prior_sample"}
+
+
+def mixture_p(lr):
+    """F3-15: P(T >= lr) for T the 50:50 mixture of a point mass at zero and
+    chi2(1), i.e. P(Z >= sqrt(lr)) for a standard normal Z."""
+    if lr <= 0:
+        return 1.0
+    return 0.5 * math.erfc(math.sqrt(lr) / math.sqrt(2.0))
+
+
+def p_text(q):
+    """A p-value as the paper prints it (math mode)."""
+    if q >= 0.001:
+        return "%.3f" % q
+    e = int(math.floor(math.log10(q)))
+    return "%.1f \\times 10^{%d}" % (q / 10 ** e, e)
+
+
+def prior_quantile(spec, x):
+    """F3-14: the quantile of x under the calibration density of
+    registers/calibration_register.csv (column prior_density)."""
+    form, _, rest = spec.partition("(")
+    a = [float(v) for v in rest.strip().rstrip(")").split(",")]
+    form = form.strip()
+    if form == "uniform":
+        q = min(1.0, max(0.0, (x - a[0]) / (a[1] - a[0])))
+    elif form == "soft_uniform":         # 95% inside soft bounds
+        if x < a[0]:
+            return "<0.025"
+        if x > a[1]:
+            return ">0.975"
+        q = 0.025 + 0.95 * (x - a[0]) / (a[1] - a[0])
+    elif form == "offset_exp_q95":       # 95% quantile at the maximum
+        q = 0.0 if x <= a[0] else 1.0 - math.exp(
+            math.log(0.05) * (x - a[0]) / (a[1] - a[0]))
+    elif form == "offset_gamma":         # integer shape: Erlang
+        z = max(0.0, (x - a[0]) / a[2])
+        q = 1.0 - sum(math.exp(-z) * z ** k / math.factorial(k)
+                      for k in range(int(a[1])))
+    else:
+        raise SystemExit("unknown prior_density %r" % spec)
+    return "%.3f" % q
 DEGENERATE_WIDTH_MYR = 1e-3
 BOUND_TOL_MYR = 1e-2
 PRIOR_CONTAINMENT_MIN = 0.9
@@ -994,24 +1036,56 @@ def main(argv=None):
     cal = ladder(E, den, calset)
     R.macro(macros, "SensCalibCOneBN", fmt_int(cal["C1b"]["union"]))
     R.macro(macros, "SensCalibCOneBPct", fmt_pct(cal["C1b"]["pct_union"]))
-    # Stricter classification (F3-07): every counted interval whose crown node
-    # carries a calibration (one-sided, two-sided or not checked) left out.
-    # No counted interval sits on a two-sided or unchecked calibration, so
-    # rules acting on those alone cannot move interval coverage.
+    # Stricter classification (F3-07, F3-19): every counted interval whose
+    # crown node carries a calibration of its own (one-sided, two-sided or
+    # not checked), or whose parent node carries a two-sided calibration
+    # (registers/calibration_register.csv, parent_calibration), left out.
     CROWN_CALIBRATED = ("one_sided", "two_sided", "not_checked")
-    R.eq("no counted interval on a two-sided or unchecked crown calibration",
+    calreg_ = {r["partition"]: r for r in read_csv(
+        path("registers", "calibration_register.csv"))}
+    R.eq("no counted interval on an unchecked crown calibration",
          sorted(p for p in c0 if bounded[p]
-                and intervals[p]["calibration"] in ("two_sided", "not_checked")), [])
-    ccal = sorted(p for p in c0 if bounded[p]
+                and intervals[p]["calibration"] == "not_checked"), [])
+    R.eq("every counted interval records the calibration above its crown",
+         sorted(p for p in c0 if bounded[p] and calreg_.get(p, {}).get(
+             "parent_calibration") not in ("two_sided", "one_sided", "none",
+                                           "not_checked")), [])
+    cown = sorted(p for p in c0 if bounded[p]
                   and intervals[p]["calibration"] in CROWN_CALIBRATED)
+    cpar = sorted(p for p in c0 if bounded[p] and p not in cown
+                  and calreg_[p]["parent_calibration"] == "two_sided")
+    ccal = sorted(cown + cpar)
     strict_sets = {}
     lad_ = ladder(E, den, {p: bounded[p] and p not in ccal for p in c0})
     strict_sets["CrownCal"] = lad_
     R.macro(macros, "SensCrownCalCOneBN", fmt_int(lad_["C1b"]["union"]))
     R.macro(macros, "SensCrownCalCOneBPct", fmt_pct(lad_["C1b"]["pct_union"]))
     R.macro(macros, "SensCrownCalNames", name_list(ccal))
+    R.macro(macros, "SensCrownCalOwnNames", name_list(cown))
+    R.macro(macros, "SensCrownCalParentNames", name_list(cpar))
     R.macro(macros, "SensCrownUncalNames",
             name_list(sorted(p for p in c0 if bounded[p] and p not in ccal)))
+    for k_, nm_ in (("none", "NoCal"), ("one_sided", "OneSided"),
+                    ("two_sided", "TwoSided")):
+        R.macro(macros, "CrownCounted%sNames" % nm_, name_list(sorted(
+            p for p in c0 if bounded[p] and intervals[p]["calibration"] == k_)))
+    # F3-14: the intervals rule (p) excludes counted (not a set dated under
+    # root ages drawn from the prior, which returns it by construction)
+    rp_add = sorted(p for p in c0 if p in intervals
+                    and why_of.get(p) == "prior_reproduced"
+                    and intervals[p]["kind"] not in PRIOR_SAMPLE_KINDS)
+    lad_ = ladder(E, den, {p: bounded[p] or p in rp_add for p in c0})
+    strict_sets["RuleP"] = lad_
+    R.macro(macros, "SensRulePCOneBN", fmt_int(lad_["C1b"]["union"]))
+    R.macro(macros, "SensRulePCOneBPct", fmt_pct(lad_["C1b"]["pct_union"]))
+    R.macro(macros, "SensRulePNames", name_list(rp_add))
+    # F3-12: the group with most of interval coverage
+    by_ = sorted(((len(c1[p]), p) for p in E if chron[p] and bounded[p]),
+                 reverse=True)
+    R.macro(macros, "COneBLargestName", by_[0][1])
+    R.macro(macros, "COneBLargestN", fmt_int(by_[0][0]))
+    R.macro(macros, "COneBLargestSharePct",
+            "%.0f" % (100.0 * by_[0][0] / sum(x for x, _ in by_)))
     R.macro(macros, "RuleTipsOverNamedPct", "%.0f" % (100 * TIPS_OVER_NAMED))
     R.macro(macros, "RuleElasticityPct", "%.0f" % (100 * 0.2))
     # Without the automated-synthesis tree
@@ -1101,6 +1175,19 @@ def main(argv=None):
          "registers/molecular_only_trees.csv", taxo, molonly)
     R.macro(macros, "NGroupsTaxonomicTips", fmt_int(len(taxo)))
     R.macro(macros, "NMolOnlyTrees", fmt_int(len(molonly)))
+    # F3-16: what the branch lengths of each tree of sequenced species are, as
+    # the register records them (the trees are not redistributed)
+    modat = {r["partition"]: r["branch_lengths"] for r in read_csv(
+        path("registers", "molecular_only_trees.csv"))}
+    R.eq("branch-length classes of the trees of sequenced species are known",
+         sorted(set(modat.values()) - {"time", "substitutions", "none"}), [])
+    R.macro(macros, "NMolOnlyDated", fmt_int(sum(v == "time" for v in modat.values())))
+    R.macro(macros, "MolOnlyDatedNames", name_list(sorted(
+        p for p, v in modat.items() if v == "time")))
+    R.macro(macros, "MolOnlyPhylogramNames", name_list(sorted(
+        p for p, v in modat.items() if v == "substitutions")))
+    R.macro(macros, "MolOnlyNoLengthNames", name_list(sorted(
+        p for p, v in modat.items() if v == "none")))
     sd = {r["partition"]: r["study_dating"] for r in read_csv(
         path("registers", "dating_deposit_checks.csv"))}
     for key, nm in (("absolute_deposited_fewer_tips", "FewerTips"),
@@ -1146,6 +1233,29 @@ def main(argv=None):
             R.macro(macros, "CrownWidth" + n, "%.1f" % (hi - lo))
             R.macro(macros, "CrownWidthPct" + n, "%.1f" % (100.0 * (hi - lo) / age))
             width_pct[p] = 100.0 * (hi - lo) / age
+    # F3-14, F3-11: where each interval lies in its stated prior density, and
+    # the containment and width ratio of every two-sided prior
+    for p in rows:
+        iv = intervals.get(p)
+        if not iv:
+            continue
+        n = macro_name(p)
+        spec = calreg.get(p, {}).get("prior_density") or ""
+        if spec:
+            cx = (float(iv["interval_center_ma"]) if iv["interval_center_ma"]
+                  else float(iv["source_point_height_ma"]))
+            for nm, x in (("Lo", float(iv["interval_lo_ma"])), ("Center", cx),
+                          ("Hi", float(iv["interval_hi_ma"]))):
+                q = prior_quantile(spec, x)
+                R.macro(macros, "CrownPriorQ%s%s" % (nm, n),
+                        "$%s$%s" % (q[0], q[1:]) if q[:1] in "<>" else "%.2f" % float(q))
+        if iv.get("prior_containment"):
+            R.macro(macros, "CrownPriorIn" + n,
+                    "%.0f" % (100 * float(iv["prior_containment"])))
+            R.macro(macros, "CrownPriorRatio" + n,
+                    "%.2f" % float(iv["prior_width_ratio"]))
+            R.macro(macros, "CrownPriorLo" + n, "%.1f" % float(iv["prior_lo_ma"]))
+            R.macro(macros, "CrownPriorHi" + n, "%.1f" % float(iv["prior_hi_ma"]))
     wc_ = [width_pct[p] for p in rows if bounded[p]]
     R.macro(macros, "CrownWidthPctMinCounted", "%.1f" % min(wc_))
     R.macro(macros, "CrownWidthPctMaxCounted", "%.1f" % max(wc_))
@@ -1274,6 +1384,7 @@ def main(argv=None):
     M, MC, F, FM = (("molecular", "tips"), ("molecular", "full_misapplied"),
                     ("full", "tips"), ("molecular", "family"))
     n_ident = n_bound = n_rej = n_fg = n_fs = n_fo = n_famo = n_el = n_eh = 0
+    wep = {}
     for p in elig:
         n = macro_name(p)
         rho_t, rho_c = g(p, *M, k="rho"), g(p, *MC, k="rho")
@@ -1306,6 +1417,11 @@ def main(argv=None):
         R.macro(macros, "WEEpsFull" + n, "%.2f" % g(p, *MC, k="epsilon"))
         R.macro(macros, "WELambdaRatio" + n, "%.2f" % round(ratio, 4))
         R.macro(macros, "WELR" + n, "%.2f" % lr)
+        if not ident:
+            # F3-15: p-value under the 50:50 mixture of zero and chi2(1)
+            pv = mixture_p(lr)
+            R.macro(macros, "WEP" + n, p_text(pv))
+            wep[p] = pv
         R.macro(macros, "WERFull" + n, "%.3f" % rf)
         R.macro(macros, "WERMol" + n, "%.3f" % rm)
         R.macro(macros, "WERRatio" + n, "%.2f" % rr)
@@ -1315,6 +1431,10 @@ def main(argv=None):
     R.macro(macros, "WENIdentity", fmt_int(n_ident))
     R.macro(macros, "WENBoundary", fmt_int(n_bound))
     R.macro(macros, "WENRejected", fmt_int(n_rej))
+    # F3-15: Bonferroni over the groups whose restriction binds
+    R.macro(macros, "RuleBonferroniLevel", "%.4f" % (0.05 / n_bound))
+    R.macro(macros, "WENRejectedBonferroni",
+            fmt_int(sum(v < 0.05 / n_bound for v in wep.values())))
     R.macro(macros, "WENFullGreater", fmt_int(n_fg))
     R.macro(macros, "WENFullSmaller", fmt_int(n_fs))
     R.macro(macros, "WENFullOverlap", fmt_int(n_fo))
@@ -1571,6 +1691,8 @@ def main(argv=None):
             ("rho_molecular", rho_fmt(mt / float(d))), ("described", d),
             ("study_dating", sdp),
             ("molecular_only_tree", "yes" if p in molonly else "no"),
+            ("molecular_only_dated", ("yes" if modat[p] == "time" else "no")
+             if p in molonly else ""),
             ("molecular_share", "%.2f" % (mt / float(len(tips[p])))),
             ("tips_exceed_named", "yes" if len(tips[p]) > (1 + TIPS_OVER_NAMED)
              * len(c0[p]) else "no"),
@@ -1788,7 +1910,9 @@ def main(argv=None):
             ("exact_label_tips", ex), ("molecular_species", len(c1[p])),
             ("product", fix(len(c0[p]) * float("%.6f" % fmol[p]), 1)),
             ("f_low", "%.3f" % float(b["f_low"])), ("f_high", "%.3f" % float(b["f_high"])),
-            ("molecular_only_tree", "yes" if p in molonly else "no")])
+            ("molecular_only_tree", "yes" if p in molonly else "no"),
+            ("molecular_only_dated", ("yes" if modat[p] == "time" else "no")
+             if p in molonly else "")])
     supp_eq("supp_molecular", got, "partition")
     for code in ("source_tree_intersection", "source_alignment_intersection",
                  "per_tip_evidence", "asserted_no_imputation"):
@@ -1850,7 +1974,22 @@ def main(argv=None):
             ("prior_hi_ma", "%.1f" % float(iv["prior_hi_ma"]) if iv.get("prior_hi_ma") else ""),
             ("prior_containment_pct", "%.0f" % (100 * float(pc)) if pc else ""),
             ("prior_width_ratio", "%.2f" % float(pw) if pw else ""),
+            ("prior_q_lo", prior_quantile(calreg[p]["prior_density"],
+                                          float(iv["interval_lo_ma"]))
+             if kind and calreg.get(p, {}).get("prior_density") else ""),
+            ("prior_q_center", prior_quantile(
+                calreg[p]["prior_density"], float(iv["interval_center_ma"])
+                if iv["interval_center_ma"] else float(iv["source_point_height_ma"]))
+             if kind and calreg.get(p, {}).get("prior_density") else ""),
+            ("prior_q_hi", prior_quantile(calreg[p]["prior_density"],
+                                          float(iv["interval_hi_ma"]))
+             if kind and calreg.get(p, {}).get("prior_density") else ""),
+            ("parent_calibration", calreg.get(p, {}).get("parent_calibration", "")
+             if kind else ""),
             ("status", status)])
+        for k_ in ("prior_q_lo", "prior_q_center", "prior_q_hi"):
+            R.eq("%s: registers/crown_intervals.csv %s" % (p, k_),
+                 iv.get(k_, "") if kind else "", got[p][k_])
     supp_eq("supp_crown", got, "partition")
     R.eq("crown interval widths = hi - lo of registers/crown_intervals.csv",
          [p for p in got if intervals.get(p) and abs(
@@ -1928,7 +2067,7 @@ def main(argv=None):
     got["union"] = srow("union", den, OrderedDict(
         [("C0", pct(lad["C0"]["sum"] + n_add, den)),
          ("C1", pct(lad["C1"]["sum"] + n_add, den)), ("C1d", None), ("C1b", None)]))
-    for key, nm in (("crown_calibrated", "CrownCal"),):
+    for key, nm in (("rule_p_counted", "RuleP"), ("crown_calibrated", "CrownCal")):
         got[key] = srow(key, den, OrderedDict(
             [("C0", None), ("C1", None), ("C1d", None),
              ("C1b", strict_sets[nm]["C1b"]["pct_union"])]))

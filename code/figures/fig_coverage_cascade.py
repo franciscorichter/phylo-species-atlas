@@ -40,7 +40,7 @@ REASONS = OrderedDict([
     ("RelTime", ("Molecular to dated", "chronogram in relative time")),
     ("NoInterval", ("Dated to interval", "no interval archived")),
     ("Kind", ("Dated to interval", "interval describes other variation")),
-    ("Calib", ("Dated to interval", "interval set by a calibration")),
+    ("Calib", ("Dated to interval", "interval excluded by a calibration rule")),
 ])
 
 level, loss = OrderedDict(), OrderedDict()

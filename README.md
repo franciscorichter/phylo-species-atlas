@@ -114,7 +114,7 @@ its `source` column gives under a `Data/` directory beside a copy of this reposi
 | Squamates | posterior, 10,000 trees | VertLife, `data.vertlife.org/squamatetree` (Tonini et al. 2016) |
 | Mammals | NDexp completed and DNA-only sets, 10,000 trees each | VertLife, `data.vertlife.org/mammaltree` (Upham et al. 2019) |
 | Birds | date-assignment sets, 100 trees each | AvesData release 1.3, `github.com/McTavishLab/AvesData`, `Tree_versions/Aves_1.3/Clements2021` (McTavish et al. 2025) |
-| Sharks | 1-fossil set (10,000 trees) and the 500-tree set of sequenced species | VertLife, `data.vertlife.org/sharktree` (Stein et al. 2018) |
+| Sharks | 10-fossil set (10,000 trees) and the 500-tree set of sequenced species of the same scenario | VertLife, `data.vertlife.org/sharktree` (Stein et al. 2018) |
 
 The figures: `python3 code/figures/fig_coverage_cascade.py` and the four other scripts in
 `code/figures/` write Figures 1 to 5 to `paper/figures/`.

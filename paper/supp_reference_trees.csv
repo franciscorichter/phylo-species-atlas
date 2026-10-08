@@ -4,7 +4,7 @@ Birds,Vertebrates,birds.nwk,mctavish2025complete,summary_dated_clements.nex,1,re
 Crocodilians,Vertebrates,condamine_Crocodylia.nwk,condamine2019assessing,Crocodylia.tre,,as_archived,Crocodylia tree of FamilyCrocoTurtleTrees.Rdata,doi:10.6084/m9.figshare.9555842
 Fish,Vertebrates,fish.nwk,rabosky2018inverse,actinopt_full.trees,1,first_of_set,"actinopt_full.trees, tree 1",fishtreeoflife.org
 Mammals,Vertebrates,mammals.nwk,upham2019inferring,upham2019_mammal_MCC_5911sp.tre,,as_archived,NDexp MCC chronogram,doi:10.5061/dryad.tb03d03
-Sharks,Vertebrates,sharks.nwk,stein2018global,sharks_1cal_mcc_tree7847.nwk,1,mcc_of_set,MCC tree of 1.cal.tree.nex,data.vertlife.org/sharktree
+Sharks,Vertebrates,sharks.nwk,stein2018global,sharks_10cal_mcc_tree2043.nwk,1,mcc_of_set,MCC tree of 10.cal.tree.nex,data.vertlife.org/sharktree
 Squamates,Vertebrates,squamates.nwk,tonini2016fully,tonini2016_squamate_consensus_9755sp.tre,,as_archived,all-compatible consensus chronogram,doi:10.5061/dryad.db005
 Turtles,Vertebrates,turtles.nwk,thomson2021global,thomson2021_turtle_bd_mcc.tre,1,study_chronogram,"bd.mcc.median_heights.tre, MCC chronogram",doi:10.5061/dryad.jh9w0vt8w
 Bryophytes,Plants,bryophytes.nwk,bechteler2023comprehensive,GoFlag_Bryo_July2021_treePL_config-v8.tre,1,study_chronogram,"GoFlag_Bryo_July2021_treePL_config-v8.tre, treePL chronogram",doi:10.5061/dryad.3j9kd51qm

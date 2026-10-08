@@ -101,6 +101,7 @@ import argparse
 import csv
 import glob
 import hashlib
+import math
 import os
 import re
 import sys
@@ -140,7 +141,8 @@ OUT_HEADER = ["partition", "kind", "counts_for_c1b", "source",
               "at_bound", "c1b_exclusion", "n_focal_outgroups",
               "source_root_height_ma", "calibration", "prior_lo_ma",
               "prior_hi_ma", "prior_containment", "prior_width_ratio",
-              "prior_reproduced"]
+              "prior_reproduced", "prior_q_lo", "prior_q_center",
+              "prior_q_hi"]
 
 csv.field_size_limit(1 << 30)
 TOKEN_RE = re.compile(r"\[[^\]]*\]|'(?:[^']|'')*'|[(),;:]|[^(),;:\['\s]+")
@@ -448,6 +450,65 @@ def prior_test(lo, hi, cal):
             cont >= PRIOR_CONTAINMENT_MIN and ratio >= PRIOR_WIDTH_RATIO_MIN)
 
 
+PRIOR_DENSITY_RE = re.compile(r"^\s*(\w+)\(([^)]*)\)\s*$")
+SOFT_TAIL = 0.025                      # Yang & Rannala 2006 soft bounds: 2.5%
+                                       # of the prior outside each bound
+
+
+def prior_quantile(spec, x):
+    """Round F3 (F3-14).  The quantile of x under the calibration density
+    the source specifies on the focal node (register column prior_density):
+        uniform(lo,hi)            uniform between hard bounds
+        soft_uniform(lo,hi)       uniform inside soft bounds holding 95% of
+                                  the prior (PhyloBayes -sb); outside the
+                                  bounds only the side is reported
+        offset_exp_q95(min,max)   exponential offset to min whose 95%
+                                  quantile is max (Upham et al. 2019 NDexp)
+        offset_gamma(off,a,s)     gamma with shape a and scale s offset by off
+    Returns a string: the quantile to three decimals, '<0.025' or '>0.975'
+    beyond soft bounds, '' without a density."""
+    if not spec:
+        return ""
+    m = PRIOR_DENSITY_RE.match(spec)
+    if not m:
+        sys.exit("unreadable prior_density %r" % spec)
+    form, args = m.group(1), [float(v) for v in m.group(2).split(",")]
+    if form == "uniform":
+        lo, hi = args
+        q = min(1.0, max(0.0, (x - lo) / (hi - lo)))
+    elif form == "soft_uniform":
+        lo, hi = args
+        if x < lo:
+            return "<%.3f" % SOFT_TAIL
+        if x > hi:
+            return ">%.3f" % (1 - SOFT_TAIL)
+        q = SOFT_TAIL + (1 - 2 * SOFT_TAIL) * (x - lo) / (hi - lo)
+    elif form == "offset_exp_q95":
+        lo, hi = args
+        rate = -math.log(0.05) / (hi - lo)
+        q = 0.0 if x <= lo else 1.0 - math.exp(-rate * (x - lo))
+    elif form == "offset_gamma":
+        off, a, sc = args
+        if a != int(a):
+            sys.exit("offset_gamma needs an integer shape, got %r" % spec)
+        z = max(0.0, (x - off) / sc)
+        # regularised lower incomplete gamma for integer shape (Erlang)
+        q = 1.0 - math.exp(-z) * sum(z ** k / math.factorial(k)
+                                     for k in range(int(a)))
+    else:
+        sys.exit("unknown prior_density form %r" % form)
+    return "%.3f" % q
+
+
+def prior_quantiles(lo, center, hi, point, cal):
+    spec = (cal or {}).get("prior_density", "") or ""
+    c = center if isinstance(center, float) else point
+    return dict(prior_q_lo=prior_quantile(spec, lo),
+                prior_q_center=prior_quantile(spec, c)
+                if c is not None else "",
+                prior_q_hi=prior_quantile(spec, hi))
+
+
 def load_calibrations(path=CALIBRATIONS):
     if not os.path.exists(path):
         return {}
@@ -478,6 +539,7 @@ def flags(kind, lo, center, hi, point, cal=None):
                 calibration=klass, prior_lo_ma=plo, prior_hi_ma=phi,
                 prior_containment=cont, prior_width_ratio=ratio,
                 prior_reproduced="yes" if repro else "no",
+                **prior_quantiles(lo, center, hi, point, cal),
                 c1b_exclusion=why,
                 counts_for_c1b="yes" if not why else "no")
 

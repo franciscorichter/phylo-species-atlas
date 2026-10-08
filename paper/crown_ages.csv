@@ -6,13 +6,13 @@ Cephalopods,cephalopods.nwk,Coleoidea,240.0408,median over 9001 trees,240.8804,p
 Cnidaria,corals.nwk,Scleractinia,459.7181,annotated height_median,573.0553,node_hpd_annotation,yes,,404.0738,459.7181,516.5082,height_median,1,112.4344,no,no,none,no,raw/corals/coral_scleractinia_mcc.nex
 Crocodilians,condamine_Crocodylia.nwk,Crocodylia,87.1414,root height of the canonical file,87.1414,,,,,,,,,,,,,,
 Diatoms,diatoms.nwk,Bacillariophyta,190.0000,median over 1001 trees,190.0000,bootstrap_dating_sample,no,at_bound,190.0000,190.0000,228.8310,median,1001,38.8310,no,yes,two_sided,no,raw/revision-2026-10/diatoms/nakov2018_zenodo583628/x/nakov-etal-zenodo/treepl-all-trees/all.dated.trees
-Echinoderms,echinoderms.nwk,Echinodermata,511.9205,focal node height in the deposited chronogram,511.9205,node_label_interval,yes,,498.7780,,525.0420,,1,26.2640,no,no,one_sided,no,standardized/trees/echinoderms.nwk
+Echinoderms,echinoderms.nwk,Echinoidea,294.3950,focal node height in the deposited chronogram,511.9205,node_label_interval,yes,,280.1620,,303.2000,,1,23.0380,no,no,two_sided,no,standardized/trees/echinoderms.nwk
 Ferns,ferns.nwk,Polypodiopsida,421.7595,root height of the canonical file,421.7595,,,,,,,,,,,,,,
 Fish,fish.nwk,Actinopterygii,368.0270,root height of the canonical file,368.0270,taxon_addition_sample,no,kind,368.0270,368.0270,368.0270,median,100,0.0000,yes,no,,no,raw/fish/actinopt_full.trees
 Gastropods,gastropods.nwk,Gastropoda,479.6000,focal node height in the deposited chronogram,479.6000,node_hpd_annotation,yes,,434.2000,,528.8000,,1,94.6000,no,no,one_sided,no,raw/revision-2026-10/gastropods/bitbucket_gastropoda/data/Chronogram.tre
 Mammals,mammals.nwk,Mammalia,187.3458,median over 10000 trees,180.8472,posterior_sample,no,prior_reproduced,168.5571,187.3458,213.4921,median,10000,44.9350,no,no,two_sided,yes,raw/revision-2026-10/mammals/vertlife_2026-10-08/Completed_5911sp_topoCons_NDexp/MamPhy_BDvr_Completed_5911sp_topoCons_NDexp_v2_tree*.tre
 Seed plants,seed_plants.nwk,Spermatophyta,325.0508,root height of the canonical file,325.0508,,,,,,,,,,,,,,
-Sharks,sharks.nwk,Chondrichthyes,377.8235,median over 10000 trees,396.0125,calibration_prior_sample,no,prior_reproduced,353.4311,377.8235,437.4969,median,10000,84.0658,no,no,two_sided,no,raw/revision-2026-10/sharks/vertlife_download/1.cal.tree.nex
+Sharks,sharks.nwk,Chondrichthyes,377.8302,median over 10000 trees,365.3613,calibration_prior_sample,no,prior_reproduced,353.5730,377.8302,437.6111,median,10000,84.0381,no,no,two_sided,no,raw/revision-2026-10/sharks/ten_calibration/10.cal.tree.nex
 Spiders,spiders.nwk,Araneae,366.0864,root height of the canonical file,366.0864,,,,,,,,,,,,,,
 Sponges,sponges.nwk,Demospongiae,526.4421,focal node height in the deposited chronogram,526.4421,node_label_interval,no,prior_reproduced,514.6480,,540.8240,,1,26.1760,no,no,two_sided,yes,standardized/trees/sponges.nwk
 Squamates,squamates.nwk,Squamata,186.4151,median over 10000 trees,189.9633,posterior_sample,no,prior_reproduced,176.9718,186.4151,203.0625,median,10000,26.0907,no,no,two_sided,yes,raw/revision-2026-10/squamates/posterior/squam_shl_new_Posterior_9755.*.trees

@@ -1429,16 +1429,35 @@
       }
     },
     "c1b_crown_calibrated": {
-      "rule": "C1b with every counted interval whose crown node carries a calibration (one_sided, two_sided, not_checked) not counted",
+      "rule": "C1b with every counted interval whose crown node carries a calibration (one_sided, two_sided, not_checked), or whose parent node carries a two_sided calibration, not counted",
       "partitions_removed": [
+        "Amphibians",
         "Echinoderms",
         "Gastropods"
       ],
+      "partitions_removed_own_calibration": [
+        "Echinoderms",
+        "Gastropods"
+      ],
+      "partitions_removed_parent_calibration": [
+        "Amphibians"
+      ],
       "partitions_kept": [
-        "Amphibians",
         "Cnidaria"
       ],
-      "counted_two_sided_or_unchecked": [],
+      "counted_by_crown_calibration": {
+        "none": [
+          "Amphibians",
+          "Cnidaria"
+        ],
+        "one_sided": [
+          "Gastropods"
+        ],
+        "two_sided": [
+          "Echinoderms"
+        ],
+        "not_checked": []
+      },
       "rungs": {
         "C0": {
           "numerator": 395517,
@@ -1465,12 +1484,56 @@
           "percent_union": 5.267128288872063
         },
         "C1b": {
-          "numerator": 4251,
-          "numerator_sum": 4251.0,
+          "numerator": 258,
+          "numerator_sum": 258.0,
           "denominator": 2148799,
-          "percent": 0.19783143979497383,
-          "numerator_union": 4251,
-          "percent_union": 0.19783143979497383
+          "percent": 0.012006707002376677,
+          "numerator_union": 258,
+          "percent_union": 0.012006707002376677
+        }
+      }
+    },
+    "c1b_rule_p_counted": {
+      "rule": "C1b if the intervals excluded by the D25 test (p) counted",
+      "partitions_added": [
+        "Cephalopods",
+        "Mammals",
+        "Sponges",
+        "Squamates",
+        "Turtles"
+      ],
+      "rungs": {
+        "C0": {
+          "numerator": 395517,
+          "numerator_sum": 395517.0,
+          "denominator": 2148799,
+          "percent": 18.406421447515566,
+          "numerator_union": 395517,
+          "percent_union": 18.406421447515566
+        },
+        "C1": {
+          "numerator": 157201,
+          "numerator_sum": 157201.0,
+          "denominator": 2148799,
+          "percent": 7.315761036746573,
+          "numerator_union": 157201,
+          "percent_union": 7.315761036746573
+        },
+        "C1d": {
+          "numerator": 113180,
+          "numerator_sum": 113180.0,
+          "denominator": 2148799,
+          "percent": 5.267128288872063,
+          "numerator_union": 113180,
+          "percent_union": 5.267128288872063
+        },
+        "C1b": {
+          "numerator": 13815,
+          "numerator_sum": 13815.0,
+          "denominator": 2148799,
+          "percent": 0.6429172761156349,
+          "numerator_union": 13815,
+          "percent_union": 0.6429172761156349
         }
       }
     },
@@ -2333,7 +2396,7 @@
       "f_basis": "source_tree_intersection",
       "f_low": 0.511744966442953,
       "f_high": 0.511744966442953,
-      "molecular_source_file": "Data/raw/sharks/Chond.610sp.1Cal.500TreeSet.tre",
+      "molecular_source_file": "Data/raw/sharks/Chond.610sp.10Cal.500TreeSet.tre",
       "measured_intersection": 610,
       "exact_label_intersection": 610,
       "recorded_numerator": null,
@@ -2716,7 +2779,7 @@
         },
         "Sharks": {
           "canonical_tree": "sharks.nwk",
-          "deposited_chronogram": "raw/revision-2026-10/sharks/vertlife_download/1.cal.tree.nex",
+          "deposited_chronogram": "raw/revision-2026-10/sharks/ten_calibration/10.cal.tree.nex",
           "shipped_tips": 1192,
           "chronogram_tips_in_shipped": 1192,
           "outcome": "chronogram_covers_shipped_tips"
@@ -3221,7 +3284,7 @@
       "kind": 2,
       "prior_reproduced": 6
     },
-    "n_age_differs_from_geometry": 7,
+    "n_age_differs_from_geometry": 8,
     "n_crown_inside_interval": 4,
     "per_partition": {
       "Amphibians": {
@@ -3373,22 +3436,22 @@
       },
       "Echinoderms": {
         "canonical_tree": "echinoderms.nwk",
-        "crown_clade": "Echinodermata",
-        "crown_age_ma": "511.9205",
+        "crown_clade": "Echinoidea",
+        "crown_age_ma": "294.3950",
         "age_statistic": "focal node height in the deposited chronogram",
         "geometry_root_ma": "511.9205",
         "interval_kind": "node_label_interval",
         "counts_for_c1b": "yes",
         "c1b_exclusion": "",
-        "interval_lo_ma": "498.7780",
+        "interval_lo_ma": "280.1620",
         "interval_center_ma": "",
-        "interval_hi_ma": "525.0420",
+        "interval_hi_ma": "303.2000",
         "center_statistic": "",
         "n_trees": "1",
-        "interval_width_myr": "26.2640",
+        "interval_width_myr": "23.0380",
         "degenerate": "no",
         "at_bound": "no",
-        "calibration": "one_sided",
+        "calibration": "two_sided",
         "prior_reproduced": "no",
         "interval_source": "standardized/trees/echinoderms.nwk"
       },
@@ -3500,23 +3563,23 @@
       "Sharks": {
         "canonical_tree": "sharks.nwk",
         "crown_clade": "Chondrichthyes",
-        "crown_age_ma": "377.8235",
+        "crown_age_ma": "377.8302",
         "age_statistic": "median over 10000 trees",
-        "geometry_root_ma": "396.0125",
+        "geometry_root_ma": "365.3613",
         "interval_kind": "calibration_prior_sample",
         "counts_for_c1b": "no",
         "c1b_exclusion": "prior_reproduced",
-        "interval_lo_ma": "353.4311",
-        "interval_center_ma": "377.8235",
-        "interval_hi_ma": "437.4969",
+        "interval_lo_ma": "353.5730",
+        "interval_center_ma": "377.8302",
+        "interval_hi_ma": "437.6111",
         "center_statistic": "median",
         "n_trees": "10000",
-        "interval_width_myr": "84.0658",
+        "interval_width_myr": "84.0381",
         "degenerate": "no",
         "at_bound": "no",
         "calibration": "two_sided",
         "prior_reproduced": "no",
-        "interval_source": "raw/revision-2026-10/sharks/vertlife_download/1.cal.tree.nex"
+        "interval_source": "raw/revision-2026-10/sharks/ten_calibration/10.cal.tree.nex"
       },
       "Spiders": {
         "canonical_tree": "spiders.nwk",
@@ -5685,16 +5748,16 @@
       "Sharks": {
         "rho_tips": 0.47581903,
         "rho_full": 0.92979719,
-        "epsilon_rho_tips": 0.640058,
-        "epsilon_rho_full": 0.296641,
+        "epsilon_rho_tips": 0.523486,
+        "epsilon_rho_full": 0.0688365,
         "lambda_ratio_full_over_tips": 0.5117,
-        "mu_rho_tips": 0.0273605,
-        "mu_rho_full": 0.00648917,
-        "r_ratio_full_over_tips": 0.999994,
+        "mu_rho_tips": 0.0235129,
+        "mu_rho_full": 0.00158224,
+        "r_ratio_full_over_tips": 1.000005,
         "epsilon_intervals_overlap": false,
         "identity_lambda_ratio_predicted": 0.511745,
-        "loglik_rho_tips": -3055.0424,
-        "loglik_rho_full": -3055.0424,
+        "loglik_rho_tips": -2945.7395,
+        "loglik_rho_full": -2945.7395,
         "lr_statistic": 0.0,
         "classification": "identity",
         "epsilon_rho_full_on_boundary": false,
@@ -5813,21 +5876,21 @@
           "epsilon_intervals_overlap_uniform": false
         },
         "Sharks": {
-          "lambda": 0.0416139,
-          "mu": 0.0257387,
-          "r": 0.0158752,
-          "r_lo": 0.0131775,
-          "r_hi": 0.0186704,
-          "epsilon": 0.618511,
-          "epsilon_lo": 0.498698,
-          "epsilon_hi": 0.714351,
-          "loglik": -3054.3052,
+          "lambda": 0.0439274,
+          "mu": 0.0220069,
+          "r": 0.0219205,
+          "r_lo": 0.0184807,
+          "r_hi": 0.0254555,
+          "epsilon": 0.500983,
+          "epsilon_lo": 0.346678,
+          "epsilon_hi": 0.623711,
+          "loglik": -2954.6137,
           "n_tips": 610.0,
           "n_tips_family_fraction": 610.0,
           "family_uniform_check": 4.55e-13,
           "epsilon_ci": "interior",
-          "epsilon_uniform_tips": 0.640058,
-          "r_uniform_tips": 0.0153864,
+          "epsilon_uniform_tips": 0.523486,
+          "r_uniform_tips": 0.0214031,
           "epsilon_intervals_overlap_uniform": true
         },
         "Squamates": {
@@ -5853,8 +5916,8 @@
     "full_vs_molecular": {
       "note": "two different trees, not a rung effect: the difference is what taxonomically placed tips do to the estimate (Rabosky 2015 Evolution 69:3207; Chang, Rabosky & Alfaro 2020 Syst Biol 69:602)",
       "n_partitions": 7,
-      "n_r_full_greater": 3,
-      "n_r_full_smaller": 4,
+      "n_r_full_greater": 2,
+      "n_r_full_smaller": 5,
       "n_r_intervals_overlap": 3,
       "per_partition": {
         "Amphibians": {
@@ -5903,12 +5966,12 @@
           "epsilon_intervals_overlap": false
         },
         "Sharks": {
-          "r_full": 0.0161416,
-          "r_molecular": 0.0153864,
-          "r_ratio_full_over_molecular": 1.0491,
+          "r_full": 0.0207068,
+          "r_molecular": 0.0214031,
+          "r_ratio_full_over_molecular": 0.9675,
           "r_intervals_overlap": true,
-          "epsilon_full": 0.602372,
-          "epsilon_molecular": 0.640058,
+          "epsilon_full": 0.558496,
+          "epsilon_molecular": 0.523486,
           "epsilon_intervals_overlap": true
         },
         "Squamates": {
@@ -6257,31 +6320,31 @@
         },
         "resolved": {
           "1": {
-            "r_full": 0.0161416,
-            "r_molecular": 0.0153864,
-            "r_ratio_full_over_molecular": 1.0491,
-            "epsilon_rho_tips": 0.640058,
-            "epsilon_rho_full": 0.296641,
+            "r_full": 0.0207068,
+            "r_molecular": 0.0214031,
+            "r_ratio_full_over_molecular": 0.9675,
+            "epsilon_rho_tips": 0.523486,
+            "epsilon_rho_full": 0.0688365,
             "lr_statistic": 0.0,
             "boundary": false,
             "rejected": false
           },
           "2": {
-            "r_full": 0.0161416,
-            "r_molecular": 0.0153864,
-            "r_ratio_full_over_molecular": 1.0491,
-            "epsilon_rho_tips": 0.640058,
-            "epsilon_rho_full": 0.296641,
+            "r_full": 0.0207068,
+            "r_molecular": 0.0214031,
+            "r_ratio_full_over_molecular": 0.9675,
+            "epsilon_rho_tips": 0.523486,
+            "epsilon_rho_full": 0.0688365,
             "lr_statistic": 0.0,
             "boundary": false,
             "rejected": false
           },
           "3": {
-            "r_full": 0.0161416,
-            "r_molecular": 0.0153864,
-            "r_ratio_full_over_molecular": 1.0491,
-            "epsilon_rho_tips": 0.640058,
-            "epsilon_rho_full": 0.296641,
+            "r_full": 0.0207068,
+            "r_molecular": 0.0214031,
+            "r_ratio_full_over_molecular": 0.9675,
+            "epsilon_rho_tips": 0.523486,
+            "epsilon_rho_full": 0.0688365,
             "lr_statistic": 0.0,
             "boundary": false,
             "rejected": false
@@ -6480,19 +6543,19 @@
           1192
         ],
         "max_polytomy_events": 0,
-        "epsilon_matching_min": 0.601564,
-        "epsilon_matching_median": 0.6745805,
-        "epsilon_matching_max": 0.762964,
+        "epsilon_matching_min": 0.287501,
+        "epsilon_matching_median": 0.5224865,
+        "epsilon_matching_max": 0.708388,
         "lr_min": 0.0,
         "lr_median": 0.0,
-        "lr_max": 0.0,
-        "n_boundary": 0,
-        "n_rejected": 0,
-        "r_ratio_min": 0.8864813754344845,
-        "r_ratio_max": 1.0614687615869485,
+        "lr_max": 5.5616,
+        "n_boundary": 11,
+        "n_rejected": 2,
+        "r_ratio_min": 0.8876782042786019,
+        "r_ratio_max": 1.0653940055062074,
         "summary_tree_classification": "identity",
         "summary_tree_lr": 0.0,
-        "summary_tree_epsilon_matching": 0.640058
+        "summary_tree_epsilon_matching": 0.523486
       },
       "Sharks|molecular_only": {
         "partition": "Sharks",
@@ -6504,19 +6567,19 @@
         ],
         "n_tips_full": [],
         "max_polytomy_events": 0,
-        "epsilon_matching_min": 0.483423,
-        "epsilon_matching_median": 0.5809875,
-        "epsilon_matching_max": 0.64757,
+        "epsilon_matching_min": 0.0588727,
+        "epsilon_matching_median": 0.40388599999999997,
+        "epsilon_matching_max": 0.622947,
         "lr_min": 0.0,
-        "lr_median": 0.0,
-        "lr_max": 0.0045,
-        "n_boundary": 1,
-        "n_rejected": 0,
+        "lr_median": 1.18125,
+        "lr_max": 18.929,
+        "n_boundary": 84,
+        "n_rejected": 4,
         "r_ratio_min": null,
         "r_ratio_max": null,
         "summary_tree_classification": "identity",
         "summary_tree_lr": 0.0,
-        "summary_tree_epsilon_matching": 0.640058
+        "summary_tree_epsilon_matching": 0.523486
       },
       "Squamates|posterior": {
         "partition": "Squamates",
@@ -6602,15 +6665,15 @@
         "loglik_abs_diff_at_mle": 18.090700000000652
       },
       "Sharks": {
-        "r_first": 0.0158752,
-        "r_last": 0.0159292,
-        "epsilon_first": 0.618511,
-        "epsilon_last": 0.617081,
-        "loglik_first": -3054.3052,
-        "loglik_last_at_first_mle": -3054.3333,
-        "r_rel_diff": 0.0034015319492039136,
-        "epsilon_abs_diff": 0.0014300000000000423,
-        "loglik_abs_diff_at_mle": 0.028099999999994907
+        "r_first": 0.0219205,
+        "r_last": 0.0219008,
+        "epsilon_first": 0.500983,
+        "epsilon_last": 0.503072,
+        "loglik_first": -2954.6137,
+        "loglik_last_at_first_mle": -2956.0935,
+        "r_rel_diff": 0.000898702128144773,
+        "epsilon_abs_diff": 0.0020890000000000075,
+        "loglik_abs_diff_at_mle": 1.4798000000000684
       },
       "Squamates": {
         "r_first": 0.0707678,
@@ -7067,19 +7130,19 @@
       },
       "Sharks|full|tips": {
         "n_tips": "1192",
-        "crown_age_ma": "396.0125",
+        "crown_age_ma": "365.3613",
         "time_scale_factor": "1",
         "rho": "0.92979719",
-        "lambda": "0.0405948",
-        "mu": "0.0244532",
-        "r": "0.0161416",
-        "r_lo": "0.0136111",
-        "r_hi": "0.0187378",
-        "epsilon": "0.602372",
-        "epsilon_lo": "0.506535",
-        "epsilon_hi": "0.684662",
+        "lambda": "0.0469005",
+        "mu": "0.0261937",
+        "r": "0.0207068",
+        "r_lo": "0.0176014",
+        "r_hi": "0.02388",
+        "epsilon": "0.558496",
+        "epsilon_lo": "0.453971",
+        "epsilon_hi": "0.648136",
         "epsilon_ci": "interior",
-        "loglik": "-5511.9787",
+        "loglik": "-5301.1593",
         "n_tips_family_fraction": "",
         "family_uniform_check": "",
         "n_events": "1191",
@@ -7089,19 +7152,19 @@
       },
       "Sharks|molecular|tips": {
         "n_tips": "610",
-        "crown_age_ma": "396.0125",
+        "crown_age_ma": "365.3613",
         "time_scale_factor": "1",
         "rho": "0.47581903",
-        "lambda": "0.0427469",
-        "mu": "0.0273605",
-        "r": "0.0153864",
-        "r_lo": "0.0126781",
-        "r_hi": "0.0181958",
-        "epsilon": "0.640058",
-        "epsilon_lo": "0.525454",
-        "epsilon_hi": "0.731844",
+        "lambda": "0.044916",
+        "mu": "0.0235129",
+        "r": "0.0214031",
+        "r_lo": "0.0179673",
+        "r_hi": "0.0249353",
+        "epsilon": "0.523486",
+        "epsilon_lo": "0.375291",
+        "epsilon_hi": "0.641493",
         "epsilon_ci": "interior",
-        "loglik": "-3055.0424",
+        "loglik": "-2945.7395",
         "n_tips_family_fraction": "",
         "family_uniform_check": "",
         "n_events": "609",
@@ -7111,19 +7174,19 @@
       },
       "Sharks|molecular|full_misapplied": {
         "n_tips": "610",
-        "crown_age_ma": "396.0125",
+        "crown_age_ma": "365.3613",
         "time_scale_factor": "1",
         "rho": "0.92979719",
-        "lambda": "0.0218755",
-        "mu": "0.00648917",
-        "r": "0.0153863",
-        "r_lo": "0.0126781",
-        "r_hi": "0.0181784",
-        "epsilon": "0.296641",
-        "epsilon_lo": "0.0726754",
-        "epsilon_hi": "0.475996",
+        "lambda": "0.0229855",
+        "mu": "0.00158224",
+        "r": "0.0214032",
+        "r_lo": "0.0179673",
+        "r_hi": "0.0239293",
+        "epsilon": "0.0688365",
+        "epsilon_lo": "0",
+        "epsilon_hi": "0.29938",
         "epsilon_ci": "interior",
-        "loglik": "-3055.0424",
+        "loglik": "-2945.7395",
         "n_tips_family_fraction": "",
         "family_uniform_check": "",
         "n_events": "609",
@@ -7133,19 +7196,19 @@
       },
       "Sharks|molecular|family": {
         "n_tips": "610",
-        "crown_age_ma": "396.0125",
+        "crown_age_ma": "365.3613",
         "time_scale_factor": "1",
         "rho": "",
-        "lambda": "0.0416139",
-        "mu": "0.0257387",
-        "r": "0.0158752",
-        "r_lo": "0.0131775",
-        "r_hi": "0.0186704",
-        "epsilon": "0.618511",
-        "epsilon_lo": "0.498698",
-        "epsilon_hi": "0.714351",
+        "lambda": "0.0439274",
+        "mu": "0.0220069",
+        "r": "0.0219205",
+        "r_lo": "0.0184807",
+        "r_hi": "0.0254555",
+        "epsilon": "0.500983",
+        "epsilon_lo": "0.346678",
+        "epsilon_hi": "0.623711",
         "epsilon_ci": "interior",
-        "loglik": "-3054.3052",
+        "loglik": "-2954.6137",
         "n_tips_family_fraction": "610",
         "family_uniform_check": "4.55e-13",
         "n_events": "609",

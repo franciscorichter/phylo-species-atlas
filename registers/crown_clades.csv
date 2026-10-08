@@ -2,18 +2,18 @@ partition,crown_clade,evidence
 Amphibians,Lissamphibia,"Root of amphibians.nwk after D7 prunes the Homo sapiens outgroup: the 7,238-tip Lissamphibia clade (Data/offtarget_checks.csv)"
 Birds,Aves (crown birds),"All 10,824 tips in avian families; McTavish et al. 2025 synthesis of crown birds (Data/offtarget_checks.csv)"
 Bryophytes,Bryophyta s.l. (mosses + liverworts + hornworts),"362 mosses, 159 liverworts and 12 hornworts, no tracheophyte (Data/offtarget_checks.csv)"
-Cephalopods,Coleoidea,"Root split 26 Octopodiformes / 55 Decapodiformes; no Nautilus in the tree (Data/offtarget_checks.csv)"
+Cephalopods,Coleoidea,Root split 26 Octopodiformes / 55 Decapodiformes; no Nautilus in the tree (Data/offtarget_checks.csv)
 Cnidaria,Scleractinia,"Focal clade of Vaga et al. 2025; the 17 antipatharian and corallimorpharian outgroups stay in the canonical file (D7) and are excluded from crown-node extraction (D21; Data/crown_interval_sources.csv focal_outgroups). The canonical root is the Scleractinia + Antipatharia + Corallimorpharia node, part of Hexacorallia"
 Crocodilians,Crocodylia,"All 25 tips Alligatoridae, Crocodylidae or Gavialidae; the root is crown Crocodylia (Data/offtarget_checks.csv)"
-Diatoms,Bacillariophyta,"Root of diatoms.nwk after D7 prunes the 20 non-diatom heterokont outgroups (Data/offtarget_checks.csv)"
-Echinoderms,Echinodermata,"Root of echinoderms.nwk after D7 prunes Saccoglossus kowalevskii (Hemichordata) (Data/offtarget_checks.csv)"
-Ferns,Polypodiopsida,"Root of ferns.nwk after D7 prunes 18 non-fern tips; all 50 remaining families are PPG I fern families (Data/offtarget_checks.csv)"
+Diatoms,Bacillariophyta,Root of diatoms.nwk after D7 prunes the 20 non-diatom heterokont outgroups (Data/offtarget_checks.csv)
+Echinoderms,Echinoidea,"Mongiardino Koch et al. 2022 sample Echinoidea (54 species in the canonical tree) with 11 echinoderm outgroups, which stay in echinoderms.nwk for counting (D7); the crown is the MRCA of the 54 echinoids (Cidaroidea x Euechinoidea), the study's ingroup (D21; focal_outgroups in Data/crown_interval_sources.csv). Saccoglossus kowalevskii (Hemichordata) is pruned by D7."
+Ferns,Polypodiopsida,Root of ferns.nwk after D7 prunes 18 non-fern tips; all 50 remaining families are PPG I fern families (Data/offtarget_checks.csv)
 Fish,Actinopterygii,"11,624 Actinopteri and 14 Cladistia, no outgroup (Data/offtarget_checks.csv)"
-Gastropods,Gastropoda,"Root of gastropods.nwk after D7 prunes the 14 non-gastropod molluscs (Data/offtarget_checks.csv)"
-Mammals,Mammalia,"Root of mammals.nwk after D7 prunes the Anolis carolinensis outgroup (Data/offtarget_checks.csv)"
-Seed plants,Spermatophyta,"Smith & Brown 2018 seed-plant tree after D7 prunes 282 off-target labels (Data/offtarget_checks.csv)"
+Gastropods,Gastropoda,Root of gastropods.nwk after D7 prunes the 14 non-gastropod molluscs (Data/offtarget_checks.csv)
+Mammals,Mammalia,Root of mammals.nwk after D7 prunes the Anolis carolinensis outgroup (Data/offtarget_checks.csv)
+Seed plants,Spermatophyta,Smith & Brown 2018 seed-plant tree after D7 prunes 282 off-target labels (Data/offtarget_checks.csv)
 Sharks,Chondrichthyes,"Root split 49 Holocephali / 1,143 Elasmobranchii (Data/offtarget_checks.csv)"
-Spiders,Araneae,"Root split Liphistiidae (Mesothelae) / Opisthothelae (Data/offtarget_checks.csv)"
-Sponges,Demospongiae,"All raw labels carry the DM_ (Demospongiae) prefix; the Homoscleromorpha outgroup is absent from the deposited chronogram (Data/offtarget_checks.csv)"
-Squamates,Squamata,"Root of squamates.nwk after D7 prunes the Sphenodon punctatus outgroup (Data/offtarget_checks.csv)"
-Turtles,Testudines,"Root of turtles.nwk after D7 prunes Alligator and Gallus (Data/offtarget_checks.csv)"
+Spiders,Araneae,Root split Liphistiidae (Mesothelae) / Opisthothelae (Data/offtarget_checks.csv)
+Sponges,Demospongiae,All raw labels carry the DM_ (Demospongiae) prefix; the Homoscleromorpha outgroup is absent from the deposited chronogram (Data/offtarget_checks.csv)
+Squamates,Squamata,Root of squamates.nwk after D7 prunes the Sphenodon punctatus outgroup (Data/offtarget_checks.csv)
+Turtles,Testudines,Root of turtles.nwk after D7 prunes Alligator and Gallus (Data/offtarget_checks.csv)

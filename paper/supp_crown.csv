@@ -1,19 +1,19 @@
-partition,category,crown_clade,crown_age_ma,age_statistic,interval_lo_ma,interval_hi_ma,interval_width_myr,interval_kind,n_trees,calibration,prior_lo_ma,prior_hi_ma,prior_containment_pct,prior_width_ratio,status
-Amphibians,Vertebrates,Lissamphibia,311.4,median over 10000 trees,273.7,338.6,64.9,posterior_sample,10000,none,,,,,counted
-Birds,Vertebrates,Aves (crown birds),99.3,root height of the canonical file,72.0,133.0,61,date_assignment_sample,100,,,,,,kind
-Crocodilians,Vertebrates,Crocodylia,87.1,root height of the canonical file,,,,,,,,,,,none
-Fish,Vertebrates,Actinopterygii,368.0,root height of the canonical file,368.0,368.0,0,taxon_addition_sample,100,,,,,,kind
-Mammals,Vertebrates,Mammalia,187.3,median over 10000 trees,168.6,213.5,44.9,posterior_sample,10000,two_sided,165.2,210.0,92,1.00,prior_reproduced
-Sharks,Vertebrates,Chondrichthyes,377.8,median over 10000 trees,353.4,437.5,84.1,calibration_prior_sample,10000,two_sided,333.6,422.4,82,0.95,prior_reproduced
-Squamates,Vertebrates,Squamata,186.4,median over 10000 trees,177.0,203.1,26.1,posterior_sample,10000,two_sided,176.9,212.3,100,0.74,prior_reproduced
-Turtles,Vertebrates,Testudines,205.4,median over 100 trees,179.3,231.4,52.1,posterior_sample,100,two_sided,158.0,249.0,100,0.57,prior_reproduced
-Bryophytes,Plants,Bryophyta s.l. (mosses + liverworts + hornworts),515.0,median over 1000 trees,515.0,515.0,0,bootstrap_dating_sample,1000,one_sided,,,,,degenerate
-Ferns,Plants,Polypodiopsida,421.8,root height of the canonical file,,,,,,,,,,,none
-Seed plants,Plants,Spermatophyta,325.1,root height of the canonical file,,,,,,,,,,,none
-Spiders,Arthropods,Araneae,366.1,root height of the canonical file,,,,,,,,,,,none
-Cephalopods,Other animals,Coleoidea,240.0,median over 9001 trees,236.6,249.6,13,posterior_sample,9001,two_sided,236.7,251.2,99,0.89,prior_reproduced
-Cnidaria,Other animals,Scleractinia,459.7,annotated height_median,404.1,516.5,112,node_hpd_annotation,1,none,,,,,counted
-Echinoderms,Other animals,Echinodermata,511.9,focal node height in the deposited chronogram,498.8,525.0,26.3,node_label_interval,1,one_sided,,,,,counted
-Gastropods,Other animals,Gastropoda,479.6,focal node height in the deposited chronogram,434.2,528.8,94.6,node_hpd_annotation,1,one_sided,,,,,counted
-Sponges,Other animals,Demospongiae,526.4,focal node height in the deposited chronogram,514.6,540.8,26.2,node_label_interval,1,two_sided,515.0,541.0,99,1.01,prior_reproduced
-Diatoms,Microbes & protists,Bacillariophyta,190.0,median over 1001 trees,190.0,228.8,38.8,bootstrap_dating_sample,1001,two_sided,190.0,302.0,100,0.35,at_bound
+partition,category,crown_clade,crown_age_ma,age_statistic,interval_lo_ma,interval_hi_ma,interval_width_myr,interval_kind,n_trees,calibration,prior_lo_ma,prior_hi_ma,prior_containment_pct,prior_width_ratio,prior_q_lo,prior_q_center,prior_q_hi,parent_calibration,status
+Amphibians,Vertebrates,Lissamphibia,311.4,median over 10000 trees,273.7,338.6,64.9,posterior_sample,10000,none,,,,,,,,two_sided,counted
+Birds,Vertebrates,Aves (crown birds),99.3,root height of the canonical file,72.0,133.0,61,date_assignment_sample,100,,,,,,,,,,kind
+Crocodilians,Vertebrates,Crocodylia,87.1,root height of the canonical file,,,,,,,,,,,,,,,none
+Fish,Vertebrates,Actinopterygii,368.0,root height of the canonical file,368.0,368.0,0,taxon_addition_sample,100,,,,,,,,,,kind
+Mammals,Vertebrates,Mammalia,187.3,median over 10000 trees,168.6,213.5,44.9,posterior_sample,10000,two_sided,165.2,210.0,92,1.00,0.259,0.841,0.981,,prior_reproduced
+Sharks,Vertebrates,Chondrichthyes,377.8,median over 10000 trees,353.6,437.6,84,calibration_prior_sample,10000,two_sided,333.6,422.4,82,0.95,,,,,prior_reproduced
+Squamates,Vertebrates,Squamata,186.4,median over 10000 trees,177.0,203.1,26.1,posterior_sample,10000,two_sided,176.9,212.3,100,0.74,0.026,0.280,0.727,,prior_reproduced
+Turtles,Vertebrates,Testudines,205.4,median over 100 trees,179.3,231.4,52.1,posterior_sample,100,two_sided,158.0,249.0,100,0.57,0.247,0.520,0.791,,prior_reproduced
+Bryophytes,Plants,Bryophyta s.l. (mosses + liverworts + hornworts),515.0,median over 1000 trees,515.0,515.0,0,bootstrap_dating_sample,1000,one_sided,,,,,,,,,degenerate
+Ferns,Plants,Polypodiopsida,421.8,root height of the canonical file,,,,,,,,,,,,,,,none
+Seed plants,Plants,Spermatophyta,325.1,root height of the canonical file,,,,,,,,,,,,,,,none
+Spiders,Arthropods,Araneae,366.1,root height of the canonical file,,,,,,,,,,,,,,,none
+Cephalopods,Other animals,Coleoidea,240.0,median over 9001 trees,236.6,249.6,13,posterior_sample,9001,two_sided,236.7,251.2,99,0.89,0.017,0.390,0.940,,prior_reproduced
+Cnidaria,Other animals,Scleractinia,459.7,annotated height_median,404.1,516.5,112,node_hpd_annotation,1,none,,,,,,,,none,counted
+Echinoderms,Other animals,Echinoidea,294.4,focal node height in the deposited chronogram,280.2,303.2,23,node_label_interval,1,two_sided,237.0,298.9,81,0.37,0.687,0.906,>0.975,two_sided,counted
+Gastropods,Other animals,Gastropoda,479.6,focal node height in the deposited chronogram,434.2,528.8,94.6,node_hpd_annotation,1,one_sided,,,,,,,,one_sided,counted
+Sponges,Other animals,Demospongiae,526.4,focal node height in the deposited chronogram,514.6,540.8,26.2,node_label_interval,1,two_sided,515.0,541.0,99,1.01,<0.025,0.443,0.969,,prior_reproduced
+Diatoms,Microbes & protists,Bacillariophyta,190.0,median over 1001 trees,190.0,228.8,38.8,bootstrap_dating_sample,1001,two_sided,190.0,302.0,100,0.35,0.000,0.000,0.347,,at_bound
