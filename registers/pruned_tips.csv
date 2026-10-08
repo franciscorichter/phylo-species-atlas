@@ -1,0 +1,622 @@
+filename,standardized_id,reason
+amphibians.nwk,336955,"outgroup stated by source (main p.856; SI p.4); CoL family Hominidae (Mammalia); sister of the 7,238-tip Lissamphibia clade at the root; also listed in Data/molecular_tips.csv as an Amphibians molecular tip"
+bryozoa.nwk,93560,Nemertea - lophotrochozoan outgroup
+bryozoa.nwk,159280,Arthropoda (Insecta) - ecdysozoan outgroup
+bryozoa.nwk,172505,Onychophora - ecdysozoan outgroup
+bryozoa.nwk,361859,Brachiopoda (Terebratulida) - lophotrochozoan outgroup
+bryozoa.nwk,373340,Arthropoda (Chelicerata) - ecdysozoan outgroup
+bryozoa.nwk,374033,Nemertea - lophotrochozoan outgroup
+bryozoa.nwk,380855,Entoprocta - lophotrochozoan outgroup
+bryozoa.nwk,380903,Entoprocta - lophotrochozoan outgroup
+bryozoa.nwk,423676,Nemertea - lophotrochozoan outgroup
+bryozoa.nwk,455171,Annelida (Clitellata) - lophotrochozoan outgroup
+bryozoa.nwk,461303,Phoronida - lophotrochozoan outgroup
+bryozoa.nwk,461304,Phoronida - lophotrochozoan outgroup
+bryozoa.nwk,473385,Annelida (Errantia) - lophotrochozoan outgroup
+bryozoa.nwk,484987,Priapulida - ecdysozoan outgroup
+bryozoa.nwk,575096,Annelida (Sipuncula) - lophotrochozoan outgroup
+bryozoa.nwk,583251,Arthropoda (Malacostraca) - ecdysozoan outgroup
+bryozoa.nwk,601305,Brachiopoda (Terebratulida) - lophotrochozoan outgroup
+bryozoa.nwk,601309,Brachiopoda (Terebratulida) - lophotrochozoan outgroup
+bryozoa.nwk,615654,Arthropoda (Branchiopoda) - ecdysozoan outgroup
+bryozoa.nwk,620668,Annelida (Echiura) - lophotrochozoan outgroup
+diatoms.nwk,637740,Pelagophyceae (outgroup)
+diatoms.nwk,637741,Pelagophyceae (outgroup)
+diatoms.nwk,637770,Bolidophyceae/Parmales (sister group of diatoms; outgroup)
+diatoms.nwk,637771,Bolidophyceae/Parmales (sister group of diatoms; outgroup)
+diatoms.nwk,637772,Bolidophyceae/Parmales (sister group of diatoms; outgroup)
+diatoms.nwk,637871,Phaeophyceae (brown alga; stramenopile outgroup)
+diatoms.nwk,637966,Phaeophyceae (brown alga; stramenopile outgroup)
+diatoms.nwk,638084,Phaeophyceae (brown alga; stramenopile outgroup)
+diatoms.nwk,638163,Raphidophyceae (outgroup)
+diatoms.nwk,638242,Eustigmatophyceae (outgroup)
+diatoms.nwk,638243,Eustigmatophyceae (outgroup)
+diatoms.nwk,638348,Chrysophyceae (outgroup)
+diatoms.nwk,638560,Phaeophyceae (brown alga; stramenopile outgroup)
+diatoms.nwk,638561,Phaeophyceae (brown alga; stramenopile outgroup)
+diatoms.nwk,638770,Eustigmatophyceae (outgroup)
+diatoms.nwk,638781,Bolidophyceae/Parmales (sister group of diatoms; outgroup)
+diatoms.nwk,638782,Bolidophyceae/Parmales (sister group of diatoms; outgroup)
+diatoms.nwk,638783,Bolidophyceae/Parmales (sister group of diatoms; outgroup)
+diatoms.nwk,638787,Phaeophyceae (brown alga; stramenopile outgroup)
+diatoms.nwk,638790,Xanthophyceae (outgroup)
+echinoderms.nwk,554020,"Hemichordata (Enteropneusta, CoL family Harrimaniidae); outgroup ""(OG)"" in source Appendix 1-table 2; root taxon of the chronogram (Ambulacraria root, calibrated as Echinodermata-Hemichordata divergence, source Appendix 2)"
+ferns.nwk,6686,angiosperm; CoL family Acoraceae; FTOL outgroup=TRUE
+ferns.nwk,22235,angiosperm; CoL family Amborellaceae; FTOL outgroup=TRUE
+ferns.nwk,30835,hornwort (partition: Bryophytes); CoL family Anthocerotaceae; FTOL outgroup=TRUE
+ferns.nwk,312056,gymnosperm; CoL family Ginkgoaceae; FTOL outgroup=TRUE
+ferns.nwk,351368,lycophyte (own partition: Lycophytes); CoL family Isoetaceae; FTOL outgroup=TRUE
+ferns.nwk,356582,angiosperm; CoL family Schisandraceae; FTOL outgroup=TRUE
+ferns.nwk,361034,angiosperm; CoL family Papaveraceae; FTOL outgroup=TRUE
+ferns.nwk,375779,angiosperm; CoL family Altingiaceae; FTOL outgroup=TRUE
+ferns.nwk,382944,lycophyte (own partition: Lycophytes); CoL family Lycopodiaceae; FTOL outgroup=TRUE
+ferns.nwk,386997,angiosperm; CoL family Magnoliaceae; FTOL outgroup=TRUE
+ferns.nwk,390459,liverwort (partition: Bryophytes); CoL family Marchantiaceae; FTOL outgroup=TRUE
+ferns.nwk,421638,angiosperm; CoL family Solanaceae; FTOL outgroup=TRUE
+ferns.nwk,464886,moss (partition: Bryophytes); CoL family Funariaceae; FTOL outgroup=TRUE
+ferns.nwk,476083,angiosperm; CoL family Plumbaginaceae; FTOL outgroup=TRUE
+ferns.nwk,563901,gymnosperm; CoL family Sciadopityaceae; FTOL outgroup=TRUE
+ferns.nwk,568088,lycophyte (own partition: Lycophytes); CoL family Selaginellaceae; FTOL outgroup=TRUE
+ferns.nwk,610173,angiosperm; CoL family Rosaceae; FTOL outgroup=TRUE
+ferns.nwk,616571,angiosperm; CoL family Hydatellaceae; FTOL outgroup=TRUE
+fungi.nwk,23935,outgroup declared by source; Metazoa
+fungi.nwk,68464,outgroup declared by source; Metazoa
+fungi.nwk,83750,outgroup declared by source; Metazoa
+fungi.nwk,84149,"outgroup declared by source; non-fungal Holomycota/Holozoa (Nucleariida, Ichthyosporea, Filasterea, Choanoflagellata, Corallochytrea)"
+fungi.nwk,104928,outgroup declared by source; Metazoa
+fungi.nwk,117218,"outgroup declared by source; non-fungal Holomycota/Holozoa (Nucleariida, Ichthyosporea, Filasterea, Choanoflagellata, Corallochytrea)"
+fungi.nwk,122874,"outgroup declared by source; non-fungal Holomycota/Holozoa (Nucleariida, Ichthyosporea, Filasterea, Choanoflagellata, Corallochytrea)"
+fungi.nwk,139769,outgroup declared by source; Metazoa
+fungi.nwk,159279,outgroup declared by source; Metazoa
+fungi.nwk,194206,"outgroup declared by source; non-fungal Holomycota/Holozoa (Nucleariida, Ichthyosporea, Filasterea, Choanoflagellata, Corallochytrea)"
+fungi.nwk,194207,"outgroup declared by source; non-fungal Holomycota/Holozoa (Nucleariida, Ichthyosporea, Filasterea, Choanoflagellata, Corallochytrea)"
+fungi.nwk,328396,outgroup declared by source; Metazoa
+fungi.nwk,345160,"outgroup declared by source; non-fungal Holomycota/Holozoa (Nucleariida, Ichthyosporea, Filasterea, Choanoflagellata, Corallochytrea)"
+fungi.nwk,345163,"outgroup declared by source; non-fungal Holomycota/Holozoa (Nucleariida, Ichthyosporea, Filasterea, Choanoflagellata, Corallochytrea)"
+fungi.nwk,352263,outgroup declared by source; Metazoa
+fungi.nwk,374036,outgroup declared by source; Metazoa
+fungi.nwk,380575,outgroup declared by source; Metazoa
+fungi.nwk,407892,outgroup declared by source; Metazoa
+fungi.nwk,409312,"outgroup declared by source; non-fungal Holomycota/Holozoa (Nucleariida, Ichthyosporea, Filasterea, Choanoflagellata, Corallochytrea)"
+fungi.nwk,411630,outgroup declared by source; Metazoa
+fungi.nwk,418214,outgroup declared by source; Metazoa
+fungi.nwk,426502,outgroup declared by source; Metazoa
+fungi.nwk,555707,"outgroup declared by source; non-fungal Holomycota/Holozoa (Nucleariida, Ichthyosporea, Filasterea, Choanoflagellata, Corallochytrea)"
+fungi.nwk,581169,"outgroup declared by source; non-fungal Holomycota/Holozoa (Nucleariida, Ichthyosporea, Filasterea, Choanoflagellata, Corallochytrea)"
+fungi.nwk,581170,"outgroup declared by source; non-fungal Holomycota/Holozoa (Nucleariida, Ichthyosporea, Filasterea, Choanoflagellata, Corallochytrea)"
+fungi.nwk,589589,outgroup declared by source; Metazoa
+fungi.nwk,590241,outgroup declared by source; Metazoa
+fungi.nwk,613399,outgroup declared by source; Metazoa
+gastropods.nwk,45170,"bivalve (class Bivalvia), outgroup"
+gastropods.nwk,96236,"aplacophoran, outgroup; label is Chaetoderma_sp. (Caudofoveata) in the atlas raw file but Pholidoskepia_sp. (Solenogastres) in the deposited Bitbucket trees/matrices; non-gastropod either way"
+gastropods.nwk,100810,"chiton (class Polyplacophora), outgroup"
+gastropods.nwk,169403,"bivalve (class Bivalvia), outgroup"
+gastropods.nwk,304778,"scaphopod (class Scaphopoda), outgroup"
+gastropods.nwk,317619,"aplacophoran (Solenogastres/Neomeniomorpha), outgroup"
+gastropods.nwk,360271,"monoplacophoran (class Monoplacophora), outgroup"
+gastropods.nwk,399369,"bivalve (class Bivalvia), outgroup"
+gastropods.nwk,412836,"bivalve (class Bivalvia), outgroup"
+gastropods.nwk,419236,"aplacophoran (Solenogastres/Neomeniomorpha), outgroup"
+gastropods.nwk,419967,"bivalve (class Bivalvia), outgroup"
+gastropods.nwk,426507,"cephalopod (class Cephalopoda), outgroup"
+gastropods.nwk,467412,"bivalve (class Bivalvia), outgroup"
+gastropods.nwk,578235,"bivalve (class Bivalvia), outgroup"
+insects.nwk,14744,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Entomobryidae"
+insects.nwk,17063,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Sminthuridae"
+insects.nwk,32986,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Neanuridae"
+insects.nwk,36944,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Isotomidae"
+insects.nwk,36945,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Isotomidae"
+insects.nwk,36946,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Isotomidae"
+insects.nwk,36947,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Isotomidae"
+insects.nwk,36948,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Isotomidae"
+insects.nwk,36949,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Isotomidae"
+insects.nwk,36950,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Isotomidae"
+insects.nwk,41306,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Arrhopalitidae"
+insects.nwk,41307,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=NA"
+insects.nwk,41308,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=NA"
+insects.nwk,63221,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Neanuridae"
+insects.nwk,63222,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Neanuridae"
+insects.nwk,66937,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Bourletiellidae"
+insects.nwk,66938,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Bourletiellidae"
+insects.nwk,68237,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Brachystomellidae"
+insects.nwk,68238,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Brachystomellidae"
+insects.nwk,68239,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Brachystomellidae"
+insects.nwk,68240,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Brachystomellidae"
+insects.nwk,68241,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Brachystomellidae"
+insects.nwk,80203,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Dicyrtomidae"
+insects.nwk,94347,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Hypogastruridae"
+insects.nwk,94348,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Hypogastruridae"
+insects.nwk,135426,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Paronellidae"
+insects.nwk,135427,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Paronellidae"
+insects.nwk,146236,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=no genus match, CoL family=Isotomidae"
+insects.nwk,146237,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=no genus match, CoL family=Isotomidae"
+insects.nwk,146238,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=no genus match, CoL family=Isotomidae"
+insects.nwk,146307,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Bourletiellidae"
+insects.nwk,146308,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Neanuridae"
+insects.nwk,146309,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Neanuridae"
+insects.nwk,146310,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Neanuridae"
+insects.nwk,146311,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Neanuridae"
+insects.nwk,146312,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Neanuridae"
+insects.nwk,146313,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Neanuridae"
+insects.nwk,146314,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Neanuridae"
+insects.nwk,148620,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=NA"
+insects.nwk,148621,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Orchesellidae"
+insects.nwk,148622,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Orchesellidae"
+insects.nwk,148623,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=NA"
+insects.nwk,148624,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=NA"
+insects.nwk,148625,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Orchesellidae"
+insects.nwk,149102,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Dicyrtomidae"
+insects.nwk,149103,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Dicyrtomidae"
+insects.nwk,149104,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Dicyrtomidae"
+insects.nwk,149105,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Dicyrtomidae"
+insects.nwk,149106,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Dicyrtomidae"
+insects.nwk,149107,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Dicyrtomidae"
+insects.nwk,149108,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Dicyrtomidae"
+insects.nwk,194177,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Isotomidae"
+insects.nwk,194178,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Isotomidae"
+insects.nwk,312112,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Katiannidae"
+insects.nwk,324388,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Oncopoduridae"
+insects.nwk,331191,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=NA"
+insects.nwk,331192,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=NA"
+insects.nwk,331193,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=NA"
+insects.nwk,331194,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=NA"
+insects.nwk,331195,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=NA"
+insects.nwk,331196,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=NA"
+insects.nwk,331197,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=NA"
+insects.nwk,331198,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Orchesellidae"
+insects.nwk,331199,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=NA"
+insects.nwk,331200,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=NA"
+insects.nwk,336945,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=no genus match, CoL family=Entomobryidae"
+insects.nwk,336946,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=no genus match, CoL family=Entomobryidae"
+insects.nwk,336947,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=no genus match, CoL family=Entomobryidae"
+insects.nwk,336948,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=no genus match, CoL family=Entomobryidae"
+insects.nwk,343709,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=NA"
+insects.nwk,343710,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Hypogastruridae"
+insects.nwk,343711,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=NA"
+insects.nwk,343712,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Hypogastruridae"
+insects.nwk,351839,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=no genus match, CoL family=Isotomidae"
+insects.nwk,351843,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=no genus match, CoL family=Isotomidae"
+insects.nwk,351844,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=no genus match, CoL family=Isotomidae"
+insects.nwk,351845,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=no genus match, CoL family=Isotomidae"
+insects.nwk,351850,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=no genus match, CoL family=Isotomidae"
+insects.nwk,351854,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=no genus match, CoL family=NA"
+insects.nwk,351857,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=no genus match, CoL family=Isotomidae"
+insects.nwk,351860,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=no genus match, CoL family=Isotomidae"
+insects.nwk,351861,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Isotomidae"
+insects.nwk,351862,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Isotomidae"
+insects.nwk,351863,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Isotomidae"
+insects.nwk,351864,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Isotomidae"
+insects.nwk,351865,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Isotomidae"
+insects.nwk,351866,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Isotomidae"
+insects.nwk,351867,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Isotomidae"
+insects.nwk,351868,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Isotomidae"
+insects.nwk,351869,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Isotomidae"
+insects.nwk,351870,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Isotomidae"
+insects.nwk,351871,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Isotomidae"
+insects.nwk,351872,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Isotomidae"
+insects.nwk,351873,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Isotomidae"
+insects.nwk,357140,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Katiannidae"
+insects.nwk,357170,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Isotomidae"
+insects.nwk,363248,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Neanuridae"
+insects.nwk,375559,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Sminthuridae"
+insects.nwk,395266,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Neelidae"
+insects.nwk,395267,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Neelidae"
+insects.nwk,395268,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Neelidae"
+insects.nwk,395269,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Neelidae"
+insects.nwk,395270,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Neelidae"
+insects.nwk,395271,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Neelidae"
+insects.nwk,395272,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Neelidae"
+insects.nwk,395273,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Neelidae"
+insects.nwk,395274,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Neelidae"
+insects.nwk,400101,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Tullbergiidae"
+insects.nwk,400102,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Tullbergiidae"
+insects.nwk,400103,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Tullbergiidae"
+insects.nwk,400104,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Tullbergiidae"
+insects.nwk,401139,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=NA"
+insects.nwk,401140,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Tullbergiidae"
+insects.nwk,401381,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Isotomidae"
+insects.nwk,403184,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Neanuridae"
+insects.nwk,403185,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Neanuridae"
+insects.nwk,417399,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Neanuridae"
+insects.nwk,417400,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Neanuridae"
+insects.nwk,417941,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Neelidae"
+insects.nwk,429554,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Oncopoduridae"
+insects.nwk,429555,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Oncopoduridae"
+insects.nwk,432304,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Orchesellidae"
+insects.nwk,432305,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Orchesellidae"
+insects.nwk,434631,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Onychiuridae"
+insects.nwk,434632,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Onychiuridae"
+insects.nwk,444152,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Dicyrtomidae"
+insects.nwk,477876,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Tomoceridae"
+insects.nwk,477877,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Tomoceridae"
+insects.nwk,489806,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Bourletiellidae"
+insects.nwk,491081,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Paronellidae"
+insects.nwk,491082,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Paronellidae"
+insects.nwk,491083,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Paronellidae"
+insects.nwk,491084,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Paronellidae"
+insects.nwk,491085,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Paronellidae"
+insects.nwk,491086,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Paronellidae"
+insects.nwk,491087,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Paronellidae"
+insects.nwk,491088,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Paronellidae"
+insects.nwk,491089,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Paronellidae"
+insects.nwk,491090,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Paronellidae"
+insects.nwk,491091,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Paronellidae"
+insects.nwk,491092,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Paronellidae"
+insects.nwk,491093,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Paronellidae"
+insects.nwk,494653,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Dicyrtomidae"
+insects.nwk,494654,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Dicyrtomidae"
+insects.nwk,494655,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Dicyrtomidae"
+insects.nwk,498164,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Arrhopalitidae"
+insects.nwk,498165,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Arrhopalitidae"
+insects.nwk,498166,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Arrhopalitidae"
+insects.nwk,498167,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Arrhopalitidae"
+insects.nwk,498168,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Arrhopalitidae"
+insects.nwk,554825,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=NA"
+insects.nwk,554826,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=NA"
+insects.nwk,554827,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Entomobryidae"
+insects.nwk,554828,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=NA"
+insects.nwk,574250,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Entomobryidae"
+insects.nwk,574251,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Entomobryidae"
+insects.nwk,574252,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Entomobryidae"
+insects.nwk,574253,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Entomobryidae"
+insects.nwk,576420,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Sminthurididae"
+insects.nwk,576421,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Sminthurididae"
+insects.nwk,576422,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Sminthurididae"
+insects.nwk,576423,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Sminthurididae"
+insects.nwk,576424,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Sminthurididae"
+insects.nwk,576425,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Katiannidae"
+insects.nwk,576426,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Katiannidae"
+insects.nwk,576427,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Katiannidae"
+insects.nwk,576428,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Katiannidae"
+insects.nwk,576429,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Katiannidae"
+insects.nwk,576430,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Katiannidae"
+insects.nwk,576431,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Katiannidae"
+insects.nwk,576432,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Katiannidae"
+insects.nwk,576433,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=NA"
+insects.nwk,576434,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Katiannidae"
+insects.nwk,576435,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Katiannidae"
+insects.nwk,576436,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Katiannidae"
+insects.nwk,576437,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Katiannidae"
+insects.nwk,576438,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Katiannidae"
+insects.nwk,576439,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Katiannidae"
+insects.nwk,576440,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Katiannidae"
+insects.nwk,576441,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Katiannidae"
+insects.nwk,576442,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Sminthuridae"
+insects.nwk,580324,"outgroup; Remipedia (Crustacea), not Insecta; stated single outgroup of Insecta_v2"
+insects.nwk,581025,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=NA"
+insects.nwk,581026,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Sminthurididae"
+insects.nwk,603714,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Onychiuridae"
+insects.nwk,603715,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Onychiuridae"
+insects.nwk,603716,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Onychiuridae"
+insects.nwk,603717,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=NA"
+insects.nwk,603718,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Onychiuridae"
+insects.nwk,603719,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Onychiuridae"
+insects.nwk,603720,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Onychiuridae"
+insects.nwk,603721,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Onychiuridae"
+insects.nwk,604328,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Neanuridae"
+insects.nwk,609901,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=NA"
+insects.nwk,609902,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=NA"
+insects.nwk,609903,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=NA"
+insects.nwk,609904,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=NA"
+insects.nwk,609905,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=NA"
+insects.nwk,609906,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=NA"
+insects.nwk,609907,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=NA"
+insects.nwk,609908,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=NA"
+insects.nwk,609909,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=NA"
+insects.nwk,609910,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=NA"
+insects.nwk,609911,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=NA"
+insects.nwk,609912,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=NA"
+insects.nwk,609914,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=NA"
+insects.nwk,609915,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Tomoceridae"
+insects.nwk,618028,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Tullbergiidae"
+insects.nwk,618029,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Tullbergiidae"
+insects.nwk,626451,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Katiannidae"
+insects.nwk,631560,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Hypogastruridae"
+insects.nwk,631561,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Hypogastruridae"
+insects.nwk,631562,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Hypogastruridae"
+insects.nwk,631563,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Hypogastruridae"
+insects.nwk,631564,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Hypogastruridae"
+insects.nwk,631586,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Entomobryidae"
+insects.nwk,631587,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Entomobryidae"
+insects.nwk,631588,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Entomobryidae"
+insects.nwk,634351,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Tomoceridae"
+insects.nwk,634352,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Tomoceridae"
+insects.nwk,634353,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Tomoceridae"
+insects.nwk,634354,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Tomoceridae"
+insects.nwk,634355,"Collembola (Hexapoda: Entognatha), not Insecta; in the sister clade of crown Insecta; GBIF class=Collembola, CoL family=Tomoceridae"
+mammals.nwk,637447,"Reptilia (Squamata: Dactyloidae); sole outgroup of Upham et al. 2019 (PLoS Biol 17:e3000494, Methods: backbone ""one out-group, Anolis carolinensis""); root branch 319.525 Ma"
+nematodes.nwk,424761,"Nematomorpha (outgroup, Table S1)"
+nematodes.nwk,424762,"Arthropoda: Insecta (outgroup, Table S1)"
+nematodes.nwk,424763,"Onychophora (outgroup, Table S1)"
+nematodes.nwk,424764,"Onychophora (outgroup, Table S1)"
+nematodes.nwk,424765,"Arthropoda: Amphipoda (outgroup, Table S1)"
+nematodes.nwk,424766,"Nematomorpha (outgroup, Table S1)"
+nematodes.nwk,424767,"Tardigrada (outgroup, Table S1)"
+nematodes.nwk,424768,"Priapulida (outgroup, Table S1)"
+nematodes.nwk,424769,"Tardigrada (outgroup, Table S1)"
+nematodes.nwk,424770,"Priapulida (outgroup, Table S1)"
+seed_plants.nwk,3982,"binomial held only with non-plant authorship: Acantholepis frauenfeldi (Mayr)  [Animalia: Formicidae]; Acantholepis frauenfeldi (Mayr, 1855)  [Animalia: Formicidae]"
+seed_plants.nwk,7518,"binomial held only with non-plant authorship: Actenosigynes fulvoniger (Michener, 1989)  [Animalia: Colletidae]; Actenosigynes fulvoniger (Michener, 1989) Michener, 1989 [Animalia: Colletidae]"
+seed_plants.nwk,7519,"binomial held only with non-plant authorship: Actenosigynes mantiqueirensis Silveira, 2009 [Animalia: Colletidae]"
+seed_plants.nwk,14955,"binomial held only with non-plant authorship: Alasia alpina Furth & Zhaurova, 2010 [Animalia: Chrysomelidae]"
+seed_plants.nwk,16914,"binomial held only with non-plant authorship: Aliceathrips australiensis (Girault) Girault [Animalia: Thripidae]; Aliceathrips australiensis (Girault, 1928)  [Animalia: Thripidae]"
+seed_plants.nwk,16915,"binomial held only with non-plant authorship: Aliceathrips engaius Mound, 2011 [Animalia: Thripidae]"
+seed_plants.nwk,16916,"binomial held only with non-plant authorship: Aliceathrips mnestes Mound, 2011 [Animalia: Thripidae]"
+seed_plants.nwk,16917,"binomial held only with non-plant authorship: Aliceathrips palmeri Mound, 2011 [Animalia: Thripidae]"
+seed_plants.nwk,16918,"binomial held only with non-plant authorship: Aliceathrips sorghi Mound, 2011 [Animalia: Thripidae]"
+seed_plants.nwk,23963,"binomial held only with non-plant authorship: Amphipalpa plaumanni Uhmann, 1940 [Animalia: Chrysomelidae]; Amphipalpa plaumanni Uhmann, 1940 [Animalia: Leiodidae]"
+seed_plants.nwk,34760,binomial held only with non-plant authorship: Aporia absurda (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34761,"binomial held only with non-plant authorship: Aporia acraea (Oberthur, 1885)  [Animalia: Pieridae]; Aporia acraea (Oberthür) , 1885 [Animalia: Pieridae]"
+seed_plants.nwk,34762,binomial held only with non-plant authorship: Aporia adherbal (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34763,"binomial held only with non-plant authorship: Aporia agathon (G.Gray, 1831)  [Animalia: Pieridae]; Aporia agathon (Gray) , 1831 [Animalia: Pieridae]"
+seed_plants.nwk,34764,binomial held only with non-plant authorship: Aporia albivena (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34765,binomial held only with non-plant authorship: Aporia alepica (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34766,"binomial held only with non-plant authorship: Aporia alpherakyi Verity, 1907 [Animalia: Pieridae]"
+seed_plants.nwk,34767,binomial held only with non-plant authorship: Aporia altensis (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34768,binomial held only with non-plant authorship: Aporia angustior (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34769,binomial held only with non-plant authorship: Aporia ariaca (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34770,binomial held only with non-plant authorship: Aporia aryana (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34771,binomial held only with non-plant authorship: Aporia asiatica (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34772,binomial held only with non-plant authorship: Aporia atomosa (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34773,binomial held only with non-plant authorship: Aporia atricolor (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34774,binomial held only with non-plant authorship: Aporia augusta (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34775,binomial held only with non-plant authorship: Aporia baileyi (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34776,binomial held only with non-plant authorship: Aporia balucha (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34777,binomial held only with non-plant authorship: Aporia banghaasi (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34778,binomial held only with non-plant authorship: Aporia basanius (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34779,binomial held only with non-plant authorship: Aporia bietii (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34780,"binomial held only with non-plant authorship: Aporia bifurcata Tytler, 1939 [Animalia: Pieridae]; Aporia bifurcata Tytler, 1939 [Metazoa: Pieridae]"
+seed_plants.nwk,34781,binomial held only with non-plant authorship: Aporia bigae (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34782,binomial held only with non-plant authorship: Aporia binervula (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34783,binomial held only with non-plant authorship: Aporia brunnea (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34784,binomial held only with non-plant authorship: Aporia caphusa (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34785,binomial held only with non-plant authorship: Aporia centralasiae (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34786,binomial held only with non-plant authorship: Aporia colona (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34787,"binomial held only with non-plant authorship: Aporia crataegi (Linnaeus, 1758)  [Animalia: None]; Aporia crataegi L. [Animalia: None]"
+seed_plants.nwk,34788,binomial held only with non-plant authorship: Aporia crataegoides (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34789,binomial held only with non-plant authorship: Aporia delayayi (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34790,binomial held only with non-plant authorship: Aporia denigrata (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34791,binomial held only with non-plant authorship: Aporia diluta (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34792,binomial held only with non-plant authorship: Aporia draesekei (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34793,binomial held only with non-plant authorship: Aporia enderleini (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34794,binomial held only with non-plant authorship: Aporia evittata (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34795,"binomial held only with non-plant authorship: Aporia extrema Bailey, 1945 [Animalia: Pieridae]"
+seed_plants.nwk,34796,binomial held only with non-plant authorship: Aporia ferrari (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34797,binomial held only with non-plant authorship: Aporia fert (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34798,binomial held only with non-plant authorship: Aporia flava (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34799,binomial held only with non-plant authorship: Aporia flavescens (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34800,binomial held only with non-plant authorship: Aporia fumosa (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34801,binomial held only with non-plant authorship: Aporia funkei (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34802,"binomial held only with non-plant authorship: Aporia genestieri (Oberthur, 1903)  [Animalia: Pieridae]; Aporia genestieri (Oberthür) , 1902 [Animalia: Pieridae]"
+seed_plants.nwk,34803,binomial held only with non-plant authorship: Aporia genestieroides (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34805,binomial held only with non-plant authorship: Aporia gobiensis (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34806,"binomial held only with non-plant authorship: Aporia goutellei (Oberthur, 1886)  [Animalia: Pieridae]; Aporia goutellei (Oberthür) , 1886 [Animalia: Pieridae]"
+seed_plants.nwk,34807,binomial held only with non-plant authorship: Aporia gregoryi (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34808,binomial held only with non-plant authorship: Aporia grotei (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34809,binomial held only with non-plant authorship: Aporia halisca (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34810,"binomial held only with non-plant authorship: Aporia harrietae (Niceville, 1893)  [Animalia: Pieridae]; Aporia harrietae (de Niceville) , 1893 [Animalia: Pieridae]"
+seed_plants.nwk,34811,"binomial held only with non-plant authorship: Aporia hastata (Oberthur, 1892)  [Animalia: Pieridae]; Aporia hastata (Oberthür) , 1892 [Animalia: Pieridae]"
+seed_plants.nwk,34812,binomial held only with non-plant authorship: Aporia hebomoiina (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34813,binomial held only with non-plant authorship: Aporia herodias (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34814,binomial held only with non-plant authorship: Aporia hesba (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34815,"binomial held only with non-plant authorship: Aporia hippia (Bremer) , 1861 [Animalia: Pieridae]; Aporia hippia (Bremer, 1861)  [Animalia: Pieridae]"
+seed_plants.nwk,34816,binomial held only with non-plant authorship: Aporia hoefnageli (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34817,binomial held only with non-plant authorship: Aporia homogryphus (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34818,"binomial held only with non-plant authorship: Aporia howarthi Bernardi, 1961 [Animalia: Pieridae]; Aporia howarthi Bernardi, 1961 [Metazoa: Pieridae]"
+seed_plants.nwk,34819,binomial held only with non-plant authorship: Aporia hyalina (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34820,"binomial held only with non-plant authorship: Aporia illumina (Grum-Grshimailo, 1890)  [Metazoa: Pieridae]"
+seed_plants.nwk,34821,binomial held only with non-plant authorship: Aporia infernalis (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34822,binomial held only with non-plant authorship: Aporia infraochreata (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34823,binomial held only with non-plant authorship: Aporia insularis (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34824,"binomial held only with non-plant authorship: Aporia intercostata Bang-Haas, 1927 [Animalia: Pieridae]; Aporia intercostata Bang-Haas, 1927 [Metazoa: Pieridae]"
+seed_plants.nwk,34825,binomial held only with non-plant authorship: Aporia iranica (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34826,binomial held only with non-plant authorship: Aporia japonica (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34827,"binomial held only with non-plant authorship: Aporia joubini (Oberthür, 1913)  [Animalia: Pieridae]; Aporia joubini (Oberthur, 1913)  [Metazoa: Pieridae]"
+seed_plants.nwk,34828,binomial held only with non-plant authorship: Aporia karavajevi (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34829,binomial held only with non-plant authorship: Aporia karschi (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34830,binomial held only with non-plant authorship: Aporia koyi (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34831,binomial held only with non-plant authorship: Aporia kreitneri (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34832,binomial held only with non-plant authorship: Aporia kuangtungenis (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34834,"binomial held only with non-plant authorship: Aporia largeteaui (Oberthur, 1881)  [Animalia: Pieridae]; Aporia largeteaui (Oberthür) , 1881 [Animalia: Pieridae]"
+seed_plants.nwk,34835,"binomial held only with non-plant authorship: Aporia larraldei (Oberthur, 1876)  [Animalia: Pieridae]; Aporia larraldei (Oberthür) , 1876 [Animalia: Pieridae]"
+seed_plants.nwk,34836,binomial held only with non-plant authorship: Aporia leechi (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34837,"binomial held only with non-plant authorship: Aporia lemoulti Bernardi, 1944 [Animalia: Pieridae]; Aporia lemoulti Bernardi, 1945 [Metazoa: Pieridae]"
+seed_plants.nwk,34838,"binomial held only with non-plant authorship: Aporia leucodice (Eversmann) , 1843 [Animalia: Pieridae]; Aporia leucodice (Eversmann, 1843)  [Animalia: Pieridae]"
+seed_plants.nwk,34839,"binomial held only with non-plant authorship: Aporia lhamo (Oberthur, 1893)  [Animalia: Pieridae]; Aporia lhamo (Oberthür) , 1893 [Animalia: Pieridae]"
+seed_plants.nwk,34840,"binomial held only with non-plant authorship: Aporia lihsieni Bang-Haas, 1933 [Animalia: Pieridae]"
+seed_plants.nwk,34841,binomial held only with non-plant authorship: Aporia lotis (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34842,binomial held only with non-plant authorship: Aporia lunulata (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34843,binomial held only with non-plant authorship: Aporia maga (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34844,binomial held only with non-plant authorship: Aporia marginata (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34845,"binomial held only with non-plant authorship: Aporia martineti (Oberthur, 1884)  [Animalia: Pieridae]; Aporia martineti (Oberthür) , 1884 [Animalia: Pieridae]"
+seed_plants.nwk,34846,binomial held only with non-plant authorship: Aporia mauretanica (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34847,binomial held only with non-plant authorship: Aporia meinhardi (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34848,binomial held only with non-plant authorship: Aporia melaina (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34849,"binomial held only with non-plant authorship: Aporia melania (Oberthur, 1892)  [Animalia: Pieridae]; Aporia melania (Oberthur, 1892)  [Metazoa: Pieridae]"
+seed_plants.nwk,34850,binomial held only with non-plant authorship: Aporia melanochroa (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34851,binomial held only with non-plant authorship: Aporia meridionalis (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34852,binomial held only with non-plant authorship: Aporia minima (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34853,binomial held only with non-plant authorship: Aporia minor (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34854,binomial held only with non-plant authorship: Aporia minschani (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34855,"binomial held only with non-plant authorship: Aporia moltrechti (Oberthur, 1909)  [Metazoa: Pieridae]"
+seed_plants.nwk,34856,"binomial held only with non-plant authorship: Aporia monbeigi (Oberthur, 1917)  [Animalia: Pieridae]; Aporia monbeigi (Oberthür) , 1917 [Animalia: Pieridae]"
+seed_plants.nwk,34857,binomial held only with non-plant authorship: Aporia morosevitchae (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34858,"binomial held only with non-plant authorship: Aporia nabellica (Boisduval, 1836)  [Animalia: Pieridae]; Aporia nabellica Boisduval, 1836 [Animalia: Pieridae]"
+seed_plants.nwk,34859,binomial held only with non-plant authorship: Aporia nana (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34860,binomial held only with non-plant authorship: Aporia naryna (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34861,binomial held only with non-plant authorship: Aporia nigrescens (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34862,binomial held only with non-plant authorship: Aporia nigroinspersa (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34863,binomial held only with non-plant authorship: Aporia nigronervosus (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34864,binomial held only with non-plant authorship: Aporia niphonica (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34865,binomial held only with non-plant authorship: Aporia nonconspersa (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34866,binomial held only with non-plant authorship: Aporia nutans (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34867,genus absent from WCVP and shown to be the non-plant homonym by other tips of the genus (rule 3); this label has no species-level record
+seed_plants.nwk,34868,binomial held only with non-plant authorship: Aporia occidentalis (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34870,binomial held only with non-plant authorship: Aporia pacifica (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34871,binomial held only with non-plant authorship: Aporia paracraea (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34872,binomial held only with non-plant authorship: Aporia pellucida (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34873,binomial held only with non-plant authorship: Aporia phryxe (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34874,"binomial held only with non-plant authorship: Aporia potanini Alpheraky, 1889 [Animalia: Pieridae]; Aporia potanini Alphéraky, 1889 [Animalia: Pieridae]"
+seed_plants.nwk,34875,"binomial held only with non-plant authorship: Aporia procris Leech, 1890 [Animalia: Pieridae]; Aporia procris Leech, 1890 [Metazoa: Pieridae]"
+seed_plants.nwk,34876,binomial held only with non-plant authorship: Aporia pseudohippia (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34877,binomial held only with non-plant authorship: Aporia pseudopotanini (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34878,binomial held only with non-plant authorship: Aporia rotunda (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34879,binomial held only with non-plant authorship: Aporia rutae (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34880,binomial held only with non-plant authorship: Aporia sachalinensis (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34881,binomial held only with non-plant authorship: Aporia sajana (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34882,binomial held only with non-plant authorship: Aporia sara (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34883,binomial held only with non-plant authorship: Aporia schawerdae (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34884,binomial held only with non-plant authorship: Aporia schmackeri (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34885,binomial held only with non-plant authorship: Aporia shugnana (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34886,binomial held only with non-plant authorship: Aporia shuljuzkoi (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34887,binomial held only with non-plant authorship: Aporia sibirica (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34888,binomial held only with non-plant authorship: Aporia sinensis (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34889,"binomial held only with non-plant authorship: Aporia soracta Doubleday, 1847 [Animalia: Pieridae]; Aporia soracta Moore, 1857 [Metazoa: Pieridae]"
+seed_plants.nwk,34890,binomial held only with non-plant authorship: Aporia sordida (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34891,binomial held only with non-plant authorship: Aporia sorex (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34892,binomial held only with non-plant authorship: Aporia stotzeri (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34893,binomial held only with non-plant authorship: Aporia suffusa (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34894,binomial held only with non-plant authorship: Aporia sulphurea (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34895,binomial held only with non-plant authorship: Aporia szulinszkyi (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34896,binomial held only with non-plant authorship: Aporia taiwama (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34897,binomial held only with non-plant authorship: Aporia taiwana (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34898,binomial held only with non-plant authorship: Aporia takamukuana (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34899,binomial held only with non-plant authorship: Aporia taupingi (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34900,binomial held only with non-plant authorship: Aporia thibetana (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34901,binomial held only with non-plant authorship: Aporia tianschanica (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34902,binomial held only with non-plant authorship: Aporia transiens (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34903,binomial held only with non-plant authorship: Aporia transitoria (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34904,"binomial held only with non-plant authorship: Aporia tsinglingica (Verity) , 1911 [Animalia: Pieridae]; Aporia tsinglingica (Verity, 1911)  [Animalia: Pieridae]"
+seed_plants.nwk,34905,binomial held only with non-plant authorship: Aporia ussurica (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34906,binomial held only with non-plant authorship: Aporia usuguma (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,34907,binomial held only with non-plant authorship: Aporia zabulensis (no authorship) [Animalia: Pieridae]
+seed_plants.nwk,37281,"binomial held only with non-plant authorship: Arcutelphusa talladega Lee & Brown, 2008 [Animalia: Gelechiidae]"
+seed_plants.nwk,88454,"binomial held only with non-plant authorship: Carvalhotingis hollandi (Drake) Drake [Animalia: Tingidae]; Carvalhotingis hollandi (Drake, 1935)  [Animalia: Tingidae]"
+seed_plants.nwk,88455,"binomial held only with non-plant authorship: Carvalhotingis rustica (Monte, 1942)  [Animalia: Tingidae]"
+seed_plants.nwk,88456,"binomial held only with non-plant authorship: Carvalhotingis visenda (Drake & Hambleton) Drake & Hambleton [Animalia: Tingidae]; Carvalhotingis visenda (Drake & Hambleton, 1934)  [Animalia: Tingidae]"
+seed_plants.nwk,109343,"binomial held only with non-plant authorship: Clodionus fizoli Drohojowska & Szwedo, 2013 [Animalia: Aleyrodidae]"
+seed_plants.nwk,119980,"binomial held only with non-plant authorship: Costalimada brasiliensis Martin, 2011 [Animalia: Aleyrodidae]"
+seed_plants.nwk,141160,"binomial held only with non-plant authorship: Delgadobius amazonensis Chani-Posse & Couturier, 2012 [Animalia: Staphylinidae]"
+seed_plants.nwk,155112,"binomial held only with non-plant authorship: Distega abyssinica Pasteels, 1955 [Animalia: None]; Distega abyssinica Pasteels, 1955 [Animalia: Tenthredinidae]"
+seed_plants.nwk,155113,"binomial held only with non-plant authorship: Distega montium Konow, 1907 [Animalia: None]; Distega montium Konow, 1907 [Animalia: Tenthredinidae]"
+seed_plants.nwk,188021,"binomial held only with non-plant authorship: Eurystylus bellevoyei (Reuter, 1879)  [Animalia: Miridae]; Eurystylus bellevoyei (Reuter, 1879) Reuter [Animalia: Miridae]"
+seed_plants.nwk,316590,"binomial held only with non-plant authorship: Gordonia aichiensis (Tsukamura, 1983) Klatte et al., 1994 [Bacillati: Gordoniaceae]; Gordonia aichiensis (Tsukamura, 1983) Klatte et al., 1994 [Bacteria: Gordoniaceae]"
+seed_plants.nwk,316591,"binomial held only with non-plant authorship: Gordonia alkaliphila Cha & Cha, 2013 [Bacillati: Gordoniaceae]; Gordonia alkaliphila Ju-Hee Cha et al., 2013 [Bacteria: Corynebacteriaceae]"
+seed_plants.nwk,316592,binomial held only with non-plant authorship: Gordonia alkanivorans Cip [Bacillati: Gordoniaceae]; Gordonia alkanivorans Dsm [Bacillati: Gordoniaceae]
+seed_plants.nwk,316593,"binomial held only with non-plant authorship: Gordonia amarae (Lechevalier & Lechevalier, 1974) Klatte et al., 1994 [Bacillati: Gordoniaceae]; Gordonia amarae (Lechevalier & Lechevalier, 1974) Ruimy et al., 1995 [Bacillati: Gordoniaceae]"
+seed_plants.nwk,316594,"binomial held only with non-plant authorship: Gordonia amicalis Jcm [Bacillati: Gordoniaceae]; Gordonia amicalis Kim et al., 2000 [Bacillati: Gordoniaceae]"
+seed_plants.nwk,316596,"binomial held only with non-plant authorship: Gordonia araii Kageyama et al., 2006 [Bacillati: Gordoniaceae]; Gordonia araii Kageyama et al., 2006 [Bacteria: Gordoniaceae]"
+seed_plants.nwk,316601,"binomial held only with non-plant authorship: Gordonia bronchialis (Tsukamura, 1971) Stackebrandt et al., 1989 [Bacillati: Gordoniaceae]; Gordonia bronchialis Atcc [Bacillati: Gordoniaceae]"
+seed_plants.nwk,316602,"binomial held only with non-plant authorship: Gordonia caeni Srinivasan et al., 2012 [Bacillati: Gordoniaceae]"
+seed_plants.nwk,316604,"binomial held only with non-plant authorship: Gordonia cholesterolivorans Drzyzga et al., 2009 [Bacillati: Gordoniaceae]; Gordonia cholesterolivorans Drzyzga et al., 2009 [Bacteria: Gordoniaceae]"
+seed_plants.nwk,316606,"binomial held only with non-plant authorship: Gordonia defluvii Soddell et al., 2006 [Bacillati: Gordoniaceae]; Gordonia defluvii Soddell et al., 2006 [Bacteria: Nocardiaceae]"
+seed_plants.nwk,316607,"binomial held only with non-plant authorship: Gordonia desulfuricans Kim et al., 1999 [Bacillati: Gordoniaceae]; Gordonia desulfuricans Kim et al., 1999 [Bacteria: Nocardiaceae]"
+seed_plants.nwk,316608,"binomial held only with non-plant authorship: Gordonia effusa Kageyama et al., 2006 [Bacillati: Gordoniaceae]; Gordonia effusa Kageyama et al., 2006 [Bacteria: Nocardiaceae]"
+seed_plants.nwk,316612,"binomial held only with non-plant authorship: Gordonia hankookensis Park et al., 2009 [Bacillati: Gordoniaceae]; Gordonia hankookensis Park et al., 2009 [Bacteria: Nocardiaceae]"
+seed_plants.nwk,316613,"binomial held only with non-plant authorship: Gordonia hirsuta Dsm [Bacillati: Gordoniaceae]; Gordonia hirsuta Klatte et al., 1996 [Bacillati: Gordoniaceae]"
+seed_plants.nwk,316614,"binomial held only with non-plant authorship: Gordonia humi Kampfer et al., 2011 [Bacillati: Gordoniaceae]; Gordonia humi Kämpfer et al., 2011 [Bacillati: Gordoniaceae]"
+seed_plants.nwk,316615,"binomial held only with non-plant authorship: Gordonia hydrophobica Bendinger et al., 1995 [Bacillati: Gordoniaceae]; Gordonia hydrophobica Bendinger et al., 1995 [Bacteria: Gordoniaceae]"
+seed_plants.nwk,316617,"binomial held only with non-plant authorship: Gordonia iterans Kang et al., 2014 [Bacillati: Gordoniaceae]"
+seed_plants.nwk,316618,"binomial held only with non-plant authorship: Gordonia jinhuaensis Li et al., 2014 [Bacillati: Gordoniaceae]"
+seed_plants.nwk,316619,"binomial held only with non-plant authorship: Gordonia kroppenstedtii Kim et al., 2009 [Bacillati: Gordoniaceae]; Gordonia kroppenstedtii Kim et al., 2009 [Bacteria: Nocardiaceae]"
+seed_plants.nwk,316620,"binomial held only with non-plant authorship: Gordonia lacunae Le Roes et al., 2009 [Bacillati: Gordoniaceae]; Gordonia lacunae le Roes et al., 2009 [Bacillati: Gordoniaceae]"
+seed_plants.nwk,316623,"binomial held only with non-plant authorship: Gordonia malaquae Yassin et al., 2007 [Bacillati: Gordoniaceae]; Gordonia malaquae Yassin et al., 2007 [Bacteria: Gordoniaceae]"
+seed_plants.nwk,316626,"binomial held only with non-plant authorship: Gordonia namibiensis Brandao et al., 2002 [Bacillati: Gordoniaceae]; Gordonia namibiensis Brandão et al., 2002 [Bacillati: Gordoniaceae]"
+seed_plants.nwk,316627,"binomial held only with non-plant authorship: Gordonia neofelifaecis Liu et al., 2011 [Bacillati: Gordoniaceae]; Gordonia neofelifaecis Liu et al., 2011 [Bacteria: Gordoniaceae]"
+seed_plants.nwk,316629,"binomial held only with non-plant authorship: Gordonia otitidis Ifm [Bacillati: Gordoniaceae]; Gordonia otitidis Iida et al., 2005 [Bacillati: Gordoniaceae]"
+seed_plants.nwk,316631,"binomial held only with non-plant authorship: Gordonia paraffinivorans Xue et al., 2003 [Bacillati: Gordoniaceae]; Gordonia paraffinivorans Xue et al., 2003 [Bacteria: Gordoniaceae]"
+seed_plants.nwk,316633,"binomial held only with non-plant authorship: Gordonia phosphorivorans Kampfer et al., 2013 [Bacillati: Gordoniaceae]; Gordonia phosphorivorans Kämpfer et al., 2013 [Bacillati: Gordoniaceae]"
+seed_plants.nwk,316634,"binomial held only with non-plant authorship: Gordonia polyisoprenivorans Jcm [Bacillati: Gordoniaceae]; Gordonia polyisoprenivorans Linos et al., 1999 [Bacillati: Gordoniaceae]"
+seed_plants.nwk,316637,"binomial held only with non-plant authorship: Gordonia rhizosphera Takeuchi & Hatano, 1998 [Bacillati: Gordoniaceae]; Gordonia rhizosphera Takeuchi & Hatano, 1998 [Bacteria: Nocardiaceae]"
+seed_plants.nwk,316639,"binomial held only with non-plant authorship: Gordonia rubripertincta (Hefferan, 1904) Stackebrandt et al., 1989 [Bacillati: Gordoniaceae]; Gordonia rubripertincta (Hefferan, 1904) Stackebrandt et al., 1989 [Bacteria: Gordoniaceae]"
+seed_plants.nwk,316641,"binomial held only with non-plant authorship: Gordonia shandongensis Luo et al., 2007 [Bacillati: Gordoniaceae]; Gordonia shandongensis Luo et al., 2007 [Bacteria: Nocardiaceae]"
+seed_plants.nwk,316642,"binomial held only with non-plant authorship: Gordonia sihwensis Kim et al., 2003 [Bacillati: Gordoniaceae]; Gordonia sihwensis Kim et al., 2003 [Bacteria: Nocardiaceae]"
+seed_plants.nwk,316643,"binomial held only with non-plant authorship: Gordonia sinesedis Maldonado et al., 2003 [Bacillati: Gordoniaceae]; Gordonia sinesedis Maldonado et al., 2003 [Bacteria: Nocardiaceae]"
+seed_plants.nwk,316645,"binomial held only with non-plant authorship: Gordonia soli Shen et al., 2006 [Bacillati: Gordoniaceae]; Gordonia soli Shen et al., 2006 [Bacteria: Gordoniaceae]"
+seed_plants.nwk,316647,"binomial held only with non-plant authorship: Gordonia sputi (Tsukamura, 1978) Stackebrandt et al., 1989 [Bacillati: Gordoniaceae]; Gordonia sputi (Tsukamura & Yano, 1985) Stackebrandt et al., 1989 [Bacteria: Gordoniaceae]"
+seed_plants.nwk,316648,"binomial held only with non-plant authorship: Gordonia terrae (Tsukamura, 1971) Stackebrandt et al., 1989 [Bacillati: Gordoniaceae]; Gordonia terrae (Tsukamura, 1971) Stackebrandt et al., 1988 [Bacteria: Gordoniaceae]"
+seed_plants.nwk,316652,"binomial held only with non-plant authorship: Gordonia westfalica Linos et al., 2002 [Bacillati: Gordoniaceae]; Gordonia westfalica Linos et al., 2002 [Bacteria: Gordoniaceae]"
+seed_plants.nwk,318117,"binomial held only with non-plant authorship: Grevillia subtropicalis Bordoni, 2005 [Animalia: Staphylinidae]"
+seed_plants.nwk,328322,"binomial held only with non-plant authorship: Hellerenius lobifer Wanat, 2001 [Animalia: Brentidae]"
+seed_plants.nwk,328323,"binomial held only with non-plant authorship: Hellerenius monteithi Wanat, 2013 [Animalia: Brentidae]"
+seed_plants.nwk,328324,"binomial held only with non-plant authorship: Hellerenius plumipes Wanat, 2013 [Animalia: Brentidae]"
+seed_plants.nwk,328325,"binomial held only with non-plant authorship: Hellerenius tibialis Wanat, 2013 [Animalia: Brentidae]"
+seed_plants.nwk,350070,"binomial held only with non-plant authorship: Iranodendrothrips kamalii Alavi, Minaei & Fekrat, 2014 [Animalia: Thripidae]"
+seed_plants.nwk,350733,"binomial held only with non-plant authorship: Isaraselis cladiva Drohojowska & Szwedo, 2013 [Animalia: Aleyrodidae]"
+seed_plants.nwk,357435,"binomial held only with non-plant authorship: Kenyattathrips katarinae Mound, 2009 [Animalia: Thripidae]"
+seed_plants.nwk,358859,"binomial held only with non-plant authorship: Kranzithrips mareebai Mound, 2011 [Animalia: Thripidae]"
+seed_plants.nwk,364524,botanical name only in non-seed-plant family: Leersia extinctoria Leyss. [Encalyptaceae]; Leersia extinctoria Leyss. ex Brockm. [Encalyptaceae]
+seed_plants.nwk,368440,"binomial held only with non-plant authorship: Leptometriella boliviana Roig-Alsina [Animalia: Apidae]; Leptometriella boliviana Roig-Alsina, 2008 [Animalia: Apidae]"
+seed_plants.nwk,368441,"binomial held only with non-plant authorship: Leptometriella hirsutula Roig-Alsina [Animalia: Apidae]; Leptometriella hirsutula Roig-Alsina, 2008 [Animalia: Apidae]"
+seed_plants.nwk,368442,"binomial held only with non-plant authorship: Leptometriella minima Roig-Alsina [Animalia: Apidae]; Leptometriella minima Roig-Alsina, 2008 [Animalia: Apidae]"
+seed_plants.nwk,368443,"binomial held only with non-plant authorship: Leptometriella monteana Roig-Alsina [Animalia: Apidae]; Leptometriella monteana Roig-Alsina, 2008 [Animalia: Apidae]"
+seed_plants.nwk,368444,"binomial held only with non-plant authorship: Leptometriella nigra (Friese) Friese [Animalia: Apidae]; Leptometriella nigra (Friese, 1910)  [Animalia: Apidae]"
+seed_plants.nwk,368445,"binomial held only with non-plant authorship: Leptometriella separata (Holmberg) Holmberg [Animalia: Apidae]; Leptometriella separata (Holmberg, 1903)  [Animalia: Apidae]"
+seed_plants.nwk,368446,"binomial held only with non-plant authorship: Leptometriella tucumana (Brèthes) Brethes [Animalia: Apidae]; Leptometriella tucumana (Brèthes, 1910)  [Animalia: Apidae]"
+seed_plants.nwk,368699,"binomial held only with non-plant authorship: Leptopus hispanus Rambur, 1840 [Animalia: Leptopodidae]; Leptopus hispanus Rambur, 1840 [Animalia: None]"
+seed_plants.nwk,370047,"binomial held only with non-plant authorship: Leucocraspedum rufotestaceum Bernhauer, 1927 [Animalia: Staphylinidae]"
+seed_plants.nwk,381314,"binomial held only with non-plant authorship: Lukotekia menae Drohojowska & Szwedo, 2013 [Animalia: Aleyrodidae]"
+seed_plants.nwk,383344,"binomial held only with non-plant authorship: Lynchiatilla leguera Casal, 1963 [Animalia: Mutillidae]"
+seed_plants.nwk,383345,"binomial held only with non-plant authorship: Lynchiatilla parana Bergamaschi, Cambra, Brothers & Melo, 2012 [Animalia: Mutillidae]; Lynchiatilla parana Cambra [Animalia: Mutillidae]"
+seed_plants.nwk,383346,"binomial held only with non-plant authorship: Lynchiatilla silvai Casal, 1963 [Animalia: Mutillidae]"
+seed_plants.nwk,391497,"binomial held only with non-plant authorship: Masamithrips geikiei Mound, 2011 [Animalia: Thripidae]"
+seed_plants.nwk,391498,"binomial held only with non-plant authorship: Masamithrips masamii Mound, 2011 [Animalia: Thripidae]"
+seed_plants.nwk,391499,"binomial held only with non-plant authorship: Masamithrips melinus Mound, 2011 [Animalia: Thripidae]"
+seed_plants.nwk,391500,"binomial held only with non-plant authorship: Masamithrips tanyoeikus Mound, 2011 [Animalia: Thripidae]"
+seed_plants.nwk,391501,"binomial held only with non-plant authorship: Masamithrips williei Mound, 2011 [Animalia: Thripidae]"
+seed_plants.nwk,391502,"binomial held only with non-plant authorship: Masamithrips wyndhami Mound, 2011 [Animalia: Thripidae]"
+seed_plants.nwk,395752,binomial held only with non-plant authorship: Megorchestes bolovenensis Kojima [Animalia: Curculionidae]
+seed_plants.nwk,395753,"binomial held only with non-plant authorship: Megorchestes deccanensis Ayri, Kojima & Ramamurthy [Animalia: Curculionidae]"
+seed_plants.nwk,409721,"binomial held only with non-plant authorship: Moorella glycerini Slobodkin et al., 1997 [Bacillati: Neomoorellaceae]; Moorella glycerini Slobodkin et al., 1997 [Bacteria: Moorellaceae]"
+seed_plants.nwk,409722,"binomial held only with non-plant authorship: Moorella humiferrea Nepomnyashchaya et al., 2012 [Bacillati: Neomoorellaceae]; Moorella humiferrea Nepomnyashchaya et al., 2012 [Bacteria: Moorellaceae]"
+seed_plants.nwk,409723,"binomial held only with non-plant authorship: Moorella mulderi Balk et al., 2005 [Bacillati: Neomoorellaceae]; Moorella mulderi Tms [Bacillati: Neomoorellaceae]"
+seed_plants.nwk,409724,"binomial held only with non-plant authorship: Moorella stamsii Alves et al., 2013 [Bacillati: Neomoorellaceae]; Moorella stamsii Alves et al., 2013 [Bacteria: Moorellaceae]"
+seed_plants.nwk,409725,"binomial held only with non-plant authorship: Moorella thermoacetica (Fontaine et al., 1942) Collins et al., 1994 [Bacillati: Neomoorellaceae]; Moorella thermoacetica (Fontaine et al., 1942) Collins et al., 1994 [Bacteria: Thermoanaerobacteraceae]"
+seed_plants.nwk,409726,"binomial held only with non-plant authorship: Moorella thermoautotrophica (Wiegel et al., 1982) Collins et al., 1994 [Bacillati: Neomoorellaceae]; Moorella thermoautotrophica (Wiegel et al., 1982) Collins et al., 1994 [Bacteria: Thermoanaerobacteraceae]"
+seed_plants.nwk,415923,"binomial held only with non-plant authorship: Nama erikae Borovec & Meregalli, 2013 [Animalia: Curculionidae]; Nama erikae Borovec & Meregalli, 2013 [Metazoa: Curculionidae]"
+seed_plants.nwk,415932,"binomial held only with non-plant authorship: Nama iuliae Borovec & Meregalli, 2013 [Animalia: Curculionidae]; Nama iuliae Borovec & Meregalli, 2013 [Metazoa: Curculionidae]"
+seed_plants.nwk,427920,"binomial held only with non-plant authorship: Oisedicus maginus Drohojowska & Szwedo, 2013 [Animalia: Aleyrodidae]"
+seed_plants.nwk,428575,"binomial held only with non-plant authorship: Oligocladus voightae Quiroga, Bolanos & Litvaitis, 2006 [Animalia: Euryleptidae]; Oligocladus voightae Quiroga, Bolaños & Litvaitis, 2006 [Animalia: Euryleptidae]"
+seed_plants.nwk,444479,binomial held only with non-plant authorship: Paracaridilophus retusus Xue & Cheng [Animalia: Eriophyidae]
+seed_plants.nwk,444860,binomial held only with non-plant authorship: Paraisoannulus machiles Xue & Cheng [Animalia: Eriophyidae]
+seed_plants.nwk,445609,"binomial held only with non-plant authorship: Parastethynium hirsutum Huber [Animalia: Mymaridae]; Parastethynium hirsutum Huber, 2011 [Animalia: Mymaridae]"
+seed_plants.nwk,445610,"binomial held only with non-plant authorship: Parastethynium maxwelli (Girault, 1915)  [Animalia: Mymaridae]; Parastethynium maxwelli (Girault, 1915) Girault, 1915 [Animalia: Mymaridae]"
+seed_plants.nwk,452588,"binomial held only with non-plant authorship: Pentacecidophyes xinglongis Xue & Cheng [Animalia: Eriophyidae]; Pentacecidophyes xinglongis Xue, Cheng & Hong, 2011 [Metazoa: Eriophyidae]"
+seed_plants.nwk,452636,"binomial held only with non-plant authorship: Pentalaminaspis minuta (Kotinsky, 1908) Kotinsky, 1908 [Animalia: Diaspididae]; Pentalaminaspis minuta (Kotinsky, 1908)  [Metazoa: Diaspididae]"
+seed_plants.nwk,473456,"binomial held only with non-plant authorship: Platyporus dorsalis Reuter, 1890 [Animalia: Miridae]; Platyporus dorsalis Reuter, 1890 [Animalia: Tingidae]"
+seed_plants.nwk,481787,"binomial held only with non-plant authorship: Ponera crassa Emery, 1877 [Animalia: Formicidae]"
+seed_plants.nwk,481790,binomial held only with non-plant authorship: Ponera perroti (no authorship) [Animalia: Formicidae]
+seed_plants.nwk,481792,"binomial held only with non-plant authorship: Ponera ursa Santschi [Animalia: Formicidae]; Ponera ursa Santschi, 1924 [Animalia: Formicidae]"
+seed_plants.nwk,484492,"binomial held only with non-plant authorship: Praetorblissus mexicanus Cervantes & Brailovsky, 2013 [Animalia: Blissidae]"
+seed_plants.nwk,491174,"binomial held only with non-plant authorship: Pseudostenophyma modesta (Weise, 1921) Furth & Zhaurova, 2010 [Animalia: Chrysomelidae]"
+seed_plants.nwk,497132,"binomial held only with non-plant authorship: Pulmomerus levatus Cervantes & Brailovsky, 2012 [Animalia: Rhyparochromidae]; Pulmomerus levatus Peredo & Brailovsky, 2012 [Animalia: Rhyparochromidae]"
+seed_plants.nwk,551644,"binomial held only with non-plant authorship: Rudolphia macrodactylus Grosso & Peralta, 2009 [Animalia: Paraleptamphopidae]"
+seed_plants.nwk,554117,"binomial held only with non-plant authorship: Sadoletus izzardi Hidaka [Animalia: Heterogastridae]; Sadoletus izzardi Hidaka, 1959 [Animalia: Heterogastridae]"
+seed_plants.nwk,554118,"binomial held only with non-plant authorship: Sadoletus valdezi Bergroth [Animalia: Heterogastridae]; Sadoletus valdezi Bergroth, 1918 [Animalia: Heterogastridae]"
+seed_plants.nwk,572090,"binomial held only with non-plant authorship: Sida ortiva Korovchinsky, 1979 [Animalia: Malvaceae]; Sida ortiva Korovchinsky, 1979 [Animalia: None]"
+seed_plants.nwk,578408,"binomial held only with non-plant authorship: Solivagus alpha Reis & Navia, 2010 [Animalia: Diptilomiopidae]; Solivagus alpha Reis, Gondim, Návia & Flechtmann, 2010 [Animalia: Diptilomiopidae]"
+seed_plants.nwk,582561,"binomial held only with non-plant authorship: Spixia doellojuradoi (Parodiz, 1941)  [Animalia: Cyclodontinidae]; Spixia doellojuradoi (Parodiz, 1941)  [Animalia: Odontostomidae]"
+seed_plants.nwk,582562,"binomial held only with non-plant authorship: Spixia martensii (Doering, 1875)  [Animalia: Bulimulidae]; Spixia martensii (Doering, 1875)  [Animalia: Cyclodontinidae]"
+seed_plants.nwk,582563,"binomial held only with non-plant authorship: Spixia pyriformis (Pilsbry, 1901)  [Animalia: Cyclodontinidae]; Spixia pyriformis (Pilsbry, 1901)  [Animalia: Odontostomidae]"
+seed_plants.nwk,582564,"binomial held only with non-plant authorship: Spixia tucumanensis (Parodiz, 1941)  [Animalia: Cyclodontinidae]; Spixia tucumanensis (Parodiz, 1941)  [Animalia: Odontostomidae]"
+seed_plants.nwk,587139,"binomial held only with non-plant authorship: Stenurus minor (Kuhn, 1829) Baylis & Daubney, 1925 [Animalia: Metastrongylidae]; Stenurus minor (Kühn, 1829) Kuhn, 1829 [Animalia: Metastrongylidae]"
+seed_plants.nwk,587286,"binomial held only with non-plant authorship: Stephanobracon narendrani Ranjith & Quicke, 2016 [Animalia: Braconidae]; Stephanobracon narendrani Ranjith & Quicke, 2016 [Animalia: None]"
+seed_plants.nwk,589055,"binomial held only with non-plant authorship: Stosicthrips szitas Mound, 2009 [Animalia: Thripidae]"
+seed_plants.nwk,589533,"binomial held only with non-plant authorship: Striathrips sulcatus Mound, 2011 [Animalia: Thripidae]"
+seed_plants.nwk,599957,"binomial held only with non-plant authorship: Tegnacus unicornutus Pye, 2012 [Animalia: Eriophyidae]"
+seed_plants.nwk,604887,"binomial held only with non-plant authorship: Theophoba pendulans Mell, 1958 [Animalia: Bombycidae]; Theophoba pendulans Mell, 1958 [Animalia: Endromidae]"
+seed_plants.nwk,610193,"binomial held only with non-plant authorship: Torosaspis turcica Ulgenturk & Kozar [Animalia: Diaspididae]; Torosaspis turcica Ulgenturk & Kozar, 2011 [Animalia: Diaspididae]"
+seed_plants.nwk,612221,"binomial held only with non-plant authorship: Triberta cistifoliella (Groschke, 1944)  [Animalia: Gracillariidae]; Triberta cistifoliella (Groschke, 1944) Groschke, 1944 [Animalia: Gracillariidae]"
+seed_plants.nwk,612222,"binomial held only with non-plant authorship: Triberta helianthemella (Herrich-Schäffer, 1860)  [Animalia: Gracillariidae]; Triberta helianthemella (Herrich-Schäffer, 1861) Herrich-Schaffer, 1861 [Animalia: Gracillariidae]"
+seed_plants.nwk,613877,"binomial held only with non-plant authorship: Trichotaenia nzingae Oesterle & A.Serrano&Capela, 2015 [Animalia: Carabidae]"
+seed_plants.nwk,613878,"binomial held only with non-plant authorship: Trichotaenia pepetela A.Serrano & Capela, 2015 [Animalia: Carabidae]"
+seed_plants.nwk,630594,"binomial held only with non-plant authorship: Waldeckia bamberi Lowry & Kilgallen, 2015 [Animalia: Lysianassidae]"
+seed_plants.nwk,633038,"binomial held only with non-plant authorship: Xerophytacolus claviverpus Stiller, 2012 [Animalia: Cicadellidae]"
+seed_plants.nwk,633039,"binomial held only with non-plant authorship: Xerophytacolus tubuverpus Stiller, 2012 [Animalia: Cicadellidae]"
+seed_plants.nwk,633040,"binomial held only with non-plant authorship: Xerophytavorus furcillatus Stiller, 2012 [Animalia: Cicadellidae]"
+seed_plants.nwk,633041,"binomial held only with non-plant authorship: Xerophytavorus rastrullus Stiller, 2012 [Animalia: Cicadellidae]"
+seed_plants.nwk,637492,"not an extant species label (fossil pollen sample); fossil sample label (pollen record), not an extant species"
+seed_plants.nwk,637493,"not an extant species label (fossil pollen sample); fossil sample label (pollen record), not an extant species"
+squamates.nwk,581527,"Rhynchocephalia (Sphenodontidae), not Squamata; the outgroup Tonini et al. 2016 added to the 9754 squamates (""9754 currently recognized squamates, plus the tuatara"", Biol. Conserv. 204:23-31, p.26); sole sister of all other 9754 tips at the root (code/m1.py, root child 1)"
+turtles.nwk,17175,"Archosauria: Crocodylia, Alligatoridae (CoL col_family=Alligatoridae, Data/standardized/col_mapping.csv); outgroup named in Thomson et al. 2021 PNAS 118:e2012215118, Materials and Methods p.6 (""GenBank sequences from chicken (Gallus gallus) and alligator (Alligator mississippiensis) as outgroups"")"
+turtles.nwk,306672,"Aves: Galliformes, Phasianidae (CoL col_family=Phasianidae); outgroup named in Thomson et al. 2021 p.6 (same sentence)"

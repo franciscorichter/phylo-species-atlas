@@ -1,0 +1,264 @@
+filename,partition_name,is_canonical,leaves,distinct_labels,nan_branch_lengths,roottotip_cv,is_chronogram,flag_tree_provenance,flag_standardized_metadata,flag_partition_summary,ledgers_disagree
+amphibians.nwk,Amphibians,yes,7238,7238,0,0.000000,yes,yes,yes,yes,no
+ants.nwk,Insects,no,83,83,83,0.391494,no,,no,,no
+archaea.nwk,Archaea,yes,6968,6968,0,0.236842,no,no,no,no,no
+asteraceae.nwk,Seed plants,no,256,256,0,0.260240,no,,no,,no
+bacteria.nwk,Bacteria,yes,136646,136646,0,0.185906,no,no,no,no,no
+bees.nwk,Insects,no,4586,4586,0,0.000000,yes,,yes,,no
+birds.nwk,Birds,yes,10824,10824,0,0.000000,yes,yes,yes,yes,no
+bivalves.nwk,Bivalves,yes,73,73,0,0.264237,no,no,no,no,no
+bryophytes.nwk,Bryophytes,yes,533,533,0,0.000000,yes,no,yes,yes,yes
+bryozoa.nwk,Bryozoa,yes,565,565,0,0.617648,no,no,no,yes,yes
+butterflies.nwk,Insects,no,2258,2258,0,0.000000,yes,,yes,,no
+cacti.nwk,Seed plants,no,1063,1063,0,0.000000,yes,,yes,,no
+carnivora.nwk,Mammals,no,294,294,0,0.000000,yes,,yes,,no
+cephalopods.nwk,Cephalopods,yes,81,81,0,0.000000,yes,yes,yes,yes,no
+cetaceans.nwk,Mammals,no,85,85,0,0.000001,yes,,yes,,no
+condamine_Acanthizidae.nwk,Condamine 2019 families,no,63,63,0,0.000000,yes,,yes,,no
+condamine_Accipitridae.nwk,Condamine 2019 families,no,242,242,0,0.000000,yes,,yes,,no
+condamine_Acrocephalidae.nwk,Condamine 2019 families,no,52,52,0,0.000000,yes,,yes,,no
+condamine_Aegithalidae.nwk,Condamine 2019 families,no,10,10,0,0.000000,yes,,yes,,no
+condamine_Alaudidae.nwk,Condamine 2019 families,no,91,91,0,0.000000,yes,,yes,,no
+condamine_Alcedinidae.nwk,Condamine 2019 families,no,91,91,0,0.000000,yes,,yes,,no
+condamine_Alcidae.nwk,Condamine 2019 families,no,23,23,0,0.000000,yes,,yes,,no
+condamine_Alsodidae.nwk,Condamine 2019 families,no,20,20,0,0.000000,yes,,yes,,no
+condamine_Alytidae.nwk,Condamine 2019 families,no,10,10,0,0.000000,yes,,yes,,no
+condamine_Anatidae.nwk,Condamine 2019 families,no,157,157,0,0.000000,yes,,yes,,no
+condamine_Apodidae.nwk,Condamine 2019 families,no,99,99,0,0.000000,yes,,yes,,no
+condamine_Ardeidae.nwk,Condamine 2019 families,no,61,61,0,0.000000,yes,,yes,,no
+condamine_Artamidae.nwk,Condamine 2019 families,no,11,11,0,0.000000,yes,,yes,,no
+condamine_Atelidae.nwk,Condamine 2019 families,no,24,24,0,0.000000,yes,,yes,,no
+condamine_Bathyergidae.nwk,Condamine 2019 families,no,14,14,0,0.000000,yes,,yes,,no
+condamine_Bernieridae.nwk,Condamine 2019 families,no,11,11,0,0.000000,yes,,yes,,no
+condamine_Bombinatoridae.nwk,Condamine 2019 families,no,10,10,0,0.000000,yes,,yes,,no
+condamine_Bovidae.nwk,Condamine 2019 families,no,138,138,0,0.000000,yes,,yes,,no
+condamine_Bucconidae.nwk,Condamine 2019 families,no,35,35,0,0.000000,yes,,yes,,no
+condamine_Bucerotidae.nwk,Condamine 2019 families,no,55,55,0,0.000000,yes,,yes,,no
+condamine_Cacatuidae.nwk,Condamine 2019 families,no,21,21,0,0.000000,yes,,yes,,no
+condamine_Caecilidae.nwk,Condamine 2019 families,no,31,31,0,0.000000,yes,,yes,,no
+condamine_Campephagidae.nwk,Condamine 2019 families,no,80,80,0,0.000000,yes,,yes,,no
+condamine_Canidae.nwk,Condamine 2019 families,no,34,34,0,0.000000,yes,,yes,,no
+condamine_Capitonidae.nwk,Condamine 2019 families,no,14,14,0,0.000000,yes,,yes,,no
+condamine_Caprimulgidae.nwk,Condamine 2019 families,no,88,88,0,0.000000,yes,,yes,,no
+condamine_Capromyidae.nwk,Condamine 2019 families,no,14,14,0,0.000000,yes,,yes,,no
+condamine_Cardinalidae.nwk,Condamine 2019 families,no,68,68,0,0.000000,yes,,yes,,no
+condamine_Caviidae.nwk,Condamine 2019 families,no,16,16,0,0.000000,yes,,yes,,no
+condamine_Cebidae.nwk,Condamine 2019 families,no,48,48,0,0.000000,yes,,yes,,no
+condamine_Cercopithecidae.nwk,Condamine 2019 families,no,127,127,0,0.000000,yes,,yes,,no
+condamine_Certhiidae.nwk,Condamine 2019 families,no,10,10,0,0.000000,yes,,yes,,no
+condamine_Cervidae.nwk,Condamine 2019 families,no,45,45,0,0.000000,yes,,yes,,no
+condamine_Cettiidae.nwk,Condamine 2019 families,no,32,32,0,0.000000,yes,,yes,,no
+condamine_Chamaeleonidae.nwk,Condamine 2019 families,no,142,142,0,0.000000,yes,,yes,,no
+condamine_Charadriidae.nwk,Condamine 2019 families,no,64,64,0,0.000000,yes,,yes,,no
+condamine_Cheirogaleidae.nwk,Condamine 2019 families,no,15,15,0,0.000000,yes,,yes,,no
+condamine_Chloropseidae.nwk,Condamine 2019 families,no,11,11,0,0.000000,yes,,yes,,no
+condamine_Chrysochloridae.nwk,Condamine 2019 families,no,17,17,0,0.000000,yes,,yes,,no
+condamine_Ciconiidae.nwk,Condamine 2019 families,no,19,19,0,0.000000,yes,,yes,,no
+condamine_Cisticolidae.nwk,Condamine 2019 families,no,142,142,0,0.000000,yes,,yes,,no
+condamine_Colubridae.nwk,Condamine 2019 families,no,539,539,0,0.000000,yes,,yes,,no
+condamine_Columbidae.nwk,Condamine 2019 families,no,306,306,0,0.000000,yes,,yes,,no
+condamine_Conopophagidae.nwk,Condamine 2019 families,no,11,11,0,0.000000,yes,,yes,,no
+condamine_Coraciidae.nwk,Condamine 2019 families,no,12,12,0,0.000000,yes,,yes,,no
+condamine_Cordylidae.nwk,Condamine 2019 families,no,42,42,0,0.000000,yes,,yes,,no
+condamine_Corvidae.nwk,Condamine 2019 families,no,120,120,0,0.000000,yes,,yes,,no
+condamine_Cotingidae.nwk,Condamine 2019 families,no,65,65,0,0.000000,yes,,yes,,no
+condamine_Cracidae.nwk,Condamine 2019 families,no,50,50,0,0.000000,yes,,yes,,no
+condamine_Cracticidae.nwk,Condamine 2019 families,no,12,12,0,0.000000,yes,,yes,,no
+condamine_Cricetidae.nwk,Condamine 2019 families,no,620,620,0,0.000000,yes,,yes,,no
+condamine_Crocodylia.nwk,Crocodilians,yes,25,25,0,0.000000,yes,yes,yes,yes,no
+condamine_Crotaphytidae.nwk,Condamine 2019 families,no,11,11,0,0.000000,yes,,yes,,no
+condamine_Ctenomyidae.nwk,Condamine 2019 families,no,51,51,0,0.000000,yes,,yes,,no
+condamine_Cuculidae.nwk,Condamine 2019 families,no,138,138,0,0.000000,yes,,yes,,no
+condamine_Dasypodidae.nwk,Condamine 2019 families,no,20,20,0,0.000000,yes,,yes,,no
+condamine_Dasyproctidae.nwk,Condamine 2019 families,no,13,13,0,0.000000,yes,,yes,,no
+condamine_Dasyuridae.nwk,Condamine 2019 families,no,63,63,0,0.000000,yes,,yes,,no
+condamine_Delphinidae.nwk,Condamine 2019 families,no,34,34,0,0.000000,yes,,yes,,no
+condamine_Dicaeidae.nwk,Condamine 2019 families,no,45,45,0,0.000000,yes,,yes,,no
+condamine_Dicruridae.nwk,Condamine 2019 families,no,24,24,0,0.000000,yes,,yes,,no
+condamine_Didelphidae.nwk,Condamine 2019 families,no,84,84,0,0.000000,yes,,yes,,no
+condamine_Diomedeidae.nwk,Condamine 2019 families,no,21,21,0,0.000000,yes,,yes,,no
+condamine_Dipodidae.nwk,Condamine 2019 families,no,51,51,0,0.000000,yes,,yes,,no
+condamine_Echimyidae.nwk,Condamine 2019 families,no,69,69,0,0.000000,yes,,yes,,no
+condamine_Eleutherodactylidae.nwk,Condamine 2019 families,no,145,145,0,0.000000,yes,,yes,,no
+condamine_Emballonuridae.nwk,Condamine 2019 families,no,49,49,0,0.000000,yes,,yes,,no
+condamine_Emberizidae.nwk,Condamine 2019 families,no,163,163,0,0.000000,yes,,yes,,no
+condamine_Erethizontidae.nwk,Condamine 2019 families,no,14,14,0,0.000000,yes,,yes,,no
+condamine_Erinaceidae.nwk,Condamine 2019 families,no,22,22,0,0.000000,yes,,yes,,no
+condamine_Estrildidae.nwk,Condamine 2019 families,no,140,140,0,0.000000,yes,,yes,,no
+condamine_Eurylaimidae.nwk,Condamine 2019 families,no,20,20,0,0.000000,yes,,yes,,no
+condamine_Falconidae.nwk,Condamine 2019 families,no,64,64,0,0.000000,yes,,yes,,no
+condamine_Felidae.nwk,Condamine 2019 families,no,40,40,0,0.000000,yes,,yes,,no
+condamine_Formicariidae.nwk,Condamine 2019 families,no,12,12,0,0.000000,yes,,yes,,no
+condamine_Fringillidae.nwk,Condamine 2019 families,no,194,194,0,0.000000,yes,,yes,,no
+condamine_Furnariidae.nwk,Condamine 2019 families,no,302,302,0,0.000000,yes,,yes,,no
+condamine_Galagidae.nwk,Condamine 2019 families,no,18,18,0,0.000000,yes,,yes,,no
+condamine_Galbulidae.nwk,Condamine 2019 families,no,18,18,0,0.000000,yes,,yes,,no
+condamine_Geomyidae.nwk,Condamine 2019 families,no,38,38,0,0.000000,yes,,yes,,no
+condamine_Gerrhosauridae.nwk,Condamine 2019 families,no,28,28,0,0.000000,yes,,yes,,no
+condamine_Glareolidae.nwk,Condamine 2019 families,no,17,17,0,0.000000,yes,,yes,,no
+condamine_Gliridae.nwk,Condamine 2019 families,no,27,27,0,0.000000,yes,,yes,,no
+condamine_Grallariidae.nwk,Condamine 2019 families,no,49,49,0,0.000000,yes,,yes,,no
+condamine_Gruidae.nwk,Condamine 2019 families,no,15,15,0,0.000000,yes,,yes,,no
+condamine_Haematopodidae.nwk,Condamine 2019 families,no,11,11,0,0.000000,yes,,yes,,no
+condamine_Herpestidae.nwk,Condamine 2019 families,no,33,33,0,0.000000,yes,,yes,,no
+condamine_Heteromyidae.nwk,Condamine 2019 families,no,58,58,0,0.000000,yes,,yes,,no
+condamine_Hipposideridae.nwk,Condamine 2019 families,no,74,74,0,0.000000,yes,,yes,,no
+condamine_Hirundinidae.nwk,Condamine 2019 families,no,83,83,0,0.000000,yes,,yes,,no
+condamine_Hydrobatidae.nwk,Condamine 2019 families,no,22,22,0,0.000000,yes,,yes,,no
+condamine_Hylobatidae.nwk,Condamine 2019 families,no,14,14,0,0.000000,yes,,yes,,no
+condamine_Hynobiidae.nwk,Condamine 2019 families,no,46,46,0,0.000000,yes,,yes,,no
+condamine_Hystricidae.nwk,Condamine 2019 families,no,11,11,0,0.000000,yes,,yes,,no
+condamine_Icteridae.nwk,Condamine 2019 families,no,102,102,0,0.000000,yes,,yes,,no
+condamine_Iguanidae.nwk,Condamine 2019 families,no,31,31,0,0.000000,yes,,yes,,no
+condamine_Indicatoridae.nwk,Condamine 2019 families,no,17,17,0,0.000000,yes,,yes,,no
+condamine_Indriidae.nwk,Condamine 2019 families,no,10,10,0,0.000000,yes,,yes,,no
+condamine_Laniidae.nwk,Condamine 2019 families,no,29,29,0,0.000000,yes,,yes,,no
+condamine_Laridae.nwk,Condamine 2019 families,no,99,99,0,0.000000,yes,,yes,,no
+condamine_Leiothrichidae.nwk,Condamine 2019 families,no,127,127,0,0.000000,yes,,yes,,no
+condamine_Lemuridae.nwk,Condamine 2019 families,no,19,19,0,0.000000,yes,,yes,,no
+condamine_Leporidae.nwk,Condamine 2019 families,no,58,58,0,0.000000,yes,,yes,,no
+condamine_Locustellidae.nwk,Condamine 2019 families,no,53,53,0,0.000000,yes,,yes,,no
+condamine_Lybiidae.nwk,Condamine 2019 families,no,41,41,0,0.000000,yes,,yes,,no
+condamine_Macropodidae.nwk,Condamine 2019 families,no,56,56,0,0.000000,yes,,yes,,no
+condamine_Macroscelididae.nwk,Condamine 2019 families,no,15,15,0,0.000000,yes,,yes,,no
+condamine_Macrosphenidae.nwk,Condamine 2019 families,no,18,18,0,0.000000,yes,,yes,,no
+condamine_Malaconotidae.nwk,Condamine 2019 families,no,46,46,0,0.000000,yes,,yes,,no
+condamine_Maluridae.nwk,Condamine 2019 families,no,27,27,0,0.000000,yes,,yes,,no
+condamine_Megalaimidae.nwk,Condamine 2019 families,no,28,28,0,0.000000,yes,,yes,,no
+condamine_Megapodiidae.nwk,Condamine 2019 families,no,21,21,0,0.000000,yes,,yes,,no
+condamine_Melanocharitidae.nwk,Condamine 2019 families,no,10,10,0,0.000000,yes,,yes,,no
+condamine_Meliphagidae.nwk,Condamine 2019 families,no,177,177,0,0.000000,yes,,yes,,no
+condamine_Mephitidae.nwk,Condamine 2019 families,no,12,12,0,0.000000,yes,,yes,,no
+condamine_Meropidae.nwk,Condamine 2019 families,no,26,26,0,0.000000,yes,,yes,,no
+condamine_Mimidae.nwk,Condamine 2019 families,no,34,34,0,0.000000,yes,,yes,,no
+condamine_Molossidae.nwk,Condamine 2019 families,no,98,98,0,0.000000,yes,,yes,,no
+condamine_Momotidae.nwk,Condamine 2019 families,no,10,10,0,0.000000,yes,,yes,,no
+condamine_Monarchidae.nwk,Condamine 2019 families,no,87,87,0,0.000000,yes,,yes,,no
+condamine_Motacillidae.nwk,Condamine 2019 families,no,62,62,0,0.000000,yes,,yes,,no
+condamine_Muridae.nwk,Condamine 2019 families,no,680,680,0,0.000000,yes,,yes,,no
+condamine_Muscicapidae.nwk,Condamine 2019 families,no,279,279,0,0.000000,yes,,yes,,no
+condamine_Musophagidae.nwk,Condamine 2019 families,no,23,23,0,0.000000,yes,,yes,,no
+condamine_Mustelidae.nwk,Condamine 2019 families,no,59,59,0,0.000000,yes,,yes,,no
+condamine_Nectariniidae.nwk,Condamine 2019 families,no,127,127,0,0.000000,yes,,yes,,no
+condamine_Nesomyidae.nwk,Condamine 2019 families,no,55,55,0,0.000000,yes,,yes,,no
+condamine_Nycteridae.nwk,Condamine 2019 families,no,16,16,0,0.000000,yes,,yes,,no
+condamine_Ochotonidae.nwk,Condamine 2019 families,no,28,28,0,0.000000,yes,,yes,,no
+condamine_Octodontidae.nwk,Condamine 2019 families,no,10,10,0,0.000000,yes,,yes,,no
+condamine_Odontophoridae.nwk,Condamine 2019 families,no,34,34,0,0.000000,yes,,yes,,no
+condamine_Oriolidae.nwk,Condamine 2019 families,no,30,30,0,0.000000,yes,,yes,,no
+condamine_Otariidae.nwk,Condamine 2019 families,no,16,16,0,0.000000,yes,,yes,,no
+condamine_Otididae.nwk,Condamine 2019 families,no,25,25,0,0.000000,yes,,yes,,no
+condamine_Pachycephalidae.nwk,Condamine 2019 families,no,50,50,0,0.000000,yes,,yes,,no
+condamine_Paradisaeidae.nwk,Condamine 2019 families,no,40,40,0,0.000000,yes,,yes,,no
+condamine_Paridae.nwk,Condamine 2019 families,no,53,53,0,0.000000,yes,,yes,,no
+condamine_Parulidae.nwk,Condamine 2019 families,no,109,109,0,0.000000,yes,,yes,,no
+condamine_Passeridae.nwk,Condamine 2019 families,no,48,48,0,0.000000,yes,,yes,,no
+condamine_Pellorneidae.nwk,Condamine 2019 families,no,66,66,0,0.000000,yes,,yes,,no
+condamine_Peramelidae.nwk,Condamine 2019 families,no,17,17,0,0.000000,yes,,yes,,no
+condamine_Petauridae.nwk,Condamine 2019 families,no,11,11,0,0.000000,yes,,yes,,no
+condamine_Petroicidae.nwk,Condamine 2019 families,no,44,44,0,0.000000,yes,,yes,,no
+condamine_Phalacrocoracidae.nwk,Condamine 2019 families,no,33,33,0,0.000000,yes,,yes,,no
+condamine_Phalangeridae.nwk,Condamine 2019 families,no,22,22,0,0.000000,yes,,yes,,no
+condamine_Phasianidae.nwk,Condamine 2019 families,no,176,176,0,0.000000,yes,,yes,,no
+condamine_Phocidae.nwk,Condamine 2019 families,no,18,18,0,0.000000,yes,,yes,,no
+condamine_Phrynosomatidae.nwk,Condamine 2019 families,no,114,114,0,0.000000,yes,,yes,,no
+condamine_Phylloscopidae.nwk,Condamine 2019 families,no,71,71,0,0.000000,yes,,yes,,no
+condamine_Phyllostomidae.nwk,Condamine 2019 families,no,150,150,0,0.000000,yes,,yes,,no
+condamine_Picidae.nwk,Condamine 2019 families,no,223,223,0,0.000000,yes,,yes,,no
+condamine_Pipidae.nwk,Condamine 2019 families,no,23,23,0,0.000000,yes,,yes,,no
+condamine_Pipridae.nwk,Condamine 2019 families,no,52,52,0,0.000000,yes,,yes,,no
+condamine_Pitheciidae.nwk,Condamine 2019 families,no,37,37,0,0.000000,yes,,yes,,no
+condamine_Pittidae.nwk,Condamine 2019 families,no,31,31,0,0.000000,yes,,yes,,no
+condamine_Platysteiridae.nwk,Condamine 2019 families,no,30,30,0,0.000000,yes,,yes,,no
+condamine_Plethodontidae.nwk,Condamine 2019 families,no,278,278,0,0.000001,yes,,yes,,no
+condamine_Ploceidae.nwk,Condamine 2019 families,no,108,108,0,0.000000,yes,,yes,,no
+condamine_Podargidae.nwk,Condamine 2019 families,no,15,15,0,0.000000,yes,,yes,,no
+condamine_Podicipedidae.nwk,Condamine 2019 families,no,19,19,0,0.000000,yes,,yes,,no
+condamine_Polioptilidae.nwk,Condamine 2019 families,no,15,15,0,0.000000,yes,,yes,,no
+condamine_Procellariidae.nwk,Condamine 2019 families,no,81,81,0,0.000000,yes,,yes,,no
+condamine_Procyonidae.nwk,Condamine 2019 families,no,14,14,0,0.000000,yes,,yes,,no
+condamine_Prunellidae.nwk,Condamine 2019 families,no,13,13,0,0.000000,yes,,yes,,no
+condamine_Pseudocheiridae.nwk,Condamine 2019 families,no,16,16,0,0.000000,yes,,yes,,no
+condamine_Psittacidae.nwk,Condamine 2019 families,no,330,330,0,0.000000,yes,,yes,,no
+condamine_Psophodidae.nwk,Condamine 2019 families,no,13,13,0,0.000000,yes,,yes,,no
+condamine_Pteroclidae.nwk,Condamine 2019 families,no,16,16,0,0.000000,yes,,yes,,no
+condamine_Pteropodidae.nwk,Condamine 2019 families,no,174,174,0,0.000000,yes,,yes,,no
+condamine_Ptilonorhynchidae.nwk,Condamine 2019 families,no,19,19,0,0.000000,yes,,yes,,no
+condamine_Pycnonotidae.nwk,Condamine 2019 families,no,124,124,0,0.000000,yes,,yes,,no
+condamine_Pythonidae.nwk,Condamine 2019 families,no,26,26,0,0.000000,yes,,yes,,no
+condamine_Rallidae.nwk,Condamine 2019 families,no,125,125,0,0.000000,yes,,yes,,no
+condamine_Ramphastidae.nwk,Condamine 2019 families,no,35,35,0,0.000000,yes,,yes,,no
+condamine_Ranidae.nwk,Condamine 2019 families,no,218,218,0,0.000000,yes,,yes,,no
+condamine_Remizidae.nwk,Condamine 2019 families,no,12,12,0,0.000000,yes,,yes,,no
+condamine_Rhinocryptidae.nwk,Condamine 2019 families,no,53,53,0,0.000000,yes,,yes,,no
+condamine_Rhinolophidae.nwk,Condamine 2019 families,no,73,73,0,0.000000,yes,,yes,,no
+condamine_Rhipiduridae.nwk,Condamine 2019 families,no,42,42,0,0.000000,yes,,yes,,no
+condamine_Salamandridae.nwk,Condamine 2019 families,no,42,42,0,0.000000,yes,,yes,,no
+condamine_Sciuridae.nwk,Condamine 2019 families,no,276,276,0,0.000000,yes,,yes,,no
+condamine_Scolopacidae.nwk,Condamine 2019 families,no,89,89,0,0.000000,yes,,yes,,no
+condamine_Sittidae.nwk,Condamine 2019 families,no,24,24,0,0.000000,yes,,yes,,no
+condamine_Soricidae.nwk,Condamine 2019 families,no,329,329,0,0.000000,yes,,yes,,no
+condamine_Spalacidae.nwk,Condamine 2019 families,no,31,31,0,0.000000,yes,,yes,,no
+condamine_Spheniscidae.nwk,Condamine 2019 families,no,18,18,0,0.000000,yes,,yes,,no
+condamine_Strigidae.nwk,Condamine 2019 families,no,191,191,0,0.000000,yes,,yes,,no
+condamine_Sturnidae.nwk,Condamine 2019 families,no,109,109,0,0.000000,yes,,yes,,no
+condamine_Suidae.nwk,Condamine 2019 families,no,18,18,0,0.000000,yes,,yes,,no
+condamine_Sulidae.nwk,Condamine 2019 families,no,10,10,0,0.000000,yes,,yes,,no
+condamine_Sylviidae.nwk,Condamine 2019 families,no,62,62,0,0.000000,yes,,yes,,no
+condamine_Talpidae.nwk,Condamine 2019 families,no,39,39,0,0.000000,yes,,yes,,no
+condamine_Tenrecidae.nwk,Condamine 2019 families,no,25,25,0,0.000000,yes,,yes,,no
+condamine_Testudines.nwk,Condamine 2019 families,no,233,233,0,0.000000,yes,,yes,,no
+condamine_Thamnophilidae.nwk,Condamine 2019 families,no,219,219,0,0.000000,yes,,yes,,no
+condamine_Thraupidae.nwk,Condamine 2019 families,no,370,370,0,0.000000,yes,,yes,,no
+condamine_Threskiornithidae.nwk,Condamine 2019 families,no,34,34,0,0.000000,yes,,yes,,no
+condamine_Timaliidae.nwk,Condamine 2019 families,no,55,55,0,0.000000,yes,,yes,,no
+condamine_Tinamidae.nwk,Condamine 2019 families,no,47,47,0,0.000000,yes,,yes,,no
+condamine_Tityridae.nwk,Condamine 2019 families,no,41,41,0,0.000000,yes,,yes,,no
+condamine_Trochilidae.nwk,Condamine 2019 families,no,334,334,0,0.000000,yes,,yes,,no
+condamine_Troglodytidae.nwk,Condamine 2019 families,no,79,79,0,0.000000,yes,,yes,,no
+condamine_Trogonidae.nwk,Condamine 2019 families,no,42,42,0,0.000000,yes,,yes,,no
+condamine_Tupaiidae.nwk,Condamine 2019 families,no,19,19,0,0.000000,yes,,yes,,no
+condamine_Turdidae.nwk,Condamine 2019 families,no,170,170,0,0.000000,yes,,yes,,no
+condamine_Turnicidae.nwk,Condamine 2019 families,no,16,16,0,0.000000,yes,,yes,,no
+condamine_Tyrannidae.nwk,Condamine 2019 families,no,419,419,0,0.000000,yes,,yes,,no
+condamine_Tytonidae.nwk,Condamine 2019 families,no,15,15,0,0.000000,yes,,yes,,no
+condamine_Vangidae.nwk,Condamine 2019 families,no,21,21,0,0.000000,yes,,yes,,no
+condamine_Varanidae.nwk,Condamine 2019 families,no,53,53,0,0.000000,yes,,yes,,no
+condamine_Vespertilionidae.nwk,Condamine 2019 families,no,386,386,0,0.000000,yes,,yes,,no
+condamine_Viduidae.nwk,Condamine 2019 families,no,20,20,0,0.000000,yes,,yes,,no
+condamine_Viperidae.nwk,Condamine 2019 families,no,209,209,0,0.000000,yes,,yes,,no
+condamine_Vireonidae.nwk,Condamine 2019 families,no,58,58,0,0.000000,yes,,yes,,no
+condamine_Viverridae.nwk,Condamine 2019 families,no,34,34,0,0.000000,yes,,yes,,no
+condamine_Xantusiidae.nwk,Condamine 2019 families,no,26,26,0,0.000000,yes,,yes,,no
+condamine_Ziphiidae.nwk,Condamine 2019 families,no,20,20,0,0.000000,yes,,yes,,no
+condamine_Zosteropidae.nwk,Condamine 2019 families,no,120,120,0,0.000000,yes,,yes,,no
+conifers.nwk,Seed plants,no,16,16,0,0.000000,yes,,yes,,no
+corals.nwk,Cnidaria,yes,289,289,0,0.000000,yes,yes,yes,yes,no
+crustaceans.nwk,Crustaceans,yes,95,95,0,0.588734,no,yes,no,no,yes
+diatoms.nwk,Diatoms,yes,1113,1113,0,0.000000,yes,yes,no,yes,yes
+echinoderms.nwk,Echinoderms,yes,65,65,0,0.000000,yes,yes,yes,yes,no
+eucalyptus.nwk,Seed plants,no,399,399,0,0.879137,no,,no,,no
+eukaryotes.nwk,,no,100,100,0,0.340483,no,,no,,no
+ferns.nwk,Ferns,yes,6216,6216,0,0.000000,yes,yes,yes,yes,no
+fish.nwk,Fish,yes,31347,31347,0,0.000000,yes,yes,yes,yes,no
+frogs.nwk,Amphibians,no,5326,5326,0,0.000000,yes,,yes,,no
+fungi.nwk,Fungi,yes,1620,1620,0,0.401827,no,no,no,no,no
+gastropods.nwk,Gastropods,yes,40,40,0,0.000001,yes,no,no,no,no
+grasses.nwk,Seed plants,no,1153,1153,0,0.257548,no,,no,,no
+hemiptera.nwk,Insects,no,193,192,0,0.353784,no,,no,,no
+insects.nwk,Insects,yes,53373,53373,0,0.000002,yes,no,no,no,no
+mammals.nwk,Mammals,yes,5911,5911,0,0.000000,yes,yes,yes,yes,no
+nematodes.nwk,Nematodes,yes,156,156,0,0.297255,no,no,no,no,no
+neotropical_fish.nwk,Fish,no,3167,3167,0,0.000000,yes,,yes,,no
+orchids.nwk,Seed plants,no,1475,1475,0,0.000000,yes,,yes,,no
+parrots.nwk,Birds,no,413,413,0,0.000000,yes,,yes,,no
+primates.nwk,Mammals,no,301,301,0,0.000024,yes,,yes,,no
+salamanders.nwk,Amphibians,no,796,796,0,0.000000,yes,,yes,,no
+seed_plants.nwk,Seed plants,yes,348886,348886,0,0.000001,yes,yes,yes,yes,no
+sharks.nwk,Sharks,yes,1192,1192,0,0.000000,yes,yes,yes,yes,no
+solanaceae.nwk,Seed plants,no,1076,1076,0,0.000000,yes,,yes,,no
+spiders.nwk,Spiders,yes,1431,1431,0,0.000000,yes,yes,yes,yes,no
+sponges.nwk,Sponges,yes,119,119,0,0.000001,yes,yes,yes,yes,no
+squamates.nwk,Squamates,yes,9754,9754,0,0.000000,yes,yes,yes,yes,no
+termites.nwk,Insects,no,138,138,0,0.000000,yes,,no,,no
+turtles.nwk,Turtles,yes,283,283,0,0.000000,yes,yes,yes,yes,no

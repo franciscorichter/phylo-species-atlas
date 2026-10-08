@@ -1,12 +1,13 @@
 cff-version: 1.2.0
-message: "If you use this dataset, please cite both the paper and the specific Zenodo release."
-title: "Where the tree of life is empirically resolved, and where it is not: an open atlas of species-level phylogenies and their archival uncertainty"
-version: 1.0.9
+message: "If you use this dataset, please cite the paper and the Zenodo release you used."
+title: "Phylogenetic Species Atlas: species-level phylogenies of eukaryotes and the coverage of described species"
+version: 1.1.0
 doi: "10.5281/zenodo.20127157"
-date-released: 2026-10-07
+date-released: 2026-10-08
 url: "https://github.com/franciscorichter/phylo-species-atlas"
 repository-code: "https://github.com/franciscorichter/phylo-species-atlas"
 license: CC-BY-4.0
+type: dataset
 
 authors:
   - family-names: "Richter"
@@ -16,19 +17,22 @@ authors:
 
 preferred-citation:
   type: article
-  title: "Where the tree of life is empirically resolved, and where it is not: an open atlas of species-level phylogenies and their archival uncertainty"
+  title: "Coverage of described eukaryotic species by the largest species-level phylogeny of each group: molecular data, dates and date uncertainty"
   authors:
     - family-names: "Richter"
       given-names: "Francisco"
       orcid: "https://orcid.org/0000-0002-0924-4613"
+  journal: "bioRxiv"
+  doi: "10.64898/2026.05.31.729127"
   year: 2026
-  notes: "Manuscript under review. A preprint will be posted on bioRxiv concurrent with journal submission. Cite the Zenodo DOI for the dataset version used."
 
 keywords:
-  - phylogenetic atlas
+  - species-level phylogeny
+  - Darwinian shortfall
+  - Catalogue of Life
+  - chronogram
+  - divergence-time uncertainty
+  - sampling fraction
   - tree of life
-  - species coverage
-  - archival uncertainty
-  - comparative biology
 
-abstract: "A curated, standardized collection of empirical phylogenetic datasets covering taxonomic groups across Bacteria, Archaea, and Eukaryota. Organized into 62 partitions yielding 264 standardized trees (218 Condamine family-level + 25 further partition-canonical + 21 sub-clade/reference), with tip-label normalized Newick trees, a global standardized-label dictionary, full label mappings, and metadata. The TimeTree-of-Life (Hedges et al. 2015) is cited as a cross-cutting reference but is not redistributed in this deposit, at the TimeTree project's request (available from timetree.org). Companion to the manuscript 'Where the tree of life is empirically resolved, and where it is not: an open atlas of species-level phylogenies and their archival uncertainty' (Richter, 2026, under review)."
+abstract: "263 published species-level phylogenies redistributed as Newick files with numeric tip ids: the largest species-level tree found for each of 24 groups of described eukaryotes and for Bacteria and Archaea, and 237 other trees. A name layer resolves every tip id to a standardized name and every reference-tree tip to a Catalogue of Life (COL26.9) accepted name. Registers record, for each reference tree, its molecular tips, whether it is a chronogram in absolute time, and the divergence-time interval its source archive carries, from which the coverage of the 2,159,542 described eukaryotic species is counted at four levels: named, placed with molecular data, dated, and dated with an interval that a calibration does not set. scripts/reproduce_paper.py recomputes every number of the accompanying paper from these files. The source deposits remain in their original archives; the TimeTree of Life is cited and not redistributed."

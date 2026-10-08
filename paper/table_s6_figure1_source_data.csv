@@ -1,0 +1,63 @@
+group,category,estimated_total,described,in_dated_tree,in_undated_tree,source
+Fish,Vertebrates,40000,36000,31347,,Mora 2011
+Squamates,Vertebrates,12000,11744,9754,,Uetz 2025
+Birds,Vertebrates,11195,11195,10824,,IUCN
+Amphibians,Vertebrates,15000,8863,7238,,Mora 2011
+Mammals,Vertebrates,6736,6736,5911,,Burgin 2018
+Sharks,Vertebrates,1450,1282,1192,,Weigmann 2016
+Turtles,Vertebrates,360,360,283,,TTWG 2021
+Crocodilians,Vertebrates,28,27,25,,IUCN CSG
+Seed plants,Plants,450000,383671,348886,,Nic Lughadha 2016
+Bryophytes,Plants,24000,24000,533,,CoL 2025
+Ferns,Plants,13500,12000,6216,,PPG I 2016
+Insects,Arthropods,5500000,1000000,,53373,Stork 2018
+Crustaceans,Arthropods,150000,77000,,95,Appeltans 2012
+Spiders,Arthropods,120000,52249,1431,,Agnarsson 2013
+Gastropods,Other animals,100000,65000,40,,Appeltans 2012
+Nematodes,Other animals,1000000,28537,,156,Hodda 2022
+Bivalves,Other animals,30000,20000,,73,Appeltans 2012
+Cnidaria,Other animals,16000,11800,289,,Appeltans 2012
+Sponges,Other animals,17000,9470,119,,Appeltans 2012
+Echinoderms,Other animals,10000,7550,65,,Appeltans 2012
+Bryozoa,Other animals,8000,6000,,565,Appeltans 2012
+Cephalopods,Other animals,1200,800,81,,WoRMS
+Fungi,Microbes & protists,3000000,155000,,1620,Hawksworth 2017
+Bacteria,Microbes & protists,4000000,136646,,136646,Curtis 2002
+Diatoms,Microbes & protists,100000,20000,1113,,Mann 2013
+Archaea,Microbes & protists,50000,6968,,6968,Louca 2019
+Hagfish,Not yet represented,100,82,,,Fernholm 2013
+Lampreys,Not yet represented,55,48,,,Potter 2015
+Other vertebrates,Not yet represented,9,9,,,Atlas-aggregated
+Green algae,Not yet represented,22000,11000,,,Guiry 2012
+Rhodophyta,Not yet represented,10000,7000,,,AlgaeBase
+Lycophytes,Not yet represented,1400,1350,,,PPG I 2016
+Acari,Not yet represented,500000,55000,,,Zhang 2013
+Myriapods,Not yet represented,85000,17000,,,Chapman 2009
+Other arachnids,Not yet represented,25000,12000,,,CoL
+Other hexapods,Not yet represented,15000,10000,,,CoL
+Scorpiones,Not yet represented,3500,2700,,,Rein 2024
+Pycnogonida,Not yet represented,2000,1400,,,WoRMS
+Annelids,Not yet represented,35000,21000,,,Appeltans 2012
+Flatworms,Not yet represented,100000,20000,,,Zhang 2013
+Other phyla,Not yet represented,10000,4300,,,CoL
+Tunicates,Not yet represented,5100,3145,,,Appeltans 2012
+Myxozoa,Not yet represented,4000,2400,,,WoRMS
+Rotifera,Not yet represented,2200,2200,,,Segers 2007
+Other Mollusca,Not yet represented,3000,1500,,,WoRMS
+Tardigrada,Not yet represented,2081,1488,,,Bartels 2016
+Acanthocephala,Not yet represented,2000,1300,,,CoL
+Nemerteans,Not yet represented,4500,1300,,,Kajihara 2008
+Minor animal phyla,Not yet represented,535,376,,,Atlas-aggregated
+Ctenophores,Not yet represented,300,200,,,WoRMS
+Foraminifera,Not yet represented,12000,9000,,,Hayward 2020
+Apicomplexa,Not yet represented,10000,6000,,,CoL
+Ciliates,Not yet represented,40000,4500,,,Foissner 2008
+Amoebozoa,Not yet represented,10000,2400,,,Adl 2007
+Dinoflagellates,Not yet represented,5000,2300,,,Gomez 2012
+Brown algae,Not yet represented,2500,2000,,,Guiry 2024
+Cercozoa,Not yet represented,5000,2000,,,CoL
+Euglenozoa,Not yet represented,5000,2000,,,CoL
+Chrysophyta,Not yet represented,3000,1200,,,AlgaeBase
+Oomycetes,Not yet represented,2000,1000,,,CoL
+Haptophytes,Not yet represented,2000,760,,,de Vargas 2007
+Choanoflagellates,Not yet represented,300,300,,,Carr 2008

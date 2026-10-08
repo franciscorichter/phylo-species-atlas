@@ -1,0 +1,15 @@
+study,year,estimate,scope,method,is_this_study
+Erwin,1982,30M,Arthropods,Host-specificity extrapolation,no
+May,1988,5--10M (range 3--100M+),Eukaryotes,Expert synthesis,no
+Stork,1993,5--15M,All species,Multi-method review,no
+Hammond (UNEP),1995,13.6M,All species,UNEP synthesis,no
+Chapman,2009,$\sim$11M,All species,Taxonomic compilation,no
+Mora et al.,2011,8.7M ($\pm$1.3M),Eukaryotes,Higher-taxon accumulation curves,no
+"Costello, May \& Stork",2013,5 $\pm$ 3M,Eukaryotes,Description rates + synonymy correction,no
+Stork et al.,2015,5.5M insects; 6.8M arthropods,Arthropods,Four convergent methods,no
+Locey \& Lennon,2016,$\sim$10$^{12}$,Prokaryotes,Abundance scaling laws,no
+"Hawksworth \& L\""ucking",2017,2.2--3.8M,Fungi,Molecular + environmental sampling,no
+Larsen et al.,2017,$\sim$2B (1--6B),All life (incl.\ symbionts),Host-specificity + cryptic multiplier,no
+Stork,2018,5.5M insects,Insects,Comprehensive review,no
+Louca et al.,2019,0.8--1.6M,Prokaryotes,16S census,no
+This study,,15.6M (range 7.3--35.4M),62 partitions (all life),Per-group authoritative estimates,yes

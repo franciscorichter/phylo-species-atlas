@@ -1,123 +1,44 @@
-# Standardized archive
+# Standardized trees and names
 
-This directory contains the standardized tree archive described by the manuscript supplement. It is the publication-facing archive layer of the `phylo_trees` workspace.
+The redistributed trees, with numeric tip ids, and the name layer that resolves the ids.
 
----
+| File | What it holds |
+|---|---|
+| `trees/` | One Newick file per redistributed tree; tip labels are numeric ids. The 26 reference trees (one per group with a tree) are built by rule from `canonical_sources/` (below); every other file is a copy of a source deposit with its tips relabelled. |
+| `metadata.csv` | Per tree: file name, group, study, number of tips (counted in the file), and the `dated` flag of the earlier releases. Whether a tree is a chronogram is measured from the file instead: `registers/_rebuild/truth_dated.csv` and `scripts/reproduce_paper.py`. |
+| `dictionary.csv` | Tip id -> standardized name. It holds exactly the labels of the files in `trees/`, `canonical_sources/` and `superseded_canonicals/`. Ids are stable across releases: an id that occurs in this and an earlier release names the same label. |
+| `full_mapping.csv` | Tip id, label as written in the source deposit, standardized name, group. The bridge from a source's labels to ids. |
+| `col_resolution.csv.gz` | For every tip of every eukaryotic reference tree: the query formed from its name (the species key or a documented override), and its match in the Catalogue of Life COL26.9 base release (ChecklistBank 316321, doi:10.48580/dgz5n): match type, accepted-name id and name, kingdom, family. Named coverage counts the distinct accepted names whose match type resolves (`accepted`, `provisional`, `synonym` and their orthographic variants). |
+| `col_resolution_noncanonical.csv` | The same resolution for the tips of every other redistributed eukaryotic tree (the union sensitivity). |
+| `col269_family_species_counts.csv` | Accepted species per family in COL26.9 (the family sampling fractions of the worked example). |
+| `col269_suprageneric_genera.txt` | Genera of COL26.9 whose names end in a family-level suffix (`Xerophyta`, `Elapsoidea`, ...), read by the species-key rule so that these are not taken for family names. |
+| `name_overrides.csv` | Tips whose label carries no binomial (lineage codes) or a documented misspelling, with the query used and its evidence. |
+| `canonical_sources/` | The unpruned, id-labelled source of each reference tree. |
+| `superseded_canonicals/` | The former reference trees of seven groups (Birds, Bryophytes, Diatoms, Fish, Gastropods, Sharks, Turtles), replaced by a tree the same source deposited: a chronogram where the study archived one, the tree with usable branch lengths (Diatoms), the full all-taxon tree (Fish), the maximum-clade-credibility tree of the posterior set (Sharks). Kept so that every label of the dictionary occurs in a distributed file. |
+| `tree_references.csv` | For every redistributed tree and canonical source, the file its branch lengths were checked against and the rule of the check. |
+| `withdrawn.csv` | Files not redistributed (the TimeTree of Life, at its project's request), with checksums of every known copy. |
 
-## Intended contract
+## How a reference tree is built
 
-The standardized archive is supposed to provide a stable, compact representation of the representative phylogenetic datasets used by the project.
+From its source in `canonical_sources/` (`registers/canonical_sources.csv`):
 
-Core components:
+1. the tips listed in `registers/pruned_tips.csv` (outside the group) are removed;
+2. walking the tips left to right, a tip whose species key was already seen is removed, so one
+   tip per species remains; the species key is the first `Genus_epithet` pair of the
+   standardized name, and a name with cf., aff., sp. or a hybrid marker has no key and is kept
+   as an unresolved label;
+3. nodes left with one child are collapsed, their branch lengths summed, so the root is the most
+   recent common ancestor of the retained tips.
 
-- `trees/`
-  - standardized Newick trees with numeric tip labels
-- `dictionary.csv`
-  - global mapping from numeric ID to standardized label
-- `metadata.csv`
-  - per-tree metadata
-- `full_mapping.csv`
-  - mapping from original labels to standardized labels and numeric IDs
+`scripts/reproduce_paper.py` checks, for every reference tree, that its tips are exactly those
+the rule keeps and that every root-to-tip depth equals the source's less one constant.
+`code/rebuild/canonical_trees.py` is the script that writes the files.
 
-According to the current manuscript supplement, the archive should contain:
+## Loading a tree
 
-- 264 standardized Newick trees in the current working archive
-- 637,619 dictionary entries
-- 702,787 full-mapping entries
-
-These counts reflect the current reconstructed archive state. Older manuscript-era counts should be treated as historical audit targets rather than present-tense assumptions.
-
----
-
-## Current state
-
-The standardized archive has now been re-audited after reconstructing the previously missing representative groups `sharks`, `bees`, `salamanders`, `cetaceans`, and `bivalves`.
-
-Current high-level status:
-
-- all previously reconstructed representative gaps are filled, including `bryozoa` and `frogs` which were added in the latest audit cycle
-- no remaining `standardized_missing` provenance groups
-- file presence, metadata coverage, and mapping coverage are synchronized within the current working archive
-
-Remaining work is mostly cleanup rather than gap-filling:
-
-- move legacy figure byproducts out of this folder or classify them more explicitly as byproducts
-- review the remaining alias and tip-count mismatch cases surfaced in the audit crosswalks
-- keep manuscript-facing reported counts aligned with the reconstructed archive
-
----
-
-## File roles
-
-### `trees/`
-
-Contains the standardized Newick trees that are intended to be shared publicly.
-
-Properties:
-
-- one file per representative dataset or Condamine family tree
-- tip labels are numeric IDs, not species names
-- the numeric IDs resolve through `dictionary.csv`
-
-### `dictionary.csv`
-
-Global two-column table:
-
-- `id`
-- `standardized_name`
-
-This is the canonical lookup table from numeric tips back to standardized labels.
-
-### `metadata.csv`
-
-Per-tree summary table with fields including:
-
-- standardized filename
-- group
-- study
-- tip count
-- dated flag
-
-This file is the quickest way to audit which representative trees are present in the archive.
-
-### `full_mapping.csv`
-
-Expanded mapping table linking:
-
-- numeric ID
-- original source label
-- standardized label
-- source group
-
-This is the traceability bridge between raw labels and the public numeric-tip archive.
-
----
-
-## Important caveats
-
-This folder now contains only archive components. Legacy figure byproducts (`figure_coverage.png`, `figure_cumulative.png`, `figure_dated.png`) have been moved to `phylo_trees/data/`.
-
-**Fish tip-count note:** The standardized `fish.nwk` contains the 11,638-tip dated backbone from Rabosky 2018, which is the tree used for crown-age and LTT analyses. The manuscript coverage figures cite 31,516 tips, which refers to the FishTreeOfLife full chronogram with taxonomic imputation. The provenance entry documents both uses.
-
----
-
-## Relationship to other layers
-
-- Raw/source trees live under `phylo_trees/raw/`
-- Working classification subsets live in `phylo_trees/curated/dated/` and `phylo_trees/curated/undated/`
-- Derived analysis products live in `phylo_trees/data/`
-- Manuscript-facing provenance lives in `phylo-datasets-paper/data_provenance.csv`
-
-The archive should be auditable back to the raw/source layer and forward to the manuscript layer.
-
----
-
-## Audit checklist for this folder
-
-When auditing the standardized archive, verify that:
-
-1. every intended representative dataset has the expected `.nwk` file in `trees/`
-2. `metadata.csv` matches the representative tree actually used in the paper
-3. dated flags are consistent with manuscript claims and derived figure inputs
-4. `dictionary.csv` and `full_mapping.csv` have plausible sizes and no obvious label-cleaning failures
-5. non-archive byproducts are either removed or explicitly classified as legacy outputs
+```r
+library(ape)
+tree <- read.tree("standardized/trees/mammals.nwk")
+dict <- read.csv("standardized/dictionary.csv")
+tree$tip.label <- dict$standardized_name[match(as.integer(tree$tip.label), dict$id)]
+```

@@ -1,0 +1,25 @@
+partition,eukaryotic,labels,resolved_labels,unresolved_labels,unresolved_pct,distinct_accepted_names,match_types
+Amphibians,yes,7238,7199,39,0.5388,6947,accepted=5898; provisional=5; synonym=1296; unmatched=39
+Birds,yes,10824,10510,314,2.9010,10469,accepted=10107; ambiguous=1; synonym=403; unmatched=313
+Bivalves,yes,73,45,28,38.3562,44,accepted=32; synonym=13; unmatched=5; unresolved_label=23
+Bryophytes,yes,533,507,26,4.8780,505,accepted=429; ambiguous=4; synonym=78; unmatched=13; unresolved_label=9
+Bryozoa,yes,565,337,228,40.3540,337,accepted=331; ambiguous=1; synonym=6; unmatched=34; unresolved_label=193
+Cephalopods,yes,81,80,1,1.2346,80,accepted=75; synonym=5; unmatched=1
+Cnidaria,yes,289,259,30,10.3806,258,accepted=253; synonym=6; unmatched=16; unresolved_label=14
+Crocodilians,yes,25,20,5,20.0000,20,accepted=20; unresolved_label=5
+Crustaceans,yes,95,65,30,31.5789,65,accepted=61; synonym=4; unmatched=11; unresolved_label=19
+Diatoms,yes,1113,40,1073,96.4061,39,accepted=38; synonym=2; unmatched=732; unresolved_label=341
+Echinoderms,yes,65,62,3,4.6154,62,accepted=60; synonym=2; unmatched=2; unresolved_label=1
+Ferns,yes,6216,6116,100,1.6088,6097,accepted=6034; accepted_orthographic=7; ambiguous=4; provisional=4; synonym=70; synonym_orthographic=1; unmatched=96
+Fish,yes,31347,31256,91,0.2903,30973,accepted=29015; ambiguous=14; synonym=2241; unmatched=67; unresolved_label=10
+Fungi,yes,1620,1414,206,12.7160,1396,accepted=1232; accepted_orthographic=14; ambiguous=2; synonym=168; unmatched=79; unresolved_label=125
+Gastropods,yes,40,39,1,2.5000,39,accepted=37; synonym=2; unresolved_label=1
+Insects,yes,53373,42300,11073,20.7464,42079,accepted=41413; accepted_orthographic=5; ambiguous=57; provisional=407; synonym=475; unmatched=11008; unresolved_label=8
+Mammals,yes,5911,5739,172,2.9098,5625,accepted=5306; provisional=3; synonym=430; unmatched=172
+Nematodes,yes,156,101,55,35.2564,101,accepted=98; synonym=3; unmatched=30; unresolved_label=25
+Seed plants,yes,348886,308454,40432,11.5889,279049,accepted=254597; accepted_orthographic=237; ambiguous=4239; other_kingdom=11; provisional=151; synonym=53389; synonym_orthographic=80; unmatched=24918; unresolved_label=11264
+Sharks,yes,1192,1180,12,1.0067,1150,accepted=1001; ambiguous=1; synonym=179; unmatched=9; unresolved_label=2
+Spiders,yes,1431,888,543,37.9455,888,accepted=883; synonym=5; unmatched=37; unresolved_label=506
+Sponges,yes,119,87,32,26.8908,86,accepted=81; synonym=6; unmatched=8; unresolved_label=24
+Squamates,yes,9754,9082,672,6.8895,8953,accepted=8710; ambiguous=9; synonym=370; synonym_orthographic=2; unmatched=663
+Turtles,yes,283,257,26,9.1873,256,accepted=253; synonym=4; unmatched=22; unresolved_label=4

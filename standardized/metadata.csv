@@ -1,24 +1,24 @@
 filename,group,study,ntips,dated
-mammals.nwk,mammals,Upham 2019,5912,TRUE
+mammals.nwk,mammals,Upham 2019,5911,TRUE
 birds.nwk,birds,McTavish 2025,10824,TRUE
-amphibians.nwk,amphibians,Jetz & Pyron 2018,7239,TRUE
-fish.nwk,fish,Rabosky 2018,11638,TRUE
+amphibians.nwk,amphibians,Jetz & Pyron 2018,7238,TRUE
+fish.nwk,fish,Rabosky 2018,31347,TRUE
 neotropical_fish.nwk,neotropical_fish,Tagliacollo 2024,3167,TRUE
-squamates.nwk,squamates,Tonini 2016,9755,TRUE
-turtles.nwk,turtles,Thomson 2021,274,TRUE
+squamates.nwk,squamates,Tonini 2016,9754,TRUE
+turtles.nwk,turtles,Thomson 2021,283,TRUE
 primates.nwk,primates,10kTrees v3,301,TRUE
 parrots.nwk,parrots,Burgio 2019,413,TRUE
 carnivora.nwk,carnivora,Nyakatura 2012,294,TRUE
-insects.nwk,insects,insectphylo v2,53596,FALSE
+insects.nwk,insects,insectphylo v2,53373,FALSE
 butterflies.nwk,butterflies,Kawahara 2023,2258,TRUE
-spiders.nwk,spiders,Garrison 2016,1456,TRUE
+spiders.nwk,spiders,Garrison 2016,1431,TRUE
 hemiptera.nwk,hemiptera,Johnson 2018,193,FALSE
 termites.nwk,termites,2024 Nat Comms,138,FALSE
 crustaceans.nwk,crustaceans,Wolfe 2019,95,FALSE
 ants.nwk,ants,Romiguier 2022,83,FALSE
-seed_plants.nwk,seed_plants,Smith & Brown 2018,356305,TRUE
-ferns.nwk,ferns,Nitta 2022,6234,TRUE
-bryophytes.nwk,bryophytes,Bechteler 2023,533,FALSE
+seed_plants.nwk,seed_plants,Smith & Brown 2018,348886,TRUE
+ferns.nwk,ferns,Nitta 2022,6216,TRUE
+bryophytes.nwk,bryophytes,Bechteler 2023,533,TRUE
 grasses.nwk,grasses,GPWG III 2025,1153,FALSE
 orchids.nwk,orchids,Givnish 2023,1475,TRUE
 asteraceae.nwk,asteraceae,Mandel 2019,256,FALSE
@@ -28,16 +28,15 @@ eucalyptus.nwk,eucalyptus,Crisp 2024,399,FALSE
 conifers.nwk,conifers,Ran 2018,16,TRUE
 corals.nwk,corals,2025 Nature,289,TRUE
 cephalopods.nwk,cephalopods,2024 bioRxiv,81,TRUE
-gastropods.nwk,gastropods,Zapata 2014,54,FALSE
-sponges.nwk,sponges,Lavrov 2023,120,TRUE
-echinoderms.nwk,echinoderms,Koch 2022,66,TRUE
-nematodes.nwk,nematodes,2025 Syst Biol,166,FALSE
-diatoms.nwk,diatoms,Theriot 2018,94,FALSE
+gastropods.nwk,gastropods,Zapata 2014,40,FALSE
+sponges.nwk,sponges,Lavrov 2023,119,TRUE
+echinoderms.nwk,echinoderms,Koch 2022,65,TRUE
+nematodes.nwk,nematodes,2025 Syst Biol,156,FALSE
+diatoms.nwk,diatoms,Theriot 2018,1113,FALSE
 bacteria.nwk,bacteria,GTDB R10,136646,FALSE
 archaea.nwk,archaea,GTDB R10,6968,FALSE
-fungi.nwk,fungi,Li 2021,1672,FALSE
+fungi.nwk,fungi,Li 2021,1620,FALSE
 eukaryotes.nwk,eukaryotes,Williamson 2025,100,FALSE
-timetree.nwk,timetree,Hedges 2015,50645,FALSE
 salamanders.nwk,salamanders,Stewart 2025,796,TRUE
 bees.nwk,bees,Henriquez-Piskulich 2024,4586,TRUE
 sharks.nwk,sharks,Stein 2018,1192,TRUE
@@ -261,5 +260,5 @@ condamine_Pythonidae.nwk,condamine_Pythonidae,Condamine 2019,26,TRUE
 condamine_Varanidae.nwk,condamine_Varanidae,Condamine 2019,53,TRUE
 condamine_Viperidae.nwk,condamine_Viperidae,Condamine 2019,209,TRUE
 condamine_Xantusiidae.nwk,condamine_Xantusiidae,Condamine 2019,26,TRUE
-bryozoa.nwk,bryozoa,Orr 2023,720,FALSE
+bryozoa.nwk,bryozoa,Orr 2023,565,FALSE
 frogs.nwk,frogs,Portik 2023,5326,TRUE

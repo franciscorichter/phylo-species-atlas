@@ -1,0 +1,264 @@
+filename,partition_name,is_canonical,raw_leaves,distinct_labels,tips_adopted,published_ntips,source_ntips,delta,convention
+amphibians.nwk,Amphibians,yes,7238,7238,7238,7239,7239,-1,distinct_labels; published=canonical_rebuilt
+ants.nwk,Insects,no,83,83,83,83,,0,distinct_labels
+archaea.nwk,Archaea,yes,6968,6968,6968,6968,6968,0,distinct_labels
+asteraceae.nwk,Seed plants,no,256,256,256,256,,0,distinct_labels
+bacteria.nwk,Bacteria,yes,136646,136646,136646,136646,136646,0,distinct_labels
+bees.nwk,Insects,no,4586,4586,4586,4586,,0,distinct_labels
+birds.nwk,Birds,yes,10824,10824,10824,10824,10824,0,distinct_labels
+bivalves.nwk,Bivalves,yes,73,73,73,73,73,0,distinct_labels
+bryophytes.nwk,Bryophytes,yes,533,533,533,533,533,0,distinct_labels
+bryozoa.nwk,Bryozoa,yes,565,565,565,517,720,48,distinct_labels; published=curated_subset; published=canonical_rebuilt
+butterflies.nwk,Insects,no,2258,2258,2258,2258,,0,distinct_labels
+cacti.nwk,Seed plants,no,1063,1063,1063,1063,,0,distinct_labels
+carnivora.nwk,Mammals,no,294,294,294,294,,0,distinct_labels
+cephalopods.nwk,Cephalopods,yes,81,81,81,81,81,0,distinct_labels
+cetaceans.nwk,Mammals,no,85,85,85,85,,0,distinct_labels
+condamine_Acanthizidae.nwk,Tetrapod families,no,63,63,63,63,,0,distinct_labels
+condamine_Accipitridae.nwk,Tetrapod families,no,242,242,242,242,,0,distinct_labels
+condamine_Acrocephalidae.nwk,Tetrapod families,no,52,52,52,52,,0,distinct_labels
+condamine_Aegithalidae.nwk,Tetrapod families,no,10,10,10,10,,0,distinct_labels
+condamine_Alaudidae.nwk,Tetrapod families,no,91,91,91,91,,0,distinct_labels
+condamine_Alcedinidae.nwk,Tetrapod families,no,91,91,91,91,,0,distinct_labels
+condamine_Alcidae.nwk,Tetrapod families,no,23,23,23,23,,0,distinct_labels
+condamine_Alsodidae.nwk,Tetrapod families,no,20,20,20,20,,0,distinct_labels
+condamine_Alytidae.nwk,Tetrapod families,no,10,10,10,10,,0,distinct_labels
+condamine_Anatidae.nwk,Tetrapod families,no,157,157,157,157,,0,distinct_labels
+condamine_Apodidae.nwk,Tetrapod families,no,99,99,99,99,,0,distinct_labels
+condamine_Ardeidae.nwk,Tetrapod families,no,61,61,61,61,,0,distinct_labels
+condamine_Artamidae.nwk,Tetrapod families,no,11,11,11,11,,0,distinct_labels
+condamine_Atelidae.nwk,Tetrapod families,no,24,24,24,24,,0,distinct_labels
+condamine_Bathyergidae.nwk,Tetrapod families,no,14,14,14,14,,0,distinct_labels
+condamine_Bernieridae.nwk,Tetrapod families,no,11,11,11,11,,0,distinct_labels
+condamine_Bombinatoridae.nwk,Tetrapod families,no,10,10,10,10,,0,distinct_labels
+condamine_Bovidae.nwk,Tetrapod families,no,138,138,138,138,,0,distinct_labels
+condamine_Bucconidae.nwk,Tetrapod families,no,35,35,35,35,,0,distinct_labels
+condamine_Bucerotidae.nwk,Tetrapod families,no,55,55,55,55,,0,distinct_labels
+condamine_Cacatuidae.nwk,Tetrapod families,no,21,21,21,21,,0,distinct_labels
+condamine_Caecilidae.nwk,Tetrapod families,no,31,31,31,31,,0,distinct_labels
+condamine_Campephagidae.nwk,Tetrapod families,no,80,80,80,80,,0,distinct_labels
+condamine_Canidae.nwk,Tetrapod families,no,34,34,34,34,,0,distinct_labels
+condamine_Capitonidae.nwk,Tetrapod families,no,14,14,14,14,,0,distinct_labels
+condamine_Caprimulgidae.nwk,Tetrapod families,no,88,88,88,88,,0,distinct_labels
+condamine_Capromyidae.nwk,Tetrapod families,no,14,14,14,14,,0,distinct_labels
+condamine_Cardinalidae.nwk,Tetrapod families,no,68,68,68,68,,0,distinct_labels
+condamine_Caviidae.nwk,Tetrapod families,no,16,16,16,16,,0,distinct_labels
+condamine_Cebidae.nwk,Tetrapod families,no,48,48,48,48,,0,distinct_labels
+condamine_Cercopithecidae.nwk,Tetrapod families,no,127,127,127,127,,0,distinct_labels
+condamine_Certhiidae.nwk,Tetrapod families,no,10,10,10,10,,0,distinct_labels
+condamine_Cervidae.nwk,Tetrapod families,no,45,45,45,45,,0,distinct_labels
+condamine_Cettiidae.nwk,Tetrapod families,no,32,32,32,32,,0,distinct_labels
+condamine_Chamaeleonidae.nwk,Tetrapod families,no,142,142,142,142,,0,distinct_labels
+condamine_Charadriidae.nwk,Tetrapod families,no,64,64,64,64,,0,distinct_labels
+condamine_Cheirogaleidae.nwk,Tetrapod families,no,15,15,15,15,,0,distinct_labels
+condamine_Chloropseidae.nwk,Tetrapod families,no,11,11,11,11,,0,distinct_labels
+condamine_Chrysochloridae.nwk,Tetrapod families,no,17,17,17,17,,0,distinct_labels
+condamine_Ciconiidae.nwk,Tetrapod families,no,19,19,19,19,,0,distinct_labels
+condamine_Cisticolidae.nwk,Tetrapod families,no,142,142,142,142,,0,distinct_labels
+condamine_Colubridae.nwk,Tetrapod families,no,539,539,539,539,,0,distinct_labels
+condamine_Columbidae.nwk,Tetrapod families,no,306,306,306,306,,0,distinct_labels
+condamine_Conopophagidae.nwk,Tetrapod families,no,11,11,11,11,,0,distinct_labels
+condamine_Coraciidae.nwk,Tetrapod families,no,12,12,12,12,,0,distinct_labels
+condamine_Cordylidae.nwk,Tetrapod families,no,42,42,42,42,,0,distinct_labels
+condamine_Corvidae.nwk,Tetrapod families,no,120,120,120,120,,0,distinct_labels
+condamine_Cotingidae.nwk,Tetrapod families,no,65,65,65,65,,0,distinct_labels
+condamine_Cracidae.nwk,Tetrapod families,no,50,50,50,50,,0,distinct_labels
+condamine_Cracticidae.nwk,Tetrapod families,no,12,12,12,12,,0,distinct_labels
+condamine_Cricetidae.nwk,Tetrapod families,no,620,620,620,620,,0,distinct_labels
+condamine_Crocodylia.nwk,Crocodilians,yes,25,25,25,25,25,0,distinct_labels
+condamine_Crotaphytidae.nwk,Tetrapod families,no,11,11,11,11,,0,distinct_labels
+condamine_Ctenomyidae.nwk,Tetrapod families,no,51,51,51,51,,0,distinct_labels
+condamine_Cuculidae.nwk,Tetrapod families,no,138,138,138,138,,0,distinct_labels
+condamine_Dasypodidae.nwk,Tetrapod families,no,20,20,20,20,,0,distinct_labels
+condamine_Dasyproctidae.nwk,Tetrapod families,no,13,13,13,13,,0,distinct_labels
+condamine_Dasyuridae.nwk,Tetrapod families,no,63,63,63,63,,0,distinct_labels
+condamine_Delphinidae.nwk,Tetrapod families,no,34,34,34,34,,0,distinct_labels
+condamine_Dicaeidae.nwk,Tetrapod families,no,45,45,45,45,,0,distinct_labels
+condamine_Dicruridae.nwk,Tetrapod families,no,24,24,24,24,,0,distinct_labels
+condamine_Didelphidae.nwk,Tetrapod families,no,84,84,84,84,,0,distinct_labels
+condamine_Diomedeidae.nwk,Tetrapod families,no,21,21,21,21,,0,distinct_labels
+condamine_Dipodidae.nwk,Tetrapod families,no,51,51,51,51,,0,distinct_labels
+condamine_Echimyidae.nwk,Tetrapod families,no,69,69,69,69,,0,distinct_labels
+condamine_Eleutherodactylidae.nwk,Tetrapod families,no,145,145,145,145,,0,distinct_labels
+condamine_Emballonuridae.nwk,Tetrapod families,no,49,49,49,49,,0,distinct_labels
+condamine_Emberizidae.nwk,Tetrapod families,no,163,163,163,163,,0,distinct_labels
+condamine_Erethizontidae.nwk,Tetrapod families,no,14,14,14,14,,0,distinct_labels
+condamine_Erinaceidae.nwk,Tetrapod families,no,22,22,22,22,,0,distinct_labels
+condamine_Estrildidae.nwk,Tetrapod families,no,140,140,140,140,,0,distinct_labels
+condamine_Eurylaimidae.nwk,Tetrapod families,no,20,20,20,20,,0,distinct_labels
+condamine_Falconidae.nwk,Tetrapod families,no,64,64,64,64,,0,distinct_labels
+condamine_Felidae.nwk,Tetrapod families,no,40,40,40,40,,0,distinct_labels
+condamine_Formicariidae.nwk,Tetrapod families,no,12,12,12,12,,0,distinct_labels
+condamine_Fringillidae.nwk,Tetrapod families,no,194,194,194,194,,0,distinct_labels
+condamine_Furnariidae.nwk,Tetrapod families,no,302,302,302,302,,0,distinct_labels
+condamine_Galagidae.nwk,Tetrapod families,no,18,18,18,18,,0,distinct_labels
+condamine_Galbulidae.nwk,Tetrapod families,no,18,18,18,18,,0,distinct_labels
+condamine_Geomyidae.nwk,Tetrapod families,no,38,38,38,38,,0,distinct_labels
+condamine_Gerrhosauridae.nwk,Tetrapod families,no,28,28,28,28,,0,distinct_labels
+condamine_Glareolidae.nwk,Tetrapod families,no,17,17,17,17,,0,distinct_labels
+condamine_Gliridae.nwk,Tetrapod families,no,27,27,27,27,,0,distinct_labels
+condamine_Grallariidae.nwk,Tetrapod families,no,49,49,49,49,,0,distinct_labels
+condamine_Gruidae.nwk,Tetrapod families,no,15,15,15,15,,0,distinct_labels
+condamine_Haematopodidae.nwk,Tetrapod families,no,11,11,11,11,,0,distinct_labels
+condamine_Herpestidae.nwk,Tetrapod families,no,33,33,33,33,,0,distinct_labels
+condamine_Heteromyidae.nwk,Tetrapod families,no,58,58,58,58,,0,distinct_labels
+condamine_Hipposideridae.nwk,Tetrapod families,no,74,74,74,74,,0,distinct_labels
+condamine_Hirundinidae.nwk,Tetrapod families,no,83,83,83,83,,0,distinct_labels
+condamine_Hydrobatidae.nwk,Tetrapod families,no,22,22,22,22,,0,distinct_labels
+condamine_Hylobatidae.nwk,Tetrapod families,no,14,14,14,14,,0,distinct_labels
+condamine_Hynobiidae.nwk,Tetrapod families,no,46,46,46,46,,0,distinct_labels
+condamine_Hystricidae.nwk,Tetrapod families,no,11,11,11,11,,0,distinct_labels
+condamine_Icteridae.nwk,Tetrapod families,no,102,102,102,102,,0,distinct_labels
+condamine_Iguanidae.nwk,Tetrapod families,no,31,31,31,31,,0,distinct_labels
+condamine_Indicatoridae.nwk,Tetrapod families,no,17,17,17,17,,0,distinct_labels
+condamine_Indriidae.nwk,Tetrapod families,no,10,10,10,10,,0,distinct_labels
+condamine_Laniidae.nwk,Tetrapod families,no,29,29,29,29,,0,distinct_labels
+condamine_Laridae.nwk,Tetrapod families,no,99,99,99,99,,0,distinct_labels
+condamine_Leiothrichidae.nwk,Tetrapod families,no,127,127,127,127,,0,distinct_labels
+condamine_Lemuridae.nwk,Tetrapod families,no,19,19,19,19,,0,distinct_labels
+condamine_Leporidae.nwk,Tetrapod families,no,58,58,58,58,,0,distinct_labels
+condamine_Locustellidae.nwk,Tetrapod families,no,53,53,53,53,,0,distinct_labels
+condamine_Lybiidae.nwk,Tetrapod families,no,41,41,41,41,,0,distinct_labels
+condamine_Macropodidae.nwk,Tetrapod families,no,56,56,56,56,,0,distinct_labels
+condamine_Macroscelididae.nwk,Tetrapod families,no,15,15,15,15,,0,distinct_labels
+condamine_Macrosphenidae.nwk,Tetrapod families,no,18,18,18,18,,0,distinct_labels
+condamine_Malaconotidae.nwk,Tetrapod families,no,46,46,46,46,,0,distinct_labels
+condamine_Maluridae.nwk,Tetrapod families,no,27,27,27,27,,0,distinct_labels
+condamine_Megalaimidae.nwk,Tetrapod families,no,28,28,28,28,,0,distinct_labels
+condamine_Megapodiidae.nwk,Tetrapod families,no,21,21,21,21,,0,distinct_labels
+condamine_Melanocharitidae.nwk,Tetrapod families,no,10,10,10,10,,0,distinct_labels
+condamine_Meliphagidae.nwk,Tetrapod families,no,177,177,177,177,,0,distinct_labels
+condamine_Mephitidae.nwk,Tetrapod families,no,12,12,12,12,,0,distinct_labels
+condamine_Meropidae.nwk,Tetrapod families,no,26,26,26,26,,0,distinct_labels
+condamine_Mimidae.nwk,Tetrapod families,no,34,34,34,34,,0,distinct_labels
+condamine_Molossidae.nwk,Tetrapod families,no,98,98,98,98,,0,distinct_labels
+condamine_Momotidae.nwk,Tetrapod families,no,10,10,10,10,,0,distinct_labels
+condamine_Monarchidae.nwk,Tetrapod families,no,87,87,87,87,,0,distinct_labels
+condamine_Motacillidae.nwk,Tetrapod families,no,62,62,62,62,,0,distinct_labels
+condamine_Muridae.nwk,Tetrapod families,no,680,680,680,680,,0,distinct_labels
+condamine_Muscicapidae.nwk,Tetrapod families,no,279,279,279,279,,0,distinct_labels
+condamine_Musophagidae.nwk,Tetrapod families,no,23,23,23,23,,0,distinct_labels
+condamine_Mustelidae.nwk,Tetrapod families,no,59,59,59,59,,0,distinct_labels
+condamine_Nectariniidae.nwk,Tetrapod families,no,127,127,127,127,,0,distinct_labels
+condamine_Nesomyidae.nwk,Tetrapod families,no,55,55,55,55,,0,distinct_labels
+condamine_Nycteridae.nwk,Tetrapod families,no,16,16,16,16,,0,distinct_labels
+condamine_Ochotonidae.nwk,Tetrapod families,no,28,28,28,28,,0,distinct_labels
+condamine_Octodontidae.nwk,Tetrapod families,no,10,10,10,10,,0,distinct_labels
+condamine_Odontophoridae.nwk,Tetrapod families,no,34,34,34,34,,0,distinct_labels
+condamine_Oriolidae.nwk,Tetrapod families,no,30,30,30,30,,0,distinct_labels
+condamine_Otariidae.nwk,Tetrapod families,no,16,16,16,16,,0,distinct_labels
+condamine_Otididae.nwk,Tetrapod families,no,25,25,25,25,,0,distinct_labels
+condamine_Pachycephalidae.nwk,Tetrapod families,no,50,50,50,50,,0,distinct_labels
+condamine_Paradisaeidae.nwk,Tetrapod families,no,40,40,40,40,,0,distinct_labels
+condamine_Paridae.nwk,Tetrapod families,no,53,53,53,53,,0,distinct_labels
+condamine_Parulidae.nwk,Tetrapod families,no,109,109,109,109,,0,distinct_labels
+condamine_Passeridae.nwk,Tetrapod families,no,48,48,48,48,,0,distinct_labels
+condamine_Pellorneidae.nwk,Tetrapod families,no,66,66,66,66,,0,distinct_labels
+condamine_Peramelidae.nwk,Tetrapod families,no,17,17,17,17,,0,distinct_labels
+condamine_Petauridae.nwk,Tetrapod families,no,11,11,11,11,,0,distinct_labels
+condamine_Petroicidae.nwk,Tetrapod families,no,44,44,44,44,,0,distinct_labels
+condamine_Phalacrocoracidae.nwk,Tetrapod families,no,33,33,33,33,,0,distinct_labels
+condamine_Phalangeridae.nwk,Tetrapod families,no,22,22,22,22,,0,distinct_labels
+condamine_Phasianidae.nwk,Tetrapod families,no,176,176,176,176,,0,distinct_labels
+condamine_Phocidae.nwk,Tetrapod families,no,18,18,18,18,,0,distinct_labels
+condamine_Phrynosomatidae.nwk,Tetrapod families,no,114,114,114,114,,0,distinct_labels
+condamine_Phylloscopidae.nwk,Tetrapod families,no,71,71,71,71,,0,distinct_labels
+condamine_Phyllostomidae.nwk,Tetrapod families,no,150,150,150,150,,0,distinct_labels
+condamine_Picidae.nwk,Tetrapod families,no,223,223,223,223,,0,distinct_labels
+condamine_Pipidae.nwk,Tetrapod families,no,23,23,23,23,,0,distinct_labels
+condamine_Pipridae.nwk,Tetrapod families,no,52,52,52,52,,0,distinct_labels
+condamine_Pitheciidae.nwk,Tetrapod families,no,37,37,37,37,,0,distinct_labels
+condamine_Pittidae.nwk,Tetrapod families,no,31,31,31,31,,0,distinct_labels
+condamine_Platysteiridae.nwk,Tetrapod families,no,30,30,30,30,,0,distinct_labels
+condamine_Plethodontidae.nwk,Tetrapod families,no,278,278,278,278,,0,distinct_labels
+condamine_Ploceidae.nwk,Tetrapod families,no,108,108,108,108,,0,distinct_labels
+condamine_Podargidae.nwk,Tetrapod families,no,15,15,15,15,,0,distinct_labels
+condamine_Podicipedidae.nwk,Tetrapod families,no,19,19,19,19,,0,distinct_labels
+condamine_Polioptilidae.nwk,Tetrapod families,no,15,15,15,15,,0,distinct_labels
+condamine_Procellariidae.nwk,Tetrapod families,no,81,81,81,81,,0,distinct_labels
+condamine_Procyonidae.nwk,Tetrapod families,no,14,14,14,14,,0,distinct_labels
+condamine_Prunellidae.nwk,Tetrapod families,no,13,13,13,13,,0,distinct_labels
+condamine_Pseudocheiridae.nwk,Tetrapod families,no,16,16,16,16,,0,distinct_labels
+condamine_Psittacidae.nwk,Tetrapod families,no,330,330,330,330,,0,distinct_labels
+condamine_Psophodidae.nwk,Tetrapod families,no,13,13,13,13,,0,distinct_labels
+condamine_Pteroclidae.nwk,Tetrapod families,no,16,16,16,16,,0,distinct_labels
+condamine_Pteropodidae.nwk,Tetrapod families,no,174,174,174,174,,0,distinct_labels
+condamine_Ptilonorhynchidae.nwk,Tetrapod families,no,19,19,19,19,,0,distinct_labels
+condamine_Pycnonotidae.nwk,Tetrapod families,no,124,124,124,124,,0,distinct_labels
+condamine_Pythonidae.nwk,Tetrapod families,no,26,26,26,26,,0,distinct_labels
+condamine_Rallidae.nwk,Tetrapod families,no,125,125,125,125,,0,distinct_labels
+condamine_Ramphastidae.nwk,Tetrapod families,no,35,35,35,35,,0,distinct_labels
+condamine_Ranidae.nwk,Tetrapod families,no,218,218,218,218,,0,distinct_labels
+condamine_Remizidae.nwk,Tetrapod families,no,12,12,12,12,,0,distinct_labels
+condamine_Rhinocryptidae.nwk,Tetrapod families,no,53,53,53,53,,0,distinct_labels
+condamine_Rhinolophidae.nwk,Tetrapod families,no,73,73,73,73,,0,distinct_labels
+condamine_Rhipiduridae.nwk,Tetrapod families,no,42,42,42,42,,0,distinct_labels
+condamine_Salamandridae.nwk,Tetrapod families,no,42,42,42,42,,0,distinct_labels
+condamine_Sciuridae.nwk,Tetrapod families,no,276,276,276,276,,0,distinct_labels
+condamine_Scolopacidae.nwk,Tetrapod families,no,89,89,89,89,,0,distinct_labels
+condamine_Sittidae.nwk,Tetrapod families,no,24,24,24,24,,0,distinct_labels
+condamine_Soricidae.nwk,Tetrapod families,no,329,329,329,329,,0,distinct_labels
+condamine_Spalacidae.nwk,Tetrapod families,no,31,31,31,31,,0,distinct_labels
+condamine_Spheniscidae.nwk,Tetrapod families,no,18,18,18,18,,0,distinct_labels
+condamine_Strigidae.nwk,Tetrapod families,no,191,191,191,191,,0,distinct_labels
+condamine_Sturnidae.nwk,Tetrapod families,no,109,109,109,109,,0,distinct_labels
+condamine_Suidae.nwk,Tetrapod families,no,18,18,18,18,,0,distinct_labels
+condamine_Sulidae.nwk,Tetrapod families,no,10,10,10,10,,0,distinct_labels
+condamine_Sylviidae.nwk,Tetrapod families,no,62,62,62,62,,0,distinct_labels
+condamine_Talpidae.nwk,Tetrapod families,no,39,39,39,39,,0,distinct_labels
+condamine_Tenrecidae.nwk,Tetrapod families,no,25,25,25,25,,0,distinct_labels
+condamine_Testudines.nwk,Tetrapod families,no,233,233,233,233,,0,distinct_labels
+condamine_Thamnophilidae.nwk,Tetrapod families,no,219,219,219,219,,0,distinct_labels
+condamine_Thraupidae.nwk,Tetrapod families,no,370,370,370,370,,0,distinct_labels
+condamine_Threskiornithidae.nwk,Tetrapod families,no,34,34,34,34,,0,distinct_labels
+condamine_Timaliidae.nwk,Tetrapod families,no,55,55,55,55,,0,distinct_labels
+condamine_Tinamidae.nwk,Tetrapod families,no,47,47,47,47,,0,distinct_labels
+condamine_Tityridae.nwk,Tetrapod families,no,41,41,41,41,,0,distinct_labels
+condamine_Trochilidae.nwk,Tetrapod families,no,334,334,334,334,,0,distinct_labels
+condamine_Troglodytidae.nwk,Tetrapod families,no,79,79,79,79,,0,distinct_labels
+condamine_Trogonidae.nwk,Tetrapod families,no,42,42,42,42,,0,distinct_labels
+condamine_Tupaiidae.nwk,Tetrapod families,no,19,19,19,19,,0,distinct_labels
+condamine_Turdidae.nwk,Tetrapod families,no,170,170,170,170,,0,distinct_labels
+condamine_Turnicidae.nwk,Tetrapod families,no,16,16,16,16,,0,distinct_labels
+condamine_Tyrannidae.nwk,Tetrapod families,no,419,419,419,419,,0,distinct_labels
+condamine_Tytonidae.nwk,Tetrapod families,no,15,15,15,15,,0,distinct_labels
+condamine_Vangidae.nwk,Tetrapod families,no,21,21,21,21,,0,distinct_labels
+condamine_Varanidae.nwk,Tetrapod families,no,53,53,53,53,,0,distinct_labels
+condamine_Vespertilionidae.nwk,Tetrapod families,no,386,386,386,386,,0,distinct_labels
+condamine_Viduidae.nwk,Tetrapod families,no,20,20,20,20,,0,distinct_labels
+condamine_Viperidae.nwk,Tetrapod families,no,209,209,209,209,,0,distinct_labels
+condamine_Vireonidae.nwk,Tetrapod families,no,58,58,58,58,,0,distinct_labels
+condamine_Viverridae.nwk,Tetrapod families,no,34,34,34,34,,0,distinct_labels
+condamine_Xantusiidae.nwk,Tetrapod families,no,26,26,26,26,,0,distinct_labels
+condamine_Ziphiidae.nwk,Tetrapod families,no,20,20,20,20,,0,distinct_labels
+condamine_Zosteropidae.nwk,Tetrapod families,no,120,120,120,120,,0,distinct_labels
+conifers.nwk,Conifers,no,16,16,16,16,,0,distinct_labels
+corals.nwk,Cnidaria,yes,289,289,289,289,289,0,distinct_labels
+crustaceans.nwk,Crustaceans,yes,95,95,95,90,95,5,distinct_labels; published=stale_ledger
+diatoms.nwk,Diatoms,yes,1113,1113,1113,244,1171,869,distinct_labels; published=external_swap; published=canonical_rebuilt
+echinoderms.nwk,Echinoderms,yes,65,65,65,66,66,-1,distinct_labels; published=canonical_rebuilt
+eucalyptus.nwk,Seed plants,no,399,399,399,399,,0,distinct_labels
+eukaryotes.nwk,unassigned,no,100,100,100,100,,0,distinct_labels
+ferns.nwk,Ferns,yes,6216,6216,6216,6234,6234,-18,distinct_labels; published=canonical_rebuilt
+fish.nwk,Fish,yes,31347,31347,31347,11638,31516,19709,distinct_labels; published=canonical_rebuilt
+frogs.nwk,Amphibians,no,5326,5326,5326,5326,,0,distinct_labels
+fungi.nwk,Fungi,yes,1620,1620,1620,1602,1672,18,distinct_labels; published=curated_subset; published=canonical_rebuilt
+gastropods.nwk,Gastropods,yes,40,40,40,54,54,-14,distinct_labels; published=canonical_rebuilt
+grasses.nwk,Seed plants,no,1153,1153,1153,1153,,0,distinct_labels
+hemiptera.nwk,Insects,no,193,192,192,193,,-1,distinct_labels; published=raw_tip_positions
+insects.nwk,Insects,yes,53373,53373,53373,53596,53596,-223,distinct_labels; published=canonical_rebuilt
+mammals.nwk,Mammals,yes,5911,5911,5911,5912,5912,-1,distinct_labels; published=canonical_rebuilt
+nematodes.nwk,Nematodes,yes,156,156,156,166,166,-10,distinct_labels; published=canonical_rebuilt
+neotropical_fish.nwk,Fish,no,3167,3167,3167,3167,,0,distinct_labels
+orchids.nwk,Seed plants,no,1475,1475,1475,1475,,0,distinct_labels
+parrots.nwk,Birds,no,413,413,413,413,,0,distinct_labels
+primates.nwk,Mammals,no,301,301,301,301,,0,distinct_labels
+salamanders.nwk,Amphibians,no,796,796,796,796,,0,distinct_labels
+seed_plants.nwk,Seed plants,yes,348886,348886,348886,342466,356305,6420,distinct_labels; published=curated_subset; published=canonical_rebuilt
+sharks.nwk,Sharks,yes,1192,1192,1192,1192,1192,0,distinct_labels
+solanaceae.nwk,Seed plants,no,1076,1076,1076,1076,,0,distinct_labels
+spiders.nwk,Spiders,yes,1431,1431,1431,1456,1456,-25,distinct_labels; published=raw_tip_positions; published=canonical_rebuilt
+sponges.nwk,Sponges,yes,119,119,119,120,120,-1,distinct_labels; published=raw_tip_positions; published=canonical_rebuilt
+squamates.nwk,Squamates,yes,9754,9754,9754,9755,9755,-1,distinct_labels; published=canonical_rebuilt
+termites.nwk,Insects,no,138,138,138,138,,0,distinct_labels
+turtles.nwk,Turtles,yes,283,283,283,274,288,9,distinct_labels; published=curated_subset; published=canonical_rebuilt

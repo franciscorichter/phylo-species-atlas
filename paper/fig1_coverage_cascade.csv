@@ -1,0 +1,27 @@
+kind,level,group,species
+level,C0,Vertebrates,64393
+level,C0,Plants,285651
+level,C0,Arthropods,43031
+level,C0,Other animals,1007
+level,C0,Microbes & protists,1435
+level,C1,Vertebrates,34403
+level,C1,Plants,77325
+level,C1,Arthropods,43031
+level,C1,Other animals,1007
+level,C1,Microbes & protists,1435
+level,C1d,Vertebrates,34403
+level,C1d,Plants,77325
+level,C1d,Arthropods,888
+level,C1d,Other animals,525
+level,C1d,Microbes & protists,39
+level,C1b,Vertebrates,13290
+level,C1b,Plants,0
+level,C1b,Arthropods,0
+level,C1b,Other animals,359
+level,C1b,Microbes & protists,0
+loss,C0>C1,TaxPlaced,238316
+loss,C1>C1d,NotChron,1943
+loss,C1>C1d,RelTime,42078
+loss,C1d>C1b,NoInterval,77728
+loss,C1d>C1b,Kind,20490
+loss,C1d>C1b,Calib,1313

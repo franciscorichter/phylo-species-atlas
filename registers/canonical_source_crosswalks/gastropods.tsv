@@ -1,0 +1,8 @@
+# raw label in Zapata et al. 2014 data/Chronogram.tre <TAB> standardized name in the atlas name layer
+# Siphonaria pectinata -> S. naufragum is the renaming stated in the paper (Methods 2a); the other four are
+# the labels of the same terminals in the authors' ML trees (ABA/OMA Supermatrix 1), verified 2026-10-07
+Pholidoskepia_sp.	Chaetoderma_sp.
+Amphiplica_sp.	Amphiplica_gordensis
+Polinices_heros	Euspira_heros
+Pleurobranchaea_californica_	Pleurobranchaea_californica
+Siphonaria_pectinata	Siphonaria_naufragum

@@ -35,3 +35,6 @@ data/processed/
 
 # Generated name shards for the web viewer — rebuilt by site/build.py
 standardized/names/
+
+# Figures drawn by code/figures/ from paper/
+paper/figures/

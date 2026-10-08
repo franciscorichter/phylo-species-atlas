@@ -1,167 +1,156 @@
 # Phylogenetic Species Atlas
 
-A curated, standardized collection of empirical species-level phylogenies across the tree of life, with per-tree provenance and an archival-uncertainty audit.
+Published species-level phylogenies of eukaryotes, redistributed with numeric tip ids, one
+name layer resolved to the Catalogue of Life, and the registers from which the coverage of
+described species by these trees is counted. It is the data and code of the paper
 
-## Overview
+> Richter F. *Coverage of described eukaryotic species by the largest species-level phylogeny of
+> each group: molecular data, dates and date uncertainty.* bioRxiv,
+> doi:[10.64898/2026.05.31.729127](https://doi.org/10.64898/2026.05.31.729127).
 
-This atlas surveys publicly available, downloadable species-level empirical phylogenies across all major branches of life. It accompanies the paper:
+Every number in the text, tables and figures of the paper is recomputed from this repository by
 
-> **Where the tree of life is empirically resolved, and where it is not: an open atlas of species-level phylogenies and their archival uncertainty**
->
-> Francisco Richter, Università della Svizzera italiana (USI)
-> Zenodo (concept DOI): https://doi.org/10.5281/zenodo.20127157
+```sh
+python3 scripts/reproduce_paper.py
+```
 
 > **Branch lengths in releases v1.0.3 to v1.0.8 are corrupted.** Use v1.0.9 or later for any
 > analysis of branch lengths, node ages or support values. Details: [`ERRATUM.md`](ERRATUM.md).
 
-### At a glance
+Zenodo concept DOI (all versions): [10.5281/zenodo.20127157](https://doi.org/10.5281/zenodo.20127157).
+Licence: CC BY 4.0 (`LICENSE`); the source trees keep the terms of their original archives.
 
-| Item | Value |
+## Contents
+
+| Path | What it holds |
 |---|---|
-| Standardized trees | **264** |
-| Atlas partitions | **62** (26 with shipped canonical + 36 unrepresented) |
-| Source datasets | **49** |
-| Taxonomic groups | **47** |
-| Decomposition | 218 Condamine family-level + 25 further partition-canonical + 21 sub-clade/reference |
-| Global dictionary | **637,619** standardized labels (493,978 eukaryotic + 143,641 prokaryotic) |
-| Time-calibrated | **248 of 264 (94%)** |
-| Eukaryotic coverage (headline C0) | **23.7%** of ~2.1 M described |
-| Sensitivity bound C1 (strict molecular-only on TACT-imputed trees) | **~10%** |
-| Sensitivity bound C2 (strictest non-imputed, non-OTL-pipeline) | **~5.4%** |
-| Archival uncertainty preserved | **7 of 24** non-Condamine dated source trees |
-| Catalogue of Life 2025 reconciliation | included |
-| Licence | CC-BY-4.0 (see `LICENSE`) |
-| Version | v1.0.5 (2026-06-13) |
+| `standardized/trees/` | 263 Newick files with numeric tip ids: the 26 reference trees (one per group that has a species-level tree, 24 eukaryotic and 2 prokaryotic) and 237 other trees, among them 218 family-level trees of tetrapods (Condamine et al. 2019), one of which is the reference tree of Crocodilians. |
+| `standardized/` | The name layer: `dictionary.csv` (id -> standardized name), `full_mapping.csv` (source label -> name), the Catalogue of Life resolution of every reference-tree tip (`col_resolution.csv.gz`), per-tree `metadata.csv`, `canonical_sources/` (the unpruned source of each reference tree) and `superseded_canonicals/` (the seven reference trees this release replaces). See [`standardized/README.md`](standardized/README.md). |
+| `registers/` | The per-group table (`coverage_basis.csv`), the molecular tips of each reference tree and the lists they are taken from, the time-scale, crown-interval and calibration registers, the pruned off-group tips, and the Catalogue of Life, GBIF and Open Tree extracts. See [`registers/README.md`](registers/README.md). |
+| `paper/` | The paper's generated numbers, tables and figure data, as the manuscript prints them. |
+| `scripts/reproduce_paper.py` | Recomputes the paper's numbers from `standardized/` and `registers/` and compares them with `paper/`. Python 3, standard library only. |
+| `code/rebuild/` | The pipeline that wrote `standardized/`, `registers/` and `paper/`, with a map from its paths to this repository. See [`code/rebuild/README.md`](code/rebuild/README.md). |
+| `code/figures/` | The scripts of the five main-text figures (matplotlib). |
+| `phyloatlas/` | An R package that loads any tree by name. |
+| `site/`, `audits/`, `data_provenance.csv`, `data_estimates.csv`, `data_sources.csv` | The browser site and its inputs (see *The browser site* below). |
 
-### Three-category tree classification
+## The four coverage levels
 
-Trees in the atlas are classified explicitly into three categories:
+The 2,159,542 described eukaryotic species are divided into 60 groups; 24 of them have a
+species-level phylogeny, and for each the largest one found is the group's reference tree. A
+described species is counted at four nested levels:
 
-1. **Direct empirical phylogenies** — inferred from molecular or genomic data in a primary study (e.g., Upham et al. 2019 mammals; Stein et al. 2018 sharks).
-2. **Peer-reviewed empirical syntheses** — clade-bounded trees that combine published input phylogenies, sometimes augmented with taxonomic placement, released as standalone peer-reviewed deliverables (e.g., McTavish et al. 2025 birds; Smith & Brown 2018 seed plants; Chesters 2017 insects). May use Open Tree of Life pipeline software, but the resulting tree is published, citable, and clade-bounded.
-3. **Excluded**: the live ~2.4M-tip Open Tree of Life synthesis product (its tips are placed predominantly by taxonomic descent and it lacks a clade-bounded primary methodology paper).
+| Level | A species counts when | Species | % of described |
+|---|---|---:|---:|
+| Named | its Catalogue of Life (COL26.9) accepted name is a tip of its group's reference tree | 395,517 | 18.3 |
+| Molecular | it is named, and the tip is in the molecular analysis from which the tree was built | 157,201 | 7.3 |
+| Dated | it is molecular, and the reference tree is a chronogram in absolute time | 113,180 | 5.2 |
+| Interval | it is dated, and the source archive carries a divergence-time interval for the focal crown that a calibration does not set | 13,649 | 0.63 |
 
-Per-tree provenance — molecular-tip fraction, Open Tree pipeline involvement, dating regime, archival-uncertainty status — is documented in Supplementary Table S5 of the manuscript and in the per-partition `info.yaml` files at `Data/site/data/partitions/<slug>/`.
+A species named in two groups' trees counts once. The interval level is 1.6% when every archived
+interval is counted, whatever its kind. Bacteria and Archaea are counted separately, in GTDB
+species clusters, and enter no eukaryotic number. The values above are those of
+`paper/headline_numbers.json`, which `scripts/reproduce_paper.py` recomputes.
 
-## Repository structure
+How each level is decided, tip by tip:
 
+- **Named**: `standardized/col_resolution.csv.gz` gives each tip's Catalogue of Life match; tips
+  resolving to one accepted name count once; tips labelled cf., aff., sp. or as hybrids are
+  unresolved labels.
+- **Molecular**: `registers/molecular_tips.csv` lists the molecular tips of 21 eukaryotic
+  reference trees, re-derivable from the alignment taxa lists and source-tree tip lists in
+  `registers/molecular_sources/` and the per-tip evidence in `registers/molecular_tip_evidence.csv`;
+  in the other three groups every tip is in the molecular analysis.
+- **Dated**: the reference tree's root-to-tip coefficient of variation is at most 0.05, measured
+  on the file, and `registers/time_scale_checks.csv` records its branch lengths as absolute time
+  (the insect tree is ultrametric in relative time and does not count).
+- **Interval**: `registers/crown_intervals.csv` records the interval each source archive carries
+  for the focal crown; it counts unless its spread describes something other than dating error
+  (date assignment, taxon addition), it is degenerate or held at a calibration bound, or it
+  reproduces the calibration prior on that node (`registers/calibration_register.csv`), as a tree
+  set dated under root ages drawn from the prior does.
+
+## Reproducing the paper
+
+```sh
+python3 scripts/reproduce_paper.py            # about 15 s; exits 0 when every number agrees
+python3 scripts/reproduce_paper.py --quiet    # failures and summary only
 ```
-.
-├── README.md
-├── standardized/
-│   ├── trees/              264 Newick files (numeric tip labels)
-│   ├── dictionary.csv      Standardized-label dictionary: ID → standardized name (637,619 entries)
-│   ├── full_mapping.csv    Full traceability: ID, original label, standardized name, group
-│   ├── col_mapping.csv     Catalogue of Life 2025 name mapping (637,619 entries)
-│   └── metadata.csv        Per-tree metadata: filename, group, study, tips, dated
-└── data_provenance.csv     Complete metadata for all 49 datasets
+
+The script re-implements the counting rules from their statements, without importing the
+pipeline, and checks:
+
+- every reference tree against its source: tips = source tips minus off-group tips minus repeated
+  species, branch lengths preserved;
+- the molecular tips of all 21 listed eukaryotic groups and both prokaryotic groups, re-derived
+  from the distributed lists;
+- the per-group table, the four levels (per group, per category, on the union of groups), the
+  losses between levels, every sensitivity analysis the paper prints, the crown ages and the interval
+  classification, the Open Tree comparison, and the inputs of the worked example;
+- every number printed in the text (all macros of `paper/*_macros.tex`), the three main-text
+  tables cell by cell, and the data of Figures 1 to 5.
+
+The birth-death fits of the worked example are made in R:
+
+```sh
+python3 code/rebuild/run_worked_example.py    # R with ape (and phytools); a few minutes
 ```
 
-## Standardized tree files
+It runs `code/rebuild/worked_example_bd.R` on this repository's files and then checks every
+printed worked-example number against the fresh fits.
 
-All trees are distributed in Newick format with **numeric tip labels** (integers 1--637,619). To recover species names, join the numeric labels against `dictionary.csv`.
+The figures: `python3 code/figures/fig_coverage_cascade.py` and the four other scripts in
+`code/figures/` write Figures 1 to 5 to `paper/figures/`.
 
-### Load any tree from R: the `phyloatlas` package
+## What is not redistributed
+
+- The source deposits (Dryad, Zenodo, Figshare, GitHub, VertLife, FishTreeOfLife, insectphylo,
+  GTDB). Each is cited in `registers/tree_provenance.csv`, in the headers of
+  `registers/molecular_sources/` and in `registers/crown_interval_sources.csv`. What the paper
+  needs from them is redistributed as derived files: the relabelled trees, the taxa lists of the
+  alignments, the tip lists of the trees of sequenced species, and the crown intervals read from
+  the archived tree sets. `code/rebuild/` holds the scripts that derive them.
+- The TimeTree of Life (Hedges et al. 2015), at the TimeTree project's request; it is available
+  from timetree.org. `standardized/withdrawn.csv` lists the checksums of its copies.
+
+## Loading a tree
+
+From R, with the `phyloatlas` package:
 
 ```r
-# install.packages("pak")
 pak::pkg_install("franciscorichter/phylo-species-atlas/phyloatlas")
-
 library(phyloatlas)
-
-list_trees()                                 # all 264 trees + provenance
-atlas_info("birds")                          # metadata for one tree
-tree <- load_atlas_tree("mammals")           # Upham 2019 (5,912 species)
-tree <- load_atlas_tree("birds")             # McTavish 2025 (10,824 species)
-tree <- load_atlas_tree("seed_plants")       # Smith & Brown 2018 (356,305 species)
-tree <- load_atlas_tree("condamine_Vangidae")# Condamine family tree (21 species)
-plot(tree)
+list_trees()
+tree <- load_atlas_tree("mammals")
 ```
 
-For very large trees, skip the species-name lookup (keeps integer IDs, avoids the 18 MB dictionary download):
-
-```r
-tree <- load_atlas_tree("seed_plants", resolve_labels = FALSE)
-```
-
-See [`phyloatlas/README.md`](phyloatlas/README.md) for the full API. If you'd rather not install a package, the equivalent ~5-line snippet using just `ape` works too:
+Or with ape alone, from a clone:
 
 ```r
 library(ape)
-base <- "https://raw.githubusercontent.com/franciscorichter/phylo-species-atlas/main"
-tree <- read.tree(paste0(base, "/standardized/trees/mammals.nwk"))
-dict <- read.csv(paste0(base, "/standardized/dictionary.csv"))
-tree$tip.label <- dict$standardized_name[match(as.integer(tree$tip.label), dict$id)]
-```
-
-### Load from a local clone
-
-```r
-library(ape)
-
 tree <- read.tree("standardized/trees/mammals.nwk")
 dict <- read.csv("standardized/dictionary.csv")
 tree$tip.label <- dict$standardized_name[match(as.integer(tree$tip.label), dict$id)]
 ```
 
-## Species dictionary
+## The browser site
 
-`dictionary.csv` contains two columns:
+`site/` is the source of the page at
+<https://franciscorichter.github.io/phylo-species-atlas/>, built by `site/build.py` from
+`standardized/metadata.csv`, `data_provenance.csv`, `data_estimates.csv`, `data_sources.csv`,
+`audits/` and the per-group notes in `site/data/partitions/`. Its content does not follow the
+paper:
 
-| Column | Description |
-|--------|-------------|
-| `id` | Sequential integer (1--637,619) |
-| `standardized_name` | Standardized species label in `Genus_species` format |
+- its coverage percentages are tips over described species of each dataset, taken from
+  `data_provenance.csv`, not the four levels above, and its described-species totals and crown
+  ages are the values typed there;
+- built from this release, it shows and offers for download, for 24 trees (20 of them reference
+  trees), the copies in `site/data/partitions/*/tree.nwk` instead of the files in
+  `standardized/trees/`; no copy is identical to the release file, and 17 of the 20
+  reference-tree copies have a different set of tips;
+- the committed `site/data.json` was built from release v1.0.8 and lists `timetree.nwk`, which is
+  not redistributed. The deployment workflow (`.github/workflows/pages.yml`) rebuilds it from the
+  files above on every push to `main`.
 
-Labels were standardized by stripping family/order annotations, voucher codes, and institutional suffixes. GTDB genome accessions (bacteria, archaea) are retained as-is.
-
-## Catalogue of Life mapping
-
-`col_mapping.csv` links each atlas entry to its Catalogue of Life 2025 accepted name:
-
-| Column | Description |
-|--------|-------------|
-| `id` | Dictionary ID |
-| `standardized_name` | Atlas species label |
-| `col_id` | CoL accepted taxon ID (empty if no match) |
-| `col_name` | CoL accepted scientific name |
-| `col_kingdom` | Kingdom from CoL classification |
-| `col_family` | Family from CoL classification |
-| `match_type` | `exact`, `synonym`, `gtdb_only`, `genus_only`, `skip`, or `unmatched` |
-
-Match rates: **83.2% of matchable eukaryotic species** mapped to CoL (352K exact + 58K via synonym resolution). The 143K GTDB prokaryote entries use genome accession IDs not present in CoL.
-
-## Full mapping
-
-`full_mapping.csv` provides complete traceability from original tree tip labels to standardized names:
-
-| Column | Description |
-|--------|-------------|
-| `id` | Dictionary ID |
-| `original_label` | Original tip label as it appeared in the source tree |
-| `standardized_name` | Cleaned label |
-| `group` | Taxonomic group (e.g., mammals, birds, insects) |
-
-## Data provenance
-
-`data_provenance.csv` provides complete metadata for each of the 49 datasets, including DOIs, download URLs, phylogenetic methods, and species count sources. See the Supplementary Information for formatted versions of this data (Tables S6 and S7).
-
-## Taxonomic groups covered
-
-**Vertebrates** (14): mammals, birds, amphibians, frogs, salamanders, fish, neotropical fish, squamates, sharks, turtles, primates, parrots, carnivora, cetaceans
-
-**Arthropods** (8): insects (2 datasets), butterflies, bees, ants, hemiptera, termites, spiders, crustaceans
-
-**Plants** (10): seed plants, ferns, conifers, bryophytes, grasses, orchids, asteraceae, solanaceae, cacti, eucalyptus
-
-**Other animals** (8): corals, cephalopods, nematodes, bryozoa, bivalves, gastropods, sponges, echinoderms
-
-**Microbes and protists** (4): diatoms, bacteria, archaea, fungi
-
-**Cross-kingdom** (2): eukaryotes (backbone), TimeTree
-
-**Condamine families** (218): tetrapod family-level dated trees from Condamine et al. 2019
-
-## License
-
-The standardized tree files, dictionary, and metadata are released for academic use. Individual source trees retain the licenses of their original publications. See `data_provenance.csv` for DOIs and original data sources.
+The coverage of described species by these trees is the one in `registers/coverage_basis.csv` and
+`paper/`.

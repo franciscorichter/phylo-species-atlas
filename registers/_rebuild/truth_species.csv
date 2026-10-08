@@ -1,0 +1,63 @@
+partition,group,category,is_prokaryotic,described,described_source,estimated_low,estimated_high,estimate_source,is_unrepresented,conflict_note
+Fish,fish,Vertebrates,False,36000,Eschmeyer's Catalog of Fishes,36000,50000,Mora 2011,False,
+Squamates,squamates,Vertebrates,False,11744,Reptile Database (Uetz 2025),11744,13000,Uetz 2025,False,
+Birds,birds,Vertebrates,False,11195,IUCN Red List 2025,11195,11400,IUCN,False,
+Amphibians,amphibians,Vertebrates,False,8863,AmphibiaWeb 2025,10000,20000,Mora 2011,False,
+Mammals,mammals,Vertebrates,False,6736,"Mammal Diversity Database (MDD, 2024+)",6736,7500,Burgin 2018,False,
+Sharks,sharks,Vertebrates,False,1282,Chondrichthyan Tree of Life,1300,1600,Weigmann 2016,False,
+Turtles,turtles,Vertebrates,False,360,TTWG 2021 / TTWG 2025 (10th edition),360,370,TTWG 2021,False,
+Hagfish,hagfish,Vertebrates,False,82,Fernholm 2013,82,120,Fernholm 2013,True,
+Lampreys,lampreys,Vertebrates,False,48,Potter 2015,48,65,Potter 2015,True,
+Crocodilians,condamine_Crocodylia,Vertebrates,False,27,IUCN Crocodile Specialist Group,27,30,IUCN CSG,False,partition_summary.csv ships BLANK estimated_low/high for this row (propagates as 0 into fig1_coverage_bars.csv and silently drops it from the 23-partition medians); filled from data_estimates.csv + curated info.yaml.
+Other vertebrates,other_vertebrates,Vertebrates,False,9,atlas-aggregated,9,9,Atlas-aggregated,True,no row in data_estimates.csv (that ledger is the 61-partition pre-rebuild scheme); described/estimates from partition_summary.csv + curated info.yaml.
+Seed plants,seed_plants,Plants,False,383671,World Flora Online 2025,400000,500000,Nic Lughadha 2016,False,"Conifers (615 spp, data_estimates.csv only) is NOT a 63rd partition: build.py L652-657/786-790 demotes it to a sub-clade of Seed plants because its species double-count inside this row's 383,671. manuscript_body.tex L31 still asserts Conifers is a separate partition - manuscript is wrong, not the data."
+Bryophytes,bryophytes,Plants,False,24000,Catalogue of Life 2025,24000,28000,CoL 2025,False,
+Ferns,ferns,Plants,False,12000,PPG I 2016,12000,15000,PPG I 2016,False,
+Green algae,green_algae,Plants,False,11000,Guiry 2012,13000,30000,Guiry 2012,True,
+Rhodophyta,rhodophyta,Plants,False,7000,AlgaeBase,7000,15000,AlgaeBase,True,"data_estimates.csv overloads its `category` column with the status 'Not yet represented' here (17 of the 36 unrepresented rows only); taxonomic category taken from partition_summary.csv + curated info.yaml, which agree."
+Lycophytes,lycophytes,Plants,False,1350,PPG I 2016,1350,1500,PPG I 2016,True,
+Insects,insects,Arthropods,False,1000000,Catalogue of Life 2025,2600000,7800000,Stork 2018,False,
+Crustaceans,crustaceans,Arthropods,False,77000,World Register of Marine Species (WoRMS),100000,250000,Appeltans 2012,False,
+Acari,acari,Arthropods,False,55000,Zhang 2013,100000,1000000,Zhang 2013,True,"data_estimates.csv overloads its `category` column with the status 'Not yet represented' here (17 of the 36 unrepresented rows only); taxonomic category taken from partition_summary.csv + curated info.yaml, which agree."
+Spiders,spiders,Arthropods,False,52249,World Spider Catalog 2025,80000,170000,Agnarsson 2013,False,
+Myriapods,myriapods,Arthropods,False,17000,Chapman 2009,40000,130000,Chapman 2009,True,
+Other arachnids,other_arachnids,Arthropods,False,12000,CoL,15000,50000,CoL,True,"described CONFLICT: curated=12004 -> took 12000 (agree: partition_summary+data_estimates) | bounds CONFLICT: curated low=15004; curated high=50004 -> took 15000-50000 | data_estimates.csv overloads its `category` column with the status 'Not yet represented' here (17 of the 36 unrepresented rows only); taxonomic category taken from partition_summary.csv + curated info.yaml, which agree. | Curated info.yaml adds +4 (the 4 extant Xiphosura folded into this catch-all) to described AND to low/total/high alike; the +4 smear on heuristic bounds is spurious. OPEN: whether the 4 horseshoe crabs belong in the described count is unresolved (they are in the partition definition but not in the 12,000)."
+Other hexapods,other_hexapods,Arthropods,False,10000,CoL,10000,25000,CoL,True,"data_estimates.csv overloads its `category` column with the status 'Not yet represented' here (17 of the 36 unrepresented rows only); taxonomic category taken from partition_summary.csv + curated info.yaml, which agree."
+Scorpiones,scorpiones,Arthropods,False,2700,Rein 2024,2700,5000,Rein 2024,True,"data_estimates.csv overloads its `category` column with the status 'Not yet represented' here (17 of the 36 unrepresented rows only); taxonomic category taken from partition_summary.csv + curated info.yaml, which agree."
+Pycnogonida,pycnogonida,Arthropods,False,1400,WoRMS,1400,3000,WoRMS,True,"data_estimates.csv overloads its `category` column with the status 'Not yet represented' here (17 of the 36 unrepresented rows only); taxonomic category taken from partition_summary.csv + curated info.yaml, which agree."
+Gastropods,gastropods,Other animals,False,65000,WoRMS / Appeltans 2012,70000,150000,Appeltans 2012,False,
+Nematodes,nematodes,Other animals,False,28537,WoRMS / Hodda 2022,500000,10000000,Hodda 2022,False,"described CONFLICT: partition_summary=25000 -> took 28537 (agree: data_estimates+c0c1c2_2026-05-31+curated) | Table 1 (main_table_rows.tex L39) prints 28,537 but attributes it to CoL; 28,537 is Hodda 2022, CoL's figure is 25,000 - attribution is crossed in the manuscript."
+Annelids,annelids,Other animals,False,21000,Appeltans 2012,21000,50000,Appeltans 2012,True,
+Bivalves,bivalves,Other animals,False,20000,WoRMS / Appeltans 2012,20000,40000,Appeltans 2012,False,
+Flatworms,flatworms,Other animals,False,20000,Zhang 2013,44000,200000,Zhang 2013,True,
+Sponges,sponges,Other animals,False,9470,WoRMS / Appeltans 2012,10000,25000,Appeltans 2012,False,
+Echinoderms,echinoderms,Other animals,False,7550,WoRMS / Appeltans 2012,8000,15000,Appeltans 2012,False,
+Bryozoa,bryozoa,Other animals,False,6000,WoRMS / Appeltans 2012,6000,10000,Appeltans 2012,False,
+Other phyla,other_phyla,Other animals,False,4300,CoL,4300,15000,CoL,True,"data_estimates.csv overloads its `category` column with the status 'Not yet represented' here (17 of the 36 unrepresented rows only); taxonomic category taken from partition_summary.csv + curated info.yaml, which agree."
+Tunicates,tunicates,Other animals,False,3145,Appeltans 2012,3500,7000,Appeltans 2012,True,
+Myxozoa,myxozoa,Other animals,False,2400,WoRMS,2400,6000,WoRMS,True,"data_estimates.csv overloads its `category` column with the status 'Not yet represented' here (17 of the 36 unrepresented rows only); taxonomic category taken from partition_summary.csv + curated info.yaml, which agree."
+Rotifera,rotifera,Other animals,False,2200,Segers 2007,2200,2500,Segers 2007,True,"data_estimates.csv overloads its `category` column with the status 'Not yet represented' here (17 of the 36 unrepresented rows only); taxonomic category taken from partition_summary.csv + curated info.yaml, which agree."
+Cnidaria,corals,Other animals,False,11800,WoRMS / Appeltans 2012,12000,25000,Appeltans 2012,False,described CONFLICT: partition_summary=1633 -> took 11800 (agree: data_estimates+c0c1c2_2026-05-31+curated) | Root cause of the partition_summary regression: data_provenance.csv L34 carries described_species=1633 scoped to Scleractinia (corals.nwk) while label/category/estimates stayed Cnidaria-wide; build.py lets data_provenance override the curated layer.
+Other Mollusca,other_mollusca,Other animals,False,1500,WoRMS,1500,5000,WoRMS,True,"data_estimates.csv overloads its `category` column with the status 'Not yet represented' here (17 of the 36 unrepresented rows only); taxonomic category taken from partition_summary.csv + curated info.yaml, which agree."
+Tardigrada,tardigrada,Other animals,False,1488,Bartels 2016,1488,3000,Bartels 2016,True,"data_estimates.csv overloads its `category` column with the status 'Not yet represented' here (17 of the 36 unrepresented rows only); taxonomic category taken from partition_summary.csv + curated info.yaml, which agree."
+Acanthocephala,acanthocephala,Other animals,False,1300,CoL,1300,3000,CoL,True,"data_estimates.csv overloads its `category` column with the status 'Not yet represented' here (17 of the 36 unrepresented rows only); taxonomic category taken from partition_summary.csv + curated info.yaml, which agree."
+Nemerteans,nemerteans,Other animals,False,1300,Kajihara 2008,1300,13500,Kajihara 2008,True,
+Cephalopods,cephalopods,Other animals,False,800,WoRMS / WoRMS,900,1500,WoRMS,False,
+Minor animal phyla,minor_animal_phyla,Other animals,False,376,atlas-aggregated,376,700,Atlas-aggregated,True,no row in data_estimates.csv (that ledger is the 61-partition pre-rebuild scheme); described/estimates from partition_summary.csv + curated info.yaml.
+Ctenophores,ctenophores,Other animals,False,200,WoRMS,200,500,WoRMS,True,
+Bacteria,bacteria,Microbes & protists,True,136646,GTDB R10-RS226 species clusters,800000,10000000,Curtis 2002,False,"D12: counted in GTDB species clusters, the unit of the numerator. GTDB R10-RS226 (released 2025-04-16) organises 715,230 bacterial genomes into 136,646 species clusters (Parks et al. 2025, NAR doi:10.1093/nar/gkaf1040, abstract; RELEASE_NOTES.txt: 143,614 clusters in all). The former 715,230 counted genomes. Reported on its own line, never in a eukaryotic total."
+Fungi,fungi,Microbes & protists,False,155000,Catalogue of Life 2025 (Species Fungorum),2200000,3800000,Hawksworth 2017,False,
+Diatoms,diatoms,Microbes & protists,False,20000,AlgaeBase 2025,30000,200000,Mann 2013,False,
+Archaea,archaea,Microbes & protists,True,6968,GTDB R10-RS226 species clusters,20000,500000,Louca 2019,False,"D12: counted in GTDB species clusters, the unit of the numerator. GTDB R10-RS226 organises 17,245 archaeal genomes into 6,968 species clusters (ar53_taxonomy_r226.tsv: 17,245 rows, 6,968 distinct species; Parks et al. 2025 abstract). The former 17,245 counted genomes. Reported on its own line, never in a eukaryotic total."
+Foraminifera,foraminifera,Microbes & protists,False,9000,Hayward 2020,9000,15000,Hayward 2020,True,
+Apicomplexa,apicomplexa,Microbes & protists,False,6000,CoL,6000,20000,CoL,True,"data_estimates.csv overloads its `category` column with the status 'Not yet represented' here (17 of the 36 unrepresented rows only); taxonomic category taken from partition_summary.csv + curated info.yaml, which agree."
+Ciliates,ciliates,Microbes & protists,False,4500,Foissner 2008,20000,100000,Foissner 2008,True,
+Amoebozoa,amoebozoa,Microbes & protists,False,2400,Adl 2007,4000,20000,Adl 2007,True,
+Dinoflagellates,dinoflagellates,Microbes & protists,False,2300,Gomez 2012,3000,10000,Gomez 2012,True,
+Brown algae,brown_algae,Microbes & protists,False,2000,Guiry 2024,2000,4000,Guiry 2024,True,
+Cercozoa,cercozoa,Microbes & protists,False,2000,CoL,2000,10000,CoL,True,"data_estimates.csv overloads its `category` column with the status 'Not yet represented' here (17 of the 36 unrepresented rows only); taxonomic category taken from partition_summary.csv + curated info.yaml, which agree."
+Euglenozoa,euglenozoa,Microbes & protists,False,2000,CoL,2000,10000,CoL,True,"data_estimates.csv overloads its `category` column with the status 'Not yet represented' here (17 of the 36 unrepresented rows only); taxonomic category taken from partition_summary.csv + curated info.yaml, which agree."
+Chrysophyta,chrysophyta,Microbes & protists,False,1200,AlgaeBase,1200,5000,AlgaeBase,True,"data_estimates.csv overloads its `category` column with the status 'Not yet represented' here (17 of the 36 unrepresented rows only); taxonomic category taken from partition_summary.csv + curated info.yaml, which agree."
+Oomycetes,oomycetes,Microbes & protists,False,1000,CoL,1000,3000,CoL,True,"data_estimates.csv overloads its `category` column with the status 'Not yet represented' here (17 of the 36 unrepresented rows only); taxonomic category taken from partition_summary.csv + curated info.yaml, which agree."
+Haptophytes,haptophytes,Microbes & protists,False,760,de Vargas 2007,762,4000,de Vargas 2007,True,
+Choanoflagellates,choanoflagellates,Microbes & protists,False,300,Carr 2008,300,500,Carr 2008,True,

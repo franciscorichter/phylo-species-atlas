@@ -1,0 +1,29 @@
+partition,ott_ids,ott_names,evidence
+Amphibians,544595,Amphibia,OTT 3.7.3 taxonomy.tsv; name checked with api.opentreeoflife.org /v3/taxonomy/taxon_info
+Birds,81461,Aves,as above
+Bivalves,1025545,Bivalvia,as above
+Bryophytes,246594;56601;738980,Bryophyta;Marchantiophyta;Anthocerotophyta,as above; the partition is the three bryophyte phyla
+Bryozoa,442934,Bryozoa,as above
+Cephalopods,7368,Cephalopoda,as above
+Cnidaria,641033,Cnidaria,as above
+Crocodilians,195672,Crocodylia,as above; a broken taxon in synthesis v16.1 (counted by OTT ancestry)
+Crustaceans,632176,Crustacea,as above; a broken taxon in synthesis v16.1 (counted by OTT ancestry)
+Diatoms,5342311,Bacillariophyta,as above
+Echinoderms,451020,Echinodermata,as above
+Ferns,166292,Polypodiopsida,as above
+Fish,773483,Actinopterygii,as above
+Fungi,352914,Fungi,as above
+Gastropods,409995,Gastropoda,as above
+Insects,1062253,Insecta,as above
+Mammals,244265,Mammalia,as above
+Nematodes,395057,Nematoda,as above
+Seed plants,10218,Spermatophyta,as above
+Sharks,278108,Chondrichthyes,as above
+Spiders,614523,Araneae,as above
+Sponges,67819,Porifera,as above
+Squamates,35888,Squamata,as above
+Turtles,639666,Testudines,as above
+Archaea,996421,Archaea,as above
+Bacteria,844192,Bacteria,as above
+__Eukaryota,304358,Eukaryota,as above; reference row (all eukaryotes in Open Tree)
+__all,93302,cellular organisms,as above; the synthesis root

@@ -1,0 +1,1576 @@
+"partition","kingdom","family","n_molecular_tips","n_accepted_names","n_col_species","f"
+"Amphibians","Animalia","Allophrynidae",3,3,3,1
+"Amphibians","Animalia","Alsodidae",27,27,30,0.9
+"Amphibians","Animalia","Alytidae",11,11,12,0.91666667
+"Amphibians","Animalia","Ambystomatidae",24,24,30,0.8
+"Amphibians","Animalia","Amphiumidae",3,3,3,1
+"Amphibians","Animalia","Aromobatidae",61,61,143,0.42657343
+"Amphibians","Animalia","Arthroleptidae",63,62,153,0.40522876
+"Amphibians","Animalia","Ascaphidae",2,2,2,1
+"Amphibians","Animalia","Batrachylidae",6,6,12,0.5
+"Amphibians","Animalia","Bombinatoridae",10,9,9,1
+"Amphibians","Animalia","Brachycephalidae",35,35,82,0.42682927
+"Amphibians","Animalia","Brevicipitidae",21,21,37,0.56756757
+"Amphibians","Animalia","Bufonidae",294,283,660,0.42878788
+"Amphibians","Animalia","Caeciliidae",4,4,52,0.076923077
+"Amphibians","Animalia","Calyptocephalellidae",4,4,5,0.8
+"Amphibians","Animalia","Centrolenidae",98,96,167,0.5748503
+"Amphibians","Animalia","Ceratobatrachidae",18,18,105,0.17142857
+"Amphibians","Animalia","Ceratophryidae",5,5,13,0.38461538
+"Amphibians","Animalia","Ceuthomantidae",1,1,4,0.25
+"Amphibians","Animalia","Chikilidae",1,1,4,0.25
+"Amphibians","Animalia","Conrauidae",4,4,8,0.5
+"Amphibians","Animalia","Craugastoridae",49,48,124,0.38709677
+"Amphibians","Animalia","Cryptobranchidae",3,3,6,0.5
+"Amphibians","Animalia","Cycloramphidae",9,9,37,0.24324324
+"Amphibians","Animalia","Dendrobatidae",107,106,209,0.50717703
+"Amphibians","Animalia","Dermophiidae",7,7,15,0.46666667
+"Amphibians","Animalia","Dicroglossidae",107,105,247,0.42510121
+"Amphibians","Animalia","Eleutherodactylidae",159,159,242,0.65702479
+"Amphibians","Animalia","Ericabatrachidae",1,1,1,1
+"Amphibians","Animalia","Grandisoniidae",16,16,24,0.66666667
+"Amphibians","Animalia","Heleophrynidae",3,3,7,0.42857143
+"Amphibians","Animalia","Hemiphractidae",70,70,123,0.56910569
+"Amphibians","Animalia","Hemisotidae",1,1,9,0.11111111
+"Amphibians","Animalia","Herpelidae",7,7,11,0.63636364
+"Amphibians","Animalia","Hylidae",337,333,761,0.43758213
+"Amphibians","Animalia","Hylodidae",10,10,48,0.20833333
+"Amphibians","Animalia","Hynobiidae",56,54,100,0.54
+"Amphibians","Animalia","Hyperoliidae",97,96,229,0.41921397
+"Amphibians","Animalia","Ichthyophiidae",11,11,58,0.18965517
+"Amphibians","Animalia","Leiopelmatidae",4,3,3,1
+"Amphibians","Animalia","Leptodactylidae",98,98,240,0.40833333
+"Amphibians","Animalia","Limnodynastidae",23,23,46,0.5
+"Amphibians","Animalia","Mantellidae",189,186,292,0.6369863
+"Amphibians","Animalia","Megophryidae",99,97,353,0.27478754
+"Amphibians","Animalia","Micrixalidae",3,3,24,0.125
+"Amphibians","Animalia","Microhylidae",239,238,766,0.31070496
+"Amphibians","Animalia","Myobatrachidae",52,51,92,0.55434783
+"Amphibians","Animalia","Nasikabatrachidae",1,1,2,0.5
+"Amphibians","Animalia","Nyctibatrachidae",28,25,37,0.67567568
+"Amphibians","Animalia","Odontobatrachidae",1,1,5,0.2
+"Amphibians","Animalia","Odontophrynidae",21,19,55,0.34545455
+"Amphibians","Animalia","Pelobatidae",4,4,6,0.66666667
+"Amphibians","Animalia","Pelodryadidae",109,109,245,0.44489796
+"Amphibians","Animalia","Pelodytidae",3,3,4,0.75
+"Amphibians","Animalia","Petropedetidae",10,10,12,0.83333333
+"Amphibians","Animalia","Phrynobatrachidae",56,55,96,0.57291667
+"Amphibians","Animalia","Phyllomedusidae",47,46,67,0.68656716
+"Amphibians","Animalia","Pipidae",26,26,41,0.63414634
+"Amphibians","Animalia","Plethodontidae",359,356,522,0.68199234
+"Amphibians","Animalia","Proteidae",6,6,9,0.66666667
+"Amphibians","Animalia","Ptychadenidae",21,21,62,0.33870968
+"Amphibians","Animalia","Pyxicephalidae",54,53,86,0.61627907
+"Amphibians","Animalia","Ranidae",266,254,465,0.54623656
+"Amphibians","Animalia","Ranixalidae",6,6,18,0.33333333
+"Amphibians","Animalia","Rhacophoridae",204,202,471,0.42887473
+"Amphibians","Animalia","Rhinatrematidae",4,4,15,0.26666667
+"Amphibians","Animalia","Rhinodermatidae",2,2,3,0.66666667
+"Amphibians","Animalia","Rhinophrynidae",1,1,1,1
+"Amphibians","Animalia","Rhyacotritonidae",4,4,4,1
+"Amphibians","Animalia","Salamandridae",90,89,147,0.60544218
+"Amphibians","Animalia","Scaphiopodidae",7,7,7,1
+"Amphibians","Animalia","Scolecomorphidae",4,4,6,0.66666667
+"Amphibians","Animalia","Siphonopidae",6,6,28,0.21428571
+"Amphibians","Animalia","Sirenidae",4,4,7,0.57142857
+"Amphibians","Animalia","Sooglossidae",4,4,4,1
+"Amphibians","Animalia","Strabomantidae",232,232,824,0.2815534
+"Amphibians","Animalia","Telmatobiidae",19,18,60,0.3
+"Amphibians","Animalia","Typhlonectidae",3,3,14,0.21428571
+"Birds","Animalia","Acanthisittidae",4,4,4,1
+"Birds","Animalia","Acanthizidae",63,62,66,0.93939394
+"Birds","Animalia","Accipitridae",184,184,255,0.72156863
+"Birds","Animalia","Acrocephalidae",44,44,62,0.70967742
+"Birds","Animalia","Aegithalidae",10,10,13,0.76923077
+"Birds","Animalia","Aegithinidae",2,2,4,0.5
+"Birds","Animalia","Aegothelidae",9,8,9,0.88888889
+"Birds","Animalia","Alaudidae",96,92,101,0.91089109
+"Birds","Animalia","Alcedinidae",117,114,115,0.99130435
+"Birds","Animalia","Alcidae",25,25,25,1
+"Birds","Animalia","Anatidae",148,148,175,0.84571429
+"Birds","Animalia","Anhimidae",2,2,3,0.66666667
+"Birds","Animalia","Anhingidae",4,4,4,1
+"Birds","Animalia","Anseranatidae",1,1,1,1
+"Birds","Animalia","Apodidae",57,57,113,0.50442478
+"Birds","Animalia","Apterygidae",5,5,5,1
+"Birds","Animalia","Aramidae",1,1,1,1
+"Birds","Animalia","Arcanatoridae",3,3,3,1
+"Birds","Animalia","Ardeidae",55,55,75,0.73333333
+"Birds","Animalia","Artamidae",8,8,11,0.72727273
+"Birds","Animalia","Atrichornithidae",2,2,2,1
+"Birds","Animalia","Balaenicipitidae",1,1,1,1
+"Birds","Animalia","Bernieridae",11,11,11,1
+"Birds","Animalia","Bombycillidae",3,3,3,1
+"Birds","Animalia","Brachypteraciidae",5,5,5,1
+"Birds","Animalia","Bucconidae",9,9,38,0.23684211
+"Birds","Animalia","Bucerotidae",59,59,59,1
+"Birds","Animalia","Bucorvidae",2,2,2,1
+"Birds","Animalia","Buphagidae",2,2,2,1
+"Birds","Animalia","Burhinidae",8,8,10,0.8
+"Birds","Animalia","Cacatuidae",21,21,22,0.95454545
+"Birds","Animalia","Calcariidae",6,6,6,1
+"Birds","Animalia","Callaeidae",5,5,5,1
+"Birds","Animalia","Calyptomenidae",5,5,6,0.83333333
+"Birds","Animalia","Calyptophilidae",2,2,2,1
+"Birds","Animalia","Campephagidae",52,52,92,0.56521739
+"Birds","Animalia","Capitonidae",14,14,15,0.93333333
+"Birds","Animalia","Caprimulgidae",60,60,98,0.6122449
+"Birds","Animalia","Cardinalidae",45,45,53,0.8490566
+"Birds","Animalia","Cariamidae",2,2,2,1
+"Birds","Animalia","Casuariidae",2,2,3,0.66666667
+"Birds","Animalia","Cathartidae",7,7,7,1
+"Birds","Animalia","Certhiidae",9,9,9,1
+"Birds","Animalia","Cettiidae",31,30,31,0.96774194
+"Birds","Animalia","Chaetopidae",2,2,2,1
+"Birds","Animalia","Charadriidae",65,65,69,0.94202899
+"Birds","Animalia","Chionidae",2,2,2,1
+"Birds","Animalia","Chloropseidae",11,11,11,1
+"Birds","Animalia","Ciconiidae",16,16,20,0.8
+"Birds","Animalia","Cinclidae",5,5,5,1
+"Birds","Animalia","Cinclosomatidae",10,10,12,0.83333333
+"Birds","Animalia","Cisticolidae",102,102,161,0.63354037
+"Birds","Animalia","Climacteridae",6,6,7,0.85714286
+"Birds","Animalia","Cnemophilidae",3,3,3,1
+"Birds","Animalia","Coliidae",5,5,6,0.83333333
+"Birds","Animalia","Columbidae",226,226,352,0.64204545
+"Birds","Animalia","Conopophagidae",11,11,12,0.91666667
+"Birds","Animalia","Coraciidae",13,13,13,1
+"Birds","Animalia","Corcoracidae",2,2,2,1
+"Birds","Animalia","Corvidae",117,117,139,0.84172662
+"Birds","Animalia","Cotingidae",65,65,66,0.98484848
+"Birds","Animalia","Cracidae",47,47,56,0.83928571
+"Birds","Animalia","Cracticidae",13,12,12,1
+"Birds","Animalia","Cuculidae",138,138,156,0.88461538
+"Birds","Animalia","Dasyornithidae",3,3,3,1
+"Birds","Animalia","Dicaeidae",33,33,48,0.6875
+"Birds","Animalia","Dicruridae",19,19,26,0.73076923
+"Birds","Animalia","Diomedeidae",15,15,21,0.71428571
+"Birds","Animalia","Donacobiidae",1,1,1,1
+"Birds","Animalia","Dromadidae",1,1,1,1
+"Birds","Animalia","Dromaiidae",1,1,1,1
+"Birds","Animalia","Dulidae",1,1,1,1
+"Birds","Animalia","Elachuridae",1,1,1,1
+"Birds","Animalia","Emberizidae",42,42,45,0.93333333
+"Birds","Animalia","Erythrocercidae",1,1,3,0.33333333
+"Birds","Animalia","Estrildidae",105,105,143,0.73426573
+"Birds","Animalia","Eupetidae",1,1,1,1
+"Birds","Animalia","Eurylaimidae",8,8,10,0.8
+"Birds","Animalia","Eurypygidae",1,1,1,1
+"Birds","Animalia","Falconidae",63,63,65,0.96923077
+"Birds","Animalia","Formicariidae",11,11,12,0.91666667
+"Birds","Animalia","Fregatidae",5,5,5,1
+"Birds","Animalia","Fringillidae",174,174,225,0.77333333
+"Birds","Animalia","Furnariidae",293,292,321,0.90965732
+"Birds","Animalia","Galbulidae",8,8,18,0.44444444
+"Birds","Animalia","Gaviidae",5,5,5,1
+"Birds","Animalia","Glareolidae",15,15,17,0.88235294
+"Birds","Animalia","Grallariidae",49,49,70,0.7
+"Birds","Animalia","Gruidae",15,15,15,1
+"Birds","Animalia","Haematopodidae",11,11,12,0.91666667
+"Birds","Animalia","Heliornithidae",3,3,3,1
+"Birds","Animalia","Hemiprocnidae",4,4,4,1
+"Birds","Animalia","Hirundinidae",79,78,92,0.84782609
+"Birds","Animalia","Hydrobatidae",10,10,18,0.55555556
+"Birds","Animalia","Hyliidae",2,2,2,1
+"Birds","Animalia","Hyliotidae",1,1,4,0.25
+"Birds","Animalia","Hylocitreidae",1,1,1,1
+"Birds","Animalia","Hypocoliidae",1,1,1,1
+"Birds","Animalia","Ibidorhynchidae",1,1,1,1
+"Birds","Animalia","Icteridae",104,104,108,0.96296296
+"Birds","Animalia","Icteriidae",1,1,1,1
+"Birds","Animalia","Ifritidae",1,1,1,1
+"Birds","Animalia","Indicatoridae",8,8,17,0.47058824
+"Birds","Animalia","Irenidae",2,2,2,1
+"Birds","Animalia","Jacanidae",8,8,8,1
+"Birds","Animalia","Laniidae",32,32,34,0.94117647
+"Birds","Animalia","Laridae",92,92,103,0.89320388
+"Birds","Animalia","Leiothrichidae",134,134,143,0.93706294
+"Birds","Animalia","Leptosomidae",1,1,1,1
+"Birds","Animalia","Locustellidae",36,35,61,0.57377049
+"Birds","Animalia","Lybiidae",23,23,42,0.54761905
+"Birds","Animalia","Machaerirhynchidae",2,2,2,1
+"Birds","Animalia","Macrosphenidae",12,12,18,0.66666667
+"Birds","Animalia","Malaconotidae",31,31,50,0.62
+"Birds","Animalia","Maluridae",30,30,33,0.90909091
+"Birds","Animalia","Megalaimidae",33,33,34,0.97058824
+"Birds","Animalia","Megapodiidae",22,21,21,1
+"Birds","Animalia","Melampittidae",2,2,2,1
+"Birds","Animalia","Melanocharitidae",10,10,12,0.83333333
+"Birds","Animalia","Melanopareiidae",4,4,4,1
+"Birds","Animalia","Meliphagidae",181,180,196,0.91836735
+"Birds","Animalia","Menuridae",1,1,2,0.5
+"Birds","Animalia","Meropidae",27,27,31,0.87096774
+"Birds","Animalia","Mesitornithidae",3,3,3,1
+"Birds","Animalia","Mimidae",34,34,35,0.97142857
+"Birds","Animalia","Mitrospingidae",4,4,4,1
+"Birds","Animalia","Mohoidae",3,3,5,0.6
+"Birds","Animalia","Mohouidae",3,3,3,1
+"Birds","Animalia","Momotidae",14,14,14,1
+"Birds","Animalia","Monarchidae",92,91,105,0.86666667
+"Birds","Animalia","Motacillidae",52,52,67,0.7761194
+"Birds","Animalia","Muscicapidae",234,234,318,0.73584906
+"Birds","Animalia","Musophagidae",22,22,23,0.95652174
+"Birds","Animalia","Nectariniidae",63,63,144,0.4375
+"Birds","Animalia","Neosittidae",4,4,4,1
+"Birds","Animalia","Nesospingidae",1,1,1,1
+"Birds","Animalia","Nicatoridae",2,2,3,0.66666667
+"Birds","Animalia","Notiomystidae",1,1,1,1
+"Birds","Animalia","Numididae",6,6,6,1
+"Birds","Animalia","Nyctibiidae",7,7,7,1
+"Birds","Animalia","Oceanitidae",5,5,10,0.5
+"Birds","Animalia","Odontophoridae",33,33,34,0.97058824
+"Birds","Animalia","Onychorhynchidae",6,6,7,0.85714286
+"Birds","Animalia","Opisthocomidae",1,1,1,1
+"Birds","Animalia","Oreoicidae",3,3,3,1
+"Birds","Animalia","Oriolidae",35,35,37,0.94594595
+"Birds","Animalia","Orthonychidae",3,3,3,1
+"Birds","Animalia","Otididae",25,25,26,0.96153846
+"Birds","Animalia","Oxyruncidae",1,1,1,1
+"Birds","Animalia","Pachycephalidae",50,50,53,0.94339623
+"Birds","Animalia","Pandionidae",1,1,1,1
+"Birds","Animalia","Panuridae",1,1,1,1
+"Birds","Animalia","Paradisaeidae",41,41,45,0.91111111
+"Birds","Animalia","Paradoxornithidae",32,32,38,0.84210526
+"Birds","Animalia","Paramythiidae",2,2,3,0.66666667
+"Birds","Animalia","Pardalotidae",4,4,4,1
+"Birds","Animalia","Paridae",58,57,62,0.91935484
+"Birds","Animalia","Parulidae",105,105,120,0.875
+"Birds","Animalia","Passerellidae",125,125,138,0.9057971
+"Birds","Animalia","Passeridae",31,31,50,0.62
+"Birds","Animalia","Pedionomidae",1,1,1,1
+"Birds","Animalia","Pelecanidae",8,8,8,1
+"Birds","Animalia","Pellorneidae",51,51,67,0.76119403
+"Birds","Animalia","Petroicidae",43,43,46,0.93478261
+"Birds","Animalia","Peucedramidae",1,1,1,1
+"Birds","Animalia","Phaenicophilidae",4,4,4,1
+"Birds","Animalia","Phaethontidae",3,3,3,1
+"Birds","Animalia","Phalacrocoracidae",35,35,40,0.875
+"Birds","Animalia","Phasianidae",161,161,185,0.87027027
+"Birds","Animalia","Philepittidae",2,2,4,0.5
+"Birds","Animalia","Phoenicopteridae",6,6,6,1
+"Birds","Animalia","Phoeniculidae",3,3,9,0.33333333
+"Birds","Animalia","Phylloscopidae",65,64,77,0.83116883
+"Birds","Animalia","Picathartidae",2,2,2,1
+"Birds","Animalia","Picidae",202,202,236,0.8559322
+"Birds","Animalia","Pipridae",51,51,55,0.92727273
+"Birds","Animalia","Pittidae",35,35,46,0.76086957
+"Birds","Animalia","Pityriaseidae",1,1,1,1
+"Birds","Animalia","Platylophidae",1,1,1,1
+"Birds","Animalia","Platysteiridae",23,23,32,0.71875
+"Birds","Animalia","Ploceidae",105,105,109,0.96330275
+"Birds","Animalia","Pluvianellidae",1,1,1,1
+"Birds","Animalia","Pluvianidae",1,1,1,1
+"Birds","Animalia","Pnoepygidae",3,3,4,0.75
+"Birds","Animalia","Podargidae",9,9,16,0.5625
+"Birds","Animalia","Podicipedidae",16,16,23,0.69565217
+"Birds","Animalia","Polioptilidae",15,15,17,0.88235294
+"Birds","Animalia","Pomatostomidae",5,5,5,1
+"Birds","Animalia","Procellariidae",77,77,100,0.77
+"Birds","Animalia","Promeropidae",2,2,2,1
+"Birds","Animalia","Prunellidae",13,13,13,1
+"Birds","Animalia","Psittacidae",166,166,180,0.92222222
+"Birds","Animalia","Psittaculidae",176,176,197,0.89340102
+"Birds","Animalia","Psophiidae",3,3,3,1
+"Birds","Animalia","Psophodidae",5,5,5,1
+"Birds","Animalia","Pteroclidae",8,8,16,0.5
+"Birds","Animalia","Ptiliogonatidae",4,4,4,1
+"Birds","Animalia","Ptilonorhynchidae",26,26,28,0.92857143
+"Birds","Animalia","Pycnonotidae",134,134,163,0.82208589
+"Birds","Animalia","Rallidae",102,102,156,0.65384615
+"Birds","Animalia","Ramphastidae",33,33,43,0.76744186
+"Birds","Animalia","Recurvirostridae",9,9,10,0.9
+"Birds","Animalia","Regulidae",6,6,6,1
+"Birds","Animalia","Remizidae",7,7,11,0.63636364
+"Birds","Animalia","Rheidae",2,2,2,1
+"Birds","Animalia","Rhinocryptidae",58,58,65,0.89230769
+"Birds","Animalia","Rhipiduridae",39,39,50,0.78
+"Birds","Animalia","Rhodinocichlidae",1,1,1,1
+"Birds","Animalia","Rhynochetidae",1,1,1,1
+"Birds","Animalia","Rostratulidae",3,3,3,1
+"Birds","Animalia","Sagittariidae",1,1,1,1
+"Birds","Animalia","Salpornithidae",2,2,2,1
+"Birds","Animalia","Sapayoidae",1,1,1,1
+"Birds","Animalia","Sarothruridae",6,6,15,0.4
+"Birds","Animalia","Scolopacidae",82,82,98,0.83673469
+"Birds","Animalia","Scopidae",1,1,1,1
+"Birds","Animalia","Scotocercidae",1,1,1,1
+"Birds","Animalia","Semnornithidae",2,2,2,1
+"Birds","Animalia","Sittidae",23,23,29,0.79310345
+"Birds","Animalia","Spheniscidae",18,18,19,0.94736842
+"Birds","Animalia","Spindalidae",2,2,4,0.5
+"Birds","Animalia","Steatornithidae",1,1,1,1
+"Birds","Animalia","Stenostiridae",9,9,9,1
+"Birds","Animalia","Stercorariidae",7,7,7,1
+"Birds","Animalia","Strigidae",130,129,234,0.55128205
+"Birds","Animalia","Strigopidae",3,3,4,0.75
+"Birds","Animalia","Struthionidae",1,1,2,0.5
+"Birds","Animalia","Sturnidae",98,98,126,0.77777778
+"Birds","Animalia","Sulidae",10,10,11,0.90909091
+"Birds","Animalia","Sylviidae",30,30,32,0.9375
+"Birds","Animalia","Teretistridae",1,1,2,0.5
+"Birds","Animalia","Thamnophilidae",231,230,249,0.92369478
+"Birds","Animalia","Thinocoridae",4,4,4,1
+"Birds","Animalia","Thraupidae",359,359,387,0.92764858
+"Birds","Animalia","Threskiornithidae",21,21,36,0.58333333
+"Birds","Animalia","Tichodromidae",1,1,1,1
+"Birds","Animalia","Timaliidae",48,47,58,0.81034483
+"Birds","Animalia","Tinamidae",44,44,47,0.93617021
+"Birds","Animalia","Tityridae",32,32,37,0.86486486
+"Birds","Animalia","Todidae",5,5,5,1
+"Birds","Animalia","Trochilidae",287,287,361,0.79501385
+"Birds","Animalia","Troglodytidae",59,59,84,0.70238095
+"Birds","Animalia","Trogonidae",39,39,43,0.90697674
+"Birds","Animalia","Turdidae",149,149,193,0.77202073
+"Birds","Animalia","Turnicidae",8,8,18,0.44444444
+"Birds","Animalia","Tyrannidae",413,411,446,0.92152466
+"Birds","Animalia","Tytonidae",7,7,20,0.35
+"Birds","Animalia","Upupidae",1,1,4,0.25
+"Birds","Animalia","Urocynchramidae",1,1,1,1
+"Birds","Animalia","Vangidae",32,32,40,0.8
+"Birds","Animalia","Viduidae",15,15,20,0.75
+"Birds","Animalia","Vireonidae",47,47,63,0.74603175
+"Birds","Animalia","Zeledoniidae",1,1,1,1
+"Birds","Animalia","Zosteropidae",95,95,128,0.7421875
+"Fish","Animalia","Abyssocottidae",14,14,27,0.51851852
+"Fish","Animalia","Acanthistiidae",2,2,11,0.18181818
+"Fish","Animalia","Acanthuridae",67,67,87,0.77011494
+"Fish","Animalia","Acestrorhamphidae",88,88,695,0.12661871
+"Fish","Animalia","Acestrorhynchidae",17,17,26,0.65384615
+"Fish","Animalia","Achiridae",9,9,35,0.25714286
+"Fish","Animalia","Achiropsettidae",3,3,4,0.75
+"Fish","Animalia","Acipenseridae",24,24,27,0.88888889
+"Fish","Animalia","Acropomatidae",3,3,15,0.2
+"Fish","Animalia","Adrianichthyidae",19,19,42,0.45238095
+"Fish","Animalia","Agonidae",22,22,46,0.47826087
+"Fish","Animalia","Ailiidae",11,11,26,0.42307692
+"Fish","Animalia","Akysidae",7,7,59,0.11864407
+"Fish","Animalia","Albulidae",8,8,14,0.57142857
+"Fish","Animalia","Alepisauridae",4,4,5,0.8
+"Fish","Animalia","Alepocephalidae",12,12,103,0.11650485
+"Fish","Animalia","Alestidae",57,57,118,0.48305085
+"Fish","Animalia","Alosidae",19,19,36,0.52777778
+"Fish","Animalia","Ambassidae",13,13,58,0.22413793
+"Fish","Animalia","Amblycipitidae",18,18,42,0.42857143
+"Fish","Animalia","Amblyopsidae",7,7,11,0.63636364
+"Fish","Animalia","Amiidae",1,1,2,0.5
+"Fish","Animalia","Ammodytidae",6,6,35,0.17142857
+"Fish","Animalia","Amphiliidae",6,6,103,0.058252427
+"Fish","Animalia","Anabantidae",14,14,36,0.38888889
+"Fish","Animalia","Anablepidae",5,5,21,0.23809524
+"Fish","Animalia","Anarhichadidae",5,5,5,1
+"Fish","Animalia","Anchariidae",1,1,6,0.16666667
+"Fish","Animalia","Anguillidae",17,17,19,0.89473684
+"Fish","Animalia","Anoplogastridae",1,1,2,0.5
+"Fish","Animalia","Anoplopomatidae",2,2,2,1
+"Fish","Animalia","Anostomidae",24,24,167,0.14371257
+"Fish","Animalia","Anotopteridae",2,2,3,0.66666667
+"Fish","Animalia","Antennariidae",18,18,34,0.52941176
+"Fish","Animalia","Anthiadidae",30,30,246,0.12195122
+"Fish","Animalia","Antigoniidae",3,3,19,0.15789474
+"Fish","Animalia","Aphaniidae",15,13,30,0.43333333
+"Fish","Animalia","Aphredoderidae",1,1,3,0.33333333
+"Fish","Animalia","Apistidae",1,1,4,0.25
+"Fish","Animalia","Aploactinidae",1,1,51,0.019607843
+"Fish","Animalia","Aplocheilidae",7,7,14,0.5
+"Fish","Animalia","Aplodactylidae",5,5,5,1
+"Fish","Animalia","Apogonidae",87,87,374,0.23262032
+"Fish","Animalia","Apteronotidae",10,10,101,0.099009901
+"Fish","Animalia","Aracanidae",8,8,13,0.61538462
+"Fish","Animalia","Arapaimidae",2,2,5,0.4
+"Fish","Animalia","Argentinidae",4,4,30,0.13333333
+"Fish","Animalia","Ariidae",103,102,160,0.6375
+"Fish","Animalia","Ariommatidae",3,3,7,0.42857143
+"Fish","Animalia","Arripidae",2,2,4,0.5
+"Fish","Animalia","Aspredinidae",8,8,51,0.15686275
+"Fish","Animalia","Ateleopodidae",6,3,11,0.27272727
+"Fish","Animalia","Atherinidae",12,12,15,0.8
+"Fish","Animalia","Atherinomoridae",8,8,36,0.22222222
+"Fish","Animalia","Atherinopsidae",62,62,116,0.53448276
+"Fish","Animalia","Auchenipteridae",20,20,134,0.14925373
+"Fish","Animalia","Aulopidae",3,3,17,0.17647059
+"Fish","Animalia","Aulorhynchidae",1,1,1,1
+"Fish","Animalia","Aulostomidae",3,3,3,1
+"Fish","Animalia","Badidae",12,12,34,0.35294118
+"Fish","Animalia","Bagridae",69,69,295,0.23389831
+"Fish","Animalia","Balistidae",32,31,41,0.75609756
+"Fish","Animalia","Balitoridae",45,45,266,0.16917293
+"Fish","Animalia","Banjosidae",1,1,3,0.33333333
+"Fish","Animalia","Barbourisiidae",1,1,1,1
+"Fish","Animalia","Barbuccidae",1,1,3,0.33333333
+"Fish","Animalia","Bathyclupeidae",2,2,10,0.2
+"Fish","Animalia","Bathydraconidae",16,16,17,0.94117647
+"Fish","Animalia","Bathylagidae",7,7,24,0.29166667
+"Fish","Animalia","Bathymasteridae",6,6,7,0.85714286
+"Fish","Animalia","Bathysauridae",1,1,2,0.5
+"Fish","Animalia","Batrachoididae",18,18,85,0.21176471
+"Fish","Animalia","Bedotiidae",12,12,16,0.75
+"Fish","Animalia","Belonidae",31,31,47,0.65957447
+"Fish","Animalia","Bembropidae",5,5,26,0.19230769
+"Fish","Animalia","Berycidae",9,9,13,0.69230769
+"Fish","Animalia","Blenniidae",105,105,414,0.25362319
+"Fish","Animalia","Bothidae",24,24,159,0.1509434
+"Fish","Animalia","Botiidae",38,38,62,0.61290323
+"Fish","Animalia","Bovichtidae",3,3,11,0.27272727
+"Fish","Animalia","Bramidae",10,10,20,0.5
+"Fish","Animalia","Bregmacerotidae",2,2,20,0.1
+"Fish","Animalia","Brotulidae",2,2,7,0.28571429
+"Fish","Animalia","Bryconidae",15,15,52,0.28846154
+"Fish","Animalia","Butidae",11,11,49,0.2244898
+"Fish","Animalia","Bythitidae",11,11,138,0.079710145
+"Fish","Animalia","Caesionidae",13,13,24,0.54166667
+"Fish","Animalia","Callichthyidae",140,140,228,0.61403509
+"Fish","Animalia","Callionymidae",25,25,203,0.12315271
+"Fish","Animalia","Caproidae",1,1,1,1
+"Fish","Animalia","Carangidae",117,117,148,0.79054054
+"Fish","Animalia","Carapidae",2,2,44,0.045454545
+"Fish","Animalia","Catostomidae",68,68,88,0.77272727
+"Fish","Animalia","Cebidichthyidae",1,1,1,1
+"Fish","Animalia","Centrarchidae",33,33,43,0.76744186
+"Fish","Animalia","Centriscidae",4,4,13,0.30769231
+"Fish","Animalia","Centrogenyidae",1,1,1,1
+"Fish","Animalia","Centrolophidae",16,16,29,0.55172414
+"Fish","Animalia","Centropomidae",12,12,13,0.92307692
+"Fish","Animalia","Cepolidae",3,3,180,0.016666667
+"Fish","Animalia","Ceratiidae",3,3,4,0.75
+"Fish","Animalia","Cetomimidae",7,7,32,0.21875
+"Fish","Animalia","Cetopsidae",5,5,45,0.11111111
+"Fish","Animalia","Chacidae",2,2,4,0.5
+"Fish","Animalia","Chaenopsidae",45,45,101,0.44554455
+"Fish","Animalia","Chaetodontidae",96,96,136,0.70588235
+"Fish","Animalia","Chalceidae",3,3,8,0.375
+"Fish","Animalia","Champsodontidae",1,1,14,0.071428571
+"Fish","Animalia","Chanidae",1,1,1,1
+"Fish","Animalia","Channichthyidae",16,16,25,0.64
+"Fish","Animalia","Channidae",21,21,56,0.375
+"Fish","Animalia","Characidae",71,71,214,0.3317757
+"Fish","Animalia","Chaudhuriidae",1,1,11,0.090909091
+"Fish","Animalia","Chaunacidae",5,5,30,0.16666667
+"Fish","Animalia","Cheilodactylidae",20,20,26,0.76923077
+"Fish","Animalia","Cheimarrichthyidae",1,1,1,1
+"Fish","Animalia","Chiasmodontidae",5,5,32,0.15625
+"Fish","Animalia","Chilodidae",2,2,8,0.25
+"Fish","Animalia","Chirocentridae",1,1,2,0.5
+"Fish","Animalia","Chironemidae",6,6,6,1
+"Fish","Animalia","Chlopsidae",4,4,25,0.16
+"Fish","Animalia","Chlorophthalmidae",7,7,22,0.31818182
+"Fish","Animalia","Cichlidae",742,740,1774,0.41713641
+"Fish","Animalia","Cirrhitidae",12,12,37,0.32432432
+"Fish","Animalia","Citharidae",4,4,7,0.57142857
+"Fish","Animalia","Citharinidae",3,3,8,0.375
+"Fish","Animalia","Clariidae",36,36,118,0.30508475
+"Fish","Animalia","Claroteidae",5,5,20,0.25
+"Fish","Animalia","Clinidae",28,28,92,0.30434783
+"Fish","Animalia","Clupeidae",3,3,22,0.13636364
+"Fish","Animalia","Cobitidae",100,99,246,0.40243902
+"Fish","Animalia","Colocongridae",1,1,11,0.090909091
+"Fish","Animalia","Comephoridae",2,2,2,1
+"Fish","Animalia","Congiopodidae",3,3,6,0.5
+"Fish","Animalia","Congridae",32,32,258,0.12403101
+"Fish","Animalia","Coryphaenidae",2,2,3,0.66666667
+"Fish","Animalia","Cottidae",110,110,254,0.43307087
+"Fish","Animalia","Cottocomephoridae",7,7,9,0.77777778
+"Fish","Animalia","Cranoglanididae",1,1,5,0.2
+"Fish","Animalia","Craterocephalidae",20,20,28,0.71428571
+"Fish","Animalia","Creediidae",2,2,18,0.11111111
+"Fish","Animalia","Crenuchidae",7,7,119,0.058823529
+"Fish","Animalia","Cryptacanthodidae",4,4,4,1
+"Fish","Animalia","Ctenoluciidae",1,1,7,0.14285714
+"Fish","Animalia","Curimatidae",20,20,117,0.17094017
+"Fish","Animalia","Cyclopteridae",5,5,31,0.16129032
+"Fish","Animalia","Cynodontidae",4,4,8,0.5
+"Fish","Animalia","Cynoglossidae",34,34,159,0.21383648
+"Fish","Animalia","Cyprinidae",1313,1307,3300,0.39606061
+"Fish","Animalia","Cyprinodontidae",54,54,117,0.46153846
+"Fish","Animalia","Cyttidae",2,2,3,0.66666667
+"Fish","Animalia","Dactylopteridae",3,3,7,0.42857143
+"Fish","Animalia","Dactyloscopidae",5,5,48,0.10416667
+"Fish","Animalia","Denticipitidae",1,1,1,1
+"Fish","Animalia","Derichthyidae",3,3,3,1
+"Fish","Animalia","Dichistiidae",2,2,2,1
+"Fish","Animalia","Dinematichthyidae",2,2,124,0.016129032
+"Fish","Animalia","Dinolestidae",1,1,1,1
+"Fish","Animalia","Dinopercidae",2,2,3,0.66666667
+"Fish","Animalia","Diodontidae",11,11,18,0.61111111
+"Fish","Animalia","Diplomystidae",3,3,7,0.42857143
+"Fish","Animalia","Diplophidae",1,1,8,0.125
+"Fish","Animalia","Diretmidae",2,2,4,0.5
+"Fish","Animalia","Distichodontidae",27,27,108,0.25
+"Fish","Animalia","Doradidae",75,75,98,0.76530612
+"Fish","Animalia","Dorosomatidae",49,49,116,0.42241379
+"Fish","Animalia","Drepaneidae",3,3,3,1
+"Fish","Animalia","Dussumieriidae",7,7,18,0.38888889
+"Fish","Animalia","Echeneidae",8,8,8,1
+"Fish","Animalia","Ehiravidae",3,3,32,0.09375
+"Fish","Animalia","Elassomatidae",6,6,7,0.85714286
+"Fish","Animalia","Eleginopidae",1,1,1,1
+"Fish","Animalia","Eleotridae",43,43,142,0.3028169
+"Fish","Animalia","Ellopostomatidae",1,1,2,0.5
+"Fish","Animalia","Elopidae",4,4,7,0.57142857
+"Fish","Animalia","Embiotocidae",21,21,24,0.875
+"Fish","Animalia","Emmelichthyidae",5,5,19,0.26315789
+"Fish","Animalia","Engraulidae",63,63,177,0.3559322
+"Fish","Animalia","Enoplosidae",1,1,1,1
+"Fish","Animalia","Ephippidae",8,8,15,0.53333333
+"Fish","Animalia","Epigonidae",5,5,53,0.094339623
+"Fish","Animalia","Epinephelidae",130,130,214,0.60747664
+"Fish","Animalia","Erethistidae",15,15,48,0.3125
+"Fish","Animalia","Ereuniidae",1,1,3,0.33333333
+"Fish","Animalia","Erythrinidae",5,5,24,0.20833333
+"Fish","Animalia","Esocidae",8,8,11,0.72727273
+"Fish","Animalia","Euclichthyidae",1,1,5,0.2
+"Fish","Animalia","Eurypharyngidae",1,1,1,1
+"Fish","Animalia","Evermannellidae",3,3,9,0.33333333
+"Fish","Animalia","Exocoetidae",40,39,75,0.52
+"Fish","Animalia","Fistulariidae",3,3,4,0.75
+"Fish","Animalia","Fundulidae",37,37,47,0.78723404
+"Fish","Animalia","Gadidae",22,20,24,0.83333333
+"Fish","Animalia","Gaidropsaridae",5,5,15,0.33333333
+"Fish","Animalia","Galaxiidae",47,47,66,0.71212121
+"Fish","Animalia","Gasteropelecidae",5,5,9,0.55555556
+"Fish","Animalia","Gasterosteidae",7,7,20,0.35
+"Fish","Animalia","Gempylidae",13,13,27,0.48148148
+"Fish","Animalia","Gerreidae",23,23,54,0.42592593
+"Fish","Animalia","Gigantactinidae",2,2,25,0.08
+"Fish","Animalia","Giganturidae",2,2,2,1
+"Fish","Animalia","Glaucosomatidae",4,4,4,1
+"Fish","Animalia","Gobiesocidae",20,20,192,0.10416667
+"Fish","Animalia","Gobiidae",420,420,2064,0.20348837
+"Fish","Animalia","Gobionidae",48,48,135,0.35555556
+"Fish","Animalia","Gonorynchidae",2,2,5,0.4
+"Fish","Animalia","Gonostomatidae",22,22,28,0.78571429
+"Fish","Animalia","Goodeidae",40,40,51,0.78431373
+"Fish","Animalia","Grammatidae",5,5,18,0.27777778
+"Fish","Animalia","Grammicolepididae",2,2,3,0.66666667
+"Fish","Animalia","Grammistidae",14,14,34,0.41176471
+"Fish","Animalia","Gymnarchidae",1,1,1,1
+"Fish","Animalia","Gymnotidae",19,19,46,0.41304348
+"Fish","Animalia","Gyrinocheilidae",3,3,3,1
+"Fish","Animalia","Haemulidae",89,89,145,0.6137931
+"Fish","Animalia","Halosauridae",4,4,16,0.25
+"Fish","Animalia","Harpadontidae",6,6,31,0.19354839
+"Fish","Animalia","Harpagiferidae",23,23,42,0.54761905
+"Fish","Animalia","Helostomatidae",1,1,1,1
+"Fish","Animalia","Hemerocoetidae",3,3,40,0.075
+"Fish","Animalia","Hemilepidotidae",6,6,6,1
+"Fish","Animalia","Hemiodontidae",5,5,33,0.15151515
+"Fish","Animalia","Hemiramphidae",17,17,61,0.27868852
+"Fish","Animalia","Hemitripteridae",4,4,5,0.8
+"Fish","Animalia","Hepsetidae",1,1,6,0.16666667
+"Fish","Animalia","Heptapteridae",29,28,239,0.11715481
+"Fish","Animalia","Heterenchelyidae",1,1,9,0.11111111
+"Fish","Animalia","Heteropneustidae",2,2,5,0.4
+"Fish","Animalia","Hexagrammidae",10,10,10,1
+"Fish","Animalia","Himantolophidae",3,3,23,0.13043478
+"Fish","Animalia","Hiodontidae",2,2,2,1
+"Fish","Animalia","Histiophrynidae",10,10,17,0.58823529
+"Fish","Animalia","Holocentridae",43,43,98,0.43877551
+"Fish","Animalia","Hoplichthyidae",2,2,18,0.11111111
+"Fish","Animalia","Horabagridae",5,5,9,0.55555556
+"Fish","Animalia","Howellidae",2,2,11,0.18181818
+"Fish","Animalia","Hyperlophidae",1,1,3,0.33333333
+"Fish","Animalia","Hypopomidae",6,6,36,0.16666667
+"Fish","Animalia","Hypoptychidae",2,2,2,1
+"Fish","Animalia","Ichthyococcidae",1,1,7,0.14285714
+"Fish","Animalia","Icosteidae",1,1,1,1
+"Fish","Animalia","Ictaluridae",40,40,52,0.76923077
+"Fish","Animalia","Iguanodectidae",4,4,37,0.10810811
+"Fish","Animalia","Indostomidae",1,1,3,0.33333333
+"Fish","Animalia","Ipnopidae",3,3,33,0.090909091
+"Fish","Animalia","Isonidae",2,2,5,0.4
+"Fish","Animalia","Istiophoridae",10,10,11,0.90909091
+"Fish","Animalia","Jordaniidae",2,2,3,0.66666667
+"Fish","Animalia","Kneriidae",2,2,32,0.0625
+"Fish","Animalia","Kraemeriidae",2,2,9,0.22222222
+"Fish","Animalia","Kuhliidae",12,11,12,0.91666667
+"Fish","Animalia","Kurtidae",1,1,2,0.5
+"Fish","Animalia","Kyphosidae",21,20,44,0.45454545
+"Fish","Animalia","Labridae",339,339,695,0.48776978
+"Fish","Animalia","Labrisomidae",47,47,125,0.376
+"Fish","Animalia","Lacantuniidae",1,1,1,1
+"Fish","Animalia","Lactariidae",1,1,4,0.25
+"Fish","Animalia","Lampridae",2,2,5,0.4
+"Fish","Animalia","Lateolabracidae",2,2,5,0.4
+"Fish","Animalia","Latidae",5,5,14,0.35714286
+"Fish","Animalia","Latridae",6,6,9,0.66666667
+"Fish","Animalia","Lebiasinidae",4,4,79,0.050632911
+"Fish","Animalia","Leiognathidae",29,29,52,0.55769231
+"Fish","Animalia","Lepidarchidae",1,1,2,0.5
+"Fish","Animalia","Lepidocybiidae",1,1,1,1
+"Fish","Animalia","Lepidogalaxiidae",1,1,1,1
+"Fish","Animalia","Lepisosteidae",7,7,7,1
+"Fish","Animalia","Leptobramidae",1,1,2,0.5
+"Fish","Animalia","Lethrinidae",30,30,43,0.69767442
+"Fish","Animalia","Liopropomatidae",2,2,5,0.4
+"Fish","Animalia","Liparidae",62,62,458,0.13537118
+"Fish","Animalia","Lobotidae",6,6,11,0.54545455
+"Fish","Animalia","Lophiidae",11,11,32,0.34375
+"Fish","Animalia","Lophotidae",2,2,5,0.4
+"Fish","Animalia","Loricariidae",225,221,1070,0.20654206
+"Fish","Animalia","Lotidae",8,8,9,0.88888889
+"Fish","Animalia","Lumpenidae",10,10,12,0.83333333
+"Fish","Animalia","Lutjanidae",62,62,116,0.53448276
+"Fish","Animalia","Luvaridae",1,1,1,1
+"Fish","Animalia","Macrouridae",97,97,432,0.22453704
+"Fish","Animalia","Malacanthidae",20,20,49,0.40816327
+"Fish","Animalia","Malakichthyidae",4,4,18,0.22222222
+"Fish","Animalia","Malapteruridae",6,6,21,0.28571429
+"Fish","Animalia","Mastacembelidae",33,31,94,0.32978723
+"Fish","Animalia","Megalopidae",2,2,2,1
+"Fish","Animalia","Melamphaidae",12,12,81,0.14814815
+"Fish","Animalia","Melanocetidae",2,2,6,0.33333333
+"Fish","Animalia","Melanonidae",2,2,6,0.33333333
+"Fish","Animalia","Melanotaeniidae",68,68,113,0.60176991
+"Fish","Animalia","Menidae",1,1,1,1
+"Fish","Animalia","Merlucciidae",17,17,27,0.62962963
+"Fish","Animalia","Microdesmidae",15,15,95,0.15789474
+"Fish","Animalia","Microstomatidae",3,3,22,0.13636364
+"Fish","Animalia","Milyeringidae",5,5,6,0.83333333
+"Fish","Animalia","Mochokidae",78,78,225,0.34666667
+"Fish","Animalia","Molidae",3,3,5,0.6
+"Fish","Animalia","Monacanthidae",51,51,109,0.46788991
+"Fish","Animalia","Monocentridae",1,1,5,0.2
+"Fish","Animalia","Monodactylidae",2,2,6,0.33333333
+"Fish","Animalia","Moridae",25,24,122,0.19672131
+"Fish","Animalia","Moringuidae",3,3,16,0.1875
+"Fish","Animalia","Mormyridae",83,83,243,0.34156379
+"Fish","Animalia","Moronidae",6,6,6,1
+"Fish","Animalia","Mugilidae",62,59,80,0.7375
+"Fish","Animalia","Mullidae",32,32,105,0.3047619
+"Fish","Animalia","Muraenesocidae",5,5,15,0.33333333
+"Fish","Animalia","Muraenidae",64,64,226,0.28318584
+"Fish","Animalia","Muraenolepididae",3,3,9,0.33333333
+"Fish","Animalia","Myctophidae",113,113,295,0.38305085
+"Fish","Animalia","Nandidae",3,3,7,0.42857143
+"Fish","Animalia","Nautichthyidae",3,3,3,1
+"Fish","Animalia","Nemacheilidae",70,70,835,0.083832335
+"Fish","Animalia","Nematogenyidae",1,1,1,1
+"Fish","Animalia","Nemichthyidae",3,3,9,0.33333333
+"Fish","Animalia","Nemipteridae",24,24,77,0.31168831
+"Fish","Animalia","Neoscopelidae",3,3,7,0.42857143
+"Fish","Animalia","Neosebastidae",5,5,18,0.27777778
+"Fish","Animalia","Nettastomatidae",7,7,50,0.14
+"Fish","Animalia","Niphonidae",1,1,1,1
+"Fish","Animalia","Nomeidae",9,9,17,0.52941176
+"Fish","Animalia","Normanichthyidae",1,1,1,1
+"Fish","Animalia","Notacanthidae",4,4,11,0.36363636
+"Fish","Animalia","Nothobranchiidae",126,126,310,0.40645161
+"Fish","Animalia","Notopteridae",6,6,11,0.54545455
+"Fish","Animalia","Notosudidae",4,4,17,0.23529412
+"Fish","Animalia","Nototheniidae",40,40,58,0.68965517
+"Fish","Animalia","Odontobutidae",9,9,24,0.375
+"Fish","Animalia","Ogcocephalidae",10,10,101,0.099009901
+"Fish","Animalia","Olyridae",1,1,11,0.090909091
+"Fish","Animalia","Omosudidae",1,1,1,1
+"Fish","Animalia","Oneirodidae",8,8,72,0.11111111
+"Fish","Animalia","Ophichthidae",38,38,369,0.10298103
+"Fish","Animalia","Ophidiidae",27,27,291,0.092783505
+"Fish","Animalia","Opisthoproctidae",2,2,24,0.083333333
+"Fish","Animalia","Opistognathidae",6,6,96,0.0625
+"Fish","Animalia","Oplegnathidae",5,5,7,0.71428571
+"Fish","Animalia","Oreosomatidae",8,8,10,0.8
+"Fish","Animalia","Osmeridae",13,13,15,0.86666667
+"Fish","Animalia","Osphronemidae",69,69,139,0.49640288
+"Fish","Animalia","Osteoglossidae",5,5,6,0.83333333
+"Fish","Animalia","Ostraciidae",17,17,25,0.68
+"Fish","Animalia","Pangasiidae",16,16,29,0.55172414
+"Fish","Animalia","Paralepididae",9,9,71,0.12676056
+"Fish","Animalia","Paralichthyidae",43,43,112,0.38392857
+"Fish","Animalia","Paraulopidae",1,1,18,0.055555556
+"Fish","Animalia","Parazenidae",2,2,5,0.4
+"Fish","Animalia","Parodontidae",5,5,32,0.15625
+"Fish","Animalia","Pataecidae",1,1,3,0.33333333
+"Fish","Animalia","Pegasidae",1,1,7,0.14285714
+"Fish","Animalia","Pempheridae",8,8,83,0.096385542
+"Fish","Animalia","Pentacerotidae",10,10,13,0.76923077
+"Fish","Animalia","Percichthyidae",28,28,40,0.7
+"Fish","Animalia","Percidae",219,219,251,0.87250996
+"Fish","Animalia","Perciliidae",1,1,2,0.5
+"Fish","Animalia","Percophidae",1,1,1,1
+"Fish","Animalia","Percopsidae",2,2,2,1
+"Fish","Animalia","Peristediidae",9,9,47,0.19148936
+"Fish","Animalia","Phallostethidae",1,1,23,0.043478261
+"Fish","Animalia","Pholidae",12,12,15,0.8
+"Fish","Animalia","Pholidichthyidae",1,1,2,0.5
+"Fish","Animalia","Phosichthyidae",1,1,3,0.33333333
+"Fish","Animalia","Phreatobiidae",2,2,3,0.66666667
+"Fish","Animalia","Phycidae",9,9,11,0.81818182
+"Fish","Animalia","Pimelodidae",60,60,119,0.50420168
+"Fish","Animalia","Pinguipedidae",9,9,107,0.08411215
+"Fish","Animalia","Platycephalidae",35,35,91,0.38461538
+"Fish","Animalia","Platytroctidae",10,10,40,0.25
+"Fish","Animalia","Plecoglossidae",1,1,1,1
+"Fish","Animalia","Plesiopidae",2,2,51,0.039215686
+"Fish","Animalia","Pleuronectidae",56,54,103,0.52427184
+"Fish","Animalia","Plotosidae",8,8,43,0.18604651
+"Fish","Animalia","Poeciliidae",156,156,371,0.42048518
+"Fish","Animalia","Polycentridae",2,2,5,0.4
+"Fish","Animalia","Polymixiidae",4,4,13,0.30769231
+"Fish","Animalia","Polynemidae",13,13,43,0.30232558
+"Fish","Animalia","Polyodontidae",2,2,2,1
+"Fish","Animalia","Polyprionidae",2,2,2,1
+"Fish","Animalia","Polypteridae",14,14,14,1
+"Fish","Animalia","Pomacanthidae",55,55,92,0.59782609
+"Fish","Animalia","Pomacentridae",223,223,434,0.51382488
+"Fish","Animalia","Pomatomidae",1,1,1,1
+"Fish","Animalia","Priacanthidae",10,10,21,0.47619048
+"Fish","Animalia","Pristigasteridae",9,9,37,0.24324324
+"Fish","Animalia","Pristolepididae",2,2,8,0.25
+"Fish","Animalia","Prochilodontidae",14,14,21,0.66666667
+"Fish","Animalia","Profundulidae",7,7,14,0.5
+"Fish","Animalia","Psettodidae",3,3,3,1
+"Fish","Animalia","Pseudaphritidae",1,1,1,1
+"Fish","Animalia","Pseudochromidae",20,20,157,0.12738854
+"Fish","Animalia","Pseudomugilidae",3,3,19,0.15789474
+"Fish","Animalia","Pseudopimelodidae",12,12,53,0.22641509
+"Fish","Animalia","Pseudotrichonotidae",1,1,4,0.25
+"Fish","Animalia","Psilorhynchidae",2,2,31,0.064516129
+"Fish","Animalia","Psychrolutidae",12,12,41,0.29268293
+"Fish","Animalia","Ptilichthyidae",1,1,1,1
+"Fish","Animalia","Rachycentridae",1,1,1,1
+"Fish","Animalia","Ranicipitidae",1,1,1,1
+"Fish","Animalia","Regalecidae",2,2,3,0.66666667
+"Fish","Animalia","Retropinnidae",5,5,7,0.71428571
+"Fish","Animalia","Rhamphichthyidae",2,2,30,0.066666667
+"Fish","Animalia","Rhamphocottidae",1,1,1,1
+"Fish","Animalia","Rhyacichthyidae",3,3,3,1
+"Fish","Animalia","Rhycheridae",1,1,2,0.5
+"Fish","Animalia","Ritidae",2,2,7,0.28571429
+"Fish","Animalia","Rivulidae",133,132,487,0.27104723
+"Fish","Animalia","Rondeletiidae",2,2,2,1
+"Fish","Animalia","Saccopharyngidae",1,1,10,0.1
+"Fish","Animalia","Salangidae",16,15,19,0.78947368
+"Fish","Animalia","Salmonidae",84,84,248,0.33870968
+"Fish","Animalia","Samaridae",5,5,31,0.16129032
+"Fish","Animalia","Scatophagidae",3,3,4,0.75
+"Fish","Animalia","Schilbeidae",5,5,34,0.14705882
+"Fish","Animalia","Schindleriidae",2,2,8,0.25
+"Fish","Animalia","Sciaenidae",110,110,306,0.35947712
+"Fish","Animalia","Scoloplacidae",1,1,6,0.16666667
+"Fish","Animalia","Scomberesocidae",3,3,5,0.6
+"Fish","Animalia","Scombridae",47,47,57,0.8245614
+"Fish","Animalia","Scombropidae",2,2,3,0.66666667
+"Fish","Animalia","Scopelarchidae",5,5,18,0.27777778
+"Fish","Animalia","Scophthalmidae",8,8,9,0.88888889
+"Fish","Animalia","Scorpaenidae",56,56,245,0.22857143
+"Fish","Animalia","Scorpididae",5,5,11,0.45454545
+"Fish","Animalia","Sebastidae",113,113,136,0.83088235
+"Fish","Animalia","Serpenticobitidae",1,1,3,0.33333333
+"Fish","Animalia","Serranidae",39,39,106,0.36792453
+"Fish","Animalia","Serrasalmidae",42,42,108,0.38888889
+"Fish","Animalia","Serrivomeridae",4,4,10,0.4
+"Fish","Animalia","Setarchidae",2,2,10,0.2
+"Fish","Animalia","Siganidae",24,24,29,0.82758621
+"Fish","Animalia","Sillaginidae",16,16,41,0.3902439
+"Fish","Animalia","Siluridae",26,26,114,0.22807018
+"Fish","Animalia","Siluriformes_incertae_sedis",1,1,1,1
+"Fish","Animalia","Sisoridae",72,72,287,0.25087108
+"Fish","Animalia","Soleidae",30,30,188,0.15957447
+"Fish","Animalia","Sparidae",97,97,165,0.58787879
+"Fish","Animalia","Sphyraenidae",20,20,30,0.66666667
+"Fish","Animalia","Spintherobolidae",4,4,5,0.8
+"Fish","Animalia","Spratelloididae",4,4,8,0.5
+"Fish","Animalia","Steindachneriidae",1,1,1,1
+"Fish","Animalia","Stephanoberycidae",1,1,4,0.25
+"Fish","Animalia","Stereolepididae",1,1,2,0.5
+"Fish","Animalia","Sternoptychidae",24,24,85,0.28235294
+"Fish","Animalia","Sternopygidae",6,6,58,0.10344828
+"Fish","Animalia","Stevardiidae",41,41,356,0.11516854
+"Fish","Animalia","Stichaeidae",36,36,72,0.5
+"Fish","Animalia","Stomiidae",45,45,317,0.14195584
+"Fish","Animalia","Stromateidae",11,10,18,0.55555556
+"Fish","Animalia","Stylephoridae",1,1,1,1
+"Fish","Animalia","Sudidae",1,1,2,0.5
+"Fish","Animalia","Symphysanodontidae",2,2,15,0.13333333
+"Fish","Animalia","Synagropidae",4,4,19,0.21052632
+"Fish","Animalia","Synanceiidae",4,4,40,0.1
+"Fish","Animalia","Synaphobranchidae",9,9,55,0.16363636
+"Fish","Animalia","Synbranchidae",2,2,30,0.066666667
+"Fish","Animalia","Syngnathidae",91,88,313,0.28115016
+"Fish","Animalia","Synodontidae",16,16,53,0.30188679
+"Fish","Animalia","Taeniopsettidae",1,1,10,0.1
+"Fish","Animalia","Tathicarpidae",1,1,1,1
+"Fish","Animalia","Telmatherinidae",11,11,18,0.61111111
+"Fish","Animalia","Terapontidae",35,35,61,0.57377049
+"Fish","Animalia","Tetrabrachiidae",2,2,2,1
+"Fish","Animalia","Tetragonuridae",2,2,3,0.66666667
+"Fish","Animalia","Tetraodontidae",108,108,198,0.54545455
+"Fish","Animalia","Tetrarogidae",6,6,44,0.13636364
+"Fish","Animalia","Thalasseleotrididae",2,2,6,0.33333333
+"Fish","Animalia","Tincidae",1,1,1,1
+"Fish","Animalia","Toxotidae",2,2,10,0.2
+"Fish","Animalia","Trachichthyidae",14,14,51,0.2745098
+"Fish","Animalia","Trachinidae",4,4,9,0.44444444
+"Fish","Animalia","Trachipteridae",7,7,10,0.7
+"Fish","Animalia","Triacanthidae",4,4,7,0.57142857
+"Fish","Animalia","Triacanthodidae",4,4,24,0.16666667
+"Fish","Animalia","Trichiuridae",15,15,47,0.31914894
+"Fish","Animalia","Trichodontidae",2,2,2,1
+"Fish","Animalia","Trichomycteridae",36,36,391,0.092071611
+"Fish","Animalia","Trichonotidae",3,3,10,0.3
+"Fish","Animalia","Triglidae",30,30,135,0.22222222
+"Fish","Animalia","Triodontidae",1,1,1,1
+"Fish","Animalia","Triportheidae",11,11,24,0.45833333
+"Fish","Animalia","Tripterygiidae",22,22,191,0.11518325
+"Fish","Animalia","Umbridae",3,3,3,1
+"Fish","Animalia","Uranoscopidae",13,13,62,0.20967742
+"Fish","Animalia","Vaillantellidae",1,1,3,0.33333333
+"Fish","Animalia","Valenciidae",2,2,3,0.66666667
+"Fish","Animalia","Veliferidae",2,2,2,1
+"Fish","Animalia","Vinciguerriidae",2,2,6,0.33333333
+"Fish","Animalia","Xiphiidae",1,1,1,1
+"Fish","Animalia","Yarrellidae",3,3,8,0.375
+"Fish","Animalia","Zanclidae",1,1,1,1
+"Fish","Animalia","Zanclorhynchidae",1,1,3,0.33333333
+"Fish","Animalia","Zaniolepididae",2,2,2,1
+"Fish","Animalia","Zaproridae",1,1,1,1
+"Fish","Animalia","Zeidae",4,4,7,0.57142857
+"Fish","Animalia","Zenarchopteridae",6,6,66,0.090909091
+"Fish","Animalia","Zeniontidae",1,1,7,0.14285714
+"Fish","Animalia","Zoarcidae",90,90,312,0.28846154
+"Mammals","Animalia","Abrocomidae",4,4,10,0.4
+"Mammals","Animalia","Acrobatidae",2,2,3,0.66666667
+"Mammals","Animalia","Ailuridae",1,1,2,0.5
+"Mammals","Animalia","Anomaluridae",2,2,6,0.33333333
+"Mammals","Animalia","Antilocapridae",1,1,1,1
+"Mammals","Animalia","Aotidae",8,8,11,0.72727273
+"Mammals","Animalia","Aplodontiidae",1,1,1,1
+"Mammals","Animalia","Atelidae",19,18,23,0.7826087
+"Mammals","Animalia","Balaenidae",4,4,4,1
+"Mammals","Animalia","Balaenopteridae",8,8,9,0.88888889
+"Mammals","Animalia","Bathyergidae",11,11,20,0.55
+"Mammals","Animalia","Bovidae",136,134,296,0.4527027
+"Mammals","Animalia","Bradypodidae",3,3,4,0.75
+"Mammals","Animalia","Burramyidae",5,5,5,1
+"Mammals","Animalia","Caenolestidae",6,6,7,0.85714286
+"Mammals","Animalia","Callitrichidae",32,32,54,0.59259259
+"Mammals","Animalia","Calomyscidae",3,3,8,0.375
+"Mammals","Animalia","Camelidae",7,7,7,1
+"Mammals","Animalia","Canidae",36,35,41,0.85365854
+"Mammals","Animalia","Castoridae",2,2,2,1
+"Mammals","Animalia","Caviidae",15,15,23,0.65217391
+"Mammals","Animalia","Cebidae",15,14,31,0.4516129
+"Mammals","Animalia","Cercopithecidae",106,106,162,0.65432099
+"Mammals","Animalia","Cervidae",46,45,55,0.81818182
+"Mammals","Animalia","Chaeropodidae",1,1,2,0.5
+"Mammals","Animalia","Cheirogaleidae",25,24,41,0.58536585
+"Mammals","Animalia","Chinchillidae",7,6,7,0.85714286
+"Mammals","Animalia","Chlamyphoridae",9,9,13,0.69230769
+"Mammals","Animalia","Chrysochloridae",14,14,21,0.66666667
+"Mammals","Animalia","Cistugidae",2,2,2,1
+"Mammals","Animalia","Craseonycteridae",1,1,1,1
+"Mammals","Animalia","Cricetidae",505,504,706,0.71388102
+"Mammals","Animalia","Ctenodactylidae",3,3,5,0.6
+"Mammals","Animalia","Ctenomyidae",46,44,72,0.61111111
+"Mammals","Animalia","Cuniculidae",2,2,2,1
+"Mammals","Animalia","Cyclopedidae",1,1,7,0.14285714
+"Mammals","Animalia","Cynocephalidae",2,2,2,1
+"Mammals","Animalia","Dasypodidae",2,2,8,0.25
+"Mammals","Animalia","Dasyproctidae",6,6,15,0.4
+"Mammals","Animalia","Dasyuridae",63,62,76,0.81578947
+"Mammals","Animalia","Daubentoniidae",1,1,1,1
+"Mammals","Animalia","Delphinidae",35,34,40,0.85
+"Mammals","Animalia","Diatomyidae",1,1,1,1
+"Mammals","Animalia","Didelphidae",82,79,121,0.65289256
+"Mammals","Animalia","Dinomyidae",1,1,1,1
+"Mammals","Animalia","Dipodidae",33,32,52,0.61538462
+"Mammals","Animalia","Dugongidae",2,2,2,1
+"Mammals","Animalia","Echimyidae",70,70,116,0.60344828
+"Mammals","Animalia","Elephantidae",2,2,3,0.66666667
+"Mammals","Animalia","Emballonuridae",40,40,55,0.72727273
+"Mammals","Animalia","Equidae",8,8,10,0.8
+"Mammals","Animalia","Erethizontidae",15,15,17,0.88235294
+"Mammals","Animalia","Erinaceidae",19,19,34,0.55882353
+"Mammals","Animalia","Eschrichtiidae",1,1,1,1
+"Mammals","Animalia","Eupleridae",8,7,7,1
+"Mammals","Animalia","Felidae",34,34,46,0.73913043
+"Mammals","Animalia","Furipteridae",1,1,2,0.5
+"Mammals","Animalia","Galagidae",14,14,19,0.73684211
+"Mammals","Animalia","Geomyidae",39,37,47,0.78723404
+"Mammals","Animalia","Giraffidae",2,2,5,0.4
+"Mammals","Animalia","Gliridae",8,8,29,0.27586207
+"Mammals","Animalia","Herpestidae",27,27,34,0.79411765
+"Mammals","Animalia","Heterocephalidae",1,1,1,1
+"Mammals","Animalia","Heteromyidae",59,58,68,0.85294118
+"Mammals","Animalia","Hippopotamidae",2,2,5,0.4
+"Mammals","Animalia","Hipposideridae",52,52,87,0.59770115
+"Mammals","Animalia","Hominidae",7,7,8,0.875
+"Mammals","Animalia","Hyaenidae",4,4,4,1
+"Mammals","Animalia","Hylobatidae",16,16,20,0.8
+"Mammals","Animalia","Hyperoodontidae",17,17,24,0.70833333
+"Mammals","Animalia","Hypsiprymnodontidae",1,1,1,1
+"Mammals","Animalia","Hystricidae",7,7,11,0.63636364
+"Mammals","Animalia","Indriidae",11,11,19,0.57894737
+"Mammals","Animalia","Iniidae",3,1,1,1
+"Mammals","Animalia","Kogiidae",2,2,2,1
+"Mammals","Animalia","Lemuridae",20,20,21,0.95238095
+"Mammals","Animalia","Lepilemuridae",16,15,25,0.6
+"Mammals","Animalia","Leporidae",47,47,68,0.69117647
+"Mammals","Animalia","Lipotidae",1,1,1,1
+"Mammals","Animalia","Lorisidae",9,9,17,0.52941176
+"Mammals","Animalia","Macropodidae",49,48,67,0.71641791
+"Mammals","Animalia","Macroscelididae",14,14,20,0.7
+"Mammals","Animalia","Manidae",6,6,10,0.6
+"Mammals","Animalia","Megadermatidae",4,4,6,0.66666667
+"Mammals","Animalia","Megalonychidae",2,2,2,1
+"Mammals","Animalia","Mephitidae",9,9,15,0.6
+"Mammals","Animalia","Microbiotheriidae",1,1,1,1
+"Mammals","Animalia","Miniopteridae",20,20,40,0.5
+"Mammals","Animalia","Molossidae",59,58,131,0.44274809
+"Mammals","Animalia","Monodontidae",2,2,2,1
+"Mammals","Animalia","Mormoopidae",8,8,20,0.4
+"Mammals","Animalia","Moschidae",6,6,7,0.85714286
+"Mammals","Animalia","Muridae",384,384,775,0.49548387
+"Mammals","Animalia","Mustelidae",53,53,66,0.8030303
+"Mammals","Animalia","Myrmecobiidae",1,1,1,1
+"Mammals","Animalia","Myrmecophagidae",2,2,3,0.66666667
+"Mammals","Animalia","Mystacinidae",1,1,2,0.5
+"Mammals","Animalia","Myzopodidae",2,2,2,1
+"Mammals","Animalia","Nandiniidae",1,1,1,1
+"Mammals","Animalia","Natalidae",7,7,12,0.58333333
+"Mammals","Animalia","Neobalaenidae",1,1,1,1
+"Mammals","Animalia","Nesomyidae",36,36,63,0.57142857
+"Mammals","Animalia","Noctilionidae",2,2,2,1
+"Mammals","Animalia","Notoryctidae",2,2,2,1
+"Mammals","Animalia","Nycteridae",6,6,15,0.4
+"Mammals","Animalia","Ochotonidae",25,25,30,0.83333333
+"Mammals","Animalia","Octodontidae",11,11,15,0.73333333
+"Mammals","Animalia","Odobenidae",1,1,1,1
+"Mammals","Animalia","Ornithorhynchidae",1,1,1,1
+"Mammals","Animalia","Orycteropodidae",1,1,1,1
+"Mammals","Animalia","Otariidae",14,13,15,0.86666667
+"Mammals","Animalia","Pedetidae",2,2,2,1
+"Mammals","Animalia","Peramelidae",13,13,20,0.65
+"Mammals","Animalia","Petauridae",6,6,12,0.5
+"Mammals","Animalia","Petromuridae",1,1,1,1
+"Mammals","Animalia","Phalangeridae",14,14,29,0.48275862
+"Mammals","Animalia","Phascolarctidae",1,1,1,1
+"Mammals","Animalia","Phocidae",19,19,19,1
+"Mammals","Animalia","Phocoenidae",7,7,7,1
+"Mammals","Animalia","Phyllostomidae",166,166,226,0.73451327
+"Mammals","Animalia","Physeteridae",1,1,1,1
+"Mammals","Animalia","Pitheciidae",22,21,64,0.328125
+"Mammals","Animalia","Platacanthomyidae",1,1,2,0.5
+"Mammals","Animalia","Platanistidae",1,1,2,0.5
+"Mammals","Animalia","Pontoporiidae",1,1,1,1
+"Mammals","Animalia","Potamogalidae",2,2,3,0.66666667
+"Mammals","Animalia","Potoroidae",9,9,12,0.75
+"Mammals","Animalia","Prionodontidae",2,2,2,1
+"Mammals","Animalia","Procaviidae",3,3,6,0.5
+"Mammals","Animalia","Procyonidae",13,12,13,0.92307692
+"Mammals","Animalia","Pseudocheiridae",13,13,20,0.65
+"Mammals","Animalia","Pteropodidae",121,119,197,0.60406091
+"Mammals","Animalia","Ptilocercidae",1,1,1,1
+"Mammals","Animalia","Rhinocerotidae",5,5,5,1
+"Mammals","Animalia","Rhinolophidae",58,57,109,0.52293578
+"Mammals","Animalia","Rhinonycteridae",8,7,9,0.77777778
+"Mammals","Animalia","Rhinopomatidae",4,4,6,0.66666667
+"Mammals","Animalia","Sciuridae",200,200,286,0.6993007
+"Mammals","Animalia","Solenodontidae",1,1,4,0.25
+"Mammals","Animalia","Soricidae",243,241,487,0.49486653
+"Mammals","Animalia","Spalacidae",16,16,36,0.44444444
+"Mammals","Animalia","Suidae",13,13,18,0.72222222
+"Mammals","Animalia","Tachyglossidae",1,1,4,0.25
+"Mammals","Animalia","Talpidae",38,38,62,0.61290323
+"Mammals","Animalia","Tapiridae",5,4,4,1
+"Mammals","Animalia","Tarsiidae",6,6,14,0.42857143
+"Mammals","Animalia","Tarsipedidae",1,1,1,1
+"Mammals","Animalia","Tayassuidae",3,3,3,1
+"Mammals","Animalia","Tenrecidae",15,15,31,0.48387097
+"Mammals","Animalia","Thryonomyidae",1,1,2,0.5
+"Mammals","Animalia","Thylacomyidae",1,1,2,0.5
+"Mammals","Animalia","Thyropteridae",3,3,5,0.6
+"Mammals","Animalia","Tragulidae",6,6,10,0.6
+"Mammals","Animalia","Trichechidae",3,3,3,1
+"Mammals","Animalia","Tupaiidae",12,12,22,0.54545455
+"Mammals","Animalia","Ursidae",8,8,8,1
+"Mammals","Animalia","Vespertilionidae",275,267,520,0.51346154
+"Mammals","Animalia","Viverridae",30,30,36,0.83333333
+"Mammals","Animalia","Vombatidae",3,3,3,1
+"Seed plants","Plantae","Acanthaceae",402,390,5596,0.069692638
+"Seed plants","Plantae","Achariaceae",14,14,188,0.074468085
+"Seed plants","Plantae","Achatocarpaceae",2,2,10,0.2
+"Seed plants","Plantae","Acoraceae",7,4,5,0.8
+"Seed plants","Plantae","Actinidiaceae",77,71,478,0.14853556
+"Seed plants","Plantae","Aextoxicaceae",1,1,1,1
+"Seed plants","Plantae","Aizoaceae",339,334,1805,0.18504155
+"Seed plants","Plantae","Akaniaceae",2,2,2,1
+"Seed plants","Plantae","Alismataceae",68,64,125,0.512
+"Seed plants","Plantae","Alseuosmiaceae",5,5,11,0.45454545
+"Seed plants","Plantae","Alstroemeriaceae",113,107,271,0.39483395
+"Seed plants","Plantae","Altingiaceae",14,13,15,0.86666667
+"Seed plants","Plantae","Alzateaceae",1,1,1,1
+"Seed plants","Plantae","Amaranthaceae",533,511,2397,0.21318315
+"Seed plants","Plantae","Amaryllidaceae",435,418,2654,0.15749812
+"Seed plants","Plantae","Amborellaceae",1,1,1,1
+"Seed plants","Plantae","Amphorogynaceae",11,11,84,0.13095238
+"Seed plants","Plantae","Anacampserotaceae",14,12,46,0.26086957
+"Seed plants","Plantae","Anacardiaceae",215,213,946,0.22515856
+"Seed plants","Plantae","Ancistrocladaceae",18,16,19,0.84210526
+"Seed plants","Plantae","Anisophylleaceae",14,13,60,0.21666667
+"Seed plants","Plantae","Annonaceae",901,837,2624,0.31897866
+"Seed plants","Plantae","Aphanopetalaceae",2,2,2,1
+"Seed plants","Plantae","Aphloiaceae",1,1,1,1
+"Seed plants","Plantae","Apiaceae",2099,1963,3934,0.49898322
+"Seed plants","Plantae","Apocynaceae",1167,1136,6776,0.16765053
+"Seed plants","Plantae","Aponogetonaceae",17,15,60,0.25
+"Seed plants","Plantae","Aptandraceae",10,10,38,0.26315789
+"Seed plants","Plantae","Aquifoliaceae",144,135,621,0.2173913
+"Seed plants","Plantae","Araceae",877,833,4927,0.1690684
+"Seed plants","Plantae","Araliaceae",508,482,1740,0.27701149
+"Seed plants","Plantae","Araucariaceae",37,30,38,0.78947368
+"Seed plants","Plantae","Arecaceae",760,729,2589,0.2815759
+"Seed plants","Plantae","Argophyllaceae",3,3,25,0.12
+"Seed plants","Plantae","Aristolochiaceae",158,146,610,0.23934426
+"Seed plants","Plantae","Asaraceae",75,73,138,0.52898551
+"Seed plants","Plantae","Asparagaceae",508,492,3693,0.13322502
+"Seed plants","Plantae","Asphodelaceae",287,276,1347,0.20489978
+"Seed plants","Plantae","Asteliaceae",8,8,37,0.21621622
+"Seed plants","Plantae","Asteraceae",7129,6874,36168,0.19005751
+"Seed plants","Plantae","Asteropeiaceae",1,1,8,0.125
+"Seed plants","Plantae","Atherospermataceae",5,5,18,0.27777778
+"Seed plants","Plantae","Austrobaileyaceae",1,1,1,1
+"Seed plants","Plantae","Balanopaceae",2,2,9,0.22222222
+"Seed plants","Plantae","Balanophoraceae",14,13,56,0.23214286
+"Seed plants","Plantae","Balsaminaceae",116,113,1208,0.093543046
+"Seed plants","Plantae","Barbeuiaceae",1,1,1,1
+"Seed plants","Plantae","Barbeyaceae",1,1,1,1
+"Seed plants","Plantae","Basellaceae",6,6,19,0.31578947
+"Seed plants","Plantae","Bataceae",1,1,2,0.5
+"Seed plants","Plantae","Begoniaceae",443,428,2227,0.1921868
+"Seed plants","Plantae","Berberidaceae",238,217,729,0.29766804
+"Seed plants","Plantae","Berberidopsidaceae",3,3,3,1
+"Seed plants","Plantae","Betulaceae",88,84,214,0.39252336
+"Seed plants","Plantae","Bignoniaceae",123,122,916,0.13318777
+"Seed plants","Plantae","Bixaceae",2,2,28,0.071428571
+"Seed plants","Plantae","Blandfordiaceae",3,3,5,0.6
+"Seed plants","Plantae","Bonnetiaceae",9,9,38,0.23684211
+"Seed plants","Plantae","Boraginaceae",750,701,2109,0.33238502
+"Seed plants","Plantae","Borthwickiaceae",1,1,1,1
+"Seed plants","Plantae","Boryaceae",3,3,13,0.23076923
+"Seed plants","Plantae","Brassicaceae",1590,1481,4221,0.35086472
+"Seed plants","Plantae","Bromeliaceae",809,779,3843,0.20270622
+"Seed plants","Plantae","Brunelliaceae",4,4,58,0.068965517
+"Seed plants","Plantae","Bruniaceae",64,64,80,0.8
+"Seed plants","Plantae","Burmanniaceae",56,56,256,0.21875
+"Seed plants","Plantae","Burseraceae",227,223,762,0.29265092
+"Seed plants","Plantae","Butomaceae",1,1,2,0.5
+"Seed plants","Plantae","Buxaceae",32,31,129,0.24031008
+"Seed plants","Plantae","Byblidaceae",3,3,8,0.375
+"Seed plants","Plantae","Cabombaceae",2,2,6,0.33333333
+"Seed plants","Plantae","Cactaceae",1035,909,1919,0.47368421
+"Seed plants","Plantae","Calceolariaceae",31,31,271,0.11439114
+"Seed plants","Plantae","Calophyllaceae",42,42,443,0.094808126
+"Seed plants","Plantae","Calycanthaceae",10,10,11,0.90909091
+"Seed plants","Plantae","Calyceraceae",34,32,46,0.69565217
+"Seed plants","Plantae","Campanulaceae",408,380,2522,0.15067407
+"Seed plants","Plantae","Campynemataceae",3,3,4,0.75
+"Seed plants","Plantae","Canellaceae",12,12,23,0.52173913
+"Seed plants","Plantae","Cannabaceae",42,36,128,0.28125
+"Seed plants","Plantae","Cannaceae",7,7,15,0.46666667
+"Seed plants","Plantae","Capparaceae",55,51,448,0.11383929
+"Seed plants","Plantae","Caprifoliaceae",473,425,1124,0.37811388
+"Seed plants","Plantae","Cardiopteridaceae",8,7,42,0.16666667
+"Seed plants","Plantae","Caricaceae",26,26,45,0.57777778
+"Seed plants","Plantae","Carlemanniaceae",2,2,5,0.4
+"Seed plants","Plantae","Caryocaraceae",2,2,26,0.076923077
+"Seed plants","Plantae","Caryophyllaceae",798,751,3393,0.22133805
+"Seed plants","Plantae","Casuarinaceae",75,75,92,0.81521739
+"Seed plants","Plantae","Celastraceae",423,401,1332,0.30105105
+"Seed plants","Plantae","Centroplacaceae",3,3,9,0.33333333
+"Seed plants","Plantae","Cephalotaceae",1,1,1,1
+"Seed plants","Plantae","Cephalotaxaceae",10,8,8,1
+"Seed plants","Plantae","Ceratophyllaceae",6,5,6,0.83333333
+"Seed plants","Plantae","Cercidiphyllaceae",2,2,2,1
+"Seed plants","Plantae","Cervantesiaceae",10,9,19,0.47368421
+"Seed plants","Plantae","Chloranthaceae",55,50,76,0.65789474
+"Seed plants","Plantae","Chrysobalanaceae",71,70,548,0.12773723
+"Seed plants","Plantae","Circaeasteraceae",1,1,2,0.5
+"Seed plants","Plantae","Cistaceae",8,8,307,0.026058632
+"Seed plants","Plantae","Cleomaceae",106,97,257,0.37743191
+"Seed plants","Plantae","Clethraceae",18,18,100,0.18
+"Seed plants","Plantae","Clusiaceae",181,167,925,0.18054054
+"Seed plants","Plantae","Codonaceae",2,2,2,1
+"Seed plants","Plantae","Colchicaceae",224,210,307,0.68403909
+"Seed plants","Plantae","Coldeniaceae",1,1,1,1
+"Seed plants","Plantae","Columelliaceae",2,2,7,0.28571429
+"Seed plants","Plantae","Comandraceae",2,2,2,1
+"Seed plants","Plantae","Combretaceae",99,97,586,0.16552901
+"Seed plants","Plantae","Commelinaceae",100,99,787,0.12579416
+"Seed plants","Plantae","Connaraceae",19,18,232,0.077586207
+"Seed plants","Plantae","Convolvulaceae",165,158,1985,0.079596977
+"Seed plants","Plantae","Cordiaceae",89,86,376,0.2287234
+"Seed plants","Plantae","Coriariaceae",10,8,17,0.47058824
+"Seed plants","Plantae","Cornaceae",58,53,118,0.44915254
+"Seed plants","Plantae","Corsiaceae",1,1,27,0.037037037
+"Seed plants","Plantae","Corynocarpaceae",5,5,5,1
+"Seed plants","Plantae","Costaceae",77,72,163,0.44171779
+"Seed plants","Plantae","Coulaceae",3,3,3,1
+"Seed plants","Plantae","Crassulaceae",583,546,1902,0.28706625
+"Seed plants","Plantae","Crossosomataceae",5,5,6,0.83333333
+"Seed plants","Plantae","Crypteroniaceae",6,6,13,0.46153846
+"Seed plants","Plantae","Ctenolophonaceae",1,1,2,0.5
+"Seed plants","Plantae","Cucurbitaceae",585,552,1088,0.50735294
+"Seed plants","Plantae","Cunoniaceae",92,91,329,0.27659574
+"Seed plants","Plantae","Cupressaceae",155,142,173,0.82080925
+"Seed plants","Plantae","Curtisiaceae",1,1,1,1
+"Seed plants","Plantae","Cycadaceae",53,50,119,0.42016807
+"Seed plants","Plantae","Cyclanthaceae",14,14,243,0.057613169
+"Seed plants","Plantae","Cymodoceaceae",11,11,18,0.61111111
+"Seed plants","Plantae","Cyperaceae",742,725,6079,0.11926304
+"Seed plants","Plantae","Cyrillaceae",2,2,11,0.18181818
+"Seed plants","Plantae","Daphniphyllaceae",4,4,32,0.125
+"Seed plants","Plantae","Dasypogonaceae",6,6,20,0.3
+"Seed plants","Plantae","Datiscaceae",2,2,2,1
+"Seed plants","Plantae","Degeneriaceae",2,2,2,1
+"Seed plants","Plantae","Diapensiaceae",11,11,22,0.5
+"Seed plants","Plantae","Dichapetalaceae",3,3,211,0.014218009
+"Seed plants","Plantae","Didiereaceae",14,14,20,0.7
+"Seed plants","Plantae","Didymelaceae",2,2,2,1
+"Seed plants","Plantae","Dilleniaceae",94,88,619,0.14216478
+"Seed plants","Plantae","Dioncophyllaceae",2,2,3,0.66666667
+"Seed plants","Plantae","Dioscoreaceae",188,180,660,0.27272727
+"Seed plants","Plantae","Dipentodontaceae",3,3,21,0.14285714
+"Seed plants","Plantae","Dipterocarpaceae",51,50,544,0.091911765
+"Seed plants","Plantae","Dirachmaceae",1,1,2,0.5
+"Seed plants","Plantae","Donatiaceae",2,2,2,1
+"Seed plants","Plantae","Doryanthaceae",2,2,2,1
+"Seed plants","Plantae","Droseraceae",75,70,253,0.27667984
+"Seed plants","Plantae","Drosophyllaceae",1,1,1,1
+"Seed plants","Plantae","Ebenaceae",146,138,819,0.16849817
+"Seed plants","Plantae","Ecdeiocoleaceae",3,3,3,1
+"Seed plants","Plantae","Ehretiaceae",56,53,184,0.28804348
+"Seed plants","Plantae","Elaeagnaceae",14,14,105,0.13333333
+"Seed plants","Plantae","Elaeocarpaceae",152,147,761,0.19316689
+"Seed plants","Plantae","Elatinaceae",32,28,54,0.51851852
+"Seed plants","Plantae","Emblingiaceae",1,1,1,1
+"Seed plants","Plantae","Ephedraceae",58,54,74,0.72972973
+"Seed plants","Plantae","Ericaceae",1481,1460,4754,0.3071098
+"Seed plants","Plantae","Eriocaulaceae",85,85,1225,0.069387755
+"Seed plants","Plantae","Erythropalaceae",10,10,41,0.24390244
+"Seed plants","Plantae","Erythroxylaceae",8,8,278,0.028776978
+"Seed plants","Plantae","Escalloniaceae",38,38,152,0.25
+"Seed plants","Plantae","Eucommiaceae",1,1,1,1
+"Seed plants","Plantae","Euphorbiaceae",1916,1828,6588,0.2774742
+"Seed plants","Plantae","Euphroniaceae",1,1,3,0.33333333
+"Seed plants","Plantae","Eupomatiaceae",3,3,3,1
+"Seed plants","Plantae","Eupteleaceae",2,2,2,1
+"Seed plants","Plantae","Fabaceae",4215,4119,22969,0.17932866
+"Seed plants","Plantae","Fagaceae",215,210,1140,0.18421053
+"Seed plants","Plantae","Flagellariaceae",2,2,5,0.4
+"Seed plants","Plantae","Fouquieriaceae",3,3,11,0.27272727
+"Seed plants","Plantae","Francoaceae",27,24,38,0.63157895
+"Seed plants","Plantae","Frankeniaceae",10,10,86,0.11627907
+"Seed plants","Plantae","Garryaceae",14,14,27,0.51851852
+"Seed plants","Plantae","Geissolomataceae",1,1,1,1
+"Seed plants","Plantae","Gelsemiaceae",5,5,14,0.35714286
+"Seed plants","Plantae","Gentianaceae",72,69,1895,0.036411609
+"Seed plants","Plantae","Geraniaceae",400,386,785,0.49171975
+"Seed plants","Plantae","Gerrardinaceae",1,1,2,0.5
+"Seed plants","Plantae","Gesneriaceae",900,890,4111,0.21649234
+"Seed plants","Plantae","Ginkgoaceae",1,1,160,0.00625
+"Seed plants","Plantae","Gisekiaceae",1,1,7,0.14285714
+"Seed plants","Plantae","Gnetaceae",32,30,44,0.68181818
+"Seed plants","Plantae","Gomortegaceae",1,1,1,1
+"Seed plants","Plantae","Goodeniaceae",166,166,475,0.34947368
+"Seed plants","Plantae","Goupiaceae",1,1,1,1
+"Seed plants","Plantae","Griseliniaceae",7,7,7,1
+"Seed plants","Plantae","Grossulariaceae",96,92,200,0.46
+"Seed plants","Plantae","Grubbiaceae",2,2,3,0.66666667
+"Seed plants","Plantae","Guamatelaceae",1,1,1,1
+"Seed plants","Plantae","Gunneraceae",24,22,61,0.36065574
+"Seed plants","Plantae","Gyrostemonaceae",3,3,20,0.15
+"Seed plants","Plantae","Haemodoraceae",86,84,132,0.63636364
+"Seed plants","Plantae","Halophytaceae",1,1,1,1
+"Seed plants","Plantae","Haloragaceae",105,102,169,0.6035503
+"Seed plants","Plantae","Hamamelidaceae",51,48,107,0.44859813
+"Seed plants","Plantae","Hanguanaceae",9,9,23,0.39130435
+"Seed plants","Plantae","Heliconiaceae",20,19,204,0.093137255
+"Seed plants","Plantae","Heliotropiaceae",64,64,507,0.12623274
+"Seed plants","Plantae","Helwingiaceae",2,2,4,0.5
+"Seed plants","Plantae","Hernandiaceae",2,2,70,0.028571429
+"Seed plants","Plantae","Himantandraceae",2,1,1,1
+"Seed plants","Plantae","Hoplestigmataceae",1,1,2,0.5
+"Seed plants","Plantae","Huaceae",2,2,4,0.5
+"Seed plants","Plantae","Humiriaceae",7,7,67,0.10447761
+"Seed plants","Plantae","Hydatellaceae",7,7,14,0.5
+"Seed plants","Plantae","Hydrangeaceae",149,128,224,0.57142857
+"Seed plants","Plantae","Hydrocharitaceae",50,49,145,0.33793103
+"Seed plants","Plantae","Hydroleaceae",2,2,12,0.16666667
+"Seed plants","Plantae","Hydrophyllaceae",95,95,244,0.38934426
+"Seed plants","Plantae","Hydrostachyaceae",7,6,22,0.27272727
+"Seed plants","Plantae","Hypericaceae",275,264,636,0.41509434
+"Seed plants","Plantae","Hypoxidaceae",23,21,169,0.12426036
+"Seed plants","Plantae","Icacinaceae",39,39,165,0.23636364
+"Seed plants","Plantae","Iridaceae",891,877,2671,0.32834145
+"Seed plants","Plantae","Irvingiaceae",4,4,10,0.4
+"Seed plants","Plantae","Iteaceae",10,10,23,0.43478261
+"Seed plants","Plantae","Ixerbaceae",1,1,1,1
+"Seed plants","Plantae","Ixioliriaceae",2,2,5,0.4
+"Seed plants","Plantae","Ixonanthaceae",4,3,19,0.15789474
+"Seed plants","Plantae","Joinvilleaceae",2,2,3,0.66666667
+"Seed plants","Plantae","Juglandaceae",44,43,89,0.48314607
+"Seed plants","Plantae","Juncaceae",53,53,537,0.098696462
+"Seed plants","Plantae","Juncaginaceae",7,7,35,0.2
+"Seed plants","Plantae","Kewaceae",1,1,8,0.125
+"Seed plants","Plantae","Kirkiaceae",2,2,6,0.33333333
+"Seed plants","Plantae","Koeberliniaceae",1,1,2,0.5
+"Seed plants","Plantae","Krameriaceae",2,2,17,0.11764706
+"Seed plants","Plantae","Lacistemataceae",3,3,18,0.16666667
+"Seed plants","Plantae","Lactoridaceae",1,1,1,1
+"Seed plants","Plantae","Lamiaceae",1277,1246,8248,0.15106693
+"Seed plants","Plantae","Lanariaceae",1,1,1,1
+"Seed plants","Plantae","Lardizabalaceae",22,20,44,0.45454545
+"Seed plants","Plantae","Lauraceae",496,482,3380,0.14260355
+"Seed plants","Plantae","Lecythidaceae",85,85,413,0.20581114
+"Seed plants","Plantae","Lennoaceae",2,2,4,0.5
+"Seed plants","Plantae","Lentibulariaceae",91,89,428,0.20794393
+"Seed plants","Plantae","Lepidobotryaceae",2,2,2,1
+"Seed plants","Plantae","Liliaceae",509,477,833,0.57262905
+"Seed plants","Plantae","Limeaceae",6,6,25,0.24
+"Seed plants","Plantae","Limnanthaceae",1,1,9,0.11111111
+"Seed plants","Plantae","Linaceae",80,79,283,0.27915194
+"Seed plants","Plantae","Linderniaceae",9,9,335,0.026865672
+"Seed plants","Plantae","Loasaceae",100,97,335,0.28955224
+"Seed plants","Plantae","Loganiaceae",15,15,505,0.02970297
+"Seed plants","Plantae","Lophiocarpaceae",3,2,7,0.28571429
+"Seed plants","Plantae","Lophopyxidaceae",1,1,1,1
+"Seed plants","Plantae","Loranthaceae",132,131,1078,0.12152134
+"Seed plants","Plantae","Lowiaceae",12,12,32,0.375
+"Seed plants","Plantae","Lythraceae",49,48,689,0.069666183
+"Seed plants","Plantae","Macarthuriaceae",1,1,9,0.11111111
+"Seed plants","Plantae","Magnoliaceae",46,45,404,0.11138614
+"Seed plants","Plantae","Malpighiaceae",377,372,1469,0.25323349
+"Seed plants","Plantae","Malvaceae",520,507,5615,0.090293856
+"Seed plants","Plantae","Marantaceae",121,116,597,0.19430486
+"Seed plants","Plantae","Marcgraviaceae",9,9,137,0.065693431
+"Seed plants","Plantae","Martyniaceae",7,7,15,0.46666667
+"Seed plants","Plantae","Maundiaceae",1,1,1,1
+"Seed plants","Plantae","Mayacaceae",1,1,5,0.2
+"Seed plants","Plantae","Mazaceae",8,7,51,0.1372549
+"Seed plants","Plantae","Melanthiaceae",160,143,196,0.72959184
+"Seed plants","Plantae","Melastomataceae",1169,1142,6133,0.18620577
+"Seed plants","Plantae","Meliaceae",258,240,783,0.30651341
+"Seed plants","Plantae","Menispermaceae",149,142,549,0.25865209
+"Seed plants","Plantae","Menyanthaceae",48,48,75,0.64
+"Seed plants","Plantae","Metteniusaceae",13,13,66,0.1969697
+"Seed plants","Plantae","Microteaceae",2,2,11,0.18181818
+"Seed plants","Plantae","Misodendraceae",7,7,8,0.875
+"Seed plants","Plantae","Molluginaceae",37,37,101,0.36633663
+"Seed plants","Plantae","Monimiaceae",44,44,277,0.15884477
+"Seed plants","Plantae","Montiaceae",75,73,285,0.25614035
+"Seed plants","Plantae","Montiniaceae",2,2,5,0.4
+"Seed plants","Plantae","Moraceae",412,379,1288,0.29425466
+"Seed plants","Plantae","Moringaceae",5,5,13,0.38461538
+"Seed plants","Plantae","Muntingiaceae",1,1,3,0.33333333
+"Seed plants","Plantae","Musaceae",6,6,106,0.056603774
+"Seed plants","Plantae","Myodocarpaceae",16,16,18,0.88888889
+"Seed plants","Plantae","Myricaceae",19,19,51,0.37254902
+"Seed plants","Plantae","Myristicaceae",69,67,551,0.1215971
+"Seed plants","Plantae","Myrothamnaceae",1,1,2,0.5
+"Seed plants","Plantae","Myrtaceae",1117,1095,6495,0.16859122
+"Seed plants","Plantae","Mystropetalaceae",3,3,3,1
+"Seed plants","Plantae","Namaceae",14,14,71,0.1971831
+"Seed plants","Plantae","Nanodeaceae",2,2,2,1
+"Seed plants","Plantae","Nartheciaceae",29,24,37,0.64864865
+"Seed plants","Plantae","Nelumbonaceae",2,2,2,1
+"Seed plants","Plantae","Nepenthaceae",105,103,223,0.46188341
+"Seed plants","Plantae","Neuradaceae",1,1,7,0.14285714
+"Seed plants","Plantae","Nitrariaceae",11,9,16,0.5625
+"Seed plants","Plantae","Nothofagaceae",9,9,44,0.20454545
+"Seed plants","Plantae","Nyctaginaceae",67,67,465,0.14408602
+"Seed plants","Plantae","Nymphaeaceae",52,46,97,0.4742268
+"Seed plants","Plantae","Nyssaceae",16,13,38,0.34210526
+"Seed plants","Plantae","Ochnaceae",73,72,644,0.11180124
+"Seed plants","Plantae","Octoknemaceae",1,1,14,0.071428571
+"Seed plants","Plantae","Olacaceae",13,12,58,0.20689655
+"Seed plants","Plantae","Oleaceae",152,146,769,0.18985696
+"Seed plants","Plantae","Onagraceae",58,57,869,0.065592635
+"Seed plants","Plantae","Oncothecaceae",1,1,2,0.5
+"Seed plants","Plantae","Opiliaceae",9,9,38,0.23684211
+"Seed plants","Plantae","Orchidaceae",4502,4338,32235,0.13457422
+"Seed plants","Plantae","Orobanchaceae",526,516,2295,0.2248366
+"Seed plants","Plantae","Oxalidaceae",11,11,674,0.016320475
+"Seed plants","Plantae","Paeoniaceae",41,32,48,0.66666667
+"Seed plants","Plantae","Pandaceae",6,6,17,0.35294118
+"Seed plants","Plantae","Pandanaceae",177,165,935,0.17647059
+"Seed plants","Plantae","Papaveraceae",295,287,1044,0.27490421
+"Seed plants","Plantae","Paracryphiaceae",6,6,37,0.16216216
+"Seed plants","Plantae","Passifloraceae",376,367,1084,0.33856089
+"Seed plants","Plantae","Paulowniaceae",2,2,10,0.2
+"Seed plants","Plantae","Pedaliaceae",24,23,78,0.29487179
+"Seed plants","Plantae","Peltantheraceae",1,1,1,1
+"Seed plants","Plantae","Penaeaceae",25,25,32,0.78125
+"Seed plants","Plantae","Pennantiaceae",4,4,4,1
+"Seed plants","Plantae","Pentadiplandraceae",1,1,1,1
+"Seed plants","Plantae","Pentaphragmataceae",1,1,32,0.03125
+"Seed plants","Plantae","Pentaphylacaceae",71,68,547,0.12431444
+"Seed plants","Plantae","Penthoraceae",2,2,2,1
+"Seed plants","Plantae","Peraceae",10,10,104,0.096153846
+"Seed plants","Plantae","Peridiscaceae",6,6,11,0.54545455
+"Seed plants","Plantae","Petenaeaceae",1,1,1,1
+"Seed plants","Plantae","Petermanniaceae",1,1,1,1
+"Seed plants","Plantae","Petiveriaceae",8,8,23,0.34782609
+"Seed plants","Plantae","Petrosaviaceae",3,3,3,1
+"Seed plants","Plantae","Phellinaceae",1,1,10,0.1
+"Seed plants","Plantae","Philesiaceae",1,1,2,0.5
+"Seed plants","Plantae","Philydraceae",5,5,6,0.83333333
+"Seed plants","Plantae","Phrymaceae",85,85,241,0.3526971
+"Seed plants","Plantae","Phyllanthaceae",357,343,2118,0.16194523
+"Seed plants","Plantae","Phyllonomaceae",2,2,4,0.5
+"Seed plants","Plantae","Phytolaccaceae",5,5,32,0.15625
+"Seed plants","Plantae","Picramniaceae",54,49,55,0.89090909
+"Seed plants","Plantae","Picrodendraceae",12,12,98,0.12244898
+"Seed plants","Plantae","Pinaceae",237,222,275,0.80727273
+"Seed plants","Plantae","Piperaceae",279,267,3844,0.069458897
+"Seed plants","Plantae","Pittosporaceae",76,73,305,0.23934426
+"Seed plants","Plantae","Plantaginaceae",554,535,2191,0.24418074
+"Seed plants","Plantae","Platanaceae",8,8,9,0.88888889
+"Seed plants","Plantae","Plocospermataceae",1,1,1,1
+"Seed plants","Plantae","Plumbaginaceae",96,94,1121,0.083853702
+"Seed plants","Plantae","Poaceae",2272,2206,12590,0.17521843
+"Seed plants","Plantae","Podocarpaceae",142,134,193,0.69430052
+"Seed plants","Plantae","Podostemaceae",66,64,368,0.17391304
+"Seed plants","Plantae","Polemoniaceae",306,294,430,0.68372093
+"Seed plants","Plantae","Polygalaceae",111,109,1333,0.081770443
+"Seed plants","Plantae","Polygonaceae",386,369,1633,0.22596448
+"Seed plants","Plantae","Pontederiaceae",21,21,47,0.44680851
+"Seed plants","Plantae","Portulacaceae",8,7,152,0.046052632
+"Seed plants","Plantae","Posidoniaceae",3,3,9,0.33333333
+"Seed plants","Plantae","Potamogetonaceae",61,56,194,0.28865979
+"Seed plants","Plantae","Primulaceae",592,551,3392,0.16244104
+"Seed plants","Plantae","Proteaceae",785,778,1847,0.42122361
+"Seed plants","Plantae","Putranjivaceae",13,13,224,0.058035714
+"Seed plants","Plantae","Quillajaceae",1,1,2,0.5
+"Seed plants","Plantae","Ranunculaceae",1237,1162,3969,0.29276896
+"Seed plants","Plantae","Rapateaceae",6,6,97,0.06185567
+"Seed plants","Plantae","Resedaceae",20,20,92,0.2173913
+"Seed plants","Plantae","Restionaceae",362,360,554,0.64981949
+"Seed plants","Plantae","Rhabdodendraceae",2,2,3,0.66666667
+"Seed plants","Plantae","Rhamnaceae",199,197,1223,0.16107931
+"Seed plants","Plantae","Rhizophoraceae",35,33,150,0.22
+"Seed plants","Plantae","Ripogonaceae",7,6,6,1
+"Seed plants","Plantae","Roridulaceae",1,1,2,0.5
+"Seed plants","Plantae","Rosaceae",1190,1131,8214,0.13769175
+"Seed plants","Plantae","Rousseaceae",4,4,7,0.57142857
+"Seed plants","Plantae","Rubiaceae",1856,1821,14414,0.12633551
+"Seed plants","Plantae","Ruppiaceae",7,6,12,0.5
+"Seed plants","Plantae","Rutaceae",400,366,2246,0.16295637
+"Seed plants","Plantae","Sabiaceae",73,72,161,0.44720497
+"Seed plants","Plantae","Salicaceae",279,253,1656,0.15277778
+"Seed plants","Plantae","Salvadoraceae",2,2,10,0.2
+"Seed plants","Plantae","Santalaceae",32,30,69,0.43478261
+"Seed plants","Plantae","Sapindaceae",187,176,1971,0.089294774
+"Seed plants","Plantae","Sapotaceae",531,510,1375,0.37090909
+"Seed plants","Plantae","Sarcobataceae",1,1,2,0.5
+"Seed plants","Plantae","Sarcolaenaceae",26,26,72,0.36111111
+"Seed plants","Plantae","Sarraceniaceae",16,15,57,0.26315789
+"Seed plants","Plantae","Saururaceae",6,6,6,1
+"Seed plants","Plantae","Saxifragaceae",540,501,932,0.53755365
+"Seed plants","Plantae","Scheuchzeriaceae",1,1,1,1
+"Seed plants","Plantae","Schisandraceae",38,35,85,0.41176471
+"Seed plants","Plantae","Schlegeliaceae",4,4,40,0.1
+"Seed plants","Plantae","Schoepfiaceae",7,7,33,0.21212121
+"Seed plants","Plantae","Sciadopityaceae",1,1,1,1
+"Seed plants","Plantae","Scrophulariaceae",300,294,2318,0.12683348
+"Seed plants","Plantae","Simaroubaceae",48,45,128,0.3515625
+"Seed plants","Plantae","Simmondsiaceae",1,1,1,1
+"Seed plants","Plantae","Siparunaceae",4,4,55,0.072727273
+"Seed plants","Plantae","Sladeniaceae",2,2,2,1
+"Seed plants","Plantae","Smilacaceae",115,111,269,0.41263941
+"Seed plants","Plantae","Solanaceae",1010,952,2821,0.33746898
+"Seed plants","Plantae","Sphaerosepalaceae",1,1,20,0.05
+"Seed plants","Plantae","Sphenocleaceae",1,1,2,0.5
+"Seed plants","Plantae","Stachyuraceae",9,8,10,0.8
+"Seed plants","Plantae","Staphyleaceae",16,15,44,0.34090909
+"Seed plants","Plantae","Stegnospermataceae",2,2,4,0.5
+"Seed plants","Plantae","Stemonaceae",16,16,39,0.41025641
+"Seed plants","Plantae","Stemonuraceae",8,8,80,0.1
+"Seed plants","Plantae","Stilbaceae",18,18,40,0.45
+"Seed plants","Plantae","Stixaceae",7,7,26,0.26923077
+"Seed plants","Plantae","Strasburgeriaceae",1,1,1,1
+"Seed plants","Plantae","Strelitziaceae",7,7,13,0.53846154
+"Seed plants","Plantae","Strombosiaceae",12,12,20,0.6
+"Seed plants","Plantae","Styracaceae",74,73,160,0.45625
+"Seed plants","Plantae","Surianaceae",4,4,9,0.44444444
+"Seed plants","Plantae","Symplocaceae",147,128,420,0.3047619
+"Seed plants","Plantae","Talinaceae",7,6,28,0.21428571
+"Seed plants","Plantae","Tamaricaceae",50,44,111,0.3963964
+"Seed plants","Plantae","Tapisciaceae",3,3,6,0.5
+"Seed plants","Plantae","Taxaceae",24,22,28,0.78571429
+"Seed plants","Plantae","Tecophilaeaceae",18,17,27,0.62962963
+"Seed plants","Plantae","Tetracarpaeaceae",1,1,1,1
+"Seed plants","Plantae","Tetrachondraceae",2,2,3,0.66666667
+"Seed plants","Plantae","Tetramelaceae",1,1,2,0.5
+"Seed plants","Plantae","Theaceae",183,121,396,0.30555556
+"Seed plants","Plantae","Thesiaceae",76,76,369,0.20596206
+"Seed plants","Plantae","Thomandersiaceae",2,2,6,0.33333333
+"Seed plants","Plantae","Thurniaceae",2,2,4,0.5
+"Seed plants","Plantae","Thymelaeaceae",109,109,959,0.11366006
+"Seed plants","Plantae","Ticodendraceae",1,1,1,1
+"Seed plants","Plantae","Tofieldiaceae",18,17,30,0.56666667
+"Seed plants","Plantae","Torricelliaceae",7,7,11,0.63636364
+"Seed plants","Plantae","Tovariaceae",1,1,2,0.5
+"Seed plants","Plantae","Trigoniaceae",3,3,33,0.090909091
+"Seed plants","Plantae","Trimeniaceae",1,1,8,0.125
+"Seed plants","Plantae","Trochodendraceae",2,2,2,1
+"Seed plants","Plantae","Tropaeolaceae",1,1,94,0.010638298
+"Seed plants","Plantae","Typhaceae",25,24,74,0.32432432
+"Seed plants","Plantae","Ulmaceae",26,24,54,0.44444444
+"Seed plants","Plantae","Urticaceae",299,280,2096,0.13358779
+"Seed plants","Plantae","Vahliaceae",5,5,5,1
+"Seed plants","Plantae","Velloziaceae",79,76,320,0.2375
+"Seed plants","Plantae","Verbenaceae",165,151,932,0.16201717
+"Seed plants","Plantae","Viburnaceae",161,142,230,0.6173913
+"Seed plants","Plantae","Violaceae",292,274,1292,0.2120743
+"Seed plants","Plantae","Viscaceae",68,53,584,0.090753425
+"Seed plants","Plantae","Vitaceae",331,309,1029,0.30029155
+"Seed plants","Plantae","Vochysiaceae",11,10,257,0.038910506
+"Seed plants","Plantae","Wellstediaceae",3,3,6,0.5
+"Seed plants","Plantae","Welwitschiaceae",1,1,1,1
+"Seed plants","Plantae","Wightiaceae",1,1,2,0.5
+"Seed plants","Plantae","Winteraceae",32,31,71,0.43661972
+"Seed plants","Plantae","Xeronemataceae",1,1,2,0.5
+"Seed plants","Plantae","Ximeniaceae",3,3,13,0.23076923
+"Seed plants","Plantae","Xyridaceae",3,3,411,0.0072992701
+"Seed plants","Plantae","Zamiaceae",157,154,257,0.59922179
+"Seed plants","Plantae","Zingiberaceae",528,496,2048,0.2421875
+"Seed plants","Plantae","Zosteraceae",16,14,19,0.73684211
+"Seed plants","Plantae","Zygophyllaceae",76,71,293,0.24232082
+"Sharks","Animalia","Aetobatidae",2,2,5,0.4
+"Sharks","Animalia","Alopiidae",3,3,3,1
+"Sharks","Animalia","Anacanthobatidae",1,1,16,0.0625
+"Sharks","Animalia","Arhynchobatidae",46,46,112,0.41071429
+"Sharks","Animalia","Brachaeluridae",2,2,2,1
+"Sharks","Animalia","Callorhinchidae",3,3,3,1
+"Sharks","Animalia","Carcharhinidae",47,47,60,0.78333333
+"Sharks","Animalia","Centrophoridae",11,11,20,0.55
+"Sharks","Animalia","Cetorhinidae",1,1,1,1
+"Sharks","Animalia","Chimaeridae",18,17,46,0.36956522
+"Sharks","Animalia","Chlamydoselachidae",1,1,2,0.5
+"Sharks","Animalia","Dalatiidae",5,5,10,0.5
+"Sharks","Animalia","Dasyatidae",58,55,114,0.48245614
+"Sharks","Animalia","Echinorhinidae",2,2,2,1
+"Sharks","Animalia","Etmopteridae",26,26,57,0.45614035
+"Sharks","Animalia","Galeocerdonidae",1,1,1,1
+"Sharks","Animalia","Ginglymostomatidae",3,3,4,0.75
+"Sharks","Animalia","Glaucostegidae",3,3,9,0.33333333
+"Sharks","Animalia","Gurgesiellidae",2,2,19,0.10526316
+"Sharks","Animalia","Gymnuridae",8,8,16,0.5
+"Sharks","Animalia","Hemigaleidae",5,5,8,0.625
+"Sharks","Animalia","Hemiscylliidae",6,6,18,0.33333333
+"Sharks","Animalia","Heterodontidae",5,5,10,0.5
+"Sharks","Animalia","Hexanchidae",3,3,5,0.6
+"Sharks","Animalia","Hexatrygonidae",1,1,1,1
+"Sharks","Animalia","Lamnidae",5,5,5,1
+"Sharks","Animalia","Megachasmidae",1,1,1,1
+"Sharks","Animalia","Mitsukurinidae",1,1,1,1
+"Sharks","Animalia","Mobulidae",7,7,10,0.7
+"Sharks","Animalia","Myliobatidae",10,10,20,0.5
+"Sharks","Animalia","Narcinidae",8,8,31,0.25806452
+"Sharks","Animalia","Narkidae",1,1,11,0.090909091
+"Sharks","Animalia","Odontaspididae",2,2,4,0.5
+"Sharks","Animalia","Orectolobidae",8,8,12,0.66666667
+"Sharks","Animalia","Oxynotidae",3,3,5,0.6
+"Sharks","Animalia","Parascylliidae",1,1,8,0.125
+"Sharks","Animalia","Pentanchidae",33,33,90,0.36666667
+"Sharks","Animalia","Platyrhinidae",2,2,5,0.4
+"Sharks","Animalia","Plesiobatidae",1,1,1,1
+"Sharks","Animalia","Potamotrygonidae",11,10,45,0.22222222
+"Sharks","Animalia","Pristidae",5,5,5,1
+"Sharks","Animalia","Pristiophoridae",4,4,10,0.4
+"Sharks","Animalia","Proscylliidae",1,1,7,0.14285714
+"Sharks","Animalia","Pseudocarchariidae",1,1,1,1
+"Sharks","Animalia","Pseudotriakidae",2,2,5,0.4
+"Sharks","Animalia","Rajidae",66,65,166,0.39156627
+"Sharks","Animalia","Rhincodontidae",1,1,1,1
+"Sharks","Animalia","Rhinidae",5,5,11,0.45454545
+"Sharks","Animalia","Rhinobatidae",15,14,37,0.37837838
+"Sharks","Animalia","Rhinochimaeridae",4,4,10,0.4
+"Sharks","Animalia","Rhinopteridae",5,5,7,0.71428571
+"Sharks","Animalia","Scyliorhinidae",24,24,70,0.34285714
+"Sharks","Animalia","Somniosidae",10,10,17,0.58823529
+"Sharks","Animalia","Sphyrnidae",8,8,13,0.61538462
+"Sharks","Animalia","Squalidae",17,17,41,0.41463415
+"Sharks","Animalia","Squatinidae",17,17,24,0.70833333
+"Sharks","Animalia","Stegostomatidae",1,1,1,1
+"Sharks","Animalia","Torpedinidae",9,9,24,0.375
+"Sharks","Animalia","Triakidae",31,31,47,0.65957447
+"Sharks","Animalia","Trygonorrhinidae",5,5,8,0.625
+"Sharks","Animalia","Urolophidae",16,16,28,0.57142857
+"Sharks","Animalia","Urotrygonidae",5,5,20,0.25
+"Sharks","Animalia","Zanobatidae",1,1,2,0.5
+"Squamates","Animalia","Acrochordidae",3,3,3,1
+"Squamates","Animalia","Agamidae",254,253,616,0.41071429
+"Squamates","Animalia","Alopoglossidae",7,7,32,0.21875
+"Squamates","Animalia","Amphisbaenidae",45,45,185,0.24324324
+"Squamates","Animalia","Anguidae",36,36,90,0.4
+"Squamates","Animalia","Aniliidae",1,1,1,1
+"Squamates","Animalia","Anolidae",254,247,428,0.5771028
+"Squamates","Animalia","Anomalepididae",2,2,23,0.086956522
+"Squamates","Animalia","Anomochilidae",1,1,3,0.33333333
+"Squamates","Animalia","Atractaspididae",18,18,68,0.26470588
+"Squamates","Animalia","Bipedidae",3,3,3,1
+"Squamates","Animalia","Blanidae",7,6,7,0.85714286
+"Squamates","Animalia","Boidae",47,46,67,0.68656716
+"Squamates","Animalia","Bolyeriidae",1,1,2,0.5
+"Squamates","Animalia","Cadeidae",1,1,2,0.5
+"Squamates","Animalia","Carphodactylidae",22,22,34,0.64705882
+"Squamates","Animalia","Chamaeleonidae",180,180,240,0.75
+"Squamates","Animalia","Colubridae",610,609,2203,0.27644122
+"Squamates","Animalia","Cordylidae",50,49,70,0.7
+"Squamates","Animalia","Corytophanidae",7,7,11,0.63636364
+"Squamates","Animalia","Crotaphytidae",12,12,12,1
+"Squamates","Animalia","Cyclocoridae",1,1,8,0.125
+"Squamates","Animalia","Cylindrophiidae",2,2,15,0.13333333
+"Squamates","Animalia","Dibamidae",8,8,31,0.25806452
+"Squamates","Animalia","Diplodactylidae",105,105,202,0.51980198
+"Squamates","Animalia","Diploglossidae",2,2,90,0.022222222
+"Squamates","Animalia","Elapidae",190,189,412,0.45873786
+"Squamates","Animalia","Eublepharidae",19,19,47,0.40425532
+"Squamates","Animalia","Gekkonidae",630,630,1750,0.36
+"Squamates","Animalia","Gerrhopilidae",2,2,29,0.068965517
+"Squamates","Animalia","Gerrhosauridae",30,30,39,0.76923077
+"Squamates","Animalia","Gymnophthalmidae",101,101,302,0.33443709
+"Squamates","Animalia","Helodermatidae",2,2,5,0.4
+"Squamates","Animalia","Homalopsidae",23,23,61,0.37704918
+"Squamates","Animalia","Hoplocercidae",12,12,22,0.54545455
+"Squamates","Animalia","Iguanidae",31,31,45,0.68888889
+"Squamates","Animalia","Lacertidae",225,224,391,0.57289003
+"Squamates","Animalia","Lamprophiidae",24,24,98,0.24489796
+"Squamates","Animalia","Lanthanotidae",1,1,1,1
+"Squamates","Animalia","Leiocephalidae",6,6,30,0.2
+"Squamates","Animalia","Leiosauridae",18,18,38,0.47368421
+"Squamates","Animalia","Leptotyphlopidae",30,30,144,0.20833333
+"Squamates","Animalia","Liolaemidae",172,166,343,0.48396501
+"Squamates","Animalia","Loxocemidae",1,1,1,1
+"Squamates","Animalia","Micrelapidae",1,1,6,0.16666667
+"Squamates","Animalia","Opluridae",7,7,8,0.875
+"Squamates","Animalia","Pareidae",12,12,49,0.24489796
+"Squamates","Animalia","Phrynosomatidae",119,117,170,0.68823529
+"Squamates","Animalia","Phyllodactylidae",82,81,169,0.47928994
+"Squamates","Animalia","Polychrotidae",4,4,8,0.5
+"Squamates","Animalia","Prosymnidae",6,6,19,0.31578947
+"Squamates","Animalia","Psammodynastidae",1,1,2,0.5
+"Squamates","Animalia","Psammophiidae",36,36,57,0.63157895
+"Squamates","Animalia","Pseudaspididae",2,2,2,1
+"Squamates","Animalia","Pseudoxyrhophiidae",65,65,89,0.73033708
+"Squamates","Animalia","Pygopodidae",33,33,50,0.66
+"Squamates","Animalia","Pythonidae",28,28,38,0.73684211
+"Squamates","Animalia","Rhineuridae",1,1,1,1
+"Squamates","Animalia","Scincidae",828,824,1816,0.45374449
+"Squamates","Animalia","Shinisauridae",1,1,1,1
+"Squamates","Animalia","Sphaerodactylidae",111,111,239,0.46443515
+"Squamates","Animalia","Teiidae",65,65,173,0.37572254
+"Squamates","Animalia","Trogonophidae",3,3,6,0.5
+"Squamates","Animalia","Tropidophiidae",9,9,37,0.24324324
+"Squamates","Animalia","Tropiduridae",81,81,150,0.54
+"Squamates","Animalia","Typhlopidae",89,89,282,0.31560284
+"Squamates","Animalia","Uropeltidae",15,15,74,0.2027027
+"Squamates","Animalia","Varanidae",60,59,93,0.6344086
+"Squamates","Animalia","Viperidae",230,229,412,0.55582524
+"Squamates","Animalia","Xantusiidae",30,30,38,0.78947368
+"Squamates","Animalia","Xenodermidae",5,5,38,0.13157895
+"Squamates","Animalia","Xenopeltidae",1,1,3,0.33333333
+"Squamates","Animalia","Xenophidiidae",1,1,2,0.5
+"Squamates","Animalia","Xenosauridae",2,2,14,0.14285714
+"Squamates","Animalia","Xenotyphlopidae",1,1,1,1
