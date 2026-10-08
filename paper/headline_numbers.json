@@ -90,8 +90,25 @@
       "percent_union": 5.426035863230146,
       "shared_labels": 0
     },
+    "C1u": {
+      "definition": "UNCERTAINTY AVAILABLE: C1d and the source archive carries a node-age distribution or interval a user can propagate (a sampled tree set whose node ages vary among the sequenced species, or annotated intervals), whatever its relation to the calibration prior (D55)",
+      "numerator_sum": 23942.0,
+      "numerator_sum_rounded": 23942,
+      "denominator": 2085869,
+      "percent": 1.147818966579397,
+      "n_partitions_contributing": 13,
+      "unit": "tip-equivalents",
+      "c1_bases": {
+        "enumerated": 12,
+        "all_tips": 1,
+        "expectation": 0
+      },
+      "numerator_union": 23942,
+      "percent_union": 1.147818966579397,
+      "shared_labels": 0
+    },
     "C1b": {
-      "definition": "BOUNDED: C1d and the divergence-time interval is recoverable from the source deposit",
+      "definition": "BEYOND THE CALIBRATION: C1u and the crown interval is not excluded by a calibration rule (D22, D25, D29, D52, D55)",
       "numerator_sum": 320.0,
       "numerator_sum_rounded": 320,
       "denominator": 2085869,
@@ -112,7 +129,8 @@
     "C0": "NAMED: the tip label occurs in a retained eukaryotic canonical tree",
     "C1": "MOLECULAR: C0 and the tip is in the molecular analysis behind that tree",
     "C1d": "DATED: C1 and the shipped canonical tree is a measured chronogram",
-    "C1b": "BOUNDED: C1d and the divergence-time interval is recoverable from the source deposit"
+    "C1u": "UNCERTAINTY AVAILABLE: C1d and the source archive carries a node-age distribution or interval a user can propagate (a sampled tree set whose node ages vary among the sequenced species, or annotated intervals), whatever its relation to the calibration prior (D55)",
+    "C1b": "BEYOND THE CALIBRATION: C1u and the crown interval is not excluded by a calibration rule (D22, D25, D29, D52, D55)"
   },
   "naming_discipline": "C1 is MOLECULARLY SUPPORTED PLACEMENT, operationalised by tip evidence within the analysis that produced the tree. It is NOT a predicate on placement traceability: f_mol is an axis-(a) quantity. The genuine axis-(b) distinction is reported as the NOMINAL annotation topology_assembly and never as a rung, because the deposit carries no measured per-tip placement-warrant flag. Methods must say so plainly; claiming the two-axis conflict was 'dissolved' is an overclaim a referee will catch.",
   "monotonicity": "the rungs are nested weighted sums with weights in [0,1], hence non-increasing; verified per partition, 60 partitions, zero violations. NESTED TIP SETS ARE NOT CLAIMED: the computed object is an expectation, and the advertised proof describes the computed object.",
@@ -285,6 +303,12 @@
             "denominator": 2085869,
             "percent": 5.4204907834576375
           },
+          "C1u": {
+            "numerator": 23826,
+            "numerator_sum": 23826.3369,
+            "denominator": 2085869,
+            "percent": 1.1422738868068896
+          },
           "C1b": {
             "numerator": 320,
             "numerator_sum": 320.0,
@@ -318,6 +342,14 @@
             "percent": 5.426035863230146,
             "numerator_union": 113180,
             "percent_union": 5.426035863230146
+          },
+          "C1u": {
+            "numerator": 23942,
+            "numerator_sum": 23942.0,
+            "denominator": 2085869,
+            "percent": 1.147818966579397,
+            "numerator_union": 23942,
+            "percent_union": 1.147818966579397
           },
           "C1b": {
             "numerator": 320,
@@ -367,6 +399,14 @@
             "numerator_union": 8980,
             "percent_union": 0.4305160103534786
           },
+          "C1u": {
+            "numerator": 8980,
+            "numerator_sum": 8980.0,
+            "denominator": 2085869,
+            "percent": 0.4305160103534786,
+            "numerator_union": 8980,
+            "percent_union": 0.4305160103534786
+          },
           "C1b": {
             "numerator": 0,
             "numerator_sum": 0.0,
@@ -404,6 +444,14 @@
             "percent": 0.004794164925985285,
             "numerator_union": 100,
             "percent_union": 0.004794164925985285
+          },
+          "C1u": {
+            "numerator": 80,
+            "numerator_sum": 80.0,
+            "denominator": 2085869,
+            "percent": 0.0038353319407882277,
+            "numerator_union": 80,
+            "percent_union": 0.0038353319407882277
           },
           "C1b": {
             "numerator": 0,
@@ -462,6 +510,14 @@
             "numerator_union": 104100,
             "percent_union": 4.990725687950682
           },
+          "C1u": {
+            "numerator": 14882,
+            "numerator_sum": 14882.0,
+            "denominator": 2085869,
+            "percent": 0.7134676242851301,
+            "numerator_union": 14882,
+            "percent_union": 0.7134676242851301
+          },
           "C1b": {
             "numerator": 320,
             "numerator_sum": 320.0,
@@ -500,6 +556,14 @@
             "percent": 4.995519852876667,
             "numerator_union": 104200,
             "percent_union": 4.995519852876667
+          },
+          "C1u": {
+            "numerator": 14962,
+            "numerator_sum": 14962.0,
+            "denominator": 2085869,
+            "percent": 0.7173029562259183,
+            "numerator_union": 14962,
+            "percent_union": 0.7173029562259183
           },
           "C1b": {
             "numerator": 320,
@@ -540,6 +604,14 @@
             "percent": 5.4212416983041605,
             "numerator_union": 113080,
             "percent_union": 5.4212416983041605
+          },
+          "C1u": {
+            "numerator": 23862,
+            "numerator_sum": 23862.0,
+            "denominator": 2085869,
+            "percent": 1.1439836346386087,
+            "numerator_union": 23862,
+            "percent_union": 1.1439836346386087
           },
           "C1b": {
             "numerator": 320,
@@ -600,6 +672,14 @@
             "numerator_union": 9080,
             "percent_union": 0.43531017527946386
           },
+          "C1u": {
+            "numerator": 9060,
+            "numerator_sum": 9060.0,
+            "denominator": 2085869,
+            "percent": 0.4343513422942668,
+            "numerator_union": 9060,
+            "percent_union": 0.4343513422942668
+          },
           "C1b": {
             "numerator": 0,
             "numerator_sum": 0.0,
@@ -637,6 +717,14 @@
             "percent": 5.426035863230146,
             "numerator_union": 113180,
             "percent_union": 5.426035863230146
+          },
+          "C1u": {
+            "numerator": 23942,
+            "numerator_sum": 23942.0,
+            "denominator": 2085869,
+            "percent": 1.147818966579397,
+            "numerator_union": 23942,
+            "percent_union": 1.147818966579397
           },
           "C1b": {
             "numerator": 320,
@@ -677,6 +765,14 @@
             "numerator_union": 113180,
             "percent_union": 6.067354171480219
           },
+          "C1u": {
+            "numerator": 23942,
+            "numerator_sum": 23942.0,
+            "denominator": 1865393,
+            "percent": 1.2834828907366973,
+            "numerator_union": 23942,
+            "percent_union": 1.2834828907366973
+          },
           "C1b": {
             "numerator": 320,
             "numerator_sum": 320.0,
@@ -716,6 +812,14 @@
               "numerator_union": 113180,
               "percent_union": 5.67855695013627
             },
+            "C1u": {
+              "numerator": 23942,
+              "numerator_sum": 23942.0,
+              "denominator": 1993112,
+              "percent": 1.201237060436142,
+              "numerator_union": 23942,
+              "percent_union": 1.201237060436142
+            },
             "C1b": {
               "numerator": 320,
               "numerator_sum": 320.0,
@@ -729,6 +833,7 @@
             "C0": 19.8,
             "C1": 7.9,
             "C1d": 5.7,
+            "C1u": 1.2,
             "C1b": 0.0
           },
           "per_partition": {
@@ -914,6 +1019,14 @@
               "numerator_union": 113180,
               "percent_union": 5.6710595080438555
             },
+            "C1u": {
+              "numerator": 23942,
+              "numerator_sum": 23942.0,
+              "denominator": 1995747,
+              "percent": 1.1996510579747834,
+              "numerator_union": 23942,
+              "percent_union": 1.1996510579747834
+            },
             "C1b": {
               "numerator": 320,
               "numerator_sum": 320.0,
@@ -927,6 +1040,7 @@
             "C0": 19.8,
             "C1": 7.9,
             "C1d": 5.7,
+            "C1u": 1.2,
             "C1b": 0.0
           },
           "per_partition": {
@@ -1080,6 +1194,7 @@
           "C0": 19.0,
           "C1": 7.5,
           "C1d": 5.4,
+          "C1u": 1.1,
           "C1b": 0.0
         },
         "source": "Data/col_denominators.csv; COL26.9 (ChecklistBank 316321, doi:10.48580/dgz5n, issued 2026-09-11)"
@@ -1123,6 +1238,14 @@
                 "numerator_union": 113180,
                 "percent_union": 5.957049661414518
               },
+              "C1u": {
+                "numerator": 23942,
+                "numerator_sum": 23942.0,
+                "denominator": 1899933.8,
+                "percent": 1.2601491694079026,
+                "numerator_union": 23942,
+                "percent_union": 1.2601491694079026
+              },
               "C1b": {
                 "numerator": 320,
                 "numerator_sum": 320.0,
@@ -1159,6 +1282,14 @@
                 "percent": 4.981943426286473,
                 "numerator_union": 113180,
                 "percent_union": 4.981943426286473
+              },
+              "C1u": {
+                "numerator": 23942,
+                "numerator_sum": 23942.0,
+                "denominator": 2271804.2,
+                "percent": 1.0538760338589037,
+                "numerator_union": 23942,
+                "percent_union": 1.0538760338589037
               },
               "C1b": {
                 "numerator": 320,
@@ -1197,6 +1328,12 @@
           "denominator": 2085869,
           "percent": 4.957987457505721
         },
+        "C1u": {
+          "numerator": 23617,
+          "numerator_sum": 23617.2648,
+          "denominator": 2085869,
+          "percent": 1.1322506255186686
+        },
         "C1b": {
           "numerator": 320,
           "numerator_sum": 320.0,
@@ -1207,6 +1344,7 @@
       "difference_pp": {
         "C1": 0.468,
         "C1d": 0.468,
+        "C1u": 0.0156,
         "C1b": 0.0
       },
       "per_partition": {
@@ -1371,6 +1509,14 @@
           "numerator_union": 113180,
           "percent_union": 5.426035863230146
         },
+        "C1u": {
+          "numerator": 23942,
+          "numerator_sum": 23942.0,
+          "denominator": 2085869,
+          "percent": 1.147818966579397,
+          "numerator_union": 23942,
+          "percent_union": 1.147818966579397
+        },
         "C1b": {
           "numerator": 14962,
           "numerator_sum": 14962.0,
@@ -1421,6 +1567,14 @@
           "percent": 5.426035863230146,
           "numerator_union": 113180,
           "percent_union": 5.426035863230146
+        },
+        "C1u": {
+          "numerator": 23942,
+          "numerator_sum": 23942.0,
+          "denominator": 2085869,
+          "percent": 1.147818966579397,
+          "numerator_union": 23942,
+          "percent_union": 1.147818966579397
         },
         "C1b": {
           "numerator": 35452,
@@ -1479,6 +1633,14 @@
           "numerator_union": 113180,
           "percent_union": 5.426035863230146
         },
+        "C1u": {
+          "numerator": 23942,
+          "numerator_sum": 23942.0,
+          "denominator": 2085869,
+          "percent": 1.147818966579397,
+          "numerator_union": 23942,
+          "percent_union": 1.147818966579397
+        },
         "C1b": {
           "numerator": 258,
           "numerator_sum": 258.0,
@@ -1524,6 +1686,14 @@
           "percent": 5.426035863230146,
           "numerator_union": 113180,
           "percent_union": 5.426035863230146
+        },
+        "C1u": {
+          "numerator": 23942,
+          "numerator_sum": 23942.0,
+          "denominator": 2085869,
+          "percent": 1.147818966579397,
+          "numerator_union": 23942,
+          "percent_union": 1.147818966579397
         },
         "C1b": {
           "numerator": 13815,
@@ -1697,6 +1867,9 @@
       "contribution_to_C1d": 70723.0,
       "C1d_total": 113180.0,
       "share_of_C1d_pct": 62.48718854921364,
+      "contribution_to_C1u": 0.0,
+      "C1u_total": 23942.0,
+      "share_of_C1u_pct": 0.0,
       "contribution_to_C1b": 0.0,
       "C1b_total": 320.0,
       "share_of_C1b_pct": 0.0,
@@ -3272,8 +3445,9 @@
     }
   },
   "crown_ages": {
-    "definition": "crown age of the focal clade (Data/crown_clades.csv, D21) by decision D20: the deposit's annotated median height, or the median height over its dated tree set, else the focal node's height in the deposited chronogram, else the canonical root height; the interval is the one the deposit carries (Data/crown_intervals.csv, scripts/crown_intervals.py). An interval counts for C1b when its kind counts and it is neither degenerate nor at a calibration bound (D22) nor a reproduction of the focal node's calibration prior (D25, Data/calibration_register.csv).",
+    "definition": "crown age of the focal clade (Data/crown_clades.csv, D21) by decision D20: the deposit's annotated median height, or the median height over its dated tree set, else the focal node's height in the deposited chronogram, else the canonical root height; the interval is the one the deposit carries (Data/crown_intervals.csv, scripts/crown_intervals.py). A deposit counts for C1u when it carries a node-age distribution or interval a user can propagate (D55); an interval counts for C1b when its kind counts and it is neither degenerate nor at a calibration bound (D22) nor within the range calibrations allow the crown without being halved (rule p, D25, D52) nor from a set whose root ages are drawn from the calibration prior (rule r, D29, D51).",
     "n_absolute_chronograms": 18,
+    "n_uncertainty_available": 13,
     "n_with_counted_interval": 2,
     "n_degenerate_counted_intervals": 0,
     "n_excluded_from_c1b": {
@@ -3293,6 +3467,7 @@
         "age_statistic": "median over 10000 trees",
         "geometry_root_ma": "312.7662",
         "interval_kind": "posterior_sample",
+        "uncertainty_available": "yes",
         "counts_for_c1b": "no",
         "c1b_exclusion": "prior_reproduced",
         "interval_lo_ma": "273.6685",
@@ -3314,6 +3489,7 @@
         "age_statistic": "root height of the canonical file",
         "geometry_root_ma": "99.2600",
         "interval_kind": "date_assignment_sample",
+        "uncertainty_available": "yes",
         "counts_for_c1b": "no",
         "c1b_exclusion": "kind",
         "interval_lo_ma": "72.0000",
@@ -3335,6 +3511,7 @@
         "age_statistic": "median over 1000 trees",
         "geometry_root_ma": "515.0000",
         "interval_kind": "bootstrap_dating_sample",
+        "uncertainty_available": "yes",
         "counts_for_c1b": "no",
         "c1b_exclusion": "degenerate",
         "interval_lo_ma": "515.0000",
@@ -3356,6 +3533,7 @@
         "age_statistic": "median over 9001 trees",
         "geometry_root_ma": "240.8804",
         "interval_kind": "posterior_sample",
+        "uncertainty_available": "yes",
         "counts_for_c1b": "no",
         "c1b_exclusion": "prior_reproduced",
         "interval_lo_ma": "236.5812",
@@ -3377,6 +3555,7 @@
         "age_statistic": "annotated height_median",
         "geometry_root_ma": "573.0553",
         "interval_kind": "node_hpd_annotation",
+        "uncertainty_available": "yes",
         "counts_for_c1b": "yes",
         "c1b_exclusion": "",
         "interval_lo_ma": "404.0738",
@@ -3398,6 +3577,7 @@
         "age_statistic": "root height of the canonical file",
         "geometry_root_ma": "87.1414",
         "interval_kind": "",
+        "uncertainty_available": "",
         "counts_for_c1b": "",
         "c1b_exclusion": "",
         "interval_lo_ma": "",
@@ -3419,6 +3599,7 @@
         "age_statistic": "median over 1001 trees",
         "geometry_root_ma": "190.0000",
         "interval_kind": "bootstrap_dating_sample",
+        "uncertainty_available": "yes",
         "counts_for_c1b": "no",
         "c1b_exclusion": "at_bound",
         "interval_lo_ma": "190.0000",
@@ -3440,6 +3621,7 @@
         "age_statistic": "focal node height in the deposited chronogram",
         "geometry_root_ma": "511.9205",
         "interval_kind": "node_label_interval",
+        "uncertainty_available": "yes",
         "counts_for_c1b": "yes",
         "c1b_exclusion": "",
         "interval_lo_ma": "280.1620",
@@ -3461,6 +3643,7 @@
         "age_statistic": "root height of the canonical file",
         "geometry_root_ma": "421.7595",
         "interval_kind": "",
+        "uncertainty_available": "",
         "counts_for_c1b": "",
         "c1b_exclusion": "",
         "interval_lo_ma": "",
@@ -3482,6 +3665,7 @@
         "age_statistic": "root height of the canonical file",
         "geometry_root_ma": "368.0270",
         "interval_kind": "taxon_addition_sample",
+        "uncertainty_available": "no",
         "counts_for_c1b": "no",
         "c1b_exclusion": "kind",
         "interval_lo_ma": "368.0270",
@@ -3503,6 +3687,7 @@
         "age_statistic": "focal node height in the deposited chronogram",
         "geometry_root_ma": "479.6000",
         "interval_kind": "node_hpd_annotation",
+        "uncertainty_available": "yes",
         "counts_for_c1b": "no",
         "c1b_exclusion": "prior_reproduced",
         "interval_lo_ma": "434.2000",
@@ -3524,6 +3709,7 @@
         "age_statistic": "median over 10000 trees",
         "geometry_root_ma": "180.8472",
         "interval_kind": "posterior_sample",
+        "uncertainty_available": "yes",
         "counts_for_c1b": "no",
         "c1b_exclusion": "prior_reproduced",
         "interval_lo_ma": "168.5571",
@@ -3545,6 +3731,7 @@
         "age_statistic": "root height of the canonical file",
         "geometry_root_ma": "325.0508",
         "interval_kind": "",
+        "uncertainty_available": "",
         "counts_for_c1b": "",
         "c1b_exclusion": "",
         "interval_lo_ma": "",
@@ -3566,6 +3753,7 @@
         "age_statistic": "median over 10000 trees",
         "geometry_root_ma": "365.3613",
         "interval_kind": "calibration_prior_sample",
+        "uncertainty_available": "yes",
         "counts_for_c1b": "no",
         "c1b_exclusion": "prior_sampled",
         "interval_lo_ma": "353.5730",
@@ -3587,6 +3775,7 @@
         "age_statistic": "root height of the canonical file",
         "geometry_root_ma": "366.0864",
         "interval_kind": "",
+        "uncertainty_available": "",
         "counts_for_c1b": "",
         "c1b_exclusion": "",
         "interval_lo_ma": "",
@@ -3608,6 +3797,7 @@
         "age_statistic": "focal node height in the deposited chronogram",
         "geometry_root_ma": "526.4421",
         "interval_kind": "node_label_interval",
+        "uncertainty_available": "yes",
         "counts_for_c1b": "no",
         "c1b_exclusion": "prior_reproduced",
         "interval_lo_ma": "514.6480",
@@ -3629,6 +3819,7 @@
         "age_statistic": "median over 10000 trees",
         "geometry_root_ma": "189.9633",
         "interval_kind": "posterior_sample",
+        "uncertainty_available": "yes",
         "counts_for_c1b": "no",
         "c1b_exclusion": "prior_reproduced",
         "interval_lo_ma": "176.9718",
@@ -3650,6 +3841,7 @@
         "age_statistic": "median over 100 trees",
         "geometry_root_ma": "211.9547",
         "interval_kind": "posterior_sample",
+        "uncertainty_available": "yes",
         "counts_for_c1b": "no",
         "c1b_exclusion": "prior_reproduced",
         "interval_lo_ma": "179.3065",
@@ -3691,6 +3883,13 @@
         "Other animals": 525,
         "Microbes & protists": 39
       },
+      "C1u": {
+        "Vertebrates": 22873,
+        "Plants": 505,
+        "Arthropods": 0,
+        "Other animals": 525,
+        "Microbes & protists": 39
+      },
       "C1b": {
         "Vertebrates": 0,
         "Plants": 0,
@@ -3704,7 +3903,8 @@
       "NotChron": 1943,
       "RelTime": 42078,
       "NoInterval": 77728,
-      "Kind": 20490,
+      "Placement": 11510,
+      "Kind": 8980,
       "Calib": 14642
     }
   },
@@ -6427,6 +6627,8 @@
         "lr_median": 3.26805,
         "lr_max": 24.8909,
         "n_boundary": 95,
+        "n_lr_above_critical": 54,
+        "n_lr_above_corrected": 30,
         "r_ratio_min": 0.971659701074717,
         "r_ratio_max": 1.0452122877897063,
         "summary_tree_classification": "boundary",
@@ -6452,6 +6654,8 @@
         "lr_median": 0.0,
         "lr_max": 2.2767,
         "n_boundary": 2,
+        "n_lr_above_critical": 0,
+        "n_lr_above_corrected": 0,
         "r_ratio_min": 0.9967917077986179,
         "r_ratio_max": 1.0185117913512791,
         "summary_tree_classification": "boundary",
@@ -6477,6 +6681,8 @@
         "lr_median": 0.0,
         "lr_max": 0.0,
         "n_boundary": 0,
+        "n_lr_above_critical": 0,
+        "n_lr_above_corrected": 0,
         "r_ratio_min": 0.9922193375816223,
         "r_ratio_max": 1.0141989900497121,
         "summary_tree_classification": "boundary",
@@ -6502,6 +6708,8 @@
         "lr_median": 0.0,
         "lr_max": 0.0,
         "n_boundary": 0,
+        "n_lr_above_critical": 0,
+        "n_lr_above_corrected": 0,
         "r_ratio_min": 0.9239277564651962,
         "r_ratio_max": 0.9810837935401154,
         "summary_tree_classification": "identity",
@@ -6525,6 +6733,8 @@
         "lr_median": 0.0,
         "lr_max": 0.0,
         "n_boundary": 0,
+        "n_lr_above_critical": 0,
+        "n_lr_above_corrected": 0,
         "r_ratio_min": null,
         "r_ratio_max": null,
         "summary_tree_classification": "identity",
@@ -6550,6 +6760,8 @@
         "lr_median": 0.0,
         "lr_max": 5.5616,
         "n_boundary": 11,
+        "n_lr_above_critical": 2,
+        "n_lr_above_corrected": 0,
         "r_ratio_min": 0.8876782042786019,
         "r_ratio_max": 1.0653940055062074,
         "summary_tree_classification": "identity",
@@ -6573,6 +6785,8 @@
         "lr_median": 1.18125,
         "lr_max": 18.929,
         "n_boundary": 84,
+        "n_lr_above_critical": 4,
+        "n_lr_above_corrected": 2,
         "r_ratio_min": null,
         "r_ratio_max": null,
         "summary_tree_classification": "identity",
@@ -6598,6 +6812,8 @@
         "lr_median": 30.97435,
         "lr_max": 69.8185,
         "n_boundary": 100,
+        "n_lr_above_critical": 100,
+        "n_lr_above_corrected": 100,
         "r_ratio_min": 0.9151113755317168,
         "r_ratio_max": 0.9940670220029514,
         "summary_tree_classification": "boundary",

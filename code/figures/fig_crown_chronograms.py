@@ -1,6 +1,7 @@
 """Figure 4: crown ages of the reference chronograms and the divergence-time
-interval each deposit carries, coloured by whether the interval counts for
-interval coverage and, if not, why.
+interval each deposit carries, coloured by whether the archive carries date
+uncertainty (level C1u), whether its crown interval is informed beyond the
+calibration (level C1b) and, if not, why (D55).
 
 Input, written by scripts/rebuild_atlas.py:
   Paper/inputs/crown_ages.csv      one row per reference chronogram
@@ -20,11 +21,16 @@ mpl.use("Agg")
 afc.apply_style(mpl, size=7)
 
 # colour, marker and legend label of each status; the marker separates the
-# four classes without relying on hue (R2-39)
+# five classes without relying on hue (R2-39)
 STATUS = OrderedDict([
-    ("counted", ("#0072B2", "o", "interval usable")),
-    ("kind", ("#E69F00", "s", "interval describes other variation")),
-    ("fixed", ("#D55E00", "D", "excluded by a calibration rule")),
+    ("counted", ("#0072B2", "o",
+                 "uncertainty available; interval beyond the calibration")),
+    ("draw", ("#E69F00", "s",
+              "uncertainty available; dates drawn from published studies")),
+    ("fixed", ("#D55E00", "D",
+               "uncertainty available; excluded by a calibration rule")),
+    ("placement", ("#56B4E9", "^",
+                   "tree set varies only the placement of added tips")),
     ("none", ("#999999", "x", "no interval archived")),
 ])
 
@@ -35,8 +41,10 @@ with open(afc.INPUTS_DIR / "crown_ages.csv", newline="") as fh:
             st = "none"
         elif r["counts_for_c1b"] == "yes":
             st = "counted"
+        elif r["uncertainty_available"] != "yes":
+            st = "placement"
         elif r["c1b_exclusion"] == "kind":
-            st = "kind"
+            st = "draw"
         else:
             st = "fixed"
         rows.append({
@@ -53,6 +61,9 @@ if len(rows) != ca["n_absolute_chronograms"]:
     raise SystemExit("crown_ages.csv disagrees with headline_numbers.json")
 if sum(r["status"] == "counted" for r in rows) != ca["n_with_counted_interval"]:
     raise SystemExit("counted intervals disagree with headline_numbers.json")
+if sum(r["status"] in ("counted", "draw", "fixed") for r in rows) \
+        != ca["n_uncertainty_available"]:
+    raise SystemExit("uncertainty available disagrees with headline_numbers.json")
 
 rows.sort(key=lambda r: r["age"])
 fig, ax = plt.subplots(figsize=(5.2, 0.2 * len(rows) + 1.5),

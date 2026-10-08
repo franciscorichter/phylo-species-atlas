@@ -1,63 +1,63 @@
-partition,group,category,is_prokaryotic,described,described_source,is_unrepresented,canonical_tree,labels_raw,labels_unique,c0_units,c0_unresolved_labels,f_mol,f_basis,f_low,f_high,c1_units,c1_basis,molecular_source_file,is_chronogram,time_scale,roottotip_cv,interval_recoverable,interval_kind,posterior_n,topology_assembly,placement_evidence
-Acanthocephala,acanthocephala,Other animals,no,1325,Catalogue of Life COL26.9,yes,,0,0,0,0,,,,,,,,,,,,,,,
-Acari,acari,Arthropods,no,55000,Zhang 2013,yes,,0,0,0,0,,,,,,,,,,,,,,,
-Amoebozoa,amoebozoa,Microbes & protists,no,2400,Adl 2007,yes,,0,0,0,0,,,,,,,,,,,,,,,
-Amphibians,amphibians,Vertebrates,no,8863,AmphibiaWeb 2025,no,amphibians.nwk,7238,7238,6947,39,0.561067,source_tree_intersection,0.561067,0.561067,3993,enumerated,Data/raw/amphibians/jetz_pyron_2018_ML_4061sp.tre,yes,absolute,0.000000,no,,,primary_analysis,otl=none|inference=bayesian|tree_class=direct_empirical
-Annelids,annelids,Other animals,no,21000,Appeltans 2012,yes,,0,0,0,0,,,,,,,,,,,,,,,
-Apicomplexa,apicomplexa,Microbes & protists,no,6000,"rounded figure, source not traced (COL26.9 lists 169)",yes,,0,0,0,0,,,,,,,,,,,,,,,
-Archaea,archaea,Microbes & protists,yes,6968,GTDB R10-RS226 species clusters,no,archaea.nwk,6968,6968,6968,0,1.000000,source_alignment_intersection,1.000000,1.000000,6968,enumerated,Data/molecular_sources/archaea.taxa.txt,no,not_ultrametric,0.236842,no,,,primary_analysis,otl=none|inference=ml|tree_class=direct_empirical
-Bacteria,bacteria,Microbes & protists,yes,136646,GTDB R10-RS226 species clusters,no,bacteria.nwk,136646,136646,136646,0,1.000000,source_alignment_intersection,1.000000,1.000000,136646,enumerated,Data/molecular_sources/bacteria.taxa.txt,no,not_ultrametric,0.185906,no,,,primary_analysis,otl=none|inference=ml|tree_class=direct_empirical
-Birds,birds,Vertebrates,no,11195,IUCN Red List 2025,no,birds.nwk,10824,10824,10469,314,0.853566,source_tree_intersection,0.842572,0.853566,8980,enumerated,Data/raw/revision-2026-10/birds/AvesData_1.3_Clements2021/phylo_only_clements_labels.tre,yes,absolute,0.000000,no,,,automated_synthesis,otl=full_pipeline|inference=synthesis|tree_class=peer_reviewed_empirical_synthesis
-Bivalves,bivalves,Other animals,no,10043,"MolluscaBase, in Catalogue of Life COL26.9",no,bivalves.nwk,73,73,44,28,1.000000,source_alignment_intersection,1.000000,1.000000,44,enumerated,Data/molecular_sources/bivalves.taxa.txt,no,not_ultrametric,0.264237,no,,,primary_analysis,otl=none|inference=coalescent|tree_class=direct_empirical
-Brown algae,brown_algae,Microbes & protists,no,2000,Guiry 2024,yes,,0,0,0,0,,,,,,,,,,,,,,,
-Bryophytes,bryophytes,Plants,no,19273,Catalogue of Life COL26.9,no,bryophytes.nwk,533,533,505,26,1.000000,source_alignment_intersection,1.000000,1.000000,505,enumerated,Data/molecular_sources/bryophytes.taxa.txt,yes,absolute,0.000000,no,,,primary_analysis,otl=none|inference=ml|tree_class=direct_empirical
-Bryozoa,bryozoa,Other animals,no,6000,WoRMS / Appeltans 2012,no,bryozoa.nwk,565,565,337,228,1.000000,source_alignment_intersection,1.000000,1.000000,337,enumerated,Data/molecular_sources/bryozoa.taxa.txt,no,not_ultrametric,0.617648,no,,,primary_analysis,otl=none|inference=ml|tree_class=direct_empirical
-Cephalopods,cephalopods,Other animals,no,800,WoRMS / WoRMS,no,cephalopods.nwk,81,81,80,1,1.000000,source_alignment_intersection,1.000000,1.000000,80,enumerated,Data/molecular_sources/cephalopods.taxa.txt,yes,absolute,0.000000,no,,,compiled,otl=none|inference=literature_compilation|tree_class=direct_empirical
-Cercozoa,cercozoa,Microbes & protists,no,2000,"rounded figure, source not traced (COL26.9 lists 183)",yes,,0,0,0,0,,,,,,,,,,,,,,,
-Choanoflagellates,choanoflagellates,Microbes & protists,no,300,Carr 2008,yes,,0,0,0,0,,,,,,,,,,,,,,,
-Chrysophyta,chrysophyta,Microbes & protists,no,1200,AlgaeBase,yes,,0,0,0,0,,,,,,,,,,,,,,,
-Ciliates,ciliates,Microbes & protists,no,4500,Foissner 2008,yes,,0,0,0,0,,,,,,,,,,,,,,,
-Cnidaria,corals,Other animals,no,11800,WoRMS / Appeltans 2012,no,corals.nwk,289,289,258,30,1.000000,per_tip_evidence,1.000000,1.000000,258,enumerated,Data/molecular_tip_evidence.csv,yes,absolute,0.000000,yes,node_hpd_annotation,,primary_analysis,otl=none|inference=bayesian|tree_class=direct_empirical
-Crocodilians,condamine_Crocodylia,Vertebrates,no,27,IUCN Crocodile Specialist Group,no,condamine_Crocodylia.nwk,25,25,20,5,1.000000,asserted_no_imputation,1.000000,1.000000,20,all_tips,,yes,absolute,0.000000,no,,,compiled,otl=none|inference=literature_compilation|tree_class=family_level_compilation
-Crustaceans,crustaceans,Arthropods,no,77000,World Register of Marine Species (WoRMS),no,crustaceans.nwk,95,95,65,30,1.000000,per_tip_evidence,1.000000,1.000000,65,enumerated,Data/molecular_tip_evidence.csv,no,not_ultrametric,0.588734,no,,,primary_analysis,otl=none|inference=bayesian|tree_class=direct_empirical
-Ctenophores,ctenophores,Other animals,no,200,WoRMS,yes,,0,0,0,0,,,,,,,,,,,,,,,
-Diatoms,diatoms,Microbes & protists,no,20000,AlgaeBase 2025,no,diatoms.nwk,1113,1113,39,1073,1.000000,source_alignment_intersection,1.000000,1.000000,39,enumerated,Data/molecular_sources/diatoms.taxa.txt,yes,absolute,0.000000,no,,,primary_analysis,otl=none|inference=ml|tree_class=direct_empirical
-Dinoflagellates,dinoflagellates,Microbes & protists,no,2300,Gomez 2012,yes,,0,0,0,0,,,,,,,,,,,,,,,
-Echinoderms,echinoderms,Other animals,no,7550,WoRMS / Appeltans 2012,no,echinoderms.nwk,65,65,62,3,1.000000,per_tip_evidence,1.000000,1.000000,62,enumerated,Data/molecular_tip_evidence.csv,yes,absolute,0.000000,yes,node_label_interval,,primary_analysis,otl=none|inference=bayesian|tree_class=direct_empirical
-Euglenozoa,euglenozoa,Microbes & protists,no,2000,"rounded figure, source not traced (COL26.9 lists 578)",yes,,0,0,0,0,,,,,,,,,,,,,,,
-Ferns,ferns,Plants,no,10578,PPG I 2016,no,ferns.nwk,6216,6216,6097,100,1.000000,source_alignment_intersection,1.000000,1.000000,6097,enumerated,Data/molecular_sources/ferns.taxa.txt,yes,absolute,0.000000,no,,,primary_analysis,otl=none|inference=ml|tree_class=direct_empirical
-Fish,fish,Vertebrates,no,36280,Eschmeyer's Catalog of Fishes (21 Sep. 2026),no,fish.nwk,31347,31347,30973,91,0.369924,source_tree_intersection,0.369924,0.369924,11510,enumerated,Data/raw/fish/actinopt_12k_treePL.tre,yes,absolute,0.000000,no,,,primary_analysis,otl=none|inference=ml|tree_class=direct_empirical
-Flatworms,flatworms,Other animals,no,29487,"Zhang 2013 (29,488 species including 1 fossil)",yes,,0,0,0,0,,,,,,,,,,,,,,,
-Foraminifera,foraminifera,Microbes & protists,no,9000,Hayward 2020,yes,,0,0,0,0,,,,,,,,,,,,,,,
-Fungi,fungi,Microbes & protists,no,156891,Catalogue of Life COL26.9 (Species Fungorum),no,fungi.nwk,1620,1620,1396,206,1.000000,source_alignment_intersection,1.000000,1.000000,1396,enumerated,Data/molecular_sources/fungi.taxa.txt,no,not_ultrametric,0.401827,no,,,primary_analysis,otl=none|inference=ml|tree_class=direct_empirical
-Gastropods,gastropods,Other animals,no,65000,WoRMS / Appeltans 2012,no,gastropods.nwk,40,40,39,1,1.000000,source_alignment_intersection,1.000000,1.000000,39,enumerated,Data/molecular_sources/gastropods.taxa.txt,yes,absolute,0.000001,no,,,primary_analysis,otl=none|inference=bayesian|tree_class=direct_empirical
-Green algae,green_algae,Plants,no,11000,Guiry 2012,yes,,0,0,0,0,,,,,,,,,,,,,,,
-Hagfish,hagfish,Vertebrates,no,82,Fernholm 2013,yes,,0,0,0,0,,,,,,,,,,,,,,,
-Haptophytes,haptophytes,Microbes & protists,no,760,de Vargas 2007,yes,,0,0,0,0,,,,,,,,,,,,,,,
-Insects,insects,Arthropods,no,929676,Catalogue of Life COL26.9,no,insects.nwk,53373,53373,42078,11074,1.000000,source_alignment_intersection,1.000000,1.000000,42078,enumerated,Data/molecular_sources/insects.taxa.txt,no,relative,0.000002,no,,,primary_analysis,otl=collection_backed|inference=ml|tree_class=peer_reviewed_empirical_synthesis
-Lampreys,lampreys,Vertebrates,no,48,Potter 2015,yes,,0,0,0,0,,,,,,,,,,,,,,,
-Lycophytes,lycophytes,Plants,no,1338,PPG I 2016,yes,,0,0,0,0,,,,,,,,,,,,,,,
-Mammals,mammals,Vertebrates,no,6736,"Mammal Diversity Database (MDD, 2024+)",no,mammals.nwk,5911,5911,5625,172,0.693284,source_alignment_intersection,0.693284,0.693284,3945,enumerated,Data/molecular_sources/mammals.taxa.txt,yes,absolute,0.000000,no,,,primary_analysis,otl=none|inference=bayesian|tree_class=direct_empirical
-Minor animal phyla,minor_animal_phyla,Other animals,no,376,"sum of Onychophora (200), Chaetognatha (130), Loricifera (39), Placozoa (4) and Cycliophora (3)",yes,,0,0,0,0,,,,,,,,,,,,,,,
-Myriapods,myriapods,Arthropods,no,17000,Chapman 2009,yes,,0,0,0,0,,,,,,,,,,,,,,,
-Myxozoa,myxozoa,Other animals,no,2400,WoRMS,yes,,0,0,0,0,,,,,,,,,,,,,,,
-Nematodes,nematodes,Other animals,no,28537,WoRMS / Hodda 2022,no,nematodes.nwk,156,156,101,55,1.000000,source_tree_intersection,1.000000,1.000000,101,enumerated,Data/raw/nematodes/nematoda_50p_aa_ML.tre,no,not_ultrametric,0.297255,no,,,primary_analysis,otl=none|inference=ml|tree_class=direct_empirical
-Nemerteans,nemerteans,Other animals,no,1300,Kajihara 2008,yes,,0,0,0,0,,,,,,,,,,,,,,,
-Oomycetes,oomycetes,Microbes & protists,no,1673,Catalogue of Life COL26.9,yes,,0,0,0,0,,,,,,,,,,,,,,,
-Other Mollusca,other_mollusca,Other animals,no,1500,WoRMS,yes,,0,0,0,0,,,,,,,,,,,,,,,
-Other arachnids,other_arachnids,Arthropods,no,12765,Catalogue of Life COL26.9,yes,,0,0,0,0,,,,,,,,,,,,,,,
-Other hexapods,other_hexapods,Arthropods,no,10138,Catalogue of Life COL26.9,yes,,0,0,0,0,,,,,,,,,,,,,,,
-Other phyla,other_phyla,Other animals,no,3442,Catalogue of Life COL26.9,yes,,0,0,0,0,,,,,,,,,,,,,,,
-Other vertebrates,other_vertebrates,Vertebrates,no,9,"sum of tuatara (1), coelacanths (2) and lungfishes (6)",yes,,0,0,0,0,,,,,,,,,,,,,,,
-Pycnogonida,pycnogonida,Arthropods,no,1400,WoRMS,yes,,0,0,0,0,,,,,,,,,,,,,,,
-Rhodophyta,rhodophyta,Plants,no,7000,AlgaeBase,yes,,0,0,0,0,,,,,,,,,,,,,,,
-Rotifera,rotifera,Other animals,no,2200,Segers 2007,yes,,0,0,0,0,,,,,,,,,,,,,,,
-Scorpiones,scorpiones,Arthropods,no,2700,Rein 2024,yes,,0,0,0,0,,,,,,,,,,,,,,,
-Seed plants,seed_plants,Plants,no,383671,World Flora Online 2025,no,seed_plants.nwk,348886,348886,279049,40432,0.219808,source_tree_intersection,0.219808,0.219808,70723,enumerated,Data/raw/plants/GBMB.tre,yes,absolute,0.000001,no,,,primary_analysis,otl=taxonomy_backed_grafting|inference=ml|tree_class=peer_reviewed_empirical_synthesis
-Sharks,sharks,Vertebrates,no,1282,Chondrichthyan Tree of Life,no,sharks.nwk,1192,1192,1150,12,0.511745,source_tree_intersection,0.511745,0.511745,603,enumerated,Data/raw/sharks/Chond.610sp.10Cal.500TreeSet.tre,yes,absolute,0.000000,no,,,primary_analysis,otl=PL|inference=ml|tree_class=direct_empirical
-Spiders,spiders,Arthropods,no,52249,World Spider Catalog 2025,no,spiders.nwk,1431,1431,888,543,1.000000,asserted_no_imputation,1.000000,1.000000,888,all_tips,,yes,absolute,0.000000,no,,,primary_analysis,otl=none|inference=ml|tree_class=direct_empirical
-Sponges,sponges,Other animals,no,9470,WoRMS / Appeltans 2012,no,sponges.nwk,119,119,86,32,1.000000,source_alignment_intersection,1.000000,1.000000,86,enumerated,Data/molecular_sources/sponges.taxa.txt,yes,absolute,0.000001,no,,,primary_analysis,otl=none|inference=bayesian|tree_class=direct_empirical
-Squamates,squamates,Vertebrates,no,12108,"Reptile Database, September 2025 release (Uetz et al. 2025)",no,squamates.nwk,9754,9754,8953,672,0.555157,source_tree_intersection,0.555157,0.555157,5096,enumerated,Data/raw/squamates/tonini2016_squamate_ML.tre,yes,absolute,0.000000,no,,,primary_analysis,otl=none|inference=bayesian|tree_class=direct_empirical
-Tardigrada,tardigrada,Other animals,no,1488,Bartels 2016,yes,,0,0,0,0,,,,,,,,,,,,,,,
-Tunicates,tunicates,Other animals,no,3145,Appeltans 2012,yes,,0,0,0,0,,,,,,,,,,,,,,,
-Turtles,turtles,Vertebrates,no,364,TTWG 2025 (10th edition),no,turtles.nwk,283,283,256,26,1.000000,asserted_no_imputation,1.000000,1.000000,256,all_tips,,yes,absolute,0.000000,no,,,primary_analysis,otl=none|inference=bayesian|tree_class=direct_empirical
+partition,group,category,is_prokaryotic,described,described_source,is_unrepresented,canonical_tree,labels_raw,labels_unique,c0_units,c0_unresolved_labels,f_mol,f_basis,f_low,f_high,c1_units,c1_basis,molecular_source_file,is_chronogram,time_scale,roottotip_cv,uncertainty_available,interval_recoverable,interval_kind,posterior_n,topology_assembly,placement_evidence
+Acanthocephala,acanthocephala,Other animals,no,1325,Catalogue of Life COL26.9,yes,,0,0,0,0,,,,,,,,,,,,,,,,
+Acari,acari,Arthropods,no,55000,Zhang 2013,yes,,0,0,0,0,,,,,,,,,,,,,,,,
+Amoebozoa,amoebozoa,Microbes & protists,no,2400,Adl 2007,yes,,0,0,0,0,,,,,,,,,,,,,,,,
+Amphibians,amphibians,Vertebrates,no,8863,AmphibiaWeb 2025,no,amphibians.nwk,7238,7238,6947,39,0.561067,source_tree_intersection,0.561067,0.561067,3993,enumerated,Data/raw/amphibians/jetz_pyron_2018_ML_4061sp.tre,yes,absolute,0.000000,yes,no,,,primary_analysis,otl=none|inference=bayesian|tree_class=direct_empirical
+Annelids,annelids,Other animals,no,21000,Appeltans 2012,yes,,0,0,0,0,,,,,,,,,,,,,,,,
+Apicomplexa,apicomplexa,Microbes & protists,no,6000,"rounded figure, source not traced (COL26.9 lists 169)",yes,,0,0,0,0,,,,,,,,,,,,,,,,
+Archaea,archaea,Microbes & protists,yes,6968,GTDB R10-RS226 species clusters,no,archaea.nwk,6968,6968,6968,0,1.000000,source_alignment_intersection,1.000000,1.000000,6968,enumerated,Data/molecular_sources/archaea.taxa.txt,no,not_ultrametric,0.236842,no,no,,,primary_analysis,otl=none|inference=ml|tree_class=direct_empirical
+Bacteria,bacteria,Microbes & protists,yes,136646,GTDB R10-RS226 species clusters,no,bacteria.nwk,136646,136646,136646,0,1.000000,source_alignment_intersection,1.000000,1.000000,136646,enumerated,Data/molecular_sources/bacteria.taxa.txt,no,not_ultrametric,0.185906,no,no,,,primary_analysis,otl=none|inference=ml|tree_class=direct_empirical
+Birds,birds,Vertebrates,no,11195,IUCN Red List 2025,no,birds.nwk,10824,10824,10469,314,0.853566,source_tree_intersection,0.842572,0.853566,8980,enumerated,Data/raw/revision-2026-10/birds/AvesData_1.3_Clements2021/phylo_only_clements_labels.tre,yes,absolute,0.000000,yes,no,,,automated_synthesis,otl=full_pipeline|inference=synthesis|tree_class=peer_reviewed_empirical_synthesis
+Bivalves,bivalves,Other animals,no,10043,"MolluscaBase, in Catalogue of Life COL26.9",no,bivalves.nwk,73,73,44,28,1.000000,source_alignment_intersection,1.000000,1.000000,44,enumerated,Data/molecular_sources/bivalves.taxa.txt,no,not_ultrametric,0.264237,no,no,,,primary_analysis,otl=none|inference=coalescent|tree_class=direct_empirical
+Brown algae,brown_algae,Microbes & protists,no,2000,Guiry 2024,yes,,0,0,0,0,,,,,,,,,,,,,,,,
+Bryophytes,bryophytes,Plants,no,19273,Catalogue of Life COL26.9,no,bryophytes.nwk,533,533,505,26,1.000000,source_alignment_intersection,1.000000,1.000000,505,enumerated,Data/molecular_sources/bryophytes.taxa.txt,yes,absolute,0.000000,yes,no,,,primary_analysis,otl=none|inference=ml|tree_class=direct_empirical
+Bryozoa,bryozoa,Other animals,no,6000,WoRMS / Appeltans 2012,no,bryozoa.nwk,565,565,337,228,1.000000,source_alignment_intersection,1.000000,1.000000,337,enumerated,Data/molecular_sources/bryozoa.taxa.txt,no,not_ultrametric,0.617648,no,no,,,primary_analysis,otl=none|inference=ml|tree_class=direct_empirical
+Cephalopods,cephalopods,Other animals,no,800,WoRMS / WoRMS,no,cephalopods.nwk,81,81,80,1,1.000000,source_alignment_intersection,1.000000,1.000000,80,enumerated,Data/molecular_sources/cephalopods.taxa.txt,yes,absolute,0.000000,yes,no,,,compiled,otl=none|inference=literature_compilation|tree_class=direct_empirical
+Cercozoa,cercozoa,Microbes & protists,no,2000,"rounded figure, source not traced (COL26.9 lists 183)",yes,,0,0,0,0,,,,,,,,,,,,,,,,
+Choanoflagellates,choanoflagellates,Microbes & protists,no,300,Carr 2008,yes,,0,0,0,0,,,,,,,,,,,,,,,,
+Chrysophyta,chrysophyta,Microbes & protists,no,1200,AlgaeBase,yes,,0,0,0,0,,,,,,,,,,,,,,,,
+Ciliates,ciliates,Microbes & protists,no,4500,Foissner 2008,yes,,0,0,0,0,,,,,,,,,,,,,,,,
+Cnidaria,corals,Other animals,no,11800,WoRMS / Appeltans 2012,no,corals.nwk,289,289,258,30,1.000000,per_tip_evidence,1.000000,1.000000,258,enumerated,Data/molecular_tip_evidence.csv,yes,absolute,0.000000,yes,yes,node_hpd_annotation,,primary_analysis,otl=none|inference=bayesian|tree_class=direct_empirical
+Crocodilians,condamine_Crocodylia,Vertebrates,no,27,IUCN Crocodile Specialist Group,no,condamine_Crocodylia.nwk,25,25,20,5,1.000000,asserted_no_imputation,1.000000,1.000000,20,all_tips,,yes,absolute,0.000000,no,no,,,compiled,otl=none|inference=literature_compilation|tree_class=family_level_compilation
+Crustaceans,crustaceans,Arthropods,no,77000,World Register of Marine Species (WoRMS),no,crustaceans.nwk,95,95,65,30,1.000000,per_tip_evidence,1.000000,1.000000,65,enumerated,Data/molecular_tip_evidence.csv,no,not_ultrametric,0.588734,no,no,,,primary_analysis,otl=none|inference=bayesian|tree_class=direct_empirical
+Ctenophores,ctenophores,Other animals,no,200,WoRMS,yes,,0,0,0,0,,,,,,,,,,,,,,,,
+Diatoms,diatoms,Microbes & protists,no,20000,AlgaeBase 2025,no,diatoms.nwk,1113,1113,39,1073,1.000000,source_alignment_intersection,1.000000,1.000000,39,enumerated,Data/molecular_sources/diatoms.taxa.txt,yes,absolute,0.000000,yes,no,,,primary_analysis,otl=none|inference=ml|tree_class=direct_empirical
+Dinoflagellates,dinoflagellates,Microbes & protists,no,2300,Gomez 2012,yes,,0,0,0,0,,,,,,,,,,,,,,,,
+Echinoderms,echinoderms,Other animals,no,7550,WoRMS / Appeltans 2012,no,echinoderms.nwk,65,65,62,3,1.000000,per_tip_evidence,1.000000,1.000000,62,enumerated,Data/molecular_tip_evidence.csv,yes,absolute,0.000000,yes,yes,node_label_interval,,primary_analysis,otl=none|inference=bayesian|tree_class=direct_empirical
+Euglenozoa,euglenozoa,Microbes & protists,no,2000,"rounded figure, source not traced (COL26.9 lists 578)",yes,,0,0,0,0,,,,,,,,,,,,,,,,
+Ferns,ferns,Plants,no,10578,PPG I 2016,no,ferns.nwk,6216,6216,6097,100,1.000000,source_alignment_intersection,1.000000,1.000000,6097,enumerated,Data/molecular_sources/ferns.taxa.txt,yes,absolute,0.000000,no,no,,,primary_analysis,otl=none|inference=ml|tree_class=direct_empirical
+Fish,fish,Vertebrates,no,36280,Eschmeyer's Catalog of Fishes (21 Sep. 2026),no,fish.nwk,31347,31347,30973,91,0.369924,source_tree_intersection,0.369924,0.369924,11510,enumerated,Data/raw/fish/actinopt_12k_treePL.tre,yes,absolute,0.000000,no,no,,,primary_analysis,otl=none|inference=ml|tree_class=direct_empirical
+Flatworms,flatworms,Other animals,no,29487,"Zhang 2013 (29,488 species including 1 fossil)",yes,,0,0,0,0,,,,,,,,,,,,,,,,
+Foraminifera,foraminifera,Microbes & protists,no,9000,Hayward 2020,yes,,0,0,0,0,,,,,,,,,,,,,,,,
+Fungi,fungi,Microbes & protists,no,156891,Catalogue of Life COL26.9 (Species Fungorum),no,fungi.nwk,1620,1620,1396,206,1.000000,source_alignment_intersection,1.000000,1.000000,1396,enumerated,Data/molecular_sources/fungi.taxa.txt,no,not_ultrametric,0.401827,no,no,,,primary_analysis,otl=none|inference=ml|tree_class=direct_empirical
+Gastropods,gastropods,Other animals,no,65000,WoRMS / Appeltans 2012,no,gastropods.nwk,40,40,39,1,1.000000,source_alignment_intersection,1.000000,1.000000,39,enumerated,Data/molecular_sources/gastropods.taxa.txt,yes,absolute,0.000001,yes,no,,,primary_analysis,otl=none|inference=bayesian|tree_class=direct_empirical
+Green algae,green_algae,Plants,no,11000,Guiry 2012,yes,,0,0,0,0,,,,,,,,,,,,,,,,
+Hagfish,hagfish,Vertebrates,no,82,Fernholm 2013,yes,,0,0,0,0,,,,,,,,,,,,,,,,
+Haptophytes,haptophytes,Microbes & protists,no,760,de Vargas 2007,yes,,0,0,0,0,,,,,,,,,,,,,,,,
+Insects,insects,Arthropods,no,929676,Catalogue of Life COL26.9,no,insects.nwk,53373,53373,42078,11074,1.000000,source_alignment_intersection,1.000000,1.000000,42078,enumerated,Data/molecular_sources/insects.taxa.txt,no,relative,0.000002,no,no,,,primary_analysis,otl=collection_backed|inference=ml|tree_class=peer_reviewed_empirical_synthesis
+Lampreys,lampreys,Vertebrates,no,48,Potter 2015,yes,,0,0,0,0,,,,,,,,,,,,,,,,
+Lycophytes,lycophytes,Plants,no,1338,PPG I 2016,yes,,0,0,0,0,,,,,,,,,,,,,,,,
+Mammals,mammals,Vertebrates,no,6736,"Mammal Diversity Database (MDD, 2024+)",no,mammals.nwk,5911,5911,5625,172,0.693284,source_alignment_intersection,0.693284,0.693284,3945,enumerated,Data/molecular_sources/mammals.taxa.txt,yes,absolute,0.000000,yes,no,,,primary_analysis,otl=none|inference=bayesian|tree_class=direct_empirical
+Minor animal phyla,minor_animal_phyla,Other animals,no,376,"sum of Onychophora (200), Chaetognatha (130), Loricifera (39), Placozoa (4) and Cycliophora (3)",yes,,0,0,0,0,,,,,,,,,,,,,,,,
+Myriapods,myriapods,Arthropods,no,17000,Chapman 2009,yes,,0,0,0,0,,,,,,,,,,,,,,,,
+Myxozoa,myxozoa,Other animals,no,2400,WoRMS,yes,,0,0,0,0,,,,,,,,,,,,,,,,
+Nematodes,nematodes,Other animals,no,28537,WoRMS / Hodda 2022,no,nematodes.nwk,156,156,101,55,1.000000,source_tree_intersection,1.000000,1.000000,101,enumerated,Data/raw/nematodes/nematoda_50p_aa_ML.tre,no,not_ultrametric,0.297255,no,no,,,primary_analysis,otl=none|inference=ml|tree_class=direct_empirical
+Nemerteans,nemerteans,Other animals,no,1300,Kajihara 2008,yes,,0,0,0,0,,,,,,,,,,,,,,,,
+Oomycetes,oomycetes,Microbes & protists,no,1673,Catalogue of Life COL26.9,yes,,0,0,0,0,,,,,,,,,,,,,,,,
+Other Mollusca,other_mollusca,Other animals,no,1500,WoRMS,yes,,0,0,0,0,,,,,,,,,,,,,,,,
+Other arachnids,other_arachnids,Arthropods,no,12765,Catalogue of Life COL26.9,yes,,0,0,0,0,,,,,,,,,,,,,,,,
+Other hexapods,other_hexapods,Arthropods,no,10138,Catalogue of Life COL26.9,yes,,0,0,0,0,,,,,,,,,,,,,,,,
+Other phyla,other_phyla,Other animals,no,3442,Catalogue of Life COL26.9,yes,,0,0,0,0,,,,,,,,,,,,,,,,
+Other vertebrates,other_vertebrates,Vertebrates,no,9,"sum of tuatara (1), coelacanths (2) and lungfishes (6)",yes,,0,0,0,0,,,,,,,,,,,,,,,,
+Pycnogonida,pycnogonida,Arthropods,no,1400,WoRMS,yes,,0,0,0,0,,,,,,,,,,,,,,,,
+Rhodophyta,rhodophyta,Plants,no,7000,AlgaeBase,yes,,0,0,0,0,,,,,,,,,,,,,,,,
+Rotifera,rotifera,Other animals,no,2200,Segers 2007,yes,,0,0,0,0,,,,,,,,,,,,,,,,
+Scorpiones,scorpiones,Arthropods,no,2700,Rein 2024,yes,,0,0,0,0,,,,,,,,,,,,,,,,
+Seed plants,seed_plants,Plants,no,383671,World Flora Online 2025,no,seed_plants.nwk,348886,348886,279049,40432,0.219808,source_tree_intersection,0.219808,0.219808,70723,enumerated,Data/raw/plants/GBMB.tre,yes,absolute,0.000001,no,no,,,primary_analysis,otl=taxonomy_backed_grafting|inference=ml|tree_class=peer_reviewed_empirical_synthesis
+Sharks,sharks,Vertebrates,no,1282,Chondrichthyan Tree of Life,no,sharks.nwk,1192,1192,1150,12,0.511745,source_tree_intersection,0.511745,0.511745,603,enumerated,Data/raw/sharks/Chond.610sp.10Cal.500TreeSet.tre,yes,absolute,0.000000,yes,no,,,primary_analysis,otl=PL|inference=ml|tree_class=direct_empirical
+Spiders,spiders,Arthropods,no,52249,World Spider Catalog 2025,no,spiders.nwk,1431,1431,888,543,1.000000,asserted_no_imputation,1.000000,1.000000,888,all_tips,,yes,absolute,0.000000,no,no,,,primary_analysis,otl=none|inference=ml|tree_class=direct_empirical
+Sponges,sponges,Other animals,no,9470,WoRMS / Appeltans 2012,no,sponges.nwk,119,119,86,32,1.000000,source_alignment_intersection,1.000000,1.000000,86,enumerated,Data/molecular_sources/sponges.taxa.txt,yes,absolute,0.000001,yes,no,,,primary_analysis,otl=none|inference=bayesian|tree_class=direct_empirical
+Squamates,squamates,Vertebrates,no,12108,"Reptile Database, September 2025 release (Uetz et al. 2025)",no,squamates.nwk,9754,9754,8953,672,0.555157,source_tree_intersection,0.555157,0.555157,5096,enumerated,Data/raw/squamates/tonini2016_squamate_ML.tre,yes,absolute,0.000000,yes,no,,,primary_analysis,otl=none|inference=bayesian|tree_class=direct_empirical
+Tardigrada,tardigrada,Other animals,no,1488,Bartels 2016,yes,,0,0,0,0,,,,,,,,,,,,,,,,
+Tunicates,tunicates,Other animals,no,3145,Appeltans 2012,yes,,0,0,0,0,,,,,,,,,,,,,,,,
+Turtles,turtles,Vertebrates,no,364,TTWG 2025 (10th edition),no,turtles.nwk,283,283,256,26,1.000000,asserted_no_imputation,1.000000,1.000000,256,all_tips,,yes,absolute,0.000000,yes,no,,,primary_analysis,otl=none|inference=bayesian|tree_class=direct_empirical

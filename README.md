@@ -34,20 +34,25 @@ Licence: CC BY 4.0 (`LICENSE`); the source trees keep the terms of their origina
 | `phyloatlas/` | An R package that loads any tree by name. |
 | `site/`, `audits/`, `data_provenance.csv`, `data_estimates.csv`, `data_sources.csv` | The browser site and its inputs (see *The browser site* below). |
 
-## The four coverage levels
+## The coverage levels
 
 The 2,085,869 described eukaryotic species are divided into 60 groups; 24 of them have a
-species-level phylogeny, and for each the largest one found is the group's reference tree. A
-described species is counted at four nested levels:
+species-level phylogeny, and for each the largest one found is the group's reference tree, except
+Birds: AvesData 1.3 aligns one synthesis to three versions of the Clements taxonomy, and the
+version used is the one with the most tips placed by an input phylogeny (Clements 2021, 9,239
+such tips; the larger Clements 2023 version has 11,017 tips, 9,189 of them placed by an input
+phylogeny, and is listed in `registers/larger_trees_not_counted.csv`). A
+described species is counted at five nested levels:
 
 | Level | A species counts when | Species | % of described |
 |---|---|---:|---:|
 | Named | its Catalogue of Life (COL26.9) accepted name is a tip of its group's reference tree | 395,517 | 19.0 |
 | Molecular | it is named, and the tip is in the molecular analysis from which the tree was built | 157,201 | 7.5 |
 | Dated | it is molecular, and the reference tree is a chronogram in absolute time | 113,180 | 5.4 |
-| Interval | it is dated, and the source archive carries a divergence-time interval for the focal crown that a calibration does not set | 320 | 0.02 |
+| Uncertainty available | it is dated, and the source archive carries a node-age distribution or interval a user can propagate (a tree set whose node ages vary, or intervals on a summary tree), whatever its relation to the calibration prior | 23,942 | 1.1 |
+| Beyond the calibration | its date uncertainty is available, and the crown interval is not excluded by a calibration rule | 320 | 0.02 |
 
-A species named in two groups' trees counts once. The interval level is 1.7% when every archived
+A species named in two groups' trees counts once. The last level is 1.7% when every archived
 interval is counted, whatever its kind, and 0.72% when intervals set by a calibration are counted. Bacteria and Archaea are counted separately, in GTDB
 species clusters, and enter no eukaryotic number. The values above are those of
 `paper/headline_numbers.json`, which `scripts/reproduce_paper.py` recomputes.
@@ -64,13 +69,19 @@ How each level is decided, tip by tip:
 - **Dated**: the reference tree's root-to-tip coefficient of variation is at most 0.05, measured
   on the file, and `registers/time_scale_checks.csv` records its branch lengths as absolute time
   (the insect tree is ultrametric in relative time and does not count).
-- **Interval**: `registers/crown_intervals.csv` records the interval each source archive carries
-  for the focal crown; it counts unless its spread describes something other than dating error
-  (date assignment, taxon addition), it is degenerate or held at a calibration bound, it lies within the range calibrations
-  allow the crown (a two-sided prior on it, or the band set by calibrations on the nodes above and
-  below it) without being narrowed below half that range's width
-  (`registers/calibration_register.csv`), or it comes from a tree set dated under root ages drawn
-  from the calibration prior.
+- **Uncertainty available**: `registers/crown_intervals.csv` (`uncertainty_available`) records
+  whether the source archive carries a posterior, bootstrap, date-assignment or root-prior tree
+  set, or node intervals on a summary tree. The fish taxon-addition set does not count: pruned to
+  its sequenced tips, each of its trees has the dates of the source's one dated tree
+  (`registers/taxon_addition_set_check.csv`).
+- **Beyond the calibration**: the crown interval of such an archive counts unless the set's
+  dates are drawn from published studies (date assignment), the interval is degenerate or held
+  at a calibration bound, it lies within the range calibrations allow the crown (a two-sided
+  prior on it, or the band set by calibrations on the nodes above and below it) without being
+  narrowed below half that range's width (rule p, `registers/calibration_register.csv`), or it
+  comes from a tree set dated under root ages drawn from the calibration prior (rule r). The
+  rules exclude these patterns; they do not show that a counted interval was narrowed by the
+  data, and only the crown interval is classified.
 
 ## Reproducing the paper
 
@@ -86,7 +97,7 @@ pipeline, and checks:
   species, branch lengths preserved;
 - the molecular tips of all 21 listed eukaryotic groups and both prokaryotic groups, re-derived
   from the distributed lists;
-- the per-group table, the four levels (per group, per category, on the union of groups), the
+- the per-group table, the five levels (per group, per category, on the union of groups), the
   losses between levels, every sensitivity analysis the paper prints, the crown ages and the interval
   classification, the Open Tree comparison, and the inputs of the worked example;
 - every number printed in the text (all macros of `paper/*_macros.tex`), the three main-text
@@ -171,7 +182,7 @@ publication that address returns HTTP 404.
 paper:
 
 - its coverage percentages are tips over described species of each dataset, taken from
-  `data_provenance.csv`, not the four levels above, and its described-species totals and crown
+  `data_provenance.csv`, not the five levels above, and its described-species totals and crown
   ages are the values typed there;
 - built from this release, it shows and offers for download the copies in
   `site/data/partitions/*/tree.nwk` instead of the files in `standardized/trees/`. Of the 24

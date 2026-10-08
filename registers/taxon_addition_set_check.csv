@@ -1,0 +1,2 @@
+partition,set,reference,n_trees,n_sequenced_tips,n_tips_kept_min,n_tips_kept_max,max_abs_branching_time_diff_myr
+Fish,raw/fish/actinopt_full.trees,raw/fish/actinopt_12k_treePL.tre,100,11638,11638,11638,5.00012e-06

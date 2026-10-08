@@ -2,7 +2,7 @@ partition,category,crown_clade,crown_age_ma,age_statistic,interval_lo_ma,interva
 Amphibians,Vertebrates,Lissamphibia,311.4,median over 10000 trees,273.7,338.6,64.9,posterior_sample,10000,none,245.0,350.1,100,0.62,,,,two_sided,two_sided,band,prior_reproduced
 Birds,Vertebrates,Aves (crown birds),99.3,root height of the canonical file,72.0,133.0,61,date_assignment_sample,100,,,,,,,,,,,,kind
 Crocodilians,Vertebrates,Crocodylia,87.1,root height of the canonical file,,,,,,,,,,,,,,,,,none
-Fish,Vertebrates,Actinopterygii,368.0,root height of the canonical file,368.0,368.0,0,taxon_addition_sample,100,,,,,,,,,,,,kind
+Fish,Vertebrates,Actinopterygii,368.0,root height of the canonical file,368.0,368.0,0,taxon_addition_sample,100,,,,,,,,,,,,placement
 Mammals,Vertebrates,Mammalia,187.3,median over 10000 trees,168.6,213.5,44.9,posterior_sample,10000,two_sided,165.2,210.0,92,1.00,0.259,0.841,0.981,,,calibration,prior_reproduced
 Sharks,Vertebrates,Chondrichthyes,377.8,median over 10000 trees,353.6,437.6,84,calibration_prior_sample,10000,two_sided,333.6,422.4,82,0.95,,,,,,calibration,prior_sampled
 Squamates,Vertebrates,Squamata,186.4,median over 10000 trees,177.0,203.1,26.1,posterior_sample,10000,two_sided,176.9,212.3,100,0.74,0.026,0.280,0.727,,,calibration,prior_reproduced

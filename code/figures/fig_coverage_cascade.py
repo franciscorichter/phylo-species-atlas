@@ -1,10 +1,11 @@
-"""Figure 1: described eukaryotic species at four levels of evidence, and
+"""Figure 1: described eukaryotic species at five levels of evidence, and
 where coverage is lost between levels.
 
 (a) Stacked bars: species named in a reference tree, placed with molecular
-    data, in a chronogram in absolute time, and in a chronogram whose deposit
-    carries a divergence-time interval that a calibration does not fix;
-    stacked by group category.
+    data, in a chronogram in absolute time, in a chronogram whose archive
+    carries date uncertainty a user can propagate (C1u), and in one whose
+    crown interval is informed beyond the calibration (C1b, D55); stacked by
+    group category.
 (b) The loss between consecutive levels, split by reason.
 
 Inputs, written by scripts/rebuild_atlas.py:
@@ -32,15 +33,16 @@ CAT_COLOR = {
     "Microbes & protists": "#E69F00",
 }
 LEVELS = OrderedDict([("C0", "Named"), ("C1", "Molecular"),
-                      ("C1d", "Dated"), ("C1b", "Interval")])
+                      ("C1d", "Dated"), ("C1u", "Uncertainty\navailable"),
+                      ("C1b", "Beyond the\ncalibration")])
 REASONS = OrderedDict([
-    ("TaxPlaced", ("Named to molecular",
-                   "tips not in the molecular analysis")),
-    ("NotChron", ("Molecular to dated", "tree is not a chronogram")),
-    ("RelTime", ("Molecular to dated", "chronogram in relative time")),
-    ("NoInterval", ("Dated to interval", "no interval archived")),
-    ("Kind", ("Dated to interval", "interval describes other variation")),
-    ("Calib", ("Dated to interval", "interval excluded by a calibration rule")),
+    ("TaxPlaced", ("Named to molecular", "not in molecular analysis")),
+    ("NotChron", ("Molecular to dated", "not a chronogram")),
+    ("RelTime", ("Molecular to dated", "relative time")),
+    ("NoInterval", ("Dated to available", "nothing archived")),
+    ("Placement", ("Dated to available", "set varies tip placement only")),
+    ("Kind", ("Available to beyond", "dates drawn from studies")),
+    ("Calib", ("Available to beyond", "calibration rule")),
 ])
 
 level, loss = OrderedDict(), OrderedDict()
@@ -63,7 +65,7 @@ if set(loss) != set(REASONS):
     raise SystemExit("cascade losses do not match the reasons drawn")
 
 fig, (ax, bx) = plt.subplots(1, 2, figsize=(7.2, 3.0),
-                             gridspec_kw={"width_ratios": [1.0, 1.25]},
+                             gridspec_kw={"width_ratios": [1.3, 1.0]},
                              constrained_layout=True)
 xs = range(len(LEVELS))
 for i, k in enumerate(LEVELS):
@@ -80,7 +82,7 @@ for i, k in enumerate(LEVELS):
             f"{head['rungs'][k]['numerator_union']:,}\n({p:.2f}%)",
             ha="center", va="bottom", fontsize=6.5)
 ax.set_xticks(list(xs))
-ax.set_xticklabels(list(LEVELS.values()))
+ax.set_xticklabels(list(LEVELS.values()), fontsize=6)
 ax.set_ylabel("Described eukaryotic species (thousands)")
 ymax = sum(level["C0"].values()) / 1e3
 ax.set_ylim(0, ymax * 1.18)

@@ -42,6 +42,7 @@ from this repository by the stated rules and does not import them.
 | `gbif_unmatched.py` | `registers/external/gbif_unmatched.csv` | the GBIF API |
 | `opentree_extract.py` | `registers/external/opentree16.1_*` | Open Tree synthesis 16.1 and OTT 3.7.3 |
 | `crown_intervals.py` | `registers/crown_intervals.csv` | the archived tree sets and annotated trees (`registers/crown_interval_sources.csv`) |
+| `taxon_addition_dates.R` | `registers/taxon_addition_set_check.csv` | R with ape; the fish tree set and dated tree of FishTreeOfLife, not redistributed |
 | `worked_example_bd.R` | `paper/worked_example_bd*.csv` except `worked_example_bd_sets.csv` | R with ape (phytools for the cross-check); this repository. `run_worked_example.py` runs it from this repository and compares the result |
 | `worked_example_sets.R` | `paper/worked_example_bd_sets.csv` | R with ape; the archived tree sets of `registers/worked_example_tree_sets.csv` (VertLife, AvesData), not redistributed; see `README.md` |
 | `rebuild_atlas.py` | `registers/coverage_basis.csv`, `molecular_tips.csv` and every file of `paper/` | the paper repository layout, PyYAML |

@@ -21,6 +21,9 @@
 \newcommand{\COneDN}{113{,}180}
 \newcommand{\COneDPct}{5.4}
 \newcommand{\COneDNPart}{18}
+\newcommand{\COneUN}{23{,}942}
+\newcommand{\COneUPct}{1.1}
+\newcommand{\COneUNPart}{13}
 \newcommand{\COneBN}{320}
 \newcommand{\COneBPct}{0.02}
 \newcommand{\COneBNPart}{2}
@@ -31,10 +34,13 @@
 \newcommand{\UnrepresentedPct}{10.6}
 \newcommand{\COneOfCZero}{39.7}
 \newcommand{\COneDOfCOne}{72.0}
+\newcommand{\COneUOfCOneD}{21.2}
+\newcommand{\COneBOfCOneU}{1.3}
 \newcommand{\COneBOfCOneD}{0.28}
 \newcommand{\SeedPlantsShareCZero}{70.6}
 \newcommand{\SeedPlantsShareCOne}{45.0}
 \newcommand{\SeedPlantsShareCOneD}{62.5}
+\newcommand{\SeedPlantsShareCOneU}{0.00}
 \newcommand{\SeedPlantsShareCOneB}{0.00}
 \newcommand{\ExclSeedPlantsCZeroPct}{6.8}
 \newcommand{\ExclSeedPlantsCOnePct}{5.1}
@@ -103,6 +109,8 @@
 \newcommand{\SensRepCOnePct}{8.4}
 \newcommand{\SensColCOneDPct}{5.7}
 \newcommand{\SensRepCOneDPct}{6.1}
+\newcommand{\SensColCOneUPct}{1.2}
+\newcommand{\SensRepCOneUPct}{1.3}
 \newcommand{\SensColCOneBPct}{0.02}
 \newcommand{\SensRepCOneBPct}{0.02}
 \newcommand{\SensUnionNTrees}{237}
@@ -124,6 +132,9 @@
 \newcommand{\CrownCountedNoCalNames}{Cnidaria}
 \newcommand{\CrownCountedOneSidedNames}{}
 \newcommand{\CrownCountedTwoSidedNames}{Echinoderms}
+\newcommand{\COneULargestName}{Birds}
+\newcommand{\COneULargestN}{8{,}980}
+\newcommand{\COneULargestSharePct}{38}
 \newcommand{\COneBLargestName}{Cnidaria}
 \newcommand{\COneBLargestN}{258}
 \newcommand{\COneBLargestSharePct}{81}
@@ -132,6 +143,8 @@
 \newcommand{\SensRulePNames}{Amphibians, Cephalopods, Gastropods, Mammals, Sponges, Squamates and Turtles}
 \newcommand{\RuleTipsOverNamedPct}{10}
 \newcommand{\TabWhichTreeLargerNote}{Birds: \citet{mctavish2025complete}, 11{,}017 tips of Aves in the Clements 2023 taxonomy (same AvesData 1.3 release), dated; Cnidaria: \citet{huang2015future}, 1{,}547 species of Scleractinia, dated; Crustaceans: \citet{copilas2020late}, 201 ingroup terminals of Amphipoda, dated and \citet{wolfe2023convergent}, 344 tips of Brachyura, dated; Echinoderms: \citet{ohara2017restructuring}, 576 species of Ophiuroidea, dated; Fungi: \citet{varga2019megaphylogeny}, 5{,}284 species of Agaricomycetes, dated; Gastropods: \citet{puillandre2014molecular}, 320 species of Conus; Nematodes: \citet{vanmegen2009phylogenetic}, 1{,}215 SSU rDNA sequences of Nematoda; Sponges: \citet{redmond2013phylogeny}, more than 500 new 18S sequences of Demospongiae}
+\newcommand{\LargerNMctavishComplete}{11{,}017}
+\newcommand{\LargerNMolMctavishComplete}{9{,}189}
 \newcommand{\LargerNHuangFuture}{1{,}547}
 \newcommand{\LargerNMolHuangFuture}{474}
 \newcommand{\RuleElasticityPct}{20}
@@ -176,6 +189,20 @@
 \newcommand{\CrownNamesNoInterval}{Crocodilians, Ferns, Seed plants and Spiders}
 \newcommand{\CrownNamesKind}{Birds and Fish}
 \newcommand{\CrownNamesCalib}{Amphibians, Bryophytes, Cephalopods, Diatoms, Gastropods, Mammals, Sharks, Sponges, Squamates and Turtles}
+\newcommand{\CrownNAvailable}{13}
+\newcommand{\CrownNamesAvailable}{Amphibians, Birds, Bryophytes, Cephalopods, Cnidaria, Diatoms, Echinoderms, Gastropods, Mammals, Sharks, Sponges, Squamates and Turtles}
+\newcommand{\CrownNamesAvailableSet}{Amphibians, Birds, Bryophytes, Cephalopods, Diatoms, Mammals, Sharks, Squamates and Turtles}
+\newcommand{\CrownNAvailableSet}{9}
+\newcommand{\CrownNamesAvailableSummary}{Cnidaria, Echinoderms, Gastropods and Sponges}
+\newcommand{\CrownNAvailableSummary}{4}
+\newcommand{\CrownNamesAvailableNotBeyond}{Amphibians, Birds, Bryophytes, Cephalopods, Diatoms, Gastropods, Mammals, Sharks, Sponges, Squamates and Turtles}
+\newcommand{\CrownNamesPlacement}{Fish}
+\newcommand{\CrownNamesDateDraw}{Birds}
+\newcommand{\DesignSharksNDated}{500}
+\newcommand{\DesignSharksNDraws}{20}
+\newcommand{\DesignSharksNTrees}{10{,}000}
+\newcommand{\DesignSharksNSeq}{610}
+\newcommand{\DesignSharksNAdded}{582}
 \newcommand{\RuleChronCV}{0.05}
 \newcommand{\RuleDegenerateMyr}{0.001}
 \newcommand{\RuleBoundMyr}{0.01}
@@ -185,13 +212,17 @@
 \newcommand{\LostNotChronN}{1{,}943}
 \newcommand{\LostRelTimeN}{42{,}078}
 \newcommand{\LostNoIntervalN}{77{,}728}
-\newcommand{\LostKindN}{20{,}490}
+\newcommand{\LostPlacementN}{11{,}510}
+\newcommand{\LostKindN}{8{,}980}
 \newcommand{\LostCalibN}{14{,}642}
 \newcommand{\LostUndatedOfCOnePct}{28.0}
 \newcommand{\LostRelTimeOfUndatedPct}{95.6}
 \newcommand{\LostNoIntervalOfCOneDPct}{68.7}
-\newcommand{\LostKindOfCOneDPct}{18.1}
+\newcommand{\LostPlacementOfCOneDPct}{10.2}
+\newcommand{\LostKindOfCOneDPct}{7.9}
 \newcommand{\LostCalibOfCOneDPct}{12.9}
+\newcommand{\LostKindOfCOneUPct}{37.5}
+\newcommand{\LostCalibOfCOneUPct}{61.2}
 \newcommand{\UnrepLargestNames}{Acari, Flatworms, Annelids and Myriapods}
 \newcommand{\OTNotOTSharePctAmphibians}{0.20}
 \newcommand{\OTNotOTSharePctBirds}{1.3}
@@ -362,6 +393,8 @@
 \newcommand{\WESetLRMaxAmphibiansPosterior}{24.9}
 \newcommand{\WESetNBoundaryAmphibiansPosterior}{95}
 \newcommand{\WESetLRMedianAmphibiansPosterior}{3.27}
+\newcommand{\WESetNAboveCritAmphibiansPosterior}{54}
+\newcommand{\WESetNAboveCorrAmphibiansPosterior}{30}
 \newcommand{\WESetRRatioMinAmphibiansPosterior}{0.97}
 \newcommand{\WESetRRatioMaxAmphibiansPosterior}{1.05}
 \newcommand{\WESetNBirdsDateRandom}{100}
@@ -371,6 +404,8 @@
 \newcommand{\WESetLRMaxBirdsDateRandom}{2.3}
 \newcommand{\WESetNBoundaryBirdsDateRandom}{2}
 \newcommand{\WESetLRMedianBirdsDateRandom}{0.00}
+\newcommand{\WESetNAboveCritBirdsDateRandom}{0}
+\newcommand{\WESetNAboveCorrBirdsDateRandom}{0}
 \newcommand{\WESetRRatioMinBirdsDateRandom}{1.00}
 \newcommand{\WESetRRatioMaxBirdsDateRandom}{1.02}
 \newcommand{\WESetNBirdsDateMean}{100}
@@ -380,6 +415,8 @@
 \newcommand{\WESetLRMaxBirdsDateMean}{0.0}
 \newcommand{\WESetNBoundaryBirdsDateMean}{0}
 \newcommand{\WESetLRMedianBirdsDateMean}{0.00}
+\newcommand{\WESetNAboveCritBirdsDateMean}{0}
+\newcommand{\WESetNAboveCorrBirdsDateMean}{0}
 \newcommand{\WESetRRatioMinBirdsDateMean}{0.99}
 \newcommand{\WESetRRatioMaxBirdsDateMean}{1.01}
 \newcommand{\WESetNMammalsPosterior}{100}
@@ -389,6 +426,8 @@
 \newcommand{\WESetLRMaxMammalsPosterior}{0.0}
 \newcommand{\WESetNBoundaryMammalsPosterior}{0}
 \newcommand{\WESetLRMedianMammalsPosterior}{0.00}
+\newcommand{\WESetNAboveCritMammalsPosterior}{0}
+\newcommand{\WESetNAboveCorrMammalsPosterior}{0}
 \newcommand{\WESetRRatioMinMammalsPosterior}{0.92}
 \newcommand{\WESetRRatioMaxMammalsPosterior}{0.98}
 \newcommand{\WESetNMammalsMolOnly}{100}
@@ -398,6 +437,8 @@
 \newcommand{\WESetLRMaxMammalsMolOnly}{0.0}
 \newcommand{\WESetNBoundaryMammalsMolOnly}{0}
 \newcommand{\WESetLRMedianMammalsMolOnly}{0.00}
+\newcommand{\WESetNAboveCritMammalsMolOnly}{0}
+\newcommand{\WESetNAboveCorrMammalsMolOnly}{0}
 \newcommand{\WESetNSharksPrior}{100}
 \newcommand{\WESetEpsMinSharksPrior}{0.29}
 \newcommand{\WESetEpsMaxSharksPrior}{0.71}
@@ -405,6 +446,8 @@
 \newcommand{\WESetLRMaxSharksPrior}{5.6}
 \newcommand{\WESetNBoundarySharksPrior}{11}
 \newcommand{\WESetLRMedianSharksPrior}{0.00}
+\newcommand{\WESetNAboveCritSharksPrior}{2}
+\newcommand{\WESetNAboveCorrSharksPrior}{0}
 \newcommand{\WESetRRatioMinSharksPrior}{0.89}
 \newcommand{\WESetRRatioMaxSharksPrior}{1.07}
 \newcommand{\WESetNSharksMolOnly}{100}
@@ -414,6 +457,8 @@
 \newcommand{\WESetLRMaxSharksMolOnly}{18.9}
 \newcommand{\WESetNBoundarySharksMolOnly}{84}
 \newcommand{\WESetLRMedianSharksMolOnly}{1.18}
+\newcommand{\WESetNAboveCritSharksMolOnly}{4}
+\newcommand{\WESetNAboveCorrSharksMolOnly}{2}
 \newcommand{\WESetNSquamatesPosterior}{100}
 \newcommand{\WESetEpsMinSquamatesPosterior}{0.18}
 \newcommand{\WESetEpsMaxSquamatesPosterior}{0.37}
@@ -421,6 +466,8 @@
 \newcommand{\WESetLRMaxSquamatesPosterior}{69.8}
 \newcommand{\WESetNBoundarySquamatesPosterior}{100}
 \newcommand{\WESetLRMedianSquamatesPosterior}{30.97}
+\newcommand{\WESetNAboveCritSquamatesPosterior}{100}
+\newcommand{\WESetNAboveCorrSquamatesPosterior}{100}
 \newcommand{\WESetRRatioMinSquamatesPosterior}{0.92}
 \newcommand{\WESetRRatioMaxSquamatesPosterior}{0.99}
 \newcommand{\WEPostNames}{Amphibians, Mammals and Squamates}

@@ -9,7 +9,7 @@ compares it with `paper/`.
 
 | File | What it holds |
 |---|---|
-| `coverage_basis.csv` | One row per group of described species (62: 60 eukaryotic, 2 prokaryotic). Described species and their authority, the reference tree, tips, accepted names (`c0_units`), molecular accepted names (`c1_units`) and how they were listed (`c1_basis`), the molecular fraction (`f_mol`), whether the tree is a chronogram in absolute time, and whether its source archive carries a counted crown interval. Groups without a reference tree are rows with zero tips. |
+| `coverage_basis.csv` | One row per group of described species (62: 60 eukaryotic, 2 prokaryotic). Described species and their authority, the reference tree, tips, accepted names (`c0_units`), molecular accepted names (`c1_units`) and how they were listed (`c1_basis`), the molecular fraction (`f_mol`), whether the tree is a chronogram in absolute time, whether its source archive carries date uncertainty a user can propagate (`uncertainty_available`), and whether its crown interval is not excluded by a calibration rule (`interval_recoverable`). Groups without a reference tree are rows with zero tips. |
 | `atlas_coverage.py`, `atlas_coverage.R` | A reader that forms any coverage figure as a numerator and denominator over `coverage_basis.csv`. |
 
 ## Reference trees
@@ -40,10 +40,12 @@ compares it with `paper/`.
 |---|---|
 | `time_scale_checks.csv` | For each ultrametric reference tree, whether its branch lengths are in absolute or relative time, and the evidence. |
 | `dating_deposit_checks.csv` | What each source study dated and what its archive holds (`study_dating`). |
-| `larger_trees_not_counted.csv` | Larger trees of a group or a subclade that the search did not find and that are not counted, with their size as the source states it and the quotation (Table 1, note f). |
+| `larger_trees_not_counted.csv` | Larger trees of a group or a subclade that the search did not find and that are not counted, and the larger Clements 2023 version of the bird synthesis, not used by the bird rule (the version with the most tips placed by an input phylogeny), with their size as the source states it and the quotation (Table 1, note f). |
 | `crown_clades.csv` | The focal clade whose crown age is reported for each chronogram. |
 | `crown_interval_sources.csv` | The archived tree set or annotated tree from which each crown interval is read, its kind and burn-in. |
-| `crown_intervals.csv` | The crown interval of each source archive, its kind, and the tests that decide whether it counts (degenerate, at a calibration bound, reproducing the calibration prior). Written by `code/rebuild/crown_intervals.py`. |
+| `crown_intervals.csv` | The crown interval of each source archive, its kind, whether the archive carries date uncertainty a user can propagate (`uncertainty_available`), and the tests that decide whether the crown interval counts beyond the calibration (dates drawn from published studies, degenerate, at a calibration bound, within the range calibrations allow, root ages drawn from the prior). Written by `code/rebuild/crown_intervals.py`. |
+| `tree_set_designs.csv` | How a source built its dated tree set, as the source states it (Sharks: root ages drawn, draws per dated tree, trees, sequenced and added species), with page references; checked against the measured set. |
+| `taxon_addition_set_check.csv` | For the fish taxon-addition set: each of its trees pruned to the sequenced tips, compared with the source's dated tree of sequenced species (largest difference of branching times). Written by `code/rebuild/taxon_addition_dates.R`. |
 | `calibration_register.csv` | The calibration each source placed on the focal node, with its prior range and the quotation it is taken from. |
 
 ## Denominators and name authorities

@@ -32,7 +32,14 @@ the deposit named in
                        (non-zero only for raw MCMC logs)
         evidence       why the kind and the parameters are what they are
 
-KINDS, and whether each makes an interval RECOVERABLE (rung C1b):
+KINDS.  Two levels read them (decision D55).  UNCERTAINTY AVAILABLE (level
+C1u, column uncertainty_available): the archive carries a node-age
+distribution or interval a user can propagate -- a sampled tree set whose
+node ages vary among the sequenced species, or intervals annotated on a
+summary tree -- whatever its relation to the calibration prior.  BEYOND THE
+CALIBRATION (level C1b, column counts_for_c1b): the subset whose crown
+interval passes the rules below.  The second column of the table is C1b; every
+kind except taxon_addition_sample counts for C1u:
     node_hpd_annotation       yes  per-node interval written in the summary
                                    tree by the dating software (TreeAnnotator,
                                    MCMCTree)
@@ -48,7 +55,11 @@ KINDS, and whether each makes an interval RECOVERABLE (rung C1b):
                                    (c1b_exclusion prior_sampled, D29, D51)
     taxon_addition_sample     no   one dated backbone, with taxonomically
                                    placed tips added at random per tree; the
-                                   spread is placement, not dating
+                                   spread is placement, not dating, and the
+                                   set pruned to its sequenced tips is the
+                                   same dated tree in every draw (Fish,
+                                   measured; D55), so it does not count for
+                                   C1u either
     date_assignment_sample    no   per-node published dates drawn at random
                                    onto one topology; the spread is between
                                    literature dates, not an estimate
@@ -129,6 +140,19 @@ KINDS = {
     "taxon_addition_sample": False,
     "date_assignment_sample": False,
 }
+# D55: kinds whose archive carries date uncertainty a user can propagate
+# (level C1u), whatever its relation to the calibration prior
+AVAILABLE_KINDS = {
+    "node_hpd_annotation": True,
+    "node_label_interval": True,
+    "posterior_sample": True,
+    "bootstrap_dating_sample": True,
+    "calibration_prior_sample": True,
+    "taxon_addition_sample": False,
+    "date_assignment_sample": True,
+}
+assert set(AVAILABLE_KINDS) == set(KINDS) and all(
+    AVAILABLE_KINDS[k] for k in KINDS if KINDS[k]), "C1b must lie inside C1u"
 PRIOR_SAMPLED_KINDS = ("calibration_prior_sample",)   # D29
 SAMPLE_KINDS = ("posterior_sample", "bootstrap_dating_sample",
                 "calibration_prior_sample", "taxon_addition_sample",
@@ -140,7 +164,8 @@ PRIOR_CONTAINMENT_MIN = 0.9            # D25 rule parameters, applied to every
 PRIOR_WIDTH_RATIO_MIN = 0.5            # row with a two-sided calibration
 CAL_CLASSES = ("two_sided", "one_sided", "none", "not_checked")
 
-OUT_HEADER = ["partition", "kind", "counts_for_c1b", "source",
+OUT_HEADER = ["partition", "kind", "uncertainty_available", "counts_for_c1b",
+              "source",
               "source_sha256", "n_files", "n_trees", "burnin_trees",
               "n_focal_labels", "n_outside_labels", "source_point_height_ma",
               "interval_lo_ma", "interval_center_ma", "interval_hi_ma",
@@ -542,8 +567,9 @@ def load_calibrations(path=CALIBRATIONS):
 
 
 def flags(kind, lo, center, hi, point, cal=None):
-    """width, degenerate, at_bound, the D25 prior test, c1b_exclusion and
-    counts_for_c1b for one interval, by the rules above (D5, D22, D25).
+    """uncertainty_available (D55), width, degenerate, at_bound, the D25
+    prior test, c1b_exclusion and counts_for_c1b for one interval, by the
+    rules above (D5, D22, D25, D52).
     Shared with verify_atlas.py."""
     w = hi - lo
     c = center if isinstance(center, float) else point
@@ -558,7 +584,8 @@ def flags(kind, lo, center, hi, point, cal=None):
            else "kind" if not KINDS[kind] else "degenerate" if degenerate
            else "at_bound" if at_bound
            else "prior_reproduced" if repro else "")
-    return dict(interval_width_myr=w,
+    return dict(uncertainty_available="yes" if AVAILABLE_KINDS[kind] else "no",
+                interval_width_myr=w,
                 degenerate="yes" if degenerate else "no",
                 at_bound="yes" if at_bound else "no",
                 calibration=klass, prior_lo_ma=plo, prior_hi_ma=phi,
