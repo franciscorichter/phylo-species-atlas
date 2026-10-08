@@ -1,4 +1,4 @@
-"name","dataset","partition","ntips","crown_age","crown_age_low","crown_age_high","counts_for_c1b","crown_age_provenance"
+"name","dataset","partition","ntips","crown_age","crown_age_low","crown_age_high","not_excluded_by_rule","crown_age_provenance"
 "Lissamphibia","Jetz & Pyron 2018","Amphibians",7238,311.3849,273.6685,338.5756,"no","crown_ages.csv"
 "Aves","McTavish 2025","Birds",10824,99.26,72,133,"no","crown_ages.csv"
 "Bryophyta s.l.","Bechteler 2023","Bryophytes",533,515,,,,"crown_ages.csv"

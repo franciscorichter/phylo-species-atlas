@@ -1,7 +1,7 @@
 """Figure 4: crown ages of the reference chronograms and the divergence-time
-interval each deposit carries, coloured by whether the archive carries date
-uncertainty (level C1u), whether its crown interval is informed beyond the
-calibration (level C1b) and, if not, why (D55).
+interval each archive carries, by what the archive carries for date
+uncertainty (level C1u; D55, D58).  How each crown interval compares with its
+calibrations is described in the Supplement, not here.
 
 Input, written by scripts/rebuild_atlas.py:
   Paper/inputs/crown_ages.csv      one row per reference chronogram
@@ -20,15 +20,19 @@ import atlas_figure_common as afc
 mpl.use("Agg")
 afc.apply_style(mpl, size=7)
 
+# interval kinds that come from a set of trees (the others are intervals on
+# one summary tree); a date-assignment set is drawn on its own
+SET_KINDS = ("posterior_sample", "bootstrap_dating_sample",
+             "calibration_prior_sample")
 # colour, marker and legend label of each status; the marker separates the
-# five classes without relying on hue (R2-39)
+# classes without relying on hue (R2-39)
 STATUS = OrderedDict([
-    ("counted", ("#0072B2", "o",
-                 "uncertainty available; interval beyond the calibration")),
+    ("set", ("#0072B2", "o",
+             "uncertainty available: dated tree set")),
+    ("summary", ("#009E73", "D",
+                 "uncertainty available: intervals on a summary tree")),
     ("draw", ("#E69F00", "s",
-              "uncertainty available; dates drawn from published studies")),
-    ("fixed", ("#D55E00", "D",
-               "uncertainty available; excluded by a calibration rule")),
+              "uncertainty available: dates drawn from published studies")),
     ("placement", ("#56B4E9", "^",
                    "tree set varies only the placement of added tips")),
     ("none", ("#999999", "x", "no interval archived")),
@@ -39,14 +43,14 @@ with open(afc.INPUTS_DIR / "crown_ages.csv", newline="") as fh:
     for r in csv.DictReader(fh):
         if not r["interval_kind"]:
             st = "none"
-        elif r["counts_for_c1b"] == "yes":
-            st = "counted"
         elif r["uncertainty_available"] != "yes":
             st = "placement"
-        elif r["c1b_exclusion"] == "kind":
+        elif r["interval_kind"] == "date_assignment_sample":
             st = "draw"
+        elif r["interval_kind"] in SET_KINDS:
+            st = "set"
         else:
-            st = "fixed"
+            st = "summary"
         rows.append({
             "partition": r["partition"], "clade": r["crown_clade"],
             "age": float(r["crown_age_ma"]),
@@ -59,9 +63,7 @@ head = afc.load_headlines()
 ca = head["crown_ages"]
 if len(rows) != ca["n_absolute_chronograms"]:
     raise SystemExit("crown_ages.csv disagrees with headline_numbers.json")
-if sum(r["status"] == "counted" for r in rows) != ca["n_with_counted_interval"]:
-    raise SystemExit("counted intervals disagree with headline_numbers.json")
-if sum(r["status"] in ("counted", "draw", "fixed") for r in rows) \
+if sum(r["status"] in ("set", "summary", "draw") for r in rows) \
         != ca["n_uncertainty_available"]:
     raise SystemExit("uncertainty available disagrees with headline_numbers.json")
 

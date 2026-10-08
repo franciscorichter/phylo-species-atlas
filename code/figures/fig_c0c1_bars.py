@@ -1,8 +1,7 @@
 """Figure 2: named and molecular coverage, per eukaryotic group.
 
-In panel (b) an open circle marks a group whose reference chronogram's
-archive carries date uncertainty (level C1u) and a diamond one whose crown
-interval is also informed beyond the calibration (level C1b; D55).
+In panel (b) a circle marks a group whose reference chronogram's archive
+carries date uncertainty a user can propagate (level C1u; D55, D58).
 
 Two panels over the same eukaryotic partitions, sorted by C0:
 
@@ -76,7 +75,6 @@ for r in rows:
         raise SystemExit(f"{r['partition']}: structural-zero flag disagrees "
                          f"with the basis file")
     r["time_scale"] = b["time_scale"]
-    r["interval"] = b["C1b"] > 0
     r["available"] = b["C1u"] > 0
 afc.check_against_headlines(head, numerators=afc.rung_totals(euk),
                             denominator_euk=afc.denominator(euk),
@@ -115,12 +113,9 @@ for ax, rung, tag in ((axes[0], "C0", "a"), (axes[1], "C1", "b")):
                 color=col if r["chrono"] else "white",
                 edgecolor=col, hatch=None if r["chrono"] else "....",
                 linewidth=0.8, zorder=2)
-        if rung == "C1" and r["interval"]:
-            ax.plot(v * 1.3, y, marker="D", color="#222222", markersize=3.2,
-                    zorder=3)
-        elif rung == "C1" and r["available"]:
+        if rung == "C1" and r["available"]:
             ax.plot(v * 1.3, y, marker="o", color="#222222", markersize=3.2,
-                    markerfacecolor="white", markeredgewidth=0.8, zorder=3)
+                    zorder=3)
     ax.set_title(f"({tag}) {LEVEL_NAME[rung]} coverage, "
                  f"{head['rungs'][rung]['percent_union']:.1f}% overall",
                  loc="left", fontsize=7.5)
@@ -145,13 +140,8 @@ handles = [
     mpatches.Patch(facecolor="white", edgecolor="#555555", hatch="....",
                    label="reference tree is not a chronogram in absolute time"),
     plt.Line2D([], [], marker="o", color="#222222", linestyle="none",
-               markersize=3.2, markerfacecolor="white", markeredgewidth=0.8,
-               label="archive carries date uncertainty; crown interval "
-                     "excluded by a rule"),
-    plt.Line2D([], [], marker="D", color="#222222", linestyle="none",
                markersize=3.2,
-               label="archive carries date uncertainty; crown interval "
-                     "beyond the calibration"),
+               label="archive carries date uncertainty a user can propagate"),
 ]
 fig.legend(handles=handles, loc="outside lower center", ncol=2, fontsize=6.5,
            frameon=False)

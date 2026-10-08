@@ -64,11 +64,10 @@ TWO MEASURED AXES.
      on each run.  The ledger's `dated` column is never read.  roottotip_cv
      ships alongside the bit so a reader may set their own tolerance.
 
-  C. Uncertainty, interval_recoverable, is archival_class == 'hpd_recoverable'
-     in truth_provenance.csv, which is already scoped to the canonical tree.
-     divergence_ci_available is deliberately NOT used: it is recorded at the
-     wrong grain (it is true for partitions whose canonical tree is not a
-     chronogram at all).
+  C. Uncertainty, uncertainty_available, is read from Data/crown_intervals.csv
+     (scripts/crown_intervals.py, from the deposits).  divergence_ci_available
+     is deliberately NOT used: it is recorded at the wrong grain (it is true
+     for partitions whose canonical tree is not a chronogram at all).
 
 THE RUNGS (nested conjuncts, monotone by construction).
 
@@ -76,12 +75,13 @@ THE RUNGS (nested conjuncts, monotone by construction).
     C1  MOLECULAR  C0 and the tip is in the molecular analysis behind that tree
     C1d DATED      C1 and is_chronogram
     C1u UNCERTAIN  C1d and uncertainty_available: the archive carries date
-                   uncertainty a user can propagate (D55)
-    C1b BEYOND     C1u and interval_recoverable: the crown interval is not
-                   excluded by a calibration rule (D22, D25, D29, D52)
+                   uncertainty a user can propagate (D55); the last level
+                   (D58: whether a crown interval is informed beyond its
+                   calibration cannot be assessed without prior-only runs and
+                   is a description in the Supplement, not a level)
 
     Numerator(rung) = SUM over partitions of c0_units * w(rung),
-    w in {1, f_mol} x {1, 1[chronogram]} x {1, 1[interval]}.
+    w in {1, f_mol} x {1, 1[chronogram]} x {1, 1[uncertainty available]}.
 
     There is NO CAP.  No eukaryotic canonical partition has more distinct tip
     labels than its partition has described species; the invariant check proves
@@ -300,7 +300,7 @@ def time_scales():
 # S02: crown-age intervals measured from the deposits by
 # scripts/crown_intervals.py.  The crown POINT is the root height of the
 # canonical file, measured here; the interval, and whether one is recoverable
-# at all (rung C1b), come from this register and never from a ledger column.
+# at all (rung C1u), come from this register and never from a ledger column.
 CROWN_INTERVAL_SOURCES = os.path.join(ROOT, "Data", "crown_interval_sources.csv")
 CROWN_INTERVALS = os.path.join(ROOT, "Data", "crown_intervals.csv")
 _CROWN_INTERVALS = None
@@ -518,9 +518,7 @@ RUNGS = OrderedDict([
             "node-age distribution or interval a user can propagate (a sampled "
             "tree set whose node ages vary among the sequenced species, or "
             "annotated intervals), whatever its relation to the calibration "
-            "prior (D55)"),
-    ("C1b", "BEYOND THE CALIBRATION: C1u and the crown interval is not "
-            "excluded by a calibration rule (D22, D25, D29, D52, D55)"),
+            "prior (D55); the last level (D58)"),
 ])
 
 
@@ -1145,15 +1143,6 @@ class Truth(object):
     def archival_class(self, partition):
         return (self.canon_prov[partition].get("archival_class") or "").strip()
 
-    def interval_recoverable(self, partition):
-        """MEASURED uncertainty flag (S02, rung C1b): the deposit of the
-        canonical tree carries a divergence-time interval for its nodes, of a
-        kind that counts (Data/crown_intervals.csv, written by
-        scripts/crown_intervals.py from the deposits).  No ledger column
-        enters: archival_class and divergence_ci_available are prose."""
-        r = crown_intervals().get(partition)
-        return bool(r) and r.get("counts_for_c1b") == "yes"
-
     def uncertainty_available(self, partition):
         """D55, level C1u: the deposit carries a node-age distribution or
         interval a user can propagate, whatever its relation to the
@@ -1162,13 +1151,15 @@ class Truth(object):
         return bool(r) and r.get("uncertainty_available") == "yes"
 
     def interval_kind(self, partition):
+        """The kind of date uncertainty the archive carries (C1u, D58)."""
         r = crown_intervals().get(partition)
-        return r["kind"] if r and r.get("counts_for_c1b") == "yes" else ""
+        return r["kind"] if r and r.get("uncertainty_available") == "yes" \
+            else ""
 
     def posterior_n(self, partition):
-        """Number of dated trees behind the interval (samples only)."""
+        """Number of dated trees behind the uncertainty (samples only)."""
         r = crown_intervals().get(partition)
-        if not r or r.get("counts_for_c1b") != "yes" \
+        if not r or r.get("uncertainty_available") != "yes" \
                 or as_int(r.get("n_trees"), 0) <= 1:
             return ""
         return str(as_int(r["n_trees"]))
@@ -1410,7 +1401,8 @@ class MolecularEvidence(object):
     __slots__ = ("partition", "f_mol", "f_basis", "f_low", "f_high",
                  "source_file", "tip_names", "recorded_numerator",
                  "contested_source", "contested_f", "notes",
-                 "measured_intersection", "exact_label_intersection")
+                 "measured_intersection", "exact_label_intersection",
+                 "source_labels", "source_merged", "source_unmatched")
 
     def __init__(self, partition):
         self.partition = partition
@@ -1426,6 +1418,13 @@ class MolecularEvidence(object):
         self.notes = []
         self.measured_intersection = None       # under the adopted rule
         self.exact_label_intersection = None    # under naive exact matching
+        # round 1 (F4-24): the source labels, those that share a species key
+        # with another source label (one tip per species, D4; or one name in
+        # the names map), and the source species absent from the reference
+        # tree; labels - merged - unmatched = molecular tips
+        self.source_labels = None
+        self.source_merged = None
+        self.source_unmatched = None
 
 
 def molecular_sentences(note):
@@ -1537,6 +1536,15 @@ def resolve_molecular(truth, shipped, names, warnings):
                 ev.source_file = rel(path)
                 src_keys = _species_keys(_source_names(path, names,
                                                        truth.group(part)))
+                n_lab = len(_source_sets(path, names, truth.group(part))[1])
+                ev.source_labels = n_lab
+                ev.source_merged = n_lab - len(src_keys)
+                ev.source_unmatched = len(src_keys
+                                          - _species_keys(shipped_names))
+                if n_lab - ev.source_merged - ev.source_unmatched != inter:
+                    die("%s: source labels %d - merged %d - unmatched %d != "
+                        "molecular tips %d" % (part, n_lab, ev.source_merged,
+                                               ev.source_unmatched, inter))
                 ev.tip_names = {nm for nm in shipped_names
                                 if (_species_keys([nm]) & src_keys)}
                 if ev.recorded_numerator is not None \
@@ -1946,7 +1954,7 @@ BASIS_HEADER = [
     "labels_unique", "c0_units", "c0_unresolved_labels", "f_mol", "f_basis",
     "f_low", "f_high", "c1_units", "c1_basis",
     "molecular_source_file", "is_chronogram", "time_scale", "roottotip_cv",
-    "uncertainty_available", "interval_recoverable", "interval_kind",
+    "uncertainty_available", "interval_kind",
     "posterior_n", "topology_assembly", "placement_evidence",
 ]
 
@@ -2013,7 +2021,6 @@ def build_basis(truth, shipped, mol, ledger, warnings):
             ("time_scale", ""),
             ("roottotip_cv", ""),
             ("uncertainty_available", ""),
-            ("interval_recoverable", ""),
             ("interval_kind", ""),
             ("posterior_n", ""),
             ("topology_assembly", ""),
@@ -2047,8 +2054,6 @@ def build_basis(truth, shipped, mol, ledger, warnings):
             row["roottotip_cv"] = fnum(truth.roottotip_cv(part), FRAC_DP)
             row["uncertainty_available"] = (
                 "yes" if truth.uncertainty_available(part) else "no")
-            row["interval_recoverable"] = ("yes" if truth.interval_recoverable(part)
-                                           else "no")
             row["interval_kind"] = truth.interval_kind(part)
             row["posterior_n"] = truth.posterior_n(part)
             row["topology_assembly"] = ledger.assembly(part)
@@ -2110,8 +2115,6 @@ the SAME 62-row file, which is what makes a phantom denominator impossible.
                    units_col="c1_units", denominator_predicate=euk)   # C1d
     atlas_coverage(b, lambda r: euk(r) and r["uncertainty_available"] == "yes",
                    units_col="c1_units", denominator_predicate=euk)   # C1u
-    atlas_coverage(b, lambda r: euk(r) and r["interval_recoverable"] == "yes",
-                   units_col="c1_units", denominator_predicate=euk)   # C1b
 
 c1_units is the number of distinct accepted names among the molecular tips
 (c1_basis = enumerated), c0_units where every tip is molecular (all_tips), and
@@ -2206,17 +2209,12 @@ def rung_weight(basis_row, rung):
     if as_int(basis_row.get("c0_units"), 0) <= 0:
         return 0.0
     w = 1.0
-    if rung in ("C1", "C1d", "C1u", "C1b"):
+    if rung in ("C1", "C1d", "C1u"):
         w *= c1_fraction(basis_row)
-    if rung in ("C1d", "C1u", "C1b"):
+    if rung in ("C1d", "C1u"):
         w *= 1.0 if basis_row.get("is_chronogram") == "yes" else 0.0
     if rung == "C1u":
         w *= 1.0 if basis_row.get("uncertainty_available") == "yes" else 0.0
-    # C1b is read from interval_recoverable alone, so that the interval
-    # sensitivities that switch it on act as they did; that it lies inside
-    # C1u in the reported classification is checked (D55)
-    if rung == "C1b":
-        w *= 1.0 if basis_row.get("interval_recoverable") == "yes" else 0.0
     return w
 
 
@@ -2373,10 +2371,10 @@ def band_sensitivity(basis, shipped, truth, warnings):
         # about the deposit's largest open uncertainty -- so it is stated.
         entry["propagates_to_C1d"] = (row.get("is_chronogram") == "yes")
         entry["note"] = (
-            "the band moves C1; it does NOT move C1d or C1b, because this "
+            "the band moves C1; it does NOT move C1d or C1u, because this "
             "partition's canonical tree is not a measured chronogram"
             if row.get("is_chronogram") != "yes"
-            else "the band moves C1, C1d and (if the interval is recoverable) C1b")
+            else "the band moves C1, C1d and (if date uncertainty is available) C1u")
         out[row["partition"]] = entry
     if not out:
         warnings.append(
@@ -2497,122 +2495,11 @@ def c0_gbif_sensitivity(basis, shipped):
     ])
 
 
-C1B_SENSITIVITY_REASONS = ("degenerate", "at_bound", "prior_reproduced",
-                           "prior_sampled")
-C1B_SENSITIVITY_KINDS = ("calibration_prior_sample",)
-
-
-def c1b_calibration_sensitivity(basis, shipped, truth):
-    """D22, D25.  C1b excludes intervals that a calibration fixes: degenerate
-    ones, ones whose centre sits on a bound, ones that reproduce the focal
-    node's calibration prior (D25), and a tree set dated under root ages
-    drawn from the calibration prior.  This prints C1b as it would be if they
-    counted."""
-    reg = crown_intervals()
-    added = sorted(p for p, iv in reg.items()
-                   if iv.get("c1b_exclusion") in C1B_SENSITIVITY_REASONS
-                   or iv.get("kind") in C1B_SENSITIVITY_KINDS)
-    alt = [dict(r) for r in basis]
-    for r in alt:
-        if r["partition"] in added:
-            r["interval_recoverable"] = "yes"
-    return OrderedDict([
-        ("rule", "C1b if the intervals excluded by D22 and D25 counted"),
-        ("partitions_added", added),
-        ("rungs", _rung_percents(compute_rungs(alt, shipped, truth))),
-    ])
-
-
-# Round F3 (F3-07, F3-19).  The stricter classification that can move
-# interval coverage: every counted interval whose crown node carries a
-# calibration of its own (one-sided bounds included), or whose crown lies
-# directly below a node with a two-sided calibration, is not counted.  A
-# crown without a calibration of its own can still be held between a
-# two-sided prior one node up and a minimum one node down (Amphibians:
-# Data/calibration_register.csv, parent_calibration).
-C1B_CROWN_CALIBRATED = ("one_sided", "two_sided", "not_checked")
-C1B_PARENT_CALIBRATED = ("two_sided",)
 CALIBRATION_REGISTER = os.path.join(ROOT, "Data", "calibration_register.csv")
 
 
 def calibration_register():
     return {r["partition"]: r for r in read_csv(CALIBRATION_REGISTER)}
-
-
-def c1b_crown_calibrated_sensitivity(basis, shipped, truth):
-    reg = crown_intervals()
-    cal = calibration_register()
-    counted = {p: iv for p, iv in reg.items()
-               if iv.get("counts_for_c1b") == "yes"}
-    for p in counted:
-        if (cal.get(p, {}).get("parent_calibration") or "") not in (
-                "two_sided", "one_sided", "none", "not_checked"):
-            die("%s: counted interval of %s has no parent_calibration"
-                % (rel(CALIBRATION_REGISTER), p))
-    own = sorted(p for p, iv in counted.items()
-                 if iv.get("calibration") in C1B_CROWN_CALIBRATED)
-    parent = sorted(p for p in counted if p not in own and cal[p][
-        "parent_calibration"] in C1B_PARENT_CALIBRATED)
-    drop = sorted(own + parent)
-    alt = [dict(r) for r in basis]
-    for r in alt:
-        if r["partition"] in drop:
-            r["interval_recoverable"] = "no"
-    return OrderedDict([
-        ("rule", "C1b with every counted interval whose crown node carries a "
-                 "calibration (%s), or whose parent node carries a %s "
-                 "calibration, not counted"
-                 % (", ".join(C1B_CROWN_CALIBRATED),
-                    " or ".join(C1B_PARENT_CALIBRATED))),
-        ("partitions_removed", drop),
-        ("partitions_removed_own_calibration", own),
-        ("partitions_removed_parent_calibration", parent),
-        ("partitions_kept", sorted(p for p in counted if p not in drop)),
-        ("counted_by_crown_calibration", OrderedDict(
-            (k, sorted(p for p, iv in counted.items()
-                       if iv.get("calibration") == k))
-            for k in ("none", "one_sided", "two_sided", "not_checked"))),
-        ("rungs", _rung_percents(compute_rungs(alt, shipped, truth))),
-    ])
-
-
-def c1b_rule_p_sensitivity(basis, shipped, truth):
-    """Round F3 (F3-14).  Rule (p) tests containment in the prior's range and
-    the width ratio; it does not test where in the prior the interval lies.
-    This prints C1b with the intervals that rule (p)'s test excludes counted
-    (a set dated under root ages drawn from the prior, D29, stays excluded:
-    its interval is the prior by construction)."""
-    reg = crown_intervals()
-    added = sorted(p for p, iv in reg.items()
-                   if iv.get("c1b_exclusion") == "prior_reproduced"
-                   and iv.get("kind") not in C1B_SENSITIVITY_KINDS)
-    alt = [dict(r) for r in basis]
-    for r in alt:
-        if r["partition"] in added:
-            r["interval_recoverable"] = "yes"
-    return OrderedDict([
-        ("rule", "C1b if the intervals excluded by the D25 test (p) counted"),
-        ("partitions_added", added),
-        ("rungs", _rung_percents(compute_rungs(alt, shipped, truth))),
-    ])
-
-
-def c1b_all_intervals_sensitivity(basis, shipped, truth):
-    """Round-2 reader R2-06.  Interval coverage if every archived interval
-    counted, whatever its kind (date assignment, taxon addition, calibration
-    prior) and whether or not a calibration sets it: the upper end of the
-    range that any classification of the archived intervals can give."""
-    reg = crown_intervals()
-    added = sorted(p for p, iv in reg.items() if iv.get("counts_for_c1b") != "yes")
-    alt = [dict(r) for r in basis]
-    for r in alt:
-        if r["partition"] in added:
-            r["interval_recoverable"] = "yes"
-    return OrderedDict([
-        ("rule", "C1b if every archived crown interval counted"),
-        ("partitions_added", added),
-        ("rungs", _rung_percents(compute_rungs(alt, shipped, truth))),
-    ])
 
 
 def c1_definition_sensitivity(basis, shipped, truth):
@@ -2635,7 +2522,7 @@ def c1_definition_sensitivity(basis, shipped, truth):
         ("product", prod),
         ("difference_pp", OrderedDict(
             (k, round(count[k]["percent"] - prod[k]["percent"], PCT_DP))
-            for k in ("C1", "C1d", "C1u", "C1b"))),
+            for k in ("C1", "C1d", "C1u"))),
         ("per_partition", OrderedDict(
             (r["partition"], OrderedDict([
                 ("c1_count", as_float(r["c1_units"])),
@@ -3995,14 +3882,6 @@ def compute_headline(truth, basis, shipped, mol, ledger, pt, warnings):
              assembly_sensitivity(basis, shipped, truth)),
             ("denominator", denominator_sensitivity(basis, shipped, truth)),
             ("c1_definition", c1_definition_sensitivity(basis, shipped, truth)),
-            ("c1b_calibration_fixed",
-             c1b_calibration_sensitivity(basis, shipped, truth)),
-            ("c1b_all_intervals",
-             c1b_all_intervals_sensitivity(basis, shipped, truth)),
-            ("c1b_crown_calibrated",
-             c1b_crown_calibrated_sensitivity(basis, shipped, truth)),
-            ("c1b_rule_p_counted",
-             c1b_rule_p_sensitivity(basis, shipped, truth)),
             ("c0_gbif_unmatched", c0_gbif_sensitivity(basis, shipped)),
         ])),
         ("disclosures", disc),
@@ -4015,6 +3894,9 @@ def compute_headline(truth, basis, shipped, mol, ledger, pt, warnings):
                 ("molecular_source_file", mol[p].source_file),
                 ("measured_intersection", mol[p].measured_intersection),
                 ("exact_label_intersection", mol[p].exact_label_intersection),
+                ("source_labels", mol[p].source_labels),
+                ("source_merged", mol[p].source_merged),
+                ("source_unmatched", mol[p].source_unmatched),
                 ("recorded_numerator", mol[p].recorded_numerator),
                 ("contested_source", mol[p].contested_source),
                 ("contested_f_mol", mol[p].contested_f),
@@ -4202,7 +4084,7 @@ def revision_checks(truth, shipped, names, warnings):
 
 CROWN_HEADER = ["partition", "canonical_tree", "crown_clade", "crown_age_ma",
                 "age_statistic", "geometry_root_ma", "interval_kind",
-                "uncertainty_available", "counts_for_c1b", "c1b_exclusion", "interval_lo_ma",
+                "uncertainty_available", "not_excluded_by_rule", "rule_exclusion", "interval_lo_ma",
                 "interval_center_ma", "interval_hi_ma", "center_statistic",
                 "n_trees", "interval_width_myr", "degenerate", "at_bound",
                 "calibration", "prior_reproduced", "interval_source"]
@@ -4284,8 +4166,8 @@ def crown_ages(truth, basis, warnings):
             row.update(
                 interval_kind=iv["kind"],
                 uncertainty_available=iv["uncertainty_available"],
-                counts_for_c1b=iv["counts_for_c1b"],
-                c1b_exclusion=iv["c1b_exclusion"],
+                not_excluded_by_rule=iv["not_excluded_by_rule"],
+                rule_exclusion=iv["rule_exclusion"],
                 interval_lo_ma=fnum(as_float(iv["interval_lo_ma"]), CROWN_DP),
                 interval_center_ma=(fnum(as_float(iv["interval_center_ma"]),
                                          CROWN_DP)
@@ -4306,8 +4188,8 @@ def crown_ages(truth, basis, warnings):
             warnings.append("%s has a row in %s but its canonical tree is not "
                             "an absolute chronogram; no crown age is reported"
                             % (part, rel(CROWN_INTERVALS)))
-    counted = [x for x in rows if x["counts_for_c1b"] == "yes"]
-    excl = Counter(x["c1b_exclusion"] for x in rows if x["c1b_exclusion"])
+    counted = [x for x in rows if x["not_excluded_by_rule"] == "yes"]
+    excl = Counter(x["rule_exclusion"] for x in rows if x["rule_exclusion"])
     return OrderedDict([
         ("definition",
          "crown age of the focal clade (Data/crown_clades.csv, D21) by "
@@ -4317,18 +4199,20 @@ def crown_ages(truth, basis, warnings):
          "is the one the deposit carries (Data/crown_intervals.csv, "
          "scripts/crown_intervals.py). A deposit counts for C1u when it "
          "carries a node-age distribution or interval a user can propagate "
-         "(D55); an interval counts for C1b when its kind counts and it is "
-         "neither degenerate nor at a calibration bound (D22) nor within the "
-         "range calibrations allow the crown without being halved (rule p, "
-         "D25, D52) nor from a set whose root ages are drawn from the "
-         "calibration prior (rule r, D29, D51)."),
+         "(D55). The crown interval is described against the calibrations "
+         "(not_excluded_by_rule, D58; no coverage level): not excluded "
+         "when its kind counts and it is neither degenerate nor at a "
+         "calibration bound (D22) nor within the range calibrations allow "
+         "the crown without being halved (rule p, D25, D52) nor from a set "
+         "whose root ages are drawn from the calibration prior (rule r, D29, "
+         "D51)."),
         ("n_absolute_chronograms", len(rows)),
         ("n_uncertainty_available",
          sum(1 for x in rows if x["uncertainty_available"] == "yes")),
         ("n_with_counted_interval", len(counted)),
         ("n_degenerate_counted_intervals",
          sum(1 for x in counted if x["degenerate"] == "yes")),
-        ("n_excluded_from_c1b", OrderedDict(sorted(excl.items()))),
+        ("n_excluded_by_rule", OrderedDict(sorted(excl.items()))),
         ("n_age_differs_from_geometry",
          sum(1 for x in rows if abs(as_float(x["crown_age_ma"])
                                     - as_float(x["geometry_root_ma"]))
@@ -4352,6 +4236,26 @@ def build_crown_ages_csv(head, warnings):
 # interval kinds that come from a set of trees (the others are intervals on
 # one summary tree)
 TREE_SET_DESIGNS = os.path.join(ROOT, "Data", "tree_set_designs.csv")
+# F4-23: the taxon-complete shark trees pruned to the sequenced species,
+# against the source's trees of its sequenced species
+# (Paper/code/analysis/shark_set_comparison.R)
+SHARK_SET_COMPARISON = os.path.join(ROOT, "Data", "shark_set_comparison.csv")
+SHARK_CMP_INT = (("NCompared", "n_compared"), ("NNodes", "n_internal_nodes"),
+                 ("TopoEqual", "pruned_topology_equal"),
+                 ("AbsentMedian", "absent_clades_median"),
+                 ("AbsentMin", "absent_clades_min"),
+                 ("AbsentMax", "absent_clades_max"),
+                 ("AbsentGenusMedian", "absent_within_genus_median"),
+                 ("EqualAgeMedian", "equal_age_median"),
+                 ("EqualAgeMin", "equal_age_min"),
+                 ("EqualAgeMax", "equal_age_max"),
+                 ("YoungMyr", "young_myr"),
+                 ("YoungComplete", "young_complete_median"),
+                 ("YoungSeq", "young_sequenced_median"))
+SHARK_CMP_TXT = (("GammaComplete", "gamma_complete_median"),
+                 ("GammaSeq", "gamma_sequenced_median"),
+                 ("RootDiff", "root_diff_median_myr"))
+
 CROWN_SET_KINDS = ("posterior_sample", "bootstrap_dating_sample",
                    "calibration_prior_sample", "taxon_addition_sample",
                    "date_assignment_sample")
@@ -4427,7 +4331,7 @@ def build_crown_ages_macros(head, warnings):
     wc = [100.0 * (as_float(v["interval_hi_ma"]) - as_float(v["interval_lo_ma"]))
           / as_float(v["crown_age_ma"])
           for v in head["crown_ages"]["per_partition"].values()
-          if v["counts_for_c1b"] == "yes"]
+          if v["not_excluded_by_rule"] == "yes"]
     out.append("\\newcommand{\\CrownWidthPctMinCounted}{%.1f}" % min(wc))
     out.append("\\newcommand{\\CrownWidthPctMaxCounted}{%.1f}" % max(wc))
     return "\n".join(out) + "\n"
@@ -4471,11 +4375,11 @@ def build_number_macros(head, basis, warnings):
     rep = head["sensitivities"]["denominator"]["represented_partitions_only"]
     m["DescribedRepresented"] = macro_int(rep["described"])
 
-    # the five levels, on the headline (union) convention (D55: C1u, date
-    # uncertainty available; C1b, informed beyond the calibration)
+    # the four levels, on the headline (union) convention (D55, D58: C1u,
+    # date uncertainty available, is the last)
     rg = head["rungs"]
     names = (("C0", "CZero"), ("C1", "COne"), ("C1d", "COneD"),
-             ("C1u", "COneU"), ("C1b", "COneB"))
+             ("C1u", "COneU"))
     for key, nm in names:
         m[nm + "N"] = macro_int(rg[key]["numerator_union"])
         m[nm + "Pct"] = macro_pct(rg[key]["percent_union"])
@@ -4492,8 +4396,6 @@ def build_number_macros(head, basis, warnings):
     for (a, an), (b, bn) in zip(names[1:], names[:-1]):
         m[an + "Of" + bn] = macro_pct(pct(rg[a]["numerator_union"],
                                           rg[b]["numerator_union"]))
-    m["COneBOfCOneD"] = macro_pct(pct(rg["C1b"]["numerator_union"],
-                                      rg["C1d"]["numerator_union"]))
 
     dom = head["disclosures"]["dominance"]
     for key, nm in names:
@@ -4577,34 +4479,27 @@ def build_number_macros(head, basis, warnings):
     prod = s["c1_definition"]["product"]
     m["SensProductCOnePct"] = macro_pct(prod["C1"]["percent"])
     m["SensProductCOneDPct"] = macro_pct(prod["C1d"]["percent"])
-    cal = s["c1b_calibration_fixed"]["rungs"]["C1b"]
-    alli = s["c1b_all_intervals"]["rungs"]["C1b"]
-    m["SensAllIntCOneBN"] = macro_int(alli["numerator_union"])
-    m["SensAllIntCOneBPct"] = macro_pct(alli["percent_union"])
-    m["SensCalibCOneBN"] = macro_int(cal["numerator_union"])
-    m["SensCalibCOneBPct"] = macro_pct(cal["percent_union"])
-    cc = s["c1b_crown_calibrated"]
-    bycal = cc["counted_by_crown_calibration"]
+    # D58: the calibration on each crown whose interval no rule excludes,
+    # described in the Supplement (no coverage level rests on it)
+    civ0 = crown_intervals()
+    bycal = OrderedDict(
+        (k, sorted(p for p, iv in civ0.items()
+                   if iv.get("not_excluded_by_rule") == "yes"
+                   and iv.get("calibration") == k))
+        for k in ("none", "one_sided", "two_sided", "not_checked"))
     if bycal["not_checked"]:
-        die("a counted interval sits on an unchecked crown calibration "
-            "(%s); the text states that none does"
+        die("an interval no rule excludes sits on an unchecked crown "
+            "calibration (%s); the text states that none does"
             % ", ".join(bycal["not_checked"]))
-    m["SensCrownCalCOneBN"] = macro_int(cc["rungs"]["C1b"]["numerator_union"])
-    m["SensCrownCalCOneBPct"] = macro_pct(cc["rungs"]["C1b"]["percent_union"])
-    m["SensCrownCalNames"] = name_list(cc["partitions_removed"])
-    m["SensCrownCalOwnNames"] = name_list(
-        cc["partitions_removed_own_calibration"])
-    m["SensCrownCalParentNames"] = name_list(
-        cc["partitions_removed_parent_calibration"]) or "none"
-    m["SensCrownUncalNames"] = name_list(cc["partitions_kept"])
     m["CrownCountedNoCalNames"] = name_list(bycal["none"])
-    m["CrownCountedOneSidedNames"] = name_list(bycal["one_sided"])
     m["CrownCountedTwoSidedNames"] = name_list(bycal["two_sided"])
-    # F3-12: the group that carries most of interval coverage, and its share
-    c1b_by = sorted(((as_float(r["c1_units"]), r["partition"]) for r in basis
-                     if is_euk(r) and r.get("interval_recoverable") == "yes"
-                     and r.get("is_chronogram") == "yes"
-                     and r.get("time_scale") == "absolute"), reverse=True)
+    m["CrownCountedOneSidedNames"] = name_list(bycal["one_sided"])
+    # D58: the groups whose source input was run sampling from the prior,
+    # the only comparison that shows how far the data moved a crown interval
+    prun = sorted(r["partition"] for r in read_csv(CALIBRATION_REGISTER)
+                  if r.get("prior_basis") == "effective_prior_run")
+    m["CrownNPriorRun"] = macro_int(len(prun))
+    m["CrownNamesPriorRun"] = name_list(prun)
     # D55: the group that carries most of C1u, and its share
     c1u_by = sorted(((as_float(r["c1_units"]), r["partition"]) for r in basis
                      if is_euk(r) and r.get("uncertainty_available") == "yes"
@@ -4614,14 +4509,6 @@ def build_number_macros(head, basis, warnings):
     m["COneULargestN"] = macro_int(c1u_by[0][0])
     m["COneULargestSharePct"] = "%.0f" % (100.0 * c1u_by[0][0]
                                           / sum(x for x, _ in c1u_by))
-    m["COneBLargestName"] = c1b_by[0][1]
-    m["COneBLargestN"] = macro_int(c1b_by[0][0])
-    m["COneBLargestSharePct"] = "%.0f" % (100.0 * c1b_by[0][0]
-                                          / sum(x for x, _ in c1b_by))
-    rp = s["c1b_rule_p_counted"]
-    m["SensRulePCOneBN"] = macro_int(rp["rungs"]["C1b"]["numerator_union"])
-    m["SensRulePCOneBPct"] = macro_pct(rp["rungs"]["C1b"]["percent_union"])
-    m["SensRulePNames"] = name_list(rp["partitions_added"])
     m["RuleTipsOverNamedPct"] = "%.0f" % (100 * TABLE1_TIPS_OVER_NAMED)
     m["TabWhichTreeLargerNote"] = larger_tree_note()
     # F4-07: a larger tree built on a molecular source tree is described as
@@ -4680,8 +4567,8 @@ def build_number_macros(head, basis, warnings):
     # are never confused (round-3 finding)
     m["CrownNamesCounted"] = name_list(sorted(
         p for p, v in ca["per_partition"].items()
-        if v["counts_for_c1b"] == "yes"))
-    for k, v in ca["n_excluded_from_c1b"].items():
+        if v["not_excluded_by_rule"] == "yes"))
+    for k, v in ca["n_excluded_by_rule"].items():
         m["CrownExcl" + crown_macro_name(k)] = macro_int(v)
     m["CrownNWithInterval"] = macro_int(sum(
         1 for v in ca["per_partition"].values() if v["interval_kind"]))
@@ -4690,13 +4577,13 @@ def build_number_macros(head, basis, warnings):
     # round F1 (F1-01, F1-07): which archives hold a tree set and which one
     # summary tree with an interval
     cset = sorted(p for p, v in ca["per_partition"].items()
-                  if v["counts_for_c1b"] == "yes" and v["interval_kind"]
+                  if v["not_excluded_by_rule"] == "yes" and v["interval_kind"]
                   in CROWN_SET_KINDS)
     csum = sorted(p for p, v in ca["per_partition"].items()
-                  if v["counts_for_c1b"] == "yes" and v["interval_kind"]
+                  if v["not_excluded_by_rule"] == "yes" and v["interval_kind"]
                   not in CROWN_SET_KINDS)
     oset = sorted(p for p, v in ca["per_partition"].items()
-                  if v["counts_for_c1b"] != "yes" and v["interval_kind"]
+                  if v["not_excluded_by_rule"] != "yes" and v["interval_kind"]
                   in CROWN_SET_KINDS)
     m["CrownNCountedSet"] = macro_int(len(cset))
     m["CrownNamesCountedSet"] = name_list(cset)
@@ -4708,12 +4595,12 @@ def build_number_macros(head, basis, warnings):
     # classification is of the crown only, and the set can still be
     # integrated over for the ages of other nodes
     m["CrownNamesSetCalib"] = name_list(sorted(
-        p for p in oset if ca["per_partition"][p]["c1b_exclusion"]
+        p for p in oset if ca["per_partition"][p]["rule_exclusion"]
         not in ("", None, "kind")))
     # F4-13: of those, the posterior sets (their node-age variation at other
     # nodes was not assessed)
     m["CrownNamesPostCalib"] = name_list(sorted(
-        p for p in oset if ca["per_partition"][p]["c1b_exclusion"]
+        p for p in oset if ca["per_partition"][p]["rule_exclusion"]
         not in ("", None, "kind")
         and ca["per_partition"][p]["interval_kind"] == "posterior_sample"))
     # round F2: the groups behind each loss of dated coverage, named
@@ -4722,10 +4609,10 @@ def build_number_macros(head, basis, warnings):
         p for p, v in pp.items() if not v["interval_kind"]))
     m["CrownNamesKind"] = name_list(sorted(
         p for p, v in pp.items() if v["interval_kind"]
-        and v["c1b_exclusion"] == "kind"))
+        and v["rule_exclusion"] == "kind"))
     m["CrownNamesCalib"] = name_list(sorted(
         p for p, v in pp.items() if v["interval_kind"]
-        and v["c1b_exclusion"] not in ("", None, "kind")))
+        and v["rule_exclusion"] not in ("", None, "kind")))
     # D55: date uncertainty available (C1u) and the archives that carry none
     avail = sorted(p for p, v in pp.items()
                    if v.get("uncertainty_available") == "yes")
@@ -4740,12 +4627,12 @@ def build_number_macros(head, basis, warnings):
     m["CrownNAvailableSummary"] = macro_int(sum(
         1 for p in avail if pp[p]["interval_kind"] not in CROWN_SET_KINDS))
     m["CrownNamesAvailableNotBeyond"] = name_list(
-        p for p in avail if pp[p]["counts_for_c1b"] != "yes")
+        p for p in avail if pp[p]["not_excluded_by_rule"] != "yes")
     m["CrownNamesPlacement"] = name_list(sorted(
         p for p, v in pp.items() if v["interval_kind"]
         and v.get("uncertainty_available") != "yes"))
     m["CrownNamesDateDraw"] = name_list(sorted(
-        p for p in avail if pp[p]["c1b_exclusion"] == "kind"))
+        p for p in avail if pp[p]["rule_exclusion"] == "kind"))
     # F4-20: how a source built its tree set, as the source states it
     # (Data/tree_set_designs.csv), checked against the measured set
     civ_ = crown_intervals()
@@ -4768,6 +4655,19 @@ def build_number_macros(head, basis, warnings):
         m["Design%sNTrees" % n] = macro_int(nt)
         m["Design%sNSeq" % n] = macro_int(ns)
         m["Design%sNAdded" % n] = macro_int(na)
+    for r_ in read_csv(SHARK_SET_COMPARISON):
+        wes_ = {x["set"]: x for x in read_csv(WORKED_SETS_REGISTER)
+                if x["partition"] == r_["partition"]}
+        if r_["complete_set"] != wes_["prior"]["source"] \
+                or r_["sequenced_set"] != wes_["molecular_only"]["source"] \
+                or as_int(r_["n_compared"]) != as_int(wes_["prior"]["n_select"]):
+            die("%s disagrees with %s" % (rel(SHARK_SET_COMPARISON),
+                                          rel(WORKED_SETS_REGISTER)))
+        for k_, c_ in SHARK_CMP_INT:
+            m["SharkCmp" + k_] = macro_int(as_int(r_[c_]))
+        for k_, c_ in SHARK_CMP_TXT:
+            m["SharkCmp" + k_] = r_[c_].replace("-", "$-$")
+        m["SharkCmpEqualAgePct"] = "%g" % (100 * as_float(r_["equal_age_tol"]))
 
     # declared rule parameters the Methods state (rules, not results)
     import crown_intervals as _ci
@@ -4779,7 +4679,7 @@ def build_number_macros(head, basis, warnings):
     m["RuleIntervalPct"] = "%g" % round(100 * (_ci.QUANTILES[2]
                                                 - _ci.QUANTILES[0]))
 
-    # where C1 tips are lost on the way to C1b, by reason
+    # where C1 tips are lost on the way to C1u, by reason
     lost = coverage_losses(head, basis)
     for k, v in lost.items():
         m["Lost%sN" % k] = macro_int(v)
@@ -4787,13 +4687,9 @@ def build_number_macros(head, basis, warnings):
                                               rg["C1"]["numerator_union"]))
     m["LostRelTimeOfUndatedPct"] = macro_pct(pct(lost["RelTime"],
                                                  lost["NotChron"] + lost["RelTime"]))
-    for k in ("NoInterval", "Placement", "Kind", "Calib"):
+    for k in ("NoInterval", "Placement"):
         m["Lost%sOfCOneDPct" % k] = macro_pct(pct(lost[k],
                                                   rg["C1d"]["numerator_union"]))
-    # D55: the losses between the two uncertainty levels, over C1u
-    for k in ("Kind", "Calib"):
-        m["Lost%sOfCOneUPct" % k] = macro_pct(pct(lost[k],
-                                                  rg["C1u"]["numerator_union"]))
 
     # the largest groups without a reference tree, named (R2-24)
     unrep = sorted((r for r in basis if is_euk(r)
@@ -4847,6 +4743,10 @@ def build_number_macros(head, basis, warnings):
     # counts the summary trees rejected at that level
     tf = w["test_family"]
     m["RuleBonferroniLevel"] = "%.4f" % tf["level"]
+    m["WENTests"] = macro_int(tf["n_tests"])
+    m["WENamesTested"] = name_list(sorted(tf["tested"]))
+    m["WENamesNotTested"] = name_list(sorted(
+        p for p in w["eligible"] if p not in tf["tested"]))
     m["RuleBonferroniCritical"] = "%.2f" % tf["critical_value"]
     m["WENamesRejected"] = name_list(sorted(
         p for p, v in eff.items() if v["rho_full_rejected"])) or "none"
@@ -4863,7 +4763,7 @@ def build_number_macros(head, basis, warnings):
         m["WELR" + n] = "%.2f" % e["lr_statistic"]
         # F3-15: the p-value of the statistic under the 50:50 mixture of a
         # point mass at zero and chi2(1) (Self & Liang 1987)
-        if e["classification"] == "boundary":
+        if e["classification"] == "boundary" and e["tested"]:
             m["WEP" + n] = p_fmt(lr_mixture_p(e["lr_statistic"]))
         m["WERFull" + n] = "%.3f" % f["r_full"]
         m["WERMol" + n] = "%.3f" % f["r_molecular"]
@@ -4904,9 +4804,6 @@ def build_number_macros(head, basis, warnings):
     m["WEPolyRRatioMax"] = "%.2f" % max(allr)
     m["WEPolyNBoundary"] = macro_int(sum(
         all(v["boundary"] for v in po[p]["resolved"].values())
-        for p in w["eligible"]))
-    m["WEPolyNRejected"] = macro_int(sum(
-        all(v["rejected"] for v in po[p]["resolved"].values())
         for p in w["eligible"]))
     # round F2: the fits repeated over the archived tree sets
     ts = w["tree_sets"]
@@ -5071,7 +4968,7 @@ WHICH_TREE_HEADER = ["partition", "category", "bibkey", "flags", "tips",
                      "named_pct", "molecular_tips", "molecular_basis",
                      "molecular_pct", "time_scale", "crown_age_ma",
                      "interval_lo_ma", "interval_hi_ma", "interval_kind",
-                     "uncertainty_status", "interval_status", "rho_full",
+                     "uncertainty_status", "rho_full",
                      "rho_molecular",
                      "described", "study_dating", "molecular_only_tree",
                      "molecular_only_dated",
@@ -5177,12 +5074,6 @@ def _which_tree_rows(head, basis):
             die("Table 1: chronogram %s has no crown-age register row" % p)
         kind = c["interval_kind"] if c else ""
         if not c or not kind:
-            status = "none"
-        elif c["counts_for_c1b"] == "yes":
-            status = "counted"
-        else:
-            status = c["c1b_exclusion"]
-        if not c or not kind:
             ustatus = "none"
         elif c.get("uncertainty_available") != "yes":
             ustatus = "placement"
@@ -5205,8 +5096,6 @@ def _which_tree_rows(head, basis):
              if kind else ""),
             ("interval_kind", kind),
             ("uncertainty_status", ustatus
-             if r["is_chronogram"] == "yes" else ""),
-            ("interval_status", status
              if r["is_chronogram"] == "yes" else ""),
             ("rho_full", rho_fmt(tips / d)),
             ("rho_molecular", rho_fmt(mtips / d)),
@@ -5240,19 +5129,19 @@ def build_which_tree_csv(head, basis, warnings):
 
 
 def build_which_tree_tex(head, basis, warnings):
-    """Table 1 body rows (13 columns); the environment and caption are in the
+    """Table 1 body rows (12 columns); the environment and caption are in the
     manuscript.  Superscripts: a molecular tips stated by the source, b an
     automated synthesis, c a preprint source, d the source also distributes a
     tree of its molecular species (R1-06).  The dates column says what the
     tree is and, for a tree that is not an absolute chronogram, what the
-    study did about dating (R1-09); the interval column says whether the
-    deposit's interval counts and, if not, why (crown ages are in Fig. 4)."""
+    study did about dating (R1-09); the last dating column says what the
+    archive carries for date uncertainty (C1u; crown ages are in Fig. 4)."""
     out, prev = [], None
     for r in _which_tree_rows(head, basis):
         if r["category"] != prev:
             if prev is not None:
                 out.append(r"\midrule")
-            out.append(r"\multicolumn{13}{@{}l}{\textit{%s}} \\"
+            out.append(r"\multicolumn{12}{@{}l}{\textit{%s}} \\"
                        % tex_escape(r["category"]))
             prev = r["category"]
         src = r"\citet{%s}" % r["bibkey"]
@@ -5275,11 +5164,6 @@ def build_which_tree_tex(head, basis, warnings):
             dates = TABLE1_DATES_CODE[r["study_dating"]]
         avail = (TABLE1_UNCERTAINTY_CODE[r["uncertainty_status"]]
                  if r["uncertainty_status"] else "---")
-        if r["interval_status"] and r["uncertainty_status"] in ("set",
-                                                                "summary"):
-            unc = TABLE1_INTERVAL_CODE[r["interval_status"]]
-        else:
-            unc = "---"
         rm = (r["rho_molecular"] if r["molecular_tips"] != r["tips"]
               else "=")
         rf = r["rho_full"] + (r"$^{e}$" if r["tips_exceed_named"] == "yes"
@@ -5287,25 +5171,21 @@ def build_which_tree_tex(head, basis, warnings):
         out.append(" & ".join([
             tex_escape(r["partition"]), src, thousands(r["described"]),
             thousands(r["tips"]), r["named_pct"], mt, r["molecular_share"],
-            r["molecular_pct"], dates, avail, unc, rf, rm]) + r" \\")
+            r["molecular_pct"], dates, avail, rf, rm]) + r" \\")
     return "\n".join(out) + "\n"
 
 
-SENS_COLUMNS = ["rep", "col", "union", "gbif", "product", "calib", "allint",
-               "nobirds"]
+SENS_COLUMNS = ["rep", "col", "union", "gbif", "product", "nobirds"]
 
 
 def _rung_sensitivity_rows(head):
     names = (("C0", "named"), ("C1", "molecular"), ("C1d", "dated"),
-             ("C1u", "uncertainty available"),
-             ("C1b", "beyond the calibration"))
+             ("C1u", "uncertainty available"))
     rg, s = head["rungs"], head["sensitivities"]
     rep = s["denominator"]["represented_partitions_only"]["rungs"]
     col = s["denominator"]["col_single_authority"]["filled"]["rungs"]
     u = head["union_bound_S09"]
     prod = s["c1_definition"]["product"]
-    cal = s["c1b_calibration_fixed"]["rungs"]
-    alli = s["c1b_all_intervals"]["rungs"]
     nob = s["leave_assembly_class_out"]["drop_automated_synthesis"]["rungs"]
 
     def pu(e):
@@ -5325,8 +5205,6 @@ def _rung_sensitivity_rows(head):
              if key == "C0" else ""),
             ("product", macro_pct(prod[key]["percent"])
              if key in ("C1", "C1d") else ""),
-            ("calib", pu(cal["C1b"]) if key == "C1b" else ""),
-            ("allint", pu(alli["C1b"]) if key == "C1b" else ""),
             ("nobirds", pu(nob[key])),
         ]))
     return rows
@@ -5487,21 +5365,19 @@ def build_worked_table_tex(head, warnings):
 CASCADE_HEADER = ["kind", "level", "group", "species"]
 
 
-LEVEL_ORDER = ("C0", "C1", "C1d", "C1u", "C1b")
+LEVEL_ORDER = ("C0", "C1", "C1d", "C1u")
 UNREP_NAMED = 4     # how many of the largest groups without a tree are named
 # C1>C1d: NotChron, RelTime; C1d>C1u: NoInterval, Placement (the archived set
-# varies only the placement of taxonomically added tips); C1u>C1b: Kind (the
-# set's dates are drawn from published studies), Calib (a calibration rule)
-LOSS_REASONS = ("NotChron", "RelTime", "NoInterval", "Placement", "Kind",
-                "Calib")
+# varies only the placement of taxonomically added tips).  C1u is the last
+# level (D58).
+LOSS_REASONS = ("NotChron", "RelTime", "NoInterval", "Placement")
 LOSS_STEP = OrderedDict([("TaxPlaced", "C0>C1"), ("NotChron", "C1>C1d"),
                          ("RelTime", "C1>C1d"), ("NoInterval", "C1d>C1u"),
-                         ("Placement", "C1d>C1u"), ("Kind", "C1u>C1b"),
-                         ("Calib", "C1u>C1b")])
+                         ("Placement", "C1d>C1u")])
 
 
 def union_level_assignment(head, basis, shipped):
-    """The five levels and the losses between them on the union convention
+    """The four levels and the losses between them on the union convention
     (round-2 reader R2-15): every accepted species is counted once.  A
     species named in the trees of several groups is assigned to the group in
     which it reaches the furthest level (ties: the group first in name
@@ -5510,9 +5386,7 @@ def union_level_assignment(head, basis, shipped):
     reason a species is lost is that of its assigned group: NotChron or
     RelTime (the tree is not a chronogram in absolute time); NoInterval or
     Placement (no date uncertainty archived, or a set that varies only the
-    placement of taxonomically added tips: lost before C1u); Kind (the set's
-    dates are drawn from published studies) or Calib (a calibration rule
-    excludes the crown interval: lost between C1u and C1b)."""
+    placement of taxonomically added tips: lost before C1u)."""
     tr, ca = head["trees"], head["crown_ages"]["per_partition"]
     reltime = set(tr["relative_time_partitions"])
     groups = {}
@@ -5525,29 +5399,22 @@ def union_level_assignment(head, basis, shipped):
             die("%s: the union losses need an enumerated C1 set" % p)
         chron = r.get("is_chronogram") == "yes"
         v = ca.get(p) or {}
-        b = chron and v.get("counts_for_c1b") == "yes"
         u = chron and v.get("uncertainty_available") == "yes"
-        if b and not u:
-            die("%s: counts for C1b but not for C1u (D55)" % p)
         if not chron:
             reason = "RelTime" if p in reltime else "NotChron"
-        elif b:
+        elif u:
             reason = ""
         elif not v.get("interval_kind"):
             reason = "NoInterval"
-        elif not u:
-            reason = "Placement"
-        elif v.get("c1b_exclusion") == "kind":
-            reason = "Kind"
         else:
-            reason = "Calib"
+            reason = "Placement"
         groups[p] = (r["category"], set(shipped.c0_names[p]), set(c1),
-                     chron, u, b, reason)
+                     chron, u, reason)
     best = {}
     for p in sorted(groups):
-        cat, c0, c1, chron, u, b, reason = groups[p]
+        cat, c0, c1, chron, u, reason = groups[p]
         for sp in c0:
-            lvl = (4 if (sp in c1 and b) else 3 if (sp in c1 and u)
+            lvl = (3 if (sp in c1 and u)
                    else 2 if (sp in c1 and chron)
                    else 1 if sp in c1 else 0)
             if sp not in best or lvl > best[sp][0]:
@@ -5557,7 +5424,7 @@ def union_level_assignment(head, basis, shipped):
     lost = OrderedDict([("TaxPlaced", 0)] + [(k, 0) for k in LOSS_REASONS])
     shared = 0
     for sp, (lvl, p) in best.items():
-        cat, reason = groups[p][0], groups[p][6]
+        cat, reason = groups[p][0], groups[p][5]
         for i in range(lvl + 1):
             levels[LEVEL_ORDER[i]][cat] += 1
         if lvl == 0:
@@ -5589,7 +5456,7 @@ def coverage_losses(head, basis):
 
 
 def build_fig_cascade_csv(head, basis, warnings):
-    """Figure 1 input: the five levels by category, and the losses between
+    """Figure 1 input: the four levels by category, and the losses between
     them by reason, on the union convention (eukaryotic only)."""
     cu = head["coverage_union"]
     cats = {x["category"] for x in basis if is_euk(x)}
@@ -5928,12 +5795,22 @@ WORKED_LR_CUTOFF = 2.705543   # qchisq(0.90, 1): the 5% critical value of one te
 WORKED_TEST_LEVEL = 0.05      # the level WORKED_LR_CUTOFF is the critical value for
 
 
+def worked_tested(elig, per):
+    """Round 1 of 2026-10-09 (F4-22, D59).  A test is made only on a binary
+    summary tree: the likelihood reads a node with k children as k - 1
+    simultaneous speciation events, which has probability zero under the
+    constant-rate model, so on a consensus tree with polytomies the statistic
+    has no reference distribution (and it moves under random resolution).
+    The family is the eligible groups whose pruned summary tree has no
+    polytomy, a property of the tree fixed before any statistic is read."""
+    return [p for p in elig
+            if as_int(per["%s|molecular|tips" % p]["n_polytomy_events"]) == 0]
+
+
 def worked_lr_cutoff(n_tests):
-    """Round F4 (F4-01, D50).  The family of tests is every eligible group, a
-    number fixed by the eligibility rule before any fit is read; each test is
-    made at the Bonferroni level WORKED_TEST_LEVEL / n_tests, whose critical
-    value under the 50:50 chi2(0):chi2(1) mixture is qchisq(1 - 2a, 1) =
-    z_{1-a}^2."""
+    """Round F4 (F4-01, D50; family D59).  Each test is made at the Bonferroni
+    level WORKED_TEST_LEVEL / n_tests, whose critical value under the 50:50
+    chi2(0):chi2(1) mixture is qchisq(1 - 2a, 1) = z_{1-a}^2."""
     import statistics as _st
     return _st.NormalDist().inv_cdf(1.0 - WORKED_TEST_LEVEL / n_tests) ** 2
 WORKED_EPS_BOUNDARY = 1e-6    # = EPS_BOUNDARY in worked_example_bd.R
@@ -5990,7 +5867,8 @@ def family_sampling(part, mol_ids, shipped):
     ])
 
 
-def worked_identity(rho_t, rho_c, lam_t, lam_c, ll_t, ll_c, eps_c, cutoff):
+def worked_identity(rho_t, rho_c, lam_t, lam_c, ll_t, ll_c, eps_c, cutoff,
+                    tested=True):
     """A15, D27.  Classify one same-tree pair of fits (rho = molecular tips,
     rho = full-tree tips)."""
     pred = rho_t / rho_c
@@ -6005,7 +5883,11 @@ def worked_identity(rho_t, rho_c, lam_t, lam_c, ll_t, ll_c, eps_c, cutoff):
         ("lr_statistic", round(lr, 4)),
         ("classification", "identity" if ident else "boundary"),
         ("epsilon_rho_full_on_boundary", eps_c < WORKED_EPS_BOUNDARY),
-        ("rho_full_rejected", (not ident) and lr > cutoff),
+        # D59: no outcome where no test is made (a summary tree with
+        # polytomies)
+        ("tested", tested),
+        ("rho_full_rejected", ((not ident) and lr > cutoff) if tested
+         else None),
     ])
 
 
@@ -6063,6 +5945,8 @@ def worked_example(basis, mol, shipped, crown, warnings):
         OrderedDict(), OrderedDict(), OrderedDict(), OrderedDict())
     M, MC, F = ("molecular", "tips"), ("molecular", "full_misapplied"), \
         ("full", "tips")
+    tested = worked_tested(elig, per)
+    cut = worked_lr_cutoff(len(tested))
     for part in elig:
         rho_effect[part] = OrderedDict([
             ("rho_tips", g(part, *M, k="rho")),
@@ -6081,7 +5965,7 @@ def worked_example(basis, mol, shipped, crown, warnings):
             g(part, *M, k="rho"), g(part, *MC, k="rho"),
             g(part, *M, k="lambda"), g(part, *MC, k="lambda"),
             g(part, *M, k="loglik"), g(part, *MC, k="loglik"),
-            g(part, *MC, k="epsilon"), worked_lr_cutoff(len(elig))))
+            g(part, *MC, k="epsilon"), cut, part in tested))
         FM = ("molecular", "family")
         family_fit[part] = OrderedDict(
             [(k, g(part, *FM, k=k)) for k in (
@@ -6103,8 +5987,8 @@ def worked_example(basis, mol, shipped, crown, warnings):
             ("epsilon_intervals_overlap", overlap(part, F, M, "epsilon")),
         ])
         families[part] = family_sampling(part, elig[part], shipped)
-    polytomy = worked_polytomy(list(elig), per, worked_lr_cutoff(len(elig)))
-    tree_sets = worked_sets(list(elig), rho_effect)
+    polytomy = worked_polytomy(list(elig), per)
+    tree_sets = worked_sets(list(elig), rho_effect, cut)
     family_order = worked_family_order(list(elig))
     ratios = [v["r_ratio_full_over_molecular"] for v in imputation.values()]
     return OrderedDict([
@@ -6122,13 +6006,16 @@ def worked_example(basis, mol, shipped, crown, warnings):
          "partition is reported, none is selected"),
         ("eligible", list(elig)),
         ("test_family", OrderedDict([
-            ("rule", "one likelihood-ratio test per eligible group, on its "
-                     "summary tree; the family is every eligible group, fixed "
-                     "by the eligibility rule before any fit is read; "
-                     "Bonferroni level = 0.05 / n_tests (D50)"),
-            ("n_tests", len(elig)),
-            ("level", WORKED_TEST_LEVEL / len(elig)),
-            ("critical_value", round(worked_lr_cutoff(len(elig)), 6)),
+            ("rule", "one likelihood-ratio test per eligible group whose "
+                     "pruned summary tree is binary; on a summary tree with "
+                     "polytomies (a consensus tree) the statistic is reported "
+                     "without a test; the family is fixed by the trees "
+                     "before any statistic is read; Bonferroni level = "
+                     "0.05 / n_tests (D50, D59)"),
+            ("tested", tested),
+            ("n_tests", len(tested)),
+            ("level", WORKED_TEST_LEVEL / len(tested)),
+            ("critical_value", round(cut, 6)),
         ])),
         ("identity",
          "the likelihood depends on lambda and rho only through lambda*rho "
@@ -6183,7 +6070,7 @@ def worked_example(basis, mol, shipped, crown, warnings):
     ])
 
 
-def worked_polytomy(elig, per, cutoff):
+def worked_polytomy(elig, per):
     """Round F1 (F1-14).  Per eligible group: the branching events of each
     fitted tree that sit at polytomies, and the uniform-sampling fits repeated
     with the polytomies resolved at random (worked_example_bd.R, one row per
@@ -6220,8 +6107,6 @@ def worked_polytomy(elig, per, cutoff):
                 ("lr_statistic", round(lr, 4)),
                 ("boundary", em < WORKED_EPS_BOUNDARY
                  and lr > 2 * WORKED_IDENTITY_LL_TOL),
-                ("rejected", em < WORKED_EPS_BOUNDARY
-                 and lr > cutoff),
             ])
         ev = OrderedDict()
         for tree in ("full", "molecular"):
@@ -6238,7 +6123,7 @@ def worked_polytomy(elig, per, cutoff):
     return out
 
 
-def worked_sets(elig, eff):
+def worked_sets(elig, eff, cutoff):
     """Round F2 (F2-04, F2-05, F2-35).  The fits of worked_example_sets.R on
     the tree sets the sources archive (Data/worked_example_tree_sets.csv),
     summarised per set: trees fitted, tips, the extinction fraction of the
@@ -6288,7 +6173,7 @@ def worked_sets(elig, eff):
             # each critical value; a description of the set, not a test
             ("n_lr_above_critical", sum(x > WORKED_LR_CUTOFF for x in lrs)),
             ("n_lr_above_corrected",
-             sum(x > worked_lr_cutoff(len(elig)) for x in lrs)),
+             sum(x > cutoff for x in lrs)),
             ("r_ratio_min", min(rr) if rr else None),
             ("r_ratio_max", max(rr) if rr else None),
             ("summary_tree_classification", eff[p]["classification"]),
@@ -6393,9 +6278,6 @@ SUPP_SENS_ROWS = OrderedDict([
     ("retain_only_primary_analysis", "Primary analyses only"),
     ("bird_band_low", "Bird molecular fraction at its lower end"),
     ("union", "Named species of all trees"),
-    ("rule_p_counted", "Intervals excluded by rule (p) counted"),
-    ("crown_calibrated", "Intervals on a calibrated crown or below a "
-                         "two-sided calibration not counted"),
 ])
 
 
@@ -6518,6 +6400,13 @@ def _supp_names_rows(head, basis):
     return rows
 
 
+def _t_route(basis_, v):
+    """A source-label count, printed for the T route (a tree of the source's
+    sequenced species) only."""
+    return int(v) if basis_ == "source_tree_intersection" and v is not None \
+        else ""
+
+
 def _supp_molecular_rows(head, basis):
     ev = head["molecular_evidence"]
     prod = head["sensitivities"]["c1_definition"]["per_partition"]
@@ -6544,6 +6433,9 @@ def _supp_molecular_rows(head, basis):
             ("tips", tips), ("molecular_tips", mt),
             ("molecular_fraction", "%.3f" % (mt / tips)),
             ("exact_label_tips", "" if exact is None else int(exact)),
+            ("source_labels", _t_route(basis_, e.get("source_labels"))),
+            ("source_merged", _t_route(basis_, e.get("source_merged"))),
+            ("source_unmatched", _t_route(basis_, e.get("source_unmatched"))),
             ("molecular_species", int(round(as_float(b["c1_units"])))),
             ("product", fnum(prod[p]["c1_product"], 1)),
             ("f_low", "%.3f" % as_float(b["f_low"])),
@@ -6594,12 +6486,12 @@ def _supp_crown_rows(head, basis):
         iv = civ.get(p) or {}
         if not kind:
             status = "none"
-        elif c["counts_for_c1b"] == "yes":
+        elif c["not_excluded_by_rule"] == "yes":
             status = "counted"
         elif c.get("uncertainty_available") != "yes":
             status = "placement"     # D55: not date uncertainty at all
         else:
-            status = c["c1b_exclusion"]
+            status = c["rule_exclusion"]
         pc, pw = iv.get("prior_containment") or "", iv.get("prior_width_ratio") or ""
         rows.append(OrderedDict([
             ("partition", p), ("category", cat[p]),
@@ -6653,7 +6545,7 @@ def _rung_pcts(rungs, den=None):
 
 
 def _supp_sensitivity_rows(head, basis):
-    """The alternatives of Supplement S7, each as the five level percentages
+    """The alternatives of Supplement S7, each as the four level percentages
     and the denominator they are formed over."""
     rg, s = head["rungs"], head["sensitivities"]
     D = head["denominators"]["eukaryotic"]["described"]
@@ -6700,14 +6592,7 @@ def _supp_sensitivity_rows(head, basis):
     u = head["union_bound_S09"]
     add("union", D, OrderedDict([("C0", pct(u["C0_union"], D)),
                                  ("C1", pct(u["C1_union_high"], D)),
-                                 ("C1d", None), ("C1u", None),
-                                 ("C1b", None)]))
-    for key, sk in (("rule_p_counted", "c1b_rule_p_counted"),
-                    ("crown_calibrated", "c1b_crown_calibrated")):
-        e = s[sk]["rungs"]["C1b"]
-        add(key, D, OrderedDict([("C0", None), ("C1", None), ("C1d", None),
-                                 ("C1u", None),
-                                 ("C1b", pct(e["numerator_union"], D))]))
+                                 ("C1d", None), ("C1u", None)]))
     return rows
 
 
@@ -6836,8 +6721,7 @@ def _supp_polytomy_rows(head):
                                                for v in rs], "%.2f")),
             ("lr", "%.2f" % e["lr_statistic"]),
             ("lr_resolved", rng([v["lr_statistic"] for v in rs], "%.2f")),
-            ("outcome_resolved", "mu0_rejected" if all(v["rejected"] for v in rs)
-             else "mu0" if all(v["boundary"] for v in rs)
+            ("outcome_resolved", "mu0" if all(v["boundary"] for v in rs)
              else "rescaled" if not any(v["boundary"] for v in rs)
              else "mixed"),
         ]))
@@ -6988,7 +6872,7 @@ def build_supp_macros(head, basis, shipped, warnings):
                      ("prior_sampled", "PriorSampled"), ("kind", "Kind")):
         m["SuppCrown" + nm_] = name_list(sorted(
             p for p, c in head["crown_ages"]["per_partition"].items()
-            if c["c1b_exclusion"] == key
+            if c["rule_exclusion"] == key
             and c.get("uncertainty_available") == "yes")) or "none"
     # D55: archived sets that are not date uncertainty at all
     m["SuppCrownPlacement"] = name_list(sorted(
@@ -7190,6 +7074,8 @@ def _t_names(head, basis, shipped, tex):
 @supp_table("supp_molecular", ["partition", "category", "f_basis",
                                "source_file", "tips", "molecular_tips",
                                "molecular_fraction", "exact_label_tips",
+                               "source_labels", "source_merged",
+                               "source_unmatched",
                                "molecular_species", "product", "f_low",
                                "f_high", "molecular_only_tree",
                                "molecular_only_dated"])
@@ -7210,8 +7096,14 @@ def _t_molecular(head, basis, shipped, tex):
                 mt, r["molecular_fraction"],
                 _dash(thousands(r["exact_label_tips"])
                       if r["exact_label_tips"] != "" else ""),
+                _dash(thousands(r["source_labels"])
+                      if r["source_labels"] != "" else ""),
+                _dash(thousands(r["source_merged"])
+                      if r["source_merged"] != "" else ""),
+                _dash(thousands(r["source_unmatched"])
+                      if r["source_unmatched"] != "" else ""),
                 thousands(r["molecular_species"]), r["product"]]
-    return _supp_tex_rows(rows, render, 9)
+    return _supp_tex_rows(rows, render, 12)
 
 
 @supp_table("supp_time_scale", ["partition", "category", "roottotip_cv",
@@ -7249,10 +7141,13 @@ def _t_crown(head, basis, shipped, tex):
     def render(r):
         iv = ("%s--%s" % (r["interval_lo_ma"], r["interval_hi_ma"])
               if r["interval_kind"] else "---")
+        # D58: an interval with no range calibrations allow its crown is
+        # compared with nothing, and the table says so
         pr = ("%s--%s%s" % (r["prior_lo_ma"], r["prior_hi_ma"],
                             "\\textsuperscript{b}"
                             if r["prior_range"] == "band" else "")
-              if r["prior_lo_ma"] else "---")
+              if r["prior_lo_ma"] else "no range" if r["status"] == "counted"
+              else "---")
         return [tex_escape(r["partition"]), tex_escape(r["crown_clade"]),
                 r["crown_age_ma"], iv, _dash(r["interval_width_myr"]),
                 SUPP_KIND_CODE.get(r["interval_kind"], "---"),
@@ -7287,8 +7182,7 @@ def _t_sens(head, basis, shipped, tex):
     out = []
     for r in rows:
         if r["alternative"] in ("insects_minus", "col_filled", "rep",
-                                "drop_automated_synthesis", "bird_band_low",
-                                "rule_p_counted"):
+                                "drop_automated_synthesis", "bird_band_low"):
             out.append(r"\midrule")
         out.append(" & ".join(
             [SUPP_SENS_ROWS[r["alternative"]], thousands(r["denominator"])]
@@ -7368,7 +7262,7 @@ def _t_fits(head, basis, shipped, tex):
 
 SUPP_POLY_OUTCOME = OrderedDict([
     ("rescaled", "rescaled"), ("mu0", "$\\mu = 0$"),
-    ("mu0_rejected", "$\\mu = 0$$^{*}$"), ("mixed", "mixed"),
+    ("mixed", "mixed"),
 ])
 
 
@@ -7488,8 +7382,7 @@ SUPP_TERMS = [
     ("dated in absolute time (level C1d)", ("time_scale",), ""),
     ("date uncertainty available (level C1u)", ("uncertainty_available",),
      "registers/crown_intervals.csv"),
-    ("date uncertainty informed beyond the calibration (level C1b)",
-     ("interval_recoverable", "interval_kind"),
+    ("kind of date uncertainty archived", ("interval_kind", "posterior_n"),
      "registers/crown_intervals.csv"),
     ("how the tree was assembled", ("topology_assembly",), ""),
     ("crown age", (), "paper/crown_ages.csv"),
@@ -7860,22 +7753,8 @@ def check_invariants(truth, basis, head, shipped, warnings):
                 problems.append("treeless partition %r carries a non-zero rung "
                                 "weight." % r["partition"])
 
-    # 11. C1b must be a subset condition of C1d: an interval is only meaningful
-    #     on a chronogram.
+    # 11. D55: C1u lies inside C1d.
     for r in euk:
-        if r.get("interval_recoverable") == "yes" and r.get("is_chronogram") != "yes":
-            problems.append(
-                "partition %r is marked interval_recoverable but its canonical "
-                "tree is not a chronogram: the interval cannot be attached to "
-                "the tree the atlas distributes, so archival_class is at the "
-                "wrong grain." % r["partition"])
-
-    # 12. D55: C1b lies inside C1u; C1u lies inside C1d.
-    for r in euk:
-        if r.get("interval_recoverable") == "yes" \
-                and r.get("uncertainty_available") != "yes":
-            problems.append("partition %r counts for C1b but not for C1u "
-                            "(D55)" % r["partition"])
         if r.get("uncertainty_available") == "yes" \
                 and r.get("is_chronogram") != "yes":
             problems.append("partition %r counts for C1u but its tree is not "
@@ -8028,14 +7907,14 @@ def main(argv=None):
               % (part, s["f_low"], s["f_high"],
                  s["at_f_low"]["C1"]["percent"], s["at_f_high"]["C1"]["percent"],
                  "PROPAGATES past C1" if s["propagates_to_C1d"]
-                 else "does NOT propagate to C1d/C1b"))
+                 else "does NOT propagate to C1d/C1u"))
     la = head["sensitivities"]["leave_assembly_class_out"]
     key = "retain_only_" + ASSEMBLY_PRIMARY
     if key in la:
         r = la[key]["rungs"]
-        print("  retain only %s: C0 %.2f %%, C1 %.2f %%, C1d %.2f %%, C1b %.3f %%"
+        print("  retain only %s: C0 %.2f %%, C1 %.2f %%, C1d %.2f %%, C1u %.3f %%"
               % (ASSEMBLY_PRIMARY, r["C0"]["percent"], r["C1"]["percent"],
-                 r["C1d"]["percent"], r["C1b"]["percent"]))
+                 r["C1d"]["percent"], r["C1u"]["percent"]))
     ds = head["sensitivities"]["denominator"]
     ro = ds["represented_partitions_only"]
     print("  represented partitions only (D = %s): C0 %.2f %%, C1 %.2f %%, "

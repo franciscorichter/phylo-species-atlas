@@ -19,15 +19,8 @@ level,C1u,Plants,505
 level,C1u,Arthropods,0
 level,C1u,Other animals,525
 level,C1u,Microbes & protists,39
-level,C1b,Vertebrates,0
-level,C1b,Plants,0
-level,C1b,Arthropods,0
-level,C1b,Other animals,320
-level,C1b,Microbes & protists,0
 loss,C0>C1,TaxPlaced,238316
 loss,C1>C1d,NotChron,1943
 loss,C1>C1d,RelTime,42078
 loss,C1d>C1u,NoInterval,77728
 loss,C1d>C1u,Placement,11510
-loss,C1u>C1b,Kind,8980
-loss,C1u>C1b,Calib,14642

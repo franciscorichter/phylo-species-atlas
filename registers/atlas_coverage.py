@@ -13,8 +13,6 @@ the SAME 62-row file, which is what makes a phantom denominator impossible.
                    units_col="c1_units", denominator_predicate=euk)   # C1d
     atlas_coverage(b, lambda r: euk(r) and r["uncertainty_available"] == "yes",
                    units_col="c1_units", denominator_predicate=euk)   # C1u
-    atlas_coverage(b, lambda r: euk(r) and r["interval_recoverable"] == "yes",
-                   units_col="c1_units", denominator_predicate=euk)   # C1b
 
 c1_units is the number of distinct accepted names among the molecular tips
 (c1_basis = enumerated), c0_units where every tip is molecular (all_tips), and

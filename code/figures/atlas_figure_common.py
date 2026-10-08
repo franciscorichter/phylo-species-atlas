@@ -18,7 +18,7 @@ this rebuild is meant to make structurally impossible to reintroduce):
     there is nowhere left to write one down.
 
 3.  THE LADDER IS THE CURRENT ONE.  C0 NAMED / C1 MOLECULAR / C1d DATED /
-    C1b BOUNDED.  The old permissive/molecular/strict "C2" triple is retired:
+    C1u UNCERTAINTY AVAILABLE (D55; the last level, D58).  The old permissive/molecular/strict "C2" triple is retired:
     it dropped whole partitions categorically while scaling others
     proportionally, so it could not tell 85 % molecular support from 5 %.
 
@@ -62,7 +62,7 @@ if (FIGURES_CODE_DIR.parent.parent / "registers").is_dir():
 COVERAGE_BASIS = DATA_ROOT / "coverage_basis.csv"
 HEADLINE_JSON = INPUTS_DIR / "headline_numbers.json"
 
-RUNGS = ("C0", "C1", "C1d", "C1b")
+RUNGS = ("C0", "C1", "C1d", "C1u")
 
 # ── Palette ────────────────────────────────────────────────────────────────
 # Okabe-Ito, colour-blind safe.  One palette for the whole figure set so a
@@ -71,7 +71,7 @@ RUNG_COLOR = {
     "C0":  "#0072B2",   # blue     -- NAMED
     "C1":  "#E69F00",   # orange   -- MOLECULAR
     "C1d": "#009E73",   # green    -- DATED
-    "C1b": "#CC79A7",   # magenta  -- BOUNDED
+    "C1u": "#56B4E9",   # sky blue -- UNCERTAINTY AVAILABLE
 }
 DESCRIBED_COLOR = "#333333"
 INTERVAL_COLOR = "#7f9dbf"
@@ -82,7 +82,7 @@ RUNG_SHORT = {
     "C0":  "NAMED",
     "C1":  "MOLECULAR",
     "C1d": "DATED",
-    "C1b": "BOUNDED",
+    "C1u": "UNCERTAINTY AVAILABLE",
 }
 
 
@@ -139,7 +139,7 @@ def load_basis(path: pathlib.Path | None = None) -> list[dict]:
         C0  = c0_units                           (accepted names; NAMED)
         C1  = c1_units: distinct accepted names among molecular tips
         C1d = C1 if the shipped tree is a MEASURED chronogram else 0
-        C1b = C1d if the divergence-time interval is recoverable else 0
+        C1u = C1d if the archive carries date uncertainty (D55) else 0
 
     ``f_low``/``f_high`` carry the molecular-fraction band where the deposit
     records one; where it does not they equal ``f_mol``.
@@ -157,7 +157,7 @@ def load_basis(path: pathlib.Path | None = None) -> list[dict]:
             f_mol = _float(r.get("f_mol"))
             has_tree = bool((r.get("canonical_tree") or "").strip())
             chrono = _yes(r.get("is_chronogram"))
-            recoverable = _yes(r.get("interval_recoverable"))
+            available = _yes(r.get("uncertainty_available"))
 
             c0 = float(c0_units) if has_tree else 0.0
             # C1 counts distinct accepted names among the molecular tips
@@ -166,7 +166,7 @@ def load_basis(path: pathlib.Path | None = None) -> list[dict]:
             c1 = (c1_units if (has_tree and c1_units is not None)
                   else c0 * (f_mol if f_mol is not None else 0.0))
             c1d = c1 if chrono else 0.0
-            c1b = c1d if recoverable else 0.0
+            c1u = c1d if available else 0.0
 
             rows.append({
                 "partition": (r.get("partition") or "").strip(),
@@ -190,11 +190,11 @@ def load_basis(path: pathlib.Path | None = None) -> list[dict]:
                 "f_basis": (r.get("f_basis") or "").strip(),
                 "is_chronogram": chrono,
                 "roottotip_cv": _float(r.get("roottotip_cv")),
-                "interval_recoverable": recoverable,
+                "uncertainty_available": available,
                 "interval_kind": (r.get("interval_kind") or "").strip(),
                 "posterior_n": _int(r.get("posterior_n"), 0),
                 "topology_assembly": (r.get("topology_assembly") or "").strip(),
-                "C0": c0, "C1": c1, "C1d": c1d, "C1b": c1b,
+                "C0": c0, "C1": c1, "C1d": c1d, "C1u": c1u,
             })
     if not rows:
         raise SystemExit(f"coverage basis is empty: {path}")
@@ -224,7 +224,7 @@ def denominator(rows) -> int:
 
 
 def rung_totals(rows) -> dict:
-    """Numerator sums for the four rungs over the given partitions."""
+    """Numerator sums for the five rungs over the given partitions."""
     return {k: sum(r[k] for r in rows) for k in RUNGS}
 
 

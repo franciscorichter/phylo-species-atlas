@@ -182,18 +182,16 @@ GBIF_STATUS = {"ACCEPTED", "SYNONYM", "HETEROTYPIC_SYNONYM",
                "HOMOTYPIC_SYNONYM", "PROPARTE_SYNONYM", "DOUBTFUL"}
 CATEGORY_ORDER = ["Vertebrates", "Plants", "Arthropods", "Other animals",
                   "Microbes & protists"]
-LEVELS = ("C0", "C1", "C1d", "C1u", "C1b")
-LEVEL_MACRO = ("CZero", "COne", "COneD", "COneU", "COneB")
+LEVELS = ("C0", "C1", "C1d", "C1u")
+LEVEL_MACRO = ("CZero", "COne", "COneD", "COneU")
 # Table 1 marks a group whose tips exceed its named species by this fraction
 TIPS_OVER_NAMED = 0.10
 # interval kinds that come from a set of trees
 SET_KINDS = ("posterior_sample", "bootstrap_dating_sample", "calibration_prior_sample",
              "taxon_addition_sample", "date_assignment_sample")
-LOSS_REASONS = ("NotChron", "RelTime", "NoInterval", "Placement", "Kind",
-                "Calib")
+LOSS_REASONS = ("NotChron", "RelTime", "NoInterval", "Placement")
 LOSS_STEP = {"TaxPlaced": "C0>C1", "NotChron": "C1>C1d", "RelTime": "C1>C1d",
-             "NoInterval": "C1d>C1u", "Placement": "C1d>C1u",
-             "Kind": "C1u>C1b", "Calib": "C1u>C1b"}
+             "NoInterval": "C1d>C1u", "Placement": "C1d>C1u"}
 UNREP_NAMED = 4                     # largest groups without a tree, named
 # Agreement the Supplement states as tolerances (the differences themselves are
 # rounding noise that changes between machines)
@@ -727,6 +725,7 @@ def main(argv=None):
         evidence[e["partition"]].append(e)
     not_rederived = []
     exact_tips = {}     # verbatim source labels equal to a tip's name
+    src_counts = {}     # T route: source labels, merged, unmatched (F4-24)
     for r in canon:
         p = r["partition"]
         if c1_basis[p] != "enumerated":
@@ -746,6 +745,12 @@ def main(argv=None):
             keys = {key_of(gm.get(l, l)) for l in labels}
             derived = {nm for nm in names_in_tree if key_of(nm) in keys}
             exact_tips[p] = len(set(labels) & names_in_tree)
+            if src.startswith("Data/raw/"):
+                tk = {key_of(nm) for nm in names_in_tree}
+                nl = len(set(labels))
+                src_counts[p] = (nl, nl - len(keys), len(keys - tk))
+                R.eq("%s: source labels - merged - unmatched = molecular tips"
+                     % p, nl - src_counts[p][1] - src_counts[p][2], len(listed))
             R.eq("%s: molecular tips re-derived from %s, differences from "
                  "registers/molecular_tips.csv" % (p, os.path.relpath(fn, ROOT)),
                  len(derived ^ listed), 0)
@@ -775,8 +780,9 @@ def main(argv=None):
              ("yes" if chron[p] else "no", ts, "%.6f" % facts[f]["cv"]),
              (r["is_chronogram"], r["time_scale"], r["roottotip_cv"]))
 
-    # ------------------------------------------------- interval (C1b) ---
-    R.section("Date uncertainty available (C1u) and crown intervals beyond the calibration (C1b)")
+    # ------------------------------------------------- interval (C1u) ---
+    R.section("Date uncertainty available (C1u) and the comparison of each crown "
+              "interval with its calibrations (a description, D58)")
     counts, why_of, avail_of = {}, {}, {}
     for p, iv in sorted(intervals.items()):
         lo, hi = float(iv["interval_lo_ma"]), float(iv["interval_hi_ma"])
@@ -809,9 +815,9 @@ def main(argv=None):
         R.eq("%s: interval classification" % p,
              (why, "yes" if not why else "no",
               "yes" if avail_of[p] else "no"),
-             (iv["c1b_exclusion"], iv["counts_for_c1b"],
+             (iv["rule_exclusion"], iv["not_excluded_by_rule"],
               iv["uncertainty_available"]))
-        R.eq("%s: a crown interval beyond the calibration has its date "
+        R.eq("%s: a crown interval no rule excludes has its date "
              "uncertainty available (D55)" % p,
              bool(avail_of[p] or not counts[p]), True)
     calreg = {r["partition"]: r for r in read_csv(
@@ -833,7 +839,6 @@ def main(argv=None):
             R.eq("%s: calibration, range and its source as in the calibration register" % p,
                  (iv["calibration"], iv.get("prior_range", ""), f6(got[0]), f6(got[1])),
                  (cr.get("calibration"), src, f6(want[0]), f6(want[1])))
-    bounded = {p: chron.get(p, False) and counts.get(p, False) for p in c0}
     available = {p: chron.get(p, False) and avail_of.get(p, False) for p in c0}
     # D55: a taxon-addition set is not date uncertainty: pruned to the
     # sequenced tips, every tree of it has the dates of the source's dated tree
@@ -854,27 +859,23 @@ def main(argv=None):
         p = r["partition"]
         R.eq("%s: named, molecular, basis, unresolved, tips, molecular fraction" % p,
              (len(c0[p]), len(c1[p]), c1_basis[p], unresolved[p], len(tips[p]),
-              "%.6f" % fmol[p], "yes" if available[p] else "no",
-              "yes" if bounded[p] else "no"),
+              "%.6f" % fmol[p], "yes" if available[p] else "no"),
              (as_int(r["c0_units"]), as_int(r["c1_units"]), r["c1_basis"],
               as_int(r["c0_unresolved_labels"]), as_int(r["labels_unique"]),
-              r["f_mol"], r["uncertainty_available"],
-              r["interval_recoverable"]))
+              r["f_mol"], r["uncertainty_available"]))
 
     # ------------------------------------------------------- the levels ---
-    R.section("The five levels over the %d eukaryotic groups" % len(euk))
+    R.section("The four levels over the %d eukaryotic groups" % len(euk))
     E = [r["partition"] for r in canon_euk]
 
-    def level_sets(p, bset=None):
-        b = bounded if bset is None else bset
+    def level_sets(p):
         return (c0[p], c1[p], c1[p] if chron[p] else set(),
-                c1[p] if available[p] else set(),
-                c1[p] if chron[p] and b[p] else set())
+                c1[p] if available[p] else set())
 
-    def ladder(parts, denominator, bset=None):
+    def ladder(parts, denominator):
         out = OrderedDict()
         for i, lv in enumerate(LEVELS):
-            sets = [level_sets(p, bset)[i] for p in parts]
+            sets = [level_sets(p)[i] for p in parts]
             s = sum(len(x) for x in sets)
             u = len(set().union(*sets)) if sets else 0
             out[lv] = dict(sum=s, union=u, pct_sum=pct(s, denominator),
@@ -903,7 +904,6 @@ def main(argv=None):
     for (a_, an), (b_, bn) in zip(list(zip(LEVELS, LEVEL_MACRO))[1:],
                                   list(zip(LEVELS, LEVEL_MACRO))[:-1]):
         R.macro(macros, an + "Of" + bn, fmt_pct(pct(lad[a_]["union"], lad[b_]["union"])))
-    R.macro(macros, "COneBOfCOneD", fmt_pct(pct(lad["C1b"]["union"], lad["C1d"]["union"])))
 
     # Counts of groups and trees
     R.section("Groups, reference trees and denominators")
@@ -1006,21 +1006,16 @@ def main(argv=None):
     for p in E:
         if not chron[p]:
             reason[p] = "RelTime" if p in reltime else "NotChron"
-        elif bounded[p]:
+        elif available[p]:
             reason[p] = ""
         elif p not in intervals:
             reason[p] = "NoInterval"
-        elif not available[p]:
-            reason[p] = "Placement"
-        elif why_of[p] == "kind":
-            reason[p] = "Kind"
         else:
-            reason[p] = "Calib"
+            reason[p] = "Placement"
     best = {}
     for p in sorted(E):
         for sp in c0[p]:
-            lvl = (4 if sp in c1[p] and chron[p] and bounded[p]
-                   else 3 if sp in c1[p] and available[p]
+            lvl = (3 if sp in c1[p] and available[p]
                    else 2 if sp in c1[p] and chron[p] else 1 if sp in c1[p] else 0)
             if sp not in best or lvl > best[sp][0]:
                 best[sp] = (lvl, p)
@@ -1047,10 +1042,8 @@ def main(argv=None):
             fmt_pct(pct(lost["NotChron"] + lost["RelTime"], lad["C1"]["union"])))
     R.macro(macros, "LostRelTimeOfUndatedPct",
             fmt_pct(pct(lost["RelTime"], lost["NotChron"] + lost["RelTime"])))
-    for k in ("NoInterval", "Placement", "Kind", "Calib"):
+    for k in ("NoInterval", "Placement"):
         R.macro(macros, "Lost%sOfCOneDPct" % k, fmt_pct(pct(lost[k], lad["C1d"]["union"])))
-    for k in ("Kind", "Calib"):
-        R.macro(macros, "Lost%sOfCOneUPct" % k, fmt_pct(pct(lost[k], lad["C1u"]["union"])))
     R.eq("species named in two or more groups",
          sum(1 for v in Counter(sp for p in E for sp in c0[p]).values() if v > 1),
          cu["species_in_several_groups"])
@@ -1081,71 +1074,26 @@ def main(argv=None):
         prod["C1d"] += x if chron[p] else 0.0
     R.macro(macros, "SensProductCOnePct", fmt_pct(pct(round(prod["C1"], 4), den)))
     R.macro(macros, "SensProductCOneDPct", fmt_pct(pct(round(prod["C1d"], 4), den)))
-    # Every archived interval counted; calibration-set intervals counted
-    alli = ladder(E, den, {p: p in intervals for p in c0})
-    R.macro(macros, "SensAllIntCOneBN", fmt_int(alli["C1b"]["union"]))
-    R.macro(macros, "SensAllIntCOneBPct", fmt_pct(alli["C1b"]["pct_union"]))
-    calset = {p: counts.get(p, False) or why_of.get(p) in
-              ("degenerate", "at_bound", "prior_reproduced", "prior_sampled")
-              for p in c0}
-    cal = ladder(E, den, calset)
-    R.macro(macros, "SensCalibCOneBN", fmt_int(cal["C1b"]["union"]))
-    R.macro(macros, "SensCalibCOneBPct", fmt_pct(cal["C1b"]["pct_union"]))
-    # Stricter classification (F3-07, F3-19): every counted interval whose
-    # crown node carries a calibration of its own (one-sided, two-sided or
-    # not checked), or whose parent node carries a two-sided calibration
-    # (registers/calibration_register.csv, parent_calibration), left out.
-    CROWN_CALIBRATED = ("one_sided", "two_sided", "not_checked")
-    calreg_ = {r["partition"]: r for r in read_csv(
-        path("registers", "calibration_register.csv"))}
-    R.eq("no counted interval on an unchecked crown calibration",
+    # D58: the crowns whose interval no rule excludes, by the calibration on
+    # the crown (a description in the Supplement; no level rests on it)
+    bounded = {p: chron.get(p, False) and counts.get(p, False) for p in c0}
+    prun = sorted(r["partition"] for r in read_csv(
+        path("registers", "calibration_register.csv"))
+        if r.get("prior_basis") == "effective_prior_run")
+    R.macro(macros, "CrownNPriorRun", fmt_int(len(prun)))
+    R.macro(macros, "CrownNamesPriorRun", name_list(prun))
+    R.eq("no interval that no rule excludes sits on an unchecked crown calibration",
          sorted(p for p in c0 if bounded[p]
                 and intervals[p]["calibration"] == "not_checked"), [])
-    R.eq("every counted interval records the calibration above its crown",
-         sorted(p for p in c0 if bounded[p] and calreg_.get(p, {}).get(
-             "parent_calibration") not in ("two_sided", "one_sided", "none",
-                                           "not_checked")), [])
-    cown = sorted(p for p in c0 if bounded[p]
-                  and intervals[p]["calibration"] in CROWN_CALIBRATED)
-    cpar = sorted(p for p in c0 if bounded[p] and p not in cown
-                  and calreg_[p]["parent_calibration"] == "two_sided")
-    ccal = sorted(cown + cpar)
-    strict_sets = {}
-    lad_ = ladder(E, den, {p: bounded[p] and p not in ccal for p in c0})
-    strict_sets["CrownCal"] = lad_
-    R.macro(macros, "SensCrownCalCOneBN", fmt_int(lad_["C1b"]["union"]))
-    R.macro(macros, "SensCrownCalCOneBPct", fmt_pct(lad_["C1b"]["pct_union"]))
-    R.macro(macros, "SensCrownCalNames", name_list(ccal))
-    R.macro(macros, "SensCrownCalOwnNames", name_list(cown))
-    R.macro(macros, "SensCrownCalParentNames", name_list(cpar) or "none")
-    R.macro(macros, "SensCrownUncalNames",
-            name_list(sorted(p for p in c0 if bounded[p] and p not in ccal)))
     for k_, nm_ in (("none", "NoCal"), ("one_sided", "OneSided"),
                     ("two_sided", "TwoSided")):
         R.macro(macros, "CrownCounted%sNames" % nm_, name_list(sorted(
             p for p in c0 if bounded[p] and intervals[p]["calibration"] == k_)))
-    # F3-14: the intervals rule (p) excludes counted (not a set dated under
-    # root ages drawn from the prior, which returns it by construction)
-    rp_add = sorted(p for p in c0 if p in intervals
-                    and why_of.get(p) == "prior_reproduced"
-                    and intervals[p]["kind"] not in PRIOR_SAMPLE_KINDS)
-    lad_ = ladder(E, den, {p: bounded[p] or p in rp_add for p in c0})
-    strict_sets["RuleP"] = lad_
-    R.macro(macros, "SensRulePCOneBN", fmt_int(lad_["C1b"]["union"]))
-    R.macro(macros, "SensRulePCOneBPct", fmt_pct(lad_["C1b"]["pct_union"]))
-    R.macro(macros, "SensRulePNames", name_list(rp_add))
-    # F3-12: the group with most of interval coverage
-    by_ = sorted(((len(c1[p]), p) for p in E if chron[p] and bounded[p]),
-                 reverse=True)
     byu = sorted(((len(c1[p]), p) for p in E if available[p]), reverse=True)
     R.macro(macros, "COneULargestName", byu[0][1])
     R.macro(macros, "COneULargestN", fmt_int(byu[0][0]))
     R.macro(macros, "COneULargestSharePct",
             "%.0f" % (100.0 * byu[0][0] / sum(x for x, _ in byu)))
-    R.macro(macros, "COneBLargestName", by_[0][1])
-    R.macro(macros, "COneBLargestN", fmt_int(by_[0][0]))
-    R.macro(macros, "COneBLargestSharePct",
-            "%.0f" % (100.0 * by_[0][0] / sum(x for x, _ in by_)))
     R.macro(macros, "RuleTipsOverNamedPct", "%.0f" % (100 * TIPS_OVER_NAMED))
     R.macro(macros, "RuleElasticityPct", "%.0f" % (100 * 0.2))
     # Without the automated-synthesis tree
@@ -1373,6 +1321,28 @@ def main(argv=None):
         for k_, v_ in (("NDated", nd), ("NDraws", dr), ("NTrees", nt),
                        ("NSeq", ns), ("NAdded", na)):
             R.macro(macros, "Design%s%s" % (n, k_), fmt_int(v_))
+    # F4-23: the shark set comparison (registers/shark_set_comparison.csv)
+    for r_ in read_csv(path("registers", "shark_set_comparison.csv")):
+        R.eq("shark set comparison: internal nodes = sequenced tips - 1",
+             int(r_["n_internal_nodes"]), len(mol_rows[r_["partition"]]) - 1)
+        for k_, c_ in (("NCompared", "n_compared"), ("NNodes", "n_internal_nodes"),
+                       ("TopoEqual", "pruned_topology_equal"),
+                       ("AbsentMedian", "absent_clades_median"),
+                       ("AbsentMin", "absent_clades_min"),
+                       ("AbsentMax", "absent_clades_max"),
+                       ("AbsentGenusMedian", "absent_within_genus_median"),
+                       ("EqualAgeMedian", "equal_age_median"),
+                       ("EqualAgeMin", "equal_age_min"),
+                       ("EqualAgeMax", "equal_age_max"),
+                       ("YoungMyr", "young_myr"),
+                       ("YoungComplete", "young_complete_median"),
+                       ("YoungSeq", "young_sequenced_median")):
+            R.macro(macros, "SharkCmp" + k_, fmt_int(r_[c_]))
+        for k_, c_ in (("GammaComplete", "gamma_complete_median"),
+                       ("GammaSeq", "gamma_sequenced_median"),
+                       ("RootDiff", "root_diff_median_myr")):
+            R.macro(macros, "SharkCmp" + k_, r_[c_].replace("-", "$-$"))
+        R.macro(macros, "SharkCmpEqualAgePct", "%g" % (100 * float(r_["equal_age_tol"])))
     # tree sets excluded at the crown by a calibration rule (the classification
     # is of the crown only)
     R.macro(macros, "CrownNamesSetCalib", name_list(sorted(
@@ -1459,10 +1429,6 @@ def main(argv=None):
     WE_LL_TOL, WE_RATIO_RTOL = 1e-3, 1e-4      # same log-likelihood; ratio
     elig = [p for p in sorted(E) if chron[p] and c1_basis[p] == "enumerated"
             and len(mol_rows[p]) < len(tips[p])]
-    # One test per eligible group, at the Bonferroni level over the eligible
-    # groups, a family fixed by the eligibility rule before any fit is read
-    WE_LEVEL_B = TEST_LEVEL / len(elig)
-    WE_LR_CRIT = NormalDist().inv_cdf(1.0 - WE_LEVEL_B) ** 2
     sel = read_csv(os.path.join(a.fits, "worked_example_bd_selection.csv"))
     R.eq("eligible groups (absolute chronogram, molecular tips listed, fewer "
          "than all tips)", elig, [x["partition"] for x in sel])
@@ -1476,6 +1442,19 @@ def main(argv=None):
               "%.4f" % float(x["geometry_root_ma"])))
     fits = {(f["partition"], f["tree"], f["rho_convention"]): f
             for f in read_csv(os.path.join(a.fits, "worked_example_bd.csv"))}
+    # A test only on a binary summary tree (D59): the likelihood reads a node
+    # with k children as k - 1 simultaneous speciation events, of probability
+    # zero under the model.  The family is the eligible groups whose pruned
+    # tree has no polytomy (counted on the tree below), each test at the
+    # Bonferroni level over that family.
+    tested = [p for p in elig
+              if as_int(fits[(p, "molecular", "tips")]["n_polytomy_events"]) == 0]
+    WE_LEVEL_B = TEST_LEVEL / len(tested)
+    WE_LR_CRIT = NormalDist().inv_cdf(1.0 - WE_LEVEL_B) ** 2
+    R.macro(macros, "WENTests", fmt_int(len(tested)))
+    R.macro(macros, "WENamesTested", name_list(tested))
+    R.macro(macros, "WENamesNotTested", name_list([p for p in elig
+                                                   if p not in tested]))
 
     def g(p, tree, conv, k):
         return float(fits[(p, tree, conv)][k])
@@ -1501,7 +1480,7 @@ def main(argv=None):
         lr = round(2.0 * dll, 4)
         n_ident += ident
         n_bound += not ident
-        n_rej += (not ident) and lr > WE_LR_CRIT
+        n_rej += p in tested and (not ident) and lr > WE_LR_CRIT
         rf, rm = g(p, *F, k="r"), g(p, *M, k="r")
         rr = round(rf / rm, 4)
         n_fg += rr > 1
@@ -1519,7 +1498,7 @@ def main(argv=None):
         R.macro(macros, "WEEpsFull" + n, "%.2f" % g(p, *MC, k="epsilon"))
         R.macro(macros, "WELambdaRatio" + n, "%.2f" % round(ratio, 4))
         R.macro(macros, "WELR" + n, "%.2f" % lr)
-        if not ident:
+        if not ident and p in tested:
             # F3-15: p-value under the 50:50 mixture of zero and chi2(1)
             pv = mixture_p(lr)
             R.macro(macros, "WEP" + n, p_text(pv))
@@ -1554,7 +1533,7 @@ def main(argv=None):
     for r in read_csv(os.path.join(a.fits, "worked_example_bd_polytomy.csv")):
         poly[r["partition"]][r["seed"]][(r["tree"], r["rho_convention"])] = r
     sfac = {x["partition"]: float(x["time_scale_factor"]) for x in sel}
-    with_poly, allr, nb, nrj = [], [], 0, 0
+    with_poly, allr, nb = [], [], 0
     poly_rows = OrderedDict()
     for p in elig:
         with open(os.path.join(tree_dir, bmap[p]["canonical_tree"]), encoding="utf-8",
@@ -1571,7 +1550,7 @@ def main(argv=None):
         ff_, fm_ = fits[(p,) + F], fits[(p,) + M]
         if as_int(ff_["n_polytomy_events"]) or as_int(fm_["n_polytomy_events"]):
             with_poly.append(p)
-        rr, lrs, em, bnd, rej = [], [], [], [], []
+        rr, lrs, em, bnd = [], [], [], []
         for sd_, f_ in sorted(poly[p].items()):
             R.eq("%s seed %s: the three uniform fits resolved" % (p, sd_), len(f_), 3)
             x_ = round(2.0 * (float(f_[M]["loglik"]) - float(f_[MC]["loglik"])), 4)
@@ -1580,10 +1559,8 @@ def main(argv=None):
             lrs.append(x_)
             em.append(float(f_[M]["epsilon"]))
             bnd.append(e_ < 1e-6 and x_ > 2e-3)
-            rej.append(e_ < 1e-6 and x_ > WE_LR_CRIT)
         allr += rr
         nb += all(bnd)
-        nrj += all(rej)
         n = macro_name(p)
         if p in with_poly:
             R.macro(macros, "WEPolyPctFull" + n, fmt_pct(pct(
@@ -1612,14 +1589,13 @@ def main(argv=None):
             ("epsilon_matching_resolved", rng(em)),
             ("lr", "%.2f" % round(2.0 * (float(fm_["loglik"]) - float(fc_["loglik"])), 4)),
             ("lr_resolved", rng(lrs)),
-            ("outcome_resolved", "mu0_rejected" if all(rej) else "mu0" if all(bnd)
+            ("outcome_resolved", "mu0" if all(bnd)
              else "rescaled" if not any(bnd) else "mixed")])
     R.macro(macros, "WEPolyNGroups", fmt_int(len(with_poly)))
     R.macro(macros, "WEPolyNames", name_list(with_poly))
     R.macro(macros, "WEPolyRRatioMin", "%.2f" % min(allr))
     R.macro(macros, "WEPolyRRatioMax", "%.2f" % max(allr))
     R.macro(macros, "WEPolyNBoundary", fmt_int(nb))
-    R.macro(macros, "WEPolyNRejected", fmt_int(nrj))
     # The fits repeated over the tree sets the sources archive
     # (registers/worked_example_tree_sets.csv; code/rebuild/worked_example_sets.R).
     # Each row is checked against the rules of the paper: the fractions are
@@ -1814,8 +1790,6 @@ def main(argv=None):
             ("uncertainty_status", "" if not chron[p] else "none" if not kind
              else "placement" if not avail_of[p] else "set"
              if kind in SET_KINDS else "summary"),
-            ("interval_status", "" if not chron[p] else "none" if not kind
-             else "counted" if counts[p] else why_of[p]),
             ("rho_full", rho_fmt(len(tips[p]) / float(d))),
             ("rho_molecular", rho_fmt(mt / float(d))), ("described", d),
             ("study_dating", sdp),
@@ -1831,8 +1805,7 @@ def main(argv=None):
 
     t2 = OrderedDict()
     for lv, label in zip(LEVELS, ("named", "molecular", "dated",
-                                  "uncertainty available",
-                                  "beyond the calibration")):
+                                  "uncertainty available")):
         t2[label] = OrderedDict([
             ("level", label), ("species", fmt_int(lad[lv]["union"])),
             ("pct", fmt_pct(lad[lv]["pct_union"])),
@@ -1841,8 +1814,6 @@ def main(argv=None):
              else "<= " + fmt_pct(pct(lad["C1"]["sum"] + n_add, den)) if lv == "C1" else ""),
             ("gbif", fmt_pct(pct(lad["C0"]["sum"] + len(added), den)) if lv == "C0" else ""),
             ("product", fmt_pct(pct(round(prod[lv], 4), den)) if lv in prod else ""),
-            ("calib", fmt_pct(cal["C1b"]["pct_union"]) if lv == "C1b" else ""),
-            ("allint", fmt_pct(alli["C1b"]["pct_union"]) if lv == "C1b" else ""),
             ("nobirds", fmt_pct(nob[lv]["pct_union"])),
         ])
     table_eq("table_rungs_sensitivity.csv", t2, "level")
@@ -1869,7 +1840,8 @@ def main(argv=None):
             ("eps_fullrho", f2(fc["epsilon"])), ("eps_fullrho_lo", f2(fc["epsilon_lo"])),
             ("eps_fullrho_hi", f2(fc["epsilon_hi"])), ("lr", "%.2f" % lr),
             ("classification", ("identity" if ident else "boundary")
-             + (" (rejected)" if (not ident) and lr > WE_LR_CRIT else "")),
+             + (" (rejected)" if p in tested and (not ident) and lr > WE_LR_CRIT
+                else "")),
             ("r_full", f3(ff["r"])), ("r_full_lo", f3(ff["r_lo"])), ("r_full_hi", f3(ff["r_hi"])),
             ("r_molecular", f3(ft["r"])), ("r_molecular_lo", f3(ft["r_lo"])),
             ("r_molecular_hi", f3(ft["r_hi"])),
@@ -2071,7 +2043,11 @@ def main(argv=None):
             ("source_file", os.path.basename(b["molecular_source_file"] or "")),
             ("tips", len(tips[p])), ("molecular_tips", mt),
             ("molecular_fraction", "%.3f" % (mt / float(len(tips[p])))),
-            ("exact_label_tips", ex), ("molecular_species", len(c1[p])),
+            ("exact_label_tips", ex),
+            ("source_labels", src_counts[p][0] if p in src_counts else ""),
+            ("source_merged", src_counts[p][1] if p in src_counts else ""),
+            ("source_unmatched", src_counts[p][2] if p in src_counts else ""),
+            ("molecular_species", len(c1[p])),
             ("product", fix(len(c0[p]) * float("%.6f" % fmol[p]), 1)),
             ("f_low", "%.3f" % float(b["f_low"])), ("f_high", "%.3f" % float(b["f_high"])),
             ("molecular_only_tree", "yes" if p in molonly else "no"),
@@ -2241,12 +2217,7 @@ def main(argv=None):
     got["bird_band_low"] = srow("bird_band_low", den, low)
     got["union"] = srow("union", den, OrderedDict(
         [("C0", pct(lad["C0"]["sum"] + n_add, den)),
-         ("C1", pct(lad["C1"]["sum"] + n_add, den)), ("C1d", None), ("C1u", None),
-         ("C1b", None)]))
-    for key, nm in (("rule_p_counted", "RuleP"), ("crown_calibrated", "CrownCal")):
-        got[key] = srow(key, den, OrderedDict(
-            [("C0", None), ("C1", None), ("C1d", None), ("C1u", None),
-             ("C1b", strict_sets[nm]["C1b"]["pct_union"])]))
+         ("C1", pct(lad["C1"]["sum"] + n_add, den)), ("C1d", None), ("C1u", None)]))
     supp_eq("supp_sensitivity", got, "alternative")
 
     got = OrderedDict()

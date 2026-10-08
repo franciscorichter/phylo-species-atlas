@@ -12,6 +12,6 @@ molecular tips,,registers/molecular_tips.csv
 chronogram,is_chronogram; roottotip_cv,
 dated in absolute time (level C1d),time_scale,
 date uncertainty available (level C1u),uncertainty_available,registers/crown_intervals.csv
-date uncertainty informed beyond the calibration (level C1b),interval_recoverable; interval_kind,registers/crown_intervals.csv
+kind of date uncertainty archived,interval_kind; posterior_n,registers/crown_intervals.csv
 how the tree was assembled,topology_assembly,
 crown age,,paper/crown_ages.csv

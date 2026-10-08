@@ -1,10 +1,9 @@
-"""Figure 1: described eukaryotic species at five levels of evidence, and
+"""Figure 1: described eukaryotic species at four levels of evidence, and
 where coverage is lost between levels.
 
 (a) Stacked bars: species named in a reference tree, placed with molecular
     data, in a chronogram in absolute time, in a chronogram whose archive
-    carries date uncertainty a user can propagate (C1u), and in one whose
-    crown interval is informed beyond the calibration (C1b, D55); stacked by
+    carries date uncertainty a user can propagate (C1u, D55, D58); stacked by
     group category.
 (b) The loss between consecutive levels, split by reason.
 
@@ -33,16 +32,13 @@ CAT_COLOR = {
     "Microbes & protists": "#E69F00",
 }
 LEVELS = OrderedDict([("C0", "Named"), ("C1", "Molecular"),
-                      ("C1d", "Dated"), ("C1u", "Uncertainty\navailable"),
-                      ("C1b", "Beyond the\ncalibration")])
+                      ("C1d", "Dated"), ("C1u", "Uncertainty\navailable")])
 REASONS = OrderedDict([
     ("TaxPlaced", ("Named to molecular", "not in molecular analysis")),
     ("NotChron", ("Molecular to dated", "not a chronogram")),
     ("RelTime", ("Molecular to dated", "relative time")),
     ("NoInterval", ("Dated to available", "nothing archived")),
     ("Placement", ("Dated to available", "set varies tip placement only")),
-    ("Kind", ("Available to beyond", "dates drawn from studies")),
-    ("Calib", ("Available to beyond", "calibration rule")),
 ])
 
 level, loss = OrderedDict(), OrderedDict()

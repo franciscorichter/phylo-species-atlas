@@ -32,14 +32,15 @@ the deposit named in
                        (non-zero only for raw MCMC logs)
         evidence       why the kind and the parameters are what they are
 
-KINDS.  Two levels read them (decision D55).  UNCERTAINTY AVAILABLE (level
-C1u, column uncertainty_available): the archive carries a node-age
-distribution or interval a user can propagate -- a sampled tree set whose
-node ages vary among the sequenced species, or intervals annotated on a
-summary tree -- whatever its relation to the calibration prior.  BEYOND THE
-CALIBRATION (level C1b, column counts_for_c1b): the subset whose crown
-interval passes the rules below.  The second column of the table is C1b; every
-kind except taxon_addition_sample counts for C1u:
+KINDS.  UNCERTAINTY AVAILABLE (level C1u, column uncertainty_available;
+decisions D55, D58): the archive carries a node-age distribution or interval a
+user can propagate -- a sampled tree set whose node ages vary among the
+sequenced species, or intervals annotated on a summary tree -- whatever its
+relation to the calibration prior.  The crown interval is also compared with
+the calibrations (column not_excluded_by_rule, a description printed in the
+Supplement and no coverage level, D58): the second column of the table says
+whether the kind passes that comparison; every kind except
+taxon_addition_sample counts for C1u:
     node_hpd_annotation       yes  per-node interval written in the summary
                                    tree by the dating software (TreeAnnotator,
                                    MCMCTree)
@@ -52,7 +53,7 @@ kind except taxon_addition_sample counts for C1u:
                                    ages drawn from the calibration density;
                                    the spread is the prior, not an estimate,
                                    so the interval is set by a calibration
-                                   (c1b_exclusion prior_sampled, D29, D51)
+                                   (rule_exclusion prior_sampled, D29, D51)
     taxon_addition_sample     no   one dated backbone, with taxonomically
                                    placed tips added at random per tree; the
                                    spread is placement, not dating, and the
@@ -100,8 +101,8 @@ node below it, and no older than the youngest maximum on it or on a node
 above it.  The register records that band (band_lo_ma, band_hi_ma, with
 child_calibration and band_evidence), and the same test is applied to it
 (prior_range = band); with no band the interval is compared with no prior.
-A row counts for C1b only when its kind counts AND it is neither degenerate
-nor at a bound (decision D22) nor reproduces its prior (D25); c1b_exclusion
+A row is not excluded at the crown only when its kind counts AND it is neither degenerate
+nor at a bound (decision D22) nor reproduces its prior (D25); rule_exclusion
 names the reason otherwise.
 
 OUTPUT: Data/crown_intervals.csv, one row per register row.  Rows whose source
@@ -152,7 +153,7 @@ AVAILABLE_KINDS = {
     "date_assignment_sample": True,
 }
 assert set(AVAILABLE_KINDS) == set(KINDS) and all(
-    AVAILABLE_KINDS[k] for k in KINDS if KINDS[k]), "C1b must lie inside C1u"
+    AVAILABLE_KINDS[k] for k in KINDS if KINDS[k]), "a kind not excluded at the crown must count for C1u"
 PRIOR_SAMPLED_KINDS = ("calibration_prior_sample",)   # D29
 SAMPLE_KINDS = ("posterior_sample", "bootstrap_dating_sample",
                 "calibration_prior_sample", "taxon_addition_sample",
@@ -164,13 +165,13 @@ PRIOR_CONTAINMENT_MIN = 0.9            # D25 rule parameters, applied to every
 PRIOR_WIDTH_RATIO_MIN = 0.5            # row with a two-sided calibration
 CAL_CLASSES = ("two_sided", "one_sided", "none", "not_checked")
 
-OUT_HEADER = ["partition", "kind", "uncertainty_available", "counts_for_c1b",
+OUT_HEADER = ["partition", "kind", "uncertainty_available", "not_excluded_by_rule",
               "source",
               "source_sha256", "n_files", "n_trees", "burnin_trees",
               "n_focal_labels", "n_outside_labels", "source_point_height_ma",
               "interval_lo_ma", "interval_center_ma", "interval_hi_ma",
               "center_statistic", "interval_width_myr", "degenerate",
-              "at_bound", "c1b_exclusion", "n_focal_outgroups",
+              "at_bound", "rule_exclusion", "n_focal_outgroups",
               "source_root_height_ma", "calibration", "prior_lo_ma",
               "prior_hi_ma", "prior_containment", "prior_width_ratio",
               "prior_reproduced", "prior_q_lo", "prior_q_center",
@@ -410,7 +411,7 @@ def measure(row, data_root, jobs):
     scale = float(row["scale"] or 1)
     burnin = float(row["burnin"] or 0)
     out = dict(partition=row["partition"], kind=kind,
-               counts_for_c1b="yes" if KINDS[kind] else "no",
+               not_excluded_by_rule="yes" if KINDS[kind] else "no",
                source=row["source"], source_sha256=sha256_of(paths),
                n_files=len(paths), n_outside_labels=len(outside),
                n_focal_outgroups=len(kept))
@@ -568,7 +569,7 @@ def load_calibrations(path=CALIBRATIONS):
 
 def flags(kind, lo, center, hi, point, cal=None):
     """uncertainty_available (D55), width, degenerate, at_bound, the D25
-    prior test, c1b_exclusion and counts_for_c1b for one interval, by the
+    prior test, rule_exclusion and not_excluded_by_rule for one interval, by the
     rules above (D5, D22, D25, D52).
     Shared with verify_atlas.py."""
     w = hi - lo
@@ -593,8 +594,8 @@ def flags(kind, lo, center, hi, point, cal=None):
                 prior_reproduced="yes" if repro else "no",
                 **prior_quantiles(lo, center, hi, point, cal),
                 prior_range=prior_range(cal)[2],
-                c1b_exclusion=why,
-                counts_for_c1b="yes" if not why else "no")
+                rule_exclusion=why,
+                not_excluded_by_rule="yes" if not why else "no")
 
 
 def _num(v):
