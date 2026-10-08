@@ -75,7 +75,7 @@ afc.check_against_headlines(
 # ── Encoding ────────────────────────────────────────────────────────────────
 SHAPE = {"primary_analysis": "o", "compiled": "s", "automated_synthesis": "^"}
 SHAPE_LABEL = {"primary_analysis": "primary analysis",
-               "compiled": "compiled from public sequences",
+               "compiled": "compiled from published trees",
                "automated_synthesis": "automated synthesis"}
 unknown = {r["assembly"] for r in rows} - set(SHAPE)
 if unknown:

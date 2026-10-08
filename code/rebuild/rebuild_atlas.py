@@ -2490,6 +2490,50 @@ def c1b_calibration_sensitivity(basis, shipped, truth):
     ])
 
 
+# Round F1 (F1-04, F1-05).  Two stricter classifications of the counted
+# intervals, each a rule on the register: an interval at least as wide as the
+# range of a two-sided calibration prior on its node is set by that
+# calibration (the data did not narrow it), and an interval whose crown
+# calibration could not be checked is not counted.
+C1B_WIDTH_RULE_RATIO = 1.0
+
+
+def _c1b_stricter(basis, shipped, truth, unchecked):
+    reg = crown_intervals()
+    drop = set()
+    for p, iv in reg.items():
+        if iv.get("counts_for_c1b") != "yes":
+            continue
+        if iv.get("calibration") == "two_sided" and iv.get("prior_width_ratio") \
+                and float(iv["prior_width_ratio"]) >= C1B_WIDTH_RULE_RATIO:
+            drop.add(p)
+        if unchecked and iv.get("calibration") == "not_checked":
+            drop.add(p)
+    alt = [dict(r) for r in basis]
+    for r in alt:
+        if r["partition"] in drop:
+            r["interval_recoverable"] = "no"
+    return OrderedDict([
+        ("rule", "C1b with an interval at least %g times as wide as the range "
+                 "of a two-sided prior on its node counted as set by the "
+                 "calibration%s" % (C1B_WIDTH_RULE_RATIO,
+                                    "; intervals whose crown calibration was "
+                                    "not checked not counted" if unchecked
+                                    else "")),
+        ("width_ratio_min", C1B_WIDTH_RULE_RATIO),
+        ("partitions_removed", sorted(drop)),
+        ("rungs", _rung_percents(compute_rungs(alt, shipped, truth))),
+    ])
+
+
+def c1b_width_rule_sensitivity(basis, shipped, truth):
+    return _c1b_stricter(basis, shipped, truth, unchecked=False)
+
+
+def c1b_strict_sensitivity(basis, shipped, truth):
+    return _c1b_stricter(basis, shipped, truth, unchecked=True)
+
+
 def c1b_all_intervals_sensitivity(basis, shipped, truth):
     """Round-2 reader R2-06.  Interval coverage if every archived interval
     counted, whatever its kind (date assignment, taxon addition, calibration
@@ -3863,6 +3907,9 @@ def compute_headline(truth, basis, shipped, mol, ledger, pt, warnings):
              c1b_calibration_sensitivity(basis, shipped, truth)),
             ("c1b_all_intervals",
              c1b_all_intervals_sensitivity(basis, shipped, truth)),
+            ("c1b_width_rule",
+             c1b_width_rule_sensitivity(basis, shipped, truth)),
+            ("c1b_strict", c1b_strict_sensitivity(basis, shipped, truth)),
             ("c0_gbif_unmatched", c0_gbif_sensitivity(basis, shipped)),
         ])),
         ("disclosures", disc),
@@ -4202,6 +4249,13 @@ def build_crown_ages_csv(head, warnings):
     return render_csv(CROWN_HEADER, rows)
 
 
+# interval kinds that come from a set of trees (the others are intervals on
+# one summary tree)
+CROWN_SET_KINDS = ("posterior_sample", "bootstrap_dating_sample",
+                   "calibration_prior_sample", "taxon_addition_sample",
+                   "date_assignment_sample")
+
+
 def crown_macro_name(partition):
     """'Seed plants' -> 'SeedPlants': letters only, so it is a TeX name."""
     return "".join(w[:1].upper() + w[1:] for w in re.split(r"[^A-Za-z]+",
@@ -4366,6 +4420,24 @@ def build_number_macros(head, basis, warnings):
     m["SensAllIntCOneBPct"] = macro_pct(alli["percent_union"])
     m["SensCalibCOneBN"] = macro_int(cal["numerator_union"])
     m["SensCalibCOneBPct"] = macro_pct(cal["percent_union"])
+    for key, nm in (("c1b_width_rule", "Width"), ("c1b_strict", "Strict")):
+        e = s[key]["rungs"]["C1b"]
+        m["Sens%sCOneBN" % nm] = macro_int(e["numerator_union"])
+        m["Sens%sCOneBPct" % nm] = macro_pct(e["percent_union"])
+    m["SensWidthNames"] = name_list(s["c1b_width_rule"]["partitions_removed"])
+    m["SensUncheckedNames"] = name_list(sorted(
+        set(s["c1b_strict"]["partitions_removed"])
+        - set(s["c1b_width_rule"]["partitions_removed"])))
+    m["RuleWidthRatio"] = "%g" % C1B_WIDTH_RULE_RATIO
+    m["RuleTipsOverNamedPct"] = "%.0f" % (100 * TABLE1_TIPS_OVER_NAMED)
+    # every denominator lowered and raised by the elasticity fraction
+    f_el = ELASTICITY_FRACTION
+    m["RuleElasticityPct"] = "%.0f" % (100 * f_el)
+    d_all = head["denominators"]["eukaryotic"]["described"]
+    for key, nm in (("C0", "CZero"), ("C1", "COne")):
+        n_ = rg[key]["numerator_union"]
+        m["SensAllMinus%sPct" % nm] = macro_pct(pct(n_, d_all * (1 - f_el)))
+        m["SensAllPlus%sPct" % nm] = macro_pct(pct(n_, d_all * (1 + f_el)))
     nob = s["leave_assembly_class_out"]["drop_automated_synthesis"]["rungs"]
     m["SensNoBirdsCZeroPct"] = macro_pct(nob["C0"]["percent_union"])
     m["SensNoBirdsCOnePct"] = macro_pct(nob["C1"]["percent_union"])
@@ -4399,6 +4471,23 @@ def build_number_macros(head, basis, warnings):
         1 for v in ca["per_partition"].values() if v["interval_kind"]))
     m["CrownNNoInterval"] = macro_int(sum(
         1 for v in ca["per_partition"].values() if not v["interval_kind"]))
+    # round F1 (F1-01, F1-07): which archives hold a tree set and which one
+    # summary tree with an interval
+    cset = sorted(p for p, v in ca["per_partition"].items()
+                  if v["counts_for_c1b"] == "yes" and v["interval_kind"]
+                  in CROWN_SET_KINDS)
+    csum = sorted(p for p, v in ca["per_partition"].items()
+                  if v["counts_for_c1b"] == "yes" and v["interval_kind"]
+                  not in CROWN_SET_KINDS)
+    oset = sorted(p for p, v in ca["per_partition"].items()
+                  if v["counts_for_c1b"] != "yes" and v["interval_kind"]
+                  in CROWN_SET_KINDS)
+    m["CrownNCountedSet"] = macro_int(len(cset))
+    m["CrownNamesCountedSet"] = name_list(cset)
+    m["CrownNCountedSummary"] = macro_int(len(csum))
+    m["CrownNamesCountedSummary"] = name_list(csum)
+    m["CrownNSetNotCounted"] = macro_int(len(oset))
+    m["CrownNamesSetNotCounted"] = name_list(oset)
 
     # declared rule parameters the Methods state (rules, not results)
     import crown_intervals as _ci
@@ -4483,6 +4572,37 @@ def build_number_macros(head, basis, warnings):
         m["WERRatio" + n] = "%.2f" % f["r_ratio_full_over_molecular"]
         m["WEEpsFamily" + n] = "%.2f" % fa["epsilon"]
         m["WERFamily" + n] = "%.3f" % fa["r"]
+    # round F1 (F1-14): polytomies of the fitted trees and the fits with them
+    # resolved at random
+    po = w["polytomies"]
+    with_poly = [p for p in w["eligible"]
+                 if po[p]["events"]["full"]["n_polytomy_events"]
+                 or po[p]["events"]["molecular"]["n_polytomy_events"]]
+    m["WEPolyNGroups"] = macro_int(len(with_poly))
+    m["WEPolyNames"] = name_list(sorted(with_poly))
+    for p in with_poly:
+        n = crown_macro_name(p)
+        m["WEPolyPctFull" + n] = macro_pct(
+            po[p]["events"]["full"]["polytomy_events_pct"])
+        m["WEPolyPctPruned" + n] = macro_pct(
+            po[p]["events"]["molecular"]["polytomy_events_pct"])
+        lrs = [v["lr_statistic"] for v in po[p]["resolved"].values()]
+        if eff[p]["classification"] == "boundary":
+            m["WEPolyLRMin" + n] = "%.1f" % min(lrs)
+            m["WEPolyLRMax" + n] = "%.1f" % max(lrs)
+        rr = [v["r_ratio_full_over_molecular"] for v in po[p]["resolved"].values()]
+        m["WEPolyRRatioMin" + n] = "%.2f" % min(rr)
+        m["WEPolyRRatioMax" + n] = "%.2f" % max(rr)
+    allr = [v["r_ratio_full_over_molecular"] for p in w["eligible"]
+            for v in po[p]["resolved"].values()]
+    m["WEPolyRRatioMin"] = "%.2f" % min(allr)
+    m["WEPolyRRatioMax"] = "%.2f" % max(allr)
+    m["WEPolyNBoundary"] = macro_int(sum(
+        all(v["boundary"] for v in po[p]["resolved"].values())
+        for p in w["eligible"]))
+    m["WEPolyNRejected"] = macro_int(sum(
+        all(v["rejected"] for v in po[p]["resolved"].values())
+        for p in w["eligible"]))
 
     for r in basis:
         if not is_euk(r) or as_int(r.get("c0_units"), 0) <= 0:
@@ -4563,7 +4683,11 @@ WHICH_TREE_HEADER = ["partition", "category", "bibkey", "flags", "tips",
                      "interval_lo_ma", "interval_hi_ma", "interval_kind",
                      "interval_status", "rho_full", "rho_molecular",
                      "described", "study_dating", "molecular_only_tree",
-                     "molecular_share"]
+                     "molecular_share", "tips_exceed_named"]
+# Round F1 (F1-11, F1-17): Table 1 flags a group whose tips exceed its named
+# species by more than this fraction, where tips over described species
+# overstates the share of the group's species that the tree samples.
+TABLE1_TIPS_OVER_NAMED = 0.10
 INTERVAL_KIND_TEXT = OrderedDict([
     ("posterior_sample", "posterior tree set"),
     ("node_hpd_annotation", "HPD on summary tree"),
@@ -4610,7 +4734,7 @@ def name_list(names):
 def rho_fmt(x):
     """A sampling fraction: two decimals, or two significant digits below
     0.1 so that a small group's fraction does not print as 0.00."""
-    return "%.2f" % x if x >= 0.1 else "%.2g" % x
+    return "%.2f" % x if x >= 0.1 else "%#.2g" % x
 
 
 def _molecular_tip_counts():
@@ -4679,6 +4803,8 @@ def _which_tree_rows(head, basis):
             # molecular tips over tips: the molecular fraction of the tree,
             # which the text quotes (R2-17), beside the sampling fractions
             ("molecular_share", "%.2f" % (mtips / tips)),
+            ("tips_exceed_named", "yes" if tips > (1 + TABLE1_TIPS_OVER_NAMED)
+             * as_int(r["c0_units"], 0) else "no"),
         ]))
         if not rows[-1]["study_dating"]:
             die("Table 1: %s is not a chronogram and has no study_dating "
@@ -4729,10 +4855,12 @@ def build_which_tree_tex(head, basis, warnings):
             unc = "---"
         rm = (r["rho_molecular"] if r["molecular_tips"] != r["tips"]
               else "=")
+        rf = r["rho_full"] + (r"$^{e}$" if r["tips_exceed_named"] == "yes"
+                              else "")
         out.append(" & ".join([
             tex_escape(r["partition"]), src, thousands(r["described"]),
             thousands(r["tips"]), r["named_pct"], mt, r["molecular_share"],
-            r["molecular_pct"], dates, unc, r["rho_full"], rm]) + r" \\")
+            r["molecular_pct"], dates, unc, rf, rm]) + r" \\")
     return "\n".join(out) + "\n"
 
 
@@ -5260,6 +5388,10 @@ WORKED_SEL = os.path.join(ROOT, "Paper", "inputs",
                           "worked_example_bd_selection.csv")
 
 
+WORKED_POLY = os.path.join(ROOT, "Paper", "inputs",
+                           "worked_example_bd_polytomy.csv")
+WORKED_FORDER = os.path.join(ROOT, "Paper", "inputs",
+                             "worked_example_bd_family_order.csv")
 WORKED_FAMILY_MIN_TIPS = 20   # D23: families this large enter the dispersion
 # A15.  The rho identity: two fits on one tree are the same fit when their
 # log-likelihoods agree to the 4 dp the script writes and lambda scales by the
@@ -5384,7 +5516,8 @@ def worked_example(basis, mol, shipped, crown, warnings):
             "n_tips", "crown_age_ma", "time_scale_factor", "rho", "lambda",
             "mu", "r", "r_lo", "r_hi", "epsilon", "epsilon_lo", "epsilon_hi",
             "epsilon_ci", "loglik", "n_tips_family_fraction",
-            "family_uniform_check"))
+            "family_uniform_check", "n_events", "n_polytomy_nodes",
+            "n_polytomy_events", "max_children"))
 
     def g(part, tree, conv, k):
         return as_float(per["%s|%s|%s" % (part, tree, conv)][k])
@@ -5438,6 +5571,8 @@ def worked_example(basis, mol, shipped, crown, warnings):
             ("epsilon_intervals_overlap", overlap(part, F, M, "epsilon")),
         ])
         families[part] = family_sampling(part, elig[part], shipped)
+    polytomy = worked_polytomy(list(elig), per)
+    family_order = worked_family_order(list(elig))
     ratios = [v["r_ratio_full_over_molecular"] for v in imputation.values()]
     return OrderedDict([
         ("definition",
@@ -5497,8 +5632,94 @@ def worked_example(basis, mol, shipped, crown, warnings):
             ("per_partition", imputation),
         ])),
         ("molecular_fraction_by_family", families),
+        ("polytomies", polytomy),
+        ("family_child_order", family_order),
         ("fits", per),
     ])
+
+
+def worked_polytomy(elig, per):
+    """Round F1 (F1-14).  Per eligible group: the branching events of each
+    fitted tree that sit at polytomies, and the uniform-sampling fits repeated
+    with the polytomies resolved at random (worked_example_bd.R, one row per
+    seed): r on each tree, the ratio of r on the full to the pruned tree, the
+    extinction fraction of the two pruned fits, and the likelihood-ratio
+    statistic of the full tree's fraction on the pruned tree."""
+    if not os.path.exists(WORKED_POLY):
+        die("%s is missing; run Rscript Paper/code/analysis/worked_example_bd.R"
+            % rel(WORKED_POLY))
+    rows = read_csv(WORKED_POLY)
+    out = OrderedDict()
+    for p in elig:
+        fit = {}
+        for r in rows:
+            if r["partition"] == p:
+                fit.setdefault(as_int(r["seed"]), {})[
+                    (r["tree"], r["rho_convention"])] = r
+        if not fit:
+            die("%s has no rows for %s" % (rel(WORKED_POLY), p))
+        seeds = OrderedDict()
+        for sd in sorted(fit):
+            f = fit[sd]
+            rf = as_float(f[("full", "tips")]["r"])
+            rm = as_float(f[("molecular", "tips")]["r"])
+            lr = 2.0 * (as_float(f[("molecular", "tips")]["loglik"])
+                        - as_float(f[("molecular", "full_misapplied")]["loglik"]))
+            em = as_float(f[("molecular", "full_misapplied")]["epsilon"])
+            seeds[sd] = OrderedDict([
+                ("r_full", rf), ("r_molecular", rm),
+                ("r_ratio_full_over_molecular", round(rf / rm, 4)),
+                ("epsilon_rho_tips",
+                 as_float(f[("molecular", "tips")]["epsilon"])),
+                ("epsilon_rho_full", em),
+                ("lr_statistic", round(lr, 4)),
+                ("boundary", em < WORKED_EPS_BOUNDARY
+                 and lr > 2 * WORKED_IDENTITY_LL_TOL),
+                ("rejected", em < WORKED_EPS_BOUNDARY
+                 and lr > WORKED_LR_CUTOFF),
+            ])
+        ev = OrderedDict()
+        for tree in ("full", "molecular"):
+            x = per["%s|%s|tips" % (p, tree)]
+            ev[tree] = OrderedDict([
+                ("n_events", as_int(x["n_events"])),
+                ("n_polytomy_events", as_int(x["n_polytomy_events"])),
+                ("n_polytomy_nodes", as_int(x["n_polytomy_nodes"])),
+                ("max_children", as_int(x["max_children"])),
+                ("polytomy_events_pct", pct(as_int(x["n_polytomy_events"]),
+                                            as_int(x["n_events"]))),
+            ])
+        out[p] = OrderedDict([("events", ev), ("resolved", seeds)])
+    return out
+
+
+def worked_family_order(elig):
+    """Round F1 (F1-16).  The family fit with u at each node taken from the
+    first and from the last child (worked_example_bd.R)."""
+    if not os.path.exists(WORKED_FORDER):
+        die("%s is missing; run Rscript Paper/code/analysis/worked_example_bd.R"
+            % rel(WORKED_FORDER))
+    out = OrderedDict()
+    rows = read_csv(WORKED_FORDER)
+    for p in elig:
+        by = {r["child"]: r for r in rows if r["partition"] == p}
+        if set(by) != {"first", "last"}:
+            die("%s: %s needs a first and a last row" % (rel(WORKED_FORDER), p))
+        a, b = by["first"], by["last"]
+        out[p] = OrderedDict([
+            ("r_first", as_float(a["r"])), ("r_last", as_float(b["r"])),
+            ("epsilon_first", as_float(a["epsilon"])),
+            ("epsilon_last", as_float(b["epsilon"])),
+            ("loglik_first", as_float(a["loglik"])),
+            ("loglik_last_at_first_mle", as_float(a["loglik_last_at_first_mle"])),
+            ("r_rel_diff", abs(as_float(b["r"]) - as_float(a["r"]))
+             / as_float(a["r"])),
+            ("epsilon_abs_diff", abs(as_float(b["epsilon"])
+                                     - as_float(a["epsilon"]))),
+            ("loglik_abs_diff_at_mle", abs(as_float(a["loglik_last_at_first_mle"])
+                                           - as_float(a["loglik"]))),
+        ])
+    return out
 
 
 # ==========================================================================
@@ -5569,6 +5790,10 @@ SUPP_SENS_ROWS = OrderedDict([
     ("retain_only_primary_analysis", "Primary analyses only"),
     ("bird_band_low", "Bird molecular fraction at its lower end"),
     ("union", "Named species of all trees"),
+    ("width_rule", "Interval as wide as its two-sided prior set by the "
+                   "calibration"),
+    ("strict", "As above, and intervals with an unchecked calibration not "
+               "counted"),
 ])
 
 
@@ -5647,8 +5872,21 @@ def _supp_pruned_rows(head, basis, shipped):
     return rows
 
 
+def _override_counts():
+    """Round F1 (F1-06): per group, the resolved labels whose query is the
+    binomial of Data/standardized/name_overrides.csv, not the label's own
+    species key."""
+    n = Counter()
+    for r in read_csv(COL_RESOLUTION):
+        if r.get("query_source") == "override" \
+                and r["match_type"] in COL_RESOLUTION_RESOLVED and r["col_id"]:
+            n[r["partition"]] += 1
+    return n
+
+
 def _supp_names_rows(head, basis):
     nr = head["name_resolution_S05"]["per_partition"]
+    ovr = _override_counts()
     gb = head["sensitivities"]["c0_gbif_unmatched"]["per_partition"]
     by = {r["partition"]: r for r in basis}
     rows = []
@@ -5671,6 +5909,7 @@ def _supp_names_rows(head, basis):
             ("named_species", v["distinct_accepted_names"]),
             ("merged", v["resolved_labels"] - v["distinct_accepted_names"]),
             ("gbif_added", (gb.get(p) or {}).get("gbif_species_added", 0)),
+            ("override", ovr[p]),
         ]))
     rows.sort(key=lambda x: (CATEGORY_ORDER.index(x["category"]),
                              x["partition"]))
@@ -5842,6 +6081,10 @@ def _supp_sensitivity_rows(head, basis):
     add("union", D, OrderedDict([("C0", pct(u["C0_union"], D)),
                                  ("C1", pct(u["C1_union_high"], D)),
                                  ("C1d", None), ("C1b", None)]))
+    for key, sk in (("width_rule", "c1b_width_rule"), ("strict", "c1b_strict")):
+        e = s[sk]["rungs"]["C1b"]
+        add(key, D, OrderedDict([("C0", None), ("C1", None), ("C1d", None),
+                                 ("C1b", pct(e["numerator_union"], D))]))
     return rows
 
 
@@ -5931,7 +6174,47 @@ def _supp_fit_rows(head):
                 ("epsilon_lo", "%.3f" % as_float(r["epsilon_lo"])),
                 ("epsilon_hi", "%.3f" % as_float(r["epsilon_hi"])),
                 ("loglik", "%.2f" % as_float(r["loglik"])),
+                ("n_events", as_int(r["n_events"])),
+                ("n_polytomy_events", as_int(r["n_polytomy_events"])),
             ]))
+    return rows
+
+
+def _supp_polytomy_rows(head):
+    """Round F1 (F1-14): the uniform-sampling estimates as fitted and, over
+    the seeds of worked_example_bd.R, with the polytomies resolved at random."""
+    w = head["worked_example_S13"]
+    po, eff = w["polytomies"], w["rho_effect_same_tree"]
+    fvm = w["full_vs_molecular"]["per_partition"]
+    rows = []
+
+    def rng(vals, fmt):
+        lo, hi = fmt % min(vals), fmt % max(vals)
+        return lo if lo == hi else "%s--%s" % (lo, hi)
+    for p in w["eligible"]:
+        rs = list(po[p]["resolved"].values())
+        e = eff[p]
+        rows.append(OrderedDict([
+            ("partition", p),
+            ("events_full", po[p]["events"]["full"]["n_events"]),
+            ("polytomy_events_full",
+             po[p]["events"]["full"]["n_polytomy_events"]),
+            ("events_pruned", po[p]["events"]["molecular"]["n_events"]),
+            ("polytomy_events_pruned",
+             po[p]["events"]["molecular"]["n_polytomy_events"]),
+            ("r_ratio", "%.2f" % fvm[p]["r_ratio_full_over_molecular"]),
+            ("r_ratio_resolved", rng([v["r_ratio_full_over_molecular"]
+                                      for v in rs], "%.2f")),
+            ("epsilon_matching", "%.2f" % e["epsilon_rho_tips"]),
+            ("epsilon_matching_resolved", rng([v["epsilon_rho_tips"]
+                                               for v in rs], "%.2f")),
+            ("lr", "%.2f" % e["lr_statistic"]),
+            ("lr_resolved", rng([v["lr_statistic"] for v in rs], "%.2f")),
+            ("outcome_resolved", "mu0_rejected" if all(v["rejected"] for v in rs)
+             else "mu0" if all(v["boundary"] for v in rs)
+             else "rescaled" if not any(v["boundary"] for v in rs)
+             else "mixed"),
+        ]))
     return rows
 
 
@@ -5948,13 +6231,22 @@ def _supp_family_rows(head):
         ft = fits[(p, "molecular", "tips")]
         n = len(fs)
         med = fs[n // 2] if n % 2 else 0.5 * (fs[n // 2 - 1] + fs[n // 2])
+        fr = [r for r in fam if r["partition"] == p and r["n_col_species"]]
+        pooled = (sum(as_int(r["n_accepted_names"]) for r in fr)
+                  / float(sum(as_int(r["n_col_species"]) for r in fr)))
+        fo = head["worked_example_S13"]["family_child_order"][p]
         rows.append(OrderedDict([
             ("partition", p), ("families", n),
             ("tips_with_family", as_int(fm["n_tips_family_fraction"])),
             ("tips", as_int(ft["n_tips"])),
             ("f_min", "%.2f" % fs[0]), ("f_median", "%.2f" % med),
             ("f_max", "%.2f" % fs[-1]),
+            ("f_pooled", rho_fmt(pooled)),
             ("rho_uniform", rho_fmt(as_float(ft["rho"]))),
+            ("r_first", "%.4f" % fo["r_first"]),
+            ("r_last", "%.4f" % fo["r_last"]),
+            ("epsilon_first", "%.3f" % fo["epsilon_first"]),
+            ("epsilon_last", "%.3f" % fo["epsilon_last"]),
         ]))
         if abs(as_float(fm["family_uniform_check"])) > WORKED_UNIFORM_TOL:
             die("Supplement S9: %s family likelihood at equal fractions differs "
@@ -6092,13 +6384,24 @@ def build_supp_macros(head, basis, shipped, warnings):
     m["SuppFamilyMinTips"] = macro_int(min(r["tips_with_family"] for r in fr))
     chk = read_csv(WORKED_CHECK)
     m["SuppCrossCheckN"] = macro_int(len(chk))
+    w = head["worked_example_S13"]
+    m["SuppPolySeedsN"] = macro_int(len(next(iter(
+        w["polytomies"].values()))["resolved"]))
+    fo = w["family_child_order"].values()
+    m["SuppFamOrderMaxRDiffPct"] = "%.1f" % (100 * max(v["r_rel_diff"] for v in fo))
+    m["SuppFamOrderMaxEpsDiff"] = "%.3f" % max(v["epsilon_abs_diff"] for v in fo)
+    m["SuppFamOrderMaxDLL"] = "%.1f" % max(v["loglik_abs_diff_at_mle"] for v in fo)
+    # each rate's difference relative to the speciation rate, the scale of
+    # both rates: a small extinction rate is set by the likelihood no more
+    # precisely than that scale (round F1, a refit with phytools 2.5.2)
     rd = 0.0
     for r in chk:
+        lam = max(as_float(r["this_lambda"]), as_float(r["phytools_lambda"]))
         for a, b in (("this_lambda", "phytools_lambda"),
                      ("this_mu", "phytools_mu")):
             x, y = as_float(r[a]), as_float(r[b])
-            if max(abs(x), abs(y)) > 1e-6:
-                rd = max(rd, abs(x - y) / max(abs(x), abs(y)))
+            if lam > 1e-6:
+                rd = max(rd, abs(x - y) / lam)
     if rd > WORKED_CROSSCHECK_RTOL:
         die("Supplement S9: rates differ from phytools by %.2g (relative)" % rd)
     m["SuppCrossCheckTolPct"] = "%g" % (100 * WORKED_CROSSCHECK_RTOL)
@@ -6227,7 +6530,8 @@ def _t_pruned(head, basis, shipped, tex):
 
 @supp_table("supp_names", ["partition", "category", "labels", "accepted",
                            "synonym", "unresolved", "unresolved_pct",
-                           "named_species", "merged", "gbif_added"])
+                           "named_species", "merged", "gbif_added",
+                           "override"])
 def _t_names(head, basis, shipped, tex):
     rows = _supp_names_rows(head, basis)
     if not tex:
@@ -6236,8 +6540,9 @@ def _t_names(head, basis, shipped, tex):
         tex_escape(r["partition"]), thousands(r["labels"]),
         thousands(r["accepted"]), thousands(r["synonym"]),
         thousands(r["unresolved"]), r["unresolved_pct"],
+        thousands(r["override"]),
         thousands(r["merged"]), thousands(r["named_species"]),
-        thousands(r["gbif_added"])], 9)
+        thousands(r["gbif_added"])], 10)
 
 
 @supp_table("supp_molecular", ["partition", "category", "f_basis",
@@ -6320,7 +6625,8 @@ def _t_sens(head, basis, shipped, tex):
     out = []
     for r in rows:
         if r["alternative"] in ("insects_minus", "col_filled", "rep",
-                                "drop_automated_synthesis", "bird_band_low"):
+                                "drop_automated_synthesis", "bird_band_low",
+                                "width_rule"):
             out.append(r"\midrule")
         out.append(" & ".join(
             [SUPP_SENS_ROWS[r["alternative"]], thousands(r["denominator"])]
@@ -6372,7 +6678,7 @@ SUPP_FIT_LABEL = OrderedDict([
 @supp_table("supp_worked_fits", ["partition", "tree", "rho_convention",
                                  "n_tips", "rho", "lambda", "mu", "r", "r_lo",
                                  "r_hi", "epsilon", "epsilon_lo", "epsilon_hi",
-                                 "loglik"])
+                                 "loglik", "n_events", "n_polytomy_events"])
 def _t_fits(head, basis, shipped, tex):
     rows = _supp_fit_rows(head)
     if not tex:
@@ -6391,13 +6697,41 @@ def _t_fits(head, basis, shipped, tex):
             thousands(r["n_tips"]), _dash(r["rho"]), r["lambda"], r["mu"],
             "%s (%s--%s)" % (r["r"], r["r_lo"], r["r_hi"]),
             "%s (%s--%s)" % (r["epsilon"], r["epsilon_lo"], r["epsilon_hi"]),
-            r["loglik"].replace("-", "$-$")]) + r" \\")
+            r["loglik"].replace("-", "$-$"), thousands(r["n_events"]),
+            thousands(r["n_polytomy_events"])]) + r" \\")
     return "\n".join(out) + "\n"
+
+
+SUPP_POLY_OUTCOME = OrderedDict([
+    ("rescaled", "rescaled"), ("mu0", "$\\mu = 0$"),
+    ("mu0_rejected", "$\\mu = 0$$^{*}$"), ("mixed", "mixed"),
+])
+
+
+@supp_table("supp_worked_polytomy", ["partition", "events_full",
+                                     "polytomy_events_full", "events_pruned",
+                                     "polytomy_events_pruned", "r_ratio",
+                                     "r_ratio_resolved", "epsilon_matching",
+                                     "epsilon_matching_resolved", "lr",
+                                     "lr_resolved", "outcome_resolved"])
+def _t_poly(head, basis, shipped, tex):
+    rows = _supp_polytomy_rows(head)
+    if not tex:
+        return rows
+    return _supp_tex_rows(rows, lambda r: [
+        tex_escape(r["partition"]), thousands(r["polytomy_events_full"]),
+        thousands(r["events_full"]), thousands(r["polytomy_events_pruned"]),
+        thousands(r["events_pruned"]), r["r_ratio"], r["r_ratio_resolved"],
+        r["epsilon_matching"], r["epsilon_matching_resolved"], r["lr"],
+        r["lr_resolved"], SUPP_POLY_OUTCOME[r["outcome_resolved"]]], 12,
+        category_key=None)
 
 
 @supp_table("supp_worked_families", ["partition", "families",
                                      "tips_with_family", "tips", "f_min",
-                                     "f_median", "f_max", "rho_uniform"])
+                                     "f_median", "f_max", "f_pooled",
+                                     "rho_uniform", "r_first", "r_last",
+                                     "epsilon_first", "epsilon_last"])
 def _t_fam(head, basis, shipped, tex):
     rows = _supp_family_rows(head)
     if not tex:
@@ -6407,7 +6741,9 @@ def _t_fam(head, basis, shipped, tex):
         out.append(" & ".join([
             tex_escape(r["partition"]), thousands(r["families"]),
             thousands(r["tips_with_family"]), thousands(r["tips"]),
-            r["f_min"], r["f_median"], r["f_max"], r["rho_uniform"]]) + r" \\")
+            r["f_min"], r["f_median"], r["f_max"], r["f_pooled"],
+            r["rho_uniform"], r["epsilon_first"], r["epsilon_last"],
+            r["r_first"], r["r_last"]]) + r" \\")
     return "\n".join(out) + "\n"
 
 

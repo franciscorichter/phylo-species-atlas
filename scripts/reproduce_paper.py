@@ -133,6 +133,11 @@ GBIF_STATUS = {"ACCEPTED", "SYNONYM", "HETEROTYPIC_SYNONYM",
 CATEGORY_ORDER = ["Vertebrates", "Plants", "Arthropods", "Other animals",
                   "Microbes & protists"]
 LEVELS = ("C0", "C1", "C1d", "C1b")
+# Table 1 marks a group whose tips exceed its named species by this fraction
+TIPS_OVER_NAMED = 0.10
+# interval kinds that come from a set of trees
+SET_KINDS = ("posterior_sample", "bootstrap_dating_sample", "calibration_prior_sample",
+             "taxon_addition_sample", "date_assignment_sample")
 LOSS_REASONS = ("NotChron", "RelTime", "NoInterval", "Kind", "Calib")
 UNREP_NAMED = 4                     # largest groups without a tree, named
 # Agreement the Supplement states as tolerances (the differences themselves are
@@ -177,6 +182,93 @@ def as_float(v, default=None):
         return float(v)
     except (TypeError, ValueError):
         return default
+
+
+def tree_arrays(text):
+    """parent index, branch length, label and child count of every node of a
+    Newick string (nodes in the order they open, parents before children)."""
+    s, quote = [], None
+    for ch in text.strip():
+        if quote:
+            s.append(ch)
+            if ch == quote:
+                quote = None
+        elif ch in "'\"":
+            quote = ch
+            s.append(ch)
+        elif not ch.isspace():
+            s.append(ch)
+    s = "".join(s)
+    if s.endswith(";"):
+        s = s[:-1]
+    parent, bl, name, nkids = [-1], [0.0], [""], [0]
+    cur, i, n = 0, 0, len(s)
+    while i < n:
+        c = s[i]
+        if c == "(":
+            parent.append(cur); bl.append(0.0); name.append(""); nkids.append(0)
+            nkids[cur] += 1
+            cur = len(parent) - 1
+            i += 1
+        elif c == ",":
+            p = parent[cur]
+            parent.append(p); bl.append(0.0); name.append(""); nkids.append(0)
+            nkids[p] += 1
+            cur = len(parent) - 1
+            i += 1
+        elif c == ")":
+            cur = parent[cur]
+            i += 1
+        else:
+            j = i
+            while j < n and s[j] not in "(),":
+                j += 1
+            lab, _, b = s[i:j].partition(":")
+            name[cur] = lab.strip()
+            v = as_float(b.strip(), 0.0) if b.strip() else 0.0
+            bl[cur] = v if v == v else 0.0
+            i = j
+    return parent, bl, name, nkids
+
+
+def polytomy_counts(text, keep, scale, tol=1e-6):
+    """(branching events, events at nodes with more than two children) of a
+    tree restricted to the tips in `keep` (None: all), after branches shorter
+    than `tol` (after scaling) between two branching nodes are collapsed."""
+    parent, bl, name, nkids = tree_arrays(text)
+    kids = [[] for _ in parent]
+    for k in range(1, len(parent)):
+        kids[parent[k]].append(k)
+    res = [None] * len(parent)
+    tot = [0, 0]
+
+    def fin(k_):
+        tot[0] += k_ - 1
+        if k_ > 2:
+            tot[1] += k_ - 1
+    for k in range(len(parent) - 1, -1, -1):
+        b = bl[k] * scale
+        if not kids[k]:
+            res[k] = ("tip", 0, b) if (keep is None or name[k] in keep) else None
+            continue
+        sub = [res[c] for c in kids[k] if res[c] is not None]
+        if not sub:
+            continue
+        if len(sub) == 1:
+            res[k] = (sub[0][0], sub[0][1], sub[0][2] + b)
+            continue
+        k_eff = 0
+        for kind, kk, ln in sub:
+            if kind == "node" and ln < tol:
+                k_eff += kk
+            else:
+                k_eff += 1
+                if kind == "node":
+                    fin(kk)
+        res[k] = ("node", k_eff, b)
+    if res[0] and res[0][0] == "node":
+        fin(res[0][1])
+    return tot[0], tot[1]
 
 
 def leaf_depths(text):
@@ -900,6 +992,30 @@ def main(argv=None):
     cal = ladder(E, den, calset)
     R.macro(macros, "SensCalibCOneBN", fmt_int(cal["C1b"]["union"]))
     R.macro(macros, "SensCalibCOneBPct", fmt_pct(cal["C1b"]["pct_union"]))
+    # Stricter classifications: an interval at least as wide as the range of a
+    # two-sided prior on its node is set by the calibration; intervals whose
+    # calibration was not checked are left out as well
+    WIDTH_RULE_RATIO = 1.0
+    wide = sorted(p for p in c0 if bounded[p] and intervals[p]["calibration"] == "two_sided"
+                  and float(intervals[p]["prior_width_ratio"]) >= WIDTH_RULE_RATIO)
+    unch = sorted(p for p in c0 if bounded[p]
+                  and intervals[p]["calibration"] == "not_checked")
+    strict_sets = {}
+    for nm, drop in (("Width", set(wide)), ("Strict", set(wide) | set(unch))):
+        lad_ = ladder(E, den, {p: bounded[p] and p not in drop for p in c0})
+        strict_sets[nm] = lad_
+        R.macro(macros, "Sens%sCOneBN" % nm, fmt_int(lad_["C1b"]["union"]))
+        R.macro(macros, "Sens%sCOneBPct" % nm, fmt_pct(lad_["C1b"]["pct_union"]))
+    R.macro(macros, "SensWidthNames", name_list(wide))
+    R.macro(macros, "SensUncheckedNames", name_list([p for p in unch if p not in wide]))
+    R.macro(macros, "RuleWidthRatio", "%g" % WIDTH_RULE_RATIO)
+    R.macro(macros, "RuleTipsOverNamedPct", "%.0f" % (100 * TIPS_OVER_NAMED))
+    R.macro(macros, "RuleElasticityPct", "%.0f" % (100 * 0.2))
+    for lv, nm in (("C0", "CZero"), ("C1", "COne")):
+        R.macro(macros, "SensAllMinus%sPct" % nm,
+                fmt_pct(pct(lad[lv]["union"], den * (1 - 0.2))))
+        R.macro(macros, "SensAllPlus%sPct" % nm,
+                fmt_pct(pct(lad[lv]["union"], den * (1 + 0.2))))
     # Without the automated-synthesis tree
     prov = {r["partition_name"]: r for r in read_csv(path("registers", "tree_provenance.csv"))
             if r["is_partition_canonical"] in ("yes", "TRUE", "True", "true")}
@@ -1038,6 +1154,14 @@ def main(argv=None):
         R.macro(macros, "CrownExcl" + macro_name(k), fmt_int(v))
     R.macro(macros, "CrownNWithInterval", fmt_int(sum(p in intervals for p in rows)))
     R.macro(macros, "CrownNNoInterval", fmt_int(sum(p not in intervals for p in rows)))
+    cset = sorted(p for p in rows if bounded[p] and intervals[p]["kind"] in SET_KINDS)
+    csum = sorted(p for p in rows if bounded[p] and intervals[p]["kind"] not in SET_KINDS)
+    oset = sorted(p for p in rows if p in intervals and not bounded[p]
+                  and intervals[p]["kind"] in SET_KINDS)
+    for nm, ps in (("CountedSet", cset), ("CountedSummary", csum),
+                   ("SetNotCounted", oset)):
+        R.macro(macros, "CrownN" + nm, fmt_int(len(ps)))
+        R.macro(macros, "CrownNames" + nm, name_list(ps))
 
     # ------------------------------------------------ Open Tree of Life ---
     R.section("Open Tree of Life synthesis 16.1: species placed by a phylogeny")
@@ -1177,6 +1301,77 @@ def main(argv=None):
     R.macro(macros, "WENFamilyEpsLower", fmt_int(n_el))
     R.macro(macros, "WENFamilyEpsHigher", fmt_int(n_eh))
     R.macro(macros, "WENamesEligible", name_list(elig))
+    # Polytomies of the fitted trees and the fits with them resolved at random
+    poly = defaultdict(lambda: defaultdict(dict))
+    for r in read_csv(os.path.join(a.fits, "worked_example_bd_polytomy.csv")):
+        poly[r["partition"]][r["seed"]][(r["tree"], r["rho_convention"])] = r
+    sfac = {x["partition"]: float(x["time_scale_factor"]) for x in sel}
+    with_poly, allr, nb, nrj = [], [], 0, 0
+    poly_rows = OrderedDict()
+    for p in elig:
+        with open(os.path.join(tree_dir, bmap[p]["canonical_tree"]), encoding="utf-8",
+                  errors="replace") as fh:
+            text_ = fh.read()
+        for tree, keep in (("full", None), ("molecular", mol_rows[p])):
+            ne, npe = polytomy_counts(text_, keep, sfac[p])
+            for conv in (("tips", "full_misapplied", "family") if tree == "molecular"
+                         else ("tips",)):
+                R.eq("%s %s/%s: branching events and those at polytomies, counted "
+                     "on the tree" % (p, tree, conv), (ne, npe),
+                     (as_int(fits[(p, tree, conv)]["n_events"]),
+                      as_int(fits[(p, tree, conv)]["n_polytomy_events"])))
+        ff_, fm_ = fits[(p,) + F], fits[(p,) + M]
+        if as_int(ff_["n_polytomy_events"]) or as_int(fm_["n_polytomy_events"]):
+            with_poly.append(p)
+        rr, lrs, em, bnd, rej = [], [], [], [], []
+        for sd_, f_ in sorted(poly[p].items()):
+            R.eq("%s seed %s: the three uniform fits resolved" % (p, sd_), len(f_), 3)
+            x_ = round(2.0 * (float(f_[M]["loglik"]) - float(f_[MC]["loglik"])), 4)
+            e_ = float(f_[MC]["epsilon"])
+            rr.append(round(float(f_[F]["r"]) / float(f_[M]["r"]), 4))
+            lrs.append(x_)
+            em.append(float(f_[M]["epsilon"]))
+            bnd.append(e_ < 1e-6 and x_ > 2e-3)
+            rej.append(e_ < 1e-6 and x_ > WE_LR_CRIT)
+        allr += rr
+        nb += all(bnd)
+        nrj += all(rej)
+        n = macro_name(p)
+        if p in with_poly:
+            R.macro(macros, "WEPolyPctFull" + n, fmt_pct(pct(
+                as_int(ff_["n_polytomy_events"]), as_int(ff_["n_events"]))))
+            R.macro(macros, "WEPolyPctPruned" + n, fmt_pct(pct(
+                as_int(fm_["n_polytomy_events"]), as_int(fm_["n_events"]))))
+            ll_t, ll_c = g(p, *M, k="loglik"), g(p, *MC, k="loglik")
+            if g(p, *MC, k="epsilon") < 1e-6 and abs(ll_t - ll_c) > WE_LL_TOL:
+                R.macro(macros, "WEPolyLRMin" + n, "%.1f" % min(lrs))
+                R.macro(macros, "WEPolyLRMax" + n, "%.1f" % max(lrs))
+            R.macro(macros, "WEPolyRRatioMin" + n, "%.2f" % min(rr))
+            R.macro(macros, "WEPolyRRatioMax" + n, "%.2f" % max(rr))
+
+        def rng(v, f="%.2f"):
+            lo_, hi_ = f % min(v), f % max(v)
+            return lo_ if lo_ == hi_ else "%s--%s" % (lo_, hi_)
+        fc_ = fits[(p,) + MC]
+        poly_rows[p] = OrderedDict([
+            ("partition", p), ("events_full", as_int(ff_["n_events"])),
+            ("polytomy_events_full", as_int(ff_["n_polytomy_events"])),
+            ("events_pruned", as_int(fm_["n_events"])),
+            ("polytomy_events_pruned", as_int(fm_["n_polytomy_events"])),
+            ("r_ratio", "%.2f" % round(float(ff_["r"]) / float(fm_["r"]), 4)),
+            ("r_ratio_resolved", rng(rr)),
+            ("epsilon_matching", "%.2f" % float(fm_["epsilon"])),
+            ("epsilon_matching_resolved", rng(em)),
+            ("lr", "%.2f" % round(2.0 * (float(fm_["loglik"]) - float(fc_["loglik"])), 4)),
+            ("lr_resolved", rng(lrs)),
+            ("outcome_resolved", "mu0_rejected" if all(rej) else "mu0" if all(bnd)
+             else "rescaled" if not any(bnd) else "mixed")])
+    R.macro(macros, "WEPolyNGroups", fmt_int(len(with_poly)))
+    R.macro(macros, "WEPolyNames", name_list(with_poly))
+    R.macro(macros, "WEPolyRRatioMin", "%.2f" % min(allr))
+    R.macro(macros, "WEPolyRRatioMax", "%.2f" % max(allr))
+    R.macro(macros, "WEPolyNBoundary", fmt_int(nb))
+    R.macro(macros, "WEPolyNRejected", fmt_int(nrj))
     sf = [float(x["time_scale_factor"]) for x in sel]
     R.macro(macros, "WEScaleMin", "%.2f" % min(sf))
     R.macro(macros, "WEScaleMax", "%.2f" % max(sf))
@@ -1190,7 +1385,7 @@ def main(argv=None):
     R.section("Main-text tables (paper/table_*.csv), cell by cell")
 
     def rho_fmt(x):
-        return "%.2f" % x if x >= 0.1 else "%.2g" % x
+        return "%.2f" % x if x >= 0.1 else "%#.2g" % x
 
     def table_eq(name, got, key):
         with open(path("paper", name), newline="", encoding="utf-8") as fh:
@@ -1232,6 +1427,8 @@ def main(argv=None):
             ("study_dating", sdp),
             ("molecular_only_tree", "yes" if p in molonly else "no"),
             ("molecular_share", "%.2f" % (mt / float(len(tips[p])))),
+            ("tips_exceed_named", "yes" if len(tips[p]) > (1 + TIPS_OVER_NAMED)
+             * len(c0[p]) else "no"),
         ])
     table_eq("table_which_tree.csv", t1, "partition")
 
@@ -1411,7 +1608,11 @@ def main(argv=None):
             ("accepted", acc), ("synonym", syn), ("unresolved", n_lab - len(mts)),
             ("unresolved_pct", fix(pct(n_lab - len(mts), n_lab), 1)),
             ("named_species", len(c0[p])), ("merged", len(mts) - len(c0[p])),
-            ("gbif_added", gb_add[p])])
+            ("gbif_added", gb_add[p]),
+            ("override", sum(1 for sid in tips[p].values() if sid in col_rows[p]
+                             and col_rows[p][sid]["match_type"] in COL_RESOLVED
+                             and col_rows[p][sid]["col_id"]
+                             and col_rows[p][sid].get("query_source") == "override"))])
     supp_eq("supp_names", got, "partition")
     sm("SuppSynonymLabelsN", fmt_int(sum(r["synonym"] for r in got.values())))
     sm("SuppMergedNamesN", fmt_int(sum(r["merged"] for r in got.values())))
@@ -1580,6 +1781,10 @@ def main(argv=None):
     got["union"] = srow("union", den, OrderedDict(
         [("C0", pct(lad["C0"]["sum"] + n_add, den)),
          ("C1", pct(lad["C1"]["sum"] + n_add, den)), ("C1d", None), ("C1b", None)]))
+    for key, nm in (("width_rule", "Width"), ("strict", "Strict")):
+        got[key] = srow(key, den, OrderedDict(
+            [("C0", None), ("C1", None), ("C1d", None),
+             ("C1b", strict_sets[nm]["C1b"]["pct_union"])]))
     supp_eq("supp_sensitivity", got, "alternative")
 
     got = OrderedDict()
@@ -1635,7 +1840,9 @@ def main(argv=None):
                 ("epsilon", "%.3f" % float(f_["epsilon"])),
                 ("epsilon_lo", "%.3f" % float(f_["epsilon_lo"])),
                 ("epsilon_hi", "%.3f" % float(f_["epsilon_hi"])),
-                ("loglik", "%.2f" % float(f_["loglik"]))])
+                ("loglik", "%.2f" % float(f_["loglik"])),
+                ("n_events", as_int(f_["n_events"])),
+                ("n_polytomy_events", as_int(f_["n_polytomy_events"]))])
             R.eq("%s %s/%s: n_tips = the tree fitted" % (p, tree, conv),
                  as_int(f_["n_tips"]), len(tips[p]) if tree == "full" else len(mol_rows[p]))
             lam_, mu_ = float(f_["lambda"]), float(f_["mu"])
@@ -1651,30 +1858,58 @@ def main(argv=None):
              {c: (str(v), want[k].get(c)) for c, v in row.items()
               if str(v) != want[k].get(c)}, {})
     famf = read_csv(os.path.join(a.fits, "worked_example_bd_family_fractions.csv"))
+    ford = read_csv(os.path.join(a.fits, "worked_example_bd_family_order.csv"))
     got = OrderedDict()
     for p in elig:
         fs = sorted(float(r["f"]) for r in famf if r["partition"] == p)
         n_ = len(fs)
         med = fs[n_ // 2] if n_ % 2 else 0.5 * (fs[n_ // 2 - 1] + fs[n_ // 2])
         fm, ft = fits[(p,) + FM], fits[(p,) + M]
+        fr_ = [r for r in famf if r["partition"] == p and r["n_col_species"]]
+        pooled = (sum(as_int(r["n_accepted_names"]) for r in fr_)
+                  / float(sum(as_int(r["n_col_species"]) for r in fr_)))
+        fo = {r["child"]: r for r in ford if r["partition"] == p}
+        R.eq("%s: family fit with the value from the first child = the reported "
+             "family fit" % p, (fo["first"]["r"], fo["first"]["loglik"]),
+             (fm["r"], fm["loglik"]))
         got[p] = OrderedDict([
             ("partition", p), ("families", n_),
             ("tips_with_family", as_int(fm["n_tips_family_fraction"])),
             ("tips", as_int(ft["n_tips"])), ("f_min", "%.2f" % fs[0]),
             ("f_median", "%.2f" % med), ("f_max", "%.2f" % fs[-1]),
-            ("rho_uniform", rho_fmt(float(ft["rho"])))])
+            ("f_pooled", rho_fmt(pooled)),
+            ("rho_uniform", rho_fmt(float(ft["rho"]))),
+            ("r_first", "%.4f" % float(fo["first"]["r"])),
+            ("r_last", "%.4f" % float(fo["last"]["r"])),
+            ("epsilon_first", "%.3f" % float(fo["first"]["epsilon"])),
+            ("epsilon_last", "%.3f" % float(fo["last"]["epsilon"]))])
         R.eq("%s: family likelihood at equal fractions = uniform likelihood, "
              "within %g" % (p, UNIFORM_TOL),
              abs(float(fm["family_uniform_check"])) <= UNIFORM_TOL, True)
     supp_eq("supp_worked_families", got, "partition")
     sm("SuppFamilyMinTips", fmt_int(min(r["tips_with_family"] for r in got.values())))
+    fo = defaultdict(dict)
+    for r in ford:
+        fo[r["partition"]][r["child"]] = r
+    sm("SuppFamOrderMaxRDiffPct", "%.1f" % (100 * max(
+        abs(float(v["last"]["r"]) - float(v["first"]["r"])) / float(v["first"]["r"])
+        for v in fo.values())))
+    sm("SuppFamOrderMaxEpsDiff", "%.3f" % max(
+        abs(float(v["last"]["epsilon"]) - float(v["first"]["epsilon"]))
+        for v in fo.values()))
+    sm("SuppFamOrderMaxDLL", "%.1f" % max(
+        abs(float(v["first"]["loglik_last_at_first_mle"]) - float(v["first"]["loglik"]))
+        for v in fo.values()))
+    supp_eq("supp_worked_polytomy", poly_rows, "partition")
+    sm("SuppPolySeedsN", fmt_int(len({sd_ for p in poly for sd_ in poly[p]})))
     chk = read_csv(os.path.join(a.fits, "worked_example_bd_crosscheck.csv"))
     rd = 0.0
     for r in chk:
+        lam = max(float(r["this_lambda"]), float(r["phytools_lambda"]))
         for x_, y_ in (("this_lambda", "phytools_lambda"), ("this_mu", "phytools_mu")):
             x, y = float(r[x_]), float(r[y_])
-            if max(abs(x), abs(y)) > 1e-6:
-                rd = max(rd, abs(x - y) / max(abs(x), abs(y)))
+            if lam > 1e-6:
+                rd = max(rd, abs(x - y) / lam)
     sm("SuppCrossCheckN", fmt_int(len(chk)))
     R.eq("rates agree with phytools within %g (relative)" % CROSSCHECK_RTOL,
          rd <= CROSSCHECK_RTOL, True)

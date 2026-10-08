@@ -141,7 +141,7 @@ handles = [
                    label="reference tree is not a chronogram in absolute time"),
     plt.Line2D([], [], marker="D", color="#222222", linestyle="none",
                markersize=3.2,
-               label="deposit carries a divergence-time interval (counted)"),
+               label="source archive carries a usable divergence-time interval"),
 ]
 fig.legend(handles=handles, loc="outside lower center", ncol=2, fontsize=6.5,
            frameon=False)

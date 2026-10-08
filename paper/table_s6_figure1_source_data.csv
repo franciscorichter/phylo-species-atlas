@@ -1,22 +1,22 @@
 group,category,estimated_total,described,in_dated_tree,in_undated_tree,source
 Fish,Vertebrates,40000,36000,31347,,Mora 2011
-Squamates,Vertebrates,12000,11744,9754,,Uetz 2025
+Squamates,Vertebrates,12000,12108,9754,,Uetz 2025
 Birds,Vertebrates,11195,11195,10824,,IUCN
 Amphibians,Vertebrates,15000,8863,7238,,Mora 2011
 Mammals,Vertebrates,6736,6736,5911,,Burgin 2018
 Sharks,Vertebrates,1450,1282,1192,,Weigmann 2016
-Turtles,Vertebrates,360,360,283,,TTWG 2021
+Turtles,Vertebrates,360,364,283,,TTWG 2021
 Crocodilians,Vertebrates,28,27,25,,IUCN CSG
 Seed plants,Plants,450000,383671,348886,,Nic Lughadha 2016
 Bryophytes,Plants,24000,24000,533,,CoL 2025
-Ferns,Plants,13500,12000,6216,,PPG I 2016
+Ferns,Plants,13500,10578,6216,,PPG I 2016
 Insects,Arthropods,5500000,1000000,,53373,Stork 2018
 Crustaceans,Arthropods,150000,77000,,95,Appeltans 2012
 Spiders,Arthropods,120000,52249,1431,,Agnarsson 2013
 Gastropods,Other animals,100000,65000,40,,Appeltans 2012
 Nematodes,Other animals,1000000,28537,,156,Hodda 2022
-Bivalves,Other animals,30000,20000,,73,Appeltans 2012
 Cnidaria,Other animals,16000,11800,289,,Appeltans 2012
+Bivalves,Other animals,30000,10043,,73,Appeltans 2012
 Sponges,Other animals,17000,9470,119,,Appeltans 2012
 Echinoderms,Other animals,10000,7550,65,,Appeltans 2012
 Bryozoa,Other animals,8000,6000,,565,Appeltans 2012
@@ -30,7 +30,7 @@ Lampreys,Not yet represented,55,48,,,Potter 2015
 Other vertebrates,Not yet represented,9,9,,,Atlas-aggregated
 Green algae,Not yet represented,22000,11000,,,Guiry 2012
 Rhodophyta,Not yet represented,10000,7000,,,AlgaeBase
-Lycophytes,Not yet represented,1400,1350,,,PPG I 2016
+Lycophytes,Not yet represented,1400,1338,,,PPG I 2016
 Acari,Not yet represented,500000,55000,,,Zhang 2013
 Myriapods,Not yet represented,85000,17000,,,Chapman 2009
 Other arachnids,Not yet represented,25000,12000,,,CoL

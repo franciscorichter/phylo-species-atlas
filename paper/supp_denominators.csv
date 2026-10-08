@@ -1,21 +1,21 @@
 partition,category,described,described_source,col_count,col_filled_from,named_pct,named_col_pct,named_all_trees_pct
 Fish,Vertebrates,36000,Eschmeyer's Catalog of Fishes,35750,Holostei base 9 < 0.50 x XR 56,86.0,86.6,86.5
-Squamates,Vertebrates,11744,Reptile Database (Uetz 2025),12251,,76.2,73.1,76.3
+Squamates,Vertebrates,12108,"Reptile Database, September 2025 release (Uetz et al. 2025)",12251,,73.9,73.1,74.0
 Birds,Vertebrates,11195,IUCN Red List 2025,10868,,93.5,96.3,96.1
 Amphibians,Vertebrates,8863,AmphibiaWeb 2025,8916,,78.4,77.9,88.1
 Mammals,Vertebrates,6736,"Mammal Diversity Database (MDD, 2024+)",6362,,83.5,88.4,85.0
 Sharks,Vertebrates,1282,Chondrichthyan Tree of Life,1355,Chondrichthyes (no class) base 0 < 0.50 x XR 1,89.7,84.9,89.7
-Turtles,Vertebrates,360,TTWG 2021 / TTWG 2025 (10th edition),370,,71.1,69.2,75.8
+Turtles,Vertebrates,364,TTWG 2025 (10th edition),370,,70.3,69.2,75.0
 Hagfish,Vertebrates,82,Fernholm 2013,93,,,,
 Lampreys,Vertebrates,48,Potter 2015,49,,,,
 Crocodilians,Vertebrates,27,IUCN Crocodile Specialist Group,27,,74.1,74.1,74.1
-Other vertebrates,Vertebrates,9,atlas-aggregated,25,Actinistia (no class) base 2 < 0.50 x XR 16; Sphenodontida base 1 < 0.50 x XR 3,,,
+Other vertebrates,Vertebrates,9,"sum of tuatara (1), coelacanths (2) and lungfishes (6)",25,Actinistia (no class) base 2 < 0.50 x XR 16; Sphenodontida base 1 < 0.50 x XR 3,,,
 Seed plants,Plants,383671,World Flora Online 2025,354308,Ginkgoopsida base 1 < 0.50 x XR 3; Tracheophyta (no class) base 0 < 0.50 x XR 3,72.7,78.8,72.8
 Bryophytes,Plants,24000,Catalogue of Life 2025,19273,,2.1,2.6,2.1
-Ferns,Plants,12000,PPG I 2016,12457,,50.8,48.9,50.8
 Green algae,Plants,11000,Guiry 2012,4912,Charophyceae base 0 < 0.50 x XR 160; Chlorodendrophyceae base 0 < 0.50 x XR 21; Chlorophyceae base 0 < 0.50 x XR 1538; Coleochaetophyceae base 0 < 0.50 x XR 23; Klebsormidiophyceae base 0 < 0.50 x XR 34; Mamiellophyceae base 0 < 0.50 x XR 18; Mesostigmatophyceae base 0 < 0.50 x XR 1; Nephroselmidophyceae base 0 < 0.50 x XR 12; Pedinophyceae base 0 < 0.50 x XR 8; Pyramimonadophyceae base 0 < 0.50 x XR 67; Trebouxiophyceae base 0 < 0.50 x XR 483; Ulvophyceae base 0 < 0.50 x XR 945; Zygnematophyceae base 0 < 0.50 x XR 1602,,,
+Ferns,Plants,10578,PPG I 2016,12457,,57.6,48.9,57.6
 Rhodophyta,Plants,7000,AlgaeBase,3546,Bangiophyceae base 0 < 0.50 x XR 97; Compsopogonophyceae base 0 < 0.50 x XR 49; Cyanidiophyceae base 0 < 0.50 x XR 4; Florideophyceae base 0 < 0.50 x XR 3356; Porphyridiophyceae base 0 < 0.50 x XR 9; Rhodellophyceae base 0 < 0.50 x XR 7; Stylonematophyceae base 0 < 0.50 x XR 24,,,
-Lycophytes,Plants,1350,PPG I 2016,1503,,,,
+Lycophytes,Plants,1338,PPG I 2016,1503,,,,
 Insects,Arthropods,1000000,Catalogue of Life 2025,929676,,4.2,4.5,4.5
 Crustaceans,Arthropods,77000,World Register of Marine Species (WoRMS),70596,Branchiura base 0 < 0.50 x XR 165; Crustacea (no class) base 0 < 0.50 x XR 43; Pentastomida base 0 < 0.50 x XR 89; Thecostraca base 0 < 0.50 x XR 1883,0.08,0.09,0.08
 Acari,Arthropods,55000,Zhang 2013,28874,,,,
@@ -28,9 +28,9 @@ Pycnogonida,Arthropods,1400,WoRMS,1420,,,,
 Gastropods,Other animals,65000,WoRMS / Appeltans 2012,76288,,0.06,0.05,0.06
 Nematodes,Other animals,28537,WoRMS / Hodda 2022,19598,,0.35,0.52,0.35
 Annelids,Other animals,21000,Appeltans 2012,17340,Annelida (no class) base 0 < 0.50 x XR 3,,,
-Bivalves,Other animals,20000,WoRMS / Appeltans 2012,10043,,0.22,0.44,0.22
 Flatworms,Other animals,20000,Zhang 2013,27037,,,,
 Cnidaria,Other animals,11800,WoRMS / Appeltans 2012,11582,Cnidaria (no class) base 0 < 0.50 x XR 20,2.2,2.2,2.2
+Bivalves,Other animals,10043,"MolluscaBase, in Catalogue of Life COL26.9",10043,,0.44,0.44,0.44
 Sponges,Other animals,9470,WoRMS / Appeltans 2012,9873,Porifera (no class) base 0 < 0.50 x XR 1; Stromatoporoidea base 0 < 0.50 x XR 1,0.91,0.87,0.91
 Echinoderms,Other animals,7550,WoRMS / Appeltans 2012,7737,Echinodermata (no class) base 0 < 0.50 x XR 7,0.82,0.80,0.82
 Bryozoa,Other animals,6000,WoRMS / Appeltans 2012,5418,,5.6,6.2,5.6
@@ -43,7 +43,7 @@ Tardigrada,Other animals,1488,Bartels 2016,1451,,,,
 Acanthocephala,Other animals,1300,CoL,1325,,,,
 Nemerteans,Other animals,1300,Kajihara 2008,1364,,,,
 Cephalopods,Other animals,800,WoRMS / WoRMS,868,,10.0,9.2,10.0
-Minor animal phyla,Other animals,376,atlas-aggregated,421,Chaetognatha (no class) base 0 < 0.50 x XR 1,,,
+Minor animal phyla,Other animals,376,"sum of Onychophora (200), Chaetognatha (130), Loricifera (39), Placozoa (4) and Cycliophora (3)",421,Chaetognatha (no class) base 0 < 0.50 x XR 1,,,
 Ctenophores,Other animals,200,WoRMS,182,,,,
 Fungi,Microbes & protists,155000,Catalogue of Life 2025 (Species Fungorum),156891,,0.90,0.89,0.90
 Diatoms,Microbes & protists,20000,AlgaeBase 2025,6723,Bacillariophyceae base 1099 < 0.50 x XR 6723,0.20,0.58,0.20

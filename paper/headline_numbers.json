@@ -26,7 +26,7 @@
   "denominators": {
     "eukaryotic": {
       "n_partitions": 60,
-      "described": 2159542,
+      "described": 2148519,
       "note": "THE denominator for every rung."
     },
     "prokaryotic": {
@@ -35,9 +35,9 @@
     },
     "all_life": {
       "n_partitions": 62,
-      "described": 2303156,
+      "described": 2292133,
       "estimated_total": 15606049,
-      "estimated_low": 7295677,
+      "estimated_low": 7284654,
       "estimated_high": 35400794,
       "note": "SI and Figure 1 ONLY, and it must be labelled all-life there. NEVER a coverage denominator."
     }
@@ -47,12 +47,12 @@
       "definition": "NAMED: the tip label occurs in a retained eukaryotic canonical tree",
       "numerator_sum": 395517.0,
       "numerator_sum_rounded": 395517,
-      "denominator": 2159542,
-      "percent": 18.314855649947997,
+      "denominator": 2148519,
+      "percent": 18.408820215227326,
       "n_partitions_contributing": 24,
       "unit": "species",
       "numerator_union": 395517,
-      "percent_union": 18.314855649947997,
+      "percent_union": 18.408820215227326,
       "shared_labels": 0,
       "headline_convention": "union"
     },
@@ -60,8 +60,8 @@
       "definition": "MOLECULAR: C0 and the tip is in the molecular analysis behind that tree",
       "numerator_sum": 157201.0,
       "numerator_sum_rounded": 157201,
-      "denominator": 2159542,
-      "percent": 7.279367569605037,
+      "denominator": 2148519,
+      "percent": 7.316714443763355,
       "n_partitions_contributing": 24,
       "unit": "tip-equivalents",
       "c1_bases": {
@@ -70,15 +70,15 @@
         "expectation": 0
       },
       "numerator_union": 157201,
-      "percent_union": 7.279367569605037,
+      "percent_union": 7.316714443763355,
       "shared_labels": 0
     },
     "C1d": {
       "definition": "DATED: C1 and the shipped canonical tree is a measured chronogram",
       "numerator_sum": 113180.0,
       "numerator_sum_rounded": 113180,
-      "denominator": 2159542,
-      "percent": 5.240926085253262,
+      "denominator": 2148519,
+      "percent": 5.267814713297858,
       "n_partitions_contributing": 18,
       "unit": "tip-equivalents",
       "c1_bases": {
@@ -87,15 +87,15 @@
         "expectation": 0
       },
       "numerator_union": 113180,
-      "percent_union": 5.240926085253262,
+      "percent_union": 5.267814713297858,
       "shared_labels": 0
     },
     "C1b": {
       "definition": "BOUNDED: C1d and the divergence-time interval is recoverable from the source deposit",
       "numerator_sum": 13649.0,
       "numerator_sum_rounded": 13649,
-      "denominator": 2159542,
-      "percent": 0.6320321623751702,
+      "denominator": 2148519,
+      "percent": 0.6352748102297443,
       "n_partitions_contributing": 7,
       "unit": "tip-equivalents",
       "c1_bases": {
@@ -104,7 +104,7 @@
         "expectation": 0
       },
       "numerator_union": 13649,
-      "percent_union": 0.6320321623751702,
+      "percent_union": 0.6352748102297443,
       "shared_labels": 0
     }
   },
@@ -119,30 +119,30 @@
   "units": "C0 counts SPECIES. C1 and below count TIP-EQUIVALENTS wherever the partition is not enumerated in Data/molecular_tips.csv. Do not write 'species' at C1 or below for a partition that is not listed there.",
   "per_category_eukaryotic": {
     "Vertebrates": {
-      "described": 76346,
-      "denominator": 76346,
+      "described": 76714,
+      "denominator": 76714,
       "n_partitions": 11,
       "C0_sum": 64393,
-      "C0_pct": 84.34364603253609,
+      "C0_pct": 83.93904632791929,
       "C1_sum_exact": 34403.0,
       "C1_sum": 34403,
-      "C1_pct": 45.06195478479554,
+      "C1_pct": 44.845790859556274,
       "C1d_sum_exact": 34403.0,
       "C1d_sum": 34403,
-      "C1d_pct": 45.06195478479554
+      "C1d_pct": 44.845790859556274
     },
     "Plants": {
-      "described": 439021,
-      "denominator": 439021,
+      "described": 437587,
+      "denominator": 437587,
       "n_partitions": 6,
       "C0_sum": 285651,
-      "C0_pct": 65.06545244988281,
+      "C0_pct": 65.27867601185592,
       "C1_sum_exact": 77325.0,
       "C1_sum": 77325,
-      "C1_pct": 17.613052678573464,
+      "C1_pct": 17.670771755102415,
       "C1d_sum_exact": 77325.0,
       "C1d_sum": 77325,
-      "C1d_pct": 17.613052678573464
+      "C1d_pct": 17.670771755102415
     },
     "Arthropods": {
       "described": 1227349,
@@ -158,17 +158,17 @@
       "C1d_pct": 0.07235105907121772
     },
     "Other animals": {
-      "described": 208366,
-      "denominator": 208366,
+      "described": 198409,
+      "denominator": 198409,
       "n_partitions": 20,
       "C0_sum": 1007,
-      "C0_pct": 0.48328422103414187,
+      "C0_pct": 0.5075374604982636,
       "C1_sum_exact": 1007.0,
       "C1_sum": 1007,
-      "C1_pct": 0.48328422103414187,
+      "C1_pct": 0.5075374604982636,
       "C1d_sum_exact": 525.0,
       "C1d_sum": 525,
-      "C1d_pct": 0.25196049259476117
+      "C1d_pct": 0.2646049322359369
     },
     "Microbes & protists": {
       "described": 208460,
@@ -268,64 +268,64 @@
           "C0": {
             "numerator": 395517,
             "numerator_sum": 395517.0,
-            "denominator": 2159542,
-            "percent": 18.314855649947997,
+            "denominator": 2148519,
+            "percent": 18.408820215227326,
             "numerator_union": 395517,
-            "percent_union": 18.314855649947997
+            "percent_union": 18.408820215227326
           },
           "C1": {
             "numerator": 157085,
             "numerator_sum": 157085.3369,
-            "denominator": 2159542,
-            "percent": 7.274011660805856
+            "denominator": 2148519,
+            "percent": 7.311331056416071
           },
           "C1d": {
             "numerator": 113064,
             "numerator_sum": 113064.3369,
-            "denominator": 2159542,
-            "percent": 5.235570176454082
+            "denominator": 2148519,
+            "percent": 5.2624313259505735
           },
           "C1b": {
             "numerator": 13649,
             "numerator_sum": 13649.0,
-            "denominator": 2159542,
-            "percent": 0.6320321623751702,
+            "denominator": 2148519,
+            "percent": 0.6352748102297443,
             "numerator_union": 13649,
-            "percent_union": 0.6320321623751702
+            "percent_union": 0.6352748102297443
           }
         },
         "at_f_high": {
           "C0": {
             "numerator": 395517,
             "numerator_sum": 395517.0,
-            "denominator": 2159542,
-            "percent": 18.314855649947997,
+            "denominator": 2148519,
+            "percent": 18.408820215227326,
             "numerator_union": 395517,
-            "percent_union": 18.314855649947997
+            "percent_union": 18.408820215227326
           },
           "C1": {
             "numerator": 157201,
             "numerator_sum": 157201.0,
-            "denominator": 2159542,
-            "percent": 7.279367569605037,
+            "denominator": 2148519,
+            "percent": 7.316714443763355,
             "numerator_union": 157201,
-            "percent_union": 7.279367569605037
+            "percent_union": 7.316714443763355
           },
           "C1d": {
             "numerator": 113180,
             "numerator_sum": 113180.0,
-            "denominator": 2159542,
-            "percent": 5.240926085253262,
+            "denominator": 2148519,
+            "percent": 5.267814713297858,
             "numerator_union": 113180,
-            "percent_union": 5.240926085253262
+            "percent_union": 5.267814713297858
           },
           "C1b": {
             "numerator": 13649,
             "numerator_sum": 13649.0,
-            "denominator": 2159542,
-            "percent": 0.6320321623751702,
+            "denominator": 2148519,
+            "percent": 0.6352748102297443,
             "numerator_union": 13649,
-            "percent_union": 0.6320321623751702
+            "percent_union": 0.6352748102297443
           }
         },
         "propagates_to_C1d": true,
@@ -346,69 +346,69 @@
           "C0": {
             "numerator": 10469,
             "numerator_sum": 10469.0,
-            "denominator": 2159542,
-            "percent": 0.48477871696869057,
+            "denominator": 2148519,
+            "percent": 0.48726587942671207,
             "numerator_union": 10469,
-            "percent_union": 0.48477871696869057
+            "percent_union": 0.48726587942671207
           },
           "C1": {
             "numerator": 8980,
             "numerator_sum": 8980.0,
-            "denominator": 2159542,
-            "percent": 0.41582891187112825,
+            "denominator": 2148519,
+            "percent": 0.41796232660730487,
             "numerator_union": 8980,
-            "percent_union": 0.41582891187112825
+            "percent_union": 0.41796232660730487
           },
           "C1d": {
             "numerator": 8980,
             "numerator_sum": 8980.0,
-            "denominator": 2159542,
-            "percent": 0.41582891187112825,
+            "denominator": 2148519,
+            "percent": 0.41796232660730487,
             "numerator_union": 8980,
-            "percent_union": 0.41582891187112825
+            "percent_union": 0.41796232660730487
           },
           "C1b": {
             "numerator": 0,
             "numerator_sum": 0.0,
-            "denominator": 2159542,
+            "denominator": 2148519,
             "percent": 0.0
           }
         }
       },
       "retain_only_compiled": {
         "retained_partitions": [
-          "Crocodilians",
-          "Insects"
+          "Cephalopods",
+          "Crocodilians"
         ],
         "rungs": {
           "C0": {
-            "numerator": 42098,
-            "numerator_sum": 42098.0,
-            "denominator": 2159542,
-            "percent": 1.9493948253842712,
-            "numerator_union": 42098,
-            "percent_union": 1.9493948253842712
+            "numerator": 100,
+            "numerator_sum": 100.0,
+            "denominator": 2148519,
+            "percent": 0.004654368893177114,
+            "numerator_union": 100,
+            "percent_union": 0.004654368893177114
           },
           "C1": {
-            "numerator": 42098,
-            "numerator_sum": 42098.0,
-            "denominator": 2159542,
-            "percent": 1.9493948253842712,
-            "numerator_union": 42098,
-            "percent_union": 1.9493948253842712
+            "numerator": 100,
+            "numerator_sum": 100.0,
+            "denominator": 2148519,
+            "percent": 0.004654368893177114,
+            "numerator_union": 100,
+            "percent_union": 0.004654368893177114
           },
           "C1d": {
-            "numerator": 20,
-            "numerator_sum": 20.0,
-            "denominator": 2159542,
-            "percent": 0.0009261222981539604,
-            "numerator_union": 20,
-            "percent_union": 0.0009261222981539604
+            "numerator": 100,
+            "numerator_sum": 100.0,
+            "denominator": 2148519,
+            "percent": 0.004654368893177114,
+            "numerator_union": 100,
+            "percent_union": 0.004654368893177114
           },
           "C1b": {
             "numerator": 0,
             "numerator_sum": 0.0,
-            "denominator": 2159542,
+            "denominator": 2148519,
             "percent": 0.0
           }
         }
@@ -419,7 +419,6 @@
           "Bivalves",
           "Bryophytes",
           "Bryozoa",
-          "Cephalopods",
           "Cnidaria",
           "Crustaceans",
           "Diatoms",
@@ -428,6 +427,7 @@
           "Fish",
           "Fungi",
           "Gastropods",
+          "Insects",
           "Mammals",
           "Nematodes",
           "Seed plants",
@@ -439,36 +439,36 @@
         ],
         "rungs": {
           "C0": {
-            "numerator": 342950,
-            "numerator_sum": 342950.0,
-            "denominator": 2159542,
-            "percent": 15.880682107595037,
-            "numerator_union": 342950,
-            "percent_union": 15.880682107595037
+            "numerator": 384948,
+            "numerator_sum": 384948.0,
+            "denominator": 2148519,
+            "percent": 17.916899966907437,
+            "numerator_union": 384948,
+            "percent_union": 17.916899966907437
           },
           "C1": {
-            "numerator": 106123,
-            "numerator_sum": 106123.0,
-            "denominator": 2159542,
-            "percent": 4.914143832349637,
-            "numerator_union": 106123,
-            "percent_union": 4.914143832349637
+            "numerator": 148121,
+            "numerator_sum": 148121.0,
+            "denominator": 2148519,
+            "percent": 6.894097748262873,
+            "numerator_union": 148121,
+            "percent_union": 6.894097748262873
           },
           "C1d": {
-            "numerator": 104180,
-            "numerator_sum": 104180.0,
-            "denominator": 2159542,
-            "percent": 4.8241710510839795,
-            "numerator_union": 104180,
-            "percent_union": 4.8241710510839795
+            "numerator": 104100,
+            "numerator_sum": 104100.0,
+            "denominator": 2148519,
+            "percent": 4.845198017797376,
+            "numerator_union": 104100,
+            "percent_union": 4.845198017797376
           },
           "C1b": {
             "numerator": 13649,
             "numerator_sum": 13649.0,
-            "denominator": 2159542,
-            "percent": 0.6320321623751702,
+            "denominator": 2148519,
+            "percent": 0.6352748102297443,
             "numerator_union": 13649,
-            "percent_union": 0.6320321623751702
+            "percent_union": 0.6352748102297443
           }
         }
       },
@@ -480,74 +480,74 @@
           "C0": {
             "numerator": 385048,
             "numerator_sum": 385048.0,
-            "denominator": 2159542,
-            "percent": 17.830076932979306,
+            "denominator": 2148519,
+            "percent": 17.921554335800614,
             "numerator_union": 385048,
-            "percent_union": 17.830076932979306
+            "percent_union": 17.921554335800614
           },
           "C1": {
             "numerator": 148221,
             "numerator_sum": 148221.0,
-            "denominator": 2159542,
-            "percent": 6.863538657733908,
+            "denominator": 2148519,
+            "percent": 6.89875211715605,
             "numerator_union": 148221,
-            "percent_union": 6.863538657733908
+            "percent_union": 6.89875211715605
           },
           "C1d": {
             "numerator": 104200,
             "numerator_sum": 104200.0,
-            "denominator": 2159542,
-            "percent": 4.825097173382134,
+            "denominator": 2148519,
+            "percent": 4.849852386690553,
             "numerator_union": 104200,
-            "percent_union": 4.825097173382134
+            "percent_union": 4.849852386690553
           },
           "C1b": {
             "numerator": 13649,
             "numerator_sum": 13649.0,
-            "denominator": 2159542,
-            "percent": 0.6320321623751702,
+            "denominator": 2148519,
+            "percent": 0.6352748102297443,
             "numerator_union": 13649,
-            "percent_union": 0.6320321623751702
+            "percent_union": 0.6352748102297443
           }
         }
       },
       "drop_compiled": {
         "dropped_partitions": [
-          "Crocodilians",
-          "Insects"
+          "Cephalopods",
+          "Crocodilians"
         ],
         "rungs": {
           "C0": {
-            "numerator": 353419,
-            "numerator_sum": 353419.0,
-            "denominator": 2159542,
-            "percent": 16.365460824563726,
-            "numerator_union": 353419,
-            "percent_union": 16.365460824563726
+            "numerator": 395417,
+            "numerator_sum": 395417.0,
+            "denominator": 2148519,
+            "percent": 18.40416584633415,
+            "numerator_union": 395417,
+            "percent_union": 18.40416584633415
           },
           "C1": {
-            "numerator": 115103,
-            "numerator_sum": 115103.0,
-            "denominator": 2159542,
-            "percent": 5.329972744220766,
-            "numerator_union": 115103,
-            "percent_union": 5.329972744220766
+            "numerator": 157101,
+            "numerator_sum": 157101.0,
+            "denominator": 2148519,
+            "percent": 7.312060074870178,
+            "numerator_union": 157101,
+            "percent_union": 7.312060074870178
           },
           "C1d": {
-            "numerator": 113160,
-            "numerator_sum": 113160.0,
-            "denominator": 2159542,
-            "percent": 5.239999962955108,
-            "numerator_union": 113160,
-            "percent_union": 5.239999962955108
+            "numerator": 113080,
+            "numerator_sum": 113080.0,
+            "denominator": 2148519,
+            "percent": 5.263160344404681,
+            "numerator_union": 113080,
+            "percent_union": 5.263160344404681
           },
           "C1b": {
             "numerator": 13649,
             "numerator_sum": 13649.0,
-            "denominator": 2159542,
-            "percent": 0.6320321623751702,
+            "denominator": 2148519,
+            "percent": 0.6352748102297443,
             "numerator_union": 13649,
-            "percent_union": 0.6320321623751702
+            "percent_union": 0.6352748102297443
           }
         }
       },
@@ -557,7 +557,6 @@
           "Bivalves",
           "Bryophytes",
           "Bryozoa",
-          "Cephalopods",
           "Cnidaria",
           "Crustaceans",
           "Diatoms",
@@ -566,6 +565,7 @@
           "Fish",
           "Fungi",
           "Gastropods",
+          "Insects",
           "Mammals",
           "Nematodes",
           "Seed plants",
@@ -577,33 +577,33 @@
         ],
         "rungs": {
           "C0": {
-            "numerator": 52567,
-            "numerator_sum": 52567.0,
-            "denominator": 2159542,
-            "percent": 2.434173542352962,
-            "numerator_union": 52567,
-            "percent_union": 2.434173542352962
+            "numerator": 10569,
+            "numerator_sum": 10569.0,
+            "denominator": 2148519,
+            "percent": 0.4919202483198892,
+            "numerator_union": 10569,
+            "percent_union": 0.4919202483198892
           },
           "C1": {
-            "numerator": 51078,
-            "numerator_sum": 51078.0,
-            "denominator": 2159542,
-            "percent": 2.3652237372553997,
-            "numerator_union": 51078,
-            "percent_union": 2.3652237372553997
+            "numerator": 9080,
+            "numerator_sum": 9080.0,
+            "denominator": 2148519,
+            "percent": 0.422616695500482,
+            "numerator_union": 9080,
+            "percent_union": 0.422616695500482
           },
           "C1d": {
-            "numerator": 9000,
-            "numerator_sum": 9000.0,
-            "denominator": 2159542,
-            "percent": 0.41675503416928217,
-            "numerator_union": 9000,
-            "percent_union": 0.41675503416928217
+            "numerator": 9080,
+            "numerator_sum": 9080.0,
+            "denominator": 2148519,
+            "percent": 0.422616695500482,
+            "numerator_union": 9080,
+            "percent_union": 0.422616695500482
           },
           "C1b": {
             "numerator": 0,
             "numerator_sum": 0.0,
-            "denominator": 2159542,
+            "denominator": 2148519,
             "percent": 0.0
           }
         }
@@ -611,79 +611,79 @@
     },
     "denominator": {
       "full_denominator": {
-        "described": 2159542,
+        "described": 2148519,
         "n_partitions": 60,
         "rungs": {
           "C0": {
             "numerator": 395517,
             "numerator_sum": 395517.0,
-            "denominator": 2159542,
-            "percent": 18.314855649947997,
+            "denominator": 2148519,
+            "percent": 18.408820215227326,
             "numerator_union": 395517,
-            "percent_union": 18.314855649947997
+            "percent_union": 18.408820215227326
           },
           "C1": {
             "numerator": 157201,
             "numerator_sum": 157201.0,
-            "denominator": 2159542,
-            "percent": 7.279367569605037,
+            "denominator": 2148519,
+            "percent": 7.316714443763355,
             "numerator_union": 157201,
-            "percent_union": 7.279367569605037
+            "percent_union": 7.316714443763355
           },
           "C1d": {
             "numerator": 113180,
             "numerator_sum": 113180.0,
-            "denominator": 2159542,
-            "percent": 5.240926085253262,
+            "denominator": 2148519,
+            "percent": 5.267814713297858,
             "numerator_union": 113180,
-            "percent_union": 5.240926085253262
+            "percent_union": 5.267814713297858
           },
           "C1b": {
             "numerator": 13649,
             "numerator_sum": 13649.0,
-            "denominator": 2159542,
-            "percent": 0.6320321623751702,
+            "denominator": 2148519,
+            "percent": 0.6352748102297443,
             "numerator_union": 13649,
-            "percent_union": 0.6320321623751702
+            "percent_union": 0.6352748102297443
           }
         }
       },
       "represented_partitions_only": {
-        "described": 1949284,
+        "described": 1938273,
         "n_partitions": 24,
         "note": "the denominator restricted to partitions that have a canonical tree at all; the structural zeros are removed from BOTH sides",
         "rungs": {
           "C0": {
             "numerator": 395517,
             "numerator_sum": 395517.0,
-            "denominator": 1949284,
-            "percent": 20.29037328578083,
+            "denominator": 1938273,
+            "percent": 20.40563945326587,
             "numerator_union": 395517,
-            "percent_union": 20.29037328578083
+            "percent_union": 20.40563945326587
           },
           "C1": {
             "numerator": 157201,
             "numerator_sum": 157201.0,
-            "denominator": 1949284,
-            "percent": 8.064550881246653,
+            "denominator": 1938273,
+            "percent": 8.11036422629836,
             "numerator_union": 157201,
-            "percent_union": 8.064550881246653
+            "percent_union": 8.11036422629836
           },
           "C1d": {
             "numerator": 113180,
             "numerator_sum": 113180.0,
-            "denominator": 1949284,
-            "percent": 5.8062344943066275,
+            "denominator": 1938273,
+            "percent": 5.8392187271865215,
             "numerator_union": 113180,
-            "percent_union": 5.8062344943066275
+            "percent_union": 5.8392187271865215
           },
           "C1b": {
             "numerator": 13649,
             "numerator_sum": 13649.0,
-            "denominator": 1949284,
-            "percent": 0.700205819162318,
+            "denominator": 1938273,
+            "percent": 0.7041835696003608,
             "numerator_union": 13649,
-            "percent_union": 0.700205819162318
+            "percent_union": 0.7041835696003608
           }
         }
       },
@@ -745,9 +745,9 @@
               "C0_pct_col": 96.3
             },
             "Bivalves": {
-              "described_primary": 20000,
+              "described_primary": 10043,
               "described_col": 10043,
-              "C0_pct_primary": 0.2,
+              "C0_pct_primary": 0.4,
               "C0_pct_col": 0.4
             },
             "Bryophytes": {
@@ -799,9 +799,9 @@
               "C0_pct_col": 0.8
             },
             "Ferns": {
-              "described_primary": 12000,
+              "described_primary": 10578,
               "described_col": 12457,
-              "C0_pct_primary": 50.8,
+              "C0_pct_primary": 57.6,
               "C0_pct_col": 48.9
             },
             "Fish": {
@@ -865,15 +865,15 @@
               "C0_pct_col": 0.9
             },
             "Squamates": {
-              "described_primary": 11744,
+              "described_primary": 12108,
               "described_col": 12251,
-              "C0_pct_primary": 76.2,
+              "C0_pct_primary": 73.9,
               "C0_pct_col": 73.1
             },
             "Turtles": {
-              "described_primary": 360,
+              "described_primary": 364,
               "described_col": 370,
-              "C0_pct_primary": 71.1,
+              "C0_pct_primary": 70.3,
               "C0_pct_col": 69.2
             }
           }
@@ -943,9 +943,9 @@
               "C0_pct_col": 96.3
             },
             "Bivalves": {
-              "described_primary": 20000,
+              "described_primary": 10043,
               "described_col": 10043,
-              "C0_pct_primary": 0.2,
+              "C0_pct_primary": 0.4,
               "C0_pct_col": 0.4
             },
             "Bryophytes": {
@@ -997,9 +997,9 @@
               "C0_pct_col": 0.8
             },
             "Ferns": {
-              "described_primary": 12000,
+              "described_primary": 10578,
               "described_col": 12457,
-              "C0_pct_primary": 50.8,
+              "C0_pct_primary": 57.6,
               "C0_pct_col": 48.9
             },
             "Fish": {
@@ -1063,23 +1063,23 @@
               "C0_pct_col": 0.9
             },
             "Squamates": {
-              "described_primary": 11744,
+              "described_primary": 12108,
               "described_col": 12251,
-              "C0_pct_primary": 76.2,
+              "C0_pct_primary": 73.9,
               "C0_pct_col": 73.1
             },
             "Turtles": {
-              "described_primary": 360,
+              "described_primary": 364,
               "described_col": 370,
-              "C0_pct_primary": 71.1,
+              "C0_pct_primary": 70.3,
               "C0_pct_col": 69.2
             }
           }
         },
         "primary_rungs_pct_1dp": {
-          "C0": 18.3,
+          "C0": 18.4,
           "C1": 7.3,
-          "C1d": 5.2,
+          "C1d": 5.3,
           "C1b": 0.6
         },
         "source": "Data/col_denominators.csv; COL26.9 (ChecklistBank 316321, doi:10.48580/dgz5n, issued 2026-09-11)"
@@ -1088,7 +1088,7 @@
         "partition": "Insects",
         "described": 1000000,
         "described_source": "Catalogue of Life 2025",
-        "share_of_denominator_pct": 46.306114907698024,
+        "share_of_denominator_pct": 46.54368893177114,
         "note": "one round number from a single compilation carries this share of the whole eukaryotic denominator; every printed decimal in the paper is elastic to it"
       },
       "elasticity_demonstration": {
@@ -1097,76 +1097,76 @@
         "warning": "AN ELASTICITY DEMONSTRATION, NOT A RICHNESS CLAIM. The perturbation is a device for showing how much of every printed decimal rests on one round number.",
         "results": {
           "minus_20_pct": {
-            "denominator": 1959542,
+            "denominator": 1948519,
             "rungs": {
               "C0": {
                 "numerator": 395517,
                 "numerator_sum": 395517.0,
-                "denominator": 1959542.0,
-                "percent": 20.184155277100466,
+                "denominator": 1948519.0,
+                "percent": 20.298339405466407,
                 "numerator_union": 395517,
-                "percent_union": 20.184155277100466
+                "percent_union": 20.298339405466407
               },
               "C1": {
                 "numerator": 157201,
                 "numerator_sum": 157201.0,
-                "denominator": 1959542.0,
-                "percent": 8.022333790242822,
+                "denominator": 1948519.0,
+                "percent": 8.067717071273105,
                 "numerator_union": 157201,
-                "percent_union": 8.022333790242822
+                "percent_union": 8.067717071273105
               },
               "C1d": {
                 "numerator": 113180,
                 "numerator_sum": 113180.0,
-                "denominator": 1959542.0,
-                "percent": 5.775839456362762,
+                "denominator": 1948519.0,
+                "percent": 5.808514056060012,
                 "numerator_union": 113180,
-                "percent_union": 5.775839456362762
+                "percent_union": 5.808514056060012
               },
               "C1b": {
                 "numerator": 13649,
                 "numerator_sum": 13649.0,
-                "denominator": 1959542.0,
-                "percent": 0.6965403140121518,
+                "denominator": 1948519.0,
+                "percent": 0.7004807240781332,
                 "numerator_union": 13649,
-                "percent_union": 0.6965403140121518
+                "percent_union": 0.7004807240781332
               }
             }
           },
           "plus_20_pct": {
-            "denominator": 2359542,
+            "denominator": 2348519,
             "rungs": {
               "C0": {
                 "numerator": 395517,
                 "numerator_sum": 395517.0,
-                "denominator": 2359542.0,
-                "percent": 16.76244796659691,
+                "denominator": 2348519.0,
+                "percent": 16.841124129717496,
                 "numerator_union": 395517,
-                "percent_union": 16.76244796659691
+                "percent_union": 16.841124129717496
               },
               "C1": {
                 "numerator": 157201,
                 "numerator_sum": 157201.0,
-                "denominator": 2359542.0,
-                "percent": 6.6623522700591895,
+                "denominator": 2348519.0,
+                "percent": 6.693622661771099,
                 "numerator_union": 157201,
-                "percent_union": 6.6623522700591895
+                "percent_union": 6.693622661771099
               },
               "C1d": {
                 "numerator": 113180,
                 "numerator_sum": 113180.0,
-                "denominator": 2359542.0,
-                "percent": 4.796693595621523,
+                "denominator": 2348519.0,
+                "percent": 4.819207338752635,
                 "numerator_union": 113180,
-                "percent_union": 4.796693595621523
+                "percent_union": 4.819207338752635
               },
               "C1b": {
                 "numerator": 13649,
                 "numerator_sum": 13649.0,
-                "denominator": 2359542.0,
-                "percent": 0.5784597180300245,
+                "denominator": 2348519.0,
+                "percent": 0.5811747744003775,
                 "numerator_union": 13649,
-                "percent_union": 0.5784597180300245
+                "percent_union": 0.5811747744003775
               }
             }
           }
@@ -1180,34 +1180,34 @@
         "C0": {
           "numerator": 395517,
           "numerator_sum": 395517.0,
-          "denominator": 2159542,
-          "percent": 18.314855649947997,
+          "denominator": 2148519,
+          "percent": 18.408820215227326,
           "numerator_union": 395517,
-          "percent_union": 18.314855649947997
+          "percent_union": 18.408820215227326
         },
         "C1": {
           "numerator": 147438,
           "numerator_sum": 147438.1234,
-          "denominator": 2159542,
-          "percent": 6.827286683935761
+          "denominator": 2148519,
+          "percent": 6.862314152213688
         },
         "C1d": {
           "numerator": 103417,
           "numerator_sum": 103417.1234,
-          "denominator": 2159542,
-          "percent": 4.788845199583986
+          "denominator": 2148519,
+          "percent": 4.81341442174819
         },
         "C1b": {
           "numerator": 13383,
           "numerator_sum": 13382.7756,
-          "denominator": 2159542,
-          "percent": 0.6197043447175373
+          "denominator": 2148519,
+          "percent": 0.6228837445700969
         }
       },
       "difference_pp": {
-        "C1": 0.4521,
-        "C1d": 0.4521,
-        "C1b": 0.0123
+        "C1": 0.4544,
+        "C1d": 0.4544,
+        "C1b": 0.0124
       },
       "per_partition": {
         "Amphibians": {
@@ -1345,34 +1345,34 @@
         "C0": {
           "numerator": 395517,
           "numerator_sum": 395517.0,
-          "denominator": 2159542,
-          "percent": 18.314855649947997,
+          "denominator": 2148519,
+          "percent": 18.408820215227326,
           "numerator_union": 395517,
-          "percent_union": 18.314855649947997
+          "percent_union": 18.408820215227326
         },
         "C1": {
           "numerator": 157201,
           "numerator_sum": 157201.0,
-          "denominator": 2159542,
-          "percent": 7.279367569605037,
+          "denominator": 2148519,
+          "percent": 7.316714443763355,
           "numerator_union": 157201,
-          "percent_union": 7.279367569605037
+          "percent_union": 7.316714443763355
         },
         "C1d": {
           "numerator": 113180,
           "numerator_sum": 113180.0,
-          "denominator": 2159542,
-          "percent": 5.240926085253262,
+          "denominator": 2148519,
+          "percent": 5.267814713297858,
           "numerator_union": 113180,
-          "percent_union": 5.240926085253262
+          "percent_union": 5.267814713297858
         },
         "C1b": {
           "numerator": 14962,
           "numerator_sum": 14962.0,
-          "denominator": 2159542,
-          "percent": 0.6928320912489778,
+          "denominator": 2148519,
+          "percent": 0.6963866737971598,
           "numerator_union": 14962,
-          "percent_union": 0.6928320912489778
+          "percent_union": 0.6963866737971598
         }
       }
     },
@@ -1391,34 +1391,118 @@
         "C0": {
           "numerator": 395517,
           "numerator_sum": 395517.0,
-          "denominator": 2159542,
-          "percent": 18.314855649947997,
+          "denominator": 2148519,
+          "percent": 18.408820215227326,
           "numerator_union": 395517,
-          "percent_union": 18.314855649947997
+          "percent_union": 18.408820215227326
         },
         "C1": {
           "numerator": 157201,
           "numerator_sum": 157201.0,
-          "denominator": 2159542,
-          "percent": 7.279367569605037,
+          "denominator": 2148519,
+          "percent": 7.316714443763355,
           "numerator_union": 157201,
-          "percent_union": 7.279367569605037
+          "percent_union": 7.316714443763355
         },
         "C1d": {
           "numerator": 113180,
           "numerator_sum": 113180.0,
-          "denominator": 2159542,
-          "percent": 5.240926085253262,
+          "denominator": 2148519,
+          "percent": 5.267814713297858,
           "numerator_union": 113180,
-          "percent_union": 5.240926085253262
+          "percent_union": 5.267814713297858
         },
         "C1b": {
           "numerator": 35452,
           "numerator_sum": 35452.0,
-          "denominator": 2159542,
-          "percent": 1.6416443857077103,
+          "denominator": 2148519,
+          "percent": 1.6500668600091506,
           "numerator_union": 35452,
-          "percent_union": 1.6416443857077103
+          "percent_union": 1.6500668600091506
+        }
+      }
+    },
+    "c1b_width_rule": {
+      "rule": "C1b with an interval at least 1 times as wide as the range of a two-sided prior on its node counted as set by the calibration",
+      "width_ratio_min": 1.0,
+      "partitions_removed": [
+        "Mammals"
+      ],
+      "rungs": {
+        "C0": {
+          "numerator": 395517,
+          "numerator_sum": 395517.0,
+          "denominator": 2148519,
+          "percent": 18.408820215227326,
+          "numerator_union": 395517,
+          "percent_union": 18.408820215227326
+        },
+        "C1": {
+          "numerator": 157201,
+          "numerator_sum": 157201.0,
+          "denominator": 2148519,
+          "percent": 7.316714443763355,
+          "numerator_union": 157201,
+          "percent_union": 7.316714443763355
+        },
+        "C1d": {
+          "numerator": 113180,
+          "numerator_sum": 113180.0,
+          "denominator": 2148519,
+          "percent": 5.267814713297858,
+          "numerator_union": 113180,
+          "percent_union": 5.267814713297858
+        },
+        "C1b": {
+          "numerator": 9704,
+          "numerator_sum": 9704.0,
+          "denominator": 2148519,
+          "percent": 0.45165995739390713,
+          "numerator_union": 9704,
+          "percent_union": 0.45165995739390713
+        }
+      }
+    },
+    "c1b_strict": {
+      "rule": "C1b with an interval at least 1 times as wide as the range of a two-sided prior on its node counted as set by the calibration; intervals whose crown calibration was not checked not counted",
+      "width_ratio_min": 1.0,
+      "partitions_removed": [
+        "Mammals",
+        "Squamates",
+        "Turtles"
+      ],
+      "rungs": {
+        "C0": {
+          "numerator": 395517,
+          "numerator_sum": 395517.0,
+          "denominator": 2148519,
+          "percent": 18.408820215227326,
+          "numerator_union": 395517,
+          "percent_union": 18.408820215227326
+        },
+        "C1": {
+          "numerator": 157201,
+          "numerator_sum": 157201.0,
+          "denominator": 2148519,
+          "percent": 7.316714443763355,
+          "numerator_union": 157201,
+          "percent_union": 7.316714443763355
+        },
+        "C1d": {
+          "numerator": 113180,
+          "numerator_sum": 113180.0,
+          "denominator": 2148519,
+          "percent": 5.267814713297858,
+          "numerator_union": 113180,
+          "percent_union": 5.267814713297858
+        },
+        "C1b": {
+          "numerator": 4352,
+          "numerator_sum": 4352.0,
+          "denominator": 2148519,
+          "percent": 0.202558134231068,
+          "numerator_union": 4352,
+          "percent_union": 0.202558134231068
         }
       }
     },
@@ -1433,9 +1517,9 @@
       "unmatched_tips_resolved_by_gbif": 31947,
       "species_added": 27834,
       "numerator": 423351,
-      "denominator": 2159542,
-      "percent": 19.603740052288863,
-      "percent_C0": 18.314855649947997,
+      "denominator": 2148519,
+      "percent": 19.704317252954244,
+      "percent_C0": 18.408820215227326,
       "per_partition": {
         "Amphibians": {
           "unmatched_tips": 39,
@@ -1453,7 +1537,7 @@
           "unmatched_tips": 5,
           "gbif_species_added": 0,
           "c0_with_gbif": 44,
-          "percent_with_gbif": 0.22
+          "percent_with_gbif": 0.43811610076670315
         },
         "Bryophytes": {
           "unmatched_tips": 13,
@@ -1501,7 +1585,7 @@
           "unmatched_tips": 96,
           "gbif_species_added": 93,
           "c0_with_gbif": 6190,
-          "percent_with_gbif": 51.583333333333336
+          "percent_with_gbif": 58.517678200037814
         },
         "Fish": {
           "unmatched_tips": 67,
@@ -1561,13 +1645,13 @@
           "unmatched_tips": 663,
           "gbif_species_added": 598,
           "c0_with_gbif": 9551,
-          "percent_with_gbif": 81.3266348773842
+          "percent_with_gbif": 78.8817310868847
         },
         "Turtles": {
           "unmatched_tips": 22,
           "gbif_species_added": 16,
           "c0_with_gbif": 272,
-          "percent_with_gbif": 75.55555555555556
+          "percent_with_gbif": 74.72527472527473
         }
       }
     }
@@ -1656,8 +1740,8 @@
     "structural_zeros": {
       "n_partitions": 36,
       "of_eukaryotic_partitions": 60,
-      "described": 210258,
-      "share_of_denominator_pct": 9.736231108262771,
+      "described": 210246,
+      "share_of_denominator_pct": 9.785624423149155,
       "partitions": [
         "Acanthocephala",
         "Acari",
@@ -1699,11 +1783,11 @@
       "note": "a STRUCTURAL zero, not a criterion-dependent one -- and now computable from the deposit file itself, because these partitions are rows of coverage_basis.csv."
     },
     "dark_matter": {
-      "no_tip_anywhere": 1764025,
-      "no_tip_anywhere_pct": 81.685144350052,
-      "no_molecular_placement": 2002341,
-      "no_molecular_placement_exact": 2002341.0,
-      "no_molecular_placement_pct": 92.72063243039496,
+      "no_tip_anywhere": 1753002,
+      "no_tip_anywhere_pct": 81.59117978477268,
+      "no_molecular_placement": 1991318,
+      "no_molecular_placement_exact": 1991318.0,
+      "no_molecular_placement_pct": 92.68328555623664,
       "convention": "formed on the C0 UNION numerator (395517), never on the per-partition sum",
       "replaces": "the retired 23.7 % figure, which was a hard-coded literal reachable from no numerator/denominator pair in the deposit. WITHDRAWN, not adjusted."
     },
@@ -1712,13 +1796,13 @@
         "partition": "Bivalves",
         "f_mol": 1.0,
         "topology_assembly": "primary_analysis",
-        "described": 20000,
-        "denominator": 20000,
+        "described": 10043,
+        "denominator": 10043,
         "c0_units": 44,
-        "C0_pct": 0.22,
+        "C0_pct": 0.43811610076670315,
         "C1_tip_equivalents": 44.0,
-        "C1_pct": 0.22,
-        "old_strict_pct": 0.22
+        "C1_pct": 0.43811610076670315,
+        "old_strict_pct": 0.43811610076670315
       },
       {
         "partition": "Bryophytes",
@@ -1747,14 +1831,14 @@
       {
         "partition": "Cephalopods",
         "f_mol": 1.0,
-        "topology_assembly": "primary_analysis",
+        "topology_assembly": "compiled",
         "described": 800,
         "denominator": 800,
         "c0_units": 80,
         "C0_pct": 10.0,
         "C1_tip_equivalents": 80.0,
         "C1_pct": 10.0,
-        "old_strict_pct": 10.0
+        "old_strict_pct": 0.0
       },
       {
         "partition": "Cnidaria",
@@ -1820,13 +1904,13 @@
         "partition": "Ferns",
         "f_mol": 1.0,
         "topology_assembly": "primary_analysis",
-        "described": 12000,
-        "denominator": 12000,
+        "described": 10578,
+        "denominator": 10578,
         "c0_units": 6097,
-        "C0_pct": 50.80833333333333,
+        "C0_pct": 57.63849498960106,
         "C1_tip_equivalents": 6097.0,
-        "C1_pct": 50.80833333333333,
-        "old_strict_pct": 50.80833333333333
+        "C1_pct": 57.63849498960106,
+        "old_strict_pct": 57.63849498960106
       },
       {
         "partition": "Fungi",
@@ -1855,14 +1939,14 @@
       {
         "partition": "Insects",
         "f_mol": 1.0,
-        "topology_assembly": "compiled",
+        "topology_assembly": "primary_analysis",
         "described": 1000000,
         "denominator": 1000000,
         "c0_units": 42078,
         "C0_pct": 4.2078,
         "C1_tip_equivalents": 42078.0,
         "C1_pct": 4.2078,
-        "old_strict_pct": 0.0
+        "old_strict_pct": 4.2078
       },
       {
         "partition": "Nematodes",
@@ -1904,13 +1988,13 @@
         "partition": "Turtles",
         "f_mol": 1.0,
         "topology_assembly": "primary_analysis",
-        "described": 360,
-        "denominator": 360,
+        "described": 364,
+        "denominator": 364,
         "c0_units": 256,
-        "C0_pct": 71.11111111111111,
+        "C0_pct": 70.32967032967034,
         "C1_tip_equivalents": 256.0,
-        "C1_pct": 71.11111111111111,
-        "old_strict_pct": 71.11111111111111
+        "C1_pct": 70.32967032967034,
+        "old_strict_pct": 70.32967032967034
       },
       {
         "partition": "Birds",
@@ -1952,13 +2036,13 @@
         "partition": "Squamates",
         "f_mol": 0.555157,
         "topology_assembly": "primary_analysis",
-        "described": 11744,
-        "denominator": 11744,
+        "described": 12108,
+        "denominator": 12108,
         "c0_units": 8953,
-        "C0_pct": 76.23467302452316,
+        "C0_pct": 73.94284770399736,
         "C1_tip_equivalents": 5096.0,
-        "C1_pct": 43.392370572207085,
-        "old_strict_pct": 43.392370572207085
+        "C1_pct": 42.08787578460522,
+        "old_strict_pct": 42.08787578460522
       },
       {
         "partition": "Sharks",
@@ -2375,6 +2459,8 @@
     "Sponges: the adopted rule (both label sets resolved through the deposit's own name mapping) measures 119 molecular tips against Data/molecular_sources/sponges.taxa.txt; naive EXACT-LABEL matching measures 111. The adopted rule is used because exact matching is a measurement artefact -- it scores a decorated-label source at or near zero. Both figures are published in headline_numbers.json -> molecular_evidence.",
     "Squamates: MEASURED intersection 5415 against Data/raw/squamates/tonini2016_squamate_ML.tre differs from the numerator 5416 recorded in truth_provenance.csv. The MEASUREMENT is used (the recorded ratio is on a different tip basis); truth_provenance.csv's molecular_tip_fraction for this partition should be updated with a note.",
     "estimated_total for 'Other arachnids': took 25,000 (data_estimates.csv,partition_summary.csv) over curated info.yaml=25,004",
+    "estimated_total for 'Squamates': took 12,000 (curated info.yaml,partition_summary.csv) over data_estimates.csv=12,108",
+    "estimated_total for 'Turtles': took 360 (curated info.yaml,partition_summary.csv) over data_estimates.csv=364",
     "S7: the 'This study' year cell is emitted BLANK. A publication year is not a quantity this script can derive and hard-coding one is forbidden; fill it from the manuscript metadata when wiring S7 in."
   ],
   "revision_checks": {
@@ -2717,18 +2803,18 @@
       },
       "C0_resolved_labels": {
         "numerator": 426036,
-        "denominator": 2159542,
-        "percent": 19.728071970816035
+        "denominator": 2148519,
+        "percent": 19.82928705773605
       },
       "C0_distinct_accepted_names_sum": {
         "numerator": 395517,
-        "denominator": 2159542,
-        "percent": 18.314855649947997
+        "denominator": 2148519,
+        "percent": 18.408820215227326
       },
       "C0_distinct_accepted_names_union": {
         "numerator": 395517,
-        "denominator": 2159542,
-        "percent": 18.314855649947997
+        "denominator": 2148519,
+        "percent": 18.408820215227326
       }
     },
     "per_partition": {
@@ -3460,7 +3546,7 @@
         "interval_width_myr": "84.0658",
         "degenerate": "no",
         "at_bound": "no",
-        "calibration": "",
+        "calibration": "two_sided",
         "prior_reproduced": "no",
         "interval_source": "raw/revision-2026-10/sharks/vertlife_download/1.cal.tree.nex"
       },
@@ -3598,14 +3684,14 @@
     "names_added": 4031,
     "C0_canonical": 395517,
     "C0_union": 399548,
-    "C0_canonical_pct": 18.314855649947997,
-    "C0_union_pct": 18.50151559914093,
+    "C0_canonical_pct": 18.408820215227326,
+    "C0_union_pct": 18.596437825311295,
     "C1_canonical": 157201.0,
     "C1_union_low": 157201.0,
     "C1_union_high": 161232.0,
-    "C1_union_low_pct": 7.279367569605037,
-    "C1_union_high_pct": 7.466027518797968,
-    "denominator": 2159542,
+    "C1_union_low_pct": 7.316714443763355,
+    "C1_union_high_pct": 7.504332053847325,
+    "denominator": 2148519,
     "per_partition": {
       "Amphibians": {
         "C0_canonical": 6947,
@@ -3625,8 +3711,8 @@
         "C0_canonical": 44,
         "names_added_by_other_trees": 0,
         "C0_union": 44,
-        "C0_canonical_pct": 0.22,
-        "C0_union_pct": 0.22
+        "C0_canonical_pct": 0.43811610076670315,
+        "C0_union_pct": 0.43811610076670315
       },
       "Bryophytes": {
         "C0_canonical": 505,
@@ -3688,8 +3774,8 @@
         "C0_canonical": 6097,
         "names_added_by_other_trees": 0,
         "C0_union": 6097,
-        "C0_canonical_pct": 50.80833333333333,
-        "C0_union_pct": 50.80833333333333
+        "C0_canonical_pct": 57.63849498960106,
+        "C0_union_pct": 57.63849498960106
       },
       "Fish": {
         "C0_canonical": 30973,
@@ -3765,15 +3851,15 @@
         "C0_canonical": 8953,
         "names_added_by_other_trees": 11,
         "C0_union": 8964,
-        "C0_canonical_pct": 76.23467302452316,
-        "C0_union_pct": 76.3283378746594
+        "C0_canonical_pct": 73.94284770399736,
+        "C0_union_pct": 74.03369672943508
       },
       "Turtles": {
         "C0_canonical": 256,
         "names_added_by_other_trees": 17,
         "C0_union": 273,
-        "C0_canonical_pct": 71.11111111111111,
-        "C0_union_pct": 75.83333333333333
+        "C0_canonical_pct": 70.32967032967034,
+        "C0_union_pct": 75.0
       }
     },
     "per_file": {
@@ -4970,14 +5056,14 @@
     "ot_tips_all_life": 2385875,
     "ot_phylo_all_life": 159925,
     "ot_phylo_extant_species_eukaryota": 129889,
-    "ot_phylo_extant_species_eukaryota_pct": 6.014654959245989,
+    "ot_phylo_extant_species_eukaryota_pct": 6.045513211658822,
     "n_partitions_compared": 24,
     "ot_phylo_extant_species_in_atlas_clades": 128530,
-    "ot_phylo_extant_species_in_atlas_clades_pct": 5.951724949086427,
+    "ot_phylo_extant_species_in_atlas_clades_pct": 5.982260338400545,
     "atlas_C1_in_compared_partitions": 157201.0,
-    "atlas_C1_in_compared_partitions_pct": 7.279367569605037,
+    "atlas_C1_in_compared_partitions_pct": 7.316714443763355,
     "atlas_C1_over_ot_phylo": 1.2231,
-    "denominator": 2159542,
+    "denominator": 2148519,
     "keys": {
       "keys_both": 100583,
       "keys_union": 495474,
@@ -5061,7 +5147,7 @@
         "accepted_molecular_not_in_ot": 1058
       },
       "Bivalves": {
-        "described": 20000,
+        "described": 10043,
         "atlas_C0": 44,
         "atlas_C1": 44.0,
         "atlas_C1_tips_enumerated": "yes",
@@ -5250,7 +5336,7 @@
         "accepted_molecular_not_in_ot": 49
       },
       "Ferns": {
-        "described": 12000,
+        "described": 10578,
         "atlas_C0": 6097,
         "atlas_C1": 6097.0,
         "atlas_C1_tips_enumerated": "yes",
@@ -5481,7 +5567,7 @@
         "accepted_molecular_not_in_ot": 20
       },
       "Squamates": {
-        "described": 11744,
+        "described": 12108,
         "atlas_C0": 8953,
         "atlas_C1": 5096.0,
         "atlas_C1_tips_enumerated": "yes",
@@ -5502,7 +5588,7 @@
         "accepted_molecular_not_in_ot": 1342
       },
       "Turtles": {
-        "described": 360,
+        "described": 364,
         "atlas_C0": 256,
         "atlas_C1": 256.0,
         "atlas_C1_tips_enumerated": "no",
@@ -5647,19 +5733,19 @@
         "rho_full_rejected": false
       },
       "Squamates": {
-        "rho_tips": 0.46108651,
-        "rho_full": 0.83055177,
-        "epsilon_rho_tips": 0.116778,
-        "epsilon_rho_full": 8.91869e-12,
-        "lambda_ratio_full_over_tips": 0.7121,
-        "mu_rho_tips": 0.00942042,
-        "mu_rho_full": 5.12296e-13,
-        "r_ratio_full_over_tips": 0.806198,
+        "rho_tips": 0.44722498,
+        "rho_full": 0.80558309,
+        "epsilon_rho_tips": 0.143334,
+        "epsilon_rho_full": 7.68658e-13,
+        "lambda_ratio_full_over_tips": 0.7013,
+        "mu_rho_tips": 0.0119211,
+        "mu_rho_full": 4.48359e-14,
+        "r_ratio_full_over_tips": 0.818683,
         "epsilon_intervals_overlap": false,
         "identity_lambda_ratio_predicted": 0.555157,
         "loglik_rho_tips": -21310.3153,
-        "loglik_rho_full": -21360.7187,
-        "lr_statistic": 100.8068,
+        "loglik_rho_full": -21354.4938,
+        "lr_statistic": 88.357,
         "classification": "boundary",
         "epsilon_rho_full_on_boundary": true,
         "rho_full_rejected": true
@@ -5777,21 +5863,21 @@
           "epsilon_intervals_overlap_uniform": true
         },
         "Squamates": {
-          "lambda": 0.0828269,
-          "mu": 0.0107108,
-          "r": 0.0721162,
-          "r_lo": 0.0690024,
-          "r_hi": 0.0752567,
-          "epsilon": 0.129315,
-          "epsilon_lo": 0.0493674,
-          "epsilon_hi": 0.203083,
-          "loglik": -21376.3983,
+          "lambda": 0.082966,
+          "mu": 0.0108514,
+          "r": 0.0721146,
+          "r_lo": 0.0690007,
+          "r_hi": 0.0752551,
+          "epsilon": 0.130793,
+          "epsilon_lo": 0.0509848,
+          "epsilon_hi": 0.204441,
+          "loglik": -21376.5895,
           "n_tips": 5415.0,
           "n_tips_family_fraction": 5125.0,
-          "family_uniform_check": 7.28e-12,
+          "family_uniform_check": 6.55e-11,
           "epsilon_ci": "interior",
-          "epsilon_uniform_tips": 0.116778,
-          "r_uniform_tips": 0.071249,
+          "epsilon_uniform_tips": 0.143334,
+          "r_uniform_tips": 0.0712488,
           "epsilon_intervals_overlap_uniform": true
         }
       }
@@ -5858,12 +5944,12 @@
           "epsilon_intervals_overlap": true
         },
         "Squamates": {
-          "r_full": 0.0567398,
-          "r_molecular": 0.071249,
-          "r_ratio_full_over_molecular": 0.7964,
+          "r_full": 0.0576285,
+          "r_molecular": 0.0712488,
+          "r_ratio_full_over_molecular": 0.8088,
           "r_intervals_overlap": false,
-          "epsilon_full": 1.88881e-11,
-          "epsilon_molecular": 0.116778,
+          "epsilon_full": 3.30597e-11,
+          "epsilon_molecular": 0.143334,
           "epsilon_intervals_overlap": false
         }
       }
@@ -5933,6 +6019,437 @@
         "n_families_all_molecular": 0
       }
     },
+    "polytomies": {
+      "Amphibians": {
+        "events": {
+          "full": {
+            "n_events": 7237,
+            "n_polytomy_events": 3513,
+            "n_polytomy_nodes": 171,
+            "max_children": 417,
+            "polytomy_events_pct": 48.54221362443001
+          },
+          "molecular": {
+            "n_events": 4060,
+            "n_polytomy_events": 1176,
+            "n_polytomy_nodes": 114,
+            "max_children": 133,
+            "polytomy_events_pct": 28.96551724137931
+          }
+        },
+        "resolved": {
+          "1": {
+            "r_full": 0.0419384,
+            "r_molecular": 0.0479766,
+            "r_ratio_full_over_molecular": 0.8741,
+            "epsilon_rho_tips": 0.305188,
+            "epsilon_rho_full": 1.85163e-10,
+            "lr_statistic": 15.9222,
+            "boundary": true,
+            "rejected": true
+          },
+          "2": {
+            "r_full": 0.0417105,
+            "r_molecular": 0.0474949,
+            "r_ratio_full_over_molecular": 0.8782,
+            "epsilon_rho_tips": 0.316763,
+            "epsilon_rho_full": 1.22964e-11,
+            "lr_statistic": 13.5434,
+            "boundary": true,
+            "rejected": true
+          },
+          "3": {
+            "r_full": 0.0417271,
+            "r_molecular": 0.0470433,
+            "r_ratio_full_over_molecular": 0.887,
+            "epsilon_rho_tips": 0.321829,
+            "epsilon_rho_full": 1.09745e-10,
+            "lr_statistic": 12.5674,
+            "boundary": true,
+            "rejected": true
+          }
+        }
+      },
+      "Birds": {
+        "events": {
+          "full": {
+            "n_events": 10823,
+            "n_polytomy_events": 0,
+            "n_polytomy_nodes": 0,
+            "max_children": 2,
+            "polytomy_events_pct": 0.0
+          },
+          "molecular": {
+            "n_events": 9238,
+            "n_polytomy_events": 0,
+            "n_polytomy_nodes": 0,
+            "max_children": 2,
+            "polytomy_events_pct": 0.0
+          }
+        },
+        "resolved": {
+          "1": {
+            "r_full": 0.14787,
+            "r_molecular": 0.146273,
+            "r_ratio_full_over_molecular": 1.0109,
+            "epsilon_rho_tips": 0.0754435,
+            "epsilon_rho_full": 2.5001e-11,
+            "lr_statistic": 4.8814,
+            "boundary": true,
+            "rejected": true
+          },
+          "2": {
+            "r_full": 0.14787,
+            "r_molecular": 0.146273,
+            "r_ratio_full_over_molecular": 1.0109,
+            "epsilon_rho_tips": 0.0754435,
+            "epsilon_rho_full": 2.5001e-11,
+            "lr_statistic": 4.8814,
+            "boundary": true,
+            "rejected": true
+          },
+          "3": {
+            "r_full": 0.14787,
+            "r_molecular": 0.146273,
+            "r_ratio_full_over_molecular": 1.0109,
+            "epsilon_rho_tips": 0.0754435,
+            "epsilon_rho_full": 2.5001e-11,
+            "lr_statistic": 4.8814,
+            "boundary": true,
+            "rejected": true
+          }
+        }
+      },
+      "Fish": {
+        "events": {
+          "full": {
+            "n_events": 31346,
+            "n_polytomy_events": 0,
+            "n_polytomy_nodes": 0,
+            "max_children": 2,
+            "polytomy_events_pct": 0.0
+          },
+          "molecular": {
+            "n_events": 11595,
+            "n_polytomy_events": 0,
+            "n_polytomy_nodes": 0,
+            "max_children": 2,
+            "polytomy_events_pct": 0.0
+          }
+        },
+        "resolved": {
+          "1": {
+            "r_full": 0.0434104,
+            "r_molecular": 0.047998,
+            "r_ratio_full_over_molecular": 0.9044,
+            "epsilon_rho_tips": 0.745534,
+            "epsilon_rho_full": 0.31212,
+            "lr_statistic": 0.0,
+            "boundary": false,
+            "rejected": false
+          },
+          "2": {
+            "r_full": 0.0434104,
+            "r_molecular": 0.047998,
+            "r_ratio_full_over_molecular": 0.9044,
+            "epsilon_rho_tips": 0.745534,
+            "epsilon_rho_full": 0.31212,
+            "lr_statistic": 0.0,
+            "boundary": false,
+            "rejected": false
+          },
+          "3": {
+            "r_full": 0.0434104,
+            "r_molecular": 0.047998,
+            "r_ratio_full_over_molecular": 0.9044,
+            "epsilon_rho_tips": 0.745534,
+            "epsilon_rho_full": 0.31212,
+            "lr_statistic": 0.0,
+            "boundary": false,
+            "rejected": false
+          }
+        }
+      },
+      "Mammals": {
+        "events": {
+          "full": {
+            "n_events": 5910,
+            "n_polytomy_events": 0,
+            "n_polytomy_nodes": 0,
+            "max_children": 2,
+            "polytomy_events_pct": 0.0
+          },
+          "molecular": {
+            "n_events": 4097,
+            "n_polytomy_events": 0,
+            "n_polytomy_nodes": 0,
+            "max_children": 2,
+            "polytomy_events_pct": 0.0
+          }
+        },
+        "resolved": {
+          "1": {
+            "r_full": 0.0816554,
+            "r_molecular": 0.0853559,
+            "r_ratio_full_over_molecular": 0.9566,
+            "epsilon_rho_tips": 0.688414,
+            "epsilon_rho_full": 0.550564,
+            "lr_statistic": 0.0,
+            "boundary": false,
+            "rejected": false
+          },
+          "2": {
+            "r_full": 0.0816554,
+            "r_molecular": 0.0853559,
+            "r_ratio_full_over_molecular": 0.9566,
+            "epsilon_rho_tips": 0.688414,
+            "epsilon_rho_full": 0.550564,
+            "lr_statistic": 0.0,
+            "boundary": false,
+            "rejected": false
+          },
+          "3": {
+            "r_full": 0.0816554,
+            "r_molecular": 0.0853559,
+            "r_ratio_full_over_molecular": 0.9566,
+            "epsilon_rho_tips": 0.688414,
+            "epsilon_rho_full": 0.550564,
+            "lr_statistic": 0.0,
+            "boundary": false,
+            "rejected": false
+          }
+        }
+      },
+      "Seed plants": {
+        "events": {
+          "full": {
+            "n_events": 348885,
+            "n_polytomy_events": 275542,
+            "n_polytomy_nodes": 7041,
+            "max_children": 2891,
+            "polytomy_events_pct": 78.97788669618929
+          },
+          "molecular": {
+            "n_events": 76687,
+            "n_polytomy_events": 124,
+            "n_polytomy_nodes": 36,
+            "max_children": 47,
+            "polytomy_events_pct": 0.16169624577829358
+          }
+        },
+        "resolved": {
+          "1": {
+            "r_full": 0.0579179,
+            "r_molecular": 0.0471094,
+            "r_ratio_full_over_molecular": 1.2294,
+            "epsilon_rho_tips": 0.973927,
+            "epsilon_rho_full": 0.881383,
+            "lr_statistic": 0.0,
+            "boundary": false,
+            "rejected": false
+          },
+          "2": {
+            "r_full": 0.0578913,
+            "r_molecular": 0.0471141,
+            "r_ratio_full_over_molecular": 1.2287,
+            "epsilon_rho_tips": 0.973928,
+            "epsilon_rho_full": 0.881386,
+            "lr_statistic": 0.0,
+            "boundary": false,
+            "rejected": false
+          },
+          "3": {
+            "r_full": 0.0578788,
+            "r_molecular": 0.0471198,
+            "r_ratio_full_over_molecular": 1.2283,
+            "epsilon_rho_tips": 0.973924,
+            "epsilon_rho_full": 0.88137,
+            "lr_statistic": 0.0,
+            "boundary": false,
+            "rejected": false
+          }
+        }
+      },
+      "Sharks": {
+        "events": {
+          "full": {
+            "n_events": 1191,
+            "n_polytomy_events": 0,
+            "n_polytomy_nodes": 0,
+            "max_children": 2,
+            "polytomy_events_pct": 0.0
+          },
+          "molecular": {
+            "n_events": 609,
+            "n_polytomy_events": 0,
+            "n_polytomy_nodes": 0,
+            "max_children": 2,
+            "polytomy_events_pct": 0.0
+          }
+        },
+        "resolved": {
+          "1": {
+            "r_full": 0.0169189,
+            "r_molecular": 0.0161271,
+            "r_ratio_full_over_molecular": 1.0491,
+            "epsilon_rho_tips": 0.640059,
+            "epsilon_rho_full": 0.296644,
+            "lr_statistic": 0.0,
+            "boundary": false,
+            "rejected": false
+          },
+          "2": {
+            "r_full": 0.0169189,
+            "r_molecular": 0.0161271,
+            "r_ratio_full_over_molecular": 1.0491,
+            "epsilon_rho_tips": 0.640059,
+            "epsilon_rho_full": 0.296644,
+            "lr_statistic": 0.0,
+            "boundary": false,
+            "rejected": false
+          },
+          "3": {
+            "r_full": 0.0169189,
+            "r_molecular": 0.0161271,
+            "r_ratio_full_over_molecular": 1.0491,
+            "epsilon_rho_tips": 0.640059,
+            "epsilon_rho_full": 0.296644,
+            "lr_statistic": 0.0,
+            "boundary": false,
+            "rejected": false
+          }
+        }
+      },
+      "Squamates": {
+        "events": {
+          "full": {
+            "n_events": 9753,
+            "n_polytomy_events": 4362,
+            "n_polytomy_nodes": 314,
+            "max_children": 222,
+            "polytomy_events_pct": 44.7247000922793
+          },
+          "molecular": {
+            "n_events": 5414,
+            "n_polytomy_events": 1319,
+            "n_polytomy_nodes": 167,
+            "max_children": 121,
+            "polytomy_events_pct": 24.36276320650166
+          }
+        },
+        "resolved": {
+          "1": {
+            "r_full": 0.0686184,
+            "r_molecular": 0.0753582,
+            "r_ratio_full_over_molecular": 0.9106,
+            "epsilon_rho_tips": 0.199456,
+            "epsilon_rho_full": 3.4649e-12,
+            "lr_statistic": 62.6504,
+            "boundary": true,
+            "rejected": true
+          },
+          "2": {
+            "r_full": 0.0684614,
+            "r_molecular": 0.0759415,
+            "r_ratio_full_over_molecular": 0.9015,
+            "epsilon_rho_tips": 0.189404,
+            "epsilon_rho_full": 3.79977e-11,
+            "lr_statistic": 67.0404,
+            "boundary": true,
+            "rejected": true
+          },
+          "3": {
+            "r_full": 0.068489,
+            "r_molecular": 0.0755291,
+            "r_ratio_full_over_molecular": 0.9068,
+            "epsilon_rho_tips": 0.197624,
+            "epsilon_rho_full": 1.45912e-11,
+            "lr_statistic": 63.4324,
+            "boundary": true,
+            "rejected": true
+          }
+        }
+      }
+    },
+    "family_child_order": {
+      "Amphibians": {
+        "r_first": 0.0428009,
+        "r_last": 0.0428193,
+        "epsilon_first": 0.2438,
+        "epsilon_last": 0.243463,
+        "loglik_first": -17641.1454,
+        "loglik_last_at_first_mle": -17641.8074,
+        "r_rel_diff": 0.0004298975021552072,
+        "epsilon_abs_diff": 0.0003369999999999762,
+        "loglik_abs_diff_at_mle": 0.6620000000002619
+      },
+      "Birds": {
+        "r_first": 0.148716,
+        "r_last": 0.148712,
+        "epsilon_first": 0.0487208,
+        "epsilon_last": 0.048855,
+        "loglik_first": -27433.6836,
+        "loglik_last_at_first_mle": -27433.8593,
+        "r_rel_diff": 2.689690416617072e-05,
+        "epsilon_abs_diff": 0.00013420000000000099,
+        "loglik_abs_diff_at_mle": 0.1756999999997788
+      },
+      "Fish": {
+        "r_first": 0.0524119,
+        "r_last": 0.0524016,
+        "epsilon_first": 0.654254,
+        "epsilon_last": 0.654165,
+        "loglik_first": -45269.2453,
+        "loglik_last_at_first_mle": -45261.3414,
+        "r_rel_diff": 0.0001965202558960429,
+        "epsilon_abs_diff": 8.900000000000574e-05,
+        "loglik_abs_diff_at_mle": 7.903900000004796
+      },
+      "Mammals": {
+        "r_first": 0.086439,
+        "r_last": 0.086456,
+        "epsilon_first": 0.673674,
+        "epsilon_last": 0.673381,
+        "loglik_first": -12576.6445,
+        "loglik_last_at_first_mle": -12574.7938,
+        "r_rel_diff": 0.00019667048438787034,
+        "epsilon_abs_diff": 0.0002929999999999877,
+        "loglik_abs_diff_at_mle": 1.8507000000008702
+      },
+      "Seed plants": {
+        "r_first": 0.0497657,
+        "r_last": 0.0497639,
+        "epsilon_first": 0.968509,
+        "epsilon_last": 0.968511,
+        "loglik_first": -209158.807,
+        "loglik_last_at_first_mle": -209176.8977,
+        "r_rel_diff": 3.616949023128757e-05,
+        "epsilon_abs_diff": 2.0000000000575113e-06,
+        "loglik_abs_diff_at_mle": 18.090700000000652
+      },
+      "Sharks": {
+        "r_first": 0.0166394,
+        "r_last": 0.016696,
+        "epsilon_first": 0.618516,
+        "epsilon_last": 0.617083,
+        "loglik_first": -3025.7178,
+        "loglik_last_at_first_mle": -3025.746,
+        "r_rel_diff": 0.003401564960275034,
+        "epsilon_abs_diff": 0.0014329999999999066,
+        "loglik_abs_diff_at_mle": 0.02820000000019718
+      },
+      "Squamates": {
+        "r_first": 0.0721146,
+        "r_last": 0.0721554,
+        "epsilon_first": 0.130793,
+        "epsilon_last": 0.130118,
+        "loglik_first": -21376.5895,
+        "loglik_last_at_first_mle": -21374.664,
+        "r_rel_diff": 0.0005657661555356837,
+        "epsilon_abs_diff": 0.0006749999999999812,
+        "loglik_abs_diff_at_mle": 1.9254999999975553
+      }
+    },
     "fits": {
       "Amphibians|full|tips": {
         "n_tips": "7238",
@@ -5950,7 +6467,11 @@
         "epsilon_ci": "estimate at 0",
         "loglik": "-32480.3353",
         "n_tips_family_fraction": "",
-        "family_uniform_check": ""
+        "family_uniform_check": "",
+        "n_events": "7237",
+        "n_polytomy_nodes": "171",
+        "n_polytomy_events": "3513",
+        "max_children": "417"
       },
       "Amphibians|molecular|tips": {
         "n_tips": "4061",
@@ -5968,7 +6489,11 @@
         "epsilon_ci": "interior",
         "loglik": "-17751.6214",
         "n_tips_family_fraction": "",
-        "family_uniform_check": ""
+        "family_uniform_check": "",
+        "n_events": "4060",
+        "n_polytomy_nodes": "114",
+        "n_polytomy_events": "1176",
+        "max_children": "133"
       },
       "Amphibians|molecular|full_misapplied": {
         "n_tips": "4061",
@@ -5986,7 +6511,11 @@
         "epsilon_ci": "estimate at 0",
         "loglik": "-17757.1381",
         "n_tips_family_fraction": "",
-        "family_uniform_check": ""
+        "family_uniform_check": "",
+        "n_events": "4060",
+        "n_polytomy_nodes": "114",
+        "n_polytomy_events": "1176",
+        "max_children": "133"
       },
       "Amphibians|molecular|family": {
         "n_tips": "4061",
@@ -6004,7 +6533,11 @@
         "epsilon_ci": "interior",
         "loglik": "-17641.1454",
         "n_tips_family_fraction": "4054",
-        "family_uniform_check": "4e-11"
+        "family_uniform_check": "4e-11",
+        "n_events": "4060",
+        "n_polytomy_nodes": "114",
+        "n_polytomy_events": "1176",
+        "max_children": "133"
       },
       "Birds|full|tips": {
         "n_tips": "10824",
@@ -6022,7 +6555,11 @@
         "epsilon_ci": "estimate at 0",
         "loglik": "-31696.6971",
         "n_tips_family_fraction": "",
-        "family_uniform_check": ""
+        "family_uniform_check": "",
+        "n_events": "10823",
+        "n_polytomy_nodes": "0",
+        "n_polytomy_events": "0",
+        "max_children": "2"
       },
       "Birds|molecular|tips": {
         "n_tips": "9239",
@@ -6040,7 +6577,11 @@
         "epsilon_ci": "interior",
         "loglik": "-27531.5012",
         "n_tips_family_fraction": "",
-        "family_uniform_check": ""
+        "family_uniform_check": "",
+        "n_events": "9238",
+        "n_polytomy_nodes": "0",
+        "n_polytomy_events": "0",
+        "max_children": "2"
       },
       "Birds|molecular|full_misapplied": {
         "n_tips": "9239",
@@ -6058,7 +6599,11 @@
         "epsilon_ci": "estimate at 0",
         "loglik": "-27533.9419",
         "n_tips_family_fraction": "",
-        "family_uniform_check": ""
+        "family_uniform_check": "",
+        "n_events": "9238",
+        "n_polytomy_nodes": "0",
+        "n_polytomy_events": "0",
+        "max_children": "2"
       },
       "Birds|molecular|family": {
         "n_tips": "9239",
@@ -6076,7 +6621,11 @@
         "epsilon_ci": "interior",
         "loglik": "-27433.6836",
         "n_tips_family_fraction": "9004",
-        "family_uniform_check": "7.28e-12"
+        "family_uniform_check": "7.28e-12",
+        "n_events": "9238",
+        "n_polytomy_nodes": "0",
+        "n_polytomy_events": "0",
+        "max_children": "2"
       },
       "Fish|full|tips": {
         "n_tips": "31347",
@@ -6094,7 +6643,11 @@
         "epsilon_ci": "interior",
         "loglik": "-101696.3477",
         "n_tips_family_fraction": "",
-        "family_uniform_check": ""
+        "family_uniform_check": "",
+        "n_events": "31346",
+        "n_polytomy_nodes": "0",
+        "n_polytomy_events": "0",
+        "max_children": "2"
       },
       "Fish|molecular|tips": {
         "n_tips": "11596",
@@ -6112,7 +6665,11 @@
         "epsilon_ci": "interior",
         "loglik": "-45366.4545",
         "n_tips_family_fraction": "",
-        "family_uniform_check": ""
+        "family_uniform_check": "",
+        "n_events": "11595",
+        "n_polytomy_nodes": "0",
+        "n_polytomy_events": "0",
+        "max_children": "2"
       },
       "Fish|molecular|full_misapplied": {
         "n_tips": "11596",
@@ -6130,7 +6687,11 @@
         "epsilon_ci": "interior",
         "loglik": "-45366.4545",
         "n_tips_family_fraction": "",
-        "family_uniform_check": ""
+        "family_uniform_check": "",
+        "n_events": "11595",
+        "n_polytomy_nodes": "0",
+        "n_polytomy_events": "0",
+        "max_children": "2"
       },
       "Fish|molecular|family": {
         "n_tips": "11596",
@@ -6148,7 +6709,11 @@
         "epsilon_ci": "interior",
         "loglik": "-45269.2453",
         "n_tips_family_fraction": "11550",
-        "family_uniform_check": "5.09e-11"
+        "family_uniform_check": "5.09e-11",
+        "n_events": "11595",
+        "n_polytomy_nodes": "0",
+        "n_polytomy_events": "0",
+        "max_children": "2"
       },
       "Mammals|full|tips": {
         "n_tips": "5911",
@@ -6166,7 +6731,11 @@
         "epsilon_ci": "interior",
         "loglik": "-16695.2639",
         "n_tips_family_fraction": "",
-        "family_uniform_check": ""
+        "family_uniform_check": "",
+        "n_events": "5910",
+        "n_polytomy_nodes": "0",
+        "n_polytomy_events": "0",
+        "max_children": "2"
       },
       "Mammals|molecular|tips": {
         "n_tips": "4098",
@@ -6184,7 +6753,11 @@
         "epsilon_ci": "interior",
         "loglik": "-12564.4421",
         "n_tips_family_fraction": "",
-        "family_uniform_check": ""
+        "family_uniform_check": "",
+        "n_events": "4097",
+        "n_polytomy_nodes": "0",
+        "n_polytomy_events": "0",
+        "max_children": "2"
       },
       "Mammals|molecular|full_misapplied": {
         "n_tips": "4098",
@@ -6202,7 +6775,11 @@
         "epsilon_ci": "interior",
         "loglik": "-12564.4421",
         "n_tips_family_fraction": "",
-        "family_uniform_check": ""
+        "family_uniform_check": "",
+        "n_events": "4097",
+        "n_polytomy_nodes": "0",
+        "n_polytomy_events": "0",
+        "max_children": "2"
       },
       "Mammals|molecular|family": {
         "n_tips": "4098",
@@ -6220,7 +6797,11 @@
         "epsilon_ci": "interior",
         "loglik": "-12576.6445",
         "n_tips_family_fraction": "3989",
-        "family_uniform_check": "1.46e-11"
+        "family_uniform_check": "1.46e-11",
+        "n_events": "4097",
+        "n_polytomy_nodes": "0",
+        "n_polytomy_events": "0",
+        "max_children": "2"
       },
       "Seed plants|full|tips": {
         "n_tips": "348886",
@@ -6238,7 +6819,11 @@
         "epsilon_ci": "interior",
         "loglik": "-1256081.6503",
         "n_tips_family_fraction": "",
-        "family_uniform_check": ""
+        "family_uniform_check": "",
+        "n_events": "348885",
+        "n_polytomy_nodes": "7041",
+        "n_polytomy_events": "275542",
+        "max_children": "2891"
       },
       "Seed plants|molecular|tips": {
         "n_tips": "76688",
@@ -6256,7 +6841,11 @@
         "epsilon_ci": "interior",
         "loglik": "-206943.7065",
         "n_tips_family_fraction": "",
-        "family_uniform_check": ""
+        "family_uniform_check": "",
+        "n_events": "76687",
+        "n_polytomy_nodes": "36",
+        "n_polytomy_events": "124",
+        "max_children": "47"
       },
       "Seed plants|molecular|full_misapplied": {
         "n_tips": "76688",
@@ -6274,7 +6863,11 @@
         "epsilon_ci": "interior",
         "loglik": "-206943.7065",
         "n_tips_family_fraction": "",
-        "family_uniform_check": ""
+        "family_uniform_check": "",
+        "n_events": "76687",
+        "n_polytomy_nodes": "36",
+        "n_polytomy_events": "124",
+        "max_children": "47"
       },
       "Seed plants|molecular|family": {
         "n_tips": "76688",
@@ -6292,7 +6885,11 @@
         "epsilon_ci": "interior",
         "loglik": "-209158.807",
         "n_tips_family_fraction": "73858",
-        "family_uniform_check": "1.08e-09"
+        "family_uniform_check": "1.08e-09",
+        "n_events": "76687",
+        "n_polytomy_nodes": "36",
+        "n_polytomy_events": "124",
+        "max_children": "47"
       },
       "Sharks|full|tips": {
         "n_tips": "1192",
@@ -6310,7 +6907,11 @@
         "epsilon_ci": "interior",
         "loglik": "-5456.0265",
         "n_tips_family_fraction": "",
-        "family_uniform_check": ""
+        "family_uniform_check": "",
+        "n_events": "1191",
+        "n_polytomy_nodes": "0",
+        "n_polytomy_events": "0",
+        "max_children": "2"
       },
       "Sharks|molecular|tips": {
         "n_tips": "610",
@@ -6328,7 +6929,11 @@
         "epsilon_ci": "interior",
         "loglik": "-3026.4551",
         "n_tips_family_fraction": "",
-        "family_uniform_check": ""
+        "family_uniform_check": "",
+        "n_events": "609",
+        "n_polytomy_nodes": "0",
+        "n_polytomy_events": "0",
+        "max_children": "2"
       },
       "Sharks|molecular|full_misapplied": {
         "n_tips": "610",
@@ -6346,7 +6951,11 @@
         "epsilon_ci": "interior",
         "loglik": "-3026.4551",
         "n_tips_family_fraction": "",
-        "family_uniform_check": ""
+        "family_uniform_check": "",
+        "n_events": "609",
+        "n_polytomy_nodes": "0",
+        "n_polytomy_events": "0",
+        "max_children": "2"
       },
       "Sharks|molecular|family": {
         "n_tips": "610",
@@ -6364,79 +6973,99 @@
         "epsilon_ci": "interior",
         "loglik": "-3025.7178",
         "n_tips_family_fraction": "610",
-        "family_uniform_check": "1.36e-12"
+        "family_uniform_check": "1.36e-12",
+        "n_events": "609",
+        "n_polytomy_nodes": "0",
+        "n_polytomy_events": "0",
+        "max_children": "2"
       },
       "Squamates|full|tips": {
         "n_tips": "9754",
         "crown_age_ma": "186.4151",
         "time_scale_factor": "0.98132166",
-        "rho": "0.83055177",
-        "lambda": "0.0567398",
-        "mu": "1.07171e-12",
-        "r": "0.0567398",
-        "r_lo": "0.0556539",
-        "r_hi": "0.0578217",
-        "epsilon": "1.88881e-11",
+        "rho": "0.80558309",
+        "lambda": "0.0576285",
+        "mu": "1.90518e-12",
+        "r": "0.0576285",
+        "r_lo": "0.0565357",
+        "r_hi": "0.0587159",
+        "epsilon": "3.30597e-11",
         "epsilon_lo": "0",
-        "epsilon_hi": "0.00342911",
+        "epsilon_hi": "0.0035585",
         "epsilon_ci": "estimate at 0",
-        "loglik": "-38582.9104",
+        "loglik": "-38566.1869",
         "n_tips_family_fraction": "",
-        "family_uniform_check": ""
+        "family_uniform_check": "",
+        "n_events": "9753",
+        "n_polytomy_nodes": "314",
+        "n_polytomy_events": "4362",
+        "max_children": "222"
       },
       "Squamates|molecular|tips": {
         "n_tips": "5415",
         "crown_age_ma": "186.4151",
         "time_scale_factor": "0.98132166",
-        "rho": "0.46108651",
-        "lambda": "0.0806694",
-        "mu": "0.00942042",
-        "r": "0.071249",
+        "rho": "0.44722498",
+        "lambda": "0.0831699",
+        "mu": "0.0119211",
+        "r": "0.0712488",
         "r_lo": "0.0681383",
-        "r_hi": "0.074386",
-        "epsilon": "0.116778",
-        "epsilon_lo": "0.0356403",
-        "epsilon_hi": "0.191698",
+        "r_hi": "0.0743857",
+        "epsilon": "0.143334",
+        "epsilon_lo": "0.0646017",
+        "epsilon_hi": "0.215998",
         "epsilon_ci": "interior",
         "loglik": "-21310.3153",
         "n_tips_family_fraction": "",
-        "family_uniform_check": ""
+        "family_uniform_check": "",
+        "n_events": "5414",
+        "n_polytomy_nodes": "167",
+        "n_polytomy_events": "1319",
+        "max_children": "121"
       },
       "Squamates|molecular|full_misapplied": {
         "n_tips": "5415",
         "crown_age_ma": "186.4151",
         "time_scale_factor": "0.98132166",
-        "rho": "0.83055177",
-        "lambda": "0.0574408",
-        "mu": "5.12296e-13",
-        "r": "0.0574408",
-        "r_lo": "0.0560165",
-        "r_hi": "0.0588967",
-        "epsilon": "8.91869e-12",
+        "rho": "0.80558309",
+        "lambda": "0.0583302",
+        "mu": "4.48359e-14",
+        "r": "0.0583302",
+        "r_lo": "0.0568953",
+        "r_hi": "0.0597957",
+        "epsilon": "7.68658e-13",
         "epsilon_lo": "0",
-        "epsilon_hi": "0.00902556",
+        "epsilon_hi": "0.00957824",
         "epsilon_ci": "estimate at 0",
-        "loglik": "-21360.7187",
+        "loglik": "-21354.4938",
         "n_tips_family_fraction": "",
-        "family_uniform_check": ""
+        "family_uniform_check": "",
+        "n_events": "5414",
+        "n_polytomy_nodes": "167",
+        "n_polytomy_events": "1319",
+        "max_children": "121"
       },
       "Squamates|molecular|family": {
         "n_tips": "5415",
         "crown_age_ma": "186.4151",
         "time_scale_factor": "0.98132166",
         "rho": "",
-        "lambda": "0.0828269",
-        "mu": "0.0107108",
-        "r": "0.0721162",
-        "r_lo": "0.0690024",
-        "r_hi": "0.0752567",
-        "epsilon": "0.129315",
-        "epsilon_lo": "0.0493674",
-        "epsilon_hi": "0.203083",
+        "lambda": "0.082966",
+        "mu": "0.0108514",
+        "r": "0.0721146",
+        "r_lo": "0.0690007",
+        "r_hi": "0.0752551",
+        "epsilon": "0.130793",
+        "epsilon_lo": "0.0509848",
+        "epsilon_hi": "0.204441",
         "epsilon_ci": "interior",
-        "loglik": "-21376.3983",
+        "loglik": "-21376.5895",
         "n_tips_family_fraction": "5125",
-        "family_uniform_check": "7.28e-12"
+        "family_uniform_check": "6.55e-11",
+        "n_events": "5414",
+        "n_polytomy_nodes": "167",
+        "n_polytomy_events": "1319",
+        "max_children": "121"
       }
     }
   }

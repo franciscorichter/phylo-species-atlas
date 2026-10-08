@@ -28,7 +28,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, os.pardir, os.pardir))
 OUTPUTS = ("worked_example_bd.csv", "worked_example_bd_selection.csv",
            "worked_example_bd_family_fractions.csv",
-           "worked_example_bd_crosscheck.csv")
+           "worked_example_bd_crosscheck.csv", "worked_example_bd_polytomy.csv",
+           "worked_example_bd_family_order.csv")
 
 
 def link(src, dst):

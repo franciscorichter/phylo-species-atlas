@@ -323,6 +323,15 @@ CHRONOGRAM_TOLERANCE = 0.05      # root-to-tip CV at or below this => chronogram
 FRAC_DP = 6                      # published precision of f_mol / roottotip_cv
 PCT_DP = 4                       # published precision of percentages in CSVs
 ELASTICITY_FRACTION = 0.20       # denominator elasticity demonstration
+# Round F1 rule parameters (declared here as in rebuild_atlas.py)
+C1B_WIDTH_RULE_RATIO = 1.0       # interval/prior width at which the prior sets it
+TABLE1_TIPS_OVER_NAMED = 0.10    # Table 1 flag: tips exceed named species by this
+ZERO_BRANCH_TOL = 1e-6           # = ZERO_BRANCH_TOL in worked_example_bd.R
+WORKED_POLY = P("Paper", "inputs", "worked_example_bd_polytomy.csv")
+WORKED_FORDER = P("Paper", "inputs", "worked_example_bd_family_order.csv")
+CROWN_SET_KINDS = ("posterior_sample", "bootstrap_dating_sample",
+                   "calibration_prior_sample", "taxon_addition_sample",
+                   "date_assignment_sample")
 
 SOURCE_NUMERATOR_TOL = 0.02      # |measured - recorded| / recorded
 SOURCE_NONSUBSET_TOL = 0.05      # |source \ shipped| / |source|
@@ -2218,6 +2227,48 @@ def _worked_branching_times(path, keep, scale):
     return sorted((max(h - d, 0.0) * scale for d in out), reverse=True)
 
 
+def _worked_polytomy_counts(path, keep, scale):
+    """(branching events, events at nodes with more than two children) of the
+    tree at `path` restricted to `keep` (None: all), after internal branches
+    shorter than ZERO_BRANCH_TOL (scaled) are collapsed, as ape::di2multi does
+    in worked_example_bd.R: an independent count."""
+    with open(path, encoding="utf-8") as fh:
+        root = COMMON.parse_newick(normalize_newick(fh.read()))
+    tot = [0, 0]
+
+    def fin(k):
+        tot[0] += k - 1
+        if k > 2:
+            tot[1] += k - 1
+
+    def walk(node):
+        kids, name, bl = node
+        b = (bl if bl == bl and bl is not None else 0.0) * scale
+        if not kids:
+            return ("tip", 0, b) if (keep is None or name in keep) else None
+        res = [x for x in (walk(k) for k in kids) if x is not None]
+        if not res:
+            return None
+        if len(res) == 1:
+            kind, k, ln = res[0]
+            return (kind, k, ln + b)
+        k_eff = 0
+        for kind, k, ln in res:
+            if kind == "node" and ln < ZERO_BRANCH_TOL:
+                k_eff += k
+            else:
+                k_eff += 1
+                if kind == "node":
+                    fin(k)
+        return ("node", k_eff, b)
+    import sys as _sys
+    _sys.setrecursionlimit(max(_sys.getrecursionlimit(), 100000))
+    r = walk(root)
+    if r and r[0] == "node":
+        fin(r[1])
+    return tot[0], tot[1]
+
+
 def _worked_loglik(r, eps, x, rho):
     """Stadler (2009) constant-rate birth-death log-likelihood with uniform
     sampling, conditioned on the crown age and survival of both crown
@@ -2274,6 +2325,12 @@ def check_worked_likelihood(ctx, fits, mol, sel):
         R.eq("S13 %s %s %s branching times = tips - 1"
              % (p, f["tree"], f["rho_convention"]), len(x) + 1,
              as_int(f["n_tips"]))
+        ne, npe = _worked_polytomy_counts(
+            os.path.join(STD_TREES, f["canonical_tree"]), keep,
+            as_float(sel[p]["time_scale_factor"]))
+        R.eq("S13 %s %s %s events and events at polytomies, counted here"
+             % (p, f["tree"], f["rho_convention"]), (ne, npe),
+             (as_int(f["n_events"]), as_int(f["n_polytomy_events"])))
         rho, r0 = as_float(f["rho"]), as_float(f["r"])
         ll = _worked_profile_eps(as_float(f["epsilon"]), x, rho, r0)
         R.eq("S13 %s %s %s log-likelihood, independent implementation"
@@ -5653,6 +5710,115 @@ def union_losses(ctx, canon_e, crows):
     return lost, levels
 
 
+def _names(ps):
+    ps = sorted(ps)
+    if not ps:
+        return ""
+    return ps[0] if len(ps) == 1 else ", ".join(ps[:-1]) + " and " + ps[-1]
+
+
+def _worked_poly_macros(eligible, fits):
+    """Polytomy macros, formed here from the fit files of worked_example_bd.R."""
+    w = OrderedDict()
+    poly = read_csv(WORKED_POLY)
+    res = defaultdict(lambda: defaultdict(dict))
+    for r in poly:
+        res[r["partition"]][as_int(r["seed"])][(r["tree"], r["rho_convention"])] = r
+    with_poly, allr = [], []
+    nb = nrej = 0
+    for p in eligible:
+        ff, fm = fits[p + "|full|tips"], fits[p + "|molecular|tips"]
+        if as_int(ff["n_polytomy_events"]) or as_int(fm["n_polytomy_events"]):
+            with_poly.append(p)
+        lrs, rr, bnd, rej = [], [], [], []
+        for sd, f in sorted(res[p].items()):
+            lr = 2.0 * (as_float(f[("molecular", "tips")]["loglik"])
+                        - as_float(f[("molecular", "full_misapplied")]["loglik"]))
+            em = as_float(f[("molecular", "full_misapplied")]["epsilon"])
+            lrs.append(round(lr, 4))
+            rr.append(round(as_float(f[("full", "tips")]["r"])
+                            / as_float(f[("molecular", "tips")]["r"]), 4))
+            bnd.append(em < 1e-6 and lr > 2e-3)
+            rej.append(em < 1e-6 and lr > WORKED_LR_CUTOFF)
+        R.eq("worked polytomy %s: one resolved fit per seed and convention" % p,
+             bool(res[p]) and all(len(v) == 3 for v in res[p].values()), True)
+        allr += rr
+        nb += all(bnd)
+        nrej += all(rej)
+        if p in with_poly:
+            n = crown_macro_name(p)
+            for tree, nm in (("full", "Full"), ("molecular", "Pruned")):
+                f = fits["%s|%s|tips" % (p, tree)]
+                w["WEPolyPct%s%s" % (nm, n)] = _mpct(
+                    100.0 * as_int(f["n_polytomy_events"]) / as_int(f["n_events"]))
+            ft_, fc_ = fits[p + "|molecular|tips"], fits[p + "|molecular|full_misapplied"]
+            if as_float(fc_["epsilon"]) < 1e-6 and abs(as_float(ft_["loglik"])
+                                                       - as_float(fc_["loglik"])) > 1e-3:
+                w["WEPolyLRMin" + n] = "%.1f" % min(lrs)
+                w["WEPolyLRMax" + n] = "%.1f" % max(lrs)
+            w["WEPolyRRatioMin" + n] = "%.2f" % min(rr)
+            w["WEPolyRRatioMax" + n] = "%.2f" % max(rr)
+    w["WEPolyNGroups"] = _mint(len(with_poly))
+    w["WEPolyNames"] = _names(with_poly)
+    w["WEPolyRRatioMin"] = "%.2f" % min(allr)
+    w["WEPolyRRatioMax"] = "%.2f" % max(allr)
+    w["WEPolyNBoundary"] = _mint(nb)
+    w["WEPolyNRejected"] = _mint(nrej)
+    return w
+
+
+def _check_supp_polytomy(byk):
+    """Supplement table of the polytomy-resolution sensitivity, re-derived
+    from the fit files."""
+    poly = read_csv(WORKED_POLY)
+    got = {r["partition"]: r for r in _supp_csv("supp_worked_polytomy")}
+    parts = sorted({k[0] for k in byk})
+    R.eq("Supplement S9 polytomy table: one row per eligible group",
+         sorted(got), parts)
+
+    def rng(vals, fmt):
+        lo, hi = fmt % min(vals), fmt % max(vals)
+        return lo if lo == hi else "%s--%s" % (lo, hi)
+    for p in parts:
+        g = got.get(p)
+        if g is None:
+            continue
+        seeds = defaultdict(dict)
+        for r in poly:
+            if r["partition"] == p:
+                seeds[r["seed"]][(r["tree"], r["rho_convention"])] = r
+        rr, em, lr, bnd, rej = [], [], [], [], []
+        for f in seeds.values():
+            rr.append(round(as_float(f[("full", "tips")]["r"])
+                            / as_float(f[("molecular", "tips")]["r"]), 4))
+            em.append(as_float(f[("molecular", "tips")]["epsilon"]))
+            x = round(2.0 * (as_float(f[("molecular", "tips")]["loglik"])
+                             - as_float(f[("molecular", "full_misapplied")]["loglik"])), 4)
+            lr.append(x)
+            e_ = as_float(f[("molecular", "full_misapplied")]["epsilon"])
+            bnd.append(e_ < 1e-6 and x > 2e-3)
+            rej.append(e_ < 1e-6 and x > WORKED_LR_CUTOFF)
+        ff, fm = byk[(p, "full", "tips")], byk[(p, "molecular", "tips")]
+        fc = byk[(p, "molecular", "full_misapplied")]
+        want = OrderedDict([
+            ("events_full", ff["n_events"]),
+            ("polytomy_events_full", ff["n_polytomy_events"]),
+            ("events_pruned", fm["n_events"]),
+            ("polytomy_events_pruned", fm["n_polytomy_events"]),
+            ("r_ratio", "%.2f" % round(as_float(ff["r"]) / as_float(fm["r"]), 4)),
+            ("r_ratio_resolved", rng(rr, "%.2f")),
+            ("epsilon_matching", "%.2f" % as_float(fm["epsilon"])),
+            ("epsilon_matching_resolved", rng(em, "%.2f")),
+            ("lr", "%.2f" % round(2.0 * (as_float(fm["loglik"])
+                                         - as_float(fc["loglik"])), 4)),
+            ("lr_resolved", rng(lr, "%.2f")),
+            ("outcome_resolved", "mu0_rejected" if all(rej) else "mu0"
+             if all(bnd) else "rescaled" if not any(bnd) else "mixed"),
+        ])
+        for k, v in want.items():
+            R.eq("Supplement S9 polytomy table %s %s" % (p, k), g[k], v)
+
+
 def check_numbermacros(ctx):
     """Every number the manuscript prose quotes is a macro in
     Paper/inputs/numbers_macros.tex.  This check re-derives each one: counts
@@ -5777,6 +5943,29 @@ def check_numbermacros(ctx):
     cal = s["c1b_calibration_fixed"]["rungs"]["C1b"]
     w["SensCalibCOneBN"] = _mint(cal["numerator_union"])
     w["SensCalibCOneBPct"] = _mpct(100.0 * cal["numerator_union"] / D)
+    # round F1: stricter interval classifications, from the register
+    civ = {r["partition"]: r for r in read_csv(CROWN_INTERVALS)}
+    wide = sorted(p_ for p_, r in civ.items() if r["counts_for_c1b"] == "yes"
+                  and r["calibration"] == "two_sided" and r["prior_width_ratio"]
+                  and as_float(r["prior_width_ratio"]) >= C1B_WIDTH_RULE_RATIO)
+    unch = sorted(p_ for p_, r in civ.items() if r["counts_for_c1b"] == "yes"
+                  and r["calibration"] == "not_checked")
+    for nm, drop in (("Width", set(wide)), ("Strict", set(wide) | set(unch))):
+        num = sum(as_float(r["c1_units"]) for r in canon_e
+                  if r["is_chronogram"] == "yes" and r["time_scale"] == "absolute"
+                  and r["interval_recoverable"] == "yes"
+                  and r["partition"] not in drop)
+        w["Sens%sCOneBN" % nm] = _mint(num)
+        w["Sens%sCOneBPct" % nm] = _mpct(100.0 * num / D)
+    w["SensWidthNames"] = _names(wide)
+    w["SensUncheckedNames"] = _names([x for x in unch if x not in wide])
+    w["RuleWidthRatio"] = "%g" % C1B_WIDTH_RULE_RATIO
+    w["RuleTipsOverNamedPct"] = "%.0f" % (100 * TABLE1_TIPS_OVER_NAMED)
+    w["RuleElasticityPct"] = "%.0f" % (100 * ELASTICITY_FRACTION)
+    for key, nm in names[:2]:
+        n_ = rg[key]["numerator_union"]
+        w["SensAllMinus%sPct" % nm] = _mpct(100.0 * n_ / (D * (1 - ELASTICITY_FRACTION)))
+        w["SensAllPlus%sPct" % nm] = _mpct(100.0 * n_ / (D * (1 + ELASTICITY_FRACTION)))
     nob = s["leave_assembly_class_out"]["drop_automated_synthesis"]["rungs"]
     for key, nm in names[:2]:
         w["SensNoBirds%sPct" % nm] = _mpct(100.0 * nob[key]["numerator_union"]
@@ -5808,6 +5997,16 @@ def check_numbermacros(ctx):
         w["CrownExcl" + crown_macro_name(k)] = _mint(excl[k])
     w["CrownNWithInterval"] = _mint(sum(bool(r["interval_kind"]) for r in crows))
     w["CrownNNoInterval"] = _mint(sum(not r["interval_kind"] for r in crows))
+    cset = [r["partition"] for r in crows if r["counts_for_c1b"] == "yes"
+            and r["interval_kind"] in CROWN_SET_KINDS]
+    csum = [r["partition"] for r in crows if r["counts_for_c1b"] == "yes"
+            and r["interval_kind"] not in CROWN_SET_KINDS]
+    oset = [r["partition"] for r in crows if r["counts_for_c1b"] != "yes"
+            and r["interval_kind"] in CROWN_SET_KINDS]
+    for nm, ps in (("CountedSet", cset), ("CountedSummary", csum),
+                   ("SetNotCounted", oset)):
+        w["CrownN" + nm] = _mint(len(ps))
+        w["CrownNames" + nm.replace("NotCounted", "NotCounted")] = _names(ps)
     # declared rule parameters, read from the script that applies them
     spec = importlib.util.spec_from_file_location(
         "crown_intervals_rules", P("scripts", "crown_intervals.py"))
@@ -5930,6 +6129,8 @@ def check_numbermacros(ctx):
         w["WERRatio" + n] = "%.2f" % (as_float(ff["r"]) / as_float(ft["r"]))
         w["WEEpsFamily" + n] = "%.2f" % as_float(fm["epsilon"])
         w["WERFamily" + n] = "%.3f" % as_float(fm["r"])
+    # round F1 (F1-14): polytomies and the fits with them resolved
+    w.update(_worked_poly_macros(we["eligible"], fits))
     for r in canon_e:
         n = crown_macro_name(r["partition"])
         d = as_int(r["described"], 0)
@@ -5965,7 +6166,7 @@ MOLECULAR_TIPS_CSV = P("Data", "molecular_tips.csv")
 
 
 def _rho(x):
-    return "%.2f" % x if x >= 0.1 else "%.2g" % x
+    return "%.2f" % x if x >= 0.1 else "%#.2g" % x
 
 
 def check_tables(ctx):
@@ -6034,6 +6235,10 @@ def check_tables(ctx):
              "yes" if p in mo else "no")
         R.eq("Table 1 %s rho full" % p, g["rho_full"], _rho(tips / d))
         R.eq("Table 1 %s rho molecular" % p, g["rho_molecular"], _rho(mt / d))
+        R.eq("Table 1 %s tips exceed named species by the flag fraction" % p,
+             g["tips_exceed_named"],
+             "yes" if tips > (1 + TABLE1_TIPS_OVER_NAMED) * as_int(b["c0_units"])
+             else "no")
     # the molecular tip counts behind rho equal the worked-example fits
     fits = ctx.head["worked_example_S13"]["fits"]
     for p in ctx.head["worked_example_S13"]["eligible"]:
@@ -6362,11 +6567,19 @@ def check_supplement(ctx):
             ("accepted", acc), ("synonym", syn), ("unresolved", n - len(res)),
             ("unresolved_pct", "%.1f" % (100.0 * (n - len(res)) / n)),
             ("named_species", named), ("merged", len(res) - named),
-            ("gbif_added", (gb.get(p) or {}).get("gbif_species_added", 0))]))
+            ("gbif_added", (gb.get(p) or {}).get("gbif_species_added", 0)),
+            ("override", sum(1 for r in res
+                             if r.get("query_source") == "override"))]))
         R.eq("%s named species = c0_units" % p, named, as_int(b["c0_units"]))
     _supp_cmp_table("supp_names", order(rows),
                     ["partition", "labels", "accepted", "synonym", "unresolved",
-                     "unresolved_pct", "named_species", "merged", "gbif_added"])
+                     "unresolved_pct", "named_species", "merged", "gbif_added",
+                     "override"])
+    ovr_ids = {r["standardized_id"] for r in read_csv(NAME_OVERRIDES)}
+    R.eq("every override query comes from a row of name_overrides.csv",
+         all(sid in ovr_ids for rows_ in ctx.col_rows.values()
+             for sid, r in rows_.items() if r.get("query_source") == "override"),
+         True)
 
     # ---- molecular tips --------------------------------------------------
     nmol = Counter(r["partition"] for r in read_csv(MOLECULAR_TIPS_CSV))
@@ -6437,7 +6650,8 @@ def check_supplement(ctx):
                 iv["prior_containment"])) if iv.get("prior_containment")
              else ""),
             ("status", st)]))
-        if st == "prior_reproduced" and iv.get("prior_containment"):
+        if st == "prior_reproduced" and iv.get("prior_containment") \
+                and iv.get("kind") != "calibration_prior_sample":
             R.eq("%s prior rule: containment and width ratio" % p,
                  as_float(iv["prior_containment"]) >= PRIOR_CONTAINMENT_MIN
                  and as_float(iv["prior_width_ratio"]) >= PRIOR_WIDTH_RATIO_MIN,
@@ -6510,6 +6724,17 @@ def check_supplement(ctx):
     u = h["union_bound_S09"]
     check_row("union", D, OrderedDict([("C0", u["C0_union"]),
                                        ("C1", u["C1_union_high"])]))
+    civ = {r["partition"]: r for r in read_csv(CROWN_INTERVALS)}
+    wide = {p_ for p_, r in civ.items() if r["counts_for_c1b"] == "yes"
+            and r["calibration"] == "two_sided" and r["prior_width_ratio"]
+            and as_float(r["prior_width_ratio"]) >= C1B_WIDTH_RULE_RATIO}
+    unch = {p_ for p_, r in civ.items() if r["counts_for_c1b"] == "yes"
+            and r["calibration"] == "not_checked"}
+    for key, drop in (("width_rule", wide), ("strict", wide | unch)):
+        lv = levels(canon_e, lambda r, d_=drop: r["partition"] not in d_)
+        check_row(key, D, OrderedDict([("C1b", lv["C1b"])]))
+        R.eq("Supplement S7 %s prints the interval level only" % key,
+             [sens[key][k] for k in ("C0", "C1", "C1d")], ["", "", ""])
 
     # ---- denominators by group -------------------------------------------
     uni = u["per_partition"]
@@ -6571,6 +6796,11 @@ def check_supplement(ctx):
                  g[k], fmt % as_float(fr[k]))
         R.eq("Supplement S9 %s %s tips" % (g["partition"], g["tree"]),
              as_int(g["n_tips"]), as_int(fr["n_tips"]))
+        R.eq("Supplement S9 %s %s %s events, at polytomies" % (
+            g["partition"], g["tree"], g["rho_convention"]),
+            (g["n_events"], g["n_polytomy_events"]),
+            (fr["n_events"], fr["n_polytomy_events"]))
+    _check_supp_polytomy(byk)
     fam = read_csv(WORKED_FAMILY_FRACTIONS)
     for g in _supp_csv("supp_worked_families"):
         fs = sorted(as_float(r["f"]) for r in fam
@@ -6580,6 +6810,25 @@ def check_supplement(ctx):
         if fs:
             R.eq("Supplement S9 %s min/max fraction" % g["partition"],
                  (g["f_min"], g["f_max"]), ("%.2f" % fs[0], "%.2f" % fs[-1]))
+        fr_ = [r for r in fam if r["partition"] == g["partition"]
+               and r["n_col_species"]]
+        R.eq("Supplement S9 %s pooled family fraction" % g["partition"],
+             g["f_pooled"], _rho(sum(as_int(r["n_accepted_names"]) for r in fr_)
+                                 / float(sum(as_int(r["n_col_species"])
+                                             for r in fr_))))
+        fo = {r["child"]: r for r in read_csv(WORKED_FORDER)
+              if r["partition"] == g["partition"]}
+        R.eq("Supplement S9 %s family fit, u from the first and the last child"
+             % g["partition"],
+             (g["r_first"], g["r_last"], g["epsilon_first"], g["epsilon_last"]),
+             ("%.4f" % as_float(fo["first"]["r"]), "%.4f" % as_float(fo["last"]["r"]),
+              "%.3f" % as_float(fo["first"]["epsilon"]),
+              "%.3f" % as_float(fo["last"]["epsilon"])))
+        R.eq("Supplement S9 %s family fit with u from the first child = the "
+             "reported family fit" % g["partition"],
+             (as_float(fo["first"]["r"]), as_float(fo["first"]["loglik"])),
+             (as_float(byk[(g["partition"], "molecular", "family")]["r"]),
+              as_float(byk[(g["partition"], "molecular", "family")]["loglik"])))
     for f in read_csv(WORKED_FITS):
         if f["rho_convention"] == "family":
             R.eq("Supplement S9 %s family likelihood = uniform at equal f, "
@@ -6626,10 +6875,11 @@ def check_supplement(ctx):
          "%g" % (100 * WORKED_CROSSCHECK_RTOL))
     rd = 0.0
     for r in read_csv(WORKED_CHECK):
+        lam = max(as_float(r["this_lambda"]), as_float(r["phytools_lambda"]))
         for a_, b_ in (("this_lambda", "phytools_lambda"), ("this_mu", "phytools_mu")):
             x, y = as_float(r[a_]), as_float(r[b_])
-            if max(abs(x), abs(y)) > 1e-6:
-                rd = max(rd, abs(x - y) / max(abs(x), abs(y)))
+            if lam > 1e-6:
+                rd = max(rd, abs(x - y) / lam)
     R.eq("phytools cross-check within the stated tolerance",
          rd <= WORKED_CROSSCHECK_RTOL, True)
     sel = Counter(r["selection"] for r in reg.values())
@@ -6654,6 +6904,20 @@ def check_supplement(ctx):
     R.eq("macro SuppRestoredBranchLengthsN", num("SuppRestoredBranchLengthsN"),
          sum(as_int(r["branch_lengths_restored"], 0) for r in rest))
     R.eq("macro SuppShippedTreesN", num("SuppShippedTreesN"), len(shipped))
+    R.eq("macro SuppPolySeedsN", num("SuppPolySeedsN"),
+         len({r["seed"] for r in read_csv(WORKED_POLY)}))
+    fo = defaultdict(dict)
+    for r in read_csv(WORKED_FORDER):
+        fo[r["partition"]][r["child"]] = r
+    R.eq("macro SuppFamOrderMaxRDiffPct", mac["SuppFamOrderMaxRDiffPct"],
+         "%.1f" % (100 * max(abs(as_float(v["last"]["r"]) - as_float(v["first"]["r"]))
+                             / as_float(v["first"]["r"]) for v in fo.values())))
+    R.eq("macro SuppFamOrderMaxEpsDiff", mac["SuppFamOrderMaxEpsDiff"],
+         "%.3f" % max(abs(as_float(v["last"]["epsilon"]) - as_float(v["first"]["epsilon"]))
+                      for v in fo.values()))
+    R.eq("macro SuppFamOrderMaxDLL", mac["SuppFamOrderMaxDLL"],
+         "%.1f" % max(abs(as_float(v["first"]["loglik_last_at_first_mle"])
+                          - as_float(v["first"]["loglik"])) for v in fo.values()))
 
 
 
@@ -6848,6 +7112,29 @@ def release_path_known(path):
     return path in rp
 
 
+def _check_release_readme():
+    """Round F1: the numbers the release README prints equal the macros of the
+    paper (the README is a release-only file, written by hand)."""
+    path = os.path.join(RELEASE_FILES, "README.md")
+    t = open(path, encoding="utf-8").read()
+    mac = OrderedDict(_macros_in(NUMBER_MACROS))
+    plain = lambda v: v.replace("{,}", ",")                    # noqa: E731
+    m = re.search(r"The ([\d,]+) described eukaryotic species are divided into "
+                  r"(\d+) groups; (\d+) of them", t)
+    R.eq("release README: described species, groups, groups with a tree",
+         m.groups() if m else None,
+         (plain(mac["DescribedEuk"]), plain(mac["NumPartitionsEuk"]),
+          plain(mac["NumCanonicalEuk"])))
+    for lv, nm in (("Named", "CZero"), ("Molecular", "COne"), ("Dated", "COneD"),
+                   ("Interval", "COneB")):
+        m = re.search(r"^\| %s \|[^\n]*\| ([\d,]+) \| ([\d.]+) \|$" % lv, t, re.M)
+        R.eq("release README level %s" % lv, m.groups() if m else None,
+             (plain(mac[nm + "N"]), mac[nm + "Pct"]))
+    m = re.search(r"The interval level is ([\d.]+)% when every archived", t)
+    R.eq("release README: every archived interval counted",
+         m.group(1) if m else None, mac["SensAllIntCOneBPct"])
+
+
 def check_release(ctx):
     """The paper names data release \\IdDataRelease and prints paths in it.
     scripts/build_release.py writes the release from release/path_map.csv
@@ -6858,6 +7145,7 @@ def check_release(ctx):
     Paper/inputs/ is mapped into the release; the release's CITATION.cff
     carries the paper's title and the release version printed in the text."""
     rows = read_csv(RELEASE_MAP)
+    _check_release_readme()
     seen = Counter(r["release_path"] for r in rows)
     R.eq("path_map.csv lists each release path once",
          sorted(k for k, n in seen.items() if n > 1), [])
@@ -6951,36 +7239,41 @@ def check_biorxiv(ctx):
             R.eq("the data statement names %s" % need, need in da.group(1), True)
     v = re.search(r"\\newcommand\{\\DataVersionDOI\}\{(.*)\}\s*$", meta, re.M)
     R.eq("metadata_v2.tex defines DataVersionDOI", bool(v), True)
-    if v and "doi.org/10.5281/zenodo." not in v.group(1):
-        R.note("the version DOI of the data release is not yet in the text: "
-               "\\DataVersionDOI reads '%s'; Zenodo mints it when the release "
-               "is published" % v.group(1))
+    minted = re.search(r"^\\newif\\ifDataVersionMinted\\DataVersionMintedtrue",
+                       meta, re.M) is not None
+    R.eq("a version DOI is cited only once minted, and then is a Zenodo DOI",
+         (not minted) or (v is not None and "doi.org/10.5281/zenodo." in v.group(1)),
+         True)
+    if not minted:
+        R.note("the data statement cites tag \\IdDataRelease and the concept "
+               "DOI; the version DOI is added (\\DataVersionMintedtrue) once "
+               "Zenodo mints it")
 
 
 CHECKS = [
     ("INPUTS", "every required file exists"),
     ("TREES", "re-measure the shipped .nwk files"),
     ("BRANCHLEN", "every shipped tree reproduces its declared reference"),
-    ("FILE-TRUTH", "dated <=> ultrametric in every ledger of record"),
-    ("DECISIONS", "D4, D7 and D8 re-derived from their registers"),
-    ("NAMES", "S05 CoL name resolution re-derived"),
-    ("UNION", "S09 union of all distributed trees, recomputed"),
-    ("COLDEN", "S08 CoL single-authority denominators"),
-    ("OPENTREE", "P01 Open Tree comparison recomputed"),
-    ("CROWN", "S02 crown ages and their deposited intervals"),
-    ("CROWNREG", "A13 one crown-age register"),
-    ("PREAUDIT", "ground truth describes the pre-audit ledgers correctly"),
+    ("FILE-TRUTH", "dated if and only if ultrametric, in every metadata file"),
+    ("DECISIONS", "tips removed and merged, and chronograms chosen, re-derived from their registers"),
+    ("NAMES", "Catalogue of Life name resolution re-derived"),
+    ("UNION", "named species of all redistributed trees, recomputed"),
+    ("COLDEN", "Catalogue of Life counts used as denominators"),
+    ("OPENTREE", "Open Tree of Life comparison recomputed"),
+    ("CROWN", "crown ages and their archived intervals"),
+    ("CROWNREG", "one register of crown ages for text, tables and figures"),
+    ("PREAUDIT", "superseded tree metadata described correctly"),
     ("INVARIANTS", "described/estimated/tips bounds, per partition"),
-    ("BASIS", "coverage_basis.csv's 62-row deposit contract"),
-    ("FMOL", "every f_mol re-measured from the source analysis"),
+    ("BASIS", "the per-group table: one row per group, every column"),
+    ("FMOL", "every molecular fraction re-measured from the source analysis"),
     ("HEADLINES", "every headline recomputed independently"),
     ("PERCENTS", "every percentage reaches a numerator and a denominator"),
     ("MONOTONICITY", "a stricter setting never increases coverage"),
     ("MOLTIPS", "molecular_tips.csv enumerates the measured tip sets"),
-    ("C1COUNT", "C1 counted as accepted names among molecular tips"),
-    ("WORKED", "S13 worked example run on the current deposit"),
-    ("GBIF", "C0 with GBIF-resolved unmatched tips (A10)"),
-    ("UNITS", "species at C0 only; tip-equivalents below"),
+    ("C1COUNT", "molecular coverage counted as accepted names among molecular tips"),
+    ("WORKED", "worked example fitted on the current trees"),
+    ("GBIF", "named coverage with GBIF-resolved labels"),
+    ("UNITS", "levels below named coverage counted in tips where tips are not listed"),
     ("CROSSLEDGER", "no field holds two different values"),
     ("NOLITERALS", "no coverage number hard-coded in a figure script"),
     ("NOABSPATHS", "no absolute home-directory path in code"),
@@ -7016,28 +7309,28 @@ def run(args):
     run_check("TREES", "re-measure the shipped .nwk files", measure_trees, ctx)
     run_check("BRANCHLEN", "every shipped tree reproduces its declared reference",
               check_branchlen, ctx)
-    run_check("FILE-TRUTH", "dated <=> ultrametric in every ledger of record",
+    run_check("FILE-TRUTH", "dated if and only if ultrametric, in every metadata file",
               check_file_truth, ctx)
-    run_check("DECISIONS", "D4, D7 and D8 re-derived from their registers",
+    run_check("DECISIONS", "tips removed and merged, and chronograms chosen, re-derived from their registers",
               check_decisions, ctx)
-    run_check("NAMES", "S05 CoL name resolution re-derived",
+    run_check("NAMES", "Catalogue of Life name resolution re-derived",
               check_names, ctx)
-    run_check("UNION", "S09 union of all distributed trees, recomputed",
+    run_check("UNION", "named species of all redistributed trees, recomputed",
               check_union, ctx)
-    run_check("COLDEN", "S08 CoL single-authority denominators",
+    run_check("COLDEN", "Catalogue of Life counts used as denominators",
               check_colden, ctx)
-    run_check("OPENTREE", "P01 Open Tree comparison recomputed",
+    run_check("OPENTREE", "Open Tree of Life comparison recomputed",
               check_opentree, ctx)
-    run_check("CROWN", "S02 crown ages and their deposited intervals",
+    run_check("CROWN", "crown ages and their archived intervals",
               check_crown, ctx)
-    run_check("CROWNREG", "A13 one crown-age register", check_crownreg, ctx)
+    run_check("CROWNREG", "one register of crown ages for text, tables and figures", check_crownreg, ctx)
     run_check("PREAUDIT", "ground truth describes the pre-audit ledgers",
               check_preaudit, ctx)
     run_check("INVARIANTS", "described/estimated/tips bounds, per partition",
               check_invariants, ctx)
-    run_check("BASIS", "coverage_basis.csv's 62-row deposit contract",
+    run_check("BASIS", "the per-group table: one row per group, every column",
               check_basis, ctx)
-    run_check("FMOL", "every f_mol re-measured from the source analysis",
+    run_check("FMOL", "every molecular fraction re-measured from the source analysis",
               check_fmol, ctx)
 
     ctx.my_rows = my_basis(ctx)
@@ -7050,13 +7343,13 @@ def run(args):
               check_monotonicity, ctx)
     run_check("MOLTIPS", "molecular_tips.csv enumerates the measured tip sets",
               check_moltips, ctx)
-    run_check("C1COUNT", "C1 counted as accepted names among molecular tips",
+    run_check("C1COUNT", "molecular coverage counted as accepted names among molecular tips",
               check_c1count, ctx)
-    run_check("WORKED", "S13 worked example run on the current deposit",
+    run_check("WORKED", "worked example fitted on the current trees",
               check_worked, ctx)
-    run_check("GBIF", "C0 with GBIF-resolved unmatched tips (A10)",
+    run_check("GBIF", "named coverage with GBIF-resolved labels",
               check_gbif, ctx)
-    run_check("UNITS", "species at C0 only; tip-equivalents below",
+    run_check("UNITS", "levels below named coverage counted in tips where tips are not listed",
               check_units, ctx)
     run_check("CROSSLEDGER", "no field holds two different values",
               check_crossledger, ctx)

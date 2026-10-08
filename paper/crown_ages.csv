@@ -12,7 +12,7 @@ Fish,fish.nwk,Actinopterygii,368.0270,root height of the canonical file,368.0270
 Gastropods,gastropods.nwk,Gastropoda,479.6000,focal node height in the deposited chronogram,479.6000,node_hpd_annotation,yes,,434.2000,,528.8000,,1,94.6000,no,no,one_sided,no,raw/revision-2026-10/gastropods/bitbucket_gastropoda/data/Chronogram.tre
 Mammals,mammals.nwk,Mammalia,187.3458,annotated height_median,180.8472,node_hpd_annotation,yes,,166.7172,187.3458,210.9306,height_median,1,44.2134,no,no,two_sided,no,raw/mammals/upham2019_mammal_MCC_5911sp.tre
 Seed plants,seed_plants.nwk,Spermatophyta,325.0508,root height of the canonical file,325.0508,,,,,,,,,,,,,,
-Sharks,sharks.nwk,Chondrichthyes,377.8235,median over 10000 trees,396.0125,calibration_prior_sample,no,prior_reproduced,353.4311,377.8235,437.4969,median,10000,84.0658,no,no,,no,raw/revision-2026-10/sharks/vertlife_download/1.cal.tree.nex
+Sharks,sharks.nwk,Chondrichthyes,377.8235,median over 10000 trees,396.0125,calibration_prior_sample,no,prior_reproduced,353.4311,377.8235,437.4969,median,10000,84.0658,no,no,two_sided,no,raw/revision-2026-10/sharks/vertlife_download/1.cal.tree.nex
 Spiders,spiders.nwk,Araneae,366.0864,root height of the canonical file,366.0864,,,,,,,,,,,,,,
 Sponges,sponges.nwk,Demospongiae,526.4421,focal node height in the deposited chronogram,526.4421,node_label_interval,no,prior_reproduced,514.6480,,540.8240,,1,26.1760,no,no,two_sided,yes,standardized/trees/sponges.nwk
 Squamates,squamates.nwk,Squamata,186.4151,median over 10000 trees,189.9633,posterior_sample,yes,,176.9718,186.4151,203.0625,median,10000,26.0907,no,no,not_checked,no,raw/revision-2026-10/squamates/posterior/squam_shl_new_Posterior_9755.*.trees

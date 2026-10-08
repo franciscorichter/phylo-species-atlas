@@ -101,9 +101,29 @@
 # against phytools::fit.bd on every fitted tree of up to CROSSCHECK_MAX_TIPS
 # tips (reported in the output).
 #
+# POLYTOMIES (round F1, finding F1-14).  Consensus summary trees carry nodes
+# with more than two children; zero-length internal branches are the same thing
+# written as a binary tree.  Every fit records, on its tree after
+# di2multi(tol = ZERO_BRANCH_TOL), the internal nodes with more than two
+# children, the branching events at them (k - 1 per node) and all branching
+# events.  Sensitivity (worked_example_bd_polytomy.csv): each uniform-sampling
+# fit is repeated with the polytomies resolved, by keeping one event at the
+# node's age and drawing its other k - 2 events uniformly between that age and
+# the age of the node's oldest child, for seeds POLY_SEEDS.  Under uniform
+# sampling the likelihood depends on the branching times only, so no topology
+# needs to be drawn.
+#
+# CHILD ORDER OF THE FAMILY FIT (finding F1-16).  The clade-specific
+# likelihood takes u at a node from one child, so its value depends on the
+# order in which children are stored.  The family fit is repeated with u taken
+# from the last child instead of the first (worked_example_bd_family_order.csv).
+#
 # OUTPUT  Paper/inputs/worked_example_bd.csv            one row per fit
 #         Paper/inputs/worked_example_bd_selection.csv  the eligible partitions
 #         Paper/inputs/worked_example_bd_crosscheck.csv phytools agreement
+#         Paper/inputs/worked_example_bd_polytomy.csv   polytomies resolved
+#         Paper/inputs/worked_example_bd_family_order.csv  family fit, u from
+#                                                       the last child
 #
 # USAGE   Rscript Paper/code/analysis/worked_example_bd.R [REPO_ROOT]
 
@@ -122,6 +142,11 @@ EPS_MAX <- 1 - 1e-9                # epsilon < 1 (mu < lambda)
 # phytools::fit.bd (the cross-check) exhausts 16 GB above ~1e4 tips; it is run
 # on every fitted tree up to this size, which validates the likelihood code.
 CROSSCHECK_MAX_TIPS <- 15000
+# A branch shorter than this (Myr, after rescaling) is a zero-length branch:
+# its two ends are one polytomy (ape::di2multi tolerance).
+ZERO_BRANCH_TOL <- 1e-6
+# Seeds of the polytomy-resolution sensitivity (F1-14).
+POLY_SEEDS <- c(1L, 2L, 3L)
 
 basis <- read.csv(P("Data", "coverage_basis.csv"), stringsAsFactors = FALSE)
 moltips <- read.csv(P("Data", "molecular_tips.csv"), stringsAsFactors = FALSE,
@@ -177,6 +202,36 @@ branching_events <- function(tr) {
   sort(pmax(ev, 0), decreasing = TRUE)
 }
 
+polytomy_stats <- function(tr) {
+  t <- di2multi(tr, tol = ZERO_BRANCH_TOL)
+  n <- Ntip(t)
+  kids <- tabulate(t$edge[, 1], nbins = n + t$Nnode)[(n + 1):(n + t$Nnode)]
+  # the crown node with k children carries k - 1 events, as every other node
+  c(n_events = sum(kids - 1L), n_polytomy_nodes = sum(kids > 2L),
+    n_polytomy_events = sum((kids - 1L)[kids > 2L]),
+    max_children = max(kids))
+}
+
+# Branching times with every polytomy resolved at random (F1-14): one event at
+# the node's age, its other k - 2 drawn uniformly between that age and the
+# age of the node's oldest child.
+resolved_events <- function(tr, seed) {
+  t <- di2multi(tr, tol = ZERO_BRANCH_TOL)
+  n <- Ntip(t); N <- n + t$Nnode
+  depth <- node.depth.edgelength(t)
+  age <- max(depth[1:n]) - depth
+  age[age < 0] <- 0; age[1:n] <- 0
+  kids <- tabulate(t$edge[, 1], nbins = N)
+  oldest <- numeric(N)
+  oc <- tapply(age[t$edge[, 2]], t$edge[, 1], max)
+  oldest[as.integer(names(oc))] <- oc
+  set.seed(seed)
+  inner <- (n + 1L):N
+  ex <- rep(inner, pmax(kids[inner] - 2L, 0L))
+  ev <- c(age[inner], runif(length(ex), oldest[ex], age[ex]))
+  sort(pmax(ev, 0), decreasing = TRUE)
+}
+
 loglik <- function(r, eps, x, rho) {
   lam <- r / (1 - eps); mu <- eps * lam
   n <- length(x) + 1
@@ -189,7 +244,7 @@ loglik <- function(r, eps, x, rho) {
 
 # clade-specific sampling: tree t, per-tip sampling fractions f (named by tip
 # label).  Vectorised over the nodes of one height level at a time.
-prep_tree <- function(t, f) {
+prep_tree <- function(t, f, child = "first") {
   t <- reorder(t, "postorder")
   n <- Ntip(t); N <- n + t$Nnode
   depth <- node.depth.edgelength(t)
@@ -201,7 +256,8 @@ prep_tree <- function(t, f) {
     pa <- t$edge[e, 1]; ch <- t$edge[e, 2]
     lev[pa] <- max(lev[pa], lev[ch] + 1L)
   }
-  first <- !duplicated(t$edge[, 1])          # first child edge of each parent
+  first <- if (child == "first") !duplicated(t$edge[, 1]) else
+    !duplicated(t$edge[, 1], fromLast = TRUE)  # the child u is taken from
   elev <- lev[t$edge[, 1]]
   levels <- lapply(split(seq_len(nrow(t$edge)), elev), function(sel) {
     pa <- t$edge[sel, 1]
@@ -292,6 +348,7 @@ FITS <- list(c("full", "tips"), c("molecular", "tips"),
 rows <- list()
 check <- NULL
 famtabs <- list()
+poly <- list(); ford <- list()
 for (i in seq_len(nrow(elig))) {
   b <- elig[i, ]
   tr <- read.tree(P("Data", "standardized", "trees", b$canonical_tree))
@@ -328,6 +385,30 @@ for (i in seq_len(nrow(elig))) {
       ci_e <- profile_ci(x, rho, m, "eps")
     }
     lam <- m$r / (1 - m$eps)
+    ps <- polytomy_stats(t)
+    if (conv == "family") {
+      po <- prep_tree(t, setNames(fk, t$tip.label), child = "last")
+      mo <- fit_clade(po, x)
+      ford[[length(ford) + 1]] <- data.frame(
+        partition = b$partition, tree = tn, rho_convention = conv,
+        child = c("first", "last"),
+        r = signif(c(m$r, mo$r), 6), epsilon = signif(c(m$eps, mo$eps), 6),
+        loglik = round(c(m$ll, mo$ll), 4),
+        loglik_last_at_first_mle = round(loglik_clade(m$r, m$eps, po), 4),
+        stringsAsFactors = FALSE)
+    } else {
+      for (sd in POLY_SEEDS) {
+        xs <- resolved_events(t, sd)
+        ms <- fit(xs, rho)
+        lams <- ms$r / (1 - ms$eps)
+        poly[[length(poly) + 1]] <- data.frame(
+          partition = b$partition, tree = tn, rho_convention = conv,
+          seed = sd, rho = signif(rho, 8), lambda = signif(lams, 6),
+          mu = signif(ms$eps * lams, 6), r = signif(ms$r, 6),
+          epsilon = signif(ms$eps, 6), loglik = round(ms$ll, 4),
+          stringsAsFactors = FALSE)
+      }
+    }
     rows[[length(rows) + 1]] <- data.frame(
       partition = b$partition, tree = tn,
       canonical_tree = b$canonical_tree, n_tips = Ntip(t),
@@ -342,6 +423,9 @@ for (i in seq_len(nrow(elig))) {
       loglik = round(m$ll, 4),
       n_tips_family_fraction = n_tip_family,
       family_uniform_check = signif(uni_check, 3),
+      n_events = ps[["n_events"]], n_polytomy_nodes = ps[["n_polytomy_nodes"]],
+      n_polytomy_events = ps[["n_polytomy_events"]],
+      max_children = ps[["max_children"]],
       stringsAsFactors = FALSE)
     cat(sprintf("%-12s %-9s %-13s n=%7d rho=%.5f r=%.5f [%.5f, %.5f] eps=%.4f [%.4f, %.4f]\n",
                 b$partition, tn, conv, Ntip(t), rho, m$r, ci_r[1], ci_r[2],
@@ -381,6 +465,11 @@ fam <- fam[order(fam$partition, fam$kingdom, fam$family),
 fam$f <- signif(fam$f, 8)
 write.csv(fam, P("Paper", "inputs", "worked_example_bd_family_fractions.csv"),
           row.names = FALSE, na = "")
+write.csv(do.call(rbind, poly), P("Paper", "inputs", "worked_example_bd_polytomy.csv"),
+          row.names = FALSE)
+write.csv(do.call(rbind, ford),
+          P("Paper", "inputs", "worked_example_bd_family_order.csv"),
+          row.names = FALSE)
 if (!is.null(check))
   write.csv(check, P("Paper", "inputs", "worked_example_bd_crosscheck.csv"),
             row.names = FALSE)

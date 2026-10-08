@@ -2,26 +2,26 @@ check,title
 INPUTS,every required file exists
 TREES,re-measure the shipped .nwk files
 BRANCHLEN,every shipped tree reproduces its declared reference
-FILE-TRUTH,dated <=> ultrametric in every ledger of record
-DECISIONS,"D4, D7 and D8 re-derived from their registers"
-NAMES,S05 CoL name resolution re-derived
-UNION,"S09 union of all distributed trees, recomputed"
-COLDEN,S08 CoL single-authority denominators
-OPENTREE,P01 Open Tree comparison recomputed
-CROWN,S02 crown ages and their deposited intervals
-CROWNREG,A13 one crown-age register
-PREAUDIT,ground truth describes the pre-audit ledgers correctly
+FILE-TRUTH,"dated if and only if ultrametric, in every metadata file"
+DECISIONS,"tips removed and merged, and chronograms chosen, re-derived from their registers"
+NAMES,Catalogue of Life name resolution re-derived
+UNION,"named species of all redistributed trees, recomputed"
+COLDEN,Catalogue of Life counts used as denominators
+OPENTREE,Open Tree of Life comparison recomputed
+CROWN,crown ages and their archived intervals
+CROWNREG,"one register of crown ages for text, tables and figures"
+PREAUDIT,superseded tree metadata described correctly
 INVARIANTS,"described/estimated/tips bounds, per partition"
-BASIS,coverage_basis.csv's 62-row deposit contract
-FMOL,every f_mol re-measured from the source analysis
+BASIS,"the per-group table: one row per group, every column"
+FMOL,every molecular fraction re-measured from the source analysis
 HEADLINES,every headline recomputed independently
 PERCENTS,every percentage reaches a numerator and a denominator
 MONOTONICITY,a stricter setting never increases coverage
 MOLTIPS,molecular_tips.csv enumerates the measured tip sets
-C1COUNT,C1 counted as accepted names among molecular tips
-WORKED,S13 worked example run on the current deposit
-GBIF,C0 with GBIF-resolved unmatched tips (A10)
-UNITS,species at C0 only; tip-equivalents below
+C1COUNT,molecular coverage counted as accepted names among molecular tips
+WORKED,worked example fitted on the current trees
+GBIF,named coverage with GBIF-resolved labels
+UNITS,levels below named coverage counted in tips where tips are not listed
 CROSSLEDGER,no field holds two different values
 NOLITERALS,no coverage number hard-coded in a figure script
 NOABSPATHS,no absolute home-directory path in code

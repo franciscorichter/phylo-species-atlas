@@ -36,19 +36,20 @@ Licence: CC BY 4.0 (`LICENSE`); the source trees keep the terms of their origina
 
 ## The four coverage levels
 
-The 2,159,542 described eukaryotic species are divided into 60 groups; 24 of them have a
+The 2,148,519 described eukaryotic species are divided into 60 groups; 24 of them have a
 species-level phylogeny, and for each the largest one found is the group's reference tree. A
 described species is counted at four nested levels:
 
 | Level | A species counts when | Species | % of described |
 |---|---|---:|---:|
-| Named | its Catalogue of Life (COL26.9) accepted name is a tip of its group's reference tree | 395,517 | 18.3 |
+| Named | its Catalogue of Life (COL26.9) accepted name is a tip of its group's reference tree | 395,517 | 18.4 |
 | Molecular | it is named, and the tip is in the molecular analysis from which the tree was built | 157,201 | 7.3 |
-| Dated | it is molecular, and the reference tree is a chronogram in absolute time | 113,180 | 5.2 |
-| Interval | it is dated, and the source archive carries a divergence-time interval for the focal crown that a calibration does not set | 13,649 | 0.63 |
+| Dated | it is molecular, and the reference tree is a chronogram in absolute time | 113,180 | 5.3 |
+| Interval | it is dated, and the source archive carries a divergence-time interval for the focal crown that a calibration does not set | 13,649 | 0.64 |
 
-A species named in two groups' trees counts once. The interval level is 1.6% when every archived
-interval is counted, whatever its kind. Bacteria and Archaea are counted separately, in GTDB
+A species named in two groups' trees counts once. The interval level is 1.7% when every archived
+interval is counted, whatever its kind, and 0.20% when an interval at least as wide as its two-sided
+calibration prior, or with a calibration that was not checked, is not counted. Bacteria and Archaea are counted separately, in GTDB
 species clusters, and enter no eukaryotic number. The values above are those of
 `paper/headline_numbers.json`, which `scripts/reproduce_paper.py` recomputes.
 
@@ -146,10 +147,13 @@ paper:
 - its coverage percentages are tips over described species of each dataset, taken from
   `data_provenance.csv`, not the four levels above, and its described-species totals and crown
   ages are the values typed there;
-- built from this release, it shows and offers for download, for 24 trees (20 of them reference
-  trees), the copies in `site/data/partitions/*/tree.nwk` instead of the files in
-  `standardized/trees/`; no copy is identical to the release file, and 17 of the 20
-  reference-tree copies have a different set of tips;
+- built from this release, it shows and offers for download the copies in
+  `site/data/partitions/*/tree.nwk` instead of the files in `standardized/trees/`. Of the 24
+  copies that share a name with a release file, all of them reference trees, 4 (Archaea,
+  Bacteria, Bivalves, Cephalopods) are identical to it, 4 (Birds, Bryophytes, Sharks, Sponges)
+  have its tips but differ in branch lengths or labels, and 16 have a different set of tips; the
+  Cnidaria copy has no release file of that name (the Cnidaria reference tree is `corals.nwk`),
+  and the Crocodilians reference tree has no copy;
 - the committed `site/data.json` was built from release v1.0.8 and lists `timetree.nwk`, which is
   not redistributed. The deployment workflow (`.github/workflows/pages.yml`) rebuilds it from the
   files above on every push to `main`.
