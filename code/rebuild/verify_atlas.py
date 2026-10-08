@@ -1841,7 +1841,7 @@ def check_crown(ctx):
                      ("prior_containment", cont), ("prior_width_ratio", ratio)):
             R.eq("%s %s" % (part, k), as_float(o.get(k)), v, atol=1e-6)
         # D29: root ages drawn from the calibration prior return the prior
-        why = ("prior_reproduced" if kind == "calibration_prior_sample" else
+        why = ("prior_sampled" if kind == "calibration_prior_sample" else
                "kind" if CROWN_KIND_COUNTS[kind] == "no" else
                "degenerate" if degenerate else "at_bound" if at_bound
                else "prior_reproduced" if repro else "")
@@ -2525,7 +2525,7 @@ def check_worked(ctx):
         R.eq("S13 %s lr_statistic" % p, e.get("lr_statistic"),
              round(2 * (lt - lc), 4), atol=1e-9)
         R.eq("S13 %s rho_C0 rejected" % p, e.get("rho_full_rejected"),
-             (not ident) and 2 * (lt - lc) > WORKED_LR_CUTOFF)
+             (not ident) and 2 * (lt - lc) > _crit_corrected(len(elig)))
         # D30: the fits are nested.  In the parameters of the matching fit,
         # the fit at rho_full is the same model restricted to
         # epsilon >= 1 - rho_tips / rho_full (its mu >= 0), so the pair is a
@@ -4592,7 +4592,8 @@ def check_c1b_sensitivity(ctx):
         return
     added = sorted(p for p, o in ctx.crown.items()
                    if o.get("c1b_exclusion") in ("degenerate", "at_bound",
-                                                 "prior_reproduced")
+                                                 "prior_reproduced",
+                                                 "prior_sampled")
                    or o.get("kind") == "calibration_prior_sample")
     R.eq("c1b_calibration_fixed.partitions_added",
          sens.get("partitions_added"), added)
@@ -5785,6 +5786,13 @@ def _prior_q(spec, x):
     return "%.3f" % q
 
 
+def _crit_corrected(n_tests):
+    """F4-01 (D50): critical value of the 50:50 chi2(0):chi2(1) mixture at
+    the Bonferroni level WORKED_TEST_LEVEL / n_tests, restated here."""
+    import statistics as _st
+    return _st.NormalDist().inv_cdf(1.0 - WORKED_TEST_LEVEL / n_tests) ** 2
+
+
 def _names(ps):
     ps = sorted(ps)
     if not ps:
@@ -5814,7 +5822,7 @@ def _worked_poly_macros(eligible, fits):
             rr.append(round(as_float(f[("full", "tips")]["r"])
                             / as_float(f[("molecular", "tips")]["r"]), 4))
             bnd.append(em < 1e-6 and lr > 2e-3)
-            rej.append(em < 1e-6 and lr > WORKED_LR_CUTOFF)
+            rej.append(em < 1e-6 and lr > _crit_corrected(len(eligible)))
         R.eq("worked polytomy %s: one resolved fit per seed and convention" % p,
              bool(res[p]) and all(len(v) == 3 for v in res[p].values()), True)
         allr += rr
@@ -5907,7 +5915,8 @@ def _worked_sets(eligible, fits):
                             n_tips=sorted({as_int(r["n_tips"]) for r in rs}),
                             n_full=sorted({as_int(r["n_tips_full_tree"]) for r in rs
                                            if r["n_tips_full_tree"] not in ("", None)}),
-                            nrej=sum(1 for x in lrs if x > WORKED_LR_CUTOFF))
+                            nbnd=sum(1 for r in rs if as_float(r["epsilon_full_rho"])
+                                     < 1e-6 and as_float(r["lr_statistic"]) > 2e-3))
     return out
 
 
@@ -5921,27 +5930,14 @@ def _worked_set_macros(eligible, fits):
         w["WESetEpsMax" + n] = "%.2f" % max(v["eps"])
         w["WESetLRMin" + n] = "%.1f" % min(v["lrs"])
         w["WESetLRMax" + n] = "%.1f" % max(v["lrs"])
-        w["WESetNRejected" + n] = _mint(v["nrej"])
+        w["WESetNBoundary" + n] = _mint(v["nbnd"])
+        w["WESetLRMedian" + n] = "%.2f" % _median(v["lrs"])
         if v["rr"]:
             w["WESetRRatioMin" + n] = "%.2f" % min(v["rr"])
             w["WESetRRatioMax" + n] = "%.2f" % max(v["rr"])
-    held, partial, none_ = [], [], []
-    for p in eligible:
-        ft, fc = fits[p + "|molecular|tips"], fits[p + "|molecular|full_misapplied"]
-        lr = max(0.0, 2.0 * (as_float(ft["loglik"]) - as_float(fc["loglik"])))
-        if not (as_float(fc["epsilon"]) < 1e-6 and lr > WORKED_LR_CUTOFF):
-            continue
-        own = [v for (q, _), v in sets.items() if q == p and v["tips"] == "molecular"]
-        if own:
-            (held if all(v["nrej"] == v["n"] for v in own) else
-             none_ if all(v["nrej"] == 0 for v in own) else partial).append(p)
     groups = sorted({p for p, _ in sets})
     w["WESetNGroups"] = _mint(len(groups))
     w["WESetNamesGroups"] = _names(groups)
-    w["WESetNRejectHolds"] = _mint(len(held))
-    w["WESetNamesRejectHolds"] = _names(held)
-    w["WESetNamesRejectPartial"] = _names(partial)
-    w["WESetNamesRejectNone"] = _names(none_)
     allrr = [x for v in sets.values() for x in v["rr"]]
     w["WESetRRatioMin"] = "%.2f" % min(allrr)
     w["WESetRRatioMax"] = "%.2f" % max(allrr)
@@ -5968,8 +5964,9 @@ def _check_supp_sets(byk, eligible, fits):
             ("tips_full", "/".join(str(x) for x in v["n_full"])),
             ("epsilon_matching", "%.2f (%.2f--%.2f)" % (
                 _median(v["eps"]), min(v["eps"]), max(v["eps"]))),
-            ("lr", rng(min(v["lrs"]), max(v["lrs"]), "%.2f")),
-            ("n_rejected", str(v["nrej"])),
+            ("lr", "%.2f (%s)" % (_median(v["lrs"]),
+                                  rng(min(v["lrs"]), max(v["lrs"]), "%.2f"))),
+            ("n_boundary", str(v["nbnd"])),
             ("r_ratio", rng(min(v["rr"]), max(v["rr"]), "%.2f") if v["rr"] else ""),
             ("summary_epsilon_matching", "%.2f" % as_float(ft["epsilon"])),
             ("summary_lr", "%.2f" % round(max(0.0, 2.0 * (
@@ -6009,7 +6006,7 @@ def _check_supp_polytomy(byk):
             lr.append(x)
             e_ = as_float(f[("molecular", "full_misapplied")]["epsilon"])
             bnd.append(e_ < 1e-6 and x > 2e-3)
-            rej.append(e_ < 1e-6 and x > WORKED_LR_CUTOFF)
+            rej.append(e_ < 1e-6 and x > _crit_corrected(len(parts)))
         ff, fm = byk[(p, "full", "tips")], byk[(p, "molecular", "tips")]
         fc = byk[(p, "molecular", "full_misapplied")]
         want = OrderedDict([
@@ -6248,6 +6245,14 @@ def check_numbermacros(ctx):
                 _mint(as_int(x["n"])), x["unit"], x["clade"],
                 ", dated" if x["dated"] == "yes" else "") for x in xs))
         for p_, xs in sorted(lt.items()))
+    # F4-07: sizes of a larger tree and of its molecular source tree
+    for xs in lt.values():
+        for x in xs:
+            if x.get("n_molecular_source"):
+                k_ = "".join(t[:1].upper() + t[1:] for t in
+                             re.split(r"[^A-Za-z]+", x["bibkey"]) if t)
+                w["LargerN" + k_] = _mint(as_int(x["n"]))
+                w["LargerNMol" + k_] = _mint(as_int(x["n_molecular_source"]))
     w["RuleElasticityPct"] = "%.0f" % (100 * ELASTICITY_FRACTION)
     nob = s["leave_assembly_class_out"]["drop_automated_synthesis"]["rungs"]
     for key, nm in names[:2]:
@@ -6314,6 +6319,10 @@ def check_numbermacros(ctx):
                    ("SetNotCounted", oset)):
         w["CrownN" + nm] = _mint(len(ps))
         w["CrownNames" + nm.replace("NotCounted", "NotCounted")] = _names(ps)
+    # F4-04: tree sets excluded at the crown by a calibration rule
+    w["CrownNamesSetCalib"] = _names([r["partition"] for r in crows
+                                      if r["partition"] in oset
+                                      and r["c1b_exclusion"] not in ("", "kind")])
     w["CrownNamesNoInterval"] = _names([r["partition"] for r in crows
                                         if not r["interval_kind"]])
     w["CrownNamesKind"] = _names([r["partition"] for r in crows if r["interval_kind"]
@@ -6389,8 +6398,21 @@ def check_numbermacros(ctx):
                                  for v in eff.values()))
     w["WENBoundary"] = _mint(sum(v["classification"] == "boundary"
                                  for v in eff.values()))
-    w["WENRejected"] = _mint(sum(v["lr_statistic"] > WORKED_LR_CUTOFF
+    # F4-01 (D50): one test per eligible group at the Bonferroni level over
+    # the eligible groups; the critical value of the mixture at level a is
+    # z_{1-a}^2
+    import statistics as _st
+    n_tests = len(we["eligible"])
+    crit_b = _st.NormalDist().inv_cdf(1.0 - WORKED_TEST_LEVEL / n_tests) ** 2
+    tf = we.get("test_family") or {}
+    R.eq("S13 test family size = eligible groups", tf.get("n_tests"), n_tests)
+    R.eq("S13 test family critical value", round(tf.get("critical_value", 0), 6),
+         round(crit_b, 6))
+    w["WENRejected"] = _mint(sum(v["lr_statistic"] > crit_b
                                  for v in eff.values()))
+    w["RuleBonferroniCritical"] = "%.2f" % crit_b
+    rej_ = sorted(p for p in we["eligible"] if eff[p]["lr_statistic"] > crit_b)
+    w["WENamesRejected"] = _names(rej_) or "none"
     # D30: family and uniform fits side by side, no likelihood comparison
     epsd = {p: (as_float(fits[p + "|molecular|family"]["epsilon"]),
                 as_float(fits[p + "|molecular|tips"]["epsilon"]))
@@ -6405,7 +6427,6 @@ def check_numbermacros(ctx):
     w["RuleLRCritical"] = "%.2f" % WORKED_LR_CUTOFF
     # the cutoff is the critical value of the equal chi2(0):chi2(1) mixture at
     # the stated level: P(chi2_1 > c) = 2 * level
-    import statistics as _st
     R.eq("LR cutoff = critical value of the mixture at the test level",
          round(WORKED_LR_CUTOFF, 5),
          round(_st.NormalDist().inv_cdf(1.0 - WORKED_TEST_LEVEL) ** 2, 5))
@@ -6425,9 +6446,29 @@ def check_numbermacros(ctx):
     bnd = [p for p in we["eligible"] if eff[p]["classification"] == "boundary"]
     for p in bnd:
         w["WEP" + crown_macro_name(p)] = _pfmt(_pmix(lrv[p]))
-    w["RuleBonferroniLevel"] = "%.4f" % (WORKED_TEST_LEVEL / len(bnd))
-    w["WENRejectedBonferroni"] = _mint(sum(
-        _pmix(lrv[p]) < WORKED_TEST_LEVEL / len(bnd) for p in bnd))
+    w["RuleBonferroniLevel"] = "%.4f" % (WORKED_TEST_LEVEL / n_tests)
+    R.eq("S13 corrected rejections by p-value and by critical value agree",
+         sorted(p for p in bnd if _pmix(lrv[p]) < WORKED_TEST_LEVEL / n_tests),
+         rej_)
+    # F4-02, F4-03: posterior sets are the primary result for their groups,
+    # described by where the statistic lies against the corrected critical
+    # value; the groups without a posterior set rest on their summary tree
+    sets_ = {}
+    for r in read_csv(WORKED_SETS):
+        if r["set"] == "posterior":
+            sets_.setdefault(r["partition"], []).append(
+                as_float(r["lr_statistic"]))
+    w["WEPostNames"] = _names(sorted(sets_))
+    w["WESetNamesAboveAll"] = _names(sorted(
+        p for p, v in sets_.items() if min(v) > crit_b)) or "none"
+    w["WESetNamesStraddle"] = _names(sorted(
+        p for p, v in sets_.items() if min(v) <= crit_b < max(v))) or "none"
+    w["WESetNamesBelowAll"] = _names(sorted(
+        p for p, v in sets_.items() if max(v) <= crit_b)) or "none"
+    nopost = [p for p in we["eligible"] if p not in sets_]
+    w["WENoPostN"] = _mint(len(nopost))
+    w["WENoPostNames"] = _names(sorted(nopost))
+    w["WENoPostNRejected"] = _mint(sum(p in rej_ for p in nopost))
     rf = {p: (as_float(fits[p + "|full|tips"]["r"]),
               as_float(fits[p + "|molecular|tips"]["r"])) for p in we["eligible"]}
     w["WENFullGreater"] = _mint(sum(a > b for a, b in rf.values()))
@@ -6685,7 +6726,7 @@ def check_tables(ctx):
         R.eq("Table 3 %s has no log-likelihood comparison column" % p,
              "dll_family" in r, False)
         R.eq("Table 3 %s rejected" % p, r["classification"].endswith(
-            "(rejected)"), lr > WORKED_LR_CUTOFF)
+            "(rejected)"), lr > _crit_corrected(len(we["eligible"])))
 
     # Figure 1 cascade: per-category levels and the losses, on the union
     # convention, cell by cell against union_losses() (R2-15)

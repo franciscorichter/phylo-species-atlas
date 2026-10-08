@@ -3282,7 +3282,8 @@
       "at_bound": 1,
       "degenerate": 1,
       "kind": 2,
-      "prior_reproduced": 6
+      "prior_reproduced": 5,
+      "prior_sampled": 1
     },
     "n_age_differs_from_geometry": 8,
     "n_crown_inside_interval": 4,
@@ -3568,7 +3569,7 @@
         "geometry_root_ma": "365.3613",
         "interval_kind": "calibration_prior_sample",
         "counts_for_c1b": "no",
-        "c1b_exclusion": "prior_reproduced",
+        "c1b_exclusion": "prior_sampled",
         "interval_lo_ma": "353.5730",
         "interval_center_ma": "377.8302",
         "interval_hi_ma": "437.6111",
@@ -5653,7 +5654,13 @@
       "Sharks",
       "Squamates"
     ],
-    "identity": "the likelihood depends on lambda and rho only through lambda*rho and r (Stadler 2009), so a fit at rho' is the fit at rho with lambda scaled by rho/rho' and r and the log-likelihood unchanged, unless that forces mu < 0; then mu = 0 and the likelihood drops (the rho-epsilon confounding: Cusimano & Renner 2010 Syst Biol 59:458; Hoehna et al. 2011 Mol Biol Evol 28:2577). Each pair is classified 'identity' or 'boundary'; at the boundary lr_statistic = 2 (logL(rho_tips) - logL(rho_full)) and rho_full is rejected when it exceeds qchisq(0.90, 1), the 5% point of the 50:50 chi2(0):chi2(1) mixture: in the parameters of the matching fit, the fit at rho_full is the same model restricted to epsilon >= 1 - rho_tips/rho_full, an edge inside (0, 1), so the null distribution at that edge is the mixture (Chernoff 1954; Self & Liang 1987; D27, D30). Every interval uses the cutoff qchisq(0.95, 1)/2; where the epsilon estimate is 0 the interval is [0, upper] (D30)",
+    "test_family": {
+      "rule": "one likelihood-ratio test per eligible group, on its summary tree; the family is every eligible group, fixed by the eligibility rule before any fit is read; Bonferroni level = 0.05 / n_tests (D50)",
+      "n_tests": 7,
+      "level": 0.0071428571428571435,
+      "critical_value": 6.002489
+    },
+    "identity": "the likelihood depends on lambda and rho only through lambda*rho and r (Stadler 2009), so a fit at rho' is the fit at rho with lambda scaled by rho/rho' and r and the log-likelihood unchanged, unless that forces mu < 0; then mu = 0 and the likelihood drops (the rho-epsilon confounding: Cusimano & Renner 2010 Syst Biol 59:458; Hoehna et al. 2011 Mol Biol Evol 28:2577). Each pair is classified 'identity' or 'boundary'; at the boundary lr_statistic = 2 (logL(rho_tips) - logL(rho_full)) and rho_full is rejected when it exceeds the critical value of the 50:50 chi2(0):chi2(1) mixture at the Bonferroni level 0.05 / (number of eligible groups) (test_family, F4-01, D50): in the parameters of the matching fit, the fit at rho_full is the same model restricted to epsilon >= 1 - rho_tips/rho_full, an edge inside (0, 1), so the null distribution at that edge is the mixture (Chernoff 1954; Self & Liang 1987; D27, D30). Every interval uses the cutoff qchisq(0.95, 1)/2; where the epsilon estimate is 0 the interval is [0, upper] (D30)",
     "rho_effect_same_tree": {
       "Amphibians": {
         "rho_tips": 0.458197,
@@ -5689,7 +5696,7 @@
         "lr_statistic": 4.8814,
         "classification": "boundary",
         "epsilon_rho_full_on_boundary": true,
-        "rho_full_rejected": true
+        "rho_full_rejected": false
       },
       "Fish": {
         "rho_tips": 0.31962514,
@@ -6127,7 +6134,7 @@
             "epsilon_rho_full": 2.5001e-11,
             "lr_statistic": 4.8814,
             "boundary": true,
-            "rejected": true
+            "rejected": false
           },
           "2": {
             "r_full": 0.14787,
@@ -6137,7 +6144,7 @@
             "epsilon_rho_full": 2.5001e-11,
             "lr_statistic": 4.8814,
             "boundary": true,
-            "rejected": true
+            "rejected": false
           },
           "3": {
             "r_full": 0.14787,
@@ -6147,7 +6154,7 @@
             "epsilon_rho_full": 2.5001e-11,
             "lr_statistic": 4.8814,
             "boundary": true,
-            "rejected": true
+            "rejected": false
           }
         }
       },
@@ -6422,7 +6429,6 @@
         "lr_median": 3.26805,
         "lr_max": 24.8909,
         "n_boundary": 95,
-        "n_rejected": 54,
         "r_ratio_min": 0.971659701074717,
         "r_ratio_max": 1.0452122877897063,
         "summary_tree_classification": "boundary",
@@ -6448,7 +6454,6 @@
         "lr_median": 0.0,
         "lr_max": 2.2767,
         "n_boundary": 2,
-        "n_rejected": 0,
         "r_ratio_min": 0.9967917077986179,
         "r_ratio_max": 1.0185117913512791,
         "summary_tree_classification": "boundary",
@@ -6474,7 +6479,6 @@
         "lr_median": 0.0,
         "lr_max": 0.0,
         "n_boundary": 0,
-        "n_rejected": 0,
         "r_ratio_min": 0.9922193375816223,
         "r_ratio_max": 1.0141989900497121,
         "summary_tree_classification": "boundary",
@@ -6500,7 +6504,6 @@
         "lr_median": 0.0,
         "lr_max": 0.0,
         "n_boundary": 0,
-        "n_rejected": 0,
         "r_ratio_min": 0.9239277564651962,
         "r_ratio_max": 0.9810837935401154,
         "summary_tree_classification": "identity",
@@ -6524,7 +6527,6 @@
         "lr_median": 0.0,
         "lr_max": 0.0,
         "n_boundary": 0,
-        "n_rejected": 0,
         "r_ratio_min": null,
         "r_ratio_max": null,
         "summary_tree_classification": "identity",
@@ -6550,7 +6552,6 @@
         "lr_median": 0.0,
         "lr_max": 5.5616,
         "n_boundary": 11,
-        "n_rejected": 2,
         "r_ratio_min": 0.8876782042786019,
         "r_ratio_max": 1.0653940055062074,
         "summary_tree_classification": "identity",
@@ -6574,7 +6575,6 @@
         "lr_median": 1.18125,
         "lr_max": 18.929,
         "n_boundary": 84,
-        "n_rejected": 4,
         "r_ratio_min": null,
         "r_ratio_max": null,
         "summary_tree_classification": "identity",
@@ -6600,7 +6600,6 @@
         "lr_median": 30.97435,
         "lr_max": 69.8185,
         "n_boundary": 100,
-        "n_rejected": 100,
         "r_ratio_min": 0.9151113755317168,
         "r_ratio_max": 0.9940670220029514,
         "summary_tree_classification": "boundary",

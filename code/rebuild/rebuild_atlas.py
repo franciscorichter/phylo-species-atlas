@@ -2472,7 +2472,8 @@ def c0_gbif_sensitivity(basis, shipped):
     ])
 
 
-C1B_SENSITIVITY_REASONS = ("degenerate", "at_bound", "prior_reproduced")
+C1B_SENSITIVITY_REASONS = ("degenerate", "at_bound", "prior_reproduced",
+                           "prior_sampled")
 C1B_SENSITIVITY_KINDS = ("calibration_prior_sample",)
 
 
@@ -4578,6 +4579,14 @@ def build_number_macros(head, basis, warnings):
     m["SensRulePNames"] = name_list(rp["partitions_added"])
     m["RuleTipsOverNamedPct"] = "%.0f" % (100 * TABLE1_TIPS_OVER_NAMED)
     m["TabWhichTreeLargerNote"] = larger_tree_note()
+    # F4-07: a larger tree built on a molecular source tree is described as
+    # its source describes it (Data/larger_trees_not_counted.csv)
+    for rs in larger_trees_not_counted().values():
+        for r in rs:
+            if r.get("n_molecular_source"):
+                k = crown_macro_name(r["bibkey"])
+                m["LargerN" + k] = macro_int(as_int(r["n"]))
+                m["LargerNMol" + k] = macro_int(as_int(r["n_molecular_source"]))
     # every denominator lowered and raised by the elasticity fraction
     f_el = ELASTICITY_FRACTION
     m["RuleElasticityPct"] = "%.0f" % (100 * f_el)
@@ -4650,6 +4659,12 @@ def build_number_macros(head, basis, warnings):
     m["CrownNamesCountedSummary"] = name_list(csum)
     m["CrownNSetNotCounted"] = macro_int(len(oset))
     m["CrownNamesSetNotCounted"] = name_list(oset)
+    # F4-04: tree sets whose crown interval a calibration rule excludes; the
+    # classification is of the crown only, and the set can still be
+    # integrated over for the ages of other nodes
+    m["CrownNamesSetCalib"] = name_list(sorted(
+        p for p in oset if ca["per_partition"][p]["c1b_exclusion"]
+        not in ("", None, "kind")))
     # round F2: the groups behind each loss of dated coverage, named
     pp = ca["per_partition"]
     m["CrownNamesNoInterval"] = name_list(sorted(
@@ -4730,14 +4745,14 @@ def build_number_macros(head, basis, warnings):
         v["epsilon"] < v["epsilon_uniform_tips"] for v in fam.values()))
     m["WENFamilyEpsHigher"] = macro_int(sum(
         v["epsilon"] > v["epsilon_uniform_tips"] for v in fam.values()))
-    # F3-15: the summary-tree rejections under a Bonferroni correction over
-    # the groups whose restriction binds (the only tests that can reject)
-    nb = sum(v["classification"] == "boundary" for v in eff.values())
-    bonf = WORKED_TEST_LEVEL / nb
-    m["RuleBonferroniLevel"] = "%.4f" % bonf
-    m["WENRejectedBonferroni"] = macro_int(sum(
-        v["classification"] == "boundary"
-        and lr_mixture_p(v["lr_statistic"]) < bonf for v in eff.values()))
+    # F4-01 (D50): one test per eligible group, at the Bonferroni level over
+    # the eligible groups, a family fixed before any fit is read; WENRejected
+    # counts the summary trees rejected at that level
+    tf = w["test_family"]
+    m["RuleBonferroniLevel"] = "%.4f" % tf["level"]
+    m["RuleBonferroniCritical"] = "%.2f" % tf["critical_value"]
+    m["WENamesRejected"] = name_list(sorted(
+        p for p, v in eff.items() if v["rho_full_rejected"])) or "none"
     m["RuleLRCritical"] = "%.2f" % WORKED_LR_CUTOFF
     m["RuleTestLevelPct"] = "%g" % (100 * WORKED_TEST_LEVEL)
     for p in w["eligible"]:
@@ -4798,33 +4813,32 @@ def build_number_macros(head, basis, warnings):
         m["WESetEpsMax" + n] = "%.2f" % v["epsilon_matching_max"]
         m["WESetLRMin" + n] = "%.1f" % v["lr_min"]
         m["WESetLRMax" + n] = "%.1f" % v["lr_max"]
-        m["WESetNRejected" + n] = macro_int(v["n_rejected"])
+        m["WESetNBoundary" + n] = macro_int(v["n_boundary"])
+        m["WESetLRMedian" + n] = "%.2f" % v["lr_median"]
         if v["r_ratio_min"] is not None:
             m["WESetRRatioMin" + n] = "%.2f" % v["r_ratio_min"]
             m["WESetRRatioMax" + n] = "%.2f" % v["r_ratio_max"]
-    # a boundary group whose summary-tree rejection holds in every tree of
-    # every archived set of its own trees (molecular-only sets excluded)
-    bgroups = [p for p in w["eligible"]
-               if eff[p]["classification"] == "boundary"
-               and eff[p]["lr_statistic"] > WORKED_LR_CUTOFF]
-    held, partial, none_ = [], [], []
-    for p in bgroups:
-        own = [v for v in ts.values() if v["partition"] == p
-               and v["tips"] == "molecular"]
-        if not own:
-            continue
-        if all(v["n_rejected"] == v["n_trees"] for v in own):
-            held.append(p)
-        elif all(v["n_rejected"] == 0 for v in own):
-            none_.append(p)
-        else:
-            partial.append(p)
+    # F4-02, F4-03: for a group whose source archives a posterior set, the
+    # distribution of the statistic over that set is the primary result; it
+    # is described against the corrected critical value (where the statistic
+    # lies, tree by tree), not summarised as a count of rejections
+    crit = tf["critical_value"]
+    post = {v["partition"]: v for v in ts.values()
+            if v["set"] == WORKED_POSTERIOR_SET}
+    m["WEPostNames"] = name_list(sorted(post))
+    m["WESetNamesAboveAll"] = name_list(sorted(
+        p for p, v in post.items() if v["lr_min"] > crit)) or "none"
+    m["WESetNamesStraddle"] = name_list(sorted(
+        p for p, v in post.items() if v["lr_min"] <= crit < v["lr_max"])) or "none"
+    m["WESetNamesBelowAll"] = name_list(sorted(
+        p for p, v in post.items() if v["lr_max"] <= crit)) or "none"
+    nopost = [p for p in w["eligible"] if p not in post]
+    m["WENoPostN"] = macro_int(len(nopost))
+    m["WENoPostNames"] = name_list(sorted(nopost))
+    m["WENoPostNRejected"] = macro_int(sum(
+        bool(eff[p]["rho_full_rejected"]) for p in nopost))
     m["WESetNGroups"] = macro_int(len({v["partition"] for v in ts.values()}))
     m["WESetNamesGroups"] = name_list(sorted({v["partition"] for v in ts.values()}))
-    m["WESetNRejectHolds"] = macro_int(len(held))
-    m["WESetNamesRejectHolds"] = name_list(sorted(held))
-    m["WESetNamesRejectPartial"] = name_list(sorted(partial))
-    m["WESetNamesRejectNone"] = name_list(sorted(none_))
     allrr = [x for v in ts.values() if v["r_ratio_min"] is not None
              for x in (v["r_ratio_min"], v["r_ratio_max"])]
     m["WESetRRatioMin"] = "%.2f" % min(allrr)
@@ -4974,7 +4988,8 @@ INTERVAL_STATUS_TEXT = OrderedDict([
     ("kind", "other variation"),
     ("degenerate", "zero width"),
     ("at_bound", "at calibration bound"),
-    ("prior_reproduced", "returns the prior"),
+    ("prior_reproduced", "within prior, not narrowed"),
+    ("prior_sampled", "root ages drawn from prior"),
     ("none", "none archived"),
 ])
 TIME_SCALE_TEXT = {"absolute": "absolute", "relative": "relative",
@@ -4992,7 +5007,7 @@ TABLE1_DATES_CODE = OrderedDict([
 ])
 TABLE1_INTERVAL_CODE = OrderedDict([
     ("counted", "u"), ("kind", "v"), ("degenerate", "z"), ("at_bound", "b"),
-    ("prior_reproduced", "p"), ("none", "n"),
+    ("prior_reproduced", "p"), ("prior_sampled", "r"), ("none", "n"),
 ])
 
 
@@ -5699,8 +5714,19 @@ WORKED_IDENTITY_RATIO_RTOL = 1e-4
 # (mu >= 0), an inequality on one parameter: the likelihood-ratio statistic is
 # a 50:50 mixture of chi2(0) and chi2(1) (Self & Liang 1987), whose 5% critical
 # value is qchisq(0.90, 1).
-WORKED_LR_CUTOFF = 2.705543   # qchisq(0.90, 1): full-tree rho rejected beyond this
+WORKED_POSTERIOR_SET = "posterior"   # Data/worked_example_tree_sets.csv set
+WORKED_LR_CUTOFF = 2.705543   # qchisq(0.90, 1): the 5% critical value of one test
 WORKED_TEST_LEVEL = 0.05      # the level WORKED_LR_CUTOFF is the critical value for
+
+
+def worked_lr_cutoff(n_tests):
+    """Round F4 (F4-01, D50).  The family of tests is every eligible group, a
+    number fixed by the eligibility rule before any fit is read; each test is
+    made at the Bonferroni level WORKED_TEST_LEVEL / n_tests, whose critical
+    value under the 50:50 chi2(0):chi2(1) mixture is qchisq(1 - 2a, 1) =
+    z_{1-a}^2."""
+    import statistics as _st
+    return _st.NormalDist().inv_cdf(1.0 - WORKED_TEST_LEVEL / n_tests) ** 2
 WORKED_EPS_BOUNDARY = 1e-6    # = EPS_BOUNDARY in worked_example_bd.R
 
 
@@ -5755,7 +5781,7 @@ def family_sampling(part, mol_ids, shipped):
     ])
 
 
-def worked_identity(rho_t, rho_c, lam_t, lam_c, ll_t, ll_c, eps_c):
+def worked_identity(rho_t, rho_c, lam_t, lam_c, ll_t, ll_c, eps_c, cutoff):
     """A15, D27.  Classify one same-tree pair of fits (rho = molecular tips,
     rho = full-tree tips)."""
     pred = rho_t / rho_c
@@ -5770,7 +5796,7 @@ def worked_identity(rho_t, rho_c, lam_t, lam_c, ll_t, ll_c, eps_c):
         ("lr_statistic", round(lr, 4)),
         ("classification", "identity" if ident else "boundary"),
         ("epsilon_rho_full_on_boundary", eps_c < WORKED_EPS_BOUNDARY),
-        ("rho_full_rejected", (not ident) and lr > WORKED_LR_CUTOFF),
+        ("rho_full_rejected", (not ident) and lr > cutoff),
     ])
 
 
@@ -5846,7 +5872,7 @@ def worked_example(basis, mol, shipped, crown, warnings):
             g(part, *M, k="rho"), g(part, *MC, k="rho"),
             g(part, *M, k="lambda"), g(part, *MC, k="lambda"),
             g(part, *M, k="loglik"), g(part, *MC, k="loglik"),
-            g(part, *MC, k="epsilon")))
+            g(part, *MC, k="epsilon"), worked_lr_cutoff(len(elig))))
         FM = ("molecular", "family")
         family_fit[part] = OrderedDict(
             [(k, g(part, *FM, k=k)) for k in (
@@ -5868,7 +5894,7 @@ def worked_example(basis, mol, shipped, crown, warnings):
             ("epsilon_intervals_overlap", overlap(part, F, M, "epsilon")),
         ])
         families[part] = family_sampling(part, elig[part], shipped)
-    polytomy = worked_polytomy(list(elig), per)
+    polytomy = worked_polytomy(list(elig), per, worked_lr_cutoff(len(elig)))
     tree_sets = worked_sets(list(elig), rho_effect)
     family_order = worked_family_order(list(elig))
     ratios = [v["r_ratio_full_over_molecular"] for v in imputation.values()]
@@ -5886,6 +5912,15 @@ def worked_example(basis, mol, shipped, crown, warnings):
          "tips are enumerated and fewer than all tips; every eligible "
          "partition is reported, none is selected"),
         ("eligible", list(elig)),
+        ("test_family", OrderedDict([
+            ("rule", "one likelihood-ratio test per eligible group, on its "
+                     "summary tree; the family is every eligible group, fixed "
+                     "by the eligibility rule before any fit is read; "
+                     "Bonferroni level = 0.05 / n_tests (D50)"),
+            ("n_tests", len(elig)),
+            ("level", WORKED_TEST_LEVEL / len(elig)),
+            ("critical_value", round(worked_lr_cutoff(len(elig)), 6)),
+        ])),
         ("identity",
          "the likelihood depends on lambda and rho only through lambda*rho "
          "and r (Stadler 2009), so a fit at rho' is the fit at rho with "
@@ -5895,7 +5930,9 @@ def worked_example(basis, mol, shipped, crown, warnings):
          "59:458; Hoehna et al. 2011 Mol Biol Evol 28:2577). Each pair is "
          "classified 'identity' or 'boundary'; at the boundary lr_statistic "
          "= 2 (logL(rho_tips) - logL(rho_full)) and rho_full is rejected when it "
-         "exceeds qchisq(0.90, 1), the 5% point of the 50:50 chi2(0):chi2(1) mixture: "
+         "exceeds the critical value of the 50:50 chi2(0):chi2(1) mixture at "
+         "the Bonferroni level 0.05 / (number of eligible groups) (test_family, "
+         "F4-01, D50): "
          "in the parameters of the matching fit, the fit at rho_full is the "
          "same model restricted to epsilon >= 1 - rho_tips/rho_full, an edge "
          "inside (0, 1), so the null distribution at that edge is the mixture "
@@ -5937,7 +5974,7 @@ def worked_example(basis, mol, shipped, crown, warnings):
     ])
 
 
-def worked_polytomy(elig, per):
+def worked_polytomy(elig, per, cutoff):
     """Round F1 (F1-14).  Per eligible group: the branching events of each
     fitted tree that sit at polytomies, and the uniform-sampling fits repeated
     with the polytomies resolved at random (worked_example_bd.R, one row per
@@ -5975,7 +6012,7 @@ def worked_polytomy(elig, per):
                 ("boundary", em < WORKED_EPS_BOUNDARY
                  and lr > 2 * WORKED_IDENTITY_LL_TOL),
                 ("rejected", em < WORKED_EPS_BOUNDARY
-                 and lr > WORKED_LR_CUTOFF),
+                 and lr > cutoff),
             ])
         ev = OrderedDict()
         for tree in ("full", "molecular"):
@@ -5996,9 +6033,13 @@ def worked_sets(elig, eff):
     """Round F2 (F2-04, F2-05, F2-35).  The fits of worked_example_sets.R on
     the tree sets the sources archive (Data/worked_example_tree_sets.csv),
     summarised per set: trees fitted, tips, the extinction fraction of the
-    matching fit, the likelihood-ratio statistic of the full tree's fraction
-    and the trees in which the restriction is rejected, and, where the full
-    tree is fitted too, the ratio of r on the full to r on the pruned tree."""
+    matching fit, the distribution of the likelihood-ratio statistic of the
+    full tree's fraction and the trees in which the restriction binds, and,
+    where the full tree is fitted too, the ratio of r on the full to r on the
+    pruned tree.  The trees are draws from one archived set, not independent
+    replicates, so no count of trees above a critical value is formed (F4-03):
+    whether the restriction binds, and the statistic, are properties of each
+    tree."""
     for f_ in (WORKED_SETS, WORKED_SETS_REGISTER):
         if not os.path.exists(f_):
             die("%s is missing; run Rscript Paper/code/analysis/"
@@ -6034,7 +6075,6 @@ def worked_sets(elig, eff):
             ("epsilon_matching_max", max(eps)),
             ("lr_min", min(lrs)), ("lr_median", median(lrs)), ("lr_max", max(lrs)),
             ("n_boundary", sum(bound)),
-            ("n_rejected", sum(1 for x in lrs if x > WORKED_LR_CUTOFF)),
             ("r_ratio_min", min(rr) if rr else None),
             ("r_ratio_max", max(rr) if rr else None),
             ("summary_tree_classification", eff[p]["classification"]),
@@ -6720,7 +6760,8 @@ def build_supp_macros(head, basis, shipped, warnings):
     q = cr["QUANTILES"]
     m["SuppCrownIntervalPct"] = "%.0f" % (100 * (q[-1] - q[0]))
     for key, nm_ in (("degenerate", "Degenerate"), ("at_bound", "AtBound"),
-                     ("prior_reproduced", "Prior"), ("kind", "Kind")):
+                     ("prior_reproduced", "Prior"),
+                     ("prior_sampled", "PriorSampled"), ("kind", "Kind")):
         m["SuppCrown" + nm_] = name_list(sorted(
             p for p, c in head["crown_ages"]["per_partition"].items()
             if c["c1b_exclusion"] == key)) or "none"
@@ -7137,8 +7178,9 @@ def _supp_sets_rows(head):
                 "%.2f" % v["epsilon_matching_median"],
                 "%.2f" % v["epsilon_matching_min"],
                 "%.2f" % v["epsilon_matching_max"])),
-            ("lr", rng(v["lr_min"], v["lr_max"], "%.2f")),
-            ("n_rejected", v["n_rejected"]),
+            ("lr", "%s (%s)" % ("%.2f" % v["lr_median"],
+                                rng(v["lr_min"], v["lr_max"], "%.2f"))),
+            ("n_boundary", v["n_boundary"]),
             ("r_ratio", "" if v["r_ratio_min"] is None else
              rng(v["r_ratio_min"], v["r_ratio_max"], "%.2f")),
             ("summary_epsilon_matching", "%.2f" % v["summary_tree_epsilon_matching"]),
@@ -7149,7 +7191,7 @@ def _supp_sets_rows(head):
 
 @supp_table("supp_worked_sets", ["partition", "set", "n_trees", "tips_pruned",
                                  "tips_full", "epsilon_matching", "lr",
-                                 "n_rejected", "r_ratio",
+                                 "n_boundary", "r_ratio",
                                  "summary_epsilon_matching", "summary_lr"])
 def _t_sets(head, basis, shipped, tex):
     rows = _supp_sets_rows(head)
@@ -7162,7 +7204,7 @@ def _t_sets(head, basis, shipped, tex):
         out.append(" & ".join([
             grp, tex_escape(r["set"]), thousands(r["n_trees"]),
             _tips_cell(r["tips_pruned"]), _tips_cell(r["tips_full"]),
-            r["epsilon_matching"], r["lr"], thousands(r["n_rejected"]),
+            r["epsilon_matching"], r["lr"], thousands(r["n_boundary"]),
             _dash(r["r_ratio"]), r["summary_epsilon_matching"],
             r["summary_lr"]]) + r" \\")
     return "\n".join(out) + "\n"

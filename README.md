@@ -141,19 +141,24 @@ dict <- read.csv("standardized/dictionary.csv")
 tree$tip.label <- dict$standardized_name[match(as.integer(tree$tip.label), dict$id)]
 ```
 
-The `phyloatlas` R package loads a tree by name over the network. It reads the files of the
-branch or tag named by the option `phyloatlas.base_url`, which defaults to the `main` branch of
-this repository, not to this release. To read the files of this release, set the option to its
-tag before loading:
+The `phyloatlas` R package loads a tree by name. It reads the files under the location named
+by the option `phyloatlas.base_url`, which defaults to the `main` branch of this repository on
+GitHub, not to this release. To read the files of this release, set the option to the root of a
+clone of it (a directory path; the package reads `standardized/` and `data_provenance.csv`
+under it) before loading:
 
 ```r
 pak::pkg_install("franciscorichter/phylo-species-atlas/phyloatlas")
 library(phyloatlas)
-options(phyloatlas.base_url =
-  "https://raw.githubusercontent.com/franciscorichter/phylo-species-atlas/v1.1.0")
+options(phyloatlas.base_url = "path/to/phylo-species-atlas")  # a clone of this release
 list_trees()
 tree <- load_atlas_tree("mammals")
 ```
+
+The tag `v1.1.0` is created on GitHub when this release is published. From then on the option
+can name the tag instead of a clone,
+`"https://raw.githubusercontent.com/franciscorichter/phylo-species-atlas/v1.1.0"`; before
+publication that address returns HTTP 404.
 
 ## The browser site
 

@@ -1,6 +1,6 @@
 partition,category,bibkey,flags,tips,named_pct,molecular_tips,molecular_basis,molecular_pct,time_scale,crown_age_ma,interval_lo_ma,interval_hi_ma,interval_kind,interval_status,rho_full,rho_molecular,described,study_dating,molecular_only_tree,molecular_only_dated,molecular_share,tips_exceed_named,larger_tree_not_counted
 Birds,Vertebrates,mctavish2025complete,,10824,93.5,9239,enumerated,80.2,absolute,99.3,72.0,133.0,date_assignment_sample,kind,0.97,0.83,11195,absolute_deposited,yes,no,0.85,no,mctavish2025complete
-Sharks,Vertebrates,stein2018global,,1192,89.7,610,enumerated,47.0,absolute,377.8,353.6,437.6,calibration_prior_sample,prior_reproduced,0.93,0.48,1282,absolute_deposited,yes,yes,0.51,no,
+Sharks,Vertebrates,stein2018global,,1192,89.7,610,enumerated,47.0,absolute,377.8,353.6,437.6,calibration_prior_sample,prior_sampled,0.93,0.48,1282,absolute_deposited,yes,yes,0.51,no,
 Fish,Vertebrates,rabosky2018inverse,,31347,85.4,11596,enumerated,31.7,absolute,368.0,368.0,368.0,taxon_addition_sample,kind,0.86,0.32,36280,absolute_deposited,yes,yes,0.37,no,
 Mammals,Vertebrates,upham2019inferring,,5911,83.5,4098,enumerated,58.6,absolute,187.3,168.6,213.5,posterior_sample,prior_reproduced,0.88,0.61,6736,absolute_deposited,yes,yes,0.69,no,
 Amphibians,Vertebrates,jetz2018interplay,,7238,78.4,4061,enumerated,45.1,absolute,311.4,273.7,338.6,posterior_sample,counted,0.82,0.46,8863,absolute_deposited,yes,no,0.56,no,

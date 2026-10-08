@@ -783,7 +783,7 @@ def main(argv=None):
             R.eq("%s: prior containment and width ratio" % p,
                  ("%.6f" % cont, "%.6f" % ratio),
                  (iv["prior_containment"], iv["prior_width_ratio"]))
-        why = ("prior_reproduced" if iv["kind"] in PRIOR_SAMPLE_KINDS
+        why = ("prior_sampled" if iv["kind"] in PRIOR_SAMPLE_KINDS
                else "kind" if not INTERVAL_KIND_COUNTS[iv["kind"]]
                else "degenerate" if degenerate else "at_bound" if at_bound
                else "prior_reproduced" if repro else "")
@@ -1032,7 +1032,8 @@ def main(argv=None):
     R.macro(macros, "SensAllIntCOneBN", fmt_int(alli["C1b"]["union"]))
     R.macro(macros, "SensAllIntCOneBPct", fmt_pct(alli["C1b"]["pct_union"]))
     calset = {p: counts.get(p, False) or why_of.get(p) in
-              ("degenerate", "at_bound", "prior_reproduced") for p in c0}
+              ("degenerate", "at_bound", "prior_reproduced", "prior_sampled")
+              for p in c0}
     cal = ladder(E, den, calset)
     R.macro(macros, "SensCalibCOneBN", fmt_int(cal["C1b"]["union"]))
     R.macro(macros, "SensCalibCOneBPct", fmt_pct(cal["C1b"]["pct_union"]))
@@ -1281,6 +1282,10 @@ def main(argv=None):
         p for p in rows if p in intervals and why_of[p] == "kind")))
     R.macro(macros, "CrownNamesCalib", name_list(sorted(
         p for p in rows if p in intervals and why_of[p] and why_of[p] != "kind")))
+    # tree sets excluded at the crown by a calibration rule (the classification
+    # is of the crown only)
+    R.macro(macros, "CrownNamesSetCalib", name_list(sorted(
+        p for p in oset if why_of[p] and why_of[p] != "kind")))
 
     # ------------------------------------------------ Open Tree of Life ---
     R.section("Open Tree of Life synthesis 16.1: species placed by a phylogeny")
@@ -1358,9 +1363,12 @@ def main(argv=None):
     # every input of the fits are recomputed, and every printed number is
     # formed from the committed fits by the rules the text states.
     WE_LL_TOL, WE_RATIO_RTOL = 1e-3, 1e-4      # same log-likelihood; ratio
-    WE_LR_CRIT = LR_CRITICAL
     elig = [p for p in sorted(E) if chron[p] and c1_basis[p] == "enumerated"
             and len(mol_rows[p]) < len(tips[p])]
+    # One test per eligible group, at the Bonferroni level over the eligible
+    # groups, a family fixed by the eligibility rule before any fit is read
+    WE_LEVEL_B = TEST_LEVEL / len(elig)
+    WE_LR_CRIT = NormalDist().inv_cdf(1.0 - WE_LEVEL_B) ** 2
     sel = read_csv(os.path.join(a.fits, "worked_example_bd_selection.csv"))
     R.eq("eligible groups (absolute chronogram, molecular tips listed, fewer "
          "than all tips)", elig, [x["partition"] for x in sel])
@@ -1431,10 +1439,10 @@ def main(argv=None):
     R.macro(macros, "WENIdentity", fmt_int(n_ident))
     R.macro(macros, "WENBoundary", fmt_int(n_bound))
     R.macro(macros, "WENRejected", fmt_int(n_rej))
-    # F3-15: Bonferroni over the groups whose restriction binds
-    R.macro(macros, "RuleBonferroniLevel", "%.4f" % (0.05 / n_bound))
-    R.macro(macros, "WENRejectedBonferroni",
-            fmt_int(sum(v < 0.05 / n_bound for v in wep.values())))
+    R.macro(macros, "RuleBonferroniLevel", "%.4f" % WE_LEVEL_B)
+    R.macro(macros, "RuleBonferroniCritical", "%.2f" % WE_LR_CRIT)
+    rej_names = sorted(p for p, v in wep.items() if v < WE_LEVEL_B)
+    R.macro(macros, "WENamesRejected", name_list(rej_names) or "none")
     R.macro(macros, "WENFullGreater", fmt_int(n_fg))
     R.macro(macros, "WENFullSmaller", fmt_int(n_fs))
     R.macro(macros, "WENFullOverlap", fmt_int(n_fo))
@@ -1581,15 +1589,19 @@ def main(argv=None):
         lrs_ = [float(r["lr_statistic"]) for r in rs]
         rr_ = [float(r["r_full_tree"]) / float(r["r_matching"])
                for r in rs if r["r_full_tree"]]
-        nrej_ = sum(1 for v in lrs_ if v > WE_LR_CRIT)
-        set_sum[(p, st)] = (x["tips"], len(rs), nrej_, rr_)
+        # where the restriction binds is a property of each tree; the trees
+        # are draws from one set, so no count above a critical value is formed
+        nbnd_ = sum(1 for r in rs if float(r["epsilon_full_rho"]) < 1e-6
+                    and float(r["lr_statistic"]) > 2e-3)
+        set_sum[(p, st)] = (x["tips"], len(rs), lrs_, rr_)
         n = macro_name(p) + SET_TAG[st][0]
         R.macro(macros, "WESetN" + n, fmt_int(len(rs)))
         R.macro(macros, "WESetEpsMin" + n, "%.2f" % min(eps_))
         R.macro(macros, "WESetEpsMax" + n, "%.2f" % max(eps_))
         R.macro(macros, "WESetLRMin" + n, "%.1f" % min(lrs_))
         R.macro(macros, "WESetLRMax" + n, "%.1f" % max(lrs_))
-        R.macro(macros, "WESetNRejected" + n, fmt_int(nrej_))
+        R.macro(macros, "WESetNBoundary" + n, fmt_int(nbnd_))
+        R.macro(macros, "WESetLRMedian" + n, "%.2f" % med(lrs_))
         if rr_:
             R.macro(macros, "WESetRRatioMin" + n, "%.2f" % min(rr_))
             R.macro(macros, "WESetRRatioMax" + n, "%.2f" % max(rr_))
@@ -1600,28 +1612,29 @@ def main(argv=None):
             ("tips_full", "/".join(str(v) for v in sorted({int(r["n_tips_full_tree"])
                                                             for r in rs if r["n_tips_full_tree"]}))),
             ("epsilon_matching", "%.2f (%.2f--%.2f)" % (med(eps_), min(eps_), max(eps_))),
-            ("lr", rng2(min(lrs_), max(lrs_))), ("n_rejected", str(nrej_)),
+            ("lr", "%.2f (%s)" % (med(lrs_), rng2(min(lrs_), max(lrs_)))),
+            ("n_boundary", str(nbnd_)),
             ("r_ratio", rng2(min(rr_), max(rr_)) if rr_ else ""),
             ("summary_epsilon_matching", "%.2f" % float(ft_["epsilon"])),
             ("summary_lr", "%.2f" % round(max(0.0, 2.0 * (float(ft_["loglik"])
                                                           - float(fc_["loglik"]))), 4))]))
-    held, partial, none_ = [], [], []
-    for p in elig:
-        ft_, fc_ = fits[(p,) + M], fits[(p,) + MC]
-        lr_ = max(0.0, 2.0 * (float(ft_["loglik"]) - float(fc_["loglik"])))
-        if not (float(fc_["epsilon"]) < 1e-6 and lr_ > WE_LR_CRIT):
-            continue
-        own = [v for (q, _), v in set_sum.items() if q == p and v[0] == "molecular"]
-        if own:
-            (held if all(v[2] == v[1] for v in own) else
-             none_ if all(v[2] == 0 for v in own) else partial).append(p)
+    # posterior sets: the primary result for their groups, described by where
+    # the statistic lies against the corrected critical value
+    post_ = {p: v[2] for (p, st), v in set_sum.items() if st == "posterior"}
+    R.macro(macros, "WEPostNames", name_list(sorted(post_)))
+    R.macro(macros, "WESetNamesAboveAll", name_list(sorted(
+        p for p, v in post_.items() if min(v) > WE_LR_CRIT)) or "none")
+    R.macro(macros, "WESetNamesStraddle", name_list(sorted(
+        p for p, v in post_.items() if min(v) <= WE_LR_CRIT < max(v))) or "none")
+    R.macro(macros, "WESetNamesBelowAll", name_list(sorted(
+        p for p, v in post_.items() if max(v) <= WE_LR_CRIT)) or "none")
+    nopost_ = [p for p in elig if p not in post_]
+    R.macro(macros, "WENoPostN", fmt_int(len(nopost_)))
+    R.macro(macros, "WENoPostNames", name_list(sorted(nopost_)))
+    R.macro(macros, "WENoPostNRejected", fmt_int(sum(p in rej_names for p in nopost_)))
     grp_ = sorted({p for p, _ in set_sum})
     R.macro(macros, "WESetNGroups", fmt_int(len(grp_)))
     R.macro(macros, "WESetNamesGroups", name_list(grp_))
-    R.macro(macros, "WESetNRejectHolds", fmt_int(len(held)))
-    R.macro(macros, "WESetNamesRejectHolds", name_list(sorted(held)))
-    R.macro(macros, "WESetNamesRejectPartial", name_list(sorted(partial)))
-    R.macro(macros, "WESetNamesRejectNone", name_list(sorted(none_)))
     allrr_ = [v for t in set_sum.values() for v in t[3]]
     R.macro(macros, "WESetRRatioMin", "%.2f" % min(allrr_))
     R.macro(macros, "WESetRRatioMax", "%.2f" % max(allrr_))
@@ -1663,6 +1676,14 @@ def main(argv=None):
                 fmt_int(x["n"]), x["unit"], x["clade"],
                 ", dated" if x["dated"] == "yes" else "") for x in xs))
         for p, xs in sorted(larger.items())))
+    # F4-07: sizes of a larger tree and of its molecular source tree
+    for xs in larger.values():
+        for x in xs:
+            if x.get("n_molecular_source"):
+                k_ = "".join(t[:1].upper() + t[1:] for t in
+                             re.split(r"[^A-Za-z]+", x["bibkey"]) if t)
+                R.macro(macros, "LargerN" + k_, fmt_int(x["n"]))
+                R.macro(macros, "LargerNMol" + k_, fmt_int(x["n_molecular_source"]))
     t1 = OrderedDict()
     for p in E:
         b = bmap[p]
@@ -1997,7 +2018,8 @@ def main(argv=None):
              - (float(intervals[p]["interval_hi_ma"]) - float(intervals[p]["interval_lo_ma"])))
           > 1e-4], [])
     for key, nm in (("degenerate", "Degenerate"), ("at_bound", "AtBound"),
-                    ("prior_reproduced", "Prior"), ("kind", "Kind")):
+                    ("prior_reproduced", "Prior"), ("prior_sampled", "PriorSampled"),
+                    ("kind", "Kind")):
         ps = sorted(p for p, r in got.items() if r["status"] == key)
         sm("SuppCrown" + nm, name_list(ps) if ps else "none")
     sm("SuppCrownNone", name_list(sorted(p for p, r in got.items() if r["status"] == "none")))

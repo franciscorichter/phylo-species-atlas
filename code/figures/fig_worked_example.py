@@ -44,7 +44,7 @@ for y, r in enumerate(rows):
     if r["classification"].startswith("boundary"):
         mark = "rejected" if r["classification"].endswith("(rejected)") \
             else "not rejected"
-        ax.annotate(f"\u03bc forced to zero; LR {f('lr'):.2f}, {mark}",
+        ax.annotate(f"\u03bc forced to zero; LR {f('lr'):.2f}, {mark} on this tree",
                     (f("eps_fullrho_hi"), y - off), xytext=(4, 0),
                     textcoords="offset points", va="center", fontsize=5.6,
                     color=C_NAMED)

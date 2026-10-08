@@ -45,7 +45,7 @@ KINDS, and whether each makes an interval RECOVERABLE (rung C1b):
                                    ages drawn from the calibration density;
                                    the spread is the prior, not an estimate,
                                    so the interval is set by a calibration
-                                   (c1b_exclusion prior_reproduced, D29)
+                                   (c1b_exclusion prior_sampled, D29, D51)
     taxon_addition_sample     no   one dated backbone, with taxonomically
                                    placed tips added at random per tree; the
                                    spread is placement, not dating
@@ -526,10 +526,10 @@ def flags(kind, lo, center, hi, point, cal=None):
     at_bound = (not degenerate and c is not None
                 and (c - lo < BOUND_TOL_MYR or hi - c < BOUND_TOL_MYR))
     klass, plo, phi, cont, ratio, repro = prior_test(lo, hi, cal)
-    # D29: a tree set dated under root ages drawn from the calibration prior
-    # returns that prior at the crown by construction; it is set by a
-    # calibration, like an interval that reproduces its prior (D25).
-    why = ("prior_reproduced" if kind in PRIOR_SAMPLED_KINDS
+    # D29, D51: a tree set dated under root ages drawn from the calibration
+    # prior returns that prior at the crown by construction; it is set by a
+    # calibration, under its own rule (prior_sampled), not by the D25 test.
+    why = ("prior_sampled" if kind in PRIOR_SAMPLED_KINDS
            else "kind" if not KINDS[kind] else "degenerate" if degenerate
            else "at_bound" if at_bound
            else "prior_reproduced" if repro else "")
