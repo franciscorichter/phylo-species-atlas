@@ -4842,6 +4842,12 @@ def build_number_macros(head, basis, warnings):
         m["NodeAgesResolved" + n] = macro_int(
             v["n_internal_pruned"] - v["n_internal_placed"])
     m["RuleBonferroniCritical"] = "%.2f" % tf["critical_value"]
+    # F4-30 (D63): the family with the date-assignment summary trees added
+    wa = tf["with_assigned"]
+    m["WENTestsWithAssigned"] = macro_int(wa["n_tests"])
+    m["RuleBonferroniLevelWithAssigned"] = "%.4f" % wa["level"]
+    m["RuleBonferroniCriticalWithAssigned"] = "%.2f" % wa["critical_value"]
+    m["WENamesRejectedWithAssigned"] = name_list(wa["rejected"]) or "none"
     m["WENamesRejected"] = name_list(sorted(
         p for p, v in eff.items() if v["rho_full_rejected"])) or "none"
     m["RuleLRCritical"] = "%.2f" % WORKED_LR_CUTOFF
@@ -6151,6 +6157,9 @@ def worked_example(basis, mol, shipped, crown, warnings):
             ("epsilon_intervals_overlap", overlap(part, F, M, "epsilon")),
         ])
         families[part] = family_sampling(part, elig[part], shipped)
+    assigned = sorted(p for p, v in not_tested.items()
+                      if v == "node_ages_assigned")
+    cut_wa = worked_lr_cutoff(len(tested) + len(assigned))
     polytomy = worked_polytomy(list(elig), per)
     tree_sets = worked_sets(list(elig), rho_effect, cut)
     family_order = worked_family_order(list(elig))
@@ -6188,6 +6197,18 @@ def worked_example(basis, mol, shipped, crown, warnings):
             ("n_tests", len(tested)),
             ("level", WORKED_TEST_LEVEL / len(tested)),
             ("critical_value", round(cut, 6)),
+            # F4-30 (D63): the family with the date-assignment summary trees
+            # added, stated beside the family so that their outcome under it
+            # is visible; it is not the family, which is fixed by properties
+            # of the trees read before any fit
+            ("with_assigned", OrderedDict([
+                ("groups", sorted(tested + assigned)),
+                ("n_tests", len(tested) + len(assigned)),
+                ("level", WORKED_TEST_LEVEL / (len(tested) + len(assigned))),
+                ("critical_value", round(cut_wa, 6)),
+                ("rejected", [p for p in assigned
+                              if rho_effect[p]["lr_statistic"] > cut_wa]),
+            ])),
         ])),
         ("identity",
          "the likelihood depends on lambda and rho only through lambda*rho "

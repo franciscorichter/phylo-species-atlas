@@ -5625,7 +5625,19 @@
       },
       "n_tests": 3,
       "level": 0.016666666666666666,
-      "critical_value": 4.528577
+      "critical_value": 4.528577,
+      "with_assigned": {
+        "groups": [
+          "Birds",
+          "Fish",
+          "Mammals",
+          "Sharks"
+        ],
+        "n_tests": 4,
+        "level": 0.0125,
+        "critical_value": 5.023886,
+        "rejected": []
+      }
     },
     "identity": "the likelihood depends on lambda and rho only through lambda*rho and r (Stadler 2009), so a fit at rho' is the fit at rho with lambda scaled by rho/rho' and r and the log-likelihood unchanged, unless that forces mu < 0; then mu = 0 and the likelihood drops (the rho-epsilon confounding: Cusimano & Renner 2010 Syst Biol 59:458; Hoehna et al. 2011 Mol Biol Evol 28:2577). Each pair is classified 'identity' or 'boundary'; at the boundary lr_statistic = 2 (logL(rho_tips) - logL(rho_full)) and rho_full is rejected when it exceeds the critical value of the 50:50 chi2(0):chi2(1) mixture at the Bonferroni level 0.05 / (number of eligible groups) (test_family, F4-01, D50): in the parameters of the matching fit, the fit at rho_full is the same model restricted to epsilon >= 1 - rho_tips/rho_full, an edge inside (0, 1), so the null distribution at that edge is the mixture (Chernoff 1954; Self & Liang 1987; D27, D30). Every interval uses the cutoff qchisq(0.95, 1)/2; where the epsilon estimate is 0 the interval is [0, upper] (D30)",
     "rho_effect_same_tree": {

@@ -1590,6 +1590,21 @@ def main(argv=None):
     R.macro(macros, "WENamesRejected", name_list(rej_names) or "none")
     bind_ = sorted(wep)
     R.macro(macros, "WENamesTestedBinding", name_list(bind_) or "none")
+    # F4-30 (D63): the family with the date-assignment summary trees added,
+    # stated beside the family; the text says their statistic does not reach
+    # its critical value
+    asg_ = [p for p in elig if p not in tested and p not in poly_]
+    n_wa = len(tested) + len(asg_)
+    crit_wa = NormalDist().inv_cdf(1.0 - TEST_LEVEL / n_wa) ** 2
+    rej_wa = sorted(p for p in asg_ if round(2.0 * (
+        g(p, "molecular", "tips", "loglik")
+        - g(p, "molecular", "full_misapplied", "loglik")), 4) > crit_wa)
+    R.eq("no date-assignment summary tree rejects in the family with those "
+         "trees added (as the text states)", rej_wa, [])
+    R.macro(macros, "WENTestsWithAssigned", fmt_int(n_wa))
+    R.macro(macros, "RuleBonferroniLevelWithAssigned", "%.4f" % (TEST_LEVEL / n_wa))
+    R.macro(macros, "RuleBonferroniCriticalWithAssigned", "%.2f" % crit_wa)
+    R.macro(macros, "WENamesRejectedWithAssigned", name_list(rej_wa) or "none")
     R.eq("no tested summary tree on which the restriction binds (the text "
          "says no test of the family can reject)", (bind_, rej_names), ([], []))
     R.macro(macros, "WENFullGreater", fmt_int(n_fg))

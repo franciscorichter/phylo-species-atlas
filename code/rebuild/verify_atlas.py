@@ -6706,6 +6706,23 @@ def check_numbermacros(ctx):
     R.eq("S13 the text's 'no test of the family can reject' holds "
          "(no tested tree on which the restriction binds, none rejected)",
          (bind_, rej_), ([], []))
+    # F4-30 (D63): the family with the date-assignment summary trees added,
+    # stated beside the family; the text says their statistic does not
+    # reach its critical value
+    asg_ = sorted(p for p in we["eligible"] if p not in tested and p not in poly_)
+    n_wa = n_tests + len(asg_)
+    crit_wa = _crit_corrected(n_wa)
+    wa_ = tf.get("with_assigned") or {}
+    R.eq("S13 family with the date-assignment trees added (D63)",
+         (wa_.get("n_tests"), round(wa_.get("critical_value", 0), 6)),
+         (n_wa, round(crit_wa, 6)))
+    rej_wa = sorted(p for p in asg_ if eff[p]["lr_statistic"] > crit_wa)
+    R.eq("S13 the text's 'would not reject in the family with the "
+         "date-assignment trees added' holds", rej_wa, [])
+    w["WENTestsWithAssigned"] = _mint(n_wa)
+    w["RuleBonferroniLevelWithAssigned"] = "%.4f" % (WORKED_TEST_LEVEL / n_wa)
+    w["RuleBonferroniCriticalWithAssigned"] = "%.2f" % crit_wa
+    w["WENamesRejectedWithAssigned"] = _names(rej_wa) or "none"
     w.update(_node_age_macros(we["eligible"], eff, fits))
     # D30: family and uniform fits side by side, no likelihood comparison
     epsd = {p: (as_float(fits[p + "|molecular|family"]["epsilon"]),
