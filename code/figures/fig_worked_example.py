@@ -53,8 +53,11 @@ for y, r in enumerate(rows):
                  f"trees; LR median {f('lr'):.2f}")
     elif not is_set and r["classification"].startswith("boundary"):
         # D59: an outcome only on a binary summary tree
-        tested = head["worked_example_S13"]["test_family"]["tested"]
-        mark = ("no test (polytomies)" if r["partition"] not in tested
+        tf = head["worked_example_S13"]["test_family"]
+        why = {"polytomies": "polytomies",
+               "node_ages_assigned": "node ages assigned"}
+        mark = ("no test (%s)" % why[tf["not_tested"][r["partition"]]]
+                if r["partition"] not in tf["tested"]
                 else "rejected" if r["classification"].endswith("(rejected)")
                 else "not rejected")
         label = f"\u03bc forced to zero; LR {f('lr'):.2f}, {mark} on this tree"

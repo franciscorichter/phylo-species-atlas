@@ -2614,9 +2614,9 @@ def check_worked(ctx):
         R.eq("S13 %s lr_statistic" % p, e.get("lr_statistic"),
              round(2 * (lt - lc), 4), atol=1e-9)
         # D59: a test only on a binary pruned summary tree
-        tested_ = [q for q in elig
-                   if as_int(per[(q, "molecular", "tips")]["n_polytomy_events"]) == 0]
-        R.eq("S13 %s tested (D59)" % p, e.get("tested"), p in tested_)
+        tested_ = _tested_groups(elig, lambda q: as_int(
+            per[(q, "molecular", "tips")]["n_polytomy_events"]))
+        R.eq("S13 %s tested (D59, D60)" % p, e.get("tested"), p in tested_)
         R.eq("S13 %s rho_C0 rejected" % p, e.get("rho_full_rejected"),
              ((not ident) and 2 * (lt - lc) > _crit_corrected(len(tested_)))
              if p in tested_ else None)
@@ -5876,6 +5876,108 @@ def _prior_q(spec, x):
     return "%.3f" % q
 
 
+SUMMARY_NODE_AGES = P("Data", "summary_tree_node_ages.csv")
+
+
+def _node_age_register():
+    """D60: {group: row} of Data/summary_tree_node_ages.csv."""
+    return {r["partition"]: r for r in read_csv(SUMMARY_NODE_AGES)}
+
+
+def _tested_groups(eligible, n_poly):
+    """D59, D60, restated: a test only on a pruned summary tree that is
+    binary (n_poly(group) == 0) and whose node ages come from a dating
+    analysis (Data/summary_tree_node_ages.csv node_ages)."""
+    reg = _node_age_register()
+    return sorted(q for q in eligible if n_poly(q) == 0
+                  and reg[q]["node_ages"] == "dating_analysis")
+
+
+SEQUENCE_DATING_KINDS = ("posterior_sample", "bootstrap_dating_sample")
+
+
+def _seq_dating_partitions():
+    """D61, restated: the groups whose archive holds dated trees of a
+    posterior or bootstrap dating of sequence data with a crown age neither
+    degenerate nor on a bound (Data/crown_intervals.csv)."""
+    return sorted(r["partition"] for r in read_csv(CROWN_INTERVALS)
+                  if r["uncertainty_available"] == "yes"
+                  and r["kind"] in SEQUENCE_DATING_KINDS
+                  and r["degenerate"] == "no" and r["at_bound"] == "no")
+
+
+def _node_age_macros(eligible, eff, fits):
+    """D60: the node ages of each date-assignment summary tree, re-measured
+    from the source files where they are held, and the macros built on
+    them; the text's claim that the bird matching extinction fraction lies
+    below that of every tree of both bird sets is checked here."""
+    reg = _node_age_register()
+    R.eq("summary_tree_node_ages.csv: one row per eligible group",
+         sorted(reg), sorted(eligible))
+    spec = importlib.util.spec_from_file_location(
+        "summary_tree_node_ages", P("scripts", "summary_tree_node_ages.py"))
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    w = OrderedDict()
+    sets_ = read_csv(WORKED_SETS)
+    for p in sorted(reg):
+        r = reg[p]
+        R.eq("summary_tree_node_ages %s: known node_ages" % p,
+             r["node_ages"] in ("dating_analysis", "date_assignment"), True)
+        if r["node_ages"] != "date_assignment":
+            R.eq("summary_tree_node_ages %s: no counts on a dating analysis" % p,
+                 [r[k] for k in mod.MEASURED if r[k]], [])
+            continue
+        v = {k: as_int(r[k]) for k in mod.MEASURED}
+        if all(os.path.exists(P("Data", r[k])) for k in ("summary", "ages", "placed")):
+            R.eq("summary_tree_node_ages %s: counts re-measured from the "
+                 "source files" % p, v, mod.measure(r))
+        else:
+            R.note("%s: summary-tree node-age source files not held here; "
+                   "the committed counts were not re-measured" % p)
+        R.eq("summary_tree_node_ages %s: pruned tips = placed tips = "
+             "molecular tips of the fit" % p,
+             (v["n_tips_pruned"], v["n_tips_placed"]),
+             (as_int(fits[p + "|molecular|tips"]["n_tips"]),) * 2)
+        R.eq("summary_tree_node_ages %s: the summary and pruned trees are "
+             "binary and the placed-tip tree is not (as the text states)" % p,
+             (v["n_internal"] == v["n_tips"] - 1,
+              v["n_internal_pruned"] == v["n_tips_pruned"] - 1,
+              v["n_internal_placed"] == v["n_tips_placed"] - 1),
+             (True, True, False))
+        n = crown_macro_name(p)
+        w["NodeAgesInternal" + n] = _mint(v["n_internal"])
+        w["NodeAgesUnpublished" + n] = _mint(v["n_internal"]
+                                             - v["n_internal_published"])
+        w["NodeAgesUnpublishedPct" + n] = _mpct(
+            100.0 * (v["n_internal"] - v["n_internal_published"]) / v["n_internal"])
+        w["NodeAgesPrunedInternal" + n] = _mint(v["n_internal_pruned"])
+        w["NodeAgesPrunedUnpublished" + n] = _mint(
+            v["n_internal_pruned"] - v["n_internal_pruned_published"])
+        w["NodeAgesPrunedUnpublishedPct" + n] = _mpct(
+            100.0 * (v["n_internal_pruned"] - v["n_internal_pruned_published"])
+            / v["n_internal_pruned"])
+        w["NodeAgesPlacedTips" + n] = _mint(v["n_tips_placed"])
+        w["NodeAgesPlacedInternal" + n] = _mint(v["n_internal_placed"])
+        w["NodeAgesPlacedPolyEvents" + n] = _mint(v["n_polytomy_events_placed"])
+        w["NodeAgesResolved" + n] = _mint(v["n_internal_pruned"]
+                                          - v["n_internal_placed"])
+        em_ = as_float(fits[p + "|molecular|tips"]["epsilon"])
+        set_eps = [as_float(q["epsilon_matching"]) for q in sets_
+                   if q["partition"] == p]
+        R.eq("%s: the summary-tree matching extinction fraction lies below "
+             "that of every tree of the group's sets (as the text states)" % p,
+             bool(set_eps) and em_ < min(set_eps), True)
+    return w
+
+
+def _binds(eps_full, lr):
+    """F4-26, restated: the restriction binds on a tree where the fit with
+    the full tree's fraction is on the boundary and the statistic, as
+    written, is positive."""
+    return as_float(eps_full) < WORKED_EPS_BOUNDARY and as_float(lr) > 0.0
+
+
 def _crit_corrected(n_tests):
     """F4-01 (D50): critical value of the 50:50 chi2(0):chi2(1) mixture at
     the Bonferroni level WORKED_TEST_LEVEL / n_tests, restated here."""
@@ -5911,7 +6013,7 @@ def _worked_poly_macros(eligible, fits):
             lrs.append(round(lr, 4))
             rr.append(round(as_float(f[("full", "tips")]["r"])
                             / as_float(f[("molecular", "tips")]["r"]), 4))
-            bnd.append(em < 1e-6 and lr > 2e-3)
+            bnd.append(_binds(em, round(lr, 4)))
         R.eq("worked polytomy %s: one resolved fit per seed and convention" % p,
              bool(res[p]) and all(len(v) == 3 for v in res[p].values()), True)
         allr += rr
@@ -6002,8 +6104,15 @@ def _worked_sets(eligible, fits):
                             n_tips=sorted({as_int(r["n_tips"]) for r in rs}),
                             n_full=sorted({as_int(r["n_tips_full_tree"]) for r in rs
                                            if r["n_tips_full_tree"] not in ("", None)}),
-                            nbnd=sum(1 for r in rs if as_float(r["epsilon_full_rho"])
-                                     < 1e-6 and as_float(r["lr_statistic"]) > 2e-3))
+                            nbnd=sum(1 for r in rs if _binds(r["epsilon_full_rho"],
+                                                             r["lr_statistic"])))
+        # F4-26: the rule agrees tree by tree with the edge 1 - rho_m/rho_f
+        R.eq("worked set %s %s: the restriction binds exactly where the "
+             "matching estimate lies below the edge" % (p, st),
+             [r["tree_index"] for r in rs
+              if _binds(r["epsilon_full_rho"], r["lr_statistic"])],
+             [r["tree_index"] for r in rs if as_float(r["epsilon_matching"])
+              < 1.0 - as_float(r["rho_matching"]) / as_float(r["rho_full"])])
     return out
 
 
@@ -6021,8 +6130,8 @@ def _worked_set_macros(eligible, fits):
         w["WESetLRMedian" + n] = "%.2f" % _median(v["lrs"])
         # F4-18: the statistic over the set against each critical value
         import statistics as _stx
-        n_t_ = sum(as_int(fits[q + "|molecular|tips"]["n_polytomy_events"]) == 0
-                   for q in eligible)                               # D59
+        n_t_ = len(_tested_groups(eligible, lambda q: as_int(
+            fits[q + "|molecular|tips"]["n_polytomy_events"])))       # D59, D60
         crit_b_ = _stx.NormalDist().inv_cdf(
             1.0 - WORKED_TEST_LEVEL / n_t_) ** 2
         w["WESetNAboveCrit" + n] = _mint(sum(x > WORKED_LR_CUTOFF
@@ -6101,7 +6210,7 @@ def _check_supp_polytomy(byk):
                              - as_float(f[("molecular", "full_misapplied")]["loglik"])), 4)
             lr.append(x)
             e_ = as_float(f[("molecular", "full_misapplied")]["epsilon"])
-            bnd.append(e_ < 1e-6 and x > 2e-3)
+            bnd.append(_binds(e_, x))
         ff, fm = byk[(p, "full", "tips")], byk[(p, "molecular", "tips")]
         fc = byk[(p, "molecular", "full_misapplied")]
         want = OrderedDict([
@@ -6284,6 +6393,25 @@ def check_numbermacros(ctx):
     w["COneULargestN"] = _mint(byu[0][0])
     w["COneULargestSharePct"] = "%.0f" % (100.0 * byu[0][0]
                                           / sum(x for x, _ in byu))
+    # D61: C1u where the archive holds posterior or bootstrap datings of
+    # sequence data with a free crown, summed here from the basis table
+    seq_ = _seq_dating_partitions()
+    sq_rows = [r for r in canon_e if r["partition"] in seq_
+               and r["is_chronogram"] == "yes" and r["time_scale"] == "absolute"
+               and r["uncertainty_available"] == "yes"]
+    sq_n = sum(as_float(r["c1_units"]) for r in sq_rows)
+    c1d_n = sum(as_float(r["c1_units"]) for r in canon_e
+                if r["is_chronogram"] == "yes" and r["time_scale"] == "absolute")
+    R.eq("D61 sequence-dating groups all contribute to C1u",
+         sorted(r["partition"] for r in sq_rows), seq_)
+    w["SensSeqDatingCOneUN"] = _mint(sq_n)
+    w["SensSeqDatingCOneUPct"] = _mpct(100.0 * sq_n / D)
+    w["SensSeqDatingOfCOneD"] = _mpct(100.0 * sq_n / c1d_n)
+    w["SensSeqDatingNPart"] = _mint(len(seq_))
+    w["SensSeqDatingNames"] = _names(seq_)
+    w["DescribedUntracedNames"] = _names(sorted(
+        r["partition"] for r in basis if r["is_prokaryotic"] == "no"
+        and "source not traced" in (r.get("described_source") or "")))
     # F3-16: the trees of sequenced species, by what their branch lengths are
     mo_d = {r["partition"]: r["branch_lengths"]
             for r in read_csv(MOLECULAR_ONLY_TREES)}
@@ -6545,12 +6673,13 @@ def check_numbermacros(ctx):
     # D59: the family is the eligible groups whose pruned summary tree is
     # binary; consensus trees with polytomies carry no test
     import statistics as _st
-    tested = sorted(p for p in we["eligible"]
-                    if as_int(fits[p + "|molecular|tips"]["n_polytomy_events"]) == 0)
+    tested = _tested_groups(we["eligible"], lambda q: as_int(
+        fits[q + "|molecular|tips"]["n_polytomy_events"]))
     n_tests = len(tested)
     crit_b = _st.NormalDist().inv_cdf(1.0 - WORKED_TEST_LEVEL / n_tests) ** 2
     tf = we.get("test_family") or {}
-    R.eq("S13 test family = groups with a binary pruned summary tree (D59)",
+    R.eq("S13 test family = binary pruned summary trees dated by a dating "
+         "analysis (D59, D60)",
          (tf.get("n_tests"), sorted(tf.get("tested") or [])), (n_tests, tested))
     R.eq("S13 test family critical value", round(tf.get("critical_value", 0), 6),
          round(crit_b, 6))
@@ -6563,6 +6692,21 @@ def check_numbermacros(ctx):
                                           if p not in tested))
     rej_ = sorted(p for p in tested if eff[p]["lr_statistic"] > crit_b)
     w["WENamesRejected"] = _names(rej_) or "none"
+    # D60: the reasons, the tested trees on which the restriction binds, and
+    # the node ages of the date-assignment summary trees, measured again
+    poly_ = sorted(p for p in we["eligible"] if as_int(
+        fits[p + "|molecular|tips"]["n_polytomy_events"]) != 0)
+    w["WENamesNotTestedPoly"] = _names(poly_) or "none"
+    w["WENamesNotTestedAssigned"] = _names(sorted(
+        p for p in we["eligible"] if p not in tested and p not in poly_)) or "none"
+    bind_ = sorted(p for p in tested
+                   if as_float(fits[p + "|molecular|full_misapplied"]["epsilon"])
+                   < WORKED_EPS_BOUNDARY and eff[p]["classification"] == "boundary")
+    w["WENamesTestedBinding"] = _names(bind_) or "none"
+    R.eq("S13 the text's 'no test of the family can reject' holds "
+         "(no tested tree on which the restriction binds, none rejected)",
+         (bind_, rej_), ([], []))
+    w.update(_node_age_macros(we["eligible"], eff, fits))
     # D30: family and uniform fits side by side, no likelihood comparison
     epsd = {p: (as_float(fits[p + "|molecular|family"]["epsilon"]),
                 as_float(fits[p + "|molecular|tips"]["epsilon"]))
@@ -6670,6 +6814,13 @@ def check_numbermacros(ctx):
         w["COneN" + n] = _mint(c1)
         w["COnePct" + n] = _mpct(100.0 * c1 / d)
         w["FMol" + n] = "%.2f" % as_float(r["f_mol"])
+    # F4-29: Results name Seed plants and Fish as the two reference trees
+    # with the lowest molecular fraction; checked here, since the ranking is
+    # prose
+    fm_ = sorted((as_float(r["f_mol"]), r["partition"]) for r in basis
+                 if r["is_prokaryotic"] == "no" and r.get("f_mol"))
+    R.eq("the two lowest molecular fractions are those the Results name",
+         sorted(p_ for _, p_ in fm_[:2]), ["Fish", "Seed plants"])
     got = OrderedDict(_macros_in(NUMBER_MACROS))
     R.eq("numbers_macros.tex present", os.path.exists(NUMBER_MACROS), True)
     R.eq("numbers_macros.tex macro names", sorted(got), sorted(w))
@@ -6850,6 +7001,17 @@ def check_tables(ctx):
         R.eq("Table 2 %s product" % lvl, rows[lvl]["product"],
              _mpct(100.0 * s["c1_definition"]["product"][key]["numerator_sum"]
                    / D))
+    seq_ = _seq_dating_partitions()
+    sq_n = sum(as_float(r["c1_units"]) for r in canon_e
+               if r["partition"] in seq_ and r["is_chronogram"] == "yes"
+               and r["time_scale"] == "absolute"
+               and r["uncertainty_available"] == "yes")
+    R.eq("Table 2 uncertainty available, posterior or bootstrap with a free "
+         "crown (D61)", rows["uncertainty available"]["seqdating"],
+         _mpct(100.0 * sq_n / D))
+    R.eq("Table 2 the D61 column is empty above C1u",
+         [rows[l]["seqdating"] for l in ("named", "molecular", "dated")],
+         ["", "", ""])
     R.eq("Table 2 levels (D58: the last is date uncertainty available)",
          list(rows), ["named", "molecular", "dated", "uncertainty available"])
 
@@ -6882,8 +7044,8 @@ def check_tables(ctx):
             R.eq("Table 3 %s lambda ratio" % p, r["lambda_ratio"],
                  "%.2f" % (as_float(fc["lambda"]) / as_float(ft["lambda"])))
             R.eq("Table 3 %s LR" % p, r["lr"], "%.2f" % lr)
-            tt_ = [q for q in we["eligible"]
-                   if as_int(fits[q + "|molecular|tips"]["n_polytomy_events"]) == 0]
+            tt_ = _tested_groups(we["eligible"], lambda q: as_int(
+                fits[q + "|molecular|tips"]["n_polytomy_events"]))
             R.eq("Table 3 %s rejected" % p, r["classification"].endswith(
                 "(rejected)"), p in tt_ and lr > _crit_corrected(len(tt_)))
         else:
@@ -6907,8 +7069,8 @@ def check_tables(ctx):
                     for q in qs]
             R.eq("Table 3 %s lambda ratio median over the set" % p,
                  r["lambda_ratio"], "%.2f" % _med(lam_))
-            nb_ = sum(1 for q in qs if as_float(q["epsilon_full_rho"]) < 1e-6
-                      and as_float(q["lr_statistic"]) > 2e-3)
+            nb_ = sum(1 for q in qs if _binds(q["epsilon_full_rho"],
+                                              q["lr_statistic"]))
             R.eq("Table 3 %s trees and trees that bind" % p,
                  (r["n_trees"], r["n_boundary"], r["classification"]),
                  (str(len(qs)), str(nb_), "boundary" if nb_ == len(qs)
@@ -7360,6 +7522,9 @@ def check_supplement(ctx):
     u = h["union_bound_S09"]
     check_row("union", D, OrderedDict([("C0", u["C0_union"]),
                                        ("C1", u["C1_union_high"])]))
+    seq_ = set(_seq_dating_partitions())
+    check_row("c1u_sequence_dating", D, OrderedDict(
+        [("C1u", levels(canon_e, lambda r: r["partition"] in seq_)["C1u"])]))
     # D58: no row of the table rests on the crown-interval classification
     R.eq("Supplement S7 has no interval rows (D58)",
          sorted(k for k in sens if k in ("rule_p_counted", "crown_calibrated")),

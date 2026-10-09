@@ -1094,6 +1094,23 @@ def main(argv=None):
     R.macro(macros, "COneULargestN", fmt_int(byu[0][0]))
     R.macro(macros, "COneULargestSharePct",
             "%.0f" % (100.0 * byu[0][0] / sum(x for x, _ in byu)))
+    # D61: date uncertainty only where the archive holds dated trees of a
+    # posterior or bootstrap dating of sequence data with a free crown
+    seqd = sorted(p for p in E if available[p]
+                  and intervals[p]["kind"] in ("posterior_sample",
+                                               "bootstrap_dating_sample")
+                  and intervals[p]["degenerate"] == "no"
+                  and intervals[p]["at_bound"] == "no")
+    seq_lad = ladder(seqd, den)
+    R.macro(macros, "SensSeqDatingCOneUN", fmt_int(seq_lad["C1u"]["union"]))
+    R.macro(macros, "SensSeqDatingCOneUPct", fmt_pct(seq_lad["C1u"]["pct_union"]))
+    R.macro(macros, "SensSeqDatingOfCOneD", fmt_pct(pct(
+        seq_lad["C1u"]["union"], lad["C1d"]["union"])))
+    R.macro(macros, "SensSeqDatingNPart", fmt_int(len(seqd)))
+    R.macro(macros, "SensSeqDatingNames", name_list(seqd))
+    R.macro(macros, "DescribedUntracedNames", name_list(sorted(
+        r["partition"] for r in euk
+        if "source not traced" in (r.get("described_source") or ""))))
     R.macro(macros, "RuleTipsOverNamedPct", "%.0f" % (100 * TIPS_OVER_NAMED))
     R.macro(macros, "RuleElasticityPct", "%.0f" % (100 * 0.2))
     # Without the automated-synthesis tree
@@ -1447,8 +1464,58 @@ def main(argv=None):
     # zero under the model.  The family is the eligible groups whose pruned
     # tree has no polytomy (counted on the tree below), each test at the
     # Bonferroni level over that family.
-    tested = [p for p in elig
-              if as_int(fits[(p, "molecular", "tips")]["n_polytomy_events"]) == 0]
+    # A test is reported only where its model assumptions hold for the tree
+    # (D60): the summary tree is also dated by a dating analysis, not by
+    # published ages assigned to some nodes and interpolated at the others
+    # (registers/summary_tree_node_ages.csv, measured by
+    # code/rebuild/summary_tree_node_ages.py from the source's files).
+    nage = {r["partition"]: r for r in read_csv(
+        path("registers", "summary_tree_node_ages.csv"))}
+    R.eq("summary_tree_node_ages.csv: one row per eligible group",
+         sorted(nage), sorted(elig))
+    poly_ = [p for p in elig
+             if as_int(fits[(p, "molecular", "tips")]["n_polytomy_events"]) != 0]
+    tested = [p for p in elig if p not in poly_
+              and nage[p]["node_ages"] == "dating_analysis"]
+    R.macro(macros, "WENamesNotTestedPoly", name_list(poly_) or "none")
+    R.macro(macros, "WENamesNotTestedAssigned", name_list(
+        [p for p in elig if p not in tested and p not in poly_]) or "none")
+    for p in sorted(nage):
+        r_ = nage[p]
+        if r_["node_ages"] != "date_assignment":
+            continue
+        v_ = {k: as_int(r_[k]) for k in (
+            "n_tips", "n_internal", "n_internal_published", "n_tips_pruned",
+            "n_internal_pruned", "n_internal_pruned_published", "n_tips_placed",
+            "n_internal_placed", "n_polytomy_events_placed")}
+        R.eq("%s: node-age register pruned and placed tips = the fit's "
+             "sequenced tips" % p, (v_["n_tips_pruned"], v_["n_tips_placed"]),
+             (as_int(fits[(p, "molecular", "tips")]["n_tips"]),) * 2)
+        R.eq("%s: summary and pruned trees binary, placed-tip tree not" % p,
+             (v_["n_internal"] == v_["n_tips"] - 1,
+              v_["n_internal_pruned"] == v_["n_tips_pruned"] - 1,
+              v_["n_internal_placed"] == v_["n_tips_placed"] - 1),
+             (True, True, False))
+        n_ = macro_name(p)
+        R.macro(macros, "NodeAgesInternal" + n_, fmt_int(v_["n_internal"]))
+        R.macro(macros, "NodeAgesUnpublished" + n_,
+                fmt_int(v_["n_internal"] - v_["n_internal_published"]))
+        R.macro(macros, "NodeAgesUnpublishedPct" + n_, fmt_pct(pct(
+            v_["n_internal"] - v_["n_internal_published"], v_["n_internal"])))
+        R.macro(macros, "NodeAgesPrunedInternal" + n_,
+                fmt_int(v_["n_internal_pruned"]))
+        R.macro(macros, "NodeAgesPrunedUnpublished" + n_, fmt_int(
+            v_["n_internal_pruned"] - v_["n_internal_pruned_published"]))
+        R.macro(macros, "NodeAgesPrunedUnpublishedPct" + n_, fmt_pct(pct(
+            v_["n_internal_pruned"] - v_["n_internal_pruned_published"],
+            v_["n_internal_pruned"])))
+        R.macro(macros, "NodeAgesPlacedTips" + n_, fmt_int(v_["n_tips_placed"]))
+        R.macro(macros, "NodeAgesPlacedInternal" + n_,
+                fmt_int(v_["n_internal_placed"]))
+        R.macro(macros, "NodeAgesPlacedPolyEvents" + n_,
+                fmt_int(v_["n_polytomy_events_placed"]))
+        R.macro(macros, "NodeAgesResolved" + n_,
+                fmt_int(v_["n_internal_pruned"] - v_["n_internal_placed"]))
     WE_LEVEL_B = TEST_LEVEL / len(tested)
     WE_LR_CRIT = NormalDist().inv_cdf(1.0 - WE_LEVEL_B) ** 2
     R.macro(macros, "WENTests", fmt_int(len(tested)))
@@ -1521,6 +1588,10 @@ def main(argv=None):
     R.macro(macros, "RuleBonferroniCritical", "%.2f" % WE_LR_CRIT)
     rej_names = sorted(p for p, v in wep.items() if v < WE_LEVEL_B)
     R.macro(macros, "WENamesRejected", name_list(rej_names) or "none")
+    bind_ = sorted(wep)
+    R.macro(macros, "WENamesTestedBinding", name_list(bind_) or "none")
+    R.eq("no tested summary tree on which the restriction binds (the text "
+         "says no test of the family can reject)", (bind_, rej_names), ([], []))
     R.macro(macros, "WENFullGreater", fmt_int(n_fg))
     R.macro(macros, "WENFullSmaller", fmt_int(n_fs))
     R.macro(macros, "WENFullOverlap", fmt_int(n_fo))
@@ -1558,7 +1629,7 @@ def main(argv=None):
             rr.append(round(float(f_[F]["r"]) / float(f_[M]["r"]), 4))
             lrs.append(x_)
             em.append(float(f_[M]["epsilon"]))
-            bnd.append(e_ < 1e-6 and x_ > 2e-3)
+            bnd.append(e_ < 1e-6 and x_ > 0.0)
         allr += rr
         nb += all(bnd)
         n = macro_name(p)
@@ -1666,8 +1737,18 @@ def main(argv=None):
                for r in rs if r["r_full_tree"]]
         # where the restriction binds is a property of each tree; the trees
         # are draws from one set, so no count above a critical value is formed
+        # F4-26: binds where the fit with the full tree's fraction is on the
+        # boundary and the statistic as written is positive, which is
+        # exactly where the matching estimate lies below the edge
         nbnd_ = sum(1 for r in rs if float(r["epsilon_full_rho"]) < 1e-6
-                    and float(r["lr_statistic"]) > 2e-3)
+                    and float(r["lr_statistic"]) > 0.0)
+        R.eq("tree set %s %s: binds exactly below the edge" % (p, st),
+             sorted(r["tree_index"] for r in rs
+                    if float(r["epsilon_full_rho"]) < 1e-6
+                    and float(r["lr_statistic"]) > 0.0),
+             sorted(r["tree_index"] for r in rs
+                    if float(r["epsilon_matching"]) < 1.0
+                    - float(r["rho_matching"]) / float(r["rho_full"])))
         set_sum[(p, st)] = (x["tips"], len(rs), lrs_, rr_)
         n = macro_name(p) + SET_TAG[st][0]
         R.macro(macros, "WESetN" + n, fmt_int(len(rs)))
@@ -1815,6 +1896,7 @@ def main(argv=None):
             ("gbif", fmt_pct(pct(lad["C0"]["sum"] + len(added), den)) if lv == "C0" else ""),
             ("product", fmt_pct(pct(round(prod[lv], 4), den)) if lv in prod else ""),
             ("nobirds", fmt_pct(nob[lv]["pct_union"])),
+            ("seqdating", fmt_pct(seq_lad[lv]["pct_union"]) if lv == "C1u" else ""),
         ])
     table_eq("table_rungs_sensitivity.csv", t2, "level")
 
@@ -1874,7 +1956,7 @@ def main(argv=None):
                     for r_ in rs_]
             row_["lambda_ratio"] = "%.2f" % med(lam_)
             nb_ = sum(1 for r_ in rs_ if float(r_["epsilon_full_rho"]) < 1e-6
-                      and float(r_["lr_statistic"]) > 2e-3)
+                      and float(r_["lr_statistic"]) > 0.0)
             row_["classification"] = ("boundary" if nb_ == len(rs_) else
                                       "identity" if nb_ == 0 else "mixed")
             row_["basis"], row_["n_trees"], row_["n_boundary"] = (
@@ -2218,6 +2300,9 @@ def main(argv=None):
     got["union"] = srow("union", den, OrderedDict(
         [("C0", pct(lad["C0"]["sum"] + n_add, den)),
          ("C1", pct(lad["C1"]["sum"] + n_add, den)), ("C1d", None), ("C1u", None)]))
+    got["c1u_sequence_dating"] = srow("c1u_sequence_dating", den, OrderedDict(
+        [("C0", None), ("C1", None), ("C1d", None),
+         ("C1u", seq_lad["C1u"]["pct_union"])]))
     supp_eq("supp_sensitivity", got, "alternative")
 
     got = OrderedDict()

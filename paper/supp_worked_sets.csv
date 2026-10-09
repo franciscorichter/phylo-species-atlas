@@ -4,6 +4,6 @@ Birds,"date assignment, random dates",100,9239,10824,0.20 (0.10--0.27),0.00 (0.0
 Birds,"date assignment, mean dates",100,9239,10824,0.19 (0.18--0.19),0.00 (0.00),0,0.99--1.01,0.08,4.88
 Mammals,posterior set,100,4098,5911,0.67 (0.65--0.70),0.00 (0.00),0,0.92--0.98,0.69,0.00
 Mammals,source's tree of sequenced species,100,4099,,0.70 (0.67--0.74),0.00 (0.00),0,,0.69,0.00
-Sharks,root ages drawn from the prior,100,610,1192,0.52 (0.29--0.71),0.00 (0.00--5.56),11,0.89--1.07,0.52,0.00
+Sharks,root ages drawn from the prior,100,610,1192,0.52 (0.29--0.71),0.00 (0.00--5.56),14,0.89--1.07,0.52,0.00
 Sharks,source's tree of sequenced species,100,610,,0.40 (0.06--0.62),1.18 (0.00--18.93),84,,0.52,0.00
 Squamates,posterior set,100,5415,9754,0.28 (0.18--0.37),30.97 (7.86--69.82),100,0.92--0.99,0.14,88.36

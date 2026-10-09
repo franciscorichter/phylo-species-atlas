@@ -1484,6 +1484,31 @@
           "percent_with_gbif": 74.72527472527473
         }
       }
+    },
+    "c1u_sequence_dating": {
+      "rule": "C1u where the archive holds dated trees of a posterior or bootstrap dating of sequence data (crown_intervals kind in ('posterior_sample', 'bootstrap_dating_sample')) whose crown is neither degenerate nor on a bound (D61)",
+      "partitions": [
+        "Amphibians",
+        "Cephalopods",
+        "Mammals",
+        "Squamates",
+        "Turtles"
+      ],
+      "partitions_excluded": {
+        "Birds": "date_assignment_sample",
+        "Bryophytes": "bootstrap_dating_sample (crown degenerate)",
+        "Cnidaria": "node_hpd_annotation",
+        "Diatoms": "bootstrap_dating_sample (crown on a bound)",
+        "Echinoderms": "node_label_interval",
+        "Gastropods": "node_hpd_annotation",
+        "Sharks": "calibration_prior_sample",
+        "Sponges": "node_label_interval"
+      },
+      "numerator": 13370,
+      "denominator": 2085869,
+      "percent": 0.6409798506042326,
+      "percent_of_C1d": 11.813041173352183,
+      "percent_of_C1u": 55.843287945869186
     }
   },
   "disclosures": {
@@ -5550,16 +5575,57 @@
       "Squamates"
     ],
     "test_family": {
-      "rule": "one likelihood-ratio test per eligible group whose pruned summary tree is binary; on a summary tree with polytomies (a consensus tree) the statistic is reported without a test; the family is fixed by the trees before any statistic is read; Bonferroni level = 0.05 / n_tests (D50, D59)",
+      "rule": "a test is reported only where its model assumptions hold for the tree: one likelihood-ratio test per eligible group whose pruned summary tree is binary and whose node ages are estimated by a dating analysis; on a summary tree with polytomies (a consensus tree) or with assigned and interpolated node ages the statistic is reported without a test; the family is fixed by the trees before any statistic is read; Bonferroni level = 0.05 / n_tests (D50, D59, D60)",
       "tested": [
-        "Birds",
         "Fish",
         "Mammals",
         "Sharks"
       ],
-      "n_tests": 4,
-      "level": 0.0125,
-      "critical_value": 5.023886
+      "not_tested": {
+        "Amphibians": "polytomies",
+        "Birds": "node_ages_assigned",
+        "Seed plants": "polytomies",
+        "Squamates": "polytomies"
+      },
+      "tested_binding": [],
+      "summary_node_ages": {
+        "Amphibians": {
+          "node_ages": "dating_analysis"
+        },
+        "Birds": {
+          "node_ages": "date_assignment",
+          "n_tips": 10824,
+          "n_internal": 10823,
+          "n_internal_published": 6987,
+          "n_tips_pruned": 9239,
+          "n_internal_pruned": 9238,
+          "n_internal_pruned_published": 6987,
+          "n_tips_placed": 9239,
+          "n_internal_placed": 9120,
+          "n_polytomy_events_placed": 231,
+          "pct_internal_unpublished": 35.44303797468354,
+          "pct_pruned_unpublished": 24.366746048928338,
+          "placed_binary": false
+        },
+        "Fish": {
+          "node_ages": "dating_analysis"
+        },
+        "Mammals": {
+          "node_ages": "dating_analysis"
+        },
+        "Seed plants": {
+          "node_ages": "dating_analysis"
+        },
+        "Sharks": {
+          "node_ages": "dating_analysis"
+        },
+        "Squamates": {
+          "node_ages": "dating_analysis"
+        }
+      },
+      "n_tests": 3,
+      "level": 0.016666666666666666,
+      "critical_value": 4.528577
     },
     "identity": "the likelihood depends on lambda and rho only through lambda*rho and r (Stadler 2009), so a fit at rho' is the fit at rho with lambda scaled by rho/rho' and r and the log-likelihood unchanged, unless that forces mu < 0; then mu = 0 and the likelihood drops (the rho-epsilon confounding: Cusimano & Renner 2010 Syst Biol 59:458; Hoehna et al. 2011 Mol Biol Evol 28:2577). Each pair is classified 'identity' or 'boundary'; at the boundary lr_statistic = 2 (logL(rho_tips) - logL(rho_full)) and rho_full is rejected when it exceeds the critical value of the 50:50 chi2(0):chi2(1) mixture at the Bonferroni level 0.05 / (number of eligible groups) (test_family, F4-01, D50): in the parameters of the matching fit, the fit at rho_full is the same model restricted to epsilon >= 1 - rho_tips/rho_full, an edge inside (0, 1), so the null distribution at that edge is the mixture (Chernoff 1954; Self & Liang 1987; D27, D30). Every interval uses the cutoff qchisq(0.95, 1)/2; where the epsilon estimate is 0 the interval is [0, upper] (D30)",
     "rho_effect_same_tree": {
@@ -5598,8 +5664,8 @@
         "lr_statistic": 4.8814,
         "classification": "boundary",
         "epsilon_rho_full_on_boundary": true,
-        "tested": true,
-        "rho_full_rejected": false
+        "tested": false,
+        "rho_full_rejected": null
       },
       "Fish": {
         "rho_tips": 0.31962514,
@@ -6317,7 +6383,7 @@
         "lr_max": 24.8909,
         "n_boundary": 95,
         "n_lr_above_critical": 54,
-        "n_lr_above_corrected": 38,
+        "n_lr_above_corrected": 42,
         "r_ratio_min": 0.971659701074717,
         "r_ratio_max": 1.0452122877897063,
         "summary_tree_classification": "boundary",
@@ -6448,7 +6514,7 @@
         "lr_min": 0.0,
         "lr_median": 0.0,
         "lr_max": 5.5616,
-        "n_boundary": 11,
+        "n_boundary": 14,
         "n_lr_above_critical": 2,
         "n_lr_above_corrected": 1,
         "r_ratio_min": 0.8876782042786019,

@@ -71,7 +71,9 @@ How each level is decided, tip by tip:
   whether the source archive carries a posterior, bootstrap, date-assignment or root-prior tree
   set, or node intervals on a summary tree. The fish taxon-addition set does not count: pruned to
   its sequenced tips, each of its trees has the dates of the source's one dated tree
-  (`registers/taxon_addition_set_check.csv`).
+  (`registers/taxon_addition_set_check.csv`). A stricter reading, printed beside it, counts only
+  archives holding dated trees of a posterior or bootstrap dating of sequence data whose crown age
+  is neither fixed nor on a bound (`kind`, `degenerate`, `at_bound`).
 
 `registers/crown_intervals.csv` also compares each archived crown interval with the range its
 calibrations allow (`not_excluded_by_rule`, `rule_exclusion`; `registers/calibration_register.csv`).

@@ -2536,6 +2536,57 @@ def c1_definition_sensitivity(basis, shipped, truth):
     return out
 
 
+# F4-28 (D61).  The stricter reading of C1u: the
+# archive holds dated trees from a posterior or bootstrap dating of sequence
+# data (Data/crown_intervals.csv kind), with a crown age the dating leaves
+# free (not degenerate, median not on a hard bound).  It excludes the
+# date-assignment set, the root-prior set, the bootstrap sets with a fixed
+# crown or a crown on its bound, and the intervals annotated on a summary
+# tree, whose dated trees the archive does not hold.
+SEQUENCE_DATING_KINDS = ("posterior_sample", "bootstrap_dating_sample")
+
+
+def sequence_dating_set(partition):
+    r = crown_intervals().get(partition)
+    return bool(r) and r.get("uncertainty_available") == "yes" \
+        and r["kind"] in SEQUENCE_DATING_KINDS \
+        and r.get("degenerate") == "no" and r.get("at_bound") == "no"
+
+
+def c1u_sequence_dating_sensitivity(basis, shipped, truth):
+    """C1u restricted to the groups whose archive holds a set of dated
+    trees from a posterior or bootstrap dating of sequence data with an
+    unfixed crown (sequence_dating_set); the denominator is unchanged."""
+    keep = lambda r: sequence_dating_set(r["partition"])
+    rg = compute_rungs(basis, shipped, truth, keep=keep)
+    full = compute_rungs(basis, shipped, truth)
+    u = rg["C1u"]
+    n = u.get("numerator_union", u["numerator_sum_rounded"])
+    c1u_parts = sorted(r["partition"] for r in basis if is_euk(r)
+                       and rung_weight(r, "C1u") > 0)
+    kept = [p for p in c1u_parts if sequence_dating_set(p)]
+    return OrderedDict([
+        ("rule", "C1u where the archive holds dated trees of a posterior or "
+                 "bootstrap dating of sequence data (crown_intervals kind in "
+                 "%s) whose crown is neither degenerate nor on a bound "
+                 "(D61)" % (SEQUENCE_DATING_KINDS,)),
+        ("partitions", kept),
+        ("partitions_excluded",
+         OrderedDict((p, crown_intervals()[p]["kind"]
+                      + ("" if crown_intervals()[p]["kind"]
+                         not in SEQUENCE_DATING_KINDS else
+                         " (crown %s)" % ("degenerate"
+                                          if crown_intervals()[p].get("degenerate")
+                                          == "yes" else "on a bound")))
+                     for p in c1u_parts if p not in kept)),
+        ("numerator", n),
+        ("denominator", u["denominator"]),
+        ("percent", pct(n, u["denominator"])),
+        ("percent_of_C1d", pct(n, full["C1d"]["numerator_union"])),
+        ("percent_of_C1u", pct(n, full["C1u"]["numerator_union"])),
+    ])
+
+
 def assembly_sensitivity(basis, shipped, truth):
     """§8.2 -- leave-assembly-class-out.
 
@@ -3883,6 +3934,8 @@ def compute_headline(truth, basis, shipped, mol, ledger, pt, warnings):
             ("denominator", denominator_sensitivity(basis, shipped, truth)),
             ("c1_definition", c1_definition_sensitivity(basis, shipped, truth)),
             ("c0_gbif_unmatched", c0_gbif_sensitivity(basis, shipped)),
+            ("c1u_sequence_dating",
+             c1u_sequence_dating_sensitivity(basis, shipped, truth)),
         ])),
         ("disclosures", disc),
         ("molecular_evidence", OrderedDict(
@@ -4374,6 +4427,11 @@ def build_number_macros(head, basis, warnings):
     m["DescribedProk"] = macro_int(den["prokaryotic"]["described"])
     rep = head["sensitivities"]["denominator"]["represented_partitions_only"]
     m["DescribedRepresented"] = macro_int(rep["described"])
+    # F4-29: the groups whose count is a rounded
+    # figure of untraced source, named from the basis table, not typed
+    m["DescribedUntracedNames"] = name_list(sorted(
+        r["partition"] for r in basis if is_euk(r)
+        and "source not traced" in (r.get("described_source") or "")))
 
     # the four levels, on the headline (union) convention (D55, D58: C1u,
     # date uncertainty available, is the last)
@@ -4461,6 +4519,12 @@ def build_number_macros(head, basis, warnings):
     m["UnresolvedLabelsPct"] = macro_pct(nr["percent"])
 
     s = head["sensitivities"]
+    sq = s["c1u_sequence_dating"]
+    m["SensSeqDatingCOneUN"] = macro_int(sq["numerator"])
+    m["SensSeqDatingCOneUPct"] = macro_pct(sq["percent"])
+    m["SensSeqDatingOfCOneD"] = macro_pct(sq["percent_of_C1d"])
+    m["SensSeqDatingNPart"] = macro_int(len(sq["partitions"]))
+    m["SensSeqDatingNames"] = name_list(sq["partitions"])
     g = s["c0_gbif_unmatched"]
     m["SensGbifSpeciesAdded"] = macro_int(g["species_added"])
     m["SensGbifCZeroPct"] = macro_pct(g["percent"])
@@ -4747,6 +4811,36 @@ def build_number_macros(head, basis, warnings):
     m["WENamesTested"] = name_list(sorted(tf["tested"]))
     m["WENamesNotTested"] = name_list(sorted(
         p for p in w["eligible"] if p not in tf["tested"]))
+    # D60: the reasons a summary tree carries no test, and the tested trees
+    # on which the restriction binds
+    for why, nm in (("polytomies", "Poly"), ("node_ages_assigned", "Assigned")):
+        m["WENamesNotTested" + nm] = name_list(sorted(
+            p for p, v in tf["not_tested"].items() if v == why)) or "none"
+    m["WENamesTestedBinding"] = name_list(sorted(tf["tested_binding"])) or "none"
+    for p, v in tf["summary_node_ages"].items():
+        if v["node_ages"] == NODE_AGES_ESTIMATED:
+            continue
+        n = crown_macro_name(p)
+        m["NodeAgesInternal" + n] = macro_int(v["n_internal"])
+        m["NodeAgesUnpublished" + n] = macro_int(
+            v["n_internal"] - v["n_internal_published"])
+        m["NodeAgesUnpublishedPct" + n] = macro_pct(v["pct_internal_unpublished"])
+        m["NodeAgesPrunedInternal" + n] = macro_int(v["n_internal_pruned"])
+        m["NodeAgesPrunedUnpublished" + n] = macro_int(
+            v["n_internal_pruned"] - v["n_internal_pruned_published"])
+        m["NodeAgesPrunedUnpublishedPct" + n] = macro_pct(
+            v["pct_pruned_unpublished"])
+        m["NodeAgesPlacedTips" + n] = macro_int(v["n_tips_placed"])
+        m["NodeAgesPlacedInternal" + n] = macro_int(v["n_internal_placed"])
+        m["NodeAgesPlacedPolyEvents" + n] = macro_int(
+            v["n_polytomy_events_placed"])
+        # nodes of the binary pruned summary tree that the tree of placed
+        # tips (the synthesis of the input phylogenies) leaves unresolved
+        if v["placed_binary"] or v["n_internal_pruned"] != v["n_tips_pruned"] - 1:
+            die("%s: the text describes a binary pruned summary tree on a "
+                "placed-tip tree with polytomies" % p)
+        m["NodeAgesResolved" + n] = macro_int(
+            v["n_internal_pruned"] - v["n_internal_placed"])
     m["RuleBonferroniCritical"] = "%.2f" % tf["critical_value"]
     m["WENamesRejected"] = name_list(sorted(
         p for p, v in eff.items() if v["rho_full_rejected"])) or "none"
@@ -5175,7 +5269,8 @@ def build_which_tree_tex(head, basis, warnings):
     return "\n".join(out) + "\n"
 
 
-SENS_COLUMNS = ["rep", "col", "union", "gbif", "product", "nobirds"]
+SENS_COLUMNS = ["rep", "col", "union", "gbif", "product", "nobirds",
+                "seqdating"]
 
 
 def _rung_sensitivity_rows(head):
@@ -5206,6 +5301,10 @@ def _rung_sensitivity_rows(head):
             ("product", macro_pct(prod[key]["percent"])
              if key in ("C1", "C1d") else ""),
             ("nobirds", pu(nob[key])),
+            # D61: C1u where the archive holds posterior or bootstrap dated
+            # trees of sequence data with a free crown
+            ("seqdating", macro_pct(s["c1u_sequence_dating"]["percent"])
+             if key == "C1u" else ""),
         ]))
     return rows
 
@@ -5316,9 +5415,8 @@ def _worked_rows(head):
             put("r_full", "r_full_tree", f3)
             put("r_molecular", "r_matching", f3)
             put("lr", "lr_statistic", lambda x: "%.2f" % x)
-            nb = sum(1 for r in rs
-                     if as_float(r["epsilon_full_rho"]) < WORKED_EPS_BOUNDARY
-                     and as_float(r["lr_statistic"]) > 2 * WORKED_IDENTITY_LL_TOL)
+            nb = sum(1 for r in rs if worked_binds(r["epsilon_full_rho"],
+                                                   r["lr_statistic"]))
             row["lambda_ratio"] = "%.2f" % median([_set_lambda_ratio(r) for r in rs])
             row["classification"] = ("boundary" if nb == len(rs) else
                                      "identity" if nb == 0 else "mixed")
@@ -5795,16 +5893,72 @@ WORKED_LR_CUTOFF = 2.705543   # qchisq(0.90, 1): the 5% critical value of one te
 WORKED_TEST_LEVEL = 0.05      # the level WORKED_LR_CUTOFF is the critical value for
 
 
-def worked_tested(elig, per):
-    """Round 1 of 2026-10-09 (F4-22, D59).  A test is made only on a binary
-    summary tree: the likelihood reads a node with k children as k - 1
+SUMMARY_NODE_AGES = os.path.join(ROOT, "Data", "summary_tree_node_ages.csv")
+NODE_AGES_ESTIMATED = "dating_analysis"   # the other value: date_assignment
+
+
+def summary_node_ages(elig):
+    """F4-27 (D60).  Where the node ages of each
+    eligible group's summary tree come from (Data/summary_tree_node_ages.csv,
+    measured by scripts/summary_tree_node_ages.py for the date-assignment
+    rows)."""
+    if not os.path.exists(SUMMARY_NODE_AGES):
+        die("%s is missing" % rel(SUMMARY_NODE_AGES))
+    rows = {r["partition"]: r for r in read_csv(SUMMARY_NODE_AGES)}
+    if sorted(rows) != sorted(elig):
+        die("%s lists %s, the eligible groups are %s"
+            % (rel(SUMMARY_NODE_AGES), sorted(rows), sorted(elig)))
+    out = OrderedDict()
+    for p in elig:
+        r = rows[p]
+        if r["node_ages"] not in (NODE_AGES_ESTIMATED, "date_assignment"):
+            die("%s: %s has node_ages %r" % (rel(SUMMARY_NODE_AGES), p,
+                                              r["node_ages"]))
+        e = OrderedDict([("node_ages", r["node_ages"])])
+        if r["node_ages"] != NODE_AGES_ESTIMATED:
+            for k in ("n_tips", "n_internal", "n_internal_published",
+                      "n_tips_pruned", "n_internal_pruned",
+                      "n_internal_pruned_published", "n_tips_placed",
+                      "n_internal_placed", "n_polytomy_events_placed"):
+                if r.get(k) in ("", None):
+                    die("%s: %s has no %s; run scripts/summary_tree_node_ages.py"
+                        % (rel(SUMMARY_NODE_AGES), p, k))
+                e[k] = as_int(r[k])
+            if e["n_tips_pruned"] != e["n_tips_placed"]:
+                die("%s: %s pruned tips %d != placed tips %d"
+                    % (rel(SUMMARY_NODE_AGES), p, e["n_tips_pruned"],
+                       e["n_tips_placed"]))
+            e["pct_internal_unpublished"] = pct(
+                e["n_internal"] - e["n_internal_published"], e["n_internal"])
+            e["pct_pruned_unpublished"] = pct(
+                e["n_internal_pruned"] - e["n_internal_pruned_published"],
+                e["n_internal_pruned"])
+            e["placed_binary"] = e["n_internal_placed"] == e["n_tips_placed"] - 1
+        out[p] = e
+    return out
+
+
+def worked_tested(elig, per, node_ages):
+    """F4-22 (D59) and F4-27 (D60).  A test is reported
+    only where its model assumptions hold for the tree.  (i) The tree is
+    binary: the likelihood reads a node with k children as k - 1
     simultaneous speciation events, which has probability zero under the
     constant-rate model, so on a consensus tree with polytomies the statistic
     has no reference distribution (and it moves under random resolution).
-    The family is the eligible groups whose pruned summary tree has no
-    polytomy, a property of the tree fixed before any statistic is read."""
-    return [p for p in elig
-            if as_int(per["%s|molecular|tips" % p]["n_polytomy_events"]) == 0]
+    (ii) Its node ages are estimated by a dating analysis: the model takes
+    the branching times as estimates, and a summary tree that assigns
+    published ages to some nodes and interpolates the others does not
+    estimate them.  Both are properties of the tree fixed before any
+    statistic is read.  Returns (tested, {untested group: reason})."""
+    tested, why = [], OrderedDict()
+    for p in elig:
+        if as_int(per["%s|molecular|tips" % p]["n_polytomy_events"]) != 0:
+            why[p] = "polytomies"
+        elif node_ages[p]["node_ages"] != NODE_AGES_ESTIMATED:
+            why[p] = "node_ages_assigned"
+        else:
+            tested.append(p)
+    return tested, why
 
 
 def worked_lr_cutoff(n_tests):
@@ -5814,6 +5968,15 @@ def worked_lr_cutoff(n_tests):
     import statistics as _st
     return _st.NormalDist().inv_cdf(1.0 - WORKED_TEST_LEVEL / n_tests) ** 2
 WORKED_EPS_BOUNDARY = 1e-6    # = EPS_BOUNDARY in worked_example_bd.R
+
+
+def worked_binds(eps_full, lr):
+    """F4-26.  The restriction binds on a tree where
+    the fit with the full tree's fraction puts the extinction fraction on the
+    boundary zero and the statistic, as written (4 dp), is positive.  No
+    tolerance above zero is applied: a statistic of 0.0008 is a tree on which
+    the restriction binds by that much."""
+    return as_float(eps_full) < WORKED_EPS_BOUNDARY and as_float(lr) > 0.0
 
 
 def worked_eligible(basis, mol, shipped):
@@ -5945,7 +6108,8 @@ def worked_example(basis, mol, shipped, crown, warnings):
         OrderedDict(), OrderedDict(), OrderedDict(), OrderedDict())
     M, MC, F = ("molecular", "tips"), ("molecular", "full_misapplied"), \
         ("full", "tips")
-    tested = worked_tested(elig, per)
+    node_ages = summary_node_ages(list(elig))
+    tested, not_tested = worked_tested(elig, per, node_ages)
     cut = worked_lr_cutoff(len(tested))
     for part in elig:
         rho_effect[part] = OrderedDict([
@@ -6006,13 +6170,21 @@ def worked_example(basis, mol, shipped, crown, warnings):
          "partition is reported, none is selected"),
         ("eligible", list(elig)),
         ("test_family", OrderedDict([
-            ("rule", "one likelihood-ratio test per eligible group whose "
-                     "pruned summary tree is binary; on a summary tree with "
-                     "polytomies (a consensus tree) the statistic is reported "
-                     "without a test; the family is fixed by the trees "
-                     "before any statistic is read; Bonferroni level = "
-                     "0.05 / n_tests (D50, D59)"),
+            ("rule", "a test is reported only where its model assumptions "
+                     "hold for the tree: one likelihood-ratio test per "
+                     "eligible group whose pruned summary tree is binary and "
+                     "whose node ages are estimated by a dating analysis; on "
+                     "a summary tree with polytomies (a consensus tree) or "
+                     "with assigned and interpolated node ages the statistic "
+                     "is reported without a test; the family is fixed by the "
+                     "trees before any statistic is read; Bonferroni level = "
+                     "0.05 / n_tests (D50, D59, D60)"),
             ("tested", tested),
+            ("not_tested", not_tested),
+            ("tested_binding", [p for p in tested
+                                if rho_effect[p]["epsilon_rho_full_on_boundary"]
+                                and rho_effect[p]["classification"] == "boundary"]),
+            ("summary_node_ages", node_ages),
             ("n_tests", len(tested)),
             ("level", WORKED_TEST_LEVEL / len(tested)),
             ("critical_value", round(cut, 6)),
@@ -6105,8 +6277,7 @@ def worked_polytomy(elig, per):
                  as_float(f[("molecular", "tips")]["epsilon"])),
                 ("epsilon_rho_full", em),
                 ("lr_statistic", round(lr, 4)),
-                ("boundary", em < WORKED_EPS_BOUNDARY
-                 and lr > 2 * WORKED_IDENTITY_LL_TOL),
+                ("boundary", worked_binds(em, round(lr, 4))),
             ])
         ev = OrderedDict()
         for tree in ("full", "molecular"):
@@ -6154,9 +6325,16 @@ def worked_sets(elig, eff, cutoff):
         lrs = [as_float(r["lr_statistic"]) for r in rs]
         rr = [as_float(r["r_full_tree"]) / as_float(r["r_matching"])
               for r in rs if r["r_full_tree"] not in ("", None)]
-        bound = [as_float(r["epsilon_full_rho"]) < WORKED_EPS_BOUNDARY
-                 and as_float(r["lr_statistic"]) > 2 * WORKED_IDENTITY_LL_TOL
+        bound = [worked_binds(r["epsilon_full_rho"], r["lr_statistic"])
                  for r in rs]
+        # the rule agrees tree by tree with its definition: the restriction
+        # binds where the matching estimate lies below the edge 1 - rho_m/rho_f
+        edge_rule = [as_float(r["epsilon_matching"])
+                     < 1.0 - as_float(r["rho_matching"]) / as_float(r["rho_full"])
+                     for r in rs]
+        if bound != edge_rule:
+            die("%s %s: the restriction binds by the fits in %d trees and by "
+                "the edge in %d" % (p, st, sum(bound), sum(edge_rule)))
         out["%s|%s" % (p, st)] = OrderedDict([
             ("partition", p), ("set", st), ("tips", g["tips"]),
             ("n_trees", len(rs)),
@@ -6278,6 +6456,8 @@ SUPP_SENS_ROWS = OrderedDict([
     ("retain_only_primary_analysis", "Primary analyses only"),
     ("bird_band_low", "Bird molecular fraction at its lower end"),
     ("union", "Named species of all trees"),
+    ("c1u_sequence_dating",
+     "Available: posterior or bootstrap dated sets with a free crown"),
 ])
 
 
@@ -6593,6 +6773,10 @@ def _supp_sensitivity_rows(head, basis):
     add("union", D, OrderedDict([("C0", pct(u["C0_union"], D)),
                                  ("C1", pct(u["C1_union_high"], D)),
                                  ("C1d", None), ("C1u", None)]))
+    sq = s["c1u_sequence_dating"]
+    add("c1u_sequence_dating", sq["denominator"],
+        OrderedDict([("C0", None), ("C1", None), ("C1d", None),
+                     ("C1u", sq["percent"])]))
     return rows
 
 
@@ -7182,7 +7366,8 @@ def _t_sens(head, basis, shipped, tex):
     out = []
     for r in rows:
         if r["alternative"] in ("insects_minus", "col_filled", "rep",
-                                "drop_automated_synthesis", "bird_band_low"):
+                                "drop_automated_synthesis", "bird_band_low",
+                                "c1u_sequence_dating"):
             out.append(r"\midrule")
         out.append(" & ".join(
             [SUPP_SENS_ROWS[r["alternative"]], thousands(r["denominator"])]
