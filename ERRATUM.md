@@ -38,6 +38,10 @@ original source files deposited by the studies that published the trees.
 
 ## Effect on reported results
 
+The first version of the preprint (bioRxiv doi:10.64898/2026.05.31.729127, posted 31 May 2026)
+was written while releases v1.0.3 onward were current; read its branch-length results, and any
+files attached to it, against v1.1.0.
+
 Measures computed from branch lengths change: root-to-tip variation, the classification of trees
 as ultrametric, and crown ages. Counts of species and tips do not. Revised figures are reported in
 the next version of the accompanying manuscript.

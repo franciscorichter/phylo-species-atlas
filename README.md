@@ -16,6 +16,10 @@ python3 scripts/reproduce_paper.py
 
 > **Branch lengths in releases v1.0.3 to v1.0.8 are corrupted.** Use v1.1.0 or later for any
 > analysis of branch lengths, node ages or support values. Details: [`ERRATUM.md`](ERRATUM.md).
+>
+> Two files carry the literal value `NaN` as a branch length: `standardized/trees/ants.nwk`
+> (83 branches) and `standardized/superseded_canonicals/diatoms.nwk` (95 branches). Some Newick
+> readers reject it; neither file is a reference tree.
 
 Zenodo concept DOI (all versions): [10.5281/zenodo.20127157](https://doi.org/10.5281/zenodo.20127157).
 Licence: CC BY 4.0 (`LICENSE`); the source trees keep the terms of their original archives.
@@ -27,7 +31,7 @@ Licence: CC BY 4.0 (`LICENSE`); the source trees keep the terms of their origina
 | `standardized/trees/` | 263 Newick files with numeric tip ids: the 26 reference trees (one per group that has a species-level tree, 24 eukaryotic and 2 prokaryotic) and 237 other trees, among them 218 family-level trees of tetrapods (Condamine et al. 2019), one of which is the reference tree of Crocodilians. |
 | `standardized/` | The name layer: `dictionary.csv` (id -> standardized name), `full_mapping.csv` (source label -> name), the Catalogue of Life resolution of every reference-tree tip (`col_resolution.csv.gz`), per-tree `metadata.csv`, `canonical_sources/` (the unpruned source of each reference tree) and `superseded_canonicals/` (the seven reference trees this release replaces). See [`standardized/README.md`](standardized/README.md). |
 | `registers/` | The per-group table (`coverage_basis.csv`), the molecular tips of each reference tree and the lists they are taken from, the time-scale, crown-interval and calibration registers, the pruned off-group tips, and the Catalogue of Life, GBIF and Open Tree extracts. See [`registers/README.md`](registers/README.md). |
-| `paper/` | The paper's generated numbers, tables and figure data, as the manuscript prints them. |
+| `paper/` | The paper's generated numbers, tables and figure data, as the manuscript prints them. `paper/revision/` holds the review register of the revision (`FINDINGS.tsv`) and its recorded decisions (`DECISIONS.md`), described in the paper's Use of AI section. |
 | `scripts/reproduce_paper.py` | Recomputes the paper's numbers from `standardized/` and `registers/` and compares them with `paper/`. Python 3, standard library only. |
 | `code/rebuild/` | The pipeline that wrote `standardized/`, `registers/` and `paper/`, with a map from its paths to this repository. See [`code/rebuild/README.md`](code/rebuild/README.md). |
 | `code/figures/` | The scripts of the five main-text figures (matplotlib). |

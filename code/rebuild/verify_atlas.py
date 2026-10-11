@@ -5765,7 +5765,8 @@ def check_crownreg(ctx):
 # --------------------------------------------------------------------------
 NUMBER_MACROS = P("Paper", "inputs", "numbers_macros.tex")
 GENERATED_MACRO_FILES = (NUMBER_MACROS, CROWN_MACROS,
-                         P("Paper", "inputs", "table_datasets_macros.tex"))
+                         P("Paper", "inputs", "table_datasets_macros.tex"),
+                         P("Paper", "inputs", "ai_macros.tex"))
 
 
 def _mpct(x):
