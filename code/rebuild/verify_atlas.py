@@ -7853,6 +7853,20 @@ AI_DISCLOSURE = P("Paper", "MEE", "ai_disclosure.txt")
 GBIF_UNMATCHED = P("Data", "external", "gbif_unmatched.csv")
 
 
+def _ai_plain(text):
+    """The Use of AI statement as plain text, as filed on a submission form:
+    list items become '- ' lines, formatting commands are dropped and the
+    count macros of ai_macros.tex are expanded."""
+    mac = dict(_macros_in(P("Paper", "inputs", "ai_macros.tex")))
+    for k, v in mac.items():
+        text = re.sub(r"\\%s(?:\{\})?(?![A-Za-z])" % k, lambda _m: v, text)
+    text = re.sub(r"\\setlength\{[^}]*\}\{[^}]*\}", "", text)
+    text = re.sub(r"\\(?:begin|end)\{itemize\}", "", text)
+    text = re.sub(r"\\(?:textit|nolinkurl)\{([^}]*)\}", r"\1", text)
+    text = text.replace("\\item", " - ").replace("~", " ")
+    return " ".join(text.split())
+
+
 def _expand_ids(text, ids):
     for k, v in sorted(ids.items(), key=lambda kv: -len(kv[0])):
         text = re.sub(r"\\%s(?:\{\})?(?![A-Za-z])" % k, lambda _m: v, text)
@@ -7876,12 +7890,12 @@ def check_text_facts():
                   re.M)
     R.eq("AI statement macro present", bool(m), True)
     if m:
-        want = _expand_ids(m.group(1), ids).replace("~", " ")
+        want = _ai_plain(_expand_ids(m.group(1), ids))
         got = ""
         if os.path.exists(AI_DISCLOSURE):
             lines = open(AI_DISCLOSURE, encoding="utf-8").read().split("\n")
             got = " ".join(x.strip() for x in lines[1:] if x.strip())
-        R.eq("Paper/MEE/ai_disclosure.txt = the Methods AI statement", got, want)
+        R.eq("Paper/MEE/ai_disclosure.txt = the Use of AI statement", got, want)
     k = meta.find("\\newcommand{\\TabWhichTreeCaption}")
     cap = meta[k:meta.find("\n\\newcommand", k + 1)] if k >= 0 else ""
     codes = set()
