@@ -3,7 +3,7 @@ slug: fungi
 category: Microbes & protists
 
 estimate:
-  described: 155000
+  described: 156891
   low: 2200000
   total: 3000000
   high: 3800000
@@ -16,7 +16,7 @@ estimate:
   interval_provenance:
     described:
       type: database
-      source: GTDB / live database
+      source: Catalogue of Life 2025 (Species Fungorum)
       verbatim_quote: null
     estimated_total:
       type: paper-published

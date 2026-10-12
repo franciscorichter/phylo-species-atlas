@@ -3,7 +3,7 @@ slug: flatworms
 category: Other animals
 
 estimate:
-  described: 20000
+  described: 29487
   low: 44000
   total: 100000
   high: 200000
@@ -14,7 +14,7 @@ estimate:
     study: "Zhang Z-Q (ed.) 2013 — Animal Biodiversity Outline (Zootaxa 3703). Platyhelminthes chapter by Caira, Jensen, Healy."
     pdf: null
     url: https://doi.org/10.11646/zootaxa.3703.1.1
-    note: "Zhang 2013 series; Platyhelminthes treated separately. ~20k described; bilateral estimates 44k-200k from extrapolation of host-parasite diversity ratios."
+    note: "Zhang 2013 series; Zhang 2013 (Zootaxa 3703, p. 11): Platyhelminthes 29,488 species including 1 fossil; bilateral estimates 44k-200k from extrapolation of host-parasite diversity ratios."
   interval_provenance:
     described:
       type: database

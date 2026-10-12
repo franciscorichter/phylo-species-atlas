@@ -83,6 +83,11 @@ Inputs (all in this repository):
                                              release v1.0.9 restored
     standardized/name_overrides.csv, name_rejected_targets.csv
                                              name-resolution registers
+
+and checks the browser site: every number of site/data.json against the
+macros, Table 1 (paper/table_which_tree.csv), paper/crown_ages.csv and
+paper/fig1_coverage_bars.csv, and every tree file the site serves against its
+file in standardized/trees/.
 """
 
 from __future__ import annotations
@@ -534,6 +539,261 @@ class Report(object):
             print("  FAIL macro \\%s is not in the paper's macro files" % name)
             return
         self.eq("\\" + name, got, macros[name])
+
+
+# ---------------------------------------------------------------------------
+# The browser site (site/): its numbers are the paper's, its trees the release's
+# ---------------------------------------------------------------------------
+
+SITE_RETIRED_FIELDS = ("coverage_pct", "crown_ma", "tip_taxonomy", "redistributed",
+                       "unique_species_in_trees", "total_described_species")
+
+
+def _nwk_parse(text):
+    """Newick -> [label, length, children]; lengths kept as strings."""
+    s = text.strip().rstrip(";")
+    pos = [0]
+
+    def node():
+        kids = None
+        if s[pos[0]] == "(":
+            pos[0] += 1
+            kids = []
+            while True:
+                kids.append(node())
+                c = s[pos[0]]
+                pos[0] += 1
+                if c == ")":
+                    break
+        j = pos[0]
+        while pos[0] < len(s) and s[pos[0]] not in ",():":
+            pos[0] += 1
+        label, length = s[j:pos[0]], None
+        if pos[0] < len(s) and s[pos[0]] == ":":
+            pos[0] += 1
+            j = pos[0]
+            while pos[0] < len(s) and s[pos[0]] not in ",()":
+                pos[0] += 1
+            length = s[j:pos[0]]
+        return [label, length, kids]
+    return node()
+
+
+def _nwk_tips(n):
+    return [n[0]] if n[2] is None else [t for k in n[2] for t in _nwk_tips(k)]
+
+
+def _nwk_write(n):
+    out = "(" + ",".join(_nwk_write(k) for k in n[2]) + ")" if n[2] is not None else ""
+    return out + n[0] + (":" + n[1] if n[1] is not None else "")
+
+
+def one_tip_per_species(text, names):
+    """The site's derived tree: per Genus_species the tip with the smallest
+    id; other tips removed; a node left with one child joined to it, the
+    branch lengths added as decimals."""
+    from decimal import Decimal
+    tree = _nwk_parse(text)
+    best = {}
+    for t in _nwk_tips(tree):
+        nm = names.get(t, t)
+        p = nm.split("_")
+        key = nm
+        if len(p) >= 2 and len(p[0]) >= 2 and p[0][:1].isupper() and p[0][1:].islower() \
+                and p[1][:1].islower() and p[1].replace(".", "").replace("-", "").isalpha():
+            key = p[0] + "_" + p[1]
+        if key not in best or int(t) < int(best[key]):
+            best[key] = t
+    keep = set(best.values())
+
+    def prune(n):
+        if n[2] is None:
+            return n if n[0] in keep else None
+        kids = [c for c in (prune(k) for k in n[2]) if c is not None]
+        if not kids:
+            return None
+        if len(kids) == 1:
+            c = kids[0]
+            ln = c[1] if n[1] is None else (n[1] if c[1] is None
+                                             else str(Decimal(n[1]) + Decimal(c[1])))
+            return [c[0], ln, c[2]]
+        return [n[0], n[1], kids]
+    return _nwk_write(prune(tree)) + ";\n"
+
+
+def check_site(R, macros, basis, head):
+    """site/data.json against the paper; the site's tree files against the
+    release's files."""
+    R.section("The browser site: site/data.json and site/data/partitions")
+    fp = path("site", "data.json")
+    R.eq("site/data.json exists", os.path.exists(fp), True)
+    if not os.path.exists(fp):
+        return
+    raw = open(fp, encoding="utf-8").read()
+    site = json.loads(raw)
+    unmacro = lambda v: None if v is None else v.replace("{,}", ",")
+    mac = lambda k: unmacro(macros.get(k))
+    t1 = {r["partition"]: r for r in read_csv(path("paper", "table_which_tree.csv"))}
+    crowns = {r["partition"]: r for r in read_csv(path("paper", "crown_ages.csv"))}
+    bars = {r["group"]: r for r in read_csv(path("paper", "fig1_coverage_bars.csv"))}
+    rows = {r["partition_group"]: r for r in site.get("coverage", [])}
+    R.eq("site groups = registers/coverage_basis.csv groups",
+         sorted(rows), sorted(r["partition"] for r in basis))
+
+    for b in basis:
+        p = b["partition"]
+        r = rows.get(p)
+        if r is None:
+            continue
+        mn = macro_name(p)
+        d = int(b["described"])
+        R.eq("site %s: described species = coverage_basis" % p, r["described_species"], d)
+        if "Described" + mn in macros:
+            R.eq("site %s: described = \\Described%s" % (p, mn), r["described_text"],
+                 mac("Described" + mn))
+        R.eq("site %s: reference tree = coverage_basis" % p, r["filename"],
+             b["canonical_tree"] or None)
+        R.eq("site %s: estimated total = paper/fig1_coverage_bars.csv" % p,
+             (r.get("estimated_total"), r.get("estimated_low"), r.get("estimated_high")),
+             tuple(as_int(bars.get(p, {}).get(k), None) for k in
+                   ("estimated_total", "estimated_low", "estimated_high")))
+        if not b["canonical_tree"]:
+            R.eq("site %s: no levels without a reference tree" % p, r.get("levels"), None)
+            continue
+        L = r["levels"]
+        c0, c1 = as_int(b["c0_units"]), as_int(b["c1_units"])
+        dated = b["is_chronogram"] == "yes"
+        unc = dated and b["uncertainty_available"] == "yes"
+        R.eq("site %s: level counts = coverage_basis" % p,
+             tuple(L[k]["n"] for k in ("named", "molecular", "dated", "uncertainty")),
+             (c0, c1, c1 if dated else 0, c1 if unc else 0))
+        R.eq("site %s: level percentages = counts over described" % p,
+             tuple(L[k]["pct_text"] for k in ("named", "molecular", "dated", "uncertainty")),
+             tuple(fmt_pct(pct(n, d)) for n in (c0, c1, c1 if dated else 0, c1 if unc else 0)))
+        if b["is_prokaryotic"] == "yes":
+            pl = head["prokaryotic_line"]["per_partition"][p]
+            R.eq("site %s: named = prokaryotic line" % p, L["named"]["pct_text"],
+                 fmt_pct(pl["C0_pct"]))
+            continue
+        for lev, key in (("named", "CZero"), ("molecular", "COne")):
+            R.eq("site %s: %s %% = \\%sPct%s" % (p, lev, key, mn), L[lev]["pct_text"],
+                 mac(key + "Pct" + mn))
+            R.eq("site %s: %s = \\%sN%s" % (p, lev, key, mn), L[lev]["n_text"],
+                 mac(key + "N" + mn))
+        t = t1.get(p)
+        R.eq("site %s: in Table 1" % p, t is not None, True)
+        if t:
+            R.eq("site %s: Table 1 tips, named %%, molecular %%" % p,
+                 (r["tips_text"], L["named"]["pct_text"], L["molecular"]["pct_text"]),
+                 ("{:,}".format(int(t["tips"])), t["named_pct"], t["molecular_pct"]))
+            R.eq("site %s: Table 1 dates (A) and date uncertainty (s, i)" % p,
+                 (r["dated"], r["uncertainty_available"]),
+                 (t["time_scale"] == "absolute", t["uncertainty_status"] in ("set", "summary")))
+        c = crowns.get(p)
+        R.eq("site %s: crown age only from the crown register" % p,
+             r.get("crown") is not None, c is not None)
+        if c:
+            R.eq("site %s: crown age = \\CrownAge%s" % (p, mn), r["crown"]["age_ma_text"],
+                 mac("CrownAge" + mn))
+            if unc:
+                R.eq("site %s: crown interval = \\CrownLo%s, \\CrownHi%s" % (p, mn, mn),
+                     (r["crown"]["interval_lo_ma_text"], r["crown"]["interval_hi_ma_text"]),
+                     (mac("CrownLo" + mn), mac("CrownHi" + mn)))
+
+    s = site["summary"]
+    lv = {x["key"]: x for x in site["levels"]}
+    for key, m in (("named", "CZero"), ("molecular", "COne"), ("dated", "COneD"),
+                   ("uncertainty", "COneU")):
+        R.eq("site total %s = \\%sN, \\%sPct, \\%sNPart" % (key, m, m, m),
+             (lv[key]["n_text"], lv[key]["pct_text"], str(lv[key]["n_groups"])),
+             (mac(m + "N"), mac(m + "Pct"), mac(m + "NPart")))
+    R.eq("site totals: described, groups, reference trees, trees",
+         (s["described_eukaryotic_text"], s["described_prokaryotic_text"],
+          str(s["n_partitions"]), str(s["n_partitions_eukaryotic"]),
+          str(s["n_partitions_with_tree"]), str(s["n_partitions_with_tree_eukaryotic"]),
+          str(s["n_trees"])),
+         (mac("DescribedEuk"), mac("DescribedProk"), mac("NumPartitionsAll"),
+          mac("NumPartitionsEuk"), mac("NumCanonical"), mac("NumCanonicalEuk"),
+          mac("NumTreesShipped")))
+    al = head["denominators"]["all_life"]
+    R.eq("site estimated totals = headline all-life estimates",
+         (s["estimated_total_low_text"], s["estimated_total_high_text"]),
+         ("{:,}".format(al["estimated_low"]), "{:,}".format(al["estimated_high"])))
+
+    # Trees: every redistributed tree is served from standardized/trees/
+    meta = [r["filename"] for r in read_csv(path("standardized", "metadata.csv"))]
+    withdrawn = {r["filename"] for r in read_csv(path("standardized", "withdrawn.csv"))}
+    trees = site["trees"]
+    pkg = [t for t in trees if t["in_package"]]
+    R.eq("site trees in the package = standardized/metadata.csv",
+         sorted(t["filename"] for t in pkg), sorted(meta))
+    R.eq("site lists no withdrawn tree (timetree.nwk)",
+         sorted(w for w in withdrawn if w in raw or any(
+             t["filename"] == w or t["group"] == w[:-4] for t in trees)), [])
+    bad = [t["filename"] for t in pkg
+           if t["tree_url"] != "standardized/trees/" + t["filename"]
+           or not os.path.exists(path("standardized", "trees", t["filename"]))]
+    R.eq("site serves every redistributed tree from standardized/trees/", bad, [])
+    canon = {b["canonical_tree"]: b["partition"] for b in basis if b["canonical_tree"]}
+    R.eq("site reference trees = coverage_basis reference trees, served from "
+         "standardized/trees/",
+         sorted((t["filename"], t["partition_group"]) for t in pkg if t["is_partition_canonical"]),
+         sorted(canon.items()))
+    tipre = re.compile(r"[(,]\s*([^(),:;\s]+)")
+    bad = [t["filename"] for t in pkg if t["ntips"] != len(tipre.findall(
+        open(path("standardized", "trees", t["filename"]), encoding="utf-8").read()))]
+    R.eq("site tip counts = tips of the files", bad, [])
+
+    # site/data/partitions: no copy of a reference tree; every other tree file
+    # is identical to its release file, or derived from it by the stated rule,
+    # or a tree the release does not hold (labels are names, never ids)
+    names = None
+    files, problems = [], []
+    for d, _, fs in os.walk(path("site")):
+        for f in fs:
+            if f.endswith(".nwk"):
+                files.append(os.path.relpath(os.path.join(d, f), ROOT).replace(os.sep, "/"))
+    served = {t.get("tree_url"): t for t in trees}
+    for rel in sorted(files):
+        parts = rel.split("/")
+        if len(parts) == 5 and parts[4] == "tree.nwk" or "uncertainty" in parts[:5] \
+                and parts.index("uncertainty") == 4:
+            problems.append("%s: a copy of a reference tree" % rel)
+            continue
+        if "sub-phylos" not in parts:
+            problems.append("%s: not a sub-clade tree" % rel)
+            continue
+        slug = parts[parts.index("sub-phylos") + 1]
+        std = path("standardized", "trees", slug + ".nwk")
+        text = open(path(*parts), encoding="utf-8").read()
+        if os.path.exists(std):
+            stext = open(std, encoding="utf-8").read()
+            if text == stext:
+                continue
+            t = served.get(rel)
+            if t is None or t.get("site_tree") != "derived":
+                problems.append("%s differs from standardized/trees/%s.nwk" % (rel, slug))
+                continue
+            if names is None:
+                names = {}
+                with open(path("standardized", "dictionary.csv"), newline="",
+                          encoding="utf-8") as fh:
+                    for r in csv.DictReader(fh):
+                        names[r["id"]] = r["standardized_name"]
+            if one_tip_per_species(stext, names) != text:
+                problems.append("%s is not one tip per species of standardized/trees/%s.nwk"
+                                % (rel, slug))
+        else:
+            labels = tipre.findall(text)
+            if any(x.lstrip("-").isdigit() for x in labels):
+                problems.append("%s: numeric tip ids in a tree the release does not hold" % rel)
+            if served.get(rel, {}).get("site_tree") != "site_only":
+                problems.append("%s: not listed as a site-only tree" % rel)
+    R.eq("site tree files: no reference-tree copy; each other file = its release "
+         "file, its stated derivation, or a site-only tree", problems, [])
+    js = open(path("site", "app.js"), encoding="utf-8").read()
+    R.eq("site/app.js reads no retired field",
+         [f for f in SITE_RETIRED_FIELDS if re.search(r"\.%s\b" % f, js)], [])
 
 
 def main(argv=None):
@@ -2481,15 +2741,17 @@ def main(argv=None):
     m_ = re.search(r"Of its (\d+) rows, (\d+) have `changed` = `yes`: (\d+) are "
                    r"trees redistributed in `standardized/trees/`, (\d+) is "
                    r"`timetree.nwk`.*? and (\d+) are the copies of trees under "
-                   r"`site/data/partitions/`\. The other (\d+) rows are files of "
+                   r"`site/data/partitions/`, of which the browser site holds (\d+)\..*? "
+                   r"The other (\d+) rows are files of "
                    r"`standardized/trees/` that were checked and found unchanged", et_)
     R.eq("ERRATUM.md: rows, changed, redistributed trees, withdrawn, site copies, "
-         "unchanged = registers/restored_branch_lengths.csv",
+         "site copies held, unchanged = registers/restored_branch_lengths.csv",
          tuple(int(x) for x in m_.groups()) if m_ else None,
          (len(reg_), sum(r["changed"] == "yes" for r in reg_),
           sum(r["changed"] == "yes" and os.path.basename(r["file"]) not in wd_
               and os.path.basename(r["file"]) in files for r in tr_),
           sum(r["changed"] == "yes" and os.path.basename(r["file"]) in wd_ for r in tr_),
+          sum(r["changed"] == "yes" for r in st_),
           sum(r["changed"] == "yes" and os.path.exists(path(*r["file"].split("/")[1:]))
               for r in st_),
           sum(r["changed"] != "yes" and os.path.basename(r["file"]) in files for r in tr_)))
@@ -2539,6 +2801,8 @@ def main(argv=None):
     R.macro(macros, "RuleIntervalPct", "%g" % INTERVAL_PCT)
     R.macro(macros, "RuleLRCritical", "%.2f" % LR_CRITICAL)
     R.macro(macros, "RuleTestLevelPct", "%g" % (100 * TEST_LEVEL))
+
+    check_site(R, macros, basis, head)
 
     # ----------------------------------------------------------- summary ---
     print("\n== Summary")

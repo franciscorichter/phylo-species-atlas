@@ -1,0 +1,19 @@
+<!doctype html><html><body><iframe id="f" src="site/" style="width:1400px;height:3000px"></iframe><pre id="out"></pre>
+<script>
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+document.getElementById("f").onload = async () => {
+  const w = document.getElementById("f").contentWindow;
+  await sleep(4000);
+  const out = [];
+  for (const fn of ["birds.nwk","fish.nwk","echinoderms.nwk","insects.nwk","primates_one_tip_per_species.nwk","frogs.nwk","bacteria.nwk"]) {
+    await w.selectTree(fn, false); await sleep(1500);
+    const d = w.document;
+    out.push("### " + fn + "\n" + [...d.querySelectorAll("#detail-meta .field")].map(e => e.querySelector(".key").textContent + ": " + e.querySelector(".val").textContent).join("\n")
+      + "\nDOWNLOAD " + d.getElementById("download-newick").getAttribute("href") + "\nSTATUS " + d.getElementById("tree-status").textContent
+      + "\nSVG " + (d.querySelector("#tree-container svg") ? "yes" : "no") + "\nCHOOSER " + d.getElementById("dataset-chooser").textContent.replace(/\s+/g," "));
+  }
+  w.selectDarkMatter("Other arachnids", false); await sleep(500);
+  out.push("### DM Other arachnids\n" + w.document.getElementById("dark-matter-panel").textContent.replace(/\s+/g," ").slice(0,900));
+  document.getElementById("out").textContent = out.join("\n\n");
+};
+</script></body></html>

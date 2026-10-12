@@ -8029,12 +8029,85 @@ def _check_release_erratum():
     m = re.search(r"Of its (\d+) rows, (\d+) have `changed` = `yes`: (\d+) are "
                   r"trees redistributed in `standardized/trees/`, (\d+) is "
                   r"`timetree.nwk`.*? and (\d+) are the copies of trees under "
-                  r"`site/data/partitions/`\. The other (\d+) rows are files of "
+                  r"`site/data/partitions/`, of which the browser site holds (\d+)\..*? "
+                  r"The other (\d+) rows are files of "
                   r"`standardized/trees/` that were checked and found unchanged", t)
+    mapped = {r["release_path"] for r in read_csv(RELEASE_MAP)}
+    held = sum(1 for r in site if r["changed"] == "yes" and r["file"][len("Data/"):] in mapped)
     R.eq("ERRATUM.md counts = restoration register (rows, changed, trees, "
-         "withdrawn, site copies, unchanged)",
+         "withdrawn, site copies, site copies the release maps, unchanged)",
          tuple(int(x) for x in m.groups()) if m else None,
-         (len(rows), sum(1 for r in rows if r["changed"] == "yes")) + got)
+         (len(rows), sum(1 for r in rows if r["changed"] == "yes")) + got[:3]
+         + (held,) + got[3:])
+
+
+SITE_RETIRED_FIELDS = ("coverage_pct", "crown_ma", "tip_taxonomy", "redistributed",
+                       "unique_species_in_trees", "total_described_species")
+SITE_INPUTS = ("registers/coverage_basis.csv", "paper/headline_numbers.json",
+               "paper/crown_ages.csv", "paper/table_datasets.csv",
+               "paper/fig1_coverage_bars.csv", "registers/dataset_table_registry.csv",
+               "registers/tree_provenance.csv", "standardized/metadata.csv")
+
+
+def _check_release_site(rows):
+    """The browser site of the release: site/data/partitions holds no copy of a
+    reference tree (the page reads every redistributed tree from
+    standardized/trees/); every other tree file it holds is identical to its
+    redistributed file, or is the derivation scripts/derive_species_tree.py
+    writes from it, or a tree the release does not hold (labels are names,
+    never dictionary ids); site/build.py reads the paper's files the release
+    maps, and site/app.js no field of the retired site.  The numbers of the
+    generated site/data.json are compared with the macros and Table 1 by
+    scripts/reproduce_paper.py in the release."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        "derive_species_tree", P("scripts", "derive_species_tree.py"))
+    dst = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(dst)
+    derived = {os.path.relpath(out, ROOT).replace(os.sep, "/"): src
+               for src, out in dst.DERIVED}
+    mapped = {r["release_path"]: r["working_path"] for r in rows}
+    problems = []
+    for rel, work in sorted(mapped.items()):
+        if not (rel.startswith("site/") and rel.endswith(".nwk")):
+            continue
+        parts = rel.split("/")
+        if len(parts) == 5 or (len(parts) > 4 and parts[4] == "uncertainty"):
+            problems.append("%s: a copy of a reference tree" % rel)
+            continue
+        if "sub-phylos" not in parts:
+            problems.append("%s: not a sub-clade tree" % rel)
+            continue
+        slug = parts[parts.index("sub-phylos") + 1]
+        std = os.path.join(STD_TREES, slug + ".nwk")
+        text = open(P(*work.split("/")), encoding="utf-8").read()
+        if os.path.exists(std):
+            stext = open(std, encoding="utf-8").read()
+            if text == stext:
+                continue
+            if work not in derived:
+                problems.append("%s differs from %s" % (work, rel(std)))
+                continue
+            names = dst.load_names(set(dst.tips(dst.parse(stext))))
+            if dst.derive(stext, names) != text:
+                problems.append("%s is not what scripts/derive_species_tree.py "
+                                "writes" % work)
+        else:
+            labels = re.findall(r"[(,]\s*([^(),:;\s]+)", text)
+            if any(x.lstrip("-").isdigit() for x in labels):
+                problems.append("%s: dictionary ids in a tree the release does "
+                                "not hold" % work)
+    R.eq("release site trees: no reference-tree copy; each other file = its "
+         "redistributed file, its derivation, or a site-only tree", problems, [])
+    build = open(os.path.join(RELEASE_FILES, "site", "build.py"), encoding="utf-8").read()
+    R.eq("release site/build.py reads the paper's files, each mapped into the release",
+         [f for f in SITE_INPUTS if f not in build or f not in mapped], [])
+    js = open(os.path.join(RELEASE_FILES, "site", "app.js"), encoding="utf-8").read()
+    R.eq("release site/app.js reads no retired field",
+         [f for f in SITE_RETIRED_FIELDS if re.search(r"\.%s\b" % f, js)], [])
+    R.eq("release site/build.py reads no typed coverage, total or crown age",
+         [f for f in ("crown_ma", "data_estimates", 'get("coverage_pct")',
+                      'get("described_species")') if f in build], [])
 
 
 def check_release(ctx):
@@ -8050,6 +8123,7 @@ def check_release(ctx):
     _check_release_readme()
     _check_release_deposit_metadata()
     _check_release_erratum()
+    _check_release_site(rows)
     seen = Counter(r["release_path"] for r in rows)
     R.eq("path_map.csv lists each release path once",
          sorted(k for k, n in seen.items() if n > 1), [])

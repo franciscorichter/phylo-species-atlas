@@ -12,7 +12,7 @@ in one of these files.
 | `fig1_coverage_cascade.csv`, `fig3_c0c1_bars.csv`, `fig2_coverage_scatter.csv`, `crown_ages.csv`, `table_worked_example.csv` | The data of Figures 1 to 5. |
 | `worked_example_bd*.csv` | The birth-death fits of the worked example, written by `code/rebuild/worked_example_bd.R`. |
 | `supp_*.csv` (and `.tex`), `supp_macros.tex` | The tables of Supplement S1 to S10 and the numbers its text prints. |
-| `coverage_per_partition.csv`, `c0_name_resolution.csv`, `opentree_comparison.csv`, `table_datasets.csv`, `table_s*.csv`, `fig_crown_age_points.csv` | Further per-group tables written by the pipeline. |
+| `coverage_per_partition.csv`, `c0_name_resolution.csv`, `opentree_comparison.csv`, `table_datasets.csv`, `table_s*.csv`, `fig_crown_age_points.csv`, `fig1_coverage_bars.csv` | Further per-group tables written by the pipeline; `fig1_coverage_bars.csv` holds the estimated total of each group that the browser site shows. |
 
 `python3 scripts/reproduce_paper.py` recomputes these numbers, those of the Supplement included, from the trees and registers of this
 repository and compares them with the files here. `python3 code/rebuild/run_worked_example.py`

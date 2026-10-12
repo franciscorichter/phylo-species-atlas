@@ -47,9 +47,9 @@ function renderSummary(data) {
   const stats = data.summary || {};
   const verified = list.filter(a => (a.audit || {}).status === "verified").length;
   const inProgress = list.filter(a => (a.audit || {}).status === "in_progress").length;
-  const totalPartitions = (stats.n_groups || 0) + (data.unrepresented || []).length;
+  const totalPartitions = stats.n_partitions || 0;
   const items = [
-    ["Audited partitions", `${list.length} / ${totalPartitions || "—"}`],
+    ["Groups with notes", `${list.length} / ${totalPartitions || "—"}`],
     ["Verified", verified],
     ["In progress", inProgress],
     ["Total resolutions", list.reduce((acc, a) => acc + ((a.resolutions || []).length), 0)],

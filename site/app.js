@@ -33,18 +33,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 function renderSummary() {
   const s = STATE.data.summary;
-  // Compact display: 2.9M instead of 2,878,313
-  const compact = (n) => {
-    if (n >= 1e6) return (n / 1e6).toFixed(1).replace(/\.0$/, "") + "M";
-    if (n >= 1e3) return (n / 1e3).toFixed(0) + "k";
-    return String(n);
-  };
+  const levels = STATE.data.levels || [];
 
-  // Per-category partition counts (with tree / total partitions) for the
-  // mini-bar legend — same denominators as the chart.
+  // Per-category group counts (with a reference tree / all groups) for the
+  // mini-bar legend: the same rows as the chart.
   const catStats = new Map();
   for (const r of (STATE.data.coverage || [])) {
-    if (!r.is_partition_canonical) continue;
     const c = r.category || "Other";
     if (!catStats.has(c)) catStats.set(c, { total: 0, withTree: 0 });
     const entry = catStats.get(c);
@@ -52,44 +46,41 @@ function renderSummary() {
     if (!r.is_unrepresented) entry.withTree += 1;
   }
 
-  const withTree = s.n_partitions_with_tree || 0;
-  const totalPart = s.n_partitions || 0;
-  const totalTrees = s.n_trees || 0;
-  const speciesInTrees = s.unique_species_in_trees || 0;
-  const described = s.total_described_species || 0;
-  const estLow = s.estimated_total_low || 0;
-  const estHigh = s.estimated_total_high || 0;
-
-  // Coverage block: drop the audit row entirely; replace partition + tree
-  // counts with the more informative "higher-level XX / 64" + subtrees,
-  // and stack the three species headline numbers vertically.
+  // The four coverage levels of the paper, each over the described
+  // eukaryotic species; values are copied from data.json as printed.
+  const levelStats = levels.map(l => `
+        <div class="stat">
+          <span class="value">${l.pct_text}%</span>
+          <span class="label">${escapeHTML(l.label)}</span>
+          <span class="sub">${l.n_text} species · ${l.n_groups} groups</span>
+        </div>`).join("");
   const coverageRow = `
     <div class="stats-group">
-      <div class="stats-group-label">Coverage</div>
+      <div class="stats-group-label">Coverage of the ${s.described_eukaryotic_text} described eukaryotic species (${s.n_partitions_eukaryotic} groups; ${s.n_partitions_with_tree_eukaryotic} with a reference tree)</div>
+      <div class="stats-row">${levelStats}
+      </div>
       <div class="stats-row">
         <div class="stat">
-          <span class="value">${withTree} / ${totalPart}</span>
-          <span class="label">Higher-level partitions w/ tree</span>
+          <span class="value">${s.n_partitions_with_tree} / ${s.n_partitions}</span>
+          <span class="label">Groups with a reference tree</span>
         </div>
         <div class="stat">
-          <span class="value">${fmt.format(totalTrees)}</span>
-          <span class="label">Trees (canonical + sub-clades)</span>
+          <span class="value">${fmt.format(s.n_trees)}</span>
+          <span class="label">Trees redistributed (reference + other trees)</span>
         </div>
         <div class="stat stat-stack">
-          <span class="value">${compact(speciesInTrees)}</span>
-          <span class="label">species sampled across trees</span>
-          <span class="sub">of ${compact(described)} described &middot; estimated true total ${compact(estLow)}–${compact(estHigh)}</span>
+          <span class="value">${s.described_prokaryotic_text}</span>
+          <span class="label">Bacteria and Archaea: GTDB species clusters</span>
+          <span class="sub">counted on their own, never in the eukaryotic levels</span>
         </div>
       </div>
     </div>`;
 
-  // Category mini-bars: width = total partitions, filled portion =
-  // partitions with a shipped tree (the same definition the chart uses).
   const catOrder = ["Vertebrates", "Plants", "Arthropods", "Other animals", "Microbes & protists"];
   const maxTotal = Math.max(...catOrder.map(c => catStats.get(c)?.total || 0));
   const catRow = `
     <div class="stats-group stats-group-cat">
-      <div class="stats-group-label">By category</div>
+      <div class="stats-group-label">Groups with a reference tree, by category</div>
       <div class="cat-bars">
         ${catOrder.map(c => {
           const e = catStats.get(c) || { total: 0, withTree: 0 };
@@ -108,6 +99,12 @@ function renderSummary() {
     </div>`;
 
   document.getElementById("summary-stats").innerHTML = coverageRow + catRow;
+
+  const p = STATE.data.paper || {};
+  const foot = document.getElementById("paper-ref");
+  if (foot && p.title) {
+    foot.innerHTML = `Companion to Richter (2026), <a href="https://doi.org/${escapeHTML(p.doi || "")}" target="_blank" rel="noopener"><em>${escapeHTML(p.title)}</em></a>. Every number on this page is read from the paper's files in this release (<code>registers/coverage_basis.csv</code>, <code>paper/</code>).`;
+  }
 }
 
 const FONT_STACK = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif";
@@ -133,19 +130,26 @@ function sourceLinkHTML(info, fallbackLabel, confidence) {
 const CATEGORY_ORDER = ["Vertebrates", "Plants", "Arthropods", "Other animals", "Microbes & protists"];  // 5 high-level groups
 const CATEGORY_RANK = Object.fromEntries(CATEGORY_ORDER.map((c, i) => [c, i]));
 
+function levelsText(r) {
+  // Four levels of one group, as the paper's Table 1 prints them.
+  const L = r.levels || {};
+  const line = (k, label) => L[k] ? `${label}: ${L[k].pct_text}% (${L[k].n_text})` : "";
+  return [line("named", "Named"), line("molecular", "Molecular"),
+          line("dated", "Dated"), line("uncertainty", "Date uncertainty")]
+    .filter(Boolean).join("<br>");
+}
+
 function renderCoveragePlot() {
   const allRows = STATE.data.coverage;
   if (!allRows.length) return;
 
-  // Single chart per partition (canonical tree row). Three visual elements:
-  //   ▸ filled marker at tree-tip count (what the atlas actually ships)
-  //   ▸ open marker at described-species count (what taxonomists have catalogued)
-  //   ▸ a line interval from estimated_low to estimated_high with a marker at
-  //     estimated_total (what diversity studies estimate is really out there)
-  // X-axis is log-scale species counts because the range across partitions
-  // spans 6+ orders of magnitude (60 echinoderm tips to 4 million bacteria).
-  const canonical = allRows.filter(r => r.is_partition_canonical);
-  const rows = canonical.slice().sort((a, b) => {
+  // One row per group (62). Markers, on a log scale of species:
+  //   ◯ described species (the paper's denominator)
+  //   ◇ named in the reference tree (accepted species; blue = chronogram in
+  //     absolute time, orange = not)
+  //   ● placed with molecular data
+  //   ━ estimated total of the group (low–high), from the paper's Figure 1 data
+  const rows = allRows.slice().sort((a, b) => {
     const ra = CATEGORY_RANK[a.category] ?? 99;
     const rb = CATEGORY_RANK[b.category] ?? 99;
     if (ra !== rb) return ra - rb;
@@ -153,11 +157,7 @@ function renderCoveragePlot() {
   });
 
   const labels = rows.map(r => r.group);
-  // Pretty display labels for the y-axis ticks: replace underscores with
-  // spaces (e.g. "other_vertebrates" → "other vertebrates"). The
-  // underlying `group` stays as-is so click handlers and shape
-  // positioning still match Plotly's internal y values.
-  const tickText = rows.map(r => (r.group || "").replace(/_/g, " "));
+  const tickText = rows.map(r => r.group);
 
   const intervalClass = (r) => {
     const ip = r.interval_provenance;
@@ -170,10 +170,6 @@ function renderCoveragePlot() {
     "derived": "derived from described count",
     "unaudited": "not yet audited for interval provenance",
   }[cls] || cls);
-
-  // Interval line + estimated-total marker. Heuristic ranges get a muted
-  // amber colour so the eye reads them as less authoritative than the
-  // paper-published ones (Stork 2018 insects, Mora 2011 amphibians, etc).
   const intervalColor = (r) => {
     const cls = intervalClass(r);
     return (cls === "fully-heuristic" || cls === "partly-heuristic")
@@ -181,13 +177,9 @@ function renderCoveragePlot() {
       : "#5a5a5a";
   };
 
-  // Estimate is a RANGE, not a point. Render as a line segment from low to
-  // high for each row — implemented via Plotly shapes (no markers at all).
-  // A separate invisible scatter trace at the midpoint provides a hover
-  // target so users can still inspect interval details.
   const intervalShapes = rows.map(r => {
     if (r.estimated_low == null || r.estimated_high == null) return null;
-    if (r.estimated_low >= r.estimated_high) return null;  // degenerate
+    if (r.estimated_low >= r.estimated_high) return null;
     return {
       type: "line",
       xref: "x", yref: "y",
@@ -197,8 +189,6 @@ function renderCoveragePlot() {
       layer: "above",
     };
   }).filter(Boolean);
-  // Hover-only trace: invisible scatter at the geometric midpoint so users
-  // can still hover the interval to see source/range info.
   const intervalAnchor = (r) => {
     if (r.estimated_low && r.estimated_high) {
       return Math.sqrt(r.estimated_low * r.estimated_high);
@@ -208,7 +198,7 @@ function renderCoveragePlot() {
   const estimatedHoverTrace = {
     type: "scatter",
     mode: "markers",
-    name: "Estimated true diversity (interval)",
+    name: "Estimated total (low–high)",
     x: rows.map(intervalAnchor),
     y: labels,
     marker: {
@@ -225,13 +215,11 @@ function renderCoveragePlot() {
     ]),
     hovertemplate:
       "<b>%{y}</b><br>" +
-      "Estimated range: %{customdata[0]:,}–%{customdata[1]:,}<br>" +
-      (`<i style='color:#7a7a7a'>cited central: %{customdata[5]:,} · %{customdata[4]}</i><br>` +
-       "Source: %{customdata[2]} · confidence %{customdata[3]}<extra></extra>"),
+      "Estimated total: %{customdata[5]:,} (range %{customdata[0]:,}–%{customdata[1]:,})<br>" +
+      "<i style='color:#7a7a7a'>%{customdata[4]}</i><br>" +
+      "Source: %{customdata[2]} · confidence %{customdata[3]}<extra></extra>",
   };
 
-  // Mute described/estimated markers for unrepresented partitions so the
-  // missing-tree story reads at a glance (no ◇ tip + slightly faded ◯ ●).
   const describedMarkerColor = rows.map(r => r.is_unrepresented ? "#9a9a9a" : "#1a1a1a");
   const describedTrace = {
     type: "scatter",
@@ -246,54 +234,50 @@ function renderCoveragePlot() {
       line: { color: describedMarkerColor, width: 1.5 },
     },
     customdata: rows.map(r => [
-      r.described_species ?? 0, r.described_source || "—",
-      r.is_unrepresented ? " · no shipped tree" : "",
+      r.described_text || "—", r.described_source || "—",
+      r.is_unrepresented ? " · no reference tree" : "",
+      r.is_prokaryotic ? " · GTDB species clusters, not in the eukaryotic levels" : "",
     ]),
     hovertemplate:
-      "<b>%{y}</b>%{customdata[2]}<br>" +
-      "Described species: %{x:,}<br>" +
+      "<b>%{y}</b>%{customdata[2]}%{customdata[3]}<br>" +
+      "Described species: %{customdata[0]}<br>" +
       "Source: %{customdata[1]}<extra></extra>",
   };
 
-  // Tip marker: ◇ for paper-shipped trees, ★ for atlas-derived species-level
-  // pruning (Turtles, Bryozoa, Seed plants, Fungi, ...). The atlas-derived
-  // ones are NOT what the source paper published verbatim — they're one-rep-
-  // per-species reductions of multi-individual MCCs, transparent in info.yaml.
-  // Build.py exposes this via the `tree_url_override` field per partition;
-  // the chart picks up the override status by joining via filename.
-  const overrideByFilename = {};
-  for (const t of STATE.data.trees) {
-    if (t.tree_url_override) overrideByFilename[t.filename] = true;
-  }
-  const isDerived = (r) => !!overrideByFilename[r.filename];
-
-  const tipsTrace = {
+  const withTree = rows.filter(r => !r.is_unrepresented);
+  const namedTrace = {
     type: "scatter",
     mode: "markers",
-    name: "Tips in shipped tree (◇ paper-shipped / ★ atlas-derived)",
-    x: rows.map(r => r.tips ?? null),
+    name: "Named in the reference tree (blue: chronogram in absolute time)",
+    x: rows.map(r => r.levels ? r.levels.named.n : null),
     y: labels,
     marker: {
-      symbol: rows.map(r => isDerived(r) ? "star" : "diamond"),
-      size: rows.map(r => isDerived(r) ? 12 : 10),
+      symbol: "diamond",
+      size: 10,
       color: rows.map(r => r.dated ? "#2a6fbf" : "#c97a2a"),
       line: { color: "#1a1a1a", width: 0.5 },
     },
     customdata: rows.map(r => [
-      r.tips ?? 0, r.described_species ?? 0,
-      r.described_species ? (100 * r.tips / r.described_species).toFixed(1) : "—",
-      r.study || "", r.year || "",
-      isDerived(r) ? `atlas-derived species-level pruning (raw paper tree had ${fmt.format(r.raw_tips || r.tips)} tips)` : "paper-shipped MCC",
+      r.levels ? levelsText(r) : "",
+      r.filename || "", r.time_scale_text || "",
+      r.interval_kind_text ? ` · ${r.interval_kind_text}` : "",
     ]),
     hovertemplate:
-      "<b>%{y}</b><br>" +
-      "Tips in tree: %{x:,}<br>" +
-      "Coverage: %{customdata[2]}% of described<br>" +
-      "<i style='color:#7a7a7a'>%{customdata[5]}</i><br>" +
-      "<i>%{customdata[3]}</i> (%{customdata[4]})<extra></extra>",
+      "<b>%{y}</b> · %{customdata[1]}<br>" +
+      "%{customdata[0]}<br>" +
+      "<i style='color:#7a7a7a'>%{customdata[2]}%{customdata[3]}</i><extra></extra>",
+  };
+  const molecularTrace = {
+    type: "scatter",
+    mode: "markers",
+    name: "Placed with molecular data",
+    x: rows.map(r => r.levels ? r.levels.molecular.n : null),
+    y: labels,
+    marker: { symbol: "circle", size: 6, color: "#1a1a1a" },
+    customdata: rows.map(r => [r.levels ? r.levels.molecular.n_text : "", r.levels ? r.levels.molecular.pct_text : ""]),
+    hovertemplate: "<b>%{y}</b><br>Placed with molecular data: %{customdata[0]} (%{customdata[1]}%)<extra></extra>",
   };
 
-  // Category bands → labels in the left gutter + dotted dividers between groups.
   const bands = [];
   for (let i = 0; i < rows.length; i++) {
     const cat = rows[i].category || "Other";
@@ -302,9 +286,6 @@ function renderCoveragePlot() {
     else last.end = i;
   }
   const LEFT_MARGIN = 230;
-  // Anchor each category label at the FIRST row of its band, so users see
-  // exactly where the group starts (and the row above is the previous group's
-  // last entry). The label sits in the left gutter aligned with that first row.
   const annotations = bands.map(b => ({
     xref: "paper", yref: "y",
     x: 0, xanchor: "left", xshift: -LEFT_MARGIN + 6,
@@ -325,9 +306,7 @@ function renderCoveragePlot() {
   const container = document.getElementById("coverage-plot");
   container.style.height = Math.max(560, labels.length * 28 + bands.length * 8 + 110) + "px";
 
-  // Log-scale x-axis: range from a sensible floor to just above the highest
-  // upper bound across all partitions.
-  const allXVals = rows.flatMap(r => [r.tips, r.described_species, r.estimated_high])
+  const allXVals = rows.flatMap(r => [r.levels && r.levels.molecular.n, r.described_species, r.estimated_high])
     .filter(v => v != null && v > 0);
   const maxX = Math.pow(10, Math.ceil(Math.log10(Math.max(...allXVals))));
   const minX = 10;
@@ -338,7 +317,7 @@ function renderCoveragePlot() {
     shapes,
     font: { family: FONT_STACK, size: 12, color: "#1a1a1a" },
     xaxis: {
-      title: { text: "Species count (log scale) — ◇ tips · ◯ described · ● estimated total (with low–high whiskers)", font: { size: 12, color: "#6b6b6b" }, standoff: 14 },
+      title: { text: "Species (log scale) — ◇ named in the reference tree · ● placed with molecular data · ◯ described · ━ estimated total (low–high)", font: { size: 12, color: "#6b6b6b" }, standoff: 14 },
       type: "log",
       range: [Math.log10(minX), Math.log10(maxX)],
       gridcolor: "#eee",
@@ -373,7 +352,7 @@ function renderCoveragePlot() {
   };
 
   Plotly.purge(container);
-  Plotly.newPlot(container, [estimatedHoverTrace, describedTrace, tipsTrace], layout,
+  Plotly.newPlot(container, [estimatedHoverTrace, describedTrace, namedTrace, molecularTrace], layout,
                  { displayModeBar: false, responsive: true });
 
   container.on("plotly_click", (ev) => {
@@ -385,15 +364,12 @@ function renderCoveragePlot() {
       selectDarkMatter(row.partition_group, true);
       return;
     }
-    if (!row.filename) return;
     selectTree(row.filename, true);
   });
 
   const sub = document.getElementById("coverage-sub");
   if (sub) {
-    const nShipped = rows.filter(r => !r.is_unrepresented).length;
-    const nDark = rows.filter(r => r.is_unrepresented).length;
-    sub.innerHTML = `Each row = one partition (${nShipped} with a shipped tree, ${nDark} 'dark matter' — no tree yet). <strong>◇</strong> = paper-shipped tree tips, <strong>★</strong> = atlas-derived species-level pruning (dated <span style='color:#2a6fbf'>■</span> / undated <span style='color:#c97a2a'>■</span>). <strong>◯</strong> = described species (taxonomic catalogue). <strong>━━━━</strong> = estimated true diversity interval (low–high); <em>solid grey</em> = paper-published range, <em>faded amber</em> = atlas-derived heuristic. Click a tree row to inspect it; click a dark-matter row to see the evidence behind its interval.`;
+    sub.innerHTML = `Each row = one group (${withTree.length} with a reference tree, ${rows.length - withTree.length} without). <strong>◇</strong> = species named in the reference tree (accepted names; chronogram in absolute time <span style='color:#2a6fbf'>■</span> / not <span style='color:#c97a2a'>■</span>), <strong>●</strong> = placed with molecular data, <strong>◯</strong> = described species. Hover a row for its four coverage levels (Table 1 of the paper). <strong>━━━━</strong> = estimated total of the group (low–high; <em>solid grey</em> = range published by a study, <em>faded amber</em> = heuristic). Click a row with a tree to inspect it; click a row without one to see its notes.`;
   }
 }
 
@@ -455,9 +431,19 @@ function selectDarkMatter(partitionName, scrollIntoView) {
   }
 
   // Range row.
-  const rangeText = (est.low != null && est.high != null)
-    ? `${fmt.format(est.low)}–${fmt.format(est.high)}`
-    : (est.total != null ? `${fmt.format(est.total)} (single point)` : "—");
+  // Numbers come from the group row (the paper's files); the note supplies text.
+  const row = (STATE.data.coverage || []).find(r => r.partition_group === partitionName) || {};
+  const rangeText = (row.estimated_low != null && row.estimated_high != null)
+    ? `${fmt.format(row.estimated_low)}–${fmt.format(row.estimated_high)} <span class="src">estimated total ${fmt.format(row.estimated_total)}${row.estimate_source ? ", " + escapeHTML(row.estimate_source) : ""}</span>`
+    : (row.estimated_total != null ? `${fmt.format(row.estimated_total)} (single point)` : "—");
+  const siteTrees = (STATE.data.trees || []).filter(t => t.partition_group === partitionName);
+  const siteTreesHTML = siteTrees.length ? `
+      <section class="dm-section">
+        <h3>Trees of a part of this group (${siteTrees.length})</h3>
+        <p class="dm-bnote">Not a reference tree: not counted in the group's coverage.</p>
+        <div class="chooser-buttons">${siteTrees.map(t => `<button type="button" class="chooser-btn subclade" data-filename="${escapeHTML(t.filename)}">
+          <span class="chooser-name">${escapeHTML(t.group)}</span><span class="chooser-meta">${t.ntips_text} tips · ${escapeHTML((t.study || "").split(",")[0].split(" -")[0].split(" —")[0])}</span></button>`).join("")}</div>
+      </section>` : "";
 
   // Constituents table (only when present, e.g. for "Others").
   let constituentsHTML = "";
@@ -509,10 +495,10 @@ function selectDarkMatter(partitionName, scrollIntoView) {
   host.innerHTML = `
     <div class="card dm-card">
       <div class="card-header">
-        <h3>No shipped tree for this partition</h3>
+        <h3>No reference tree for this group</h3>
         <span class="audit-badge audit-deferred">${escapeHTML((audit.audit || {}).status || "deferred")}</span>
       </div>
-      <p class="card-sub">${escapeHTML(audit.category || "")} · This partition lacks a canonical phylogenetic tree in the atlas. The information below describes the diversity estimate and its evidence.</p>
+      <p class="card-sub">${escapeHTML(audit.category || "")} · The search found no species-level tree of this group; its described species count in the denominator of every coverage level and in no numerator.</p>
 
       ${canTree.reason ? `<section class="dm-section">
         <h3>Why no tree</h3>
@@ -523,7 +509,7 @@ function selectDarkMatter(partitionName, scrollIntoView) {
         <h3>Diversity estimate</h3>
         <dl class="dm-dl">
           <dt>Described species</dt>
-          <dd>${est.described != null ? fmt.format(est.described) : "—"}</dd>
+          <dd>${row.described_text || "—"} <span class="src">${escapeHTML(row.described_source || "")}</span></dd>
           <dt>Estimated range</dt>
           <dd>${rangeText}</dd>
           ${est.confidence ? `<dt>Confidence</dt><dd>${escapeHTML(est.confidence)}</dd>` : ""}
@@ -532,12 +518,17 @@ function selectDarkMatter(partitionName, scrollIntoView) {
         </dl>
       </section>
 
+      ${siteTreesHTML}
       ${constituentsHTML}
       ${intervalProvHTML}
 
       <p class="dm-footer"><a href="audit.html#${encodeURIComponent(partitionName)}" target="_blank" rel="noopener">Full audit entry →</a></p>
     </div>
   `;
+
+  host.querySelectorAll(".chooser-btn").forEach(btn => {
+    btn.addEventListener("click", () => selectTree(btn.dataset.filename, false));
+  });
 
   if (scrollIntoView) {
     document.getElementById("detail").scrollIntoView({ block: "start", behavior: "smooth" });
@@ -555,104 +546,73 @@ async function selectTree(filename, scrollIntoView) {
   document.getElementById("detail-empty").hidden = true;
   document.getElementById("detail").hidden = false;
   document.getElementById("detail-name").textContent = t.filename.replace(/\.nwk$/, "");
-  // Hide dark-matter panel; show tree-related cards.
   document.getElementById("dark-matter-panel").hidden = true;
-  document.getElementById("r-snippet-card").hidden = false;
+  document.getElementById("r-snippet-card").hidden = !t.in_package;
   document.getElementById("tree-viewer-card").hidden = false;
 
-  const est = t.estimate;
-  const describedVal = t.described_species
-    ? `${fmt.format(t.described_species)}${sourceLinkHTML(t.described_source_info, t.described_source)}`
-    : "—";
-  const estimatedVal = est && est.estimated_total
-    ? `${fmt.format(est.estimated_total)} <span class="range">(${fmt.format(est.estimated_low || est.estimated_total)}–${fmt.format(est.estimated_high || est.estimated_total)})</span>` +
-      sourceLinkHTML(t.estimate_source_info, est.estimate_source, est.estimate_confidence)
+  // The group row: the paper's values for the group whose reference tree this is.
+  const row = t.is_partition_canonical
+    ? (STATE.data.coverage || []).find(r => r.filename === t.filename)
     : null;
-  // Coverage (described). Use the override's species count when an atlas-derived
-  // canonical tree exists; otherwise check tip_taxonomy from the original shard.
-  // Coverage uses the species-level effective count when available
-  // (tip_taxonomy_override.unique_species for atlas-derived canonicals like
-  // turtles; tip_taxonomy.unique_species when the tree has redundancy). Falls
-  // back to raw ntips when neither applies. This matches build.py's coverage_pct.
-  const txForCoverage = t.tip_taxonomy_override || t.tip_taxonomy;
-  const effectiveCount = (txForCoverage?.unique_species) ?? t.ntips;
-
-  let covDescribed = t.coverage_pct != null
-    ? `${t.coverage_pct.toFixed(1)}% <span class="src">of described</span>`
-    : "—";
-  if (effectiveCount !== t.ntips && t.described_species) {
-    covDescribed = `${t.coverage_pct.toFixed(1)}% <span class="src">at species level (${fmt.format(effectiveCount)} / ${fmt.format(t.described_species)} described)</span>`;
-  }
-
-  let covEstimated = null;
-  if (est && est.estimated_total && effectiveCount) {
-    const main = (100 * effectiveCount / est.estimated_total).toFixed(1);
-    const lo = est.estimated_high ? (100 * effectiveCount / est.estimated_high).toFixed(1) : null;
-    const hi = est.estimated_low ? (100 * effectiveCount / est.estimated_low).toFixed(1) : null;
-    const subnote = t.is_partition_anchor
-      ? `<span class="src">of ${t.partition_group || "partition"} estimate</span>`
-      : `<span class="src">of ${t.partition_group} estimate &mdash; this tree is a sub-clade of ${t.partition_group}, so the % refers to the whole partition</span>`;
-    covEstimated = `${main}% <span class="range">(${lo}&ndash;${hi}%)</span> ${subnote}`;
-  }
 
   const treePaperHTML = t.doi
-    ? `<a class="src-link" href="https://doi.org/${t.doi}" target="_blank" rel="noopener" title="${(t.study || "") + (t.year ? " (" + t.year + ")" : "") + (t.journal ? " — " + t.journal : "")}"><span class="src-type paper">paper</span>${(t.study || "").split(",")[0].split(" et")[0] || t.doi}${t.year ? " " + t.year : ""}</a>`
-    : (t.study ? `<span class="src">${t.study}${t.year ? " (" + t.year + ")" : ""}</span>` : "—");
+    ? `<a class="src-link" href="https://doi.org/${t.doi}" target="_blank" rel="noopener" title="${escapeHTML((t.study || "") + (t.year ? " (" + t.year + ")" : "") + (t.journal ? " — " + t.journal : ""))}"><span class="src-type paper">paper</span>${escapeHTML((t.study || "").split(",")[0].split(" et")[0] || t.doi)}${t.year ? " " + t.year : ""}</a>`
+    : (t.study ? `<span class="src">${escapeHTML(t.study)}${t.year ? " (" + t.year + ")" : ""}</span>` : "—");
 
-  // When an audit exists for the partition, prefer its authoritative figures
-  // (n_loci, species_represented, multiple_individuals_per_species) over the
-  // CSV-derived ones, and fold the methods block inline.
   const audit = STATE.data.audits?.[t.partition_group];
-  const auditTree = audit?.tree;
-  const auditMethods = auditTree?.methods;
-  const useAuditMethods = !!auditMethods && t.is_partition_canonical;
+  const auditMethods = t.is_partition_canonical ? audit?.tree?.methods : t.methods;
 
-  // Tips field. Layered fallback:
-  //   1) tip_taxonomy_override (atlas-derived species-level tree present)
-  //   2) tip_taxonomy (cross-partition, from the full name shard)
-  //   3) audit-confirmed species_represented (from info.yaml)
-  //   4) plain ntips
-  let tipsVal = fmt.format(t.ntips || 0) + " tips";
-  const txOv = t.tip_taxonomy_override;
-  const tx = t.tip_taxonomy;
-  if (txOv) {
-    // Atlas-derived: report the override tree's actual content + flag the
-    // derivation, with the original multi-individual count in parens.
-    const parts = [`${fmt.format(txOv.total_tips)} tips`];
-    if (txOv.unique_species != null) parts.push(`${fmt.format(txOv.unique_species)} species`);
-    parts.push(`<span class="src">atlas-derived from ${fmt.format(t.ntips || 0)}-tip multi-individual MCC</span>`);
-    tipsVal = parts.join(" · ");
-  } else if (tx) {
-    const parts = [`${fmt.format(t.ntips || 0)} tips`];
-    if (tx.unique_ids != null && tx.unique_ids !== t.ntips) {
-      parts.push(`${fmt.format(tx.unique_ids)} unique IDs`);
-    }
-    if (tx.unique_species != null && tx.unique_species !== (tx.unique_ids ?? t.ntips)) {
-      parts.push(`${fmt.format(tx.unique_species)} species`);
-    }
-    if (tx.subspecies_tips > 0) {
-      parts.push(`<span class="src">${fmt.format(tx.subspecies_tips)} subspecies-level</span>`);
-    }
-    tipsVal = parts.join(" · ");
-  }
-  if (useAuditMethods && auditTree.species_represented && !txOv && (!tx || tx.unique_species == null)) {
-    tipsVal = `${fmt.format(t.ntips || 0)} tips · ${fmt.format(auditTree.species_represented)} species`;
-  }
+  let roleHTML;
+  if (t.is_partition_canonical) roleHTML = `reference tree of ${escapeHTML(t.partition_group)}`;
+  else if (t.site_tree === "derived") roleHTML = `derived in this site from <code>${escapeHTML(t.derived_from)}</code>, one tip per species; not redistributed in <code>standardized/trees/</code>`;
+  else if (t.site_tree === "site_only") roleHTML = `held by this site only; not redistributed in <code>standardized/trees/</code> and not used by the paper`;
+  else roleHTML = t.partition_group ? `other tree of ${escapeHTML(t.partition_group)}; not counted in its coverage` : "other tree; not counted in any group's coverage";
 
   const fields = [
-    ["Group", t.group + (t.partition_group && t.partition_group !== t.group ? ` <span class="src">→ ${t.partition_group}</span>` : "")],
+    ["Group", escapeHTML(t.partition_group || "—")],
+    ["Role", roleHTML],
     ["Tree paper", treePaperHTML],
-    ["Tips", tipsVal],
-    ["Dated", t.dated ? "yes" : "no"],
-    ["Crown age", t.crown_ma ? `${t.crown_ma} Ma` : "—"],
-    ["Described species", describedVal],
-    ["Estimated species", estimatedVal],
-    ["Coverage (described)", covDescribed],
-    ["Coverage (estimated)", covEstimated],
+    ["Tips", `${t.ntips_text} tips`],
   ];
 
-  // Inline methods + uncertainty block when audit available.
-  if (useAuditMethods) {
+  if (row) {
+    const L = row.levels;
+    const lv = (k) => `${L[k].pct_text}% <span class="src">${L[k].n_text} of ${row.described_text} described</span>`;
+    fields.push(
+      ["Described species", `${row.described_text} <span class="src">${escapeHTML(row.described_source || "")}</span>`],
+      ["Named in the tree", lv("named") + (row.is_prokaryotic ? ` <span class="src">GTDB species clusters</span>` : ` <span class="src">accepted names (Catalogue of Life COL26.9)</span>`)],
+      ["Placed with molecular data", lv("molecular")],
+      ["In a chronogram in absolute time", row.dated ? lv("dated") : `no <span class="src">${escapeHTML(row.time_scale_text || "")}</span>`],
+      ["Date uncertainty available", row.uncertainty_available
+        ? `${lv("uncertainty")} <span class="src">${escapeHTML(row.interval_kind_text || "")}</span>`
+        : `no${row.interval_kind_text ? ` <span class="src">${escapeHTML(row.interval_kind_text)}</span>` : ""}`],
+    );
+    if (row.crown) {
+      const c = row.crown;
+      const iv = c.interval_lo_ma_text
+        ? ` <span class="range">(${c.interval_lo_ma_text}–${c.interval_hi_ma_text} Ma${c.n_trees > 1 ? ", over " + fmt.format(c.n_trees) + " trees" : ""})</span>`
+        : "";
+      fields.push(["Crown age", `${c.age_ma_text} Ma${iv} <span class="src">${escapeHTML(c.clade)}; ${escapeHTML(c.age_statistic)}</span>`]);
+    } else {
+      fields.push(["Crown age", "—"]);
+    }
+    if (row.estimated_total) {
+      fields.push(["Estimated total", `${fmt.format(row.estimated_total)} <span class="range">(${fmt.format(row.estimated_low ?? row.estimated_total)}–${fmt.format(row.estimated_high ?? row.estimated_total)})</span> <span class="src">${escapeHTML(row.estimate_source || "")}${row.estimate_confidence ? ", " + escapeHTML(row.estimate_confidence.toLowerCase()) + " conf." : ""}</span>`]);
+    }
+  } else {
+    fields.push(["Dated", t.dated_text ? escapeHTML(t.dated_text) : (t.dated ? "yes" : "no")]);
+    if (t.paper) {
+      const p = t.paper;
+      fields.push(
+        ["Accepted names", p.accepted_names_text || "—"],
+        ["Described species", p.described_text ? `${p.described_text} <span class="src">${escapeHTML(p.described_source || "")}</span>` : "—"],
+        ["Named", p.named_pct_text ? `${p.named_pct_text}% <span class="src">of the described species of this clade (Supplement table of the trees)</span>` : "—"],
+      );
+    }
+    if (t.derivation) fields.push(["Derivation", escapeHTML(t.derivation)]);
+  }
+
+  if (auditMethods) {
     const m = auditMethods;
     const methodFields = [
       ["Inference", m.inference],
@@ -664,9 +624,6 @@ async function selectTree(filename, scrollIntoView) {
       ["Dating method", m.dating_method],
       ["Fossil calibrations", m.fossil_calibrations],
       ["Support metric", m.support_metric],
-      ["Support summary", m.support_typical],
-      ["Divergence CIs", m.divergence_ci_available ? (m.divergence_ci_note || "yes") : "no"],
-      ["Posterior trees", m.posterior_n ? fmt.format(m.posterior_n) : null],
     ];
     for (const [k, v] of methodFields) {
       if (v != null && v !== "") fields.push([k, escapeHTML(String(v))]);
@@ -674,8 +631,8 @@ async function selectTree(filename, scrollIntoView) {
   }
 
   fields.push(
-    ["Tree file source", t.data_source],
-    ["File", t.size_bytes ? `${(t.size_bytes / 1024).toFixed(1)} KB` : "—"],
+    ["Tree file source", t.data_source ? escapeHTML(t.data_source) : null],
+    ["File", `<code>${escapeHTML(t.tree_url)}</code> · ${(t.size_bytes / 1024).toFixed(1)} KB`],
   );
 
   document.getElementById("detail-meta").innerHTML = fields
@@ -688,19 +645,19 @@ async function selectTree(filename, scrollIntoView) {
   renderUncertaintyPanel(t);
 
   const dl = document.getElementById("download-newick");
-  if (t.redistributed === false) {
-    // TimeTree-of-Life: cited reference, not redistributed — link to timetree.org.
-    dl.href = t.download_url || "https://timetree.org";
-    dl.removeAttribute("download");
-    dl.target = "_blank";
-  } else {
-    dl.href = t.tree_url_override || (TREES_BASE + filename);
-    dl.setAttribute("download", filename);
-  }
+  dl.href = treeURL(t);
+  dl.setAttribute("download", t.filename);
 
-  renderRSnippet(t);
+  if (t.in_package) renderRSnippet(t);
 
   await loadAndRenderTree(t);
+}
+
+// The file the viewer shows and the download link offers: the redistributed
+// file in standardized/trees/, or, for a tree only this site holds, its file
+// under data/partitions/.
+function treeURL(t) {
+  return t.in_package ? TREES_BASE + t.filename : t.tree_url_override;
 }
 
 // Render the audit findings panel for the partition the selected tree belongs
@@ -874,7 +831,7 @@ function renderUncertaintyPanel(t) {
         ${unc.host_url ? `<a class="btn-secondary" href="${unc.host_url}" target="_blank" rel="noopener">Browse at ${escapeHTML(unc.host || "host")}</a>` : ""}
       </div>
       <p class="card-sub">
-        The atlas ships only the MCC consensus tree. The original posterior trees, HPD intervals, and BEAST input live at the data host below.
+        The release redistributes the reference tree. The source's tree sets, node intervals and dating input stay at the data host below.
       </p>
       <ul class="unc-list">${fileRowsHTML}</ul>
       ${unc.note ? `<p class="unc-note">${escapeHTML(unc.note).replace(/\n/g, "<br>")}</p>` : ""}
@@ -905,12 +862,12 @@ function renderDatasetChooser(t) {
   }
   host.hidden = false;
 
-  const canonical = items.find(x => x.peer.is_partition_canonical) || items[0];
+  const canonical = items.find(x => x.peer.is_partition_canonical) || null;
   const subclades = items.filter(x => !x.peer.is_partition_canonical);
 
   const renderBtn = ({ peer, tree }, role) => {
     const isActive = tree.filename === t.filename;
-    const tips = peer.tips ? `${fmt.format(peer.tips)} tips` : "";
+    const tips = peer.ntips ? `${fmt.format(peer.ntips)} tips` : "";
     const year = peer.year ? `${peer.year}` : "";
     const datedBadge = peer.dated
       ? `<span class="chooser-badge dated" title="dated"></span>`
@@ -924,14 +881,15 @@ function renderDatasetChooser(t) {
   };
 
   host.innerHTML = `
-    <div class="chooser-label">Partition <strong>${partition}</strong></div>
+    <div class="chooser-label">Group <strong>${partition}</strong></div>
+    ${canonical ? `
     <div class="chooser-tier">
-      <div class="tier-label">Whole-partition tree</div>
+      <div class="tier-label">Reference tree</div>
       <div class="chooser-buttons">${renderBtn(canonical, "canonical")}</div>
-    </div>
+    </div>` : ""}
     ${subclades.length ? `
     <div class="chooser-tier">
-      <div class="tier-label">Sub-clade trees <span class="tier-count">${subclades.length}</span></div>
+      <div class="tier-label">Other trees (not counted in the coverage) <span class="tier-count">${subclades.length}</span></div>
       <div class="chooser-buttons">${subclades.map(x => renderBtn(x, "subclade")).join("")}</div>
     </div>` : ""}
   `;
@@ -980,31 +938,14 @@ async function loadAndRenderTree(t) {
   STATE.currentNames = {};
 
   status.classList.remove("warning");
-
-  if (t.redistributed === false) {
-    status.classList.add("warning");
-    status.textContent = "Tree not redistributed at the TimeTree project's request — available at timetree.org (Hedges et al. 2015).";
-    return;
-  }
-
   status.textContent = `Loading ${t.filename}…`;
 
   try {
-    // Prefer the atlas-derived override tree when build.py flags one (e.g.
-    // turtles' species-level pruning). The name shard still resolves IDs
-    // against the full dictionary, so it's the same shard.
-    const treeUrl = t.tree_url_override
-      ? t.tree_url_override
-      : TREES_BASE + t.filename;
-    // The effective tip count: if there's an override, use its taxonomy's
-    // total_tips; otherwise the CSV-recorded ntips.
-    const txOverride = t.tip_taxonomy_override;
-    const effectiveTips = txOverride && txOverride.total_tips != null
-      ? txOverride.total_tips
-      : (t.ntips || 0);
+    const treeUrl = treeURL(t);
+    const nTips = t.ntips || 0;
     const [treeRes, namesRes] = await Promise.all([
       fetch(treeUrl),
-      fetch(NAMES_BASE + t.filename + ".json").catch(() => null),
+      t.names_file ? fetch(NAMES_BASE + t.names_file + ".json").catch(() => null) : Promise.resolve(null),
     ]);
     if (!treeRes.ok) throw new Error(`HTTP ${treeRes.status}`);
     let newick = await treeRes.text();
@@ -1012,16 +953,13 @@ async function loadAndRenderTree(t) {
       try { STATE.currentNames = await namesRes.json(); } catch { STATE.currentNames = {}; }
     }
 
-    if (effectiveTips > TIP_RENDER_LIMIT) {
+    if (nTips > TIP_RENDER_LIMIT) {
       const sampled = sampleNewick(newick, TIP_RENDER_LIMIT);
       newick = sampled.newick;
       status.classList.add("warning");
-      status.textContent = `Tree has ${fmt.format(effectiveTips)} tips — showing a random sample of ${fmt.format(sampled.kept)}. Download for the full tree.`;
+      status.textContent = `Tree has ${t.ntips_text} tips — showing a random sample of ${fmt.format(sampled.kept)}. Download for the full tree.`;
     } else {
-      const suffix = t.tree_url_override
-        ? " — atlas-derived species-level tree (one tip per species)"
-        : " — full tree shown.";
-      status.textContent = `${fmt.format(effectiveTips)} tips${suffix}`;
+      status.textContent = `${t.ntips_text} tips — full tree shown.`;
     }
 
     STATE.currentNewick = newick;

@@ -3,7 +3,7 @@ slug: bryophytes
 category: Plants
 
 estimate:
-  described: 24000
+  described: 19273
   low: 24000
   total: 24000
   high: 28000
@@ -42,7 +42,7 @@ tree:
   unique_ids: 533
   species_represented: 533
   coverage_pct_described: 2.2
-  dated: false
+  dated: true
   multiple_individuals_per_species: false
   source:
     key: Bechteler 2023

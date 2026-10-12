@@ -6,10 +6,11 @@ on:
     paths:
       - "site/**"
       - "standardized/**"
+      - "registers/**"
+      - "paper/**"
       - "audits/**"
       - "data_provenance.csv"
-      - "data_estimates.csv"
-      - "data_sources.csv"
+      - "CITATION.cff"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 

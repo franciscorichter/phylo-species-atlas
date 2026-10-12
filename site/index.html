@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Where the tree of life is empirically resolved — Phylo-Species Atlas</title>
-<link rel="stylesheet" href="style.css?v=20260519d">
+<title>Phylo-Species Atlas</title>
+<link rel="stylesheet" href="style.css?v=20261012">
 <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
 <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
 </head>
 <body>
 <header>
   <h1>Phylo-Species Atlas</h1>
-  <p class="tagline">A standardized collection of empirical phylogenies across the tree of life.
+  <p class="tagline">The species-level phylogenies of the atlas and the coverage of described species they give, as the paper reports it.
     <a href="audit.html">Audit log</a> ·
     <a href="https://github.com/franciscorichter/phylo-species-atlas" target="_blank" rel="noopener">GitHub</a> ·
     <a href="https://franciscorichter.github.io/" target="_blank" rel="noopener">Author</a></p>
@@ -29,7 +29,7 @@
 
   <section id="browser">
     <article class="panel detail">
-      <div id="detail-empty" class="empty">Click a row in the chart above to see partition details.</div>
+      <div id="detail-empty" class="empty">Click a row in the chart above to see the group.</div>
       <div id="detail" hidden>
         <h2 id="detail-name"></h2>
         <div id="dark-matter-panel" hidden></div>
@@ -68,10 +68,10 @@
 </main>
 
 <footer>
-  <p>Companion to Richter (2026), <em>Where the tree of life is empirically resolved, and where it is not: an open atlas of species-level phylogenies and their archival uncertainty</em>.
+  <p><span id="paper-ref"></span>
     Data licensed CC-BY 4.0; cite original studies for the underlying trees.</p>
 </footer>
 
-<script src="app.js?v=20260519d"></script>
+<script src="app.js?v=20261012"></script>
 </body>
 </html>

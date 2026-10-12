@@ -24,7 +24,10 @@ gives the path in the repository that builds this release: `Data/standardized/tr
 `standardized/trees/<name>` here, and `Data/site/...` is `site/...`. Of its 306 rows, 299 have
 `changed` = `yes`: 256 are trees redistributed in `standardized/trees/`, 1 is `timetree.nwk`,
 which was restored and is no longer redistributed (`standardized/withdrawn.csv`), and 42 are the
-copies of trees under `site/data/partitions/`. The other 7 rows are files of `standardized/trees/`
+copies of trees under `site/data/partitions/`, of which the browser site holds 18. The site holds
+no copy of a reference tree: it reads every redistributed tree from `standardized/trees/`, and its
+Primates tree with one tip per species is derived from the restored `standardized/trees/primates.nwk`.
+The other 7 rows are files of `standardized/trees/`
 that were checked and found unchanged. Any analysis that used branch lengths, node ages or support values from these files in
 an affected release should be repeated with v1.1.0. Analyses that used only tip sets or
 topologies are not affected.

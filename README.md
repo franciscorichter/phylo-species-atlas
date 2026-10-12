@@ -36,7 +36,8 @@ Licence: CC BY 4.0 (`LICENSE`); the source trees keep the terms of their origina
 | `code/rebuild/` | The pipeline that wrote `standardized/`, `registers/` and `paper/`, with a map from its paths to this repository. See [`code/rebuild/README.md`](code/rebuild/README.md). |
 | `code/figures/` | The scripts of the five main-text figures (matplotlib). |
 | `phyloatlas/` | An R package that loads any tree by name. |
-| `site/`, `audits/`, `data_provenance.csv`, `data_estimates.csv`, `data_sources.csv` | The browser site and its inputs (see *The browser site* below). |
+| `site/`, `audits/` | The browser site and its per-group audit log (see *The browser site* below). |
+| `data_provenance.csv`, `data_estimates.csv`, `data_sources.csv` | Per-dataset tables of the source studies, read by the R package (`data_provenance.csv`) and for the download links of the site; their coverage, described-species, crown-age and estimate columns are not the paper's numbers, which are in `registers/` and `paper/`. |
 
 ## The coverage levels
 
@@ -178,24 +179,29 @@ publication that address returns HTTP 404.
 ## The browser site
 
 `site/` is the source of the page at
-<https://franciscorichter.github.io/phylo-species-atlas/>, built by `site/build.py` from
-`standardized/metadata.csv`, `data_provenance.csv`, `data_estimates.csv`, `data_sources.csv`,
-`audits/` and the per-group notes in `site/data/partitions/`. Its content does not follow the
-paper:
+<https://franciscorichter.github.io/phylo-species-atlas/>. `site/build.py` generates its data,
+`site/data.json`, from the paper's files in this release:
 
-- its coverage percentages are tips over described species of each dataset, taken from
-  `data_provenance.csv`, not the four levels above, and its described-species totals and crown
-  ages are the values typed there;
-- built from this release, it shows and offers for download the copies in
-  `site/data/partitions/*/tree.nwk` instead of the files in `standardized/trees/`. Of the 24
-  copies that share a name with a release file, all of them reference trees, 4 (Archaea,
-  Bacteria, Bivalves, Cephalopods) are identical to it, 4 (Birds, Bryophytes, Sharks, Sponges)
-  have its tips but differ in branch lengths or labels, and 16 have a different set of tips; the
-  Cnidaria copy has no release file of that name (the Cnidaria reference tree is `corals.nwk`),
-  and the Crocodilians reference tree has no copy;
-- the committed `site/data.json` was built from release v1.0.8 and lists `timetree.nwk`, which is
-  not redistributed. The deployment workflow (`.github/workflows/pages.yml`) rebuilds it from the
-  files above on every push to `main`.
+- **Coverage of each group**: the four levels above (named in the reference tree, placed with
+  molecular data, in a chronogram in absolute time, date uncertainty available) for each of the
+  62 groups, from `registers/coverage_basis.csv`, over the described species of the group, the
+  paper's denominator; the totals over the described eukaryotic species from
+  `paper/headline_numbers.json`. Percentages are formatted as the paper prints them, so each
+  group's row reads as its row of Table 1. Crown ages and intervals come from the crown register
+  (`paper/crown_ages.csv`), the estimated total of each group from `paper/fig1_coverage_bars.csv`.
+  Bacteria and Archaea are shown in GTDB species clusters and are not in the eukaryotic totals.
+- **Trees**: the viewer and the download link of every redistributed tree read its file in
+  `standardized/trees/`. `site/data/partitions/` holds no copy of a reference tree; it holds the
+  per-group notes (`info.yaml`, text on methods, caveats and the provenance of each estimate),
+  copies of other redistributed trees, identical to their files in `standardized/trees/`, and
+  three trees the release does not redistribute: the Basidiomycota chronogram of Varga et al.
+  (2019), the Xiphosura tree of Obst et al. (2012) and the Primates tree with one tip per
+  species, derived from `standardized/trees/primates.nwk` (one tip per `Genus_species`, branch
+  lengths of joined edges added).
 
-The coverage of described species by these trees is the one in `registers/coverage_basis.csv` and
-`paper/`.
+`site/data.json` lists the 263 redistributed trees; `timetree.nwk` is not among them.
+`scripts/reproduce_paper.py` compares every number of `site/data.json` with the paper's macros,
+Table 1, the crown register and the estimates, and every tree file under `site/` with its file in
+`standardized/trees/`. `python3 site/build.py --check` (PyYAML) confirms that `site/data.json` is
+the file the build writes. The deployment workflow (`.github/workflows/pages.yml`) runs
+`site/build.py` on every push to `main`.
