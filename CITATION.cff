@@ -3,7 +3,7 @@ message: "If you use this dataset, please cite the paper and the Zenodo release 
 title: "Phylogenetic Species Atlas: species-level phylogenies of eukaryotes and the coverage of described species"
 version: 1.1.0
 doi: "10.5281/zenodo.20127157"
-date-released: 2026-10-08
+date-released: 2026-10-13
 url: "https://github.com/franciscorichter/phylo-species-atlas"
 repository-code: "https://github.com/franciscorichter/phylo-species-atlas"
 license: CC-BY-4.0
