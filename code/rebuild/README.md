@@ -34,7 +34,7 @@ from this repository by the stated rules and does not import them.
 |---|---|---|
 | `canonical_trees.py` | the reference trees in `standardized/trees/` from `standardized/canonical_sources/` by the rule in `standardized/README.md` | this repository |
 | `prepare_canonical_sources.py` | the canonical sources taken from a deposit (`registers/canonical_source_prep.csv`) | the deposits |
-| `restore_branch_lengths.py` | the trees with restored branch lengths (`ERRATUM.md`; first released in v1.1.0) | the pre-relabelling copies |
+| `restore_branch_lengths.py` | the trees with restored branch lengths (`ERRATUM.md`; first released in v1.1.1) | the pre-relabelling copies |
 | `alignment_taxa.py` | `registers/molecular_sources/<group>.taxa.txt` from the cited alignments; its docstring gives the call for each group | the alignments (GTDB, Dryad, Zenodo, Figshare, GitHub, as cited in each header) |
 | `export_source_tree_taxa.py` | `registers/molecular_sources/source_trees/` from the trees of sequenced species | the source trees |
 | `match_col.py` | `standardized/col_resolution*.csv`, `col269_*` | the COL26.9 release (ChecklistBank 316321) |

@@ -14,8 +14,11 @@ from this repository by
 python3 scripts/reproduce_paper.py
 ```
 
-> **Branch lengths in releases v1.0.3 to v1.0.8 are corrupted.** Use v1.1.0 or later for any
+> **Branch lengths in releases v1.0.3 to v1.0.8 are corrupted.** Use v1.1.1 or later for any
 > analysis of branch lengths, node ages or support values. Details: [`ERRATUM.md`](ERRATUM.md).
+> The Zenodo record [10.5281/zenodo.23348695](https://doi.org/10.5281/zenodo.23348695), labelled
+> v1.1.0, holds the v1.0.8 files with the corrupted branch lengths; it is not a release of this
+> repository's v1.1.x line. The first corrected release is v1.1.1 (version DOI minted on release).
 >
 > Two files carry the literal value `NaN` as a branch length: `standardized/trees/ants.nwk`
 > (83 branches) and `standardized/superseded_canonicals/diatoms.nwk` (95 branches). Some Newick
@@ -171,9 +174,9 @@ list_trees()
 tree <- load_atlas_tree("mammals")
 ```
 
-The tag `v1.1.0` is created on GitHub when this release is published. From then on the option
+The tag `v1.1.1` is created on GitHub when this release is published. From then on the option
 can name the tag instead of a clone,
-`"https://raw.githubusercontent.com/franciscorichter/phylo-species-atlas/v1.1.0"`; before
+`"https://raw.githubusercontent.com/franciscorichter/phylo-species-atlas/v1.1.1"`; before
 publication that address returns HTTP 404.
 
 ## The browser site
