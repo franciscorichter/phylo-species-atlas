@@ -1,0 +1,2 @@
+group,tree,accepted_species,time_scale,evidence
+Insects,bees.nwk,4369,absolute,"Henriquez-Piskulich, Hugall & Stuart-Fox 2024 (Mol. Phylogenet. Evol. 190:107963), Dryad 10.5061/dryad.80gb5mkw1: treePL chronogram, "a secondary root calibration from Almeida, and a set of 34 node minimum constraints ... bee root to a broad normal distribution of 120 million years ago (mya) SD 6" (paper §2.4); root height 120.0; the reference tree insects.nwk is in relative time (D14). Accepted species from Data/standardized/col_resolution_noncanonical.csv"

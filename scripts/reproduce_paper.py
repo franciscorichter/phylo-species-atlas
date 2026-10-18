@@ -2781,7 +2781,8 @@ def main(argv=None):
     R.section("Use of AI: decisions and review findings")
     rev = ("paper", "revision")
     with open(path(*rev + ("DECISIONS.md",)), encoding="utf-8") as fh:
-        decisions = set(re.findall(r"^\| *(D\d+) *\|", fh.read(), re.M))
+        decisions = set(re.findall(r"^\| *(D\d+) *\|(?![^\n]*decided by Francisco)",
+                                   fh.read(), re.M))
     with open(path(*rev + ("FINDINGS.tsv",)), encoding="utf-8") as fh:
         findings = list(csv.DictReader(fh, delimiter="\t"))
     R.macro(macros, "AIDecisionsN", "%d" % len(decisions))
