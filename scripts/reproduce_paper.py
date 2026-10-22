@@ -16,8 +16,6 @@ numbers:
     paper/numbers_macros.tex        the numbers as printed in the text
     paper/crown_ages_macros.tex     crown ages and intervals as printed
     paper/table_datasets_macros.tex counts printed with Table 1
-    paper/ai_macros.tex             counts of the Use of AI statement, recounted
-                                    from paper/revision/
     paper/table_*.csv               Tables 1 to 3, cell by cell
     paper/fig*_*.csv, crown_ages.csv   the data of Figures 1 to 4
     paper/supp_*.csv, supp_macros.tex  the tables of Supplement S1 to S10, cell
@@ -812,8 +810,7 @@ def main(argv=None):
     head = json.load(open(path("paper", "headline_numbers.json"), encoding="utf-8"))
     macros = read_macros(path("paper", "numbers_macros.tex"),
                          path("paper", "crown_ages_macros.tex"),
-                         path("paper", "table_datasets_macros.tex"),
-                         path("paper", "ai_macros.tex"))
+                         path("paper", "table_datasets_macros.tex"))
 
     # ---------------------------------------------------------- inputs ---
     basis = read_csv(path("registers", "coverage_basis.csv"))
@@ -2776,21 +2773,6 @@ def main(argv=None):
         if r["file"]:
             R.eq("supp_terms: %s: %s is in this repository" % (r["term"], r["file"]),
                  os.path.exists(path(*r["file"].rstrip("/").split("/"))), True)
-
-    # ------------------------------------------------- use of AI counts ---
-    R.section("Use of AI: decisions and review findings")
-    rev = ("paper", "revision")
-    with open(path(*rev + ("DECISIONS.md",)), encoding="utf-8") as fh:
-        decisions = set(re.findall(r"^\| *(D\d+) *\|(?![^\n]*decided by Francisco)",
-                                   fh.read(), re.M))
-    with open(path(*rev + ("FINDINGS.tsv",)), encoding="utf-8") as fh:
-        findings = list(csv.DictReader(fh, delimiter="\t"))
-    R.macro(macros, "AIDecisionsN", "%d" % len(decisions))
-    R.macro(macros, "AIFindingsN", "%d" % len(findings))
-    R.macro(macros, "AIFindingsBlockingN",
-            "%d" % sum(r["severity"] == "blocking" for r in findings))
-    R.macro(macros, "AIFindingsFixedN",
-            "%d" % sum(r["status"] == "fixed" for r in findings))
 
     # ------------------------------------------------------------- rules ---
     R.section("Rule parameters printed in the text")

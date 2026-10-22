@@ -1,7 +1,7 @@
 # Erratum: branch lengths in releases v1.0.3 to v1.0.8
 
 **Affected releases:** v1.0.3 (2026-05-12) through v1.0.8 (2026-07-05), on GitHub and on Zenodo
-(concept DOI 10.5281/zenodo.20127157). **Corrected in:** v1.1.1 (version DOI minted on release).
+(concept DOI 10.5281/zenodo.20127157). **Corrected in:** v1.1.1 (10.5281/zenodo.23455934) and every later release.
 Releases v1.0.0 to v1.0.2 are not affected.
 
 The Zenodo record 10.5281/zenodo.23348695, labelled v1.1.0 with publication date 2026-10-13,
@@ -34,7 +34,7 @@ no copy of a reference tree: it reads every redistributed tree from `standardize
 Primates tree with one tip per species is derived from the restored `standardized/trees/primates.nwk`.
 The other 7 rows are files of `standardized/trees/`
 that were checked and found unchanged. Any analysis that used branch lengths, node ages or support values from these files in
-an affected release should be repeated with v1.1.1. Analyses that used only tip sets or
+an affected release should be repeated with v1.1.1 or later. Analyses that used only tip sets or
 topologies are not affected.
 
 ## How it was corrected

@@ -5765,8 +5765,7 @@ def check_crownreg(ctx):
 # --------------------------------------------------------------------------
 NUMBER_MACROS = P("Paper", "inputs", "numbers_macros.tex")
 GENERATED_MACRO_FILES = (NUMBER_MACROS, CROWN_MACROS,
-                         P("Paper", "inputs", "table_datasets_macros.tex"),
-                         P("Paper", "inputs", "ai_macros.tex"))
+                         P("Paper", "inputs", "table_datasets_macros.tex"))
 
 
 def _mpct(x):
@@ -7855,15 +7854,11 @@ GBIF_UNMATCHED = P("Data", "external", "gbif_unmatched.csv")
 
 def _ai_plain(text):
     """The Use of AI statement as plain text, as filed on a submission form:
-    list items become '- ' lines, formatting commands are dropped and the
-    count macros of ai_macros.tex are expanded."""
-    mac = dict(_macros_in(P("Paper", "inputs", "ai_macros.tex")))
-    for k, v in mac.items():
-        text = re.sub(r"\\%s(?:\{\})?(?![A-Za-z])" % k, lambda _m: v, text)
+    list items become '- ' lines and formatting commands are dropped."""
     text = re.sub(r"\\setlength\{[^}]*\}\{[^}]*\}", "", text)
     text = re.sub(r"\\(?:begin|end)\{itemize\}", "", text)
     text = re.sub(r"\\(?:textit|nolinkurl)\{([^}]*)\}", r"\1", text)
-    text = text.replace("\\item", " - ").replace("~", " ")
+    text = text.replace("\\item", " - ").replace("\\par", " ").replace("~", " ")
     return " ".join(text.split())
 
 

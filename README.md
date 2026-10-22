@@ -18,7 +18,7 @@ python3 scripts/reproduce_paper.py
 > analysis of branch lengths, node ages or support values. Details: [`ERRATUM.md`](ERRATUM.md).
 > The Zenodo record [10.5281/zenodo.23348695](https://doi.org/10.5281/zenodo.23348695), labelled
 > v1.1.0, holds the v1.0.8 files with the corrupted branch lengths; it is not a release of this
-> repository's v1.1.x line. The first corrected release is v1.1.1 (version DOI minted on release).
+> repository's v1.1.x line. The first corrected release is v1.1.1 (10.5281/zenodo.23455934).
 >
 > Two files carry the literal value `NaN` as a branch length: `standardized/trees/ants.nwk`
 > (83 branches) and `standardized/superseded_canonicals/diatoms.nwk` (95 branches). Some Newick
@@ -34,7 +34,7 @@ Licence: CC BY 4.0 (`LICENSE`); the source trees keep the terms of their origina
 | `standardized/trees/` | 263 Newick files with numeric tip ids: the 26 reference trees (one per group that has a species-level tree, 24 eukaryotic and 2 prokaryotic) and 237 other trees, among them 218 family-level trees of tetrapods (Condamine et al. 2019), one of which is the reference tree of Crocodilians. |
 | `standardized/` | The name layer: `dictionary.csv` (id -> standardized name), `full_mapping.csv` (source label -> name), the Catalogue of Life resolution of every reference-tree tip (`col_resolution.csv.gz`), per-tree `metadata.csv`, `canonical_sources/` (the unpruned source of each reference tree) and `superseded_canonicals/` (the seven reference trees this release replaces). See [`standardized/README.md`](standardized/README.md). |
 | `registers/` | The per-group table (`coverage_basis.csv`), the molecular tips of each reference tree and the lists they are taken from, the time-scale, crown-interval and calibration registers, the pruned off-group tips, and the Catalogue of Life, GBIF and Open Tree extracts. See [`registers/README.md`](registers/README.md). |
-| `paper/` | The paper's generated numbers, tables and figure data, as the manuscript prints them. `paper/revision/` holds the review register of the revision (`FINDINGS.tsv`) and its recorded decisions (`DECISIONS.md`), described in the paper's Use of AI section. |
+| `paper/` | The paper's generated numbers, tables and figure data, as the manuscript prints them. |
 | `scripts/reproduce_paper.py` | Recomputes the paper's numbers from `standardized/` and `registers/` and compares them with `paper/`. Python 3, standard library only. |
 | `code/rebuild/` | The pipeline that wrote `standardized/`, `registers/` and `paper/`, with a map from its paths to this repository. See [`code/rebuild/README.md`](code/rebuild/README.md). |
 | `code/figures/` | The scripts of the five main-text figures (matplotlib). |
@@ -174,9 +174,9 @@ list_trees()
 tree <- load_atlas_tree("mammals")
 ```
 
-The tag `v1.1.1` is created on GitHub when this release is published. From then on the option
+The tag `v1.1.2` is created on GitHub when this release is published. From then on the option
 can name the tag instead of a clone,
-`"https://raw.githubusercontent.com/franciscorichter/phylo-species-atlas/v1.1.1"`; before
+`"https://raw.githubusercontent.com/franciscorichter/phylo-species-atlas/v1.1.2"`; before
 publication that address returns HTTP 404.
 
 ## The browser site
