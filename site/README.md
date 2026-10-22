@@ -1,4 +1,4 @@
-# Phylo-Species Atlas — browser site
+# Phylo-Species Catalogue — browser site
 
 Static companion site of the release: `index.html`, `app.js`, `style.css`, the audit log
 (`audit.html`, `audit.js`) and a generated `data.json`. No framework; Plotly and d3 from CDNs.

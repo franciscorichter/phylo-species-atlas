@@ -1,4 +1,4 @@
-// Phylo-Species Atlas browser — vanilla JS, no build step.
+// Phylo-Species Catalogue browser — vanilla JS, no build step.
 // Loads data.json, renders summary + plots, and lazy-loads tree files.
 
 const STATE = {
@@ -165,7 +165,7 @@ function renderCoveragePlot() {
   };
   const classLabel = (cls) => ({
     "paper-published-range": "paper-published range",
-    "partly-heuristic": "partly heuristic (one bound is the described count or atlas-derived)",
+    "partly-heuristic": "partly heuristic (one bound is the described count or catalogue-derived)",
     "fully-heuristic": "heuristic — no true-diversity estimate published",
     "derived": "derived from described count",
     "unaudited": "not yet audited for interval provenance",
@@ -795,7 +795,7 @@ function renderAuditPanel(t) {
 
 // Posterior samples / HPD trees / BEAST XML — surfaced as a card with
 // click-through links to the original data host (Dryad, GitHub, VertLife).
-// The atlas does not mirror these files; the host is canonical.
+// The catalogue does not mirror these files; the host is canonical.
 function renderUncertaintyPanel(t) {
   const host = document.getElementById("uncertainty-panel");
   if (!host) return;
@@ -1162,7 +1162,7 @@ function drawLinear(root, width, nLeaves) {
       .attr("fill", "#555")
       .text(age => age === 0 ? "0" : age);
     // Axis caption. Branch-length units aren't recorded per tree in the
-    // atlas pipeline — most chronograms are in Ma but some standardized
+    // catalogue pipeline — most chronograms are in Ma but some standardized
     // files (e.g. turtles, max ~10) appear to carry rate-normalized
     // distances. Heuristic: max > 30 → likely Ma; otherwise generic.
     const captionText = maxRootDist > 30

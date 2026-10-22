@@ -1,4 +1,4 @@
-# Phylogenetic Species Atlas
+# Phylogenetic Species Catalogue
 
 Published species-level phylogenies of eukaryotes, redistributed with numeric tip ids, one
 name layer resolved to the Catalogue of Life, and the registers from which the coverage of
