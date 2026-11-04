@@ -1,4 +1,4 @@
-# Phylogenetic Species Catalogue
+# Species Phylogenies Catalogue
 
 Published species-level phylogenies of eukaryotes, redistributed with numeric tip ids, one
 name layer resolved to the Catalogue of Life, and the registers from which the coverage of
@@ -183,7 +183,11 @@ publication that address returns HTTP 404.
 
 `site/` is the source of the page at
 <https://franciscorichter.github.io/phylo-species-atlas/>. `site/build.py` generates its data,
-`site/data.json`, from the paper's files in this release:
+`site/data.json`, from the paper's files in this release. The page draws every described species
+of eukaryote as dots, one per 500 species, in a ring around the tree of life of the 62 groups
+(`site/data/tree_of_groups.json`, the order of the groups in the Open Tree of Life synthesis), lights
+the four coverage levels in turn, and opens each group's reference tree with one dot per species.
+It reads:
 
 - **Coverage of each group**: the four levels above (named in the reference tree, placed with
   molecular data, in a chronogram in absolute time, date uncertainty available) for each of the

@@ -3,75 +3,33 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Phylo-Species Catalogue</title>
-<link rel="stylesheet" href="style.css?v=20261012">
-<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
-<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<title>Species Phylogenies Catalogue</title>
+<meta name="description" content="Every described species of eukaryote as dots around the tree of life, and the share of them in published species-level phylogenies.">
+<link rel="stylesheet" href="style.css?v=20261105a">
 </head>
 <body>
-<header>
-  <h1>Phylo-Species Catalogue</h1>
-  <p class="tagline">The species-level phylogenies of the catalogue and the coverage of described species they give, as the paper reports it.
-    <a href="audit.html">Audit log</a> ·
-    <a href="https://github.com/franciscorichter/phylo-species-atlas" target="_blank" rel="noopener">GitHub</a> ·
-    <a href="https://franciscorichter.github.io/" target="_blank" rel="noopener">Author</a></p>
-  <div id="summary-stats" class="stats"></div>
-</header>
+<div class="top">
+  <h1>Species Phylogenies Catalogue</h1>
+  <div class="links"><span class="scale" id="escala"></span></div>
+</div>
+<div class="stage">
+  <div id="lienzo" aria-label="Described species as dots, arranged by the tree of life"></div>
+  <div class="texto">
+    <div class="nav" id="nav"></div>
+    <div class="paso-n" id="paso-n"></div>
+    <h2 id="titulo"></h2>
+    <div class="cifra" id="cifra"></div>
+    <div class="cifra-sub" id="cifra-sub"></div>
+    <p id="frase"></p>
+    <div class="clave" id="clave"></div>
+    <p class="nota" id="nota"></p>
+    <div class="ficha" id="ficha"></div>
+  </div>
+</div>
+<div id="tip"></div>
+<footer id="pie"></footer>
 
-<main>
-  <section id="overview">
-    <div class="card">
-      <h2>Coverage across groups</h2>
-      <p class="card-sub" id="coverage-sub">Loading…</p>
-      <div id="coverage-plot"></div>
-    </div>
-  </section>
-
-  <section id="browser">
-    <article class="panel detail">
-      <div id="detail-empty" class="empty">Click a row in the chart above to see the group.</div>
-      <div id="detail" hidden>
-        <h2 id="detail-name"></h2>
-        <div id="dark-matter-panel" hidden></div>
-        <div id="dataset-chooser" class="dataset-chooser" hidden></div>
-        <div id="detail-meta" class="meta"></div>
-        <div id="audit-panel" class="audit-panel" hidden></div>
-        <div id="uncertainty-panel" hidden></div>
-        <div class="card" id="r-snippet-card">
-          <div class="card-header">
-            <h3>Use from R</h3>
-            <div class="viewer-controls">
-              <button id="copy-r-snippet" type="button" class="btn-copy">Copy</button>
-            </div>
-          </div>
-          <p class="card-sub">
-            Install the <a href="https://github.com/franciscorichter/phylo-species-atlas/tree/main/phyloatlas" target="_blank" rel="noopener"><code>phyloatlas</code></a> R package once, then load this tree by name.
-          </p>
-          <pre class="r-snippet"><code id="r-snippet"></code></pre>
-        </div>
-        <div class="card" id="tree-viewer-card">
-          <div class="card-header">
-            <h3>Tree viewer</h3>
-            <div class="viewer-controls">
-              <label class="check"><input type="checkbox" id="show-labels"> Show labels</label>
-              <button id="layout-toggle" type="button">Radial</button>
-              <button id="reset-zoom" type="button">Reset zoom</button>
-              <a id="download-newick" class="btn" download>Download .nwk</a>
-            </div>
-          </div>
-          <div id="tree-status" class="tree-status"></div>
-          <div id="tree-container"></div>
-        </div>
-      </div>
-    </article>
-  </section>
-</main>
-
-<footer>
-  <p><span id="paper-ref"></span>
-    Data licensed CC-BY 4.0; cite original studies for the underlying trees.</p>
-</footer>
-
-<script src="app.js?v=20261012"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script src="app.js?v=20261105a"></script>
 </body>
 </html>
