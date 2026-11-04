@@ -1,3 +1,6 @@
+@font-face { font-family: "Libertinus"; src: url(fonts/LibertinusSerif-Regular.otf); font-weight: 400; }
+@font-face { font-family: "Libertinus"; src: url(fonts/LibertinusSerif-Italic.otf); font-style: italic; }
+@font-face { font-family: "Libertinus"; src: url(fonts/LibertinusSerif-Semibold.otf); font-weight: 600; }
 :root {
   --fondo: #ffffff;
   --tinta: #1f2328;
