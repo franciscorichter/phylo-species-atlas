@@ -1,48 +1,33 @@
 # cran-comments
 
+## Update
+
+This is an update of phyloatlas 0.1.0 (on CRAN since 2026-06-04). One change:
+`load_atlas_tree()` stops with an error that gives the address of the source
+when the requested tree is one the atlas no longer redistributes, because its
+source states no licence (data release v1.1.3 of the atlas). The list of such
+trees is read from the atlas's `registers/withheld_trees.csv`, or from a copy
+bundled in `inst/extdata/` when the atlas has none.
+
 ## Test environments
 
-* local macOS aarch64, R 4.4.0
-* (pre-submission) win-builder (devel, release)
-* (pre-submission) R-hub multi-platform check
+* local macOS aarch64, R 4.4.0: `R CMD check --as-cran` on the built tarball.
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 expected NOTE on first submission:
+0 errors | 0 warnings | 1 note
 
-```
-* checking CRAN incoming feasibility ... NOTE
-Maintainer: 'Francisco Richter <richtf@usi.ch>'
-New submission
-```
-
-This is the standard "New submission" NOTE expected for any first-time
-CRAN submission. No other NOTEs or WARNINGs.
-
-## Package purpose
-
-`phyloatlas` is a thin R client for the Phylo-Species Atlas
-(<https://github.com/franciscorichter/phylo-species-atlas>), a curated
-collection of standardized empirical species-level phylogenetic trees.
-All four exported functions fetch data over HTTPS from the atlas's
-public GitHub repository.
+* checking for future file timestamps ... NOTE: unable to verify current time.
+  The check machine could not reach a time server; this is not a property of
+  the package.
 
 ## Network handling
 
-The package fetches data from <https://raw.githubusercontent.com/franciscorichter/phylo-species-atlas/>.
-Network-dependent examples are wrapped in `\donttest{}` (per the
-Writing R Extensions recommendation over `\dontrun{}`) and additionally
-guarded with `try(..., silent = TRUE)` so they do not raise errors
-if the network is unavailable. Examples for `load_atlas_tree()` also
-include an offline path that loads a small bundled tree from
-`inst/extdata/`, so the function has at least one runnable example
-under `R CMD check`.
+As in 0.1.0: the package fetches data over HTTPS from the atlas's public
+GitHub repository. Network-dependent examples are in `\donttest{}` and guarded
+with `try(..., silent = TRUE)`; the tests are offline (a `file://` mirror under
+`tests/testthat/fixtures/`).
 
-Tests are entirely offline: the test suite sets
-`options(phyloatlas.base_url = ...)` to a `file://` URL pointing at a
-miniature mirror of the atlas under `tests/testthat/fixtures/`, so no
-network access is required during `R CMD check`.
+## Reverse dependencies
 
-## Downstream dependencies
-
-None — this is a new package.
+None.
