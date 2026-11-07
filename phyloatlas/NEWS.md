@@ -1,3 +1,13 @@
+# phyloatlas 0.1.1
+
+* `load_atlas_tree()` stops with an error that gives the address of the source
+  when the requested tree is one the atlas does not redistribute because its
+  source states no licence (data release v1.1.3: cephalopods, frogs,
+  gastropods, insects, primates, seed_plants, sharks, sponges). The list is
+  read from the atlas's `registers/withheld_trees.csv`; when the atlas named by
+  `phyloatlas.base_url` has no such register, the copy bundled with the
+  package (`inst/extdata/withheld_trees.csv`) is used.
+
 # phyloatlas 0.1.0
 
 * Initial CRAN release.

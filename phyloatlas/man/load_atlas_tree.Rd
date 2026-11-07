@@ -8,12 +8,17 @@ load_atlas_tree(name, resolve_labels = TRUE)
 }
 \arguments{
 \item{name}{Tree name without the `.nwk` extension (e.g. `"mammals"`,
-`"birds"`, `"seed_plants"`, `"condamine_Vangidae"`). Use [list_trees()]
+`"birds"`, `"fish"`, `"condamine_Vangidae"`). Use [list_trees()]
 to see all available names.}
 
 \item{resolve_labels}{If `TRUE` (default) tip labels are replaced with
-standardized species names from `dictionary.csv`. Set to `FALSE` to
-keep the raw integer IDs (faster, avoids downloading the dictionary).}
+  standardized species names from `dictionary.csv`. Set to `FALSE` to
+  keep the raw integer IDs (faster, avoids downloading the dictionary).
+
+Some trees of the atlas are not redistributed, because their sources state
+no licence (the atlas's `registers/withheld_trees.csv`). For such a name the
+function stops with an error that gives the address of the source, from
+which the tree can be downloaded; nothing is fetched.}
 }
 \value{
 An object of class `"phylo"` from the \pkg{ape} package. If

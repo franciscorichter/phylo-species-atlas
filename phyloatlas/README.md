@@ -29,7 +29,7 @@ atlas_info("birds")
 Trees larger than ~10k tips download faster with `resolve_labels = FALSE`, which skips the 18 MB species dictionary:
 
 ```r
-tree <- load_atlas_tree("seed_plants", resolve_labels = FALSE)
+tree <- load_atlas_tree("fish", resolve_labels = FALSE)
 ```
 
 ## Functions

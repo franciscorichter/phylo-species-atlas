@@ -1,0 +1,9 @@
+name,study,source_url,licence
+cephalopods,2024 bioRxiv,https://github.com/kcbasava/ceph-brain-evolution,None stated for the repository; the associated preprint is CC BY 4.0
+frogs,Portik 2023,https://github.com/nhm-herpetology/frog-phylogeny (Supplementary_File_S3_time_tree.tre),none stated
+gastropods,Zapata 2014,https://bitbucket.org/caseywdunn/gastropoda/src/master/data/Chronogram.tre,"none stated (bitbucket.org/caseywdunn/gastropoda, data/Chronogram.tre)"
+insects,insectphylo v2,"https://web.archive.org/web/20260310151850/https://insectphylo.org/download-a-synthesis-phylogeny/ (insectphylo.org Insecta_v2; the live site is unreachable, read via its web.archive.org snapshots of 2026-03-10 and 2026-04-07)",none stated
+primates,10kTrees v3,https://10ktrees.nunn-lab.org/,None stated
+seed_plants,Smith & Brown 2018,"https://github.com/FePhyFoFum/big_seed_plant_trees/releases (v0.1.zip, ALLMB.tre)",none stated
+sharks,Stein 2018,https://vertlife.org/phylosubsets/,None stated
+sponges,Lavrov 2023,https://github.com/lavrovlab/Demosponge-phylogeny-supplementary-data,none stated for the shipped chronogram (GitHub repository: scripts under GPL v3 only)

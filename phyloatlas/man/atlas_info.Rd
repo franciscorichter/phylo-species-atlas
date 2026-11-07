@@ -8,7 +8,7 @@ atlas_info(name)
 }
 \arguments{
 \item{name}{Tree name without the `.nwk` extension (e.g. `"mammals"`,
-`"birds"`, `"seed_plants"`). Must be a length-1 non-`NA` character
+`"birds"`, `"fish"`). Must be a length-1 non-`NA` character
 string. Use [list_trees()] to see all available names.}
 }
 \value{

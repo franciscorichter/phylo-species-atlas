@@ -69,11 +69,11 @@ tree
 head(tree$tip.label)
 ```
 
-For large trees (e.g. seed plants, ~342 k tips), skip the 18 MB
+For large trees (e.g. ray-finned fishes, ~31 k tips), skip the 18 MB
 dictionary download by setting `resolve_labels = FALSE`:
 
-```{r load-seedplants, eval = NOT_CRAN}
-tree <- load_atlas_tree("seed_plants", resolve_labels = FALSE)
+```{r load-fish, eval = NOT_CRAN}
+tree <- load_atlas_tree("fish", resolve_labels = FALSE)
 ```
 
 ## Browsing available trees

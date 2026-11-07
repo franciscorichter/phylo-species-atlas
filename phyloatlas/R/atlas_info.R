@@ -1,7 +1,7 @@
 #' Get metadata for a single tree
 #'
 #' @param name Tree name without the `.nwk` extension (e.g. `"mammals"`,
-#'   `"birds"`, `"seed_plants"`). Must be a length-1 non-`NA` character
+#'   `"birds"`, `"fish"`). Must be a length-1 non-`NA` character
 #'   string. Use [list_trees()] to see all available names.
 #'
 #' @return A one-row data frame with all metadata columns from

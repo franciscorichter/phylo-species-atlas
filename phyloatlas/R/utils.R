@@ -71,6 +71,43 @@
   .cache$provenance
 }
 
+# The trees the atlas lists but does not redistribute, because their sources
+# state no licence: registers/withheld_trees.csv under the base URL (data
+# release v1.1.3 and later), else the copy bundled with the package. Returns a
+# data frame with columns name, study, source_url, licence (possibly empty).
+.load_withheld <- function() {
+  if (is.null(.cache$withheld)) {
+    url <- paste0(.atlas_base(), "/registers/withheld_trees.csv")
+    old <- options(timeout = max(30, getOption("timeout", 60L)))
+    on.exit(options(old), add = TRUE)
+    reg <- tryCatch(
+      suppressWarnings(utils::read.csv(url, stringsAsFactors = FALSE)),
+      error = function(e) NULL
+    )
+    if (!is.null(reg) && all(c("release_path", "source_url") %in% names(reg))) {
+      trees <- startsWith(reg$release_path, "standardized/trees/")
+      reg <- reg[trees, , drop = FALSE]
+      out <- data.frame(
+        name = sub("\\.nwk$", "", basename(reg$release_path)),
+        study = if ("study" %in% names(reg)) reg$study else NA_character_,
+        source_url = reg$source_url,
+        licence = if ("licence" %in% names(reg)) reg$licence else NA_character_,
+        stringsAsFactors = FALSE
+      )
+    } else {
+      path <- system.file("extdata", "withheld_trees.csv", package = "phyloatlas")
+      out <- if (nzchar(path)) {
+        utils::read.csv(path, stringsAsFactors = FALSE)
+      } else {
+        data.frame(name = character(0), study = character(0),
+                   source_url = character(0), licence = character(0))
+      }
+    }
+    .cache$withheld <- out
+  }
+  .cache$withheld
+}
+
 #' Clear the in-memory cache
 #'
 #' The dictionary and metadata files are downloaded once per R session and

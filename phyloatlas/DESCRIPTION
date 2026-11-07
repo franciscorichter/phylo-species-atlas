@@ -1,7 +1,7 @@
 Package: phyloatlas
 Type: Package
 Title: Access to the 'Phylo-Species Atlas' of Empirical Phylogenies
-Version: 0.1.0
+Version: 0.1.1
 Authors@R:
     person(given = "Francisco",
            family = "Richter",

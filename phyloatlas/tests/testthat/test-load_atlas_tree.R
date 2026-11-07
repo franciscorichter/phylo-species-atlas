@@ -38,3 +38,32 @@ test_that("load_atlas_tree() validates its input", {
   expect_error(load_atlas_tree(""))
   expect_error(load_atlas_tree(42))
 })
+
+test_that("load_atlas_tree() stops on a withheld tree with the address of its source", {
+  atlas_clear_cache()
+  # the fixture's registers/withheld_trees.csv lists primates
+  expect_error(
+    load_atlas_tree("primates"),
+    regexp = "not redistributed.*https://10ktrees\\.nunn-lab\\.org/"
+  )
+  expect_error(load_atlas_tree("primates.nwk"), regexp = "not redistributed")
+  # a site-only file of the register is not a tree name
+  tr <- load_atlas_tree("mammals")
+  expect_s3_class(tr, "phylo")
+})
+
+test_that("load_atlas_tree() falls back to the bundled withheld list when the atlas has no register", {
+  tmp <- file.path(tempdir(), "atlas-root-no-register")
+  dir.create(file.path(tmp, "standardized", "trees"), recursive = TRUE, showWarnings = FALSE)
+  withr::with_options(
+    list(phyloatlas.base_url = paste0("file://", utils::URLencode(normalizePath(tmp, winslash = "/")))),
+    {
+      atlas_clear_cache()
+      expect_error(
+        load_atlas_tree("seed_plants"),
+        regexp = "not redistributed.*github\\.com/FePhyFoFum/big_seed_plant_trees"
+      )
+    }
+  )
+  atlas_clear_cache()
+})
