@@ -18,8 +18,12 @@ release and copied, never typed:
     paper/fig1_coverage_bars.csv     estimated totals of each group
     registers/dataset_table_registry.csv, registers/tree_provenance.csv
                                      year, journal and DOI of each tree
-    standardized/metadata.csv        the redistributed trees; each tree file is
+    standardized/metadata.csv        the trees of the catalogue; each tree file is
                                      read from standardized/trees/
+    registers/withheld_trees.csv     the tree files the release does not
+                                     redistribute (their sources state no
+                                     licence): the page names the source to
+                                     download each from, and never fetches it
 
 Percentages are formatted as the paper prints them: one decimal, two below 1.
 The per-group notes in site/data/partitions/*/info.yaml supply text only
@@ -30,12 +34,16 @@ download link and DOI of the trees that are not reference trees.
 
 The page reads every reference tree and every other redistributed tree from
 standardized/trees/; site/data/partitions holds no copy of a reference tree.
+A withheld tree is listed with its tip count from registers/withheld_trees.csv,
+its source and the statement that it is not redistributed; its name shard is
+written from its tip list (registers/withheld_tips/).
 Requires PyYAML.
 """
 from __future__ import annotations
 
 import argparse
 import csv
+import gzip
 import json
 import re
 import sys
@@ -57,7 +65,8 @@ INPUTS = [
     "paper/crown_ages.csv", "paper/table_datasets.csv",
     "paper/fig1_coverage_bars.csv", "registers/dataset_table_registry.csv",
     "registers/tree_provenance.csv", "standardized/metadata.csv",
-    "standardized/withdrawn.csv", "data_provenance.csv", "CITATION.cff",
+    "standardized/withdrawn.csv", "registers/withheld_trees.csv",
+    "registers/withheld_tips/*.txt.gz", "data_provenance.csv", "CITATION.cff",
     "site/data/partitions/*/info.yaml",
 ]
 
@@ -83,6 +92,8 @@ INTERVAL_KIND_TEXT = {
     "node_label_interval": "node age intervals on the summary tree",
     "taxon_addition_sample": "taxon-addition tree set: placement of added tips only, no date uncertainty",
 }
+
+WITHHELD_TEXT = "not redistributed (no licence stated by the source)"
 
 TIP_ID_RE = re.compile(r"([(,])(-?\d+)(?=[:,)])")
 TIP_RE = re.compile(r"[(,]\s*([^(),:;\s]+)")
@@ -189,6 +200,7 @@ def build() -> dict:
     tprov = {r["filename"]: r for r in read_csv("registers/tree_provenance.csv")}
     metadata = read_csv("standardized/metadata.csv")
     withdrawn = {r["filename"] for r in read_csv("standardized/withdrawn.csv")}
+    withheld = {r["release_path"]: r for r in read_csv("registers/withheld_trees.csv")}
     prov = defaultdict(list)
     for r in read_csv("data_provenance.csv"):
         prov[r.get("group") or ""].append(r)
@@ -295,15 +307,27 @@ def build() -> dict:
         if fn in withdrawn:
             raise SystemExit("standardized/metadata.csv lists withdrawn %s" % fn)
         path = TREES / fn
-        labels = tree_tip_labels(path)
-        t = {
-            "filename": fn, "group": group, "study": md["study"],
-            "ntips": len(labels), "ntips_text": thousands(len(labels)),
-            "size_bytes": path.stat().st_size,
-            "tree_url": "standardized/trees/" + fn,
-            "names_file": fn,
-            "in_package": True,
-        }
+        wh = withheld.get("standardized/trees/" + fn)
+        if wh:
+            # not redistributed: the count is the register's, the file is not read
+            n = int(wh["tips"])
+            t = {
+                "filename": fn, "group": group, "study": md["study"],
+                "ntips": n, "ntips_text": thousands(n), "size_bytes": None,
+                "tree_url": None, "names_file": fn, "in_package": False,
+                "withheld": {"text": WITHHELD_TEXT, "source_url": wh["source_url"],
+                             "licence": wh["licence"]},
+            }
+        else:
+            labels = tree_tip_labels(path)
+            t = {
+                "filename": fn, "group": group, "study": md["study"],
+                "ntips": len(labels), "ntips_text": thousands(len(labels)),
+                "size_bytes": path.stat().st_size,
+                "tree_url": "standardized/trees/" + fn,
+                "names_file": fn,
+                "in_package": True,
+            }
         t.update(study_fields(fn, group))
         if fn in canon_of:
             r = by_part[canon_of[fn]]
@@ -338,10 +362,31 @@ def build() -> dict:
     std_names = {md["filename"] for md in metadata}
     for part, slug, folder, info in subs:
         f = folder / "tree.nwk"
+        rel = f.relative_to(SITE).as_posix()
+        wh = withheld.get("site/" + rel)
+        if wh and (slug + ".nwk") in std_names:
+            continue              # listed with the withheld catalogue tree
+        if wh:
+            tb = info.get("tree") or {}
+            src = tb.get("source") or {}
+            n = int(wh["tips"])
+            trees.append({
+                "filename": slug + ".nwk", "group": slug, "study": src.get("key") or "",
+                "ntips": n, "ntips_text": thousands(n), "size_bytes": None,
+                "tree_url": None, "names_file": None, "in_package": False,
+                "site_tree": "withheld",
+                "withheld": {"text": WITHHELD_TEXT, "source_url": wh["source_url"],
+                             "licence": wh["licence"]},
+                "year": None, "journal": None, "doi": src.get("doi"),
+                "download_url": src.get("url"), "data_source": None,
+                "partition_group": part, "category": (by_part.get(part) or {}).get("category"),
+                "is_partition_canonical": False, "dated": bool(tb.get("dated")),
+                "dated_text": None, "methods": tb.get("methods"),
+            })
+            continue
         if not f.exists():
             continue
         std = TREES / (slug + ".nwk")
-        rel = f.relative_to(SITE).as_posix()
         tb = info.get("tree") or {}
         src = tb.get("source") or {}
         if (slug + ".nwk") in std_names:
@@ -393,6 +438,9 @@ def build() -> dict:
         })
     summary = {
         "n_trees": len(metadata),
+        "n_trees_redistributed": sum(1 for t in trees if t["in_package"]),
+        "n_trees_withheld": sum(1 for t in trees if t.get("withheld")
+                                and t.get("site_tree") is None),
         "n_site_trees": sum(1 for t in trees if not t["in_package"]),
         "n_partitions": len(rows),
         "n_partitions_eukaryotic": den["eukaryotic"]["n_partitions"],
@@ -442,10 +490,16 @@ def write_name_shards(trees) -> int:
     NAMES_DIR.mkdir(exist_ok=True)
     n = 0
     for t in trees:
-        if not t["in_package"]:
+        if t.get("withheld") and t.get("site_tree") is None:
+            # a withheld tree: its name list is written from its tip list
+            tl = ROOT / "registers" / "withheld_tips" / ("standardized/trees/%s.txt.gz"
+                                                        % t["filename"])
+            ids = set(gzip.decompress(tl.read_bytes()).decode("utf-8").split())
+        elif not t["in_package"]:
             continue
-        text = (TREES / t["filename"]).read_text(encoding="utf-8", errors="ignore")
-        ids = {m.group(2) for m in TIP_ID_RE.finditer(text)}
+        else:
+            text = (TREES / t["filename"]).read_text(encoding="utf-8", errors="ignore")
+            ids = {m.group(2) for m in TIP_ID_RE.finditer(text)}
         shard = {i: names[i] for i in sorted(ids) if i in names}
         (NAMES_DIR / (t["filename"] + ".json")).write_text(
             json.dumps(shard, separators=(",", ":"), ensure_ascii=False), encoding="utf-8")

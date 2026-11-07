@@ -11,6 +11,7 @@ tree:
     key: Nyakatura 2012
     study: Nyakatura K, Bininda-Emonds ORP (2012)
     doi: 10.1186/1741-7007-10-12
+    url: https://bmcbiol.biomedcentral.com/articles/10.1186/1741-7007-10-12#MOESM5
     pdf: papers/tree.pdf
   methods:
     inference: supertree

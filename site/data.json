@@ -10,6 +10,8 @@
   "registers/tree_provenance.csv",
   "standardized/metadata.csv",
   "standardized/withdrawn.csv",
+  "registers/withheld_trees.csv",
+  "registers/withheld_tips/*.txt.gz",
   "data_provenance.csv",
   "CITATION.cff",
   "site/data/partitions/*/info.yaml"
@@ -20,17 +22,19 @@
  },
  "summary": {
   "n_trees": 263,
-  "n_site_trees": 3,
+  "n_trees_redistributed": 255,
+  "n_trees_withheld": 8,
+  "n_site_trees": 10,
   "n_partitions": 62,
   "n_partitions_eukaryotic": 60,
   "n_partitions_prokaryotic": 2,
   "n_partitions_with_tree": 26,
   "n_partitions_with_tree_eukaryotic": 24,
-  "described_eukaryotic": 2085869,
-  "described_eukaryotic_text": "2,085,869",
+  "described_eukaryotic": 2085607,
+  "described_eukaryotic_text": "2,085,607",
   "described_prokaryotic_text": "143,614",
-  "estimated_total_low_text": "7,284,934",
-  "estimated_total_high_text": "35,400,794",
+  "estimated_total_low_text": "7,284,627",
+  "estimated_total_high_text": "35,404,147",
   "n_audited": 62
  },
  "levels": [
@@ -284,14 +288,14 @@
    "slug": "annelids",
    "category": "Other animals",
    "is_prokaryotic": false,
-   "described_species": 21000,
-   "described_text": "21,000",
-   "described_source": "Appeltans 2012",
+   "described_species": 17340,
+   "described_text": "17,340",
+   "described_source": "Catalogue of Life COL26.9",
    "filename": null,
    "is_partition_canonical": true,
    "is_unrepresented": true,
    "estimated_total": 35000,
-   "estimated_low": 21000,
+   "estimated_low": 17340,
    "estimated_high": 50000,
    "estimate_source": "Appeltans 2012",
    "estimate_confidence": "Medium",
@@ -2425,49 +2429,6 @@
    }
   },
   {
-   "partition_group": "Minor animal phyla",
-   "group": "Minor animal phyla",
-   "slug": "minor_animal_phyla",
-   "category": "Other animals",
-   "is_prokaryotic": false,
-   "described_species": 376,
-   "described_text": "376",
-   "described_source": "sum of Onychophora (200), Chaetognatha (130), Loricifera (39), Placozoa (4) and Cycliophora (3)",
-   "filename": null,
-   "is_partition_canonical": true,
-   "is_unrepresented": true,
-   "estimated_total": 535,
-   "estimated_low": 376,
-   "estimated_high": 700,
-   "estimate_source": "Atlas-aggregated",
-   "estimate_confidence": "Medium",
-   "interval_provenance": {
-    "described": {
-     "type": "atlas-derived",
-     "source": "atlas-aggregated",
-     "verbatim_quote": null,
-     "note": "Sum of described counts across 5 constituent phyla."
-    },
-    "estimated_total": {
-     "type": "atlas-derived",
-     "source": "atlas-aggregated",
-     "verbatim_quote": null
-    },
-    "estimated_low": {
-     "type": "derived-from-described",
-     "source": "atlas-aggregated",
-     "verbatim_quote": null
-    },
-    "estimated_high": {
-     "type": "atlas-derived",
-     "source": "atlas-aggregated",
-     "verbatim_quote": null
-    },
-    "overall_classification": "derived",
-    "auditor_note": "Five small invertebrate phyla aggregated to keep the Other-animals\ncategory collectively exhaustive. Each has well-established species\ncounts from monographs but no atlas-scale phylogeny.\n"
-   }
-  },
-  {
    "partition_group": "Myriapods",
    "group": "Myriapods",
    "slug": "myriapods",
@@ -2840,16 +2801,16 @@
    "slug": "other_phyla",
    "category": "Other animals",
    "is_prokaryotic": false,
-   "described_species": 3442,
-   "described_text": "3,442",
+   "described_species": 3863,
+   "described_text": "3,863",
    "described_source": "Catalogue of Life COL26.9",
    "filename": null,
    "is_partition_canonical": true,
    "is_unrepresented": true,
-   "estimated_total": 10000,
-   "estimated_low": 4300,
-   "estimated_high": 15000,
-   "estimate_source": "CoL",
+   "estimated_total": 10535,
+   "estimated_low": 4676,
+   "estimated_high": 15700,
+   "estimate_source": "CoL; Atlas-aggregated (sum of Other phyla and Minor animal phyla, D66)",
    "estimate_confidence": "Low",
    "interval_provenance": {
     "described": {
@@ -2874,6 +2835,47 @@
     },
     "overall_classification": "partly-heuristic",
     "auditor_note": "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
+   }
+  },
+  {
+   "partition_group": "Other protists",
+   "group": "Other protists",
+   "slug": "other_protists",
+   "category": "Microbes & protists",
+   "is_prokaryotic": false,
+   "described_species": 3353,
+   "described_text": "3,353",
+   "described_source": "Pawlowski et al. 2012 (PLoS Biol 10: e1001419), Table S1: 29 lineages in no other group",
+   "filename": null,
+   "is_partition_canonical": true,
+   "is_unrepresented": true,
+   "estimated_total": 3353,
+   "estimated_low": 3353,
+   "estimated_high": 3353,
+   "estimate_source": "none published (described count)",
+   "estimate_confidence": "Low",
+   "interval_provenance": {
+    "described": {
+     "type": "literature",
+     "source": "Pawlowski 2012",
+     "verbatim_quote": "Supplementary table 1. Number of catalogued morphospecies and V4 18S rDNA OTU-97% amongst the 60 main eukaryotic lineages."
+    },
+    "estimated_total": {
+     "type": "none-published",
+     "source": "Pawlowski 2012",
+     "verbatim_quote": null
+    },
+    "estimated_low": {
+     "type": "derived-from-described",
+     "source": "Pawlowski 2012",
+     "verbatim_quote": null
+    },
+    "estimated_high": {
+     "type": "derived-from-described",
+     "source": "Pawlowski 2012",
+     "verbatim_quote": null
+    },
+    "overall_classification": "derived"
    }
   },
   {
@@ -3681,10 +3683,15 @@
    "study": "Smith & Brown 2018",
    "ntips": 348886,
    "ntips_text": "348,886",
-   "size_bytes": 6316053,
-   "tree_url": "standardized/trees/seed_plants.nwk",
+   "size_bytes": null,
+   "tree_url": null,
    "names_file": "seed_plants.nwk",
-   "in_package": true,
+   "in_package": false,
+   "withheld": {
+    "text": "not redistributed (no licence stated by the source)",
+    "source_url": "https://github.com/FePhyFoFum/big_seed_plant_trees/releases (v0.1.zip, ALLMB.tre)",
+    "licence": "none stated"
+   },
    "year": 2018,
    "journal": "Am J Bot",
    "doi": "10.1002/ajb2.1019",
@@ -3723,10 +3730,15 @@
    "study": "insectphylo v2",
    "ntips": 53373,
    "ntips_text": "53,373",
-   "size_bytes": 1406622,
-   "tree_url": "standardized/trees/insects.nwk",
+   "size_bytes": null,
+   "tree_url": null,
    "names_file": "insects.nwk",
-   "in_package": true,
+   "in_package": false,
+   "withheld": {
+    "text": "not redistributed (no licence stated by the source)",
+    "source_url": "https://web.archive.org/web/20260310151850/https://insectphylo.org/download-a-synthesis-phylogeny/ (insectphylo.org Insecta_v2; the live site is unreachable, read via its web.archive.org snapshots of 2026-03-10 and 2026-04-07)",
+    "licence": "none stated"
+   },
    "year": 2023,
    "journal": "Mol Ecol Res",
    "doi": "10.1111/1755-0998.13817",
@@ -3877,8 +3889,8 @@
    "year": 2019,
    "journal": "PLOS Biol",
    "doi": "10.1371/journal.pbio.3000494",
-   "download_url": "https://github.com/n8upham/MamPhy_v1",
-   "data_source": "GitHub",
+   "download_url": "https://doi.org/10.5061/dryad.tb03d03",
+   "data_source": "Dryad",
    "partition_group": "Mammals",
    "category": "Vertebrates",
    "is_partition_canonical": true,
@@ -3891,10 +3903,15 @@
    "study": "Portik 2023",
    "ntips": 5326,
    "ntips_text": "5,326",
-   "size_bytes": 145125,
-   "tree_url": "standardized/trees/frogs.nwk",
+   "size_bytes": null,
+   "tree_url": null,
    "names_file": "frogs.nwk",
-   "in_package": true,
+   "in_package": false,
+   "withheld": {
+    "text": "not redistributed (no licence stated by the source)",
+    "source_url": "https://github.com/nhm-herpetology/frog-phylogeny (Supplementary_File_S3_time_tree.tre)",
+    "licence": "none stated"
+   },
    "year": 2023,
    "journal": "MPE",
    "doi": "10.1016/j.ympev.2023.107907",
@@ -3925,8 +3942,8 @@
    "year": 2024,
    "journal": "MPE",
    "doi": "10.1016/j.ympev.2023.107963",
-   "download_url": "http://beetreeoflife.org/downloads/",
-   "data_source": "BeeTree",
+   "download_url": "https://doi.org/10.5061/dryad.80gb5mkw1",
+   "data_source": "Dryad",
    "partition_group": "Insects",
    "category": "Arthropods",
    "is_partition_canonical": false,
@@ -4044,7 +4061,7 @@
   {
    "filename": "spiders.nwk",
    "group": "spiders",
-   "study": "Garrison 2016",
+   "study": "Macias-Hernandez 2020",
    "ntips": 1431,
    "ntips_text": "1,431",
    "size_bytes": 42572,
@@ -4068,10 +4085,15 @@
    "study": "Stein 2018",
    "ntips": 1192,
    "ntips_text": "1,192",
-   "size_bytes": 38968,
-   "tree_url": "standardized/trees/sharks.nwk",
+   "size_bytes": null,
+   "tree_url": null,
    "names_file": "sharks.nwk",
-   "in_package": true,
+   "in_package": false,
+   "withheld": {
+    "text": "not redistributed (no licence stated by the source)",
+    "source_url": "https://vertlife.org/phylosubsets/",
+    "licence": "None stated"
+   },
    "year": 2018,
    "journal": "Nat Ecol Evol",
    "doi": "10.1038/s41559-017-0448-4",
@@ -4113,7 +4135,7 @@
   {
    "filename": "diatoms.nwk",
    "group": "diatoms",
-   "study": "Theriot 2018",
+   "study": "Nakov 2018",
    "ntips": 1113,
    "ntips_text": "1,113",
    "size_bytes": 34013,
@@ -4171,8 +4193,8 @@
    "year": 2026,
    "journal": "Sci Data",
    "doi": "10.1038/s41597-026-06936-7",
-   "download_url": "https://github.com/jamie-thompson/CactEcoDB",
-   "data_source": "GitHub",
+   "download_url": "https://doi.org/10.6084/m9.figshare.30940019",
+   "data_source": "Figshare",
    "partition_group": "Seed plants",
    "category": "Plants",
    "is_partition_canonical": false,
@@ -4198,8 +4220,8 @@
    "year": 2025,
    "journal": "MPE",
    "doi": "10.1016/j.ympev.2024.108272",
-   "download_url": null,
-   "data_source": "Dryad",
+   "download_url": "https://github.com/aast242/salamander-timetree",
+   "data_source": "GitHub",
    "partition_group": "Amphibians",
    "category": "Vertebrates",
    "is_partition_canonical": false,
@@ -4582,10 +4604,15 @@
    "study": "10kTrees v3",
    "ntips": 301,
    "ntips_text": "301",
-   "size_bytes": 7921,
-   "tree_url": "standardized/trees/primates.nwk",
+   "size_bytes": null,
+   "tree_url": null,
    "names_file": "primates.nwk",
-   "in_package": true,
+   "in_package": false,
+   "withheld": {
+    "text": "not redistributed (no licence stated by the source)",
+    "source_url": "https://10ktrees.nunn-lab.org/",
+    "licence": "None stated"
+   },
    "year": 2010,
    "journal": "Evol Anthro",
    "doi": "10.1002/evan.20251",
@@ -4616,8 +4643,8 @@
    "year": 2012,
    "journal": "BMC Biol",
    "doi": "10.1186/1741-7007-10-12",
-   "download_url": "https://datadryad.org/dataset/doi:10.5061/dryad.r7sqv9sm6",
-   "data_source": "Dryad",
+   "download_url": "https://bmcbiol.biomedcentral.com/articles/10.1186/1741-7007-10-12#MOESM5",
+   "data_source": "BMC Biology (Additional file 5)",
    "partition_group": "Mammals",
    "category": "Vertebrates",
    "is_partition_canonical": false,
@@ -4734,48 +4761,6 @@
    "is_partition_canonical": false,
    "dated": true,
    "dated_text": null
-  },
-  {
-   "filename": "primates_one_tip_per_species.nwk",
-   "group": "primates (one tip per species)",
-   "study": "Arnold 2010",
-   "ntips": 272,
-   "ntips_text": "272",
-   "size_bytes": 7159,
-   "tree_url": "site/data/partitions/mammals/sub-phylos/primates/tree.nwk",
-   "tree_url_override": "data/partitions/mammals/sub-phylos/primates/tree.nwk",
-   "names_file": "primates.nwk",
-   "in_package": false,
-   "site_tree": "derived",
-   "derivation": "Derived from the 301-tip Arnold 2010 10kTrees v3 MCC by pruning to a\nsingle representative per species (smallest numeric tip ID under each\nGenus_species). 9.6% subspecies-level redundancy in the original tree\n(34 subspecies-suffixed tips like Gorilla_gorilla_gorilla).\nReproducible via scripts/derive_species_tree.py.\n",
-   "derived_from": "primates.nwk",
-   "year": null,
-   "journal": null,
-   "doi": "10.1002/evan.20251",
-   "download_url": null,
-   "data_source": null,
-   "partition_group": "Mammals",
-   "category": "Vertebrates",
-   "is_partition_canonical": false,
-   "dated": true,
-   "dated_text": null,
-   "methods": {
-    "inference": "bayesian",
-    "software": [
-     "Bayesian inference (paper does not specify suite)"
-    ],
-    "data_type": "multi-locus",
-    "n_loci": null,
-    "n_genes": null,
-    "substitution_model": null,
-    "dating_method": "Bayesian relaxed clock; calibrations from Springer et al.",
-    "support_metric": "posterior_probability",
-    "support_typical": null,
-    "divergence_ci_available": true,
-    "divergence_ci_note": "100-tree posterior available via 10kTrees download portal.",
-    "posterior_n": 100,
-    "note": "Methods block is a placeholder — 10kTrees v3 dataset documentation in Evolutionary Anthropology covers it; needs a detailed read."
-   }
   },
   {
    "filename": "asteraceae.nwk",
@@ -5473,10 +5458,15 @@
    "study": "Lavrov 2023",
    "ntips": 119,
    "ntips_text": "119",
-   "size_bytes": 4658,
-   "tree_url": "standardized/trees/sponges.nwk",
+   "size_bytes": null,
+   "tree_url": null,
    "names_file": "sponges.nwk",
-   "in_package": true,
+   "in_package": false,
+   "withheld": {
+    "text": "not redistributed (no licence stated by the source)",
+    "source_url": "https://github.com/lavrovlab/Demosponge-phylogeny-supplementary-data",
+    "licence": "none stated for the shipped chronogram (GitHub repository: scripts under GPL v3 only)"
+   },
    "year": 2023,
    "journal": "PLOS ONE",
    "doi": "10.1371/journal.pone.0287281",
@@ -5822,7 +5812,7 @@
    "year": 2020,
    "journal": "Syst Biol",
    "doi": "10.1093/sysbio/syz068",
-   "download_url": null,
+   "download_url": "https://doi.org/10.5061/dryad.jq40b0f",
    "data_source": "Dryad",
    "partition_group": "Mammals",
    "category": "Vertebrates",
@@ -5911,10 +5901,15 @@
    "study": "2024 bioRxiv",
    "ntips": 81,
    "ntips_text": "81",
-   "size_bytes": 2616,
-   "tree_url": "standardized/trees/cephalopods.nwk",
+   "size_bytes": null,
+   "tree_url": null,
    "names_file": "cephalopods.nwk",
-   "in_package": true,
+   "in_package": false,
+   "withheld": {
+    "text": "not redistributed (no licence stated by the source)",
+    "source_url": "https://github.com/kcbasava/ceph-brain-evolution",
+    "licence": "None stated for the repository; the associated preprint is CC BY 4.0"
+   },
    "year": 2024,
    "journal": "bioRxiv",
    "doi": "10.1101/2024.04.29.591691",
@@ -6023,7 +6018,7 @@
    "year": 2019,
    "journal": "MPE",
    "doi": "10.1016/j.ympev.2019.02.016",
-   "download_url": null,
+   "download_url": "https://doi.org/10.5061/dryad.8575jr5",
    "data_source": "Dryad",
    "partition_group": "Bivalves",
    "category": "Other animals",
@@ -7087,10 +7082,15 @@
    "study": "Zapata 2014",
    "ntips": 40,
    "ntips_text": "40",
-   "size_bytes": 1097,
-   "tree_url": "standardized/trees/gastropods.nwk",
+   "size_bytes": null,
+   "tree_url": null,
    "names_file": "gastropods.nwk",
-   "in_package": true,
+   "in_package": false,
+   "withheld": {
+    "text": "not redistributed (no licence stated by the source)",
+    "source_url": "https://bitbucket.org/caseywdunn/gastropoda/src/master/data/Chronogram.tre",
+    "licence": "none stated (bitbucket.org/caseywdunn/gastropoda, data/Chronogram.tre)"
+   },
    "year": 2014,
    "journal": "Proc R Soc B",
    "doi": "10.1098/rspb.2014.1739",
@@ -9403,14 +9403,16 @@
    "study": "Obst 2012",
    "ntips": 4,
    "ntips_text": "4",
-   "size_bytes": 127,
-   "tree_url": "site/data/partitions/other_arachnids/sub-phylos/xiphosura/tree.nwk",
-   "tree_url_override": "data/partitions/other_arachnids/sub-phylos/xiphosura/tree.nwk",
+   "size_bytes": null,
+   "tree_url": null,
    "names_file": null,
    "in_package": false,
-   "site_tree": "site_only",
-   "derivation": null,
-   "derived_from": null,
+   "site_tree": "withheld",
+   "withheld": {
+    "text": "not redistributed (no licence stated by the source)",
+    "source_url": "https://doi.org/10.1016/j.ympev.2011.08.025",
+    "licence": "none stated (Elsevier article)"
+   },
    "year": null,
    "journal": null,
    "doi": "10.1016/j.ympev.2011.08.025",
@@ -9707,15 +9709,6 @@
     "is_partition_canonical": false
    },
    {
-    "filename": "primates_one_tip_per_species.nwk",
-    "group": "primates (one tip per species)",
-    "study": "Arnold 2010",
-    "year": null,
-    "ntips": 272,
-    "dated": true,
-    "is_partition_canonical": false
-   },
-   {
     "filename": "cetaceans.nwk",
     "group": "cetaceans",
     "study": "McGowen 2020",
@@ -9749,7 +9742,7 @@
    {
     "filename": "spiders.nwk",
     "group": "spiders",
-    "study": "Garrison 2016",
+    "study": "Macias-Hernandez 2020",
     "year": 2020,
     "ntips": 1431,
     "dated": true,
@@ -9771,7 +9764,7 @@
    {
     "filename": "diatoms.nwk",
     "group": "diatoms",
-    "study": "Theriot 2018",
+    "study": "Nakov 2018",
     "year": 2018,
     "ntips": 1113,
     "dated": true,
@@ -12383,8 +12376,8 @@
    "slug": "annelids",
    "category": "Other animals",
    "estimate": {
-    "described": 21000,
-    "low": 21000,
+    "described": 17340,
+    "low": 17340,
     "total": 35000,
     "high": 50000,
     "confidence": "Medium",
@@ -16747,133 +16740,6 @@
     }
    }
   },
-  "Minor animal phyla": {
-   "partition": "Minor animal phyla",
-   "slug": "minor_animal_phyla",
-   "category": "Other animals",
-   "estimate": {
-    "described": 376,
-    "low": 376,
-    "total": 535,
-    "high": 700,
-    "confidence": "Medium",
-    "source": {
-     "key": "Atlas-aggregated",
-     "doi": null,
-     "pdf": null,
-     "url": null,
-     "note": "Five small animal phyla without their own partition. Coverage is collectively exhaustive across Other animals."
-    },
-    "interval_provenance": {
-     "described": {
-      "type": "atlas-derived",
-      "source": "atlas-aggregated",
-      "verbatim_quote": null,
-      "note": "Sum of described counts across 5 constituent phyla."
-     },
-     "estimated_total": {
-      "type": "atlas-derived",
-      "source": "atlas-aggregated",
-      "verbatim_quote": null
-     },
-     "estimated_low": {
-      "type": "derived-from-described",
-      "source": "atlas-aggregated",
-      "verbatim_quote": null
-     },
-     "estimated_high": {
-      "type": "atlas-derived",
-      "source": "atlas-aggregated",
-      "verbatim_quote": null
-     },
-     "overall_classification": "derived",
-     "auditor_note": "Five small invertebrate phyla aggregated to keep the Other-animals\ncategory collectively exhaustive. Each has well-established species\ncounts from monographs but no atlas-scale phylogeny.\n"
-    }
-   },
-   "constituents": [
-    {
-     "name": "Onychophora (velvet worms)",
-     "described": 200,
-     "estimated": 250,
-     "note": "Two families (Peripatidae, Peripatopsidae). Sister to Tardigrada + Arthropoda (Panarthropoda)."
-    },
-    {
-     "name": "Placozoa",
-     "described": 4,
-     "estimated": 20,
-     "note": "Simplest free-living animals — Trichoplax + 3 more genetic species described 2018-2022."
-    },
-    {
-     "name": "Loricifera",
-     "described": 39,
-     "estimated": 60,
-     "note": "Meiofaunal phylum discovered 1983. All marine sediments. Anaerobic species known."
-    },
-    {
-     "name": "Cycliophora",
-     "described": 3,
-     "estimated": 5,
-     "note": "Symbiotic on lobster mouthparts. Symbion pandora and 2 congeners."
-    },
-    {
-     "name": "Chaetognatha (arrow worms)",
-     "described": 130,
-     "estimated": 200,
-     "note": "Marine planktonic predators. Phylogenetic position contested."
-    }
-   ],
-   "dated_alternatives": {
-    "reason_canonical_undated": "Synthetic aggregate of five disparate phyla — they don't share a\nrecent common ancestor, so a single dated tree across all of them\nis not meaningful. Each constituent has its own phylogenomic\nframework in the metazoan tree-of-life literature.\n",
-    "candidates": [
-     {
-      "key": "Laumer 2019 (Onychophora context)",
-      "doi": "10.1098/rspb.2019.0831",
-      "study": "Laumer CE, Fernández R, Lemer S, Combosch D, Kocot KM, Riesgo A et al. (2019) — Revisiting metazoan phylogeny with genomic sampling of all phyla. Proc R Soc B 286:20190831.",
-      "scope": "All-metazoan phylogenomic dating including Onychophora, Placozoa, Loricifera, Cycliophora, Chaetognatha",
-      "tips": "~80",
-      "note": "Single dated phylogenomic framework covering all 5 constituent phyla at backbone level."
-     },
-     {
-      "key": "Eitel 2018 (Placozoa)",
-      "doi": "10.1371/journal.pbio.2005359",
-      "study": "Eitel M, Francis WR, Varoqueaux F, Daraspe J, Osigus HJ, Krebs S et al. (2018) — Comparative genomics and the nature of placozoan species. PLOS Biol 16:e2005359.",
-      "scope": "Placozoa species delimitation with phylogenomic dating",
-      "tips": "~10",
-      "note": "Reveals cryptic placozoan diversity (4+ species). The most recent dated framework for this constituent."
-     }
-    ]
-   },
-   "audit": {
-    "file": "../../../audits/partitions/minor_animal_phyla.md",
-    "status": "verified",
-    "last_audited": "2026-05-19"
-   },
-   "sub_phylos": [],
-   "audit_version": 1,
-   "status": "deferred",
-   "last_audited": "2026-05-18",
-   "auditor": "francisco",
-   "estimate_source": {
-    "key": "Atlas-aggregated",
-    "doi": null,
-    "doi_verified": "na",
-    "year_published": null,
-    "cited_value": 535,
-    "newer_authoritative_known": false
-   },
-   "canonical_tree": {
-    "filename": null,
-    "status": "not-shipped",
-    "reason": "Five small invertebrate phyla absent from the atlas's main animal\npartitions: Onychophora (~200 sp), Placozoa (~4), Loricifera (~39),\nCycliophora (3), Chaetognatha (~130). No atlas-scale tree exists\nacross them; their phylogenies are scattered across many papers.\nAggregated here so the Other-animals category is collectively\nexhaustive.\n"
-   },
-   "methods": null,
-   "shipped_subclades": [],
-   "candidate_subclades": [],
-   "resolutions": [],
-   "website": {
-    "badge": "deferred"
-   }
-  },
   "Myriapods": {
    "partition": "Myriapods",
    "slug": "myriapods",
@@ -17715,17 +17581,17 @@
    "slug": "other_phyla",
    "category": "Other animals",
    "estimate": {
-    "described": 3442,
-    "low": 4300,
-    "total": 10000,
-    "high": 15000,
+    "described": 3863,
+    "low": 4676,
+    "total": 10535,
+    "high": 15700,
     "confidence": "Low",
     "source": {
      "key": "CoL",
      "doi": null,
      "pdf": null,
      "url": "https://www.catalogueoflife.org/",
-     "note": "Catalogue of Life live database. Synthetic aggregate of minor animal phyla without their own atlas partition. Overlaps in scope with 'Minor animal phyla' — these two synthetic bins should be reconciled in a future curation pass."
+     "note": "Catalogue of Life live database. Residual group of the animal phyla without their own group: Gastrotricha, Kinorhyncha, Priapulida, Sipuncula, Phoronida, Hemichordata, Brachiopoda, Entoprocta, Gnathostomulida, Nematomorpha, Xenacoelomorpha, Dicyemida, Orthonectida, Cephalochordata, Echiura, Onychophora, Placozoa, Loricifera, Cycliophora and Chaetognatha (D66). Low, total and high are the sums of the two former groups Other phyla and Minor animal phyla."
     },
     "interval_provenance": {
      "described": {
@@ -17786,6 +17652,38 @@
     "last_audited": "2026-05-19"
    },
    "sub_phylos": [],
+   "constituents": [
+    {
+     "name": "Onychophora (velvet worms)",
+     "described": 200,
+     "estimated": 250,
+     "note": "Two families (Peripatidae, Peripatopsidae). Sister to Tardigrada + Arthropoda (Panarthropoda)."
+    },
+    {
+     "name": "Placozoa",
+     "described": 4,
+     "estimated": 20,
+     "note": "Simplest free-living animals — Trichoplax + 3 more genetic species described 2018-2022."
+    },
+    {
+     "name": "Loricifera",
+     "described": 39,
+     "estimated": 60,
+     "note": "Meiofaunal phylum discovered 1983. All marine sediments. Anaerobic species known."
+    },
+    {
+     "name": "Cycliophora",
+     "described": 3,
+     "estimated": 5,
+     "note": "Symbiotic on lobster mouthparts. Symbion pandora and 2 congeners."
+    },
+    {
+     "name": "Chaetognatha (arrow worms)",
+     "described": 130,
+     "estimated": 200,
+     "note": "Marine planktonic predators. Phylogenetic position contested."
+    }
+   ],
    "audit_version": 1,
    "status": "deferred",
    "last_audited": "2026-05-18",
@@ -17810,6 +17708,171 @@
    "website": {
     "badge": "deferred"
    }
+  },
+  "Other protists": {
+   "partition": "Other protists",
+   "slug": "other_protists",
+   "category": "Microbes & protists",
+   "estimate": {
+    "described": 3353,
+    "low": 3353,
+    "total": 3353,
+    "high": 3353,
+    "confidence": "Low",
+    "source": {
+     "key": "Pawlowski 2012",
+     "doi": "10.1371/journal.pbio.1001419",
+     "pdf": null,
+     "url": "https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001419",
+     "note": "Residual group of the eukaryotic lineages in no other group (D66). Described count: the sum of the catalogued morphospecies of 29 lineages in Pawlowski et al. 2012, Table S1 (Supplementary table 1, 'Number of catalogued morphospecies and V4 18S rDNA OTU-97% amongst the 60 main eukaryotic lineages'). No estimate of the total is published for the group; low, total and high are the described count."
+    },
+    "interval_provenance": {
+     "described": {
+      "type": "literature",
+      "source": "Pawlowski 2012",
+      "verbatim_quote": "Supplementary table 1. Number of catalogued morphospecies and V4 18S rDNA OTU-97% amongst the 60 main eukaryotic lineages."
+     },
+     "estimated_total": {
+      "type": "none-published",
+      "source": "Pawlowski 2012",
+      "verbatim_quote": null
+     },
+     "estimated_low": {
+      "type": "derived-from-described",
+      "source": "Pawlowski 2012",
+      "verbatim_quote": null
+     },
+     "estimated_high": {
+      "type": "derived-from-described",
+      "source": "Pawlowski 2012",
+      "verbatim_quote": null
+     },
+     "overall_classification": "derived"
+    }
+   },
+   "canonical_tree": {
+    "filename": null,
+    "status": "not-shipped",
+    "reason": "Residual group of lineages from five supergroups; no species-level tree spans it."
+   },
+   "constituents": [
+    {
+     "name": "Polycystinea (Radiolaria)",
+     "described": 850
+    },
+    {
+     "name": "Xanthophyceae",
+     "described": 600
+    },
+    {
+     "name": "Parabasalia",
+     "described": 466
+    },
+    {
+     "name": "Opalinata",
+     "described": 400
+    },
+    {
+     "name": "Acantharea (Radiolaria)",
+     "described": 160
+    },
+    {
+     "name": "Centroheliozoa",
+     "described": 150
+    },
+    {
+     "name": "Fornicata",
+     "described": 146
+    },
+    {
+     "name": "Preaxostyla",
+     "described": 96
+    },
+    {
+     "name": "Heterolobosea",
+     "described": 80
+    },
+    {
+     "name": "Bicoecea",
+     "described": 72
+    },
+    {
+     "name": "Cryptophyta",
+     "described": 70
+    },
+    {
+     "name": "Mesomycetozoea",
+     "described": 47
+    },
+    {
+     "name": "Labyrinthulea",
+     "described": 40
+    },
+    {
+     "name": "Hyphochytriomyceta",
+     "described": 25
+    },
+    {
+     "name": "Phaeothamniophyceae",
+     "described": 25
+    },
+    {
+     "name": "Raphidophyceae",
+     "described": 20
+    },
+    {
+     "name": "Dictyochophyceae",
+     "described": 15
+    },
+    {
+     "name": "Eustigmatophyceae",
+     "described": 15
+    },
+    {
+     "name": "Breviatea",
+     "described": 12
+    },
+    {
+     "name": "Apusomonadidae",
+     "described": 12
+    },
+    {
+     "name": "Pelagophyceae",
+     "described": 12
+    },
+    {
+     "name": "Jakobida",
+     "described": 10
+    },
+    {
+     "name": "Katablepharidophyta",
+     "described": 9
+    },
+    {
+     "name": "Ellobiopsidae",
+     "described": 6
+    },
+    {
+     "name": "Glaucocystophyta",
+     "described": 5
+    },
+    {
+     "name": "Pinguiophyceae",
+     "described": 5
+    },
+    {
+     "name": "Malawimonadidae",
+     "described": 3
+    },
+    {
+     "name": "Chromera",
+     "described": 1
+    },
+    {
+     "name": "other Radiolaria",
+     "described": 1
+    }
+   ]
   },
   "Other vertebrates": {
    "partition": "Other vertebrates",
@@ -18786,7 +18849,7 @@
     "host_url": "https://zenodo.org/records/3941712",
     "files": [
      {
-      "name": "Garrison 2016 archive",
+      "name": "Macías-Hernández 2020 archive (Zenodo 3941712)",
       "label": "Multiple tree variants",
       "description": "Time-calibrated, alternative calibrations, ML backbone.",
       "size_bytes": null,
@@ -18858,9 +18921,10 @@
      "note": "Alternative calibration and ML backbone also available on Zenodo."
     },
     "source": {
-     "key": "Garrison 2016",
-     "study": "Garrison NL et al. (2016)",
-     "doi": "10.7717/peerj.1719",
+     "key": "Macias-Hernandez 2020",
+     "study": "Macías-Hernández N et al. (2020)",
+     "doi": "10.3390/d12080288",
+     "url": "https://zenodo.org/records/3941712",
      "pdf": "papers/tree.pdf"
     }
    }

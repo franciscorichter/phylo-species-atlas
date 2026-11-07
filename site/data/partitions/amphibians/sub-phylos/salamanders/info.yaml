@@ -11,6 +11,7 @@ tree:
     key: Stewart 2025
     study: Stewart AA, Wiens JJ (2025)
     doi: 10.1016/j.ympev.2024.108272
+    url: https://github.com/aast242/salamander-timetree
     pdf: papers/tree.pdf
   methods:
     inference: ml

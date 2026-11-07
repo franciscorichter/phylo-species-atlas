@@ -6249,6 +6249,21 @@ def check_numbermacros(ctx):
     tr = h["trees"]
     w["NumTreesShipped"] = _mint(tr["n_shipped"])
     w["NumTreesChron"] = _mint(tr["n_chronograms_all_shipped"])
+    wh = release_withheld_catalogue()
+    R.eq("headline trees.n_withheld = catalogue trees whose source states no "
+         "licence (Data/tree_licences.csv)", tr.get("n_withheld"), len(wh))
+    R.eq("headline trees.withheld_trees", tr.get("withheld_trees"), wh)
+    R.eq("headline trees.n_redistributed + n_withheld = n_shipped",
+         (tr.get("n_redistributed") or 0) + (tr.get("n_withheld") or 0),
+         tr["n_shipped"])
+    R.eq("headline trees.n_withheld_files = Data/withheld_trees.csv rows",
+         tr.get("n_withheld_files"), len(read_csv(WITHHELD_REGISTER)))
+    w["NumTreesRedistributed"] = _mint(tr["n_shipped"] - len(wh))
+    w["NumTreesWithheld"] = _mint(len(wh))
+    w["NumFilesWithheld"] = _mint(len(read_csv(WITHHELD_REGISTER)))
+    nm = sorted(f[:-4].replace("_", " ") for f in wh)
+    w["NamesTreesWithheld"] = (nm[0] if len(nm) == 1 else
+                               ", ".join(nm[:-1]) + " and " + nm[-1]) if nm else ""
     canon = [r for r in basis if as_int(r["c0_units"], 0) > 0]
     canon_e = [r for r in canon if r["is_prokaryotic"] == "no"]
     w["NumCanonical"] = _mint(len(canon))
@@ -6366,6 +6381,8 @@ def check_numbermacros(ctx):
     w["SensUnionNamesAdded"] = _mint(u["C0_union"] - u["C0_canonical"])
     w["SensUnionCZeroPct"] = _mpct(100.0 * u["C0_union"] / D)
     w["SensUnionCOneHighPct"] = _mpct(100.0 * u["C1_union_high"] / D)
+    w["AnyCZeroN"] = _mint(u["C0_union"])            # D66 headline
+    w["AnyCZeroPct"] = _mpct(100.0 * u["C0_union"] / D)
     prod = s["c1_definition"]["product"]
     for key, nm in names[1:3]:
         w["SensProduct%sPct" % nm] = _mpct(100.0 * prod[key]["numerator_sum"]
@@ -7940,6 +7957,168 @@ def release_paths():
     return _RELEASE_PATHS
 
 
+WITHHELD_REGISTER = P("Data", "withheld_trees.csv")
+TREE_LICENCES = P("Data", "tree_licences.csv")
+WITHHELD_TIPS_RELEASE = "registers/withheld_tips/"
+REDISTRIBUTABLE = ("open", "open-share-alike")
+
+
+def _licence_rows_by_file():
+    out = {}
+    for r in read_csv(TREE_LICENCES):
+        for f in (x.strip() for x in r["filenames"].split(";")):
+            if f and not f.endswith("*"):
+                out.setdefault(f, []).append(r)
+    return out
+
+
+def release_withheld_catalogue():
+    """The trees of the catalogue (Data/standardized/metadata.csv) whose source
+    states no licence, re-derived here from Data/tree_licences.csv: each tree
+    must be covered by exactly one row, of class open, open-share-alike or
+    no-licence-stated."""
+    rows = _licence_rows_by_file()
+    out, bad = [], []
+    for m in read_csv(STD_METADATA):
+        f = m["filename"]
+        rs = rows.get(f, [])
+        if len(rs) != 1 or rs[0]["redistribution"] not in \
+                REDISTRIBUTABLE + ("no-licence-stated",):
+            bad.append(f)
+        elif rs[0]["redistribution"] == "no-licence-stated":
+            out.append(f)
+    R.eq("every catalogue tree has one licence row of a known class", bad, [])
+    return sorted(out)
+
+
+def _tip_labels(text):
+    return re.findall(r"[(,]\s*([^(),:;\s]+)", re.sub(r"\s+", "", text))
+
+
+def _check_release_licences(rows):
+    """The data release carries a tree file only where its source's licence
+    allows redistribution (Data/tree_licences.csv).  Re-derived here: every
+    tree file the path map ships has a licence row of class open or
+    open-share-alike (a sub-clade copy of a catalogue tree takes its row, an
+    unpruned source the row of the reference tree built from it); every
+    catalogue tree is either mapped or withheld; every row of
+    Data/withheld_trees.csv names a file the map does not ship, of class
+    no-licence-stated, whose sha256 and tip count are those of the paper's
+    file, with its tip list; the generated licence files are current."""
+    import hashlib
+    lic = _licence_rows_by_file()
+    mapped = {r["release_path"]: r["working_path"] for r in rows}
+    src_of = {os.path.basename(r["source"]): r["filename"]
+              for r in read_csv(P("Data", "canonical_sources.csv"))}
+
+    def row_for(rp, wp):
+        base = os.path.basename(rp)
+        if rp.startswith("standardized/trees/"):
+            key = base
+        elif rp.startswith("standardized/canonical_sources/"):
+            key = src_of.get(base)
+        elif rp in lic:
+            key = rp
+        elif rp.startswith("site/"):
+            slug = rp.split("/sub-phylos/")[1].split("/")[0] if "/sub-phylos/" in rp else ""
+            std = P("Data", "standardized", "trees", slug + ".nwk")
+            same = os.path.exists(std) and open(std, "rb").read() == \
+                open(P(*wp.split("/")), "rb").read()
+            key = slug + ".nwk" if same else None
+        else:
+            key = None
+        rs = lic.get(key, [])
+        return rs[0] if len(rs) == 1 else None
+
+    shipped_trees = sorted(rp for rp in mapped if rp.endswith(".nwk"))
+    R.eq("release: every shipped tree file has a licence row that allows "
+         "redistribution",
+         [rp for rp in shipped_trees
+          if (row_for(rp, mapped[rp]) or {}).get("redistribution") not in REDISTRIBUTABLE],
+         [])
+    wrows = read_csv(WITHHELD_REGISTER)
+    wpaths = [r["release_path"] for r in wrows]
+    R.eq("release: Data/withheld_trees.csv lists each file once",
+         sorted(k for k, n in Counter(wpaths).items() if n > 1), [])
+    R.eq("release: no withheld file is in release/path_map.csv",
+         sorted(set(wpaths) & set(mapped)), [])
+    wh = release_withheld_catalogue()
+    R.eq("release: withheld catalogue trees = Data/withheld_trees.csv rows under "
+         "standardized/trees/",
+         sorted(os.path.basename(p_) for p_ in wpaths
+                if p_.startswith("standardized/trees/")), wh)
+    std = ["standardized/trees/" + m["filename"] for m in read_csv(STD_METADATA)]
+    R.eq("release: every catalogue tree is mapped or withheld",
+         [p_ for p_ in std if (p_ in mapped) == (p_ in wpaths)], [])
+    srcs = ["standardized/canonical_sources/" + os.path.basename(r["source"])
+            for r in read_csv(P("Data", "canonical_sources.csv"))]
+    R.eq("release: every unpruned reference-tree source is mapped or withheld",
+         [p_ for p_ in srcs if (p_ in mapped) == (p_ in wpaths)], [])
+    bad = []
+    for r in wrows:
+        wp = P(*r["paper_path"].split("/"))
+        if not os.path.isfile(wp):
+            bad.append("%s: paper file %s missing" % (r["release_path"], r["paper_path"]))
+            continue
+        data = open(wp, "rb").read()
+        labels = _tip_labels(data.decode("utf-8", "replace"))
+        rr = row_for(r["release_path"], r["paper_path"])
+        if rr is None or rr["redistribution"] != "no-licence-stated":
+            bad.append("%s: its licence row is not no-licence-stated" % r["release_path"])
+        if r["redistribution"] != "no-licence-stated":
+            bad.append("%s: class %s" % (r["release_path"], r["redistribution"]))
+        if hashlib.sha256(data).hexdigest() != r["sha256"]:
+            bad.append("%s: sha256" % r["release_path"])
+        if str(len(labels)) != r["tips"] or str(len(set(labels))) != r["distinct_tips"]:
+            bad.append("%s: tip count" % r["release_path"])
+        if not r["source_url"].strip() or not r["derivation"].strip():
+            bad.append("%s: no source URL or derivation" % r["release_path"])
+        tl = P("Data", "withheld_tips", *(r["release_path"] + ".txt").split("/"))
+        listed = open(tl, encoding="utf-8").read().split() if os.path.exists(tl) else None
+        if listed is None or sorted(listed) != sorted(labels):
+            bad.append("%s: tip list" % r["release_path"])
+        if r["tips_list"] != WITHHELD_TIPS_RELEASE + r["release_path"] + ".txt.gz" \
+                or mapped.get(r["tips_list"]) != "Data/withheld_tips/" + r["release_path"] + ".txt":
+            bad.append("%s: tip list not mapped at %s" % (r["release_path"], r["tips_list"]))
+    R.eq("release: each withheld file's sha256, tip count, tip list, source and "
+         "derivation are those of the paper's file", bad, [])
+    tm = {r["release_path"]: r["transform"] for r in rows}
+    R.eq("release: the tip lists of the withheld files ship gzipped",
+         sorted(k for k in mapped if k.startswith(WITHHELD_TIPS_RELEASE)
+                and tm[k] != "gzip"), [])
+    for rp, wp in (("registers/withheld_trees.csv", "Data/withheld_trees.csv"),
+                   ("registers/tree_licences.csv", "Data/tree_licences.csv"),
+                   ("LICENSE-trees.md", "Data/LICENSE-trees.md"),
+                   ("data_provenance.csv", "Data/data_provenance.csv")):
+        R.eq("release: %s is mapped from %s" % (rp, wp), mapped.get(rp), wp)
+    st = open(P("Data", "LICENSE-trees.md"), encoding="utf-8").read()
+    R.eq("release: LICENSE-trees.md names every shipped tree file and every "
+         "withheld one",
+         [rp for rp in shipped_trees + wpaths if "`%s`" % rp not in st], [])
+    gpl = [rp for rp in shipped_trees
+           if (row_for(rp, mapped[rp]) or {}).get("release_licence") == "GPL-3.0"]
+    R.eq("release: the GPL-3.0 text ships with the GPL-3.0 trees",
+         bool(gpl) <= os.path.exists(os.path.join(RELEASE_FILES, "LICENSES",
+                                                  "GPL-3.0.txt")), True)
+    spec = importlib.util.spec_from_file_location("tree_licences",
+                                                  P("scripts", "tree_licences.py"))
+    tl_ = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(tl_)
+    b = tl_.build()
+    stale = [k for k, v in list(b["files"].items()) + list(b["tips"].items())
+             if not os.path.exists(P(*k.split("/")))
+             or open(P(*k.split("/")), encoding="utf-8").read() != v]
+    R.eq("release: Data/withheld_trees.csv, Data/withheld_tips/ and "
+         "Data/LICENSE-trees.md are what scripts/tree_licences.py writes", stale, [])
+    tdir = P("Data", "withheld_tips")
+    held = []
+    for d, _, fs in os.walk(tdir):
+        for f in fs:
+            held.append(os.path.relpath(os.path.join(d, f), ROOT).replace(os.sep, "/"))
+    R.eq("release: Data/withheld_tips/ holds the tip lists of the withheld files only",
+         sorted(held), sorted(b["tips"]))
+
+
 def release_path_known(path):
     """A file of the release, or a directory holding at least one."""
     rp = release_paths()
@@ -7968,6 +8147,33 @@ def _check_release_readme():
              (plain(mac[nm + "N"]), mac[nm + "Pct"]))
     R.eq("release README: no level beyond the calibration (D58)",
          "Beyond the calibration" in t, False)
+    # the trees the release redistributes and those it withholds (tree_licences.py)
+    flat = re.sub(r"\s+", " ", t)
+    for pat, keys in (
+            (r"The catalogue holds ([\d,]+) published species-level phylogenies",
+             ("NumTreesShipped",)),
+            (r"([\d,]+) of them are redistributed here; the other ([\d,]+), whose "
+             r"sources state no licence", ("NumTreesRedistributed", "NumTreesWithheld")),
+            (r"The sources of ([\d,]+) of the ([\d,]+) trees of the catalogue state no "
+             r"licence", ("NumTreesWithheld", "NumTreesShipped")),
+            (r"so their files are not in this release: ([^.]+)\.", ("NamesTreesWithheld",)),
+            (r"([\d,]+) files in all", ("NumFilesWithheld",)),
+            (r"lists the ([\d,]+) trees of the catalogue: ([\d,]+) redistributed and "
+             r"([\d,]+) withheld", ("NumTreesShipped", "NumTreesRedistributed",
+                                    "NumTreesWithheld"))):
+        m = re.search(pat, flat)
+        R.eq("release README: %s" % " ".join(keys), m.groups() if m else None,
+             tuple(plain(mac[k]) for k in keys))
+    sec = t.split("## Trees not redistributed", 1)[-1].split("\n## ", 1)[0]
+    R.eq("release README: the table of trees not redistributed lists the withheld "
+         "catalogue trees", sorted(re.findall(r"^\| `([^`]+\.nwk)` \|", sec, re.M)),
+         release_withheld_catalogue())
+    meta = open(MANUSCRIPT_META, encoding="utf-8").read()
+    rid = re.search(r"\\newcommand\{\\IdDataRelease\}\{(v[^}]*)\}", meta)
+    tags = set(re.findall(r"The tag `(v[\d.]+)`", t)) | set(
+        re.findall(r"phylo-species-atlas/(v[\d.]+)\b", t))
+    R.eq("release README: the tag it names = IdDataRelease", sorted(tags),
+         [rid.group(1)] if rid else None)
 
 
 def _check_release_deposit_metadata():
@@ -7986,7 +8192,9 @@ def _check_release_deposit_metadata():
             (r"each of (\d+) groups of described eukaryotes", "NumCanonicalEuk"),
             (r"and (\d+) other trees", "SensUnionNTrees"),
             (r"\((\d+) reference trees\)", "SuppRefBuiltN"),
-            (r"among them (\d+) family-level trees", "DTnAggregate"))
+            (r"among them (\d+) family-level trees", "DTnAggregate"),
+            (r"(\d+) of them are redistributed", "NumTreesRedistributed"),
+            (r"the other (\d+), whose sources state no licence", "NumTreesWithheld"))
     allowed = {plain(mac[k]) for _, k in pats if k in mac}
     for name in ("CITATION.cff", ".zenodo.json"):
         path = os.path.join(RELEASE_FILES, name)
@@ -7996,6 +8204,16 @@ def _check_release_deposit_metadata():
                 R.eq("%s: %s = %s" % (name, pat, key), v, plain(mac[key]))
         R.eq("%s names the described eukaryotic species" % name,
              bool(re.search(pats[0][0], t)), True)
+        R.eq("%s states the trees redistributed and withheld" % name,
+             all(re.search(p_, t) for p_, k in pats[-2:]), True)
+        m = re.search(r"\(([^()]*)\), are listed in registers/withheld_trees.csv", t)
+        R.eq("%s names the withheld trees = NamesTreesWithheld" % name,
+             m.group(1) if m else None, plain(mac["NamesTreesWithheld"]))
+        meta = open(MANUSCRIPT_META, encoding="utf-8").read()
+        rid = re.search(r"\\newcommand\{\\IdDataRelease\}\{v?([^}]*)\}", meta)
+        m = re.search(r'^(?:version:\s*|\s*"version":\s*")"?([\d.]+)', t, re.M)
+        R.eq("%s version = IdDataRelease" % name, m.group(1) if m else None,
+             rid.group(1) if rid else None)
         big = [x for x in re.findall(r"(?<![\d.:/-])\d{1,3}(?:,\d{3})+(?![\d])", t)]
         R.eq("%s: every thousands-separated count is a macro value" % name,
              sorted(x for x in big if x not in allowed), [])
@@ -8022,7 +8240,7 @@ def _check_release_erratum():
     t = open(os.path.join(RELEASE_FILES, "ERRATUM.md"), encoding="utf-8").read()
     t = re.sub(r"\s+", " ", t)
     m = re.search(r"Of its (\d+) rows, (\d+) have `changed` = `yes`: (\d+) are "
-                  r"trees redistributed in `standardized/trees/`, (\d+) is "
+                  r"trees of the catalogue in `standardized/trees/`.*?, (\d+) is "
                   r"`timetree.nwk`.*? and (\d+) are the copies of trees under "
                   r"`site/data/partitions/`, of which the browser site holds (\d+)\..*? "
                   r"The other (\d+) rows are files of "
@@ -8119,6 +8337,7 @@ def check_release(ctx):
     _check_release_deposit_metadata()
     _check_release_erratum()
     _check_release_site(rows)
+    _check_release_licences(rows)
     seen = Counter(r["release_path"] for r in rows)
     R.eq("path_map.csv lists each release path once",
          sorted(k for k, n in seen.items() if n > 1), [])

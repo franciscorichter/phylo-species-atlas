@@ -48,7 +48,13 @@ Inputs (all in this repository):
                                              reference tree
     standardized/superseded_canonicals/*.nwk the reference trees replaced in
                                              this release (dictionary check)
-    standardized/metadata.csv, withdrawn.csv per-tree metadata; withheld files
+    standardized/metadata.csv, withdrawn.csv per-tree metadata; withdrawn files
+    registers/withheld_trees.csv             the tree files this release does not
+                                             redistribute (their sources state
+                                             no licence): source, sha256, tip
+                                             count, root height and root-to-tip
+                                             CV of the file the paper used
+    registers/withheld_tips/*.txt.gz         the tip labels of each withheld file
     registers/canonical_sources.csv          which source each is built from
     registers/pruned_tips.csv                tips outside the group, removed
     registers/coverage_basis.csv             groups, described species, the
@@ -86,6 +92,14 @@ and checks the browser site: every number of site/data.json against the
 macros, Table 1 (paper/table_which_tree.csv), paper/crown_ages.csv and
 paper/fig1_coverage_bars.csv, and every tree file the site serves against its
 file in standardized/trees/.
+
+Withheld trees.  A tree file whose source states no licence is not in this
+release; registers/withheld_trees.csv names the source to download it from.
+A check that reads such a file runs in full when the file has been placed at
+its path (its sha256 is then compared with the register); when it is absent,
+the check is run on the register (the tip list, tip count, root height and
+root-to-tip CV of the file the paper used, compared with the other registers)
+and a NOTE line names the file and its source.  No check is skipped.
 """
 
 from __future__ import annotations
@@ -226,6 +240,24 @@ def read_csv(p, comment=False):
     with opener(p, "rt", newline="", encoding="utf-8") as fh:
         lines = (ln for ln in fh if not (comment and ln.startswith("#")))
         return list(csv.DictReader(lines))
+
+
+def read_withheld():
+    """{release path: row} of registers/withheld_trees.csv."""
+    return OrderedDict((r["release_path"], r)
+                       for r in read_csv(path("registers", "withheld_trees.csv")))
+
+
+def withheld_tips(row):
+    """The tip labels of a withheld file, from its tip list."""
+    with gzip.open(path(*row["tips_list"].split("/")), "rt", encoding="utf-8") as fh:
+        return [ln.strip() for ln in fh if ln.strip()]
+
+
+def sha256_of(p):
+    import hashlib
+    with open(p, "rb") as fh:
+        return hashlib.sha256(fh.read()).hexdigest()
 
 
 def as_int(v, default=0):
@@ -510,10 +542,17 @@ class Report(object):
         self.fail = []
         self.macros_checked = set()
         self.supp_macros = {}
+        self.notes = []
 
     def section(self, title):
         if not self.quiet:
             print("\n== %s" % title)
+
+    def note(self, text):
+        """A check run on the registers because a withheld file is absent:
+        always printed, counted in the summary."""
+        self.notes.append(text)
+        print("  NOTE %s" % text)
 
     def eq(self, label, got, want, tol=None):
         self.n += 1
@@ -713,18 +752,48 @@ def check_site(R, macros, basis, head):
          (mac("DescribedEuk"), mac("DescribedProk"), mac("NumPartitionsAll"),
           mac("NumPartitionsEuk"), mac("NumCanonical"), mac("NumCanonicalEuk"),
           mac("NumTreesShipped")))
+    R.eq("site totals: trees redistributed, withheld = \\NumTreesRedistributed, "
+         "\\NumTreesWithheld",
+         (str(s.get("n_trees_redistributed")), str(s.get("n_trees_withheld"))),
+         (mac("NumTreesRedistributed"), mac("NumTreesWithheld")))
     al = head["denominators"]["all_life"]
     R.eq("site estimated totals = headline all-life estimates",
          (s["estimated_total_low_text"], s["estimated_total_high_text"]),
          ("{:,}".format(al["estimated_low"]), "{:,}".format(al["estimated_high"])))
 
-    # Trees: every redistributed tree is served from standardized/trees/
+    # Trees: every redistributed tree is served from standardized/trees/; a
+    # withheld tree is listed with its source and never served
     meta = [r["filename"] for r in read_csv(path("standardized", "metadata.csv"))]
     withdrawn = {r["filename"] for r in read_csv(path("standardized", "withdrawn.csv"))}
+    withheld = read_withheld()
+    w_std = {rp[len("standardized/trees/"):]: r for rp, r in withheld.items()
+             if rp.startswith("standardized/trees/")}
     trees = site["trees"]
     pkg = [t for t in trees if t["in_package"]]
-    R.eq("site trees in the package = standardized/metadata.csv",
-         sorted(t["filename"] for t in pkg), sorted(meta))
+    R.eq("site trees in the package = standardized/metadata.csv less the withheld trees",
+         sorted(t["filename"] for t in pkg), sorted(f for f in meta if f not in w_std))
+    wst = {t["filename"]: t for t in trees if t.get("withheld") and not t.get("site_tree")}
+    R.eq("site lists each withheld tree, not served, with the register's source, "
+         "licence and tip count",
+         sorted((f, t["tree_url"], t["withheld"]["source_url"], t["withheld"]["licence"],
+                 t["ntips"]) for f, t in wst.items()),
+         sorted((f, None, r["source_url"], r["licence"], as_int(r["tips"]))
+                for f, r in w_std.items()))
+    for rp, r in withheld.items():
+        if rp.startswith("site/"):
+            fp = path(*rp.split("/"))
+            if os.path.exists(fp):
+                R.eq("%s (withheld, placed by the reader): sha256 = "
+                     "registers/withheld_trees.csv" % rp, sha256_of(fp), r["sha256"])
+            else:
+                slug = rp.split("/sub-phylos/")[1].split("/")[0]
+                listed = (slug + ".nwk") in w_std or any(
+                    t.get("site_tree") == "withheld" and t["filename"] == slug + ".nwk"
+                    and t["withheld"]["source_url"] == r["source_url"] for t in trees)
+                R.eq("%s (withheld): listed in the site as not redistributed" % rp,
+                     listed, True)
+                R.note("%s is not redistributed (%s); %s tips. Source: %s"
+                       % (rp, r["licence"], r["tips"], r["source_url"]))
     R.eq("site lists no withdrawn tree (timetree.nwk)",
          sorted(w for w in withdrawn if w in raw or any(
              t["filename"] == w or t["group"] == w[:-4] for t in trees)), [])
@@ -733,9 +802,10 @@ def check_site(R, macros, basis, head):
            or not os.path.exists(path("standardized", "trees", t["filename"]))]
     R.eq("site serves every redistributed tree from standardized/trees/", bad, [])
     canon = {b["canonical_tree"]: b["partition"] for b in basis if b["canonical_tree"]}
-    R.eq("site reference trees = coverage_basis reference trees, served from "
-         "standardized/trees/",
-         sorted((t["filename"], t["partition_group"]) for t in pkg if t["is_partition_canonical"]),
+    R.eq("site reference trees = coverage_basis reference trees, each served from "
+         "standardized/trees/ or listed as withheld",
+         sorted((t["filename"], t["partition_group"]) for t in pkg + list(wst.values())
+                if t["is_partition_canonical"]),
          sorted(canon.items()))
     tipre = re.compile(r"[(,]\s*([^(),:;\s]+)")
     bad = [t["filename"] for t in pkg if t["ntips"] != len(tipre.findall(
@@ -849,18 +919,66 @@ def main(argv=None):
     # ------------------------------------------------ redistributed trees ---
     R.section("Redistributed trees: tip counts and root-to-tip variation")
     tree_dir = path("standardized", "trees")
-    files = sorted(f for f in os.listdir(tree_dir) if f.endswith(".nwk"))
+    present = sorted(f for f in os.listdir(tree_dir) if f.endswith(".nwk"))
+    meta = read_csv(path("standardized", "metadata.csv"))
+    withheld = read_withheld()
+    STD_ = "standardized/trees/"
+    w_std = OrderedDict((rp[len(STD_):], r) for rp, r in withheld.items()
+                        if rp.startswith(STD_))
+    files = sorted(m["filename"] for m in meta)      # the trees the paper used
+    R.eq("trees of the catalogue (standardized/metadata.csv)", len(files),
+         head["trees"]["n_shipped"])
+    R.eq("files of standardized/trees are trees of the catalogue",
+         sorted(set(present) - set(files)), [])
+    R.eq("redistributed trees present in standardized/trees",
+         [f for f in files if f not in w_std and f not in present], [])
+    R.eq("withheld trees listed in registers/withheld_trees.csv are trees of "
+         "the catalogue", sorted(set(w_std) - set(files)), [])
+    R.eq("headline trees.withheld_trees = registers/withheld_trees.csv",
+         head["trees"].get("withheld_trees"), sorted(w_std))
+    R.eq("trees redistributed + withheld = the paper's trees",
+         (len(files) - len(w_std)) + len(w_std), head["trees"]["n_shipped"])
+    R.macro(macros, "NumTreesRedistributed", fmt_int(len(files) - len(w_std)))
+    R.macro(macros, "NumTreesWithheld", fmt_int(len(w_std)))
+    R.macro(macros, "NumFilesWithheld", fmt_int(len(withheld)))
+    wn = sorted(f[:-4].replace("_", " ") for f in w_std)
+    R.macro(macros, "NamesTreesWithheld",
+            wn[0] if len(wn) == 1 else ", ".join(wn[:-1]) + " and " + wn[-1])
+    meta_ntips = {m["filename"]: as_int(m["ntips"]) for m in meta}
+    td_ = {r["filename"]: r for r in read_csv(path("registers", "_rebuild",
+                                                   "truth_dated.csv"))}
     facts = {}
     for f in files:
-        with open(os.path.join(tree_dir, f), encoding="utf-8",
-                  errors="replace") as fh:
-            leaves, nan = leaf_depths(fh.read())
-        depths = [d for _, d in leaves]
-        facts[f] = dict(labels=[l for l, _ in leaves], depths=depths, nan=nan,
-                        cv=cv(depths), root=max(depths) if depths else None)
-    meta = read_csv(path("standardized", "metadata.csv"))
-    R.eq("trees in standardized/trees", len(files), head["trees"]["n_shipped"])
-    R.eq("trees listed in standardized/metadata.csv", sorted(m["filename"] for m in meta), files)
+        w = w_std.get(f)
+        if f in present:
+            fp = os.path.join(tree_dir, f)
+            if w is not None:
+                R.eq("%s (withheld, placed by the reader): sha256 = "
+                     "registers/withheld_trees.csv" % f, sha256_of(fp), w["sha256"])
+            with open(fp, encoding="utf-8", errors="replace") as fh:
+                leaves, nan = leaf_depths(fh.read())
+            depths = [d for _, d in leaves]
+            facts[f] = dict(labels=[l for l, _ in leaves], depths=depths, nan=nan,
+                            cv=cv(depths), root=max(depths) if depths else None,
+                            withheld=False)
+            continue
+        # withheld and absent: the register's facts of the paper's file
+        labels = withheld_tips(w)
+        n = as_int(w["tips"])
+        R.eq("%s (withheld): tip list, register tip count, distinct tips, "
+             "metadata.csv ntips, truth_dated.csv leaves" % f,
+             (len(labels), n, len(set(labels)) == as_int(w["distinct_tips"]),
+              meta_ntips.get(f), as_int(td_.get(f, {}).get("leaves"), None)),
+             (n, n, True, n, n))
+        R.eq("%s (withheld): root-to-tip CV = truth_dated.csv" % f,
+             w["roottotip_cv"], td_.get(f, {}).get("roottotip_cv"))
+        R.note("%s is not redistributed (%s); its checks use registers/"
+               "withheld_trees.csv: %s tips, root height %s, CV %s. Source: %s"
+               % (STD_ + f, w["licence"], w["tips"], w["root_height"],
+                  w["roottotip_cv"], w["source_url"]))
+        facts[f] = dict(labels=labels, depths=None, nan=0,
+                        cv=as_float(w["roottotip_cv"]),
+                        root=as_float(w["root_height"]), withheld=True)
     bad_ntips = [m["filename"] for m in meta
                  if as_int(m["ntips"]) != len(set(facts[m["filename"]]["labels"]))
                  and as_int(m["ntips"]) != len(facts[m["filename"]]["labels"])]
@@ -879,7 +997,7 @@ def main(argv=None):
          cv_bad, [])
     withdrawn = [r["filename"] for r in read_csv(path("standardized", "withdrawn.csv"))]
     R.eq("withdrawn files present in standardized/trees",
-         [f for f in withdrawn if f in files], [])
+         [f for f in withdrawn if f in files or f in present], [])
 
     # ------------------------------------- reference trees, built by rule ---
     R.section("Reference trees: sources minus off-group tips, one tip per species")
@@ -887,44 +1005,98 @@ def main(argv=None):
     src_tips = {}
     for r in read_csv(path("registers", "pruned_tips.csv")):
         pruned[r["filename"]].add(r["standardized_id"])
+    SRC_ = "standardized/canonical_sources/"
+
+    def skey(lab):
+        k, ok = species_key(dictionary.get(lab, ""))
+        return k if ok else "id:" + lab
+
     for r in read_csv(path("registers", "canonical_sources.csv")):
         f = r["filename"]
-        src = path("standardized", "canonical_sources", os.path.basename(r["source"]))
-        with open(src, encoding="utf-8", errors="replace") as fh:
-            sleaves, _ = leaf_depths(fh.read())
+        sb = os.path.basename(r["source"])
+        src = path("standardized", "canonical_sources", sb)
+        ws = withheld.get(SRC_ + sb)
+        if os.path.exists(src):
+            if ws is not None:
+                R.eq("%s (withheld, placed by the reader): sha256 = "
+                     "registers/withheld_trees.csv" % (SRC_ + sb), sha256_of(src),
+                     ws["sha256"])
+            with open(src, encoding="utf-8", errors="replace") as fh:
+                sleaves, _ = leaf_depths(fh.read())
+            ordered = True
+        else:
+            R.eq("%s: absent, and listed in registers/withheld_trees.csv"
+                 % (SRC_ + sb), ws is not None, True)
+            if ws is None:
+                continue
+            sleaves = [(l, None) for l in withheld_tips(ws)]
+            R.eq("%s (withheld): tip list = register tip count" % (SRC_ + sb),
+                 len(sleaves), as_int(ws["tips"]))
+            ordered = False
+            R.note("%s is not redistributed (%s); the check of %s against it uses "
+                   "its tip list (%s tips). Source: %s"
+                   % (SRC_ + sb, ws["licence"], f, ws["tips"], ws["source_url"]))
         src_tips[f] = len(sleaves)
-        seen, kept = set(), []
         missing = pruned[f] - {l for l, _ in sleaves}
-        for lab, d in sleaves:
-            if lab in pruned[f]:
-                continue
-            k, ok = species_key(dictionary.get(lab, ""))
-            k = k if ok else "id:" + lab
-            if k in seen:
-                continue
-            seen.add(k)
-            kept.append((lab, d))
-        shipped = list(zip(facts[f]["labels"], facts[f]["depths"]))
-        R.eq("%s: tips = source tips - pruned - repeated species, in order" % f,
-             ([l for l, _ in kept] == [l for l, _ in shipped], sorted(missing)),
-             (True, []))
-        if [l for l, _ in kept] == [l for l, _ in shipped] and kept:
-            offs = [ds - dk for (_, ds), (_, dk) in zip(kept, shipped)]
-            scale = max(abs(d) for _, d in kept) or 1.0
-            R.eq("%s: root-to-tip depths equal the source's less one offset" % f,
-                 (max(offs) - min(offs)) <= 1e-6 * scale, True)
+        if ordered and not facts[f]["withheld"]:
+            seen, kept = set(), []
+            for lab, d in sleaves:
+                if lab in pruned[f]:
+                    continue
+                k = skey(lab)
+                if k in seen:
+                    continue
+                seen.add(k)
+                kept.append((lab, d))
+            shipped = list(zip(facts[f]["labels"], facts[f]["depths"]))
+            R.eq("%s: tips = source tips - pruned - repeated species, in order" % f,
+                 ([l for l, _ in kept] == [l for l, _ in shipped], sorted(missing)),
+                 (True, []))
+            if [l for l, _ in kept] == [l for l, _ in shipped] and kept:
+                offs = [ds - dk for (_, ds), (_, dk) in zip(kept, shipped)]
+                scale = max(abs(d) for _, d in kept) or 1.0
+                R.eq("%s: root-to-tip depths equal the source's less one offset" % f,
+                     (max(offs) - min(offs)) <= 1e-6 * scale, True)
+        else:
+            # one of the two files is withheld: the rule is checked on the tip
+            # lists (which tips, one per species), not on order and depths
+            ship = facts[f]["labels"]
+            keep = {l for l, _ in sleaves} - pruned[f]
+            R.eq("%s: tips are source tips - pruned, one per species, covering "
+                 "every species of the source (tip lists)" % f,
+                 (set(ship) <= keep, len({skey(l) for l in ship}) == len(ship),
+                  {skey(l) for l in ship} == {skey(l) for l in keep}, sorted(missing)),
+                 (True, True, True, []))
+            if facts[f]["withheld"]:
+                R.note("%s: the order and depths of its tips against its source are "
+                       "checked when the file is placed at standardized/trees/%s"
+                       % (f, f))
 
     srcdir = path("standardized", "canonical_sources")
     used = set()
     for f in files:
         used.update(facts[f]["labels"])
     for d_ in (srcdir, path("standardized", "superseded_canonicals")):
+        rel_d = os.path.relpath(d_, ROOT).replace(os.sep, "/") + "/"
         for f in os.listdir(d_):
+            if rel_d + f in withheld and rel_d != SRC_:      # sources: checked above
+                R.eq("%s (withheld, placed by the reader): sha256 = "
+                     "registers/withheld_trees.csv" % (rel_d + f),
+                     sha256_of(os.path.join(d_, f)), withheld[rel_d + f]["sha256"])
             with open(os.path.join(d_, f), encoding="utf-8", errors="replace") as fh:
                 used.update(l for l, _ in leaf_depths(fh.read())[0])
+    for rp, w in withheld.items():
+        if rp.startswith(("standardized/canonical_sources/",
+                          "standardized/superseded_canonicals/")) \
+                and not os.path.exists(path(*rp.split("/"))):
+            used.update(withheld_tips(w))
+            if rp.startswith("standardized/superseded_canonicals/"):
+                R.note("%s is not redistributed (%s); its tip ids are read from its "
+                       "tip list (%s tips). Source: %s"
+                       % (rp, w["licence"], w["tips"], w["source_url"]))
     R.eq("tip ids missing from standardized/dictionary.csv",
          len(used - set(dictionary)), 0)
-    R.eq("dictionary ids that occur in no distributed tree",
+    R.eq("dictionary ids that occur in no distributed tree or withheld tip list",
          len(set(dictionary) - used), 0)
 
     # ------------------------------------------------------ named (C0) ---
@@ -1449,6 +1621,9 @@ def main(argv=None):
     R.macro(macros, "SensUnionNamesAdded", fmt_int(n_add))
     R.macro(macros, "SensUnionCZeroPct", fmt_pct(pct(lad["C0"]["sum"] + n_add, den)))
     R.macro(macros, "SensUnionCOneHighPct", fmt_pct(pct(lad["C1"]["sum"] + n_add, den)))
+    # D66: named coverage over every tree of the catalogue, the headline
+    R.macro(macros, "AnyCZeroN", fmt_int(lad["C0"]["sum"] + n_add))
+    R.macro(macros, "AnyCZeroPct", fmt_pct(pct(lad["C0"]["sum"] + n_add, den)))
 
     # ---------------------------------------------- source studies, dating ---
     R.section("Source studies: molecular-species trees and what each study dated")
@@ -1882,10 +2057,31 @@ def main(argv=None):
     with_poly, allr, nb = [], [], 0
     poly_rows = OrderedDict()
     for p in elig:
-        with open(os.path.join(tree_dir, bmap[p]["canonical_tree"]), encoding="utf-8",
-                  errors="replace") as fh:
-            text_ = fh.read()
-        for tree, keep in (("full", None), ("molecular", mol_rows[p])):
+        f_ = bmap[p]["canonical_tree"]
+        if facts[f_]["withheld"]:
+            # the branching events are counted on the tree; without the file the
+            # fits' counts are bounded by the tips they were fitted to
+            for tree, keep in (("full", None), ("molecular", mol_rows[p])):
+                nt = len(facts[f_]["labels"]) if keep is None else \
+                    len(set(facts[f_]["labels"]) & set(keep))
+                for conv in (("tips", "full_misapplied", "family") if tree == "molecular"
+                             else ("tips",)):
+                    fr = fits[(p, tree, conv)]
+                    R.eq("%s %s/%s (withheld tree): branching events at most tips - 1, "
+                         "those at polytomies at most the events" % (p, tree, conv),
+                         (as_int(fr["n_events"]) <= nt - 1,
+                          as_int(fr["n_polytomy_events"]) <= as_int(fr["n_events"])),
+                         (True, True))
+            R.note("%s: the branching events of %s are counted on the tree when the "
+                   "file is placed at standardized/trees/%s; here they are the fits' "
+                   "(paper/worked_example_bd.csv). Source: %s"
+                   % (p, f_, f_, w_std[f_]["source_url"]))
+            text_ = None
+        else:
+            with open(os.path.join(tree_dir, f_), encoding="utf-8",
+                      errors="replace") as fh:
+                text_ = fh.read()
+        for tree, keep in (("full", None), ("molecular", mol_rows[p])) if text_ else ():
             ne, npe = polytomy_counts(text_, keep, sfac[p])
             for conv in (("tips", "full_misapplied", "family") if tree == "molecular"
                          else ("tips",)):
@@ -2736,7 +2932,7 @@ def main(argv=None):
     with open(path("ERRATUM.md"), encoding="utf-8") as fh:
         et_ = re.sub(r"\s+", " ", fh.read())
     m_ = re.search(r"Of its (\d+) rows, (\d+) have `changed` = `yes`: (\d+) are "
-                   r"trees redistributed in `standardized/trees/`, (\d+) is "
+                   r"trees of the catalogue in `standardized/trees/`.*?, (\d+) is "
                    r"`timetree.nwk`.*? and (\d+) are the copies of trees under "
                    r"`site/data/partitions/`, of which the browser site holds (\d+)\..*? "
                    r"The other (\d+) rows are files of "
@@ -2790,6 +2986,10 @@ def main(argv=None):
     # ----------------------------------------------------------- summary ---
     print("\n== Summary")
     print("  comparisons: %d, failures: %d" % (R.n, len(R.fail)))
+    if R.notes:
+        print("  NOTE lines: %d (checks run on the registers because a withheld tree "
+              "file is absent; registers/withheld_trees.csv names each source)"
+              % len(R.notes))
     print("  printed macros recomputed: %d of %d"
           % (len(R.macros_checked & set(macros)), len(macros)))
     sm_all = set(R.supp_macros)

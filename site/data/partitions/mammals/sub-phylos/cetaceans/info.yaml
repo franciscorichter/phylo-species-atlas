@@ -11,6 +11,7 @@ tree:
     key: McGowen 2020
     study: McGowen MR, Tsagkogeorga G, Álvarez-Carretero S, dos Reis M et al. (2020)
     doi: 10.1093/sysbio/syz068
+    url: https://doi.org/10.5061/dryad.jq40b0f
     pdf: papers/tree.pdf
   methods:
     inference: bayesian

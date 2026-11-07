@@ -11,7 +11,7 @@ parrots.nwk,parrots,Burgio 2019,413,TRUE
 carnivora.nwk,carnivora,Nyakatura 2012,294,TRUE
 insects.nwk,insects,insectphylo v2,53373,FALSE
 butterflies.nwk,butterflies,Kawahara 2023,2258,TRUE
-spiders.nwk,spiders,Garrison 2016,1431,TRUE
+spiders.nwk,spiders,Macias-Hernandez 2020,1431,TRUE
 hemiptera.nwk,hemiptera,Johnson 2018,193,FALSE
 termites.nwk,termites,2024 Nat Comms,138,FALSE
 crustaceans.nwk,crustaceans,Wolfe 2019,95,FALSE
@@ -32,7 +32,7 @@ gastropods.nwk,gastropods,Zapata 2014,40,FALSE
 sponges.nwk,sponges,Lavrov 2023,119,TRUE
 echinoderms.nwk,echinoderms,Koch 2022,65,TRUE
 nematodes.nwk,nematodes,2025 Syst Biol,156,FALSE
-diatoms.nwk,diatoms,Theriot 2018,1113,FALSE
+diatoms.nwk,diatoms,Nakov 2018,1113,FALSE
 bacteria.nwk,bacteria,GTDB R10,136646,FALSE
 archaea.nwk,archaea,GTDB R10,6968,FALSE
 fungi.nwk,fungi,Li 2021,1620,FALSE

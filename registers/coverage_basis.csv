@@ -3,7 +3,7 @@ Acanthocephala,acanthocephala,Other animals,no,1325,Catalogue of Life COL26.9,ye
 Acari,acari,Arthropods,no,55000,Zhang 2013,yes,,0,0,0,0,,,,,,,,,,,,,,,
 Amoebozoa,amoebozoa,Microbes & protists,no,2400,Adl 2007,yes,,0,0,0,0,,,,,,,,,,,,,,,
 Amphibians,amphibians,Vertebrates,no,8863,AmphibiaWeb 2025,no,amphibians.nwk,7238,7238,6947,39,0.561067,source_tree_intersection,0.561067,0.561067,3993,enumerated,Data/raw/amphibians/jetz_pyron_2018_ML_4061sp.tre,yes,absolute,0.000000,yes,posterior_sample,10000,primary_analysis,otl=none|inference=bayesian|tree_class=direct_empirical
-Annelids,annelids,Other animals,no,21000,Appeltans 2012,yes,,0,0,0,0,,,,,,,,,,,,,,,
+Annelids,annelids,Other animals,no,17340,Catalogue of Life COL26.9,yes,,0,0,0,0,,,,,,,,,,,,,,,
 Apicomplexa,apicomplexa,Microbes & protists,no,6000,"rounded figure, source not traced (COL26.9 lists 169)",yes,,0,0,0,0,,,,,,,,,,,,,,,
 Archaea,archaea,Microbes & protists,yes,6968,GTDB R10-RS226 species clusters,no,archaea.nwk,6968,6968,6968,0,1.000000,source_alignment_intersection,1.000000,1.000000,6968,enumerated,Data/molecular_sources/archaea.taxa.txt,no,not_ultrametric,0.236842,no,,,primary_analysis,otl=none|inference=ml|tree_class=direct_empirical
 Bacteria,bacteria,Microbes & protists,yes,136646,GTDB R10-RS226 species clusters,no,bacteria.nwk,136646,136646,136646,0,1.000000,source_alignment_intersection,1.000000,1.000000,136646,enumerated,Data/molecular_sources/bacteria.taxa.txt,no,not_ultrametric,0.185906,no,,,primary_analysis,otl=none|inference=ml|tree_class=direct_empirical
@@ -38,7 +38,6 @@ Insects,insects,Arthropods,no,929676,Catalogue of Life COL26.9,no,insects.nwk,53
 Lampreys,lampreys,Vertebrates,no,48,Potter 2015,yes,,0,0,0,0,,,,,,,,,,,,,,,
 Lycophytes,lycophytes,Plants,no,1338,PPG I 2016,yes,,0,0,0,0,,,,,,,,,,,,,,,
 Mammals,mammals,Vertebrates,no,6736,"Mammal Diversity Database (MDD, 2024+)",no,mammals.nwk,5911,5911,5625,172,0.693284,source_alignment_intersection,0.693284,0.693284,3945,enumerated,Data/molecular_sources/mammals.taxa.txt,yes,absolute,0.000000,yes,posterior_sample,10000,primary_analysis,otl=none|inference=bayesian|tree_class=direct_empirical
-Minor animal phyla,minor_animal_phyla,Other animals,no,376,"sum of Onychophora (200), Chaetognatha (130), Loricifera (39), Placozoa (4) and Cycliophora (3)",yes,,0,0,0,0,,,,,,,,,,,,,,,
 Myriapods,myriapods,Arthropods,no,17000,Chapman 2009,yes,,0,0,0,0,,,,,,,,,,,,,,,
 Myxozoa,myxozoa,Other animals,no,2400,WoRMS,yes,,0,0,0,0,,,,,,,,,,,,,,,
 Nematodes,nematodes,Other animals,no,28537,WoRMS / Hodda 2022,no,nematodes.nwk,156,156,101,55,1.000000,source_tree_intersection,1.000000,1.000000,101,enumerated,Data/raw/nematodes/nematoda_50p_aa_ML.tre,no,not_ultrametric,0.297255,no,,,primary_analysis,otl=none|inference=ml|tree_class=direct_empirical
@@ -47,7 +46,8 @@ Oomycetes,oomycetes,Microbes & protists,no,1673,Catalogue of Life COL26.9,yes,,0
 Other Mollusca,other_mollusca,Other animals,no,1500,WoRMS,yes,,0,0,0,0,,,,,,,,,,,,,,,
 Other arachnids,other_arachnids,Arthropods,no,12765,Catalogue of Life COL26.9,yes,,0,0,0,0,,,,,,,,,,,,,,,
 Other hexapods,other_hexapods,Arthropods,no,10138,Catalogue of Life COL26.9,yes,,0,0,0,0,,,,,,,,,,,,,,,
-Other phyla,other_phyla,Other animals,no,3442,Catalogue of Life COL26.9,yes,,0,0,0,0,,,,,,,,,,,,,,,
+Other phyla,other_phyla,Other animals,no,3863,Catalogue of Life COL26.9,yes,,0,0,0,0,,,,,,,,,,,,,,,
+Other protists,other_protists,Microbes & protists,no,3353,"Pawlowski et al. 2012 (PLoS Biol 10: e1001419), Table S1: 29 lineages in no other group",yes,,0,0,0,0,,,,,,,,,,,,,,,
 Other vertebrates,other_vertebrates,Vertebrates,no,9,"sum of tuatara (1), coelacanths (2) and lungfishes (6)",yes,,0,0,0,0,,,,,,,,,,,,,,,
 Pycnogonida,pycnogonida,Arthropods,no,1400,WoRMS,yes,,0,0,0,0,,,,,,,,,,,,,,,
 Rhodophyta,rhodophyta,Plants,no,7000,AlgaeBase,yes,,0,0,0,0,,,,,,,,,,,,,,,

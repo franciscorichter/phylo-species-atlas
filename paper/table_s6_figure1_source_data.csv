@@ -38,8 +38,8 @@ Other hexapods,Not yet represented,15000,10138,,,CoL
 Scorpiones,Not yet represented,3500,2700,,,Rein 2024
 Pycnogonida,Not yet represented,2000,1400,,,WoRMS
 Flatworms,Not yet represented,100000,29487,,,Zhang 2013
-Annelids,Not yet represented,35000,21000,,,Appeltans 2012
-Other phyla,Not yet represented,10000,3442,,,CoL
+Annelids,Not yet represented,35000,17340,,,Appeltans 2012
+Other phyla,Not yet represented,10535,3863,,,"CoL; Atlas-aggregated (sum of Other phyla and Minor animal phyla, D66)"
 Tunicates,Not yet represented,5100,3145,,,Appeltans 2012
 Myxozoa,Not yet represented,4000,2400,,,WoRMS
 Rotifera,Not yet represented,2200,2200,,,Segers 2007
@@ -47,11 +47,11 @@ Other Mollusca,Not yet represented,3000,1500,,,WoRMS
 Tardigrada,Not yet represented,2081,1488,,,Bartels 2016
 Acanthocephala,Not yet represented,2000,1325,,,CoL
 Nemerteans,Not yet represented,4500,1300,,,Kajihara 2008
-Minor animal phyla,Not yet represented,535,376,,,Atlas-aggregated
 Ctenophores,Not yet represented,300,200,,,WoRMS
 Foraminifera,Not yet represented,12000,9000,,,Hayward 2020
 Apicomplexa,Not yet represented,10000,6000,,,CoL
 Ciliates,Not yet represented,40000,4500,,,Foissner 2008
+Other protists,Not yet represented,3353,3353,,,none published (described count)
 Amoebozoa,Not yet represented,10000,2400,,,Adl 2007
 Dinoflagellates,Not yet represented,5000,2300,,,Gomez 2012
 Brown algae,Not yet represented,2500,2000,,,Guiry 2024

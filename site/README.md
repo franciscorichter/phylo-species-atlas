@@ -6,8 +6,8 @@ No framework; d3 from a CDN, the figure drawn on a canvas.
 
 ## What it shows
 
-Every described species of eukaryote as dots, one dot per 500 species (4,172 dots for the
-2,085,869 species of `data.json`), arranged in a ring around the tree of life of the 62 groups.
+Every described species of eukaryote as dots, one dot per 500 species (4,171 dots for the
+2,085,607 species of `data.json`), arranged in a ring around the tree of life of the 62 groups.
 The same dots move between seven steps: all described species; the ring and its tree; the four
 coverage levels of the paper lit in turn (named in a reference tree, placed with molecular data,
 in a chronogram in absolute time, date uncertainty available); and the described species against
@@ -23,7 +23,7 @@ reference tree itself, one dot per species, read from `standardized/trees/`.
   are drawn as open dots, outside every eukaryotic total.
 - **Order of the groups.** `data/tree_of_groups.json` is the induced subtree of the Open Tree of
   Life synthesis for one taxon per group (api.opentreeoflife.org/v3). The five catch-all groups
-  (Other vertebrates, Other Mollusca, Other arachnids, Minor animal phyla, Other phyla) are not
+  (Other vertebrates, Other Mollusca, Other arachnids, Other phyla, Other protists) are not
   clades; each is attached at the common ancestor of its members.
 - **Estimated total.** The last step sums the low, central and high estimate of each of the 60
   eukaryotic groups in `data.json`; Bacteria and Archaea are left out.

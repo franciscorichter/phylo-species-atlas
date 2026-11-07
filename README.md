@@ -1,8 +1,8 @@
 # Species Phylogenies Catalogue
 
-Published species-level phylogenies of eukaryotes, redistributed with numeric tip ids, one
-name layer resolved to the Catalogue of Life, and the registers from which the coverage of
-described species by these trees is counted. It is the data and code of the paper
+Published species-level phylogenies of eukaryotes, redistributed with numeric tip ids where
+their licence allows it, one name layer resolved to the Catalogue of Life, and the registers
+from which the coverage of described species by these trees is counted. It is the data and code of the paper
 
 > Richter F. *Described eukaryotic species in published species-level phylogenies: placement by molecular data, dates and date uncertainty.* bioRxiv,
 > doi:[10.64898/2026.05.31.729127](https://doi.org/10.64898/2026.05.31.729127).
@@ -25,15 +25,22 @@ python3 scripts/reproduce_paper.py
 > readers reject it; neither file is a reference tree.
 
 Zenodo concept DOI (all versions): [10.5281/zenodo.20127157](https://doi.org/10.5281/zenodo.20127157).
-Licence: CC BY 4.0 (`LICENSE`); the source trees keep the terms of their original archives.
+Licence: CC BY 4.0 (`LICENSE`) for the catalogue's own work (registers, name layer, code, the
+paper's generated files, the site) and for the trees whose sources are CC BY 4.0. Every tree file
+keeps the licence of its source, listed file by file in [`LICENSE-trees.md`](LICENSE-trees.md),
+which is generated from `registers/tree_licences.csv` (licence, evidence URL and quotation, date
+checked): CC0 1.0, CC BY 4.0 or CC BY 2.0 with the attribution it requires; `bacteria.nwk` and
+`archaea.nwk` (GTDB) under CC BY-SA 4.0; `salamanders.nwk` under GPL-3.0
+([`LICENSES/GPL-3.0.txt`](LICENSES/GPL-3.0.txt)). Trees whose sources state no licence are not
+redistributed (see *Trees not redistributed*).
 
 ## Contents
 
 | Path | What it holds |
 |---|---|
-| `standardized/trees/` | 263 Newick files with numeric tip ids: the 26 reference trees (one per group that has a species-level tree, 24 eukaryotic and 2 prokaryotic) and 237 other trees, among them 218 family-level trees of tetrapods (Condamine et al. 2019), one of which is the reference tree of Crocodilians. |
-| `standardized/` | The name layer: `dictionary.csv` (id -> standardized name), `full_mapping.csv` (source label -> name), the Catalogue of Life resolution of every reference-tree tip (`col_resolution.csv.gz`), per-tree `metadata.csv`, `canonical_sources/` (the unpruned source of each reference tree) and `superseded_canonicals/` (the seven reference trees this release replaces). See [`standardized/README.md`](standardized/README.md). |
-| `registers/` | The per-group table (`coverage_basis.csv`), the molecular tips of each reference tree and the lists they are taken from, the time-scale, crown-interval and calibration registers, the pruned off-group tips, and the Catalogue of Life, GBIF and Open Tree extracts. See [`registers/README.md`](registers/README.md). |
+| `standardized/trees/` | The trees of the catalogue as Newick files with numeric tip ids. The catalogue holds 263 published species-level phylogenies: the 26 reference trees (one per group that has a species-level tree, 24 eukaryotic and 2 prokaryotic) and 237 other trees, among them 218 family-level trees of tetrapods (Condamine et al. 2019), one of which is the reference tree of Crocodilians. 255 of them are redistributed here; the other 8, whose sources state no licence, are listed in `registers/withheld_trees.csv`. |
+| `standardized/` | The name layer: `dictionary.csv` (id -> standardized name), `full_mapping.csv` (source label -> name), the Catalogue of Life resolution of every reference-tree tip (`col_resolution.csv.gz`), per-tree `metadata.csv`, `canonical_sources/` (the unpruned source of each reference tree) and `superseded_canonicals/` (the former reference trees), except the files withheld for their licence. See [`standardized/README.md`](standardized/README.md). |
+| `registers/` | The per-group table (`coverage_basis.csv`), the molecular tips of each reference tree and the lists they are taken from, the time-scale, crown-interval and calibration registers, the pruned off-group tips, the Catalogue of Life, GBIF and Open Tree extracts, the licence of every source (`tree_licences.csv`) and the files withheld for their licence (`withheld_trees.csv`, with their tip lists in `withheld_tips/`). See [`registers/README.md`](registers/README.md). |
 | `paper/` | The paper's generated numbers, tables and figure data, as the manuscript prints them. |
 | `scripts/reproduce_paper.py` | Recomputes the paper's numbers from `standardized/` and `registers/` and compares them with `paper/`. Python 3, standard library only. |
 | `code/rebuild/` | The pipeline that wrote `standardized/`, `registers/` and `paper/`, with a map from its paths to this repository. See [`code/rebuild/README.md`](code/rebuild/README.md). |
@@ -44,7 +51,7 @@ Licence: CC BY 4.0 (`LICENSE`); the source trees keep the terms of their origina
 
 ## The coverage levels
 
-The 2,085,869 described eukaryotic species are divided into 60 groups; 24 of them have a
+The 2,085,607 described eukaryotic species are divided into 60 groups; 24 of them have a
 species-level phylogeny, and for each the largest one found is the group's reference tree, except
 Birds: AvesData 1.3 aligns one synthesis to three versions of the Clements taxonomy, and the
 version used is the one with the most tips placed by an input phylogeny (Clements 2021, 9,239
@@ -100,7 +107,7 @@ The script re-implements the counting rules from their statements, without impor
 pipeline, and checks:
 
 - every reference tree against its source: tips = source tips minus off-group tips minus repeated
-  species, branch lengths preserved;
+  species, branch lengths preserved (for a withheld tree or source, see *Trees not redistributed*);
 - the molecular tips of all 21 listed eukaryotic groups and both prokaryotic groups, re-derived
   from the distributed lists;
 - the per-group table, the four levels (per group, per category, on the union of groups), the
@@ -138,7 +145,38 @@ its `source` column gives under a `Data/` directory beside a copy of this reposi
 The figures: `python3 code/figures/fig_coverage_cascade.py` and the four other scripts in
 `code/figures/` write Figures 1 to 5 to `paper/figures/`.
 
-## What is not redistributed
+## Trees not redistributed
+
+The sources of 8 of the 263 trees of the catalogue state no licence, so their files are not in
+this release: cephalopods, frogs, gastropods, insects, primates, seed plants, sharks and
+sponges. Their unpruned sources, the former shark reference tree and the site's copies and
+derivatives of them, and the site's Xiphosura tree are withheld for the same reason: 19 files in
+all. The paper counts on every tree it used, so its numbers are unchanged.
+`registers/withheld_trees.csv` lists each withheld file: its path in this release, the study,
+the source to download the original from, the licence status and its evidence, the sha256, tip
+count, root height and root-to-tip coefficient of variation of the file the paper used, and how
+that file was derived from the source (the registers that record it). `registers/withheld_tips/`
+holds the tip labels of each, a list of species.
+
+`scripts/reproduce_paper.py` runs every check that reads a withheld file on the registers when
+the file is absent, comparing its recorded tip count, tip list, root height and coefficient of
+variation with the other registers, and prints a `NOTE` line naming the file and its source. To
+run those checks on the tree itself, download the source, derive the file as its `derivation`
+column states and place it at its path; the script then checks its sha256 against the register
+and runs the full check.
+
+| Tree | Source | Licence stated |
+|---|---|---|
+| `seed_plants.nwk` | Smith & Brown 2018, [github.com/FePhyFoFum/big_seed_plant_trees](https://github.com/FePhyFoFum/big_seed_plant_trees/releases) (ALLMB.tre) | none |
+| `insects.nwk` | Chesters 2023, insectphylo.org Insecta_v2 (the site is offline; [web.archive.org snapshot](https://web.archive.org/web/20260310151850/https://insectphylo.org/download-a-synthesis-phylogeny/)) | none |
+| `frogs.nwk` | Portik et al. 2023, [github.com/nhm-herpetology/frog-phylogeny](https://github.com/nhm-herpetology/frog-phylogeny) | none |
+| `sharks.nwk` | Stein et al. 2018, [vertlife.org/sharktree](https://vertlife.org/sharktree/) | none |
+| `primates.nwk` | 10kTrees v3 (Arnold et al. 2010), [10ktrees.nunn-lab.org](https://10ktrees.nunn-lab.org/) | none |
+| `cephalopods.nwk` | Basava et al. 2024, [github.com/kcbasava/ceph-brain-evolution](https://github.com/kcbasava/ceph-brain-evolution) | none |
+| `sponges.nwk` | Lavrov et al. 2023, [github.com/lavrovlab/Demosponge-phylogeny-supplementary-data](https://github.com/lavrovlab/Demosponge-phylogeny-supplementary-data) | none for the chronogram (the repository licenses its scripts under GPL v3) |
+| `gastropods.nwk` | Zapata et al. 2014, [bitbucket.org/caseywdunn/gastropoda](https://bitbucket.org/caseywdunn/gastropoda/src/master/data/Chronogram.tre) (Chronogram.tre) | none |
+
+## What else is not redistributed
 
 - The source deposits (Dryad, Zenodo, Figshare, GitHub, VertLife, FishTreeOfLife, insectphylo,
   GTDB). Each is cited in `registers/tree_provenance.csv`, in the headers of
@@ -174,9 +212,13 @@ list_trees()
 tree <- load_atlas_tree("mammals")
 ```
 
-The tag `v1.1.2` is created on GitHub when this release is published. From then on the option
+A withheld tree (see *Trees not redistributed*) cannot be loaded: from phyloatlas 0.1.1,
+`load_atlas_tree()` stops with the address of its source, read from
+`registers/withheld_trees.csv`.
+
+The tag `v1.1.3` is created on GitHub when this release is published. From then on the option
 can name the tag instead of a clone,
-`"https://raw.githubusercontent.com/franciscorichter/phylo-species-atlas/v1.1.2"`; before
+`"https://raw.githubusercontent.com/franciscorichter/phylo-species-atlas/v1.1.3"`; before
 publication that address returns HTTP 404.
 
 ## The browser site
@@ -201,12 +243,13 @@ It reads:
   `standardized/trees/`. `site/data/partitions/` holds no copy of a reference tree; it holds the
   per-group notes (`info.yaml`, text on methods, caveats and the provenance of each estimate),
   copies of other redistributed trees, identical to their files in `standardized/trees/`, and
-  three trees the release does not redistribute: the Basidiomycota chronogram of Varga et al.
-  (2019), the Xiphosura tree of Obst et al. (2012) and the Primates tree with one tip per
-  species, derived from `standardized/trees/primates.nwk` (one tip per `Genus_species`, branch
-  lengths of joined edges added).
+  one tree that is not in `standardized/trees/`, the Basidiomycota chronogram of Varga et al.
+  (2019, Dryad, CC0). For a group whose reference tree is withheld, the group's card names the
+  source and states that the tree is not redistributed (no licence stated by the source), and
+  opening the group draws no tree.
 
-`site/data.json` lists the 263 redistributed trees; `timetree.nwk` is not among them.
+`site/data.json` lists the 263 trees of the catalogue: 255 redistributed and 8 withheld, each
+of these with its source; `timetree.nwk` is not among them.
 `scripts/reproduce_paper.py` compares every number of `site/data.json` with the paper's macros,
 Table 1, the crown register and the estimates, and every tree file under `site/` with its file in
 `standardized/trees/`. `python3 site/build.py --check` (PyYAML) confirms that `site/data.json` is

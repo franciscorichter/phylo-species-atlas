@@ -1,0 +1,70 @@
+partition: Other protists
+slug: other_protists
+category: Microbes & protists
+
+estimate:
+  described: 3353
+  low: 3353
+  total: 3353
+  high: 3353
+  confidence: Low
+  source:
+    key: Pawlowski 2012
+    doi: 10.1371/journal.pbio.1001419
+    pdf: null
+    url: https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001419
+    note: "Residual group of the eukaryotic lineages in no other group (D66). Described count: the sum of the catalogued morphospecies of 29 lineages in Pawlowski et al. 2012, Table S1 (Supplementary table 1, 'Number of catalogued morphospecies and V4 18S rDNA OTU-97% amongst the 60 main eukaryotic lineages'). No estimate of the total is published for the group; low, total and high are the described count."
+  interval_provenance:
+    described:
+      type: literature
+      source: Pawlowski 2012
+      verbatim_quote: "Supplementary table 1. Number of catalogued morphospecies and V4 18S rDNA OTU-97% amongst the 60 main eukaryotic lineages."
+    estimated_total:
+      type: none-published
+      source: Pawlowski 2012
+      verbatim_quote: null
+    estimated_low:
+      type: derived-from-described
+      source: Pawlowski 2012
+      verbatim_quote: null
+    estimated_high:
+      type: derived-from-described
+      source: Pawlowski 2012
+      verbatim_quote: null
+    overall_classification: derived
+
+canonical_tree:
+  filename: null
+  status: not-shipped
+  reason: "Residual group of lineages from five supergroups; no species-level tree spans it."
+
+constituents:
+  - {name: Polycystinea (Radiolaria), described: 850}
+  - {name: Xanthophyceae, described: 600}
+  - {name: Parabasalia, described: 466}
+  - {name: Opalinata, described: 400}
+  - {name: Acantharea (Radiolaria), described: 160}
+  - {name: Centroheliozoa, described: 150}
+  - {name: Fornicata, described: 146}
+  - {name: Preaxostyla, described: 96}
+  - {name: Heterolobosea, described: 80}
+  - {name: Bicoecea, described: 72}
+  - {name: Cryptophyta, described: 70}
+  - {name: Mesomycetozoea, described: 47}
+  - {name: Labyrinthulea, described: 40}
+  - {name: Hyphochytriomyceta, described: 25}
+  - {name: Phaeothamniophyceae, described: 25}
+  - {name: Raphidophyceae, described: 20}
+  - {name: Dictyochophyceae, described: 15}
+  - {name: Eustigmatophyceae, described: 15}
+  - {name: Breviatea, described: 12}
+  - {name: Apusomonadidae, described: 12}
+  - {name: Pelagophyceae, described: 12}
+  - {name: Jakobida, described: 10}
+  - {name: Katablepharidophyta, described: 9}
+  - {name: Ellobiopsidae, described: 6}
+  - {name: Glaucocystophyta, described: 5}
+  - {name: Pinguiophyceae, described: 5}
+  - {name: Malawimonadidae, described: 3}
+  - {name: Chromera, described: 1}
+  - {name: other Radiolaria, described: 1}

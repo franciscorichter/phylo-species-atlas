@@ -1,13 +1,13 @@
 {
   "tree": {
     "file": "tree.pdf",
-    "doi": "10.7717/peerj.1719",
-    "study": "Garrison NL, Rodriguez J, Agnarsson I, Coddington JA, Griswold CE, Hamilton CA, Hedin M, Kocot KM, Ledford JM, Bond JE (2016). Spider phylogenomics: untangling the Spider Tree of Life. PeerJ 4:e1719.",
-    "year": 2016,
-    "journal": "PeerJ",
+    "doi": "10.3390/d12080288",
+    "study": "Macías-Hernández N, Domènech M, Cardoso P, Emerson BC, Borges PAV, Lozano-Fernandez J, Paulo OS, Vieira A, et al. (2020). Building a Robust, Densely-Sampled Spider Tree of Life for Ecosystem Research. Diversity 12(8):288.",
+    "year": 2020,
+    "journal": "Diversity",
     "license": "CC-BY 4.0",
     "open_access": true,
-    "url": "https://peerj.com/articles/1719/",
+    "url": "https://doi.org/10.3390/d12080288",
     "data_url": "https://zenodo.org/records/3941712"
   }
 }

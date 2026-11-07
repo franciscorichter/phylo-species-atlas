@@ -1,11 +1,12 @@
 {
   "tree": {
     "file": "tree.pdf",
-    "doi": "10.1093/molbev/msx268",
-    "study": "Parks MB, Wickett NJ, Alverson AJ (2018)",
-    "license": "Oxford Academic (subscription)",
-    "open_access": false,
-    "url": "https://doi.org/10.1093/molbev/msx268"
+    "doi": "10.1111/nph.15137",
+    "study": "Nakov T, Beaulieu JM, Alverson AJ (2018). Accelerated diversification is related to life history and locomotion in a hyperdiverse lineage of microbial eukaryotes (Diatoms, Bacillariophyta). New Phytologist 219:462-473.",
+    "license": "CC-BY 4.0",
+    "open_access": true,
+    "url": "https://doi.org/10.1111/nph.15137",
+    "data_url": "https://doi.org/10.5281/zenodo.583628"
   },
   "estimate": {
     "file": null,

@@ -53,6 +53,7 @@ async function loadData() {
       est_cls: (r.interval_provenance || {}).overall_classification,
       file: r.filename, tips: r.tips, year: tr.year, study: tr.study, doi: tr.doi,
       in_package: !!tr.in_package, names_file: tr.names_file, dots: dots[r.group],
+      withheld: tr.withheld || null,      // not redistributed: source link, never fetched
     };
   });
   const euk = cov.filter(r => !r.is_prokaryotic);
@@ -106,10 +107,10 @@ const STEPS = [
     cifra: () => DATA.described_euk_text, sub: () => "described species",
     frase: () => `Each dot stands for ${fmt.format(DATA.scale)} described species: ${fmt.format(euk.reduce((a, g) => a + g.dots.all, 0))} dots. The open dots are Bacteria and Archaea, ${DATA.described_prok_text} GTDB species clusters, counted apart from every eukaryotic number.` },
   { key: "arbol", corto: "Tree",
-    titulo: "Sixty-two groups, in the order of the tree of life",
-    cifra: () => "62", sub: () => "groups",
+    titulo: `${DATA.groups.length} groups, in the order of the tree of life`,
+    cifra: () => String(DATA.groups.length), sub: () => "groups",
     frase: () => `Each arc of the ring holds the dots of one group, as wide as its described species. The tree inside is the branching order of the groups in the Open Tree of Life synthesis. Click or tap a group.`,
-    nota: () => `Five catch-all groups (${Object.keys(DATA.bins).join(", ")}) are not clades; each sits at the common ancestor of its members. Groups smaller than one dot are drawn as a ring.` },
+    nota: () => `${Object.keys(DATA.bins).length} catch-all groups (${Object.keys(DATA.bins).join(", ")}) are not clades; each sits at the common ancestor of its members. Groups smaller than one dot are drawn as a ring.` },
   ...LEVELS.map((k, i) => ({
     key: k, corto: String(i + 1), nivel: k,
     titulo: lv[k].label,
@@ -460,7 +461,7 @@ async function openGroup(name) {
   const g = G[name];
   state.group = name;
   showCard(name);
-  if (!g.file) { state.treeView = null; retarget(); return; }
+  if (!g.file || g.withheld) { state.treeView = null; retarget(); return; }
   const status = document.getElementById("estado");
   if (status) status.textContent = `Loading the tree of ${name}…`;
   try {
@@ -585,11 +586,19 @@ function showCard(name) {
     </table>
     <div class="ref">${ref}</div>
     ${g.file && g.in_package ? `<div class="ref dl"><a href="${TREES_BASE + g.file}" download>Download the tree (.nwk)</a> · in R:</div><div class="r">tree &lt;- phyloatlas::load_atlas_tree("${g.file.replace(/\.nwk$/, "")}")</div>` : ""}
+    ${g.file && g.withheld ? `<div class="ref dl">Tree file ${g.withheld.text}. Source: ${srcLink(g.withheld.source_url)}</div>` : ""}
     <div class="ref" id="estado"></div>
     ${state.treeView || state.group === name && g.file ? `<button type="button" id="cerrar">Back to the ring</button>` : ""}`;
   c.classList.add("on");
   const b = document.getElementById("cerrar");
   if (b) b.onclick = closeGroup;
+}
+
+// the source of a withheld tree: the first URL of the register's text is the link
+function srcLink(s) {
+  const esc = (x) => String(x).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
+  const m = /https?:\/\/[^\s;)]+/.exec(s || "");
+  return m ? `<a href="${esc(m[0])}" target="_blank" rel="noopener">${esc(m[0])}</a>` : esc(s || "");
 }
 
 function closeGroup() {

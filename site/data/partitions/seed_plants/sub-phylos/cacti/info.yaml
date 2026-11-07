@@ -10,6 +10,7 @@ tree:
     key: Thompson J 2026
     study: Thompson J et al. (2026) Scientific Data
     doi: 10.1038/s41597-026-06936-7
+    url: https://doi.org/10.6084/m9.figshare.30940019
     pdf: papers/tree.pdf
   methods:
     note: "Largest time-calibrated cactus phylogeny, part of CactEcoDB database"

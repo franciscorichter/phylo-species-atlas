@@ -6,7 +6,7 @@ Life, for the denominator sensitivity of finding S08 (decisions D9, D18).
 For every partition: the number of accepted, extant species-rank names under
 the taxa that define it (DEF below, from the partition scopes in
 Data/site/data/partitions/*/info.yaml), in the Catalogue of Life base release
-(ChecklistBank alias 3LR; COL26.9 when written), read through the
+(COL26.9, ChecklistBank 316321; pinned, because the alias 3LR follows the latest release), read through the
 ChecklistBank API.
 
     count(taxon) = total(status=accepted, rank=species, TAXON_ID=taxon)
@@ -20,7 +20,7 @@ differently: under Arthropoda in the base release, under Myriapoda in XR).
 COVERAGE HOLES.  The base release covers some classes thinly or not at all
 (algae and protists; Thecostraca, Branchiura, Pentastomida, Diplura).  The
 rule, applied to every partition: within each plus-term, every class is
-compared between the base release and the extended release XR (alias 3LXR) of
+compared between the base release and the extended release XR (ChecklistBank 316441) of
 the same Catalogue of Life version; where base < HOLE_FRACTION x XR, the class
 is a hole and its XR count replaces its base count.  A plus-term that is
 itself a class or lower rank is one unit; a plus-term absent from the base
@@ -53,10 +53,10 @@ import requests
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, os.pardir))
-BASIS = os.path.join(ROOT, "Data", "coverage_basis.csv")
+BASIS = os.path.join(ROOT, "Data", "_rebuild", "truth_species.csv")   # the partition list (source, not the rebuild output)
 OUT = os.path.join(ROOT, "Data", "col_denominators.csv")
 API = "https://api.checklistbank.org"
-BASE, XR = "3LR", "3LXR"
+BASE, XR = "316321", "316441"   # COL26.9 base and XR, the release the paper cites (D53); the aliases 3LR/3LXR move with each new release
 HOLE_FRACTION = 0.5          # rule parameter: base < 0.5 x XR is a hole
 S = requests.Session()
 
@@ -130,9 +130,6 @@ DEF = {
  "Lampreys": ([T("Petromyzonti", "class", "Chordata")], []),
  "Lycophytes": ([T("Lycopodiopsida", "class", "Tracheophyta")], []),
  "Mammals": ([T("Mammalia", "class", "Chordata")], []),
- "Minor animal phyla": ([T(n, "phylum", A) for n in
-                         ("Onychophora", "Placozoa", "Loricifera",
-                          "Cycliophora", "Chaetognatha")], []),
  # Chilopoda: a class under Arthropoda in the base release, inside Myriapoda
  # in XR (skipped there as nested).
  "Myriapods": ([T("Myriapoda", "subphylum", "Arthropoda"),
@@ -154,15 +151,22 @@ DEF = {
  "Other hexapods": ([T("Collembola", "class", "Arthropoda"),
                      T("Protura", "class", "Arthropoda"),
                      T("Diplura", "class", "Arthropoda")], []),
- # The info.yaml scope lists ten phyla 'primarily'; the animal phyla that no
- # other partition takes (measured by the completeness residual) join here.
+ # The animal phyla that no other partition takes (measured by the completeness
+ # residual) join here; the former Minor animal phyla are part of it (D66).
  "Other phyla": ([T(n, "phylum", A) for n in
                   ("Gastrotricha", "Kinorhyncha", "Priapulida", "Sipuncula",
                    "Phoronida", "Hemichordata", "Brachiopoda", "Entoprocta",
                    "Gnathostomulida", "Nematomorpha", "Xenacoelomorpha",
-                   "Dicyemida", "Orthonectida")]
+                   "Dicyemida", "Orthonectida", "Onychophora", "Placozoa",
+                   "Loricifera", "Cycliophora", "Chaetognatha")]
                  + [T("Cephalochordata", "subphylum", "Chordata"),
                     T("Echiura", "subclass", "Annelida", True)], []),
+ # The eukaryotic lineages in no other group (D66, Pawlowski et al. 2012 Table S1).
+ # COL26.9 holds species only under Radiozoa; the other terms are listed so that a
+ # later release that adds them is counted.
+ "Other protists": ([T("Radiozoa", "phylum", C), T("Metamonada", "phylum", PR, True),
+                     T("Percolozoa", "phylum", PR, True), T("Loukozoa", "phylum", PR, True),
+                     T("Glaucophyta", "phylum", P, True)], []),
  "Other vertebrates": ([T("Actinistia", "superclass", "Chordata"),
                         T("Dipnoi", "superclass", "Chordata"),
                         T("Sphenodontida", "suborder", "Reptilia")], []),

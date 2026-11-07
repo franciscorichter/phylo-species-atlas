@@ -26,7 +26,7 @@
   "denominators": {
     "eukaryotic": {
       "n_partitions": 60,
-      "described": 2085869,
+      "described": 2085607,
       "note": "THE denominator for every rung."
     },
     "prokaryotic": {
@@ -35,10 +35,10 @@
     },
     "all_life": {
       "n_partitions": 62,
-      "described": 2229483,
-      "estimated_total": 15606049,
-      "estimated_low": 7284934,
-      "estimated_high": 35400794,
+      "described": 2229221,
+      "estimated_total": 15609402,
+      "estimated_low": 7284627,
+      "estimated_high": 35404147,
       "note": "SI and Figure 1 ONLY, and it must be labelled all-life there. NEVER a coverage denominator."
     }
   },
@@ -47,12 +47,12 @@
       "definition": "NAMED: the tip label occurs in a retained eukaryotic canonical tree",
       "numerator_sum": 395517.0,
       "numerator_sum_rounded": 395517,
-      "denominator": 2085869,
-      "percent": 18.96173729030922,
+      "denominator": 2085607,
+      "percent": 18.9641193187403,
       "n_partitions_contributing": 24,
       "unit": "species",
       "numerator_union": 395517,
-      "percent_union": 18.96173729030922,
+      "percent_union": 18.9641193187403,
       "shared_labels": 0,
       "headline_convention": "union"
     },
@@ -60,8 +60,8 @@
       "definition": "MOLECULAR: C0 and the tip is in the molecular analysis behind that tree",
       "numerator_sum": 157201.0,
       "numerator_sum_rounded": 157201,
-      "denominator": 2085869,
-      "percent": 7.536475205298127,
+      "denominator": 2085607,
+      "percent": 7.53742195917064,
       "n_partitions_contributing": 24,
       "unit": "tip-equivalents",
       "c1_bases": {
@@ -70,15 +70,15 @@
         "expectation": 0
       },
       "numerator_union": 157201,
-      "percent_union": 7.536475205298127,
+      "percent_union": 7.53742195917064,
       "shared_labels": 0
     },
     "C1d": {
       "definition": "DATED: C1 and the shipped canonical tree is a measured chronogram",
       "numerator_sum": 113180.0,
       "numerator_sum_rounded": 113180,
-      "denominator": 2085869,
-      "percent": 5.426035863230146,
+      "denominator": 2085607,
+      "percent": 5.426717497591828,
       "n_partitions_contributing": 18,
       "unit": "tip-equivalents",
       "c1_bases": {
@@ -87,15 +87,15 @@
         "expectation": 0
       },
       "numerator_union": 113180,
-      "percent_union": 5.426035863230146,
+      "percent_union": 5.426717497591828,
       "shared_labels": 0
     },
     "C1u": {
       "definition": "UNCERTAINTY AVAILABLE: C1d and the source archive carries a node-age distribution or interval a user can propagate (a sampled tree set whose node ages vary among the sequenced species, or annotated intervals), whatever its relation to the calibration prior (D55); the last level (D58)",
       "numerator_sum": 23942.0,
       "numerator_sum_rounded": 23942,
-      "denominator": 2085869,
-      "percent": 1.147818966579397,
+      "denominator": 2085607,
+      "percent": 1.1479631589268735,
       "n_partitions_contributing": 13,
       "unit": "tip-equivalents",
       "c1_bases": {
@@ -104,7 +104,7 @@
         "expectation": 0
       },
       "numerator_union": 23942,
-      "percent_union": 1.147818966579397,
+      "percent_union": 1.1479631589268735,
       "shared_labels": 0
     }
   },
@@ -158,30 +158,30 @@
       "C1d_pct": 0.07668870603353577
     },
     "Other animals": {
-      "described": 207063,
-      "denominator": 207063,
-      "n_partitions": 20,
+      "described": 203448,
+      "denominator": 203448,
+      "n_partitions": 19,
       "C0_sum": 1007,
-      "C0_pct": 0.4863254178679919,
+      "C0_pct": 0.49496677283630214,
       "C1_sum_exact": 1007.0,
       "C1_sum": 1007,
-      "C1_pct": 0.4863254178679919,
+      "C1_pct": 0.49496677283630214,
       "C1d_sum_exact": 525.0,
       "C1d_sum": 525,
-      "C1d_pct": 0.2535460222251199
+      "C1d_pct": 0.2580511973575557
     },
     "Microbes & protists": {
-      "described": 211024,
-      "denominator": 211024,
-      "n_partitions": 14,
+      "described": 214377,
+      "denominator": 214377,
+      "n_partitions": 15,
       "C0_sum": 1435,
-      "C0_pct": 0.6800174387747365,
+      "C0_pct": 0.6693815101433456,
       "C1_sum_exact": 1435.0,
       "C1_sum": 1435,
-      "C1_pct": 0.6800174387747365,
+      "C1_pct": 0.6693815101433456,
       "C1d_sum_exact": 39.0,
       "C1d_sum": 39,
-      "C1d_pct": 0.01848131018272803
+      "C1d_pct": 0.01819225010145678
     }
   },
   "prokaryotic_line": {
@@ -239,7 +239,21 @@
       "Insects"
     ],
     "rule": "root-to-tip coefficient of variation measured on the SHIPPED .nwk file with the audit's recursive parser (truth_dated.csv), AND branch lengths in absolute time (Data/time_scale_checks.csv; D14: an ultrametric tree in relative time is its own class); the ledger's `dated` column is never read",
-    "note": "everything at C1d and below rests on these trees ONLY"
+    "note": "everything at C1d and below rests on these trees ONLY",
+    "n_redistributed": 255,
+    "n_withheld": 8,
+    "withheld_trees": [
+      "cephalopods.nwk",
+      "frogs.nwk",
+      "gastropods.nwk",
+      "insects.nwk",
+      "primates.nwk",
+      "seed_plants.nwk",
+      "sharks.nwk",
+      "sponges.nwk"
+    ],
+    "n_withheld_files": 19,
+    "withheld_rule": "a tree file is withheld from the data release when its source states no licence (Data/tree_licences.csv, redistribution class no-licence-stated); n_shipped counts the trees the paper used, n_redistributed those the release carries, n_withheld those it lists in registers/withheld_trees.csv"
   },
   "archival_classes_canonical": {
     "hpd_recoverable": 7,
@@ -268,62 +282,62 @@
           "C0": {
             "numerator": 395517,
             "numerator_sum": 395517.0,
-            "denominator": 2085869,
-            "percent": 18.96173729030922,
+            "denominator": 2085607,
+            "percent": 18.9641193187403,
             "numerator_union": 395517,
-            "percent_union": 18.96173729030922
+            "percent_union": 18.9641193187403
           },
           "C1": {
             "numerator": 157085,
             "numerator_sum": 157085.3369,
-            "denominator": 2085869,
-            "percent": 7.53093012552562
+            "denominator": 2085607,
+            "percent": 7.531876182809129
           },
           "C1d": {
             "numerator": 113064,
             "numerator_sum": 113064.3369,
-            "denominator": 2085869,
-            "percent": 5.4204907834576375
+            "denominator": 2085607,
+            "percent": 5.421171721230317
           },
           "C1u": {
             "numerator": 23826,
             "numerator_sum": 23826.3369,
-            "denominator": 2085869,
-            "percent": 1.1422738868068896
+            "denominator": 2085607,
+            "percent": 1.1424173825653634
           }
         },
         "at_f_high": {
           "C0": {
             "numerator": 395517,
             "numerator_sum": 395517.0,
-            "denominator": 2085869,
-            "percent": 18.96173729030922,
+            "denominator": 2085607,
+            "percent": 18.9641193187403,
             "numerator_union": 395517,
-            "percent_union": 18.96173729030922
+            "percent_union": 18.9641193187403
           },
           "C1": {
             "numerator": 157201,
             "numerator_sum": 157201.0,
-            "denominator": 2085869,
-            "percent": 7.536475205298127,
+            "denominator": 2085607,
+            "percent": 7.53742195917064,
             "numerator_union": 157201,
-            "percent_union": 7.536475205298127
+            "percent_union": 7.53742195917064
           },
           "C1d": {
             "numerator": 113180,
             "numerator_sum": 113180.0,
-            "denominator": 2085869,
-            "percent": 5.426035863230146,
+            "denominator": 2085607,
+            "percent": 5.426717497591828,
             "numerator_union": 113180,
-            "percent_union": 5.426035863230146
+            "percent_union": 5.426717497591828
           },
           "C1u": {
             "numerator": 23942,
             "numerator_sum": 23942.0,
-            "denominator": 2085869,
-            "percent": 1.147818966579397,
+            "denominator": 2085607,
+            "percent": 1.1479631589268735,
             "numerator_union": 23942,
-            "percent_union": 1.147818966579397
+            "percent_union": 1.1479631589268735
           }
         },
         "propagates_to_C1d": true,
@@ -344,34 +358,34 @@
           "C0": {
             "numerator": 10469,
             "numerator_sum": 10469.0,
-            "denominator": 2085869,
-            "percent": 0.5019011261013995,
+            "denominator": 2085607,
+            "percent": 0.5019641763764697,
             "numerator_union": 10469,
-            "percent_union": 0.5019011261013995
+            "percent_union": 0.5019641763764697
           },
           "C1": {
             "numerator": 8980,
             "numerator_sum": 8980.0,
-            "denominator": 2085869,
-            "percent": 0.4305160103534786,
+            "denominator": 2085607,
+            "percent": 0.4305700930232781,
             "numerator_union": 8980,
-            "percent_union": 0.4305160103534786
+            "percent_union": 0.4305700930232781
           },
           "C1d": {
             "numerator": 8980,
             "numerator_sum": 8980.0,
-            "denominator": 2085869,
-            "percent": 0.4305160103534786,
+            "denominator": 2085607,
+            "percent": 0.4305700930232781,
             "numerator_union": 8980,
-            "percent_union": 0.4305160103534786
+            "percent_union": 0.4305700930232781
           },
           "C1u": {
             "numerator": 8980,
             "numerator_sum": 8980.0,
-            "denominator": 2085869,
-            "percent": 0.4305160103534786,
+            "denominator": 2085607,
+            "percent": 0.4305700930232781,
             "numerator_union": 8980,
-            "percent_union": 0.4305160103534786
+            "percent_union": 0.4305700930232781
           }
         }
       },
@@ -384,34 +398,34 @@
           "C0": {
             "numerator": 100,
             "numerator_sum": 100.0,
-            "denominator": 2085869,
-            "percent": 0.004794164925985285,
+            "denominator": 2085607,
+            "percent": 0.0047947671828872844,
             "numerator_union": 100,
-            "percent_union": 0.004794164925985285
+            "percent_union": 0.0047947671828872844
           },
           "C1": {
             "numerator": 100,
             "numerator_sum": 100.0,
-            "denominator": 2085869,
-            "percent": 0.004794164925985285,
+            "denominator": 2085607,
+            "percent": 0.0047947671828872844,
             "numerator_union": 100,
-            "percent_union": 0.004794164925985285
+            "percent_union": 0.0047947671828872844
           },
           "C1d": {
             "numerator": 100,
             "numerator_sum": 100.0,
-            "denominator": 2085869,
-            "percent": 0.004794164925985285,
+            "denominator": 2085607,
+            "percent": 0.0047947671828872844,
             "numerator_union": 100,
-            "percent_union": 0.004794164925985285
+            "percent_union": 0.0047947671828872844
           },
           "C1u": {
             "numerator": 80,
             "numerator_sum": 80.0,
-            "denominator": 2085869,
-            "percent": 0.0038353319407882277,
+            "denominator": 2085607,
+            "percent": 0.0038358137463098273,
             "numerator_union": 80,
-            "percent_union": 0.0038353319407882277
+            "percent_union": 0.0038358137463098273
           }
         }
       },
@@ -443,34 +457,34 @@
           "C0": {
             "numerator": 384948,
             "numerator_sum": 384948.0,
-            "denominator": 2085869,
-            "percent": 18.455041999281836,
+            "denominator": 2085607,
+            "percent": 18.457360375180944,
             "numerator_union": 384948,
-            "percent_union": 18.455041999281836
+            "percent_union": 18.457360375180944
           },
           "C1": {
             "numerator": 148121,
             "numerator_sum": 148121.0,
-            "denominator": 2085869,
-            "percent": 7.101165030018664,
+            "denominator": 2085607,
+            "percent": 7.102057098964474,
             "numerator_union": 148121,
-            "percent_union": 7.101165030018664
+            "percent_union": 7.102057098964474
           },
           "C1d": {
             "numerator": 104100,
             "numerator_sum": 104100.0,
-            "denominator": 2085869,
-            "percent": 4.990725687950682,
+            "denominator": 2085607,
+            "percent": 4.9913526373856625,
             "numerator_union": 104100,
-            "percent_union": 4.990725687950682
+            "percent_union": 4.9913526373856625
           },
           "C1u": {
             "numerator": 14882,
             "numerator_sum": 14882.0,
-            "denominator": 2085869,
-            "percent": 0.7134676242851301,
+            "denominator": 2085607,
+            "percent": 0.7135572521572856,
             "numerator_union": 14882,
-            "percent_union": 0.7134676242851301
+            "percent_union": 0.7135572521572856
           }
         }
       },
@@ -482,34 +496,34 @@
           "C0": {
             "numerator": 385048,
             "numerator_sum": 385048.0,
-            "denominator": 2085869,
-            "percent": 18.459836164207818,
+            "denominator": 2085607,
+            "percent": 18.46215514236383,
             "numerator_union": 385048,
-            "percent_union": 18.459836164207818
+            "percent_union": 18.46215514236383
           },
           "C1": {
             "numerator": 148221,
             "numerator_sum": 148221.0,
-            "denominator": 2085869,
-            "percent": 7.105959194944649,
+            "denominator": 2085607,
+            "percent": 7.106851866147362,
             "numerator_union": 148221,
-            "percent_union": 7.105959194944649
+            "percent_union": 7.106851866147362
           },
           "C1d": {
             "numerator": 104200,
             "numerator_sum": 104200.0,
-            "denominator": 2085869,
-            "percent": 4.995519852876667,
+            "denominator": 2085607,
+            "percent": 4.99614740456855,
             "numerator_union": 104200,
-            "percent_union": 4.995519852876667
+            "percent_union": 4.99614740456855
           },
           "C1u": {
             "numerator": 14962,
             "numerator_sum": 14962.0,
-            "denominator": 2085869,
-            "percent": 0.7173029562259183,
+            "denominator": 2085607,
+            "percent": 0.7173930659035954,
             "numerator_union": 14962,
-            "percent_union": 0.7173029562259183
+            "percent_union": 0.7173930659035954
           }
         }
       },
@@ -522,34 +536,34 @@
           "C0": {
             "numerator": 395417,
             "numerator_sum": 395417.0,
-            "denominator": 2085869,
-            "percent": 18.956943125383233,
+            "denominator": 2085607,
+            "percent": 18.959324551557412,
             "numerator_union": 395417,
-            "percent_union": 18.956943125383233
+            "percent_union": 18.959324551557412
           },
           "C1": {
             "numerator": 157101,
             "numerator_sum": 157101.0,
-            "denominator": 2085869,
-            "percent": 7.531681040372142,
+            "denominator": 2085607,
+            "percent": 7.5326271919877525,
             "numerator_union": 157101,
-            "percent_union": 7.531681040372142
+            "percent_union": 7.5326271919877525
           },
           "C1d": {
             "numerator": 113080,
             "numerator_sum": 113080.0,
-            "denominator": 2085869,
-            "percent": 5.4212416983041605,
+            "denominator": 2085607,
+            "percent": 5.421922730408941,
             "numerator_union": 113080,
-            "percent_union": 5.4212416983041605
+            "percent_union": 5.421922730408941
           },
           "C1u": {
             "numerator": 23862,
             "numerator_sum": 23862.0,
-            "denominator": 2085869,
-            "percent": 1.1439836346386087,
+            "denominator": 2085607,
+            "percent": 1.1441273451805638,
             "numerator_union": 23862,
-            "percent_union": 1.1439836346386087
+            "percent_union": 1.1441273451805638
           }
         }
       },
@@ -581,74 +595,74 @@
           "C0": {
             "numerator": 10569,
             "numerator_sum": 10569.0,
-            "denominator": 2085869,
-            "percent": 0.5066952910273848,
+            "denominator": 2085607,
+            "percent": 0.506758943559357,
             "numerator_union": 10569,
-            "percent_union": 0.5066952910273848
+            "percent_union": 0.506758943559357
           },
           "C1": {
             "numerator": 9080,
             "numerator_sum": 9080.0,
-            "denominator": 2085869,
-            "percent": 0.43531017527946386,
+            "denominator": 2085607,
+            "percent": 0.4353648602061654,
             "numerator_union": 9080,
-            "percent_union": 0.43531017527946386
+            "percent_union": 0.4353648602061654
           },
           "C1d": {
             "numerator": 9080,
             "numerator_sum": 9080.0,
-            "denominator": 2085869,
-            "percent": 0.43531017527946386,
+            "denominator": 2085607,
+            "percent": 0.4353648602061654,
             "numerator_union": 9080,
-            "percent_union": 0.43531017527946386
+            "percent_union": 0.4353648602061654
           },
           "C1u": {
             "numerator": 9060,
             "numerator_sum": 9060.0,
-            "denominator": 2085869,
-            "percent": 0.4343513422942668,
+            "denominator": 2085607,
+            "percent": 0.43440590676958796,
             "numerator_union": 9060,
-            "percent_union": 0.4343513422942668
+            "percent_union": 0.43440590676958796
           }
         }
       }
     },
     "denominator": {
       "full_denominator": {
-        "described": 2085869,
+        "described": 2085607,
         "n_partitions": 60,
         "rungs": {
           "C0": {
             "numerator": 395517,
             "numerator_sum": 395517.0,
-            "denominator": 2085869,
-            "percent": 18.96173729030922,
+            "denominator": 2085607,
+            "percent": 18.9641193187403,
             "numerator_union": 395517,
-            "percent_union": 18.96173729030922
+            "percent_union": 18.9641193187403
           },
           "C1": {
             "numerator": 157201,
             "numerator_sum": 157201.0,
-            "denominator": 2085869,
-            "percent": 7.536475205298127,
+            "denominator": 2085607,
+            "percent": 7.53742195917064,
             "numerator_union": 157201,
-            "percent_union": 7.536475205298127
+            "percent_union": 7.53742195917064
           },
           "C1d": {
             "numerator": 113180,
             "numerator_sum": 113180.0,
-            "denominator": 2085869,
-            "percent": 5.426035863230146,
+            "denominator": 2085607,
+            "percent": 5.426717497591828,
             "numerator_union": 113180,
-            "percent_union": 5.426035863230146
+            "percent_union": 5.426717497591828
           },
           "C1u": {
             "numerator": 23942,
             "numerator_sum": 23942.0,
-            "denominator": 2085869,
-            "percent": 1.147818966579397,
+            "denominator": 2085607,
+            "percent": 1.1479631589268735,
             "numerator_union": 23942,
-            "percent_union": 1.147818966579397
+            "percent_union": 1.1479631589268735
           }
         }
       },
@@ -693,40 +707,40 @@
       },
       "col_single_authority": {
         "filled": {
-          "denominator": 1993112,
+          "denominator": 1993667,
           "partitions_keeping_primary": [],
           "rungs": {
             "C0": {
               "numerator": 395517,
               "numerator_sum": 395517.0,
-              "denominator": 1993112,
-              "percent": 19.84419340207675,
+              "denominator": 1993667,
+              "percent": 19.838669145850336,
               "numerator_union": 395517,
-              "percent_union": 19.84419340207675
+              "percent_union": 19.838669145850336
             },
             "C1": {
               "numerator": 157201,
               "numerator_sum": 157201.0,
-              "denominator": 1993112,
-              "percent": 7.887213563512738,
+              "denominator": 1993667,
+              "percent": 7.885017909209512,
               "numerator_union": 157201,
-              "percent_union": 7.887213563512738
+              "percent_union": 7.885017909209512
             },
             "C1d": {
               "numerator": 113180,
               "numerator_sum": 113180.0,
-              "denominator": 1993112,
-              "percent": 5.67855695013627,
+              "denominator": 1993667,
+              "percent": 5.676976144963025,
               "numerator_union": 113180,
-              "percent_union": 5.67855695013627
+              "percent_union": 5.676976144963025
             },
             "C1u": {
               "numerator": 23942,
               "numerator_sum": 23942.0,
-              "denominator": 1993112,
-              "percent": 1.201237060436142,
+              "denominator": 1993667,
+              "percent": 1.2009026582674038,
               "numerator_union": 23942,
-              "percent_union": 1.201237060436142
+              "percent_union": 1.2009026582674038
             }
           },
           "rungs_pct_1dp": {
@@ -883,7 +897,7 @@
           }
         },
         "base_only": {
-          "denominator": 1995747,
+          "denominator": 1996191,
           "partitions_keeping_primary": [
             "Brown algae",
             "Choanoflagellates",
@@ -897,34 +911,34 @@
             "C0": {
               "numerator": 395517,
               "numerator_sum": 395517.0,
-              "denominator": 1995747,
-              "percent": 19.817992962033763,
+              "denominator": 1996191,
+              "percent": 19.81358497258028,
               "numerator_union": 395517,
-              "percent_union": 19.817992962033763
+              "percent_union": 19.81358497258028
             },
             "C1": {
               "numerator": 157201,
               "numerator_sum": 157201.0,
-              "denominator": 1995747,
-              "percent": 7.876800015232392,
+              "denominator": 1996191,
+              "percent": 7.875048028971175,
               "numerator_union": 157201,
-              "percent_union": 7.876800015232392
+              "percent_union": 7.875048028971175
             },
             "C1d": {
               "numerator": 113180,
               "numerator_sum": 113180.0,
-              "denominator": 1995747,
-              "percent": 5.6710595080438555,
+              "denominator": 1996191,
+              "percent": 5.669798130539613,
               "numerator_union": 113180,
-              "percent_union": 5.6710595080438555
+              "percent_union": 5.669798130539613
             },
             "C1u": {
               "numerator": 23942,
               "numerator_sum": 23942.0,
-              "denominator": 1995747,
-              "percent": 1.1996510579747834,
+              "denominator": 1996191,
+              "percent": 1.1993842272608182,
               "numerator_union": 23942,
-              "percent_union": 1.1996510579747834
+              "percent_union": 1.1993842272608182
             }
           },
           "rungs_pct_1dp": {
@@ -1092,7 +1106,7 @@
         "partition": "Insects",
         "described": 929676,
         "described_source": "Catalogue of Life COL26.9",
-        "share_of_denominator_pct": 44.57020071730295,
+        "share_of_denominator_pct": 44.57579975517919,
         "note": "one round number from a single compilation carries this share of the whole eukaryotic denominator; every printed decimal in the paper is elastic to it"
       },
       "elasticity_demonstration": {
@@ -1101,76 +1115,76 @@
         "warning": "AN ELASTICITY DEMONSTRATION, NOT A RICHNESS CLAIM. The perturbation is a device for showing how much of every printed decimal rests on one round number.",
         "results": {
           "minus_20_pct": {
-            "denominator": 1899934,
+            "denominator": 1899672,
             "rungs": {
               "C0": {
                 "numerator": 395517,
                 "numerator_sum": 395517.0,
-                "denominator": 1899933.8,
-                "percent": 20.817409532900566,
+                "denominator": 1899671.8,
+                "percent": 20.820280640055824,
                 "numerator_union": 395517,
-                "percent_union": 20.817409532900566
+                "percent_union": 20.820280640055824
               },
               "C1": {
                 "numerator": 157201,
                 "numerator_sum": 157201.0,
-                "denominator": 1899933.8,
-                "percent": 8.274025126559673,
+                "denominator": 1899671.8,
+                "percent": 8.275166268194328,
                 "numerator_union": 157201,
-                "percent_union": 8.274025126559673
+                "percent_union": 8.275166268194328
               },
               "C1d": {
                 "numerator": 113180,
                 "numerator_sum": 113180.0,
-                "denominator": 1899933.8,
-                "percent": 5.957049661414518,
+                "denominator": 1899671.8,
+                "percent": 5.957871249128402,
                 "numerator_union": 113180,
-                "percent_union": 5.957049661414518
+                "percent_union": 5.957871249128402
               },
               "C1u": {
                 "numerator": 23942,
                 "numerator_sum": 23942.0,
-                "denominator": 1899933.8,
-                "percent": 1.2601491694079026,
+                "denominator": 1899671.8,
+                "percent": 1.2603229673673104,
                 "numerator_union": 23942,
-                "percent_union": 1.2601491694079026
+                "percent_union": 1.2603229673673104
               }
             }
           },
           "plus_20_pct": {
-            "denominator": 2271804,
+            "denominator": 2271542,
             "rungs": {
               "C0": {
                 "numerator": 395517,
                 "numerator_sum": 395517.0,
-                "denominator": 2271804.2,
-                "percent": 17.409819032819815,
+                "denominator": 2271542.2,
+                "percent": 17.41182708381997,
                 "numerator_union": 395517,
-                "percent_union": 17.409819032819815
+                "percent_union": 17.41182708381997
               },
               "C1": {
                 "numerator": 157201,
                 "numerator_sum": 157201.0,
-                "denominator": 2271804.2,
-                "percent": 6.919654431486657,
+                "denominator": 2271542.2,
+                "percent": 6.920452545411658,
                 "numerator_union": 157201,
-                "percent_union": 6.919654431486657
+                "percent_union": 6.920452545411658
               },
               "C1d": {
                 "numerator": 113180,
                 "numerator_sum": 113180.0,
-                "denominator": 2271804.2,
-                "percent": 4.981943426286473,
+                "denominator": 2271542.2,
+                "percent": 4.9825180443489,
                 "numerator_union": 113180,
-                "percent_union": 4.981943426286473
+                "percent_union": 4.9825180443489
               },
               "C1u": {
                 "numerator": 23942,
                 "numerator_sum": 23942.0,
-                "denominator": 2271804.2,
-                "percent": 1.0538760338589037,
+                "denominator": 2271542.2,
+                "percent": 1.0539975880703427,
                 "numerator_union": 23942,
-                "percent_union": 1.0538760338589037
+                "percent_union": 1.0539975880703427
               }
             }
           }
@@ -1184,33 +1198,33 @@
         "C0": {
           "numerator": 395517,
           "numerator_sum": 395517.0,
-          "denominator": 2085869,
-          "percent": 18.96173729030922,
+          "denominator": 2085607,
+          "percent": 18.9641193187403,
           "numerator_union": 395517,
-          "percent_union": 18.96173729030922
+          "percent_union": 18.9641193187403
         },
         "C1": {
           "numerator": 147438,
           "numerator_sum": 147438.1234,
-          "denominator": 2085869,
-          "percent": 7.068426799573704
+          "denominator": 2085607,
+          "percent": 7.069314755848058
         },
         "C1d": {
           "numerator": 103417,
           "numerator_sum": 103417.1234,
-          "denominator": 2085869,
-          "percent": 4.957987457505721
+          "denominator": 2085607,
+          "percent": 4.9586102942692465
         },
         "C1u": {
           "numerator": 23617,
           "numerator_sum": 23617.2648,
-          "denominator": 2085869,
-          "percent": 1.1322506255186686
+          "denominator": 2085607,
+          "percent": 1.1323928621259902
         }
       },
       "difference_pp": {
-        "C1": 0.468,
-        "C1d": 0.468,
+        "C1": 0.4681,
+        "C1d": 0.4681,
         "C1u": 0.0156
       },
       "per_partition": {
@@ -1347,9 +1361,9 @@
       "unmatched_tips_resolved_by_gbif": 31947,
       "species_added": 27834,
       "numerator": 423351,
-      "denominator": 2085869,
-      "percent": 20.296145155807963,
-      "percent_C0": 18.96173729030922,
+      "denominator": 2085607,
+      "percent": 20.298694816425147,
+      "percent_C0": 18.9641193187403,
       "per_partition": {
         "Amphibians": {
           "unmatched_tips": 39,
@@ -1505,8 +1519,8 @@
         "Sponges": "node_label_interval"
       },
       "numerator": 13370,
-      "denominator": 2085869,
-      "percent": 0.6409798506042326,
+      "denominator": 2085607,
+      "percent": 0.6410603723520298,
       "percent_of_C1d": 11.813041173352183,
       "percent_of_C1u": 55.843287945869186
     }
@@ -1595,8 +1609,8 @@
     "structural_zeros": {
       "n_partitions": 36,
       "of_eukaryotic_partitions": 60,
-      "described": 220476,
-      "share_of_denominator_pct": 10.569983062215316,
+      "described": 220214,
+      "share_of_denominator_pct": 10.558748604123403,
       "partitions": [
         "Acanthocephala",
         "Acari",
@@ -1618,7 +1632,6 @@
         "Haptophytes",
         "Lampreys",
         "Lycophytes",
-        "Minor animal phyla",
         "Myriapods",
         "Myxozoa",
         "Nemerteans",
@@ -1627,6 +1640,7 @@
         "Other arachnids",
         "Other hexapods",
         "Other phyla",
+        "Other protists",
         "Other vertebrates",
         "Pycnogonida",
         "Rhodophyta",
@@ -1638,11 +1652,11 @@
       "note": "a STRUCTURAL zero, not a criterion-dependent one -- and now computable from the deposit file itself, because these partitions are rows of coverage_basis.csv."
     },
     "dark_matter": {
-      "no_tip_anywhere": 1690352,
-      "no_tip_anywhere_pct": 81.03826270969078,
-      "no_molecular_placement": 1928668,
-      "no_molecular_placement_exact": 1928668.0,
-      "no_molecular_placement_pct": 92.46352479470187,
+      "no_tip_anywhere": 1690090,
+      "no_tip_anywhere_pct": 81.0358806812597,
+      "no_molecular_placement": 1928406,
+      "no_molecular_placement_exact": 1928406.0,
+      "no_molecular_placement_pct": 92.46257804082936,
       "convention": "formed on the C0 UNION numerator (395517), never on the per-partition sum",
       "replaces": "the retired 23.7 % figure, which was a hard-coded literal reachable from no numerator/denominator pair in the deposit. WITHDRAWN, not adjusted."
     },
@@ -2383,6 +2397,7 @@
   "warnings": [
     "Amphibians: MEASURED intersection 4061 against Data/raw/amphibians/jetz_pyron_2018_ML_4061sp.tre differs from the numerator 4062 recorded in truth_provenance.csv. The MEASUREMENT is used (the recorded ratio is on a different tip basis); truth_provenance.csv's molecular_tip_fraction for this partition should be updated with a note.",
     "Bryophytes: the adopted rule (both label sets resolved through the deposit's own name mapping) measures 533 molecular tips against Data/molecular_sources/bryophytes.taxa.txt; naive EXACT-LABEL matching measures 532. The adopted rule is used because exact matching is a measurement artefact -- it scores a decorated-label source at or near zero. Both figures are published in headline_numbers.json -> molecular_evidence.",
+    "Crustaceans: Data/raw/crustaceans/wolfe2019_decapoda_ML_149sp.tre is not present, so the source labels cited in Data/molecular_tip_evidence.csv were not re-checked on this run",
     "Diatoms: the adopted rule (both label sets resolved through the deposit's own name mapping) measures 1113 molecular tips against Data/molecular_sources/diatoms.taxa.txt; naive EXACT-LABEL matching measures 0. The adopted rule is used because exact matching is a measurement artefact -- it scores a decorated-label source at or near zero. Both figures are published in headline_numbers.json -> molecular_evidence.",
     "Fish: the adopted rule (both label sets resolved through the deposit's own name mapping) measures 11596 molecular tips against Data/raw/fish/actinopt_12k_treePL.tre; naive EXACT-LABEL matching measures 11561. The adopted rule is used because exact matching is a measurement artefact -- it scores a decorated-label source at or near zero. Both figures are published in headline_numbers.json -> molecular_evidence.",
     "Fungi: the adopted rule (both label sets resolved through the deposit's own name mapping) measures 1620 molecular tips against Data/molecular_sources/fungi.taxa.txt; naive EXACT-LABEL matching measures 1563. The adopted rule is used because exact matching is a measurement artefact -- it scores a decorated-label source at or near zero. Both figures are published in headline_numbers.json -> molecular_evidence.",
@@ -2736,18 +2751,18 @@
       },
       "C0_resolved_labels": {
         "numerator": 426036,
-        "denominator": 2085869,
-        "percent": 20.424868484070668
+        "denominator": 2085607,
+        "percent": 20.42743431528567
       },
       "C0_distinct_accepted_names_sum": {
         "numerator": 395517,
-        "denominator": 2085869,
-        "percent": 18.96173729030922
+        "denominator": 2085607,
+        "percent": 18.9641193187403
       },
       "C0_distinct_accepted_names_union": {
         "numerator": 395517,
-        "denominator": 2085869,
-        "percent": 18.96173729030922
+        "denominator": 2085607,
+        "percent": 18.9641193187403
       }
     },
     "per_partition": {
@@ -3636,14 +3651,14 @@
     "names_added": 4031,
     "C0_canonical": 395517,
     "C0_union": 399548,
-    "C0_canonical_pct": 18.96173729030922,
-    "C0_union_pct": 19.154990078475684,
+    "C0_canonical_pct": 18.9641193187403,
+    "C0_union_pct": 19.157396383882485,
     "C1_canonical": 157201.0,
     "C1_union_low": 157201.0,
     "C1_union_high": 161232.0,
-    "C1_union_low_pct": 7.536475205298127,
-    "C1_union_high_pct": 7.729727993464595,
-    "denominator": 2085869,
+    "C1_union_low_pct": 7.53742195917064,
+    "C1_union_high_pct": 7.730699024312826,
+    "denominator": 2085607,
     "per_partition": {
       "Amphibians": {
         "C0_canonical": 6947,
@@ -5003,19 +5018,19 @@
     }
   },
   "opentree_P01": {
-    "definition": "Open Tree's counterpart of C1 is its 'tips from phylogeny': leaves of the\ngrafted solution, i.e. taxa placed by at least one input phylogeny.  Only\nthose that are extant species-rank taxa are compared (Data/external/,\nwritten by scripts/opentree_extract.py).  Open Tree counts a SET of\nleaves, including ones placed by morphological input trees; atlas C1 is an\nf_mol-weighted count.  Names are compared on the S05 query of each atlas\ntip (its species key, decision D4, or its documented override) against\nthe Open Tree name's Genus_epithet, by exact spelling and without\nsynonymy, so 'keys_both' is a lower bound.",
+    "definition": "Open Tree's counterpart of C1 is its 'tips from phylogeny': leaves of the\n    grafted solution, i.e. taxa placed by at least one input phylogeny.  Only\n    those that are extant species-rank taxa are compared (Data/external/,\n    written by scripts/opentree_extract.py).  Open Tree counts a SET of\n    leaves, including ones placed by morphological input trees; atlas C1 is an\n    f_mol-weighted count.  Names are compared on the S05 query of each atlas\n    tip (its species key, decision D4, or its documented override) against\n    the Open Tree name's Genus_epithet, by exact spelling and without\n    synonymy, so 'keys_both' is a lower bound.",
     "release": "opentree16.1 (synthesis 2025-12-20, OTT 3.7.3); API tree_of_life/about synth_id opentree16.1",
     "ot_tips_all_life": 2385875,
     "ot_phylo_all_life": 159925,
     "ot_phylo_extant_species_eukaryota": 129889,
-    "ot_phylo_extant_species_eukaryota_pct": 6.227092880713027,
+    "ot_phylo_extant_species_eukaryota_pct": 6.227875146180464,
     "n_partitions_compared": 24,
     "ot_phylo_extant_species_in_atlas_clades": 128530,
-    "ot_phylo_extant_species_in_atlas_clades_pct": 6.161940179368886,
+    "ot_phylo_extant_species_in_atlas_clades_pct": 6.162714260165027,
     "atlas_C1_in_compared_partitions": 157201.0,
-    "atlas_C1_in_compared_partitions_pct": 7.536475205298127,
+    "atlas_C1_in_compared_partitions_pct": 7.53742195917064,
     "atlas_C1_over_ot_phylo": 1.2231,
-    "denominator": 2085869,
+    "denominator": 2085607,
     "keys": {
       "keys_both": 100583,
       "keys_union": 495474,

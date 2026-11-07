@@ -3,17 +3,17 @@ slug: other_phyla
 category: Other animals
 
 estimate:
-  described: 3442
-  low: 4300
-  total: 10000
-  high: 15000
+  described: 3863
+  low: 4676
+  total: 10535
+  high: 15700
   confidence: Low
   source:
     key: CoL
     doi: null
     pdf: null
     url: https://www.catalogueoflife.org/
-    note: "Catalogue of Life live database. Synthetic aggregate of minor animal phyla without their own atlas partition. Overlaps in scope with 'Minor animal phyla' — these two synthetic bins should be reconciled in a future curation pass."
+    note: "Catalogue of Life live database. Residual group of the animal phyla without their own group: Gastrotricha, Kinorhyncha, Priapulida, Sipuncula, Phoronida, Hemichordata, Brachiopoda, Entoprocta, Gnathostomulida, Nematomorpha, Xenacoelomorpha, Dicyemida, Orthonectida, Cephalochordata, Echiura, Onychophora, Placozoa, Loricifera, Cycliophora and Chaetognatha (D66). Low, total and high are the sums of the two former groups Other phyla and Minor animal phyla."
   interval_provenance:
     described:
       type: database
@@ -75,3 +75,24 @@ audit:
   last_audited: 2026-05-19
 
 sub_phylos: []
+constituents:
+  - name: Onychophora (velvet worms)
+    described: 200
+    estimated: 250
+    note: "Two families (Peripatidae, Peripatopsidae). Sister to Tardigrada + Arthropoda (Panarthropoda)."
+  - name: Placozoa
+    described: 4
+    estimated: 20
+    note: "Simplest free-living animals — Trichoplax + 3 more genetic species described 2018-2022."
+  - name: Loricifera
+    described: 39
+    estimated: 60
+    note: "Meiofaunal phylum discovered 1983. All marine sediments. Anaerobic species known."
+  - name: Cycliophora
+    described: 3
+    estimated: 5
+    note: "Symbiotic on lobster mouthparts. Symbion pandora and 2 congeners."
+  - name: Chaetognatha (arrow worms)
+    described: 130
+    estimated: 200
+    note: "Marine planktonic predators. Phylogenetic position contested."

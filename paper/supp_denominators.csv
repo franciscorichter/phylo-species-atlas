@@ -28,13 +28,13 @@ Pycnogonida,Arthropods,1400,WoRMS,1420,,,,
 Gastropods,Other animals,65000,WoRMS / Appeltans 2012,76288,,0.06,0.05,0.06
 Flatworms,Other animals,29487,"Zhang 2013 (29,488 species including 1 fossil)",27037,,,,
 Nematodes,Other animals,28537,WoRMS / Hodda 2022,19598,,0.35,0.52,0.35
-Annelids,Other animals,21000,Appeltans 2012,17340,Annelida (no class) base 0 < 0.50 x XR 3,,,
+Annelids,Other animals,17340,Catalogue of Life COL26.9,17340,Annelida (no class) base 0 < 0.50 x XR 3,,,
 Cnidaria,Other animals,11800,WoRMS / Appeltans 2012,11582,Cnidaria (no class) base 0 < 0.50 x XR 20,2.2,2.2,2.2
 Bivalves,Other animals,10043,"MolluscaBase, in Catalogue of Life COL26.9",10043,,0.44,0.44,0.44
 Sponges,Other animals,9470,WoRMS / Appeltans 2012,9873,Porifera (no class) base 0 < 0.50 x XR 1; Stromatoporoidea base 0 < 0.50 x XR 1,0.91,0.87,0.91
 Echinoderms,Other animals,7550,WoRMS / Appeltans 2012,7737,Echinodermata (no class) base 0 < 0.50 x XR 7,0.82,0.80,0.82
 Bryozoa,Other animals,6000,WoRMS / Appeltans 2012,5418,,5.6,6.2,5.6
-Other phyla,Other animals,3442,Catalogue of Life COL26.9,3442,Hemichordata (no class) base 0 < 0.50 x XR 8; Nectonematoida base 0 < 0.50 x XR 6; Strophomenata base 0 < 0.50 x XR 6,,,
+Other phyla,Other animals,3863,Catalogue of Life COL26.9,3863,Chaetognatha (no class) base 0 < 0.50 x XR 1; Hemichordata (no class) base 0 < 0.50 x XR 8; Nectonematoida base 0 < 0.50 x XR 6; Strophomenata base 0 < 0.50 x XR 6,,,
 Tunicates,Other animals,3145,Appeltans 2012,3146,,,,
 Myxozoa,Other animals,2400,WoRMS,3012,,,,
 Rotifera,Other animals,2200,Segers 2007,2471,Rotifera (no class) base 0 < 0.50 x XR 4,,,
@@ -43,13 +43,13 @@ Tardigrada,Other animals,1488,Bartels 2016,1451,,,,
 Acanthocephala,Other animals,1325,Catalogue of Life COL26.9,1325,,,,
 Nemerteans,Other animals,1300,Kajihara 2008,1364,,,,
 Cephalopods,Other animals,800,WoRMS / WoRMS,868,,10.0,9.2,10.0
-Minor animal phyla,Other animals,376,"sum of Onychophora (200), Chaetognatha (130), Loricifera (39), Placozoa (4) and Cycliophora (3)",421,Chaetognatha (no class) base 0 < 0.50 x XR 1,,,
 Ctenophores,Other animals,200,WoRMS,182,,,,
 Fungi,Microbes & protists,156891,Catalogue of Life COL26.9 (Species Fungorum),156891,,0.89,0.89,0.89
 Diatoms,Microbes & protists,20000,AlgaeBase 2025,6723,Bacillariophyceae base 1099 < 0.50 x XR 6723,0.20,0.58,0.20
 Foraminifera,Microbes & protists,9000,Hayward 2020,8928,,,,
 Apicomplexa,Microbes & protists,6000,"rounded figure, source not traced (COL26.9 lists 169)",169,Apicomonadea base 0 < 0.50 x XR 1; Conoidasida base 0 < 0.50 x XR 147,,,
 Ciliates,Microbes & protists,4500,Foissner 2008,8556,Phyllopharyngea base 14 < 0.50 x XR 63,,,
+Other protists,Microbes & protists,3353,"Pawlowski et al. 2012 (PLoS Biol 10: e1001419), Table S1: 29 lineages in no other group",555,Acantharia base 0 < 0.50 x XR 58; Carpomonadea base 0 < 0.50 x XR 3; Eopharyngea base 0 < 0.50 x XR 15; Glaucophyceae base 0 < 0.50 x XR 12; Heterolobosea base 0 < 0.50 x XR 4; Jakobea base 0 < 0.50 x XR 1; Percolatea base 0 < 0.50 x XR 6; Trichomonadea base 0 < 0.50 x XR 9; Trichonymphea base 0 < 0.50 x XR 3,,,
 Amoebozoa,Microbes & protists,2400,Adl 2007,1847,Amoebozoa (no class) base 0 < 0.50 x XR 17; Archamoebea base 0 < 0.50 x XR 57; Cutosea base 0 < 0.50 x XR 2; Discosea base 0 < 0.50 x XR 154; Tubulinea base 0 < 0.50 x XR 254; Variosea base 0 < 0.50 x XR 26,,,
 Dinoflagellates,Microbes & protists,2300,Gomez 2012,1425,Dinophyceae base 228 < 0.50 x XR 1425,,,
 Brown algae,Microbes & protists,2000,Guiry 2024,1097,Phaeophyceae base 0 < 0.50 x XR 1097,,,

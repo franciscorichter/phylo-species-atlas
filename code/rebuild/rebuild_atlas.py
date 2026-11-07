@@ -338,6 +338,7 @@ AUDIT_COMMON = os.path.join(ROOT, "Paper", "audit-2026-08-20", "code", "common.p
 
 sys.path.insert(0, SCRIPT_DIR)
 from canonical_trees import species_key as SPECIES_KEY  # noqa: E402  (D4)
+import tree_licences  # noqa: E402  (the licence of every release tree file)
 
 # Read-only passthrough / pre-audit ledger sources.
 TREE_PROVENANCE = os.path.join(ROOT, "Data", "tree_provenance.csv")
@@ -4418,6 +4419,13 @@ def build_number_macros(head, basis, warnings):
     m["NumPartitionsEuk"] = macro_int(den["eukaryotic"]["n_partitions"])
     m["NumPartitionsProk"] = macro_int(den["prokaryotic"]["n_partitions"])
     m["NumTreesShipped"] = macro_int(tr["n_shipped"])
+    # the data release redistributes the trees whose source licence allows it
+    # and lists the others with their sources (scripts/tree_licences.py)
+    m["NumTreesRedistributed"] = macro_int(tr["n_redistributed"])
+    m["NumTreesWithheld"] = macro_int(tr["n_withheld"])
+    m["NumFilesWithheld"] = macro_int(tr["n_withheld_files"])
+    m["NamesTreesWithheld"] = name_list(sorted(
+        f[:-len(".nwk")].replace("_", " ") for f in tr["withheld_trees"]))
     m["NumTreesChron"] = macro_int(tr["n_chronograms_all_shipped"])
     m["NumCanonical"] = macro_int(tr["n_partition_canonical"])
     m["NumCanonicalEuk"] = macro_int(tr["n_partition_canonical_eukaryotic"])
@@ -4540,6 +4548,9 @@ def build_number_macros(head, basis, warnings):
     m["SensUnionNamesAdded"] = macro_int(u["names_added"])
     m["SensUnionCZeroPct"] = macro_pct(u["C0_union_pct"])
     m["SensUnionCOneHighPct"] = macro_pct(u["C1_union_high_pct"])
+    # D66: named coverage is counted over every tree of the catalogue
+    m["AnyCZeroN"] = macro_int(u["C0_union"])
+    m["AnyCZeroPct"] = macro_pct(u["C0_union_pct"])
     prod = s["c1_definition"]["product"]
     m["SensProductCOnePct"] = macro_pct(prod["C1"]["percent"])
     m["SensProductCOneDPct"] = macro_pct(prod["C1d"]["percent"])
@@ -8277,10 +8288,32 @@ def main(argv=None):
         return 0
     head["worked_example_S13"] = worked_example(basis, mol, shipped,
                                                 head["crown_ages"], warnings)
+    # The licence of every tree file of the data release (scripts/tree_licences.py):
+    # the files whose source states no licence are withheld from the release and
+    # listed in Data/withheld_trees.csv; the paper counts on every tree it used.
+    lic = tree_licences.build()
+    lc = tree_licences.counts(lic)
+    if lc["n_catalogue"] != head["trees"]["n_shipped"]:
+        die("tree_licences: %d catalogue trees in metadata.csv, %d measured"
+            % (lc["n_catalogue"], head["trees"]["n_shipped"]))
+    head["trees"]["n_redistributed"] = lc["n_redistributed"]
+    head["trees"]["n_withheld"] = lc["n_withheld"]
+    head["trees"]["withheld_trees"] = lc["withheld_trees"]
+    head["trees"]["n_withheld_files"] = lc["n_withheld_files"]
+    head["trees"]["withheld_rule"] = (
+        "a tree file is withheld from the data release when its source states no "
+        "licence (Data/tree_licences.csv, redistribution class no-licence-stated); "
+        "n_shipped counts the trees the paper used, n_redistributed those the "
+        "release carries, n_withheld those it lists in registers/withheld_trees.csv")
+    licence_outputs = OrderedDict(sorted(list(lic["files"].items())
+                                         + list(lic["tips"].items())))
+    for name, txt in licence_outputs.items():
+        OUT[name] = os.path.join(ROOT, *name.split("/"))
     rendered = OrderedDict()
     for name, fn in builders.items():
         if fn is not None:
             rendered[name] = fn()
+    rendered.update(licence_outputs)
     head["warnings"] = warnings
     rendered["headline_numbers.json"] = build_headline_json(head)
 
