@@ -3,37 +3,29 @@ slug: ctenophores
 category: Other animals
 
 estimate:
-  described: 200
-  low: 200
-  total: 300
+  described: 186
+  low: 315
+  total: 397
   high: 500
   confidence: Low
   source:
-    key: WoRMS
-    doi: null
-    pdf: null
-    url: https://www.marinespecies.org/aphia.php?p=taxdetails&id=1248
-    note: "World Register of Marine Species (WoRMS) — ~200 accepted ctenophore species across 9 families."
+    key: 'Appeltans et al. 2012 (central: geometric midpoint of the stated range)'
+    type: published-range
+    note: appeltans2012magnitude; Table 2 row Ctenophora, 'Total Estimated' 315-500 (p. 2195; VLIZ copy
+      p. 7)
   interval_provenance:
     described:
       type: database
-      source: WoRMS
-      verbatim_quote: null
+      source: WoRMS (accessed 4 Nov. 2026)
+      release: 'WoRMS live, read 2026-11-04: 201 valid species minus 15 fossil'
+      note: worms2026ctenophora; aphia.php?p=taxlist&pid=1248&tRank=220&vOnly=1, pages 0-200
     estimated_total:
-      type: heuristic
-      source: WoRMS
-      verbatim_quote: null
-    estimated_low:
-      type: derived-from-described
-      source: WoRMS
-      verbatim_quote: null
-    estimated_high:
-      type: paper-published
-      source: WoRMS
-      verbatim_quote: null
-    overall_classification: partly-heuristic
-    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
-
+      type: published-range
+      source: 'Appeltans et al. 2012 (central: geometric midpoint of the stated range)'
+      note: appeltans2012magnitude; Table 2 row Ctenophora, 'Total Estimated' 315-500 (p. 2195; VLIZ copy
+        p. 7)
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/ctenophores/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree: null
 caveats:
   - severity: medium

@@ -3,36 +3,30 @@ slug: bivalves
 category: Other animals
 
 estimate:
-  described: 20000
-  low: 20000
-  total: 30000
-  high: 40000
+  described: 10043
+  low: 10043
+  total: 10043
+  high: 10043
   confidence: Medium
   source:
-    key: Appeltans 2012
-    doi: 10.1016/j.cub.2012.09.036
-    pdf: null
-    url: https://www.cell.com/current-biology/fulltext/S0960-9822(12)01142-1
+    key: none published (described count)
+    type: none-published
+    note: 'card estimated_total: no estimate for all living bivalves; Appeltans et al. 2012 Table 2 Bivalvia
+      row is marine only'
   interval_provenance:
     described:
       type: database
-      source: WoRMS / Appeltans 2012
-      verbatim_quote: null
+      source: MolluscaBase, in Catalogue of Life COL26.9
+      release: COL26.9 base (ChecklistBank 316321, issued 2026-09-11; MolluscaBase source version 2026-09-01)
+      note: 'col2026v269; ChecklistBank API dataset 316321 TAXON_ID=7NF3C: 28,251 accepted - 18,208 flagged
+        extinct'
     estimated_total:
-      type: paper-published
-      source: Appeltans 2012
-      verbatim_quote: 'there may be 0.7-1.0 million marine species (226,000 eukaryotic species currently described; 58,000-72,000 collected but undescribed; 482,000-741,000 yet to be sampled)'
-    estimated_low:
-      type: derived-from-described
-      source: Appeltans 2012
-      verbatim_quote: null
-    estimated_high:
-      type: paper-published
-      source: Appeltans 2012
-      verbatim_quote: null
-    overall_classification: partly-heuristic
-    auditor_note: "Appeltans 2012 provides partial/heuristic bounds for Bivalves."
-
+      type: none-published
+      source: none published (described count)
+      note: 'card estimated_total: no estimate for all living bivalves; Appeltans et al. 2012 Table 2
+        Bivalvia row is marine only'
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/bivalves/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree:
   file: tree.nwk
   ntips: 73

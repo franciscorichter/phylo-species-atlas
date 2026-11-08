@@ -1,61 +1,61 @@
 partition,category,described,c0_units,coverage_C0_pct,coverage_C1_pct,is_structural_zero,is_chronogram,topology_assembly
-Birds,Vertebrates,11195,10469,93.5150,80.2144,no,yes,automated_synthesis
-Sharks,Vertebrates,1282,1150,89.7036,47.0359,no,yes,primary_analysis
-Fish,Vertebrates,36280,30973,85.3721,31.7255,no,yes,primary_analysis
-Mammals,Vertebrates,6736,5625,83.5065,58.5659,no,yes,primary_analysis
-Amphibians,Vertebrates,8863,6947,78.3820,45.0525,no,yes,primary_analysis
+Birds,Vertebrates,11185,10469,93.5986,80.2861,no,yes,automated_synthesis
+Sharks,Vertebrates,1331,1150,86.4012,45.3043,no,yes,primary_analysis
+Fish,Vertebrates,36288,30973,85.3533,31.7185,no,yes,primary_analysis
+Mammals,Vertebrates,6887,5625,81.6756,57.2818,no,yes,primary_analysis
+Seed plants,Plants,354303,279049,78.7600,19.9612,no,yes,primary_analysis
+Amphibians,Vertebrates,9088,6947,76.4415,43.9371,no,yes,primary_analysis
 Crocodilians,Vertebrates,27,20,74.0741,74.0741,no,yes,compiled
-Squamates,Vertebrates,12108,8953,73.9428,42.0879,no,yes,primary_analysis
-Seed plants,Plants,383671,279049,72.7313,18.4332,no,yes,primary_analysis
-Turtles,Vertebrates,364,256,70.3297,70.3297,no,yes,primary_analysis
-Ferns,Plants,10578,6097,57.6385,57.6385,no,yes,primary_analysis
-Cephalopods,Other animals,800,80,10.0000,10.0000,no,yes,compiled
-Bryozoa,Other animals,6000,337,5.6167,5.6167,no,no,primary_analysis
+Squamates,Vertebrates,12252,8953,73.0738,41.5932,no,yes,primary_analysis
+Turtles,Vertebrates,359,256,71.3092,71.3092,no,yes,primary_analysis
+Ferns,Plants,11999,6097,50.8126,50.8126,no,yes,primary_analysis
+Cephalopods,Other animals,868,80,9.2166,9.2166,no,yes,compiled
+Bryozoa,Other animals,6613,337,5.0960,5.0960,no,no,primary_analysis
 Insects,Arthropods,929676,42078,4.5261,4.5261,no,no,primary_analysis
 Bryophytes,Plants,19273,505,2.6202,2.6202,no,yes,primary_analysis
-Cnidaria,Other animals,11800,258,2.1864,2.1864,no,yes,primary_analysis
-Spiders,Arthropods,52249,888,1.6996,1.6996,no,yes,primary_analysis
-Sponges,Other animals,9470,86,0.9081,0.9081,no,yes,primary_analysis
+Cnidaria,Other animals,11597,258,2.2247,2.2247,no,yes,primary_analysis
+Spiders,Arthropods,54244,888,1.6370,1.6370,no,yes,primary_analysis
 Fungi,Microbes & protists,156891,1396,0.8898,0.8898,no,no,primary_analysis
-Echinoderms,Other animals,7550,62,0.8212,0.8212,no,yes,primary_analysis
+Sponges,Other animals,9864,86,0.8719,0.8719,no,yes,primary_analysis
+Echinoderms,Other animals,7749,62,0.8001,0.8001,no,yes,primary_analysis
 Bivalves,Other animals,10043,44,0.4381,0.4381,no,no,primary_analysis
-Nematodes,Other animals,28537,101,0.3539,0.3539,no,no,primary_analysis
-Diatoms,Microbes & protists,20000,39,0.1950,0.1950,no,yes,primary_analysis
-Crustaceans,Arthropods,77000,65,0.0844,0.0844,no,no,primary_analysis
-Gastropods,Other animals,65000,39,0.0600,0.0600,no,yes,primary_analysis
+Nematodes,Other animals,28415,101,0.3554,0.3554,no,no,primary_analysis
+Diatoms,Microbes & protists,16427,39,0.2374,0.2374,no,yes,primary_analysis
+Crustaceans,Arthropods,67735,65,0.0960,0.0960,no,no,primary_analysis
+Gastropods,Other animals,76288,39,0.0511,0.0511,no,yes,primary_analysis
 Acanthocephala,Other animals,1325,0,0.0000,0.0000,yes,,
-Acari,Arthropods,55000,0,0.0000,0.0000,yes,,
+Acari,Arthropods,54908,0,0.0000,0.0000,yes,,
 Amoebozoa,Microbes & protists,2400,0,0.0000,0.0000,yes,,
 Annelids,Other animals,17340,0,0.0000,0.0000,yes,,
 Apicomplexa,Microbes & protists,6000,0,0.0000,0.0000,yes,,
-Brown algae,Microbes & protists,2000,0,0.0000,0.0000,yes,,
-Cercozoa,Microbes & protists,2000,0,0.0000,0.0000,yes,,
-Choanoflagellates,Microbes & protists,300,0,0.0000,0.0000,yes,,
-Chrysophyta,Microbes & protists,1200,0,0.0000,0.0000,yes,,
+Brown algae,Microbes & protists,2094,0,0.0000,0.0000,yes,,
+Cercozoa,Microbes & protists,600,0,0.0000,0.0000,yes,,
+Choanoflagellates,Microbes & protists,244,0,0.0000,0.0000,yes,,
+Chrysophyta,Microbes & protists,1216,0,0.0000,0.0000,yes,,
 Ciliates,Microbes & protists,4500,0,0.0000,0.0000,yes,,
-Ctenophores,Other animals,200,0,0.0000,0.0000,yes,,
-Dinoflagellates,Microbes & protists,2300,0,0.0000,0.0000,yes,,
-Euglenozoa,Microbes & protists,2000,0,0.0000,0.0000,yes,,
+Ctenophores,Other animals,186,0,0.0000,0.0000,yes,,
+Dinoflagellates,Microbes & protists,2377,0,0.0000,0.0000,yes,,
+Euglenozoa,Microbes & protists,1520,0,0.0000,0.0000,yes,,
 Flatworms,Other animals,29487,0,0.0000,0.0000,yes,,
-Foraminifera,Microbes & protists,9000,0,0.0000,0.0000,yes,,
-Green algae,Plants,11000,0,0.0000,0.0000,yes,,
-Hagfish,Vertebrates,82,0,0.0000,0.0000,yes,,
-Haptophytes,Microbes & protists,760,0,0.0000,0.0000,yes,,
-Lampreys,Vertebrates,48,0,0.0000,0.0000,yes,,
-Lycophytes,Plants,1338,0,0.0000,0.0000,yes,,
-Myriapods,Arthropods,17000,0,0.0000,0.0000,yes,,
-Myxozoa,Other animals,2400,0,0.0000,0.0000,yes,,
-Nemerteans,Other animals,1300,0,0.0000,0.0000,yes,,
+Foraminifera,Microbes & protists,8972,0,0.0000,0.0000,yes,,
+Green algae,Plants,11791,0,0.0000,0.0000,yes,,
+Hagfish,Vertebrates,93,0,0.0000,0.0000,yes,,
+Haptophytes,Microbes & protists,517,0,0.0000,0.0000,yes,,
+Lampreys,Vertebrates,49,0,0.0000,0.0000,yes,,
+Lycophytes,Plants,1467,0,0.0000,0.0000,yes,,
+Myriapods,Arthropods,16072,0,0.0000,0.0000,yes,,
+Myxozoa,Other animals,3012,0,0.0000,0.0000,yes,,
+Nemerteans,Other animals,1275,0,0.0000,0.0000,yes,,
 Oomycetes,Microbes & protists,1673,0,0.0000,0.0000,yes,,
-Other Mollusca,Other animals,1500,0,0.0000,0.0000,yes,,
+Other Mollusca,Other animals,2199,0,0.0000,0.0000,yes,,
 Other arachnids,Arthropods,12765,0,0.0000,0.0000,yes,,
 Other hexapods,Arthropods,10138,0,0.0000,0.0000,yes,,
 Other phyla,Other animals,3863,0,0.0000,0.0000,yes,,
 Other protists,Microbes & protists,3353,0,0.0000,0.0000,yes,,
 Other vertebrates,Vertebrates,9,0,0.0000,0.0000,yes,,
-Pycnogonida,Arthropods,1400,0,0.0000,0.0000,yes,,
-Rhodophyta,Plants,7000,0,0.0000,0.0000,yes,,
-Rotifera,Other animals,2200,0,0.0000,0.0000,yes,,
-Scorpiones,Arthropods,2700,0,0.0000,0.0000,yes,,
-Tardigrada,Other animals,1488,0,0.0000,0.0000,yes,,
-Tunicates,Other animals,3145,0,0.0000,0.0000,yes,,
+Pycnogonida,Arthropods,1431,0,0.0000,0.0000,yes,,
+Rhodophyta,Plants,7276,0,0.0000,0.0000,yes,,
+Rotifera,Other animals,2030,0,0.0000,0.0000,yes,,
+Scorpiones,Arthropods,2954,0,0.0000,0.0000,yes,,
+Tardigrada,Other animals,1505,0,0.0000,0.0000,yes,,
+Tunicates,Other animals,3020,0,0.0000,0.0000,yes,,

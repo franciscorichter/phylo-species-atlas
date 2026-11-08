@@ -3,36 +3,29 @@ slug: sponges
 category: Other animals
 
 estimate:
-  described: 9470
-  low: 10000
-  total: 17000
-  high: 25000
+  described: 9864
+  low: 25853
+  total: 26201
+  high: 26553
   confidence: Medium
   source:
-    key: Appeltans 2012
-    doi: 10.1016/j.cub.2012.09.036
-    pdf: null
-    url: https://www.cell.com/current-biology/fulltext/S0960-9822(12)01142-1
+    key: 'Appeltans et al. 2012 (central: geometric midpoint of the stated range)'
+    type: published-range
+    note: appeltans2012magnitude; Table 2 (cont.) row Porifera 'Total Estimated' 25,853-26,553 (VLIZ in-press
+      copy PDF p. 8)
   interval_provenance:
     described:
       type: database
-      source: WoRMS / Appeltans 2012
-      verbatim_quote: null
+      source: World Porifera Database (15 Aug. 2026)
+      release: World Porifera Database front page, Wayback capture 2026-08-15 (20260815162426)
+      note: devoogd2026wpd; http://web.archive.org/web/20260815162426id_/https://www.marinespecies.org/porifera/
     estimated_total:
-      type: paper-published
-      source: Appeltans 2012
-      verbatim_quote: 'there may be 0.7-1.0 million marine species (226,000 eukaryotic species currently described; 58,000-72,000 collected but undescribed; 482,000-741,000 yet to be sampled)'
-    estimated_low:
-      type: paper-published
-      source: Appeltans 2012
-      verbatim_quote: null
-    estimated_high:
-      type: paper-published
-      source: Appeltans 2012
-      verbatim_quote: null
-    overall_classification: paper-published-range
-    auditor_note: "Appeltans 2012 provides bilateral paper-published range for Sponges."
-
+      type: published-range
+      source: 'Appeltans et al. 2012 (central: geometric midpoint of the stated range)'
+      note: appeltans2012magnitude; Table 2 (cont.) row Porifera 'Total Estimated' 25,853-26,553 (VLIZ
+        in-press copy PDF p. 8)
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/sponges/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree:
   file: tree.nwk
   ntips: 120

@@ -3,38 +3,27 @@ slug: green_algae
 category: Plants
 
 estimate:
-  described: 11000
-  low: 13000
+  described: 11791
+  low: 11791
   total: 22000
-  high: 30000
+  high: 22000
   confidence: Low
   source:
-    key: Guiry 2012
-    doi: 10.1111/j.1529-8817.2012.01222.x
-    study: "Guiry MD (2012) — How many species of algae are there? J Phycol 48:1057-1063."
-    pdf: null
-    url: https://doi.org/10.1111/j.1529-8817.2012.01222.x
-    note: "Standard reference for global algal diversity estimates. AlgaeBase maintainer's review."
+    key: 'Guiry 2012 (J. Phycol. 48: 1057), Table 1 phylum totals'
+    type: published-point
+    note: 'guiry2012howmany; Table 1 ''Total (estimate)'': Charophyta 9,000 + Chlorophyta 13,000'
   interval_provenance:
     described:
       type: database
-      source: Guiry 2012
-      verbatim_quote: null
+      source: AlgaeBase via Guiry 2024 (counts to Sep. 2023), extant
+      release: 'AlgaeBase as published in Guiry 2024, J. Phycol. 60: 214 (counts to September 2023)'
+      note: guiry2024howmany; Table 2 rows Charophyta (4,940 living) + Chlorophyta (6,851 living)
     estimated_total:
-      type: paper-published
-      source: Guiry 2012
-      verbatim_quote: 'Guiry 2012: ''a conservative approach results in an estimate of 72,500 algal species'' (all algae combined). Per-phylum green algae split is in body tables. Guiry 2024 update: 6,851 green algae living species.'
-    estimated_low:
-      type: paper-published
-      source: Guiry 2012
-      verbatim_quote: null
-    estimated_high:
-      type: paper-published
-      source: Guiry 2012
-      verbatim_quote: null
-    overall_classification: paper-published-range
-    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
-
+      type: published-point
+      source: 'Guiry 2012 (J. Phycol. 48: 1057), Table 1 phylum totals'
+      note: 'guiry2012howmany; Table 1 ''Total (estimate)'': Charophyta 9,000 + Chlorophyta 13,000'
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/green_algae/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree: null
 caveats:
   - severity: medium

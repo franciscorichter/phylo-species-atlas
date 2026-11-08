@@ -3,37 +3,29 @@ slug: cercozoa
 category: Microbes & protists
 
 estimate:
-  described: 2000
-  low: 2000
-  total: 5000
-  high: 10000
+  described: 600
+  low: 600
+  total: 600
+  high: 600
   confidence: Low
   source:
-    key: CoL
-    doi: null
-    pdf: null
-    url: https://www.catalogueoflife.org/
-    note: "Catalogue of Life. ~2,000 described Cercozoa (Rhizaria — cercomonads, chlorarachniophytes, plasmodiophorids, etc.). True diversity probably 10k+."
+    key: none published (set to described count)
+    type: none-published
+    note: No source states a Cercozoa total; atlas 5,000/10,000 untraced; OTU counts (749 GenBank V4 OTUs;
+      1,585 at one site, Harder 2016) are not species estimates.
   interval_provenance:
     described:
       type: database
-      source: CoL
-      verbatim_quote: null
+      source: Pawlowski et al. 2012 (CBOL ProWG, Table S1)
+      release: 'Pawlowski et al. 2012, PLoS Biol 10: e1001419'
+      note: 'pawlowski2012cbol, Table S1 row RHIZARIA/Cercozoa: 600 catalogued morphospecies.'
     estimated_total:
-      type: heuristic
-      source: CoL
-      verbatim_quote: null
-    estimated_low:
-      type: derived-from-described
-      source: CoL
-      verbatim_quote: null
-    estimated_high:
-      type: paper-published
-      source: CoL
-      verbatim_quote: null
-    overall_classification: partly-heuristic
-    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
-
+      type: none-published
+      source: none published (set to described count)
+      note: No source states a Cercozoa total; atlas 5,000/10,000 untraced; OTU counts (749 GenBank V4
+        OTUs; 1,585 at one site, Harder 2016) are not species estimates.
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/cercozoa/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree: null
 caveats:
   - severity: medium

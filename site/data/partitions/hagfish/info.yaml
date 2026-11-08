@@ -3,38 +3,29 @@ slug: hagfish
 category: Vertebrates
 
 estimate:
-  described: 82
-  low: 82
-  total: 100
-  high: 120
+  described: 93
+  low: 93
+  total: 93
+  high: 93
   confidence: Medium
   source:
-    key: Fernholm 2013
-    doi: 10.1111/jzs.12035
-    study: "Fernholm B, Norén M, Kullander SO, Quattrini AM, Zintzen V, Roberts CD, Mincarone MM, Nielsen JG (2013) — Hagfish phylogeny and taxonomy, with description of the new genus Rubicundus (Craniata, Myxinidae). J Zool Syst Evol Res 51:296-307."
-    pdf: null
-    url: https://doi.org/10.1111/jzs.12035
-    note: "Standard reference for hagfish taxonomy + molecular phylogeny."
+    key: none published (= described count)
+    type: none-published
+    note: 'card estimated_total: Fernholm 2013 abstract, Mincarone 2021, Brownstein & Near 2024 state
+      no number'
   interval_provenance:
     described:
       type: database
-      source: Fernholm 2013
-      verbatim_quote: null
+      source: Eschmeyer's Catalog of Fishes (20 Oct. 2026)
+      release: Catalog of Fishes, online version updated 20 Oct. 2026
+      note: 'fricke2026catalog; SpeciesByFamily.asp row Myxinidae: ''Myxinidae 20 7 1 1 110 93 13 2'''
     estimated_total:
-      type: heuristic
-      source: Fernholm 2013
-      verbatim_quote: null
-    estimated_low:
-      type: derived-from-described
-      source: Fernholm 2013
-      verbatim_quote: null
-    estimated_high:
-      type: paper-published
-      source: Fernholm 2013
-      verbatim_quote: null
-    overall_classification: partly-heuristic
-    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
-
+      type: none-published
+      source: none published (= described count)
+      note: 'card estimated_total: Fernholm 2013 abstract, Mincarone 2021, Brownstein & Near 2024 state
+        no number'
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/hagfish/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree: null
 caveats:
   - severity: medium

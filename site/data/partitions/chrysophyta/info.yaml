@@ -3,37 +3,29 @@ slug: chrysophyta
 category: Microbes & protists
 
 estimate:
-  described: 1200
-  low: 1200
-  total: 3000
-  high: 5000
+  described: 1216
+  low: 1216
+  total: 1216
+  high: 1216
   confidence: Low
   source:
-    key: AlgaeBase
-    doi: null
-    pdf: null
-    url: https://www.algaebase.org/
-    note: "AlgaeBase. ~1,200 described golden algae (Chrysophyceae, Synurophyceae). Mostly freshwater, photosynthetic stramenopiles."
+    key: none published (set to described count)
+    type: none-published
+    note: No source states a chrysophyte total; atlas 3,000/5,000 untraced; Bock 2022 2,370 OTUs and Lengyel
+      2022 'underestimated' give no species figure.
   interval_provenance:
     described:
       type: database
-      source: AlgaeBase
-      verbatim_quote: null
+      source: AlgaeBase (Guiry 2024)
+      release: 'AlgaeBase as of 1 Nov 2023, published in Guiry 2024 (J. Phycol. 60: 214-228)'
+      note: 'guiry2024howmany, Table 6 row Chrysophyceae: 1,274 species, 58 fossil, 1,216 extant.'
     estimated_total:
-      type: heuristic
-      source: AlgaeBase
-      verbatim_quote: null
-    estimated_low:
-      type: derived-from-described
-      source: AlgaeBase
-      verbatim_quote: null
-    estimated_high:
-      type: paper-published
-      source: AlgaeBase
-      verbatim_quote: null
-    overall_classification: partly-heuristic
-    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
-
+      type: none-published
+      source: none published (set to described count)
+      note: No source states a chrysophyte total; atlas 3,000/5,000 untraced; Bock 2022 2,370 OTUs and
+        Lengyel 2022 'underestimated' give no species figure.
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/chrysophyta/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree: null
 caveats:
   - severity: medium

@@ -3,37 +3,29 @@ slug: choanoflagellates
 category: Microbes & protists
 
 estimate:
-  described: 300
-  low: 300
-  total: 300
-  high: 500
+  described: 244
+  low: 244
+  total: 244
+  high: 244
   confidence: Low
   source:
-    key: Carr 2008
-    doi: 10.1080/15572536.2008.11832459
-    pdf: null
-    url: null
-    note: "Carr M, Leadbeater BSC, Hassan R, Nelson M, Baldauf SL (2008) — Molecular phylogeny of choanoflagellates, the sister group to Metazoa. PNAS 105:16641-16646."
+    key: none published (set to described count)
+    type: none-published
+    note: Carr 2008 gives no total and no 500; no other source found states a total (searches listed in
+      card).
   interval_provenance:
     described:
       type: database
-      source: Carr 2008
-      verbatim_quote: null
+      source: Carr et al. 2008 ('over 244')
+      release: 'Carr et al. 2008, PNAS 105: 16641-16646'
+      note: 'carr2008molecular, Discussion (PMC2575473): ''over 244 species have been described to date''.'
     estimated_total:
-      type: heuristic
-      source: Carr 2008
-      verbatim_quote: null
-    estimated_low:
-      type: derived-from-described
-      source: Carr 2008
-      verbatim_quote: null
-    estimated_high:
-      type: paper-published
-      source: Carr 2008
-      verbatim_quote: null
-    overall_classification: partly-heuristic
-    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
-
+      type: none-published
+      source: none published (set to described count)
+      note: Carr 2008 gives no total and no 500; no other source found states a total (searches listed
+        in card).
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/choanoflagellates/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree: null
 caveats:
   - severity: medium

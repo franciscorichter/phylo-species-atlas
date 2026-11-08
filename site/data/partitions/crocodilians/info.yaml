@@ -6,33 +6,29 @@ estimate:
   described: 27
   low: 27
   total: 28
-  high: 30
+  high: 28
   confidence: High
   source:
-    key: IUCN CSG
-    doi: null
-    pdf: null
-    url: https://www.iucncsg.org/
+    key: IUCN-SSC Crocodile Specialist Group (species page, 2026)
+    type: expert-opinion
+    note: 'iucncsg2026; iucncsg.org/pages/Crocodilian-Species.html: ''26 species ... currently recognised
+      ... two additional species, Osteolaemus afzelii and Crocodylus halli, which have yet to be formally
+      recognised'''
   interval_provenance:
     described:
       type: database
-      source: IUCN Crocodile Specialist Group
-      verbatim_quote: null
+      source: The Reptile Database, June 2026 (via COL26.9)
+      release: COL26.9 (2026-09-11), Crocodylia sector from The Reptile Database 2026-06
+      note: 'col2026checklist; ChecklistBank 316321 nameusage search TAXON_ID=329 rank species accepted:
+        ''total 27''; Reptile Database family searches 8+17+2'
     estimated_total:
-      type: paper-published
-      source: IUCN CSG
-      verbatim_quote: null
-    estimated_low:
-      type: derived-from-described
-      source: IUCN CSG
-      verbatim_quote: null
-    estimated_high:
-      type: paper-published
-      source: IUCN CSG
-      verbatim_quote: null
-    overall_classification: paper-published-range
-    auditor_note: "IUCN Crocodile Specialist Group maintains the authoritative census (27 extant species; ~30 with recently-described candidates). Small, well-known clade — diversity bounds are tight."
-
+      type: expert-opinion
+      source: IUCN-SSC Crocodile Specialist Group (species page, 2026)
+      note: 'iucncsg2026; iucncsg.org/pages/Crocodilian-Species.html: ''26 species ... currently recognised
+        ... two additional species, Osteolaemus afzelii and Crocodylus halli, which have yet to be formally
+        recognised'''
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/crocodilians/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree:
   file: tree.nwk
   ntips: 25

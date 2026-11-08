@@ -51,7 +51,7 @@ redistributed (see *Trees not redistributed*).
 
 ## The coverage levels
 
-The 2,085,607 described eukaryotic species are divided into 60 groups; 24 of them have a
+The 2,059,063 described eukaryotic species are divided into 60 groups; 24 of them have a
 species-level phylogeny, and for each the largest one found is the group's reference tree, except
 Birds: AvesData 1.3 aligns one synthesis to three versions of the Clements taxonomy, and the
 version used is the one with the most tips placed by an input phylogeny (Clements 2021, 9,239
@@ -61,10 +61,10 @@ described species is counted at four nested levels:
 
 | Level | A species counts when | Species | % of described |
 |---|---|---:|---:|
-| Named | its Catalogue of Life (COL26.9) accepted name is a tip of its group's reference tree | 395,517 | 19.0 |
-| Molecular | it is named, and the tip is in the molecular analysis from which the tree was built | 157,201 | 7.5 |
-| Dated | it is molecular, and the reference tree is a chronogram in absolute time | 113,180 | 5.4 |
-| Uncertainty available | it is dated, and the source archive carries a node-age distribution or interval a user can propagate (a tree set whose node ages vary, or intervals on a summary tree), whatever its relation to the calibration prior | 23,942 | 1.1 |
+| Named | its Catalogue of Life (COL26.9) accepted name is a tip of its group's reference tree | 395,517 | 19.2 |
+| Molecular | it is named, and the tip is in the molecular analysis from which the tree was built | 157,201 | 7.6 |
+| Dated | it is molecular, and the reference tree is a chronogram in absolute time | 113,180 | 5.5 |
+| Uncertainty available | it is dated, and the source archive carries a node-age distribution or interval a user can propagate (a tree set whose node ages vary, or intervals on a summary tree), whatever its relation to the calibration prior | 23,942 | 1.2 |
 
 A species named in two groups' trees counts once. Bacteria and Archaea are counted separately, in GTDB
 species clusters, and enter no eukaryotic number. The values above are those of
@@ -216,9 +216,9 @@ A withheld tree (see *Trees not redistributed*) cannot be loaded: from phyloatla
 `load_atlas_tree()` stops with the address of its source, read from
 `registers/withheld_trees.csv`.
 
-The tag `v1.1.3` is created on GitHub when this release is published. From then on the option
+The tag `v1.1.4` is created on GitHub when this release is published. From then on the option
 can name the tag instead of a clone,
-`"https://raw.githubusercontent.com/franciscorichter/phylo-species-atlas/v1.1.3"`; before
+`"https://raw.githubusercontent.com/franciscorichter/phylo-species-atlas/v1.1.4"`; before
 publication that address returns HTTP 404.
 
 ## The browser site

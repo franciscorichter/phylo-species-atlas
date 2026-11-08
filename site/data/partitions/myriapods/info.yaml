@@ -3,37 +3,30 @@ slug: myriapods
 category: Arthropods
 
 estimate:
-  described: 17000
-  low: 40000
-  total: 85000
-  high: 130000
+  described: 16072
+  low: 16072
+  total: 16072
+  high: 16072
   confidence: Low
   source:
-    key: Chapman 2009
-    doi: null
-    pdf: null
-    url: https://www.environment.gov.au/system/files/pages/2ee3f4a1-f130-465b-9c7a-79373680a067/files/nlsaw-2nd-complete.pdf
-    note: "Chapman AD (2009) Numbers of Living Species in Australia and the World, 2nd edition. Australian Biological Resources Study, Canberra. Standard government compilation; not in Crossref."
+    key: none published (described count)
+    type: none-published
+    note: 'Not the group''s estimate (D67): the 90,000 is a figure for millipedes (Diplopoda) only, a
+      narrower taxon.'
   interval_provenance:
     described:
       type: database
       source: Chapman 2009
-      verbatim_quote: null
+      release: Numbers of Living Species in Australia and the World, 2nd edn (ABRS), September 2009
+      note: chapman2009numbers p. 9 (PDF p. 11) row 'Myriapoda 16,072 553 3.4% ~90,000 ~3,100'; p. 30
+        table Total 16,072
     estimated_total:
-      type: paper-published
-      source: Chapman 2009
-      verbatim_quote: null
-    estimated_low:
-      type: paper-published
-      source: Chapman 2009
-      verbatim_quote: null
-    estimated_high:
-      type: paper-published
-      source: Chapman 2009
-      verbatim_quote: null
-    overall_classification: partly-heuristic
-    auditor_note: "Chapman 2009 'Numbers of Living Species in Australia and the World' — government report (Australian Biological Resources Study). Not in Crossref. Bounds 40k-85k-130k unverified."
-
+      type: none-published
+      source: none published (described count)
+      note: 'Not the group''s estimate (D67): the 90,000 is a figure for millipedes (Diplopoda) only,
+        a narrower taxon.'
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/myriapods/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree: null
 caveats:
   - severity: medium

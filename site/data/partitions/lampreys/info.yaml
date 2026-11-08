@@ -3,38 +3,29 @@ slug: lampreys
 category: Vertebrates
 
 estimate:
-  described: 48
-  low: 48
-  total: 55
-  high: 65
+  described: 49
+  low: 49
+  total: 49
+  high: 49
   confidence: High
   source:
-    key: Potter 2015
-    doi: 10.1007/978-94-017-9306-3_2
-    study: "Potter IC, Gill HS, Renaud CB, Haoucher D (2015) — The taxonomy, phylogeny, and distribution of lampreys. In: Docker MF (ed) Lampreys: Biology, Conservation and Control. Fish & Fisheries Series 37, Springer."
-    pdf: null
-    url: null
-    note: "Standard authoritative species-count reference for extant lamprey diversity."
+    key: none published (= described count)
+    type: none-published
+    note: 'card estimated_total: Potter 2015 abstract (41 species, no estimate), Hughes 2025 (''likely
+      under-described'', no number)'
   interval_provenance:
     described:
       type: database
-      source: Potter 2015
-      verbatim_quote: null
+      source: Eschmeyer's Catalog of Fishes (21 Sep. 2026)
+      release: Catalog of Fishes, Species by Family/Subfamily, online version updated 21 Sep. 2026
+      note: fricke2026speciesbyfamily; Petromyzontidae 44 + Geotriidae 2 + Mordaciidae 3; Wayback 20260927075303
     estimated_total:
-      type: heuristic
-      source: Potter 2015
-      verbatim_quote: null
-    estimated_low:
-      type: derived-from-described
-      source: Potter 2015
-      verbatim_quote: null
-    estimated_high:
-      type: paper-published
-      source: Potter 2015
-      verbatim_quote: null
-    overall_classification: partly-heuristic
-    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
-
+      type: none-published
+      source: none published (= described count)
+      note: 'card estimated_total: Potter 2015 abstract (41 species, no estimate), Hughes 2025 (''likely
+        under-described'', no number)'
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/lampreys/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree: null
 caveats:
   - severity: medium

@@ -4,36 +4,29 @@ category: Arthropods
 
 estimate:
   described: 10138
-  low: 10000
-  total: 15000
-  high: 25000
+  low: 10138
+  total: 52000
+  high: 52000
   confidence: Low
   source:
-    key: CoL
-    doi: null
-    pdf: null
-    url: https://www.catalogueoflife.org/
-    note: "Catalogue of Life live database. Non-insect hexapods: Collembola (springtails, ~9000 sp), Diplura (~1000 sp), Protura (~800 sp)."
+    key: Chapman 2009
+    type: expert-opinion; low none-published (= described); high none-published (= central)
+    note: chapman2009numbers p. 32 table 'ALL HEXAPODA ~9,048 52,000' (Protura+Collembola+Diplura); Collembola
+      50,000 (Hopkin 1997), Diplura/Protura 'unknown'
   interval_provenance:
     described:
       type: database
-      source: CoL
-      verbatim_quote: null
+      source: Catalogue of Life COL26.9
+      release: COL26.9 base (316321, 2026-09-11) with Diplura from COL26.9 XR (316441, 2026-09-25)
+      note: 'col2026base API: Collembola 8,910 + Protura 758 + Diplura 0 (col_base 9,668) + 470 Diplura
+        from XR (fill rule base < 0.5 x XR) = 10,138 = col_filled; D53 value'
     estimated_total:
-      type: heuristic
-      source: CoL
-      verbatim_quote: null
-    estimated_low:
-      type: derived-from-described
-      source: CoL
-      verbatim_quote: null
-    estimated_high:
-      type: paper-published
-      source: CoL
-      verbatim_quote: null
-    overall_classification: partly-heuristic
-    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
-
+      type: expert-opinion; low none-published (= described); high none-published (= central)
+      source: Chapman 2009
+      note: chapman2009numbers p. 32 table 'ALL HEXAPODA ~9,048 52,000' (Protura+Collembola+Diplura);
+        Collembola 50,000 (Hopkin 1997), Diplura/Protura 'unknown'
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/other_hexapods/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree: null
 caveats:
   - severity: medium

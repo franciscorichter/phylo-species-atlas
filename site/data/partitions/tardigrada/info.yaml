@@ -3,38 +3,30 @@ slug: tardigrada
 category: Other animals
 
 estimate:
-  described: 1488
-  low: 1488
+  described: 1505
+  low: 1505
   total: 2081
-  high: 3000
+  high: 2081
   confidence: Medium
   source:
-    key: Bartels 2016
-    doi: 10.1111/zoj.12441
-    study: "Bartels PJ, Apodaca JJ, Mora C, Nelson DR (2016) — A global biodiversity estimate of a poorly known taxon: phylum Tardigrada. Zool J Linn Soc 178:730-736."
-    pdf: null
-    url: https://doi.org/10.1111/zoj.12441
-    note: "Verbatim total estimate: 'we estimate that approximately 2,081 species (95% CI: 1,801-2,415) of described Tardigrada will be classified globally based on the description rate from 1986-2014'."
+    key: Bartels et al. 2016
+    type: published-point
+    note: 'bartels2016global; Zool J Linn Soc 178: 730-736, abstract: 1,145 limnoterrestrial + 936 marine'
   interval_provenance:
     described:
       type: database
-      source: Bartels 2016
-      verbatim_quote: null
+      source: Degma & Guidetti, Actual checklist of Tardigrada species (2025)
+      release: 'checklist statement current since 2025-05-23 (DataCite description of doi:10.25431/11380_1178608;
+        edition not named, probably 44th, 10-06-2025): 1,508 species minus the 3 fossil species of the
+        43rd edition'
+      note: degma2024checklist; https://api.datacite.org/dois/10.25431/11380_1178608 (description, change
+        2025-05-23); fossils from 43rd-ed. PDF pp. 26, 41, 61
     estimated_total:
-      type: paper-published
-      source: Bartels 2016
-      verbatim_quote: "we estimate that approximately 2,081 species (95% CI: 1,801-2,415) of described Tardigrada will be classified globally based on the description rate from 1986-2014"
-    estimated_low:
-      type: derived-from-described
-      source: Bartels 2016
-      verbatim_quote: null
-    estimated_high:
-      type: paper-published
-      source: Bartels 2016
-      verbatim_quote: null
-    overall_classification: paper-published-range
-    auditor_note: "Bartels 2016 provides a paper-published estimate with confidence interval (1,801-2,415, central 2,081). High bound of 3,000 atlas-derived as conservative upper."
-
+      type: published-point
+      source: Bartels et al. 2016
+      note: 'bartels2016global; Zool J Linn Soc 178: 730-736, abstract: 1,145 limnoterrestrial + 936 marine'
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/tardigrada/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree: null
 caveats:
   - severity: medium

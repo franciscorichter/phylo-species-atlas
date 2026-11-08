@@ -3,37 +3,30 @@ slug: haptophytes
 category: Microbes & protists
 
 estimate:
-  described: 760
-  low: 762
-  total: 2000
-  high: 4000
+  described: 517
+  low: 517
+  total: 517
+  high: 517
   confidence: Low
   source:
-    key: de Vargas 2007
-    doi: 10.1093/jpe/rtm022
-    pdf: null
-    url: null
-    note: "de Vargas C, Aubry MP, Probert I, Young J (2007) — Origin and evolution of coccolithophores: From coastal hunters to oceanic farmers. In: Falkowski PG, Knoll AH (eds) Evolution of Primary Producers in the Sea. Academic Press."
+    key: no published estimate above the described count (described count)
+    type: none-published
+    note: 'card estimated_total: only published total is Adl et al. 2007 Table 1 ''Haptophyta 350 < 400'',
+      below 517; no source gives 2,000 or 4,000.'
   interval_provenance:
     described:
       type: database
-      source: de Vargas 2007
-      verbatim_quote: null
+      source: AlgaeBase (Guiry 2024; living species, 1 Nov. 2023)
+      release: 'AlgaeBase counts to 2023-11-01, published in Guiry 2024 (J Phycol 60: 214-228)'
+      note: 'guiry2024how, abstract and p. 9: ''The Haptophyta has 391 genera, 1722 species of which 517
+        are extant''; Table 2 row Haptophyta.'
     estimated_total:
-      type: paper-published
-      source: de Vargas 2007
-      verbatim_quote: null
-    estimated_low:
-      type: paper-published
-      source: de Vargas 2007
-      verbatim_quote: null
-    estimated_high:
-      type: paper-published
-      source: de Vargas 2007
-      verbatim_quote: null
-    overall_classification: partly-heuristic
-    auditor_note: "de Vargas 2007 haptophyte review chapter. Not abstract-indexed. Bounds 762-2k-4k not verified. (Guiry 2024 reports 1,722 Haptophyta species; central plausible.)"
-
+      type: none-published
+      source: no published estimate above the described count (described count)
+      note: 'card estimated_total: only published total is Adl et al. 2007 Table 1 ''Haptophyta 350 <
+        400'', below 517; no source gives 2,000 or 4,000.'
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/haptophytes/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree: null
 caveats:
   - severity: medium

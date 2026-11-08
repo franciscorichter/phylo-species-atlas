@@ -3,38 +3,30 @@ slug: acari
 category: Arthropods
 
 estimate:
-  described: 55000
+  described: 54908
   low: 100000
   total: 500000
   high: 1000000
   confidence: Low
   source:
-    key: Zhang 2013
-    doi: 10.11646/zootaxa.3703.1.1
-    study: "Zhang Z-Q (2013) — Animal biodiversity: An update of classification and diversity in 2013. In: Zhang, Z.-Q. (Ed.) Animal Biodiversity: An Outline of Higher-level Classification and Survey of Taxonomic Richness (Addenda 2013). Zootaxa 3703(1):5-11."
-    pdf: null
-    url: https://doi.org/10.11646/zootaxa.3703.1.1
-    note: "Acari chapter in Zhang 2011/2013 Zootaxa series (Walter & Proctor, Zootaxa 3148). Estimates 100k-1M+ species (vast undescribed)."
+    key: Halliday et al. 2000 (central); Chapman 2009 (low); Stork 2018 (high)
+    type: central extrapolation; low expert-opinion; high published-point
+    note: halliday2000global p. 199 ('over a half-million'); chapman2009numbers p. 27 table row Acarina
+      '~100,000-500,000'; stork2018howmany section on mites ('a million species of mites')
   interval_provenance:
     described:
       type: database
-      source: Zhang 2013
-      verbatim_quote: null
+      source: Zhang 2013 (Zootaxa 3703), extant species
+      release: 'Zhang (Ed.) 2013, Phylum Arthropoda, Zootaxa 3703: 17-26 (30 Aug. 2013); single publication'
+      note: zhang2013arthropoda, doi:10.11646/zootaxa.3703.1.6, p. 17 abstract and p. 19 fn. 23 (55,214)
+        minus 306 fossil species in the order rows pp. 18-19
     estimated_total:
-      type: paper-published
-      source: Zhang 2013
-      verbatim_quote: null
-    estimated_low:
-      type: paper-published
-      source: Zhang 2013
-      verbatim_quote: null
-    estimated_high:
-      type: paper-published
-      source: Zhang 2013
-      verbatim_quote: null
-    overall_classification: partly-heuristic
-    auditor_note: "Zhang 2013 is part of the Animal Biodiversity Outline series (Zootaxa). Specific Acari volume not retrievable via standard abstract APIs. Atlas's 100k-500k-1M range likely from Zhang's body tables but unverified."
-
+      type: central extrapolation; low expert-opinion; high published-point
+      source: Halliday et al. 2000 (central); Chapman 2009 (low); Stork 2018 (high)
+      note: halliday2000global p. 199 ('over a half-million'); chapman2009numbers p. 27 table row Acarina
+        '~100,000-500,000'; stork2018howmany section on mites ('a million species of mites')
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/acari/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree: null
 caveats:
   - severity: high

@@ -11,65 +11,30 @@ category: Vertebrates
 
 # --- Diversity estimate ---
 estimate:
-  # Values from the paper's data_estimates.csv (Turtles row).
-  described: 360
-  low: 360
-  total: 360
-  high: 370
+  described: 359
+  low: 359
+  total: 359
+  high: 359
   confidence: High
   source:
-    # data_sources.csv cites TTWG 2021 (v9), but its DOI returns 404.
-    # We surface the live TTWG 2025 (v10) edition as the working reference.
-    # Both editions are recorded so the audit trail stays intact.
-    paper_key: TTWG 2021                      # what data_sources.csv currently cites
-    paper_doi: 10.3854/crm.8.000c.checklist.atlas.v9.2021
-    paper_doi_status: broken                  # returns 404 on Crossref and doi.org
-    live_key: TTWG 2025
-    live_doi: 10.3854/crm.10.checklist.atlas.v10.2025
-    live_year: 2025
-    live_cited_value: 364
-    pdf: papers/estimate.pdf                  # TTWG 2025 PDF (40 MB monograph)
-    url: https://iucn-tftsg.org/checklist/
-    note: |
-      Live successor is the IUCN-TFTSG Turtles of the World checklist; the
-      paper-side citation (v9/2021) had a broken DOI and was replaced here by
-      the v10/2025 edition (species count 360 → 364). The 4-species delta is
-      net taxonomic change since 2021.
-  # TTWG is a TAXONOMIC CHECKLIST not a diversity-estimate paper. It does
-  # not publish a true-diversity range. The 360 / 370 bounds are heuristic.
+    key: none published (= described count)
+    type: none-published
+    note: 'card estimated_total: TTWG 2021/2025, Colston 2020, CheloniansTraits give no total; 370 is
+      the Reptile Database Jun 2026 described count'
   interval_provenance:
     described:
       type: database
-      source: TTWG 2021 / TTWG 2025 (10th edition)
-      verbatim_quote: "364 turtle and tortoise species are currently generally recognized as distinct and included in this checklist (TTWG 2025)"
+      source: Turtle Taxonomy Working Group 2025 (10th ed.), living species
+      release: TTWG, Turtles of the World, 10th ed., Chelonian Research Monographs 10, 2025
+      note: 'ttwg2025turtles, 10.3854/crm.10.checklist.atlas.v10.2025; p. 1-2 and Table 1: 364 species
+        since 1500 CE = 359 living + 5 extinct (Cylindraspis)'
     estimated_total:
-      type: derived
-      source: TTWG 2021
-      verbatim_quote: null
-      note: "Set equal to described — no true-diversity estimate published. TTWG 2025 reports 364; data_estimates.csv recorded 360 from the v9 (2021) checklist."
-    estimated_low:
-      type: derived-from-described
-      source: TTWG 2021
-      verbatim_quote: null
-      note: "Low bound = described count."
-    estimated_high:
-      type: heuristic
-      source: atlas-derived
-      verbatim_quote: null
-      note: |
-        TTWG does not publish a true-diversity bound. The 370 figure allows
-        ~10 undescribed/cryptic species. Turtles are extremely well-described
-        (~1 new species per year, mostly subspecies elevations); the actual
-        cryptic-diversity reserve is small. Honest upper bound is within ~5%
-        of described.
-    overall_classification: fully-heuristic
-    auditor_note: |
-      Turtles intervals are heuristic. Like Birds and Mammals, turtles are a
-      well-catalogued clade — TTWG publishes a checklist, not a diversity
-      estimate. The 370 placeholder shouldn't be visually equated with the
-      paper-published ranges that exist for poorly-described clades
-      (Insects 2.6M-7.8M from Stork 2018, etc).
-
+      type: none-published
+      source: none published (= described count)
+      note: 'card estimated_total: TTWG 2021/2025, Colston 2020, CheloniansTraits give no total; 370 is
+        the Reptile Database Jun 2026 described count'
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/turtles/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 # --- Canonical tree ---
 # The atlas's shipped paper tree (standardized/trees/turtles.nwk) has 593 tips
 # representing 287 species across 1-3 specimens each. For an atlas of species

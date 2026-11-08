@@ -3,37 +3,33 @@ slug: scorpiones
 category: Arthropods
 
 estimate:
-  described: 2700
-  low: 2700
-  total: 3500
-  high: 5000
+  described: 2954
+  low: 4000
+  total: 5292
+  high: 7000
   confidence: Medium
   source:
-    key: Rein 2024
-    doi: null
-    pdf: null
-    url: https://www.ntnu.no/ub/scorpion-files/
-    note: "Rein, J.O. (2024) - The Scorpion Files. NTNU University Library. Authoritative live catalog of valid scorpion species (no published article; web-only resource maintained at https://www.ntnu.no/ub/scorpion-files/)."
+    key: 'Prendini in Parry 2012 (low); Prendini 2012 (high) (central: geometric midpoint of the stated
+      range)'
+    type: low expert-opinion; central not stated; high expert-opinion
+    note: 'parry2012livescience (NBC News wbna48320351): ''between 4,000 and 7,000 scorpion species'';
+      prendini2012scorpiones PDF p. 2: ''as high as 7,000 species'''
   interval_provenance:
     described:
       type: database
-      source: Rein 2024
-      verbatim_quote: null
+      source: The Scorpion Files (Rein; Wayback 3 Oct. 2026)
+      release: The Scorpion Files homepage, Wayback snapshot 20261003221129 (2026-10-03, 22 days after
+        2026-09-11; 20261004053125 gives the same 2,954)
+      note: 'rein-scorpionfiles: homepage line ''Number of species in the world: 2954'' (web.archive.org/web/20261003221129/https://www.ntnu.no/ub/scorpion-files/);
+        index lists extant families only'
     estimated_total:
-      type: heuristic
-      source: Rein 2024
-      verbatim_quote: null
-    estimated_low:
-      type: derived-from-described
-      source: Rein 2024
-      verbatim_quote: null
-    estimated_high:
-      type: paper-published
-      source: Rein 2024
-      verbatim_quote: null
-    overall_classification: partly-heuristic
-    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
-
+      type: low expert-opinion; central not stated; high expert-opinion
+      source: 'Prendini in Parry 2012 (low); Prendini 2012 (high) (central: geometric midpoint of the
+        stated range)'
+      note: 'parry2012livescience (NBC News wbna48320351): ''between 4,000 and 7,000 scorpion species'';
+        prendini2012scorpiones PDF p. 2: ''as high as 7,000 species'''
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/scorpiones/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree: null
 caveats:
   - severity: medium

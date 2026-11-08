@@ -3,37 +3,30 @@ slug: dinoflagellates
 category: Microbes & protists
 
 estimate:
-  described: 2300
-  low: 3000
-  total: 5000
-  high: 10000
+  described: 2377
+  low: 2377
+  total: 2377
+  high: 2377
   confidence: Low
   source:
-    key: Gomez 2012
-    doi: 10.1080/00071610600715409
-    pdf: null
-    url: null
-    note: "Gómez F (2012) — A quantitative review of the lifestyle, habitat and trophic diversity of dinoflagellates (Alveolata, Dinophyceae). Syst Biodivers 10:267-275."
+    key: no published estimate (described count)
+    type: none-published
+    note: 'card estimated_total: 5,000/3,000/10,000 attributed to Gómez 2012 are in no source read; searched
+      Gómez 2012a/b, Guiry 2012/2024, Taylor et al. 2008, Le Bescot 2016.'
   interval_provenance:
     described:
       type: database
-      source: Gomez 2012
-      verbatim_quote: null
+      source: 'Gómez 2012 checklist (CICIMAR Oceánides 27: 65-140)'
+      release: Gómez 2012a, published 2012-06-04
+      note: 'gomez2012checklist, abstract (OpenAlex record of doi:10.37543/oceanides.v27i1.111): ''Dinoflagellates
+        sensu lato ... comprised 2,377 species''; Gómez 2012b abstract gives the same 2,377.'
     estimated_total:
-      type: paper-published
-      source: Gomez 2012
-      verbatim_quote: null
-    estimated_low:
-      type: paper-published
-      source: Gomez 2012
-      verbatim_quote: null
-    estimated_high:
-      type: paper-published
-      source: Gomez 2012
-      verbatim_quote: null
-    overall_classification: partly-heuristic
-    auditor_note: "Gomez 2012 dinoflagellate checklist. Not abstract-indexed. Bounds 3k-5k-10k not verified. (Guiry 2024 reports 2,956 living dinoflagellates, partially constraining the central.)"
-
+      type: none-published
+      source: no published estimate (described count)
+      note: 'card estimated_total: 5,000/3,000/10,000 attributed to Gómez 2012 are in no source read;
+        searched Gómez 2012a/b, Guiry 2012/2024, Taylor et al. 2008, Le Bescot 2016.'
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/dinoflagellates/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree: null
 caveats:
   - severity: medium

@@ -3,38 +3,32 @@ slug: spiders
 category: Arthropods
 
 estimate:
-  described: 52249
-  low: 80000
+  described: 54244
+  low: 76000
   total: 120000
   high: 170000
   confidence: Medium
   source:
-    key: Agnarsson 2013
-    doi: 10.1111/zsc.12011
-    study: "Agnarsson I, Coddington JA, Kuntner M (2013) — Systematics: progress in the study of spider diversity and evolution. Pp. 58-111 in: Penney D (ed.) Spider Research in the 21st Century. Siri Scientific Press."
-    pdf: null
-    url: null
-    note: "Agnarsson, Coddington, Kuntner 2013 book chapter and adjoining Zool Scripta paper (doi:10.1111/zsc.12011 — 'A revision of the homalonychid spiders'). Live species count source is the World Spider Catalog (https://wsc.nmbe.ch/); the Agnarsson 2013 reference here documents the diversity-extrapolation argument behind the 80k-170k range."
+    key: Agnarsson et al. 2013 (central); Adis & Harvey 2000 as cited by Agnarsson et al. 2013 (low, high)
+    type: published-point; low expert-opinion; high expert-opinion
+    note: 'agnarsson2013systematics p. 70: ''at least 120,000'' (Table 1 sum 122,243); p. 70: Adis & Harvey
+      ''opinion-based estimate of 76,000-170,000'''
   interval_provenance:
     described:
       type: database
-      source: World Spider Catalog 2025
-      verbatim_quote: null
+      source: World Spider Catalog v27 (read 4 Nov. 2026)
+      release: WSC version 27, live catalogue read 2026-11-04 (54 days after 2026-09-11; v26 of 2026-02-02
+        is 221 days before)
+      note: 'worldspidercatalog2026: wsc.nmbe.ch home header ''139 Families 4,538 Genera 54,244 Species'';
+        extant only (fossils in separate section)'
     estimated_total:
-      type: paper-published
-      source: Agnarsson 2013
-      verbatim_quote: null
-    estimated_low:
-      type: paper-published
-      source: Agnarsson 2013
-      verbatim_quote: null
-    estimated_high:
-      type: paper-published
-      source: Agnarsson 2013
-      verbatim_quote: null
-    overall_classification: partly-heuristic
-    auditor_note: "Agnarsson 2013 spider diversity reference not isolated by Crossref. Bounds 80k-120k-170k unverified."
-
+      type: published-point; low expert-opinion; high expert-opinion
+      source: Agnarsson et al. 2013 (central); Adis & Harvey 2000 as cited by Agnarsson et al. 2013 (low,
+        high)
+      note: 'agnarsson2013systematics p. 70: ''at least 120,000'' (Table 1 sum 122,243); p. 70: Adis &
+        Harvey ''opinion-based estimate of 76,000-170,000'''
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/spiders/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree:
   file: tree.nwk
   ntips: 1456

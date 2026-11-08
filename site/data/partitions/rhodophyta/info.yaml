@@ -3,37 +3,30 @@ slug: rhodophyta
 category: Plants
 
 estimate:
-  described: 7000
-  low: 7000
-  total: 10000
-  high: 15000
+  described: 7276
+  low: 7276
+  total: 14000
+  high: 20000
   confidence: Low
   source:
-    key: AlgaeBase
-    doi: null
-    pdf: null
-    url: https://www.algaebase.org/
-    note: "AlgaeBase live catalog (Guiry & Guiry). 7,000+ accepted Rhodophyta species. Companion to Guiry 2012 J Phycol review."
+    key: Guiry 2012 (central); Metting 1996 as cited by Chapman 2009 (high)
+    type: expert-opinion
+    note: 'guiry2012how Table 1 row Rhodophyta ''Total (estimate)'' 14,000; metting1996biodiversity via
+      chapman2009numbers p. 48: ''Rhodophyta of from 5,500-20,000'''
   interval_provenance:
     described:
       type: database
-      source: AlgaeBase
-      verbatim_quote: null
+      source: AlgaeBase via Guiry 2024 (1 Nov. 2023), living species
+      release: 'AlgaeBase as of 1 November 2023, published in Guiry 2024, J. Phycol. 60: 214'
+      note: 'guiry2024how; Table 7 row Total: 7,554 species, 278 fossil, 7,276 living (also Table 2 and
+        abstract)'
     estimated_total:
-      type: heuristic
-      source: AlgaeBase
-      verbatim_quote: null
-    estimated_low:
-      type: derived-from-described
-      source: AlgaeBase
-      verbatim_quote: null
-    estimated_high:
-      type: paper-published
-      source: AlgaeBase
-      verbatim_quote: null
-    overall_classification: partly-heuristic
-    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
-
+      type: expert-opinion
+      source: Guiry 2012 (central); Metting 1996 as cited by Chapman 2009 (high)
+      note: 'guiry2012how Table 1 row Rhodophyta ''Total (estimate)'' 14,000; metting1996biodiversity
+        via chapman2009numbers p. 48: ''Rhodophyta of from 5,500-20,000'''
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/rhodophyta/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree: null
 caveats:
   - severity: medium

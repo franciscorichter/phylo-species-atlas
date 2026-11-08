@@ -3,50 +3,30 @@ slug: sharks
 category: Vertebrates
 
 estimate:
-  described: 1282
-  low: 1300
-  total: 1450
-  high: 1600
+  described: 1331
+  low: 1331
+  total: 1331
+  high: 1331
   confidence: High
   source:
-    key: Weigmann 2016
-    doi: 10.1111/jfb.12874
-    pdf: null                          # not in local papers archive; verify on access
-    url: https://onlinelibrary.wiley.com/doi/10.1111/jfb.12874
-    note: "Annotated checklist of chondrichthyans (sharks, batoids, chimaeras), J Fish Biol."
+    key: none published (= described count)
+    type: none-published
+    note: 'card estimated_total: Weigmann 2016 gives 1,188 described, no total; Naylor 2012 candidate
+      taxa in a sample only'
   interval_provenance:
     described:
       type: database
-      source: Chondrichthyan Tree of Life
-      verbatim_quote: null
-      note: "data_provenance.csv attributes the 1,282 described count to 'Chondrichthyan Tree of Life' — a live database, NOT Weigmann 2016 (which reported 1,188 species as of Nov 2015)."
+      source: Eschmeyer's Catalog of Fishes (21 Sep. 2026)
+      release: Catalog of Fishes, Species by Family/Subfamily, online version updated 21 Sep. 2026
+      note: fricke2026speciesbyfamily; family rows under Elasmobranchii (1,270) + Holocephali (61); Wayback
+        20260927075303
     estimated_total:
-      type: atlas-derived
-      source: atlas-derived heuristic
-      verbatim_quote: null
-      note: "1,450 figure NOT traceable to Weigmann 2016. The paper's abstract reports a checklist of 1,188 species with no explicit true-diversity bilateral estimate."
-    estimated_low:
-      type: heuristic
-      source: atlas-derived
-      verbatim_quote: null
-      note: "1,300 bound NOT in Weigmann 2016 abstract."
-    estimated_high:
-      type: heuristic
-      source: atlas-derived
-      verbatim_quote: null
-      note: "1,600 upper bound NOT explicitly published by Weigmann 2016."
-    overall_classification: fully-heuristic
-    auditor_note: |
-      AUDIT CORRECTION: this interval was initially classified as
-      paper-published-range based on its bilateral structure (1300<1282<1450<1600).
-      OpenAlex retrieval of Weigmann 2016's abstract shows the paper reports
-      1,188 chondrichthyan species as of 7 Nov 2015 — 16 orders, 61 families,
-      199 genera. No bilateral 1300–1600 true-diversity estimate appears in
-      the abstract. The atlas's range is therefore atlas-derived rather than
-      paper-published, and the partition reclassifies as fully-heuristic.
-      The CITED source (Weigmann 2016) is valid for the described count;
-      the interval bounds simply aren't its claims.
-
+      type: none-published
+      source: none published (= described count)
+      note: 'card estimated_total: Weigmann 2016 gives 1,188 described, no total; Naylor 2012 candidate
+        taxa in a sample only'
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/sharks/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree:
   file: tree.nwk
   ntips: 1192

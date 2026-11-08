@@ -9,35 +9,25 @@ estimate:
   high: 9
   confidence: High
   source:
-    key: Atlas-aggregated
-    doi: null
-    pdf: null
-    url: null
-    note: "Vertebrate lineages absent from the atlas's 10 main vertebrate partitions."
+    key: none published (= described count)
+    type: none-published
+    note: 'card estimated_total: no estimate for any of the three lineages; Kadarusman 2020 hypothesis
+      without number'
   interval_provenance:
     described:
-      type: atlas-derived
-      source: atlas-aggregated
-      verbatim_quote: null
-      note: "Sum of described counts across 3 constituent vertebrate lineages."
+      type: database
+      source: The Reptile Database (Jun. 2026) and Eschmeyer's Catalog of Fishes (21 Sep. 2026)
+      release: Reptile Database June 2026 column (tuatara 1); Catalog of Fishes 21 Sep. 2026 (coelacanths
+        2, lungfishes 6)
+      note: uetz2026speciesstat SpeciesStat.html row Rhynchocephalia; fricke2026speciesbyfamily rows Latimeriidae,
+        Neoceratodontidae, Lepidosirenidae, Protopteridae
     estimated_total:
-      type: atlas-derived
-      source: atlas-aggregated
-      verbatim_quote: null
-    estimated_low:
-      type: derived-from-described
-      source: atlas-aggregated
-      verbatim_quote: null
-    estimated_high:
-      type: atlas-derived
-      source: atlas-aggregated
-      verbatim_quote: null
-    overall_classification: derived
-    auditor_note: |
-      Three vertebrate lineages with extremely small species counts and no
-      atlas partition: Tuatara, Coelacanths, Lungfishes. Aggregated here
-      so the Vertebrates category is collectively exhaustive.
-
+      type: none-published
+      source: none published (= described count)
+      note: 'card estimated_total: no estimate for any of the three lineages; Kadarusman 2020 hypothesis
+        without number'
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/other_vertebrates/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree: null
 
 constituents:

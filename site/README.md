@@ -7,7 +7,7 @@ No framework; d3 from a CDN, the figure drawn on a canvas.
 ## What it shows
 
 Every described species of eukaryote as dots, one dot per 500 species (4,171 dots for the
-2,085,607 species of `data.json`), arranged in a ring around the tree of life of the 62 groups.
+2,059,063 species of `data.json`), arranged in a ring around the tree of life of the 62 groups.
 The same dots move between seven steps: all described species; the ring and its tree; the four
 coverage levels of the paper lit in turn (named in a reference tree, placed with molecular data,
 in a chronogram in absolute time, date uncertainty available); and the described species against

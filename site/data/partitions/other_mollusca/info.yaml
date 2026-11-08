@@ -3,37 +3,31 @@ slug: other_mollusca
 category: Other animals
 
 estimate:
-  described: 1500
-  low: 1500
-  total: 3000
-  high: 5000
+  described: 2199
+  low: 2199
+  total: 2199
+  high: 2199
   confidence: Medium
   source:
-    key: WoRMS
-    doi: 10.1016/j.cub.2012.09.036
-    pdf: null
-    url: null
-    note: "Appeltans 2012 WoRMS census. Aggregate of non-Bivalvia non-Gastropoda non-Cephalopoda mollusks: Polyplacophora (~1,000 chitons), Solenogastres (~250), Caudofoveata (~150), Monoplacophora (~30), Scaphopoda (~600 tusk shells)."
+    key: none published (described count)
+    type: none-published
+    note: 'card estimated_total: no source states a total for the five classes; Appeltans 2012 Table 2
+      ''Total Estimated'' cells empty for these rows'
   interval_provenance:
     described:
       type: database
-      source: WoRMS
-      verbatim_quote: null
+      source: MolluscaBase, in Catalogue of Life COL26.9
+      release: 'COL26.9 base (ChecklistBank 316321, issued 2026-09-11; MolluscaBase sector): Caudofoveata
+        145 + Monoplacophora 32 + Polyplacophora 1,104 + Scaphopoda 589 + Solenogastres 329'
+      note: card described.derivation; ChecklistBank API per class (accepted minus extinct=true); same
+        five counts on the MolluscaBase stats page 2026-11-04
     estimated_total:
-      type: heuristic
-      source: WoRMS
-      verbatim_quote: null
-    estimated_low:
-      type: derived-from-described
-      source: WoRMS
-      verbatim_quote: null
-    estimated_high:
-      type: paper-published
-      source: WoRMS
-      verbatim_quote: null
-    overall_classification: partly-heuristic
-    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
-
+      type: none-published
+      source: none published (described count)
+      note: 'card estimated_total: no source states a total for the five classes; Appeltans 2012 Table
+        2 ''Total Estimated'' cells empty for these rows'
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/other_mollusca/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree: null
 caveats:
   - severity: medium

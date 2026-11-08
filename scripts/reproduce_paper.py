@@ -1624,6 +1624,36 @@ def main(argv=None):
     # D66: named coverage over every tree of the catalogue, the headline
     R.macro(macros, "AnyCZeroN", fmt_int(lad["C0"]["sum"] + n_add))
     R.macro(macros, "AnyCZeroPct", fmt_pct(pct(lad["C0"]["sum"] + n_add, den)))
+    # D66: the partition table (paper/supp_partition.csv, written by
+    # code/rebuild/partition_sensitivity.py).  At the named level the any-tree
+    # count is the count just recomputed under every partition; over the
+    # paper's groups the one-tree-per-group count is the reference trees' C0;
+    # one tree per group never exceeds any tree.  The three macros follow.
+    pt = []
+    with open(path("paper", "supp_partition.csv"), newline="", encoding="utf-8") as fh:
+        pt = list(csv.DictReader(fh))
+    for r in pt:
+        A, B = int(r["A_any_tree"]), int(r["B_best_tree"])
+        if r["level"] == "named":
+            R.eq("supp_partition %s: any-tree named count = the union count"
+                 % r["partition"], A, lad["C0"]["sum"] + n_add)
+        R.eq("supp_partition %s %s: one tree <= any tree, difference column"
+             % (r["partition"], r["level"]), (B <= A, int(r["A_minus_B"])),
+             (True, A - B))
+    R.eq("supp_partition groups: one-tree named count = the reference trees' C0",
+         [int(r["B_best_tree"]) for r in pt
+          if r["partition"] == "groups" and r["level"] == "named"],
+         [lad["C0"]["sum"]])
+    fine = [r for r in pt if r["partition"] != "phylum" and int(r["A_any_tree"])]
+    R.macro(macros, "PartitionMaxGapPct", fmt_pct(max(
+        100.0 * (int(r["A_any_tree"]) - int(r["B_best_tree"])) / int(r["A_any_tree"])
+        for r in fine)))
+    phy = {r["level"]: r for r in pt if r["partition"] == "phylum"}
+    R.macro(macros, "PartitionPhylumNamedPct", fmt_pct(
+        100.0 * int(phy["named"]["B_best_tree"]) / int(phy["named"]["A_any_tree"])))
+    R.macro(macros, "PartitionPhylumUncPct", fmt_pct(
+        100.0 * int(phy["uncertainty"]["B_best_tree"])
+        / int(phy["uncertainty"]["A_any_tree"])))
 
     # ---------------------------------------------- source studies, dating ---
     R.section("Source studies: molecular-species trees and what each study dated")
@@ -1972,9 +2002,11 @@ def main(argv=None):
         n = macro_name(p)
         rho_t, rho_c = g(p, *M, k="rho"), g(p, *MC, k="rho")
         R.eq("%s: rho of the two same-tree fits = molecular tips, full-tree tips, "
-             "over described" % p, ("%.6f" % rho_t, "%.6f" % rho_c),
-             ("%.6f" % (len(mol_rows[p]) / float(bmap[p]["described"])),
-              "%.6f" % (len(tips[p]) / float(bmap[p]["described"]))))
+             "over described (to 1e-6, the precision the fits are written with)"
+             % p,
+             (abs(rho_t - len(mol_rows[p]) / float(bmap[p]["described"])) <= 1e-6,
+              abs(rho_c - len(tips[p]) / float(bmap[p]["described"])) <= 1e-6),
+             (True, True))
         lam_t, lam_c = g(p, *M, k="lambda"), g(p, *MC, k="lambda")
         ll_t, ll_c = g(p, *M, k="loglik"), g(p, *MC, k="loglik")
         pred, ratio, dll = rho_t / rho_c, lam_c / lam_t, ll_t - ll_c

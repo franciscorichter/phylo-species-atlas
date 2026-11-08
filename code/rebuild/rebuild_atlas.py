@@ -339,6 +339,7 @@ AUDIT_COMMON = os.path.join(ROOT, "Paper", "audit-2026-08-20", "code", "common.p
 sys.path.insert(0, SCRIPT_DIR)
 from canonical_trees import species_key as SPECIES_KEY  # noqa: E402  (D4)
 import tree_licences  # noqa: E402  (the licence of every release tree file)
+import partition_sensitivity  # noqa: E402  (D66: coverage under other partitions)
 
 # Read-only passthrough / pre-audit ledger sources.
 TREE_PROVENANCE = os.path.join(ROOT, "Data", "tree_provenance.csv")
@@ -4551,6 +4552,16 @@ def build_number_macros(head, basis, warnings):
     # D66: named coverage is counted over every tree of the catalogue
     m["AnyCZeroN"] = macro_int(u["C0_union"])
     m["AnyCZeroPct"] = macro_pct(u["C0_union_pct"])
+    # D66: how much the one-tree-per-group count depends on the partition
+    ps = partition_sensitivity.compute(ROOT)
+    fine = [r for r in ps if r["partition"] != "phylum" and r["A_any_tree"]]
+    m["PartitionMaxGapPct"] = macro_pct(max(
+        100.0 * (r["A_any_tree"] - r["B_best_tree"]) / r["A_any_tree"] for r in fine))
+    phy = {r["level"]: r for r in ps if r["partition"] == "phylum"}
+    m["PartitionPhylumNamedPct"] = macro_pct(
+        100.0 * phy["named"]["B_best_tree"] / phy["named"]["A_any_tree"])
+    m["PartitionPhylumUncPct"] = macro_pct(
+        100.0 * phy["uncertainty"]["B_best_tree"] / phy["uncertainty"]["A_any_tree"])
     prod = s["c1_definition"]["product"]
     m["SensProductCOnePct"] = macro_pct(prod["C1"]["percent"])
     m["SensProductCOneDPct"] = macro_pct(prod["C1d"]["percent"])
@@ -7402,6 +7413,36 @@ def _tex_quantile(q):
     if q.startswith(">"):
         return "$>$%s" % q[1:]
     return "%.2f" % float(q)
+
+
+SUPP_PARTITION_NAME = OrderedDict([
+    ("groups", "groups of this paper"), ("phylum", "phyla"), ("class", "classes"),
+    ("order", "orders"), ("family", "families")])
+SUPP_PARTITION_LEVEL = OrderedDict([
+    ("named", "Named"), ("dated", "Dated"), ("uncertainty", "Available")])
+
+
+@supp_table("supp_partition", partition_sensitivity.HEADER)
+def _t_partition(head, basis, shipped, tex):
+    """D66.  Estimand A (any tree) and B (one tree per group) under five
+    partitions (scripts/partition_sensitivity.py)."""
+    rows = partition_sensitivity.compute(ROOT)
+    if not tex:
+        return rows
+    out = []
+    for p in SUPP_PARTITION_NAME:
+        rs = [r for r in rows if r["partition"] == p]
+        for k, r in enumerate(rs):
+            out.append(" & ".join([
+                SUPP_PARTITION_NAME[p] if k == 0 else "",
+                thousands(r["groups_with_species"]) if k == 0 else "",
+                SUPP_PARTITION_LEVEL[r["level"]], thousands(r["A_any_tree"]),
+                thousands(r["B_best_tree"]),
+                "%.1f" % (100.0 * float(r["B_over_A"])) if r["B_over_A"] else "---"])
+                + r" \\")
+        if p != "family":
+            out.append(r"\midrule")
+    return "\n".join(out) + "\n"
 
 
 @supp_table("supp_sensitivity", ["alternative", "denominator"]

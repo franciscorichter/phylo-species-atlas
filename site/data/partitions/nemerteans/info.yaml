@@ -3,37 +3,29 @@ slug: nemerteans
 category: Other animals
 
 estimate:
-  described: 1300
-  low: 1300
-  total: 4500
-  high: 13500
+  described: 1275
+  low: 6765
+  total: 9567
+  high: 13530
   confidence: Low
   source:
-    key: Kajihara 2008
-    doi: 10.12782/specdiv.13.245
-    pdf: null
-    url: null
-    note: "Kajihara H, Chernyshev AV, Sun SC, Sundberg P, Crandall FB (2008) — Checklist of nemertean genera and species published between 1995 and 2007. Species Diversity 13:245-274. (Companion to the Gibson 1995 master list.)"
+    key: 'Maslakova et al. 2025 (central: geometric midpoint of the stated range)'
+    type: published-range
+    note: 'maslakova2025hundred; PeerJ 13: e19438, Discussion (PMC12126093): ''estimated global diversity
+      between 6,765 and 13,530 species'''
   interval_provenance:
     described:
       type: database
-      source: Kajihara 2008
-      verbatim_quote: null
+      source: Kajihara et al. 2008
+      release: 'Kajihara et al. 2008, Species Diversity 13: 245-274 (checklist 1995-2007 + Gibson 1995)'
+      note: kajihara2008checklist; abstract p. 245 (110 + 450 + 570 + 46 + 98 + 1 = 1,275), doi:10.12782/specdiv.13.245
     estimated_total:
-      type: heuristic
-      source: Kajihara 2008
-      verbatim_quote: '285 genera and 1275 species are currently recognized as valid in the phylum Nemertea (Kajihara 2008 checklist)'
-    estimated_low:
-      type: derived-from-described
-      source: Kajihara 2008
-      verbatim_quote: null
-    estimated_high:
-      type: paper-published
-      source: Kajihara 2008
-      verbatim_quote: null
-    overall_classification: fully-heuristic
-    auditor_note: "Kajihara 2008''s verbatim claim is 1,275 described species (the checklist count). The atlas''s 4500-13500 estimated range is atlas-derived above Kajihara''s described count, not paper-published."
-
+      type: published-range
+      source: 'Maslakova et al. 2025 (central: geometric midpoint of the stated range)'
+      note: 'maslakova2025hundred; PeerJ 13: e19438, Discussion (PMC12126093): ''estimated global diversity
+        between 6,765 and 13,530 species'''
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/nemerteans/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree: null
 caveats:
   - severity: medium

@@ -3,40 +3,30 @@ slug: foraminifera
 category: Microbes & protists
 
 estimate:
-  described: 9000
-  low: 9000
-  total: 12000
+  described: 8972
+  low: 8972
+  total: 15000
   high: 15000
   confidence: Medium
   source:
-    key: Hayward 2020
-    doi: 10.2113/gsjfr.50.3.291
-    pdf: null
-    url: null
-    note: "Hayward BW, Le Coze F, Vachard D, Gross O (2020) — World Foraminifera Database. WoRMS. ~9,000 accepted living + extant foraminifera. Exceptional fossil record provides direct calibrations."
+    key: Adl et al. 2007 (via Chapman 2009); low = described count
+    type: expert-opinion; low none-published (described count)
+    note: 'adl2007diversity Table 1 read through chapman2009numbers p. 61: ''Granuloreticulosa (Foraminifera
+      and reticulomyxids) ... >10,000 (15,000)''; no stated low bound or interval.'
   interval_provenance:
     described:
       type: database
-      source: Hayward 2020
-      verbatim_quote: null
+      source: World Foraminifera Database / WoRMS (4 Nov. 2026)
+      release: live database read 2026-11-04 (54 days after 2026-09-11)
+      note: 'worms2026foraminifera, marinespecies.org/foraminifera home page: ''Current number of accepted
+        recent species : 8,972''.'
     estimated_total:
-      type: heuristic
-      source: Hayward 2020
-      verbatim_quote: null
-    estimated_low:
-      type: derived-from-described
-      source: Hayward 2020
-      verbatim_quote: null
-    estimated_high:
-      type: paper-published
-      source: Hayward 2020
-      verbatim_quote: null
-    overall_classification: fully-heuristic
-    auditor_note: "Hayward 2020 is the World Foraminifera Database catalog (4,932 genera; ~9,600 extant species), NOT a paper publishing a true-diversity range. Atlas''s 9k-12k-15k bounds are heuristic. Reclassified."
-    summary: "No canonical tree shipped in the atlas."
-    detail: |
-      Hayward 2020 reference; foraminifera molecular trees are limited.
-
+      type: expert-opinion; low none-published (described count)
+      source: Adl et al. 2007 (via Chapman 2009); low = described count
+      note: 'adl2007diversity Table 1 read through chapman2009numbers p. 61: ''Granuloreticulosa (Foraminifera
+        and reticulomyxids) ... >10,000 (15,000)''; no stated low bound or interval.'
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/foraminifera/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 dated_alternatives:
   reason_canonical_undated: |
     See caveats above. No species-level dated chronogram at atlas scale;

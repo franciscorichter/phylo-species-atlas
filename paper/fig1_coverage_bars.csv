@@ -1,63 +1,63 @@
 group,category,estimated_total,estimated_low,estimated_high,described,in_dated_tree,in_undated_tree,estimate_source,confidence,is_unrepresented,study,tips,dated
-Fish,Vertebrates,40000,36280,50000,36280,31347,0,Mora 2011,Medium,False,Rabosky 2018,31347,True
-Squamates,Vertebrates,12000,12108,13000,12108,9754,0,Uetz 2025,High,False,Tonini 2016,9754,True
-Birds,Vertebrates,11195,11195,11400,11195,10824,0,IUCN,High,False,McTavish 2025,10824,True
-Amphibians,Vertebrates,15000,10000,20000,8863,7238,0,Mora 2011,Medium,False,Jetz Pyron 2018,7238,True
-Mammals,Vertebrates,6736,6736,7500,6736,5911,0,Burgin 2018,High,False,Upham 2019,5911,True
-Sharks,Vertebrates,1450,1300,1600,1282,1192,0,Weigmann 2016,High,False,Stein 2018,1192,True
-Turtles,Vertebrates,360,364,370,364,283,0,TTWG 2021,High,False,Thomson 2021,283,True
-Hagfish,Vertebrates,100,82,120,82,0,0,Fernholm 2013,Medium,True,,,False
-Lampreys,Vertebrates,55,48,65,48,0,0,Potter 2015,High,True,,,False
-Crocodilians,Vertebrates,28,27,30,27,25,0,IUCN CSG,High,False,Condamine 2019,25,True
-Other vertebrates,Vertebrates,9,9,9,9,0,0,Atlas-aggregated,High,True,,,False
-Seed plants,Plants,450000,400000,500000,383671,348886,0,Nic Lughadha 2016,Medium,False,Smith Brown 2018,348886,True
-Bryophytes,Plants,24000,24000,28000,19273,533,0,CoL 2025,Medium,False,Bechteler 2023,533,True
-Green algae,Plants,22000,13000,30000,11000,0,0,Guiry 2012,Low,True,,,False
-Ferns,Plants,13500,10578,15000,10578,6216,0,PPG I 2016,High,False,Nitta 2022,6216,True
-Rhodophyta,Plants,10000,7000,15000,7000,0,0,AlgaeBase,Low,True,,,False
-Lycophytes,Plants,1400,1338,1500,1338,0,0,PPG I 2016,High,True,,,False
-Insects,Arthropods,5500000,2600000,7800000,929676,0,53373,Stork 2018,Low,False,insectphylo v2,53373,False
-Crustaceans,Arthropods,150000,100000,250000,77000,0,95,Appeltans 2012,Low,False,Wolfe 2019,95,False
-Acari,Arthropods,500000,100000,1000000,55000,0,0,Zhang 2013,Low,True,,,False
-Spiders,Arthropods,120000,80000,170000,52249,1431,0,Agnarsson 2013,Medium,False,Macias-Hernandez 2020,1431,True
-Myriapods,Arthropods,85000,40000,130000,17000,0,0,Chapman 2009,Low,True,,,False
-Other arachnids,Arthropods,25000,15000,50000,12765,0,0,CoL,Low,True,,,False
-Other hexapods,Arthropods,15000,10000,25000,10138,0,0,CoL,Low,True,,,False
-Scorpiones,Arthropods,3500,2700,5000,2700,0,0,Rein 2024,Medium,True,,,False
-Pycnogonida,Arthropods,2000,1400,3000,1400,0,0,WoRMS,Medium,True,,,False
-Gastropods,Other animals,100000,70000,150000,65000,40,0,Appeltans 2012,Medium,False,Zapata F et al.,40,True
-Flatworms,Other animals,100000,44000,200000,29487,0,0,Zhang 2013,Low,True,,,False
-Nematodes,Other animals,1000000,500000,10000000,28537,0,156,Hodda 2022,Medium,False,Qing 2025,156,False
-Annelids,Other animals,35000,17340,50000,17340,0,0,Appeltans 2012,Medium,True,,,False
-Cnidaria,Other animals,16000,12000,25000,11800,289,0,Appeltans 2012,Medium,False,Vaga CF,289,True
-Bivalves,Other animals,30000,10043,40000,10043,0,73,Appeltans 2012,Medium,False,Pfeiffer JM,73,False
-Sponges,Other animals,17000,10000,25000,9470,119,0,Appeltans 2012,Medium,False,Lavrov DV et al.,119,True
-Echinoderms,Other animals,10000,8000,15000,7550,65,0,Appeltans 2012,Medium,False,Mongiardino Koch N,65,True
-Bryozoa,Other animals,8000,6000,10000,6000,0,565,Appeltans 2012,Medium,False,Orr 2022,565,False
-Other phyla,Other animals,10535,4676,15700,3863,0,0,"CoL; Atlas-aggregated (sum of Other phyla and Minor animal phyla, D66)",Low,True,,,False
-Tunicates,Other animals,5100,3500,7000,3145,0,0,Appeltans 2012,Medium,True,,,False
-Myxozoa,Other animals,4000,2400,6000,2400,0,0,WoRMS,Low,True,,,False
-Rotifera,Other animals,2200,2200,2500,2200,0,0,Segers 2007,High,True,,,False
-Other Mollusca,Other animals,3000,1500,5000,1500,0,0,WoRMS,Medium,True,,,False
-Tardigrada,Other animals,2081,1488,3000,1488,0,0,Bartels 2016,Medium,True,,,False
-Acanthocephala,Other animals,2000,1300,3000,1325,0,0,CoL,Medium,True,,,False
-Nemerteans,Other animals,4500,1300,13500,1300,0,0,Kajihara 2008,Low,True,,,False
-Cephalopods,Other animals,1200,900,1500,800,81,0,WoRMS,Medium,False,Basava 2024,81,True
-Ctenophores,Other animals,300,200,500,200,0,0,WoRMS,Low,True,,,False
-Fungi,Microbes & protists,3000000,2200000,3800000,156891,0,1620,Hawksworth 2017,Low,False,Li Y et al.,1620,False
-Bacteria,Microbes & protists,4000000,800000,10000000,136646,0,136646,Curtis 2002,Low,False,Parks DH et al.,136646,False
-Diatoms,Microbes & protists,100000,30000,200000,20000,1113,0,Mann 2013,Low,False,Nakov 2018,1113,True
-Foraminifera,Microbes & protists,12000,9000,15000,9000,0,0,Hayward 2020,Medium,True,,,False
-Archaea,Microbes & protists,50000,20000,500000,6968,0,6968,Louca 2019,Low,False,Parks DH et al.,6968,False
-Apicomplexa,Microbes & protists,10000,6000,20000,6000,0,0,CoL,Low,True,,,False
-Ciliates,Microbes & protists,40000,20000,100000,4500,0,0,Foissner 2008,Low,True,,,False
+Fish,Vertebrates,36288,36288,36288,36288,31347,0,none published (= described count),Medium,False,Rabosky 2018,31347,True
+Squamates,Vertebrates,16467,15386,17547,12252,9754,0,Li et al. 2025 (Sci. Adv. 11: eadz3071),High,False,Tonini 2016,9754,True
+Birds,Vertebrates,11185,11185,11185,11185,10824,0,none published (described count),High,False,McTavish 2025,10824,True
+Amphibians,Vertebrates,15372,12000,20000,9088,7238,0,Button et al. 2026 (FROGLOG 32(1)),Medium,False,Jetz Pyron 2018,7238,True
+Mammals,Vertebrates,7500,6887,7500,6887,5911,0,"Reeder, Helgen & Wilson 2007 (Occas. Pap. Mus. Texas Tech Univ. 269)",High,False,Upham 2019,5911,True
+Sharks,Vertebrates,1331,1331,1331,1331,1192,0,none published (= described count),High,False,Stein 2018,1192,True
+Turtles,Vertebrates,359,359,359,359,283,0,none published (= described count),High,False,Thomson 2021,283,True
+Hagfish,Vertebrates,93,93,93,93,0,0,none published (= described count),Medium,True,,,False
+Lampreys,Vertebrates,49,49,49,49,0,0,none published (= described count),High,True,,,False
+Crocodilians,Vertebrates,28,27,28,27,25,0,"IUCN-SSC Crocodile Specialist Group (species page, 2026)",High,False,Condamine 2019,25,True
+Other vertebrates,Vertebrates,9,9,9,9,0,0,none published (= described count),High,True,,,False
+Seed plants,Plants,354303,354303,354303,354303,348886,0,none published (= described count),Medium,False,Smith Brown 2018,348886,True
+Bryophytes,Plants,19273,19273,25000,19273,533,0,"Medina, Draper & Lara 2011 (high only); low and central = described count",Medium,False,Bechteler 2023,533,True
+Ferns,Plants,14933,14890,15162,11999,6216,0,Bebber et al. 2007 (Proc. R. Soc. B 274: 1651),High,False,Nitta 2022,6216,True
+Green algae,Plants,22000,11791,22000,11791,0,0,"Guiry 2012 (J. Phycol. 48: 1057), Table 1 phylum totals",Low,True,,,False
+Rhodophyta,Plants,14000,7276,20000,7276,0,0,Guiry 2012 (central); Metting 1996 as cited by Chapman 2009 (high),Low,True,,,False
+Lycophytes,Plants,1467,1467,1467,1467,0,0,none published (= described count),High,True,,,False
+Insects,Arthropods,5500000,2600000,7800000,929676,0,53373,Stork et al. 2015,Low,False,insectphylo v2,53373,False
+Crustaceans,Arthropods,150000,75000,200000,67735,0,95,Chapman 2009,Low,False,Wolfe 2019,95,False
+Acari,Arthropods,500000,100000,1000000,54908,0,0,Halliday et al. 2000 (central); Chapman 2009 (low); Stork 2018 (high),Low,True,,,False
+Spiders,Arthropods,120000,76000,170000,54244,1431,0,"Agnarsson et al. 2013 (central); Adis & Harvey 2000 as cited by Agnarsson et al. 2013 (low, high)",Medium,False,Macias-Hernandez 2020,1431,True
+Myriapods,Arthropods,16072,16072,16072,16072,0,0,none published (described count),Low,True,,,False
+Other arachnids,Arthropods,12765,12765,12765,12765,0,0,none published (set to the described count),Low,True,,,False
+Other hexapods,Arthropods,52000,10138,52000,10138,0,0,Chapman 2009,Low,True,,,False
+Scorpiones,Arthropods,5292,4000,7000,2954,0,0,Prendini in Parry 2012 (low); Prendini 2012 (high) (central: geometric midpoint of the stated range),Medium,True,,,False
+Pycnogonida,Arthropods,2974,2486,3557,1431,0,0,Appeltans et al. 2012 (central: geometric midpoint of the stated range),Medium,True,,,False
+Gastropods,Other animals,150000,76288,150000,76288,40,0,Torres et al. 2024,Medium,False,Zapata F et al.,40,True
+Flatworms,Other animals,80000,29487,80000,29487,0,0,Chapman 2009,Low,True,,,False
+Nematodes,Other animals,10000000,500000,10000000,28415,0,156,Hodda & Khudhir 2026 (central); Hodda 2022a (range),Medium,False,Qing 2025,156,False
+Annelids,Other animals,30000,25000,30000,17340,0,0,Chapman 2009,Medium,True,,,False
+Cnidaria,Other animals,11597,11597,11597,11597,289,0,none published (described count),Medium,False,Vaga CF,289,True
+Bivalves,Other animals,10043,10043,10043,10043,0,73,none published (described count),Medium,False,Pfeiffer JM,73,False
+Sponges,Other animals,26201,25853,26553,9864,119,0,Appeltans et al. 2012 (central: geometric midpoint of the stated range),Medium,False,Lavrov DV et al.,119,True
+Echinoderms,Other animals,11289,9617,13251,7749,65,0,Appeltans et al. 2012 (central: geometric midpoint of the stated range),Medium,False,Mongiardino Koch N,65,True
+Bryozoa,Other animals,6613,6613,6613,6613,0,565,none published (described count),Medium,False,Orr 2022,565,False
+Other phyla,Other animals,3863,3863,3863,3863,0,0,none published (described count),Low,True,,,False
+Tunicates,Other animals,4844,4600,5100,3020,0,0,Appeltans et al. 2012 (central: geometric midpoint of the stated range),Medium,True,,,False
+Myxozoa,Other animals,3012,3012,3012,3012,0,0,none published (described count),Low,True,,,False
+Other Mollusca,Other animals,2199,2199,2199,2199,0,0,none published (described count),Medium,True,,,False
+Rotifera,Other animals,2030,2030,2030,2030,0,0,none published (described count),High,True,,,False
+Tardigrada,Other animals,2081,1505,2081,1505,0,0,Bartels et al. 2016,Medium,True,,,False
+Acanthocephala,Other animals,6223,1325,22404,1325,0,0,Carlson et al. 2020 (central; high with cryptic species); low = described count,Medium,True,,,False
+Nemerteans,Other animals,9567,6765,13530,1275,0,0,Maslakova et al. 2025 (central: geometric midpoint of the stated range),Low,True,,,False
+Cephalopods,Other animals,868,868,868,868,81,0,none published (described count),Medium,False,Basava 2024,81,True
+Ctenophores,Other animals,397,315,500,186,0,0,Appeltans et al. 2012 (central: geometric midpoint of the stated range),Low,True,,,False
+Fungi,Microbes & protists,2500000,2000000,3000000,156891,0,1620,Niskanen et al. 2023,Low,False,Li Y et al.,1620,False
+Bacteria,Microbes & protists,4000000,136646,4000000,136646,0,136646,Curtis et al. 2002 (central),Low,False,Parks DH et al.,136646,False
+Diatoms,Microbes & protists,100000,30000,200000,16427,1113,0,Mann & Vanormelingen 2013; high Mann & Droop 1996,Low,False,Nakov 2018,1113,True
+Foraminifera,Microbes & protists,15000,8972,15000,8972,0,0,Adl et al. 2007 (via Chapman 2009); low = described count,Medium,True,,,False
+Archaea,Microbes & protists,6968,6968,6968,6968,0,6968,none (set to described count),Low,False,Parks DH et al.,6968,False
+Apicomplexa,Microbes & protists,6000,6000,6000,6000,0,0,none published (described count),Low,True,,,False
+Ciliates,Microbes & protists,32863,27000,40000,4500,0,0,Foissner et al. 2008 (central: geometric midpoint of the stated range),Low,True,,,False
 Other protists,Microbes & protists,3353,3353,3353,3353,0,0,none published (described count),Low,True,,,False
-Amoebozoa,Microbes & protists,10000,4000,20000,2400,0,0,Adl 2007,Low,True,,,False
-Dinoflagellates,Microbes & protists,5000,3000,10000,2300,0,0,Gomez 2012,Low,True,,,False
-Brown algae,Microbes & protists,2500,2000,4000,2000,0,0,Guiry 2024,Medium,True,,,False
-Cercozoa,Microbes & protists,5000,2000,10000,2000,0,0,CoL,Low,True,,,False
-Euglenozoa,Microbes & protists,5000,2000,10000,2000,0,0,CoL,Low,True,,,False
-Oomycetes,Microbes & protists,2000,1000,3000,1673,0,0,CoL,Medium,True,,,False
-Chrysophyta,Microbes & protists,3000,1200,5000,1200,0,0,AlgaeBase,Low,True,,,False
-Haptophytes,Microbes & protists,2000,762,4000,760,0,0,de Vargas 2007,Low,True,,,False
-Choanoflagellates,Microbes & protists,300,300,500,300,0,0,Carr 2008,Low,True,,,False
+Amoebozoa,Microbes & protists,2400,2400,2400,2400,0,0,none (set to described count),Low,True,,,False
+Dinoflagellates,Microbes & protists,2377,2377,2377,2377,0,0,no published estimate (described count),Low,True,,,False
+Brown algae,Microbes & protists,2094,2094,2094,2094,0,0,"none published (set to described count, AlgaeBase via Guiry 2024)",Medium,True,,,False
+Oomycetes,Microbes & protists,1673,1673,1673,1673,0,0,no published estimate (described count),Medium,True,,,False
+Euglenozoa,Microbes & protists,1520,1520,1520,1520,0,0,no published estimate (described count),Low,True,,,False
+Chrysophyta,Microbes & protists,1216,1216,1216,1216,0,0,none published (set to described count),Low,True,,,False
+Cercozoa,Microbes & protists,600,600,600,600,0,0,none published (set to described count),Low,True,,,False
+Haptophytes,Microbes & protists,517,517,517,517,0,0,no published estimate above the described count (described count),Low,True,,,False
+Choanoflagellates,Microbes & protists,244,244,244,244,0,0,none published (set to described count),Low,True,,,False

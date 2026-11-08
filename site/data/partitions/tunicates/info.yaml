@@ -3,36 +3,30 @@ slug: tunicates
 category: Other animals
 
 estimate:
-  described: 3145
-  low: 3500
-  total: 5100
-  high: 7000
+  described: 3020
+  low: 4600
+  total: 4844
+  high: 5100
   confidence: Medium
   source:
-    key: Appeltans 2012
-    doi: 10.1016/j.cub.2012.09.036
-    pdf: null
-    url: null
+    key: 'Appeltans et al. 2012 (central: geometric midpoint of the stated range)'
+    type: published-range
+    note: appeltans2012magnitude; Table 2 (cont.) row Tunicata 'Total Estimated' 4,600-5,100 (expert-based),
+      in-press copy p. 7
   interval_provenance:
     described:
       type: database
-      source: Appeltans 2012
-      verbatim_quote: null
+      source: Appeltans et al. 2012
+      release: 'Appeltans et al. 2012, Curr. Biol. 22: 2189-2202 (WoRMS, 17 Feb. 2012)'
+      note: appeltans2012magnitude; Table 2 (cont.) row Tunicata 'Total Known' (Ascidiacea 2,874 + Larvacea
+        67 + Thaliacea 79), in-press copy p. 7
     estimated_total:
-      type: paper-published
-      source: Appeltans 2012
-      verbatim_quote: 'there may be 0.7-1.0 million marine species (226,000 eukaryotic species currently described; 58,000-72,000 collected but undescribed; 482,000-741,000 yet to be sampled)'
-    estimated_low:
-      type: paper-published
-      source: Appeltans 2012
-      verbatim_quote: null
-    estimated_high:
-      type: paper-published
-      source: Appeltans 2012
-      verbatim_quote: null
-    overall_classification: paper-published-range
-    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
-
+      type: published-range
+      source: 'Appeltans et al. 2012 (central: geometric midpoint of the stated range)'
+      note: appeltans2012magnitude; Table 2 (cont.) row Tunicata 'Total Estimated' 4,600-5,100 (expert-based),
+        in-press copy p. 7
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/tunicates/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree: null
 caveats:
   - severity: medium

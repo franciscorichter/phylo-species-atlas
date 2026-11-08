@@ -1,63 +1,63 @@
 group,category,estimated_total,described,in_dated_tree,in_undated_tree,source
-Fish,Vertebrates,40000,36280,31347,,Mora 2011
-Squamates,Vertebrates,12000,12108,9754,,Uetz 2025
-Birds,Vertebrates,11195,11195,10824,,IUCN
-Amphibians,Vertebrates,15000,8863,7238,,Mora 2011
-Mammals,Vertebrates,6736,6736,5911,,Burgin 2018
-Sharks,Vertebrates,1450,1282,1192,,Weigmann 2016
-Turtles,Vertebrates,360,364,283,,TTWG 2021
-Crocodilians,Vertebrates,28,27,25,,IUCN CSG
-Seed plants,Plants,450000,383671,348886,,Nic Lughadha 2016
-Bryophytes,Plants,24000,19273,533,,CoL 2025
-Ferns,Plants,13500,10578,6216,,PPG I 2016
-Insects,Arthropods,5500000,929676,,53373,Stork 2018
-Crustaceans,Arthropods,150000,77000,,95,Appeltans 2012
-Spiders,Arthropods,120000,52249,1431,,Agnarsson 2013
-Gastropods,Other animals,100000,65000,40,,Appeltans 2012
-Nematodes,Other animals,1000000,28537,,156,Hodda 2022
-Cnidaria,Other animals,16000,11800,289,,Appeltans 2012
-Bivalves,Other animals,30000,10043,,73,Appeltans 2012
-Sponges,Other animals,17000,9470,119,,Appeltans 2012
-Echinoderms,Other animals,10000,7550,65,,Appeltans 2012
-Bryozoa,Other animals,8000,6000,,565,Appeltans 2012
-Cephalopods,Other animals,1200,800,81,,WoRMS
-Fungi,Microbes & protists,3000000,156891,,1620,Hawksworth 2017
-Bacteria,Microbes & protists,4000000,136646,,136646,Curtis 2002
-Diatoms,Microbes & protists,100000,20000,1113,,Mann 2013
-Archaea,Microbes & protists,50000,6968,,6968,Louca 2019
-Hagfish,Not yet represented,100,82,,,Fernholm 2013
-Lampreys,Not yet represented,55,48,,,Potter 2015
-Other vertebrates,Not yet represented,9,9,,,Atlas-aggregated
-Green algae,Not yet represented,22000,11000,,,Guiry 2012
-Rhodophyta,Not yet represented,10000,7000,,,AlgaeBase
-Lycophytes,Not yet represented,1400,1338,,,PPG I 2016
-Acari,Not yet represented,500000,55000,,,Zhang 2013
-Myriapods,Not yet represented,85000,17000,,,Chapman 2009
-Other arachnids,Not yet represented,25000,12765,,,CoL
-Other hexapods,Not yet represented,15000,10138,,,CoL
-Scorpiones,Not yet represented,3500,2700,,,Rein 2024
-Pycnogonida,Not yet represented,2000,1400,,,WoRMS
-Flatworms,Not yet represented,100000,29487,,,Zhang 2013
-Annelids,Not yet represented,35000,17340,,,Appeltans 2012
-Other phyla,Not yet represented,10535,3863,,,"CoL; Atlas-aggregated (sum of Other phyla and Minor animal phyla, D66)"
-Tunicates,Not yet represented,5100,3145,,,Appeltans 2012
-Myxozoa,Not yet represented,4000,2400,,,WoRMS
-Rotifera,Not yet represented,2200,2200,,,Segers 2007
-Other Mollusca,Not yet represented,3000,1500,,,WoRMS
-Tardigrada,Not yet represented,2081,1488,,,Bartels 2016
-Acanthocephala,Not yet represented,2000,1325,,,CoL
-Nemerteans,Not yet represented,4500,1300,,,Kajihara 2008
-Ctenophores,Not yet represented,300,200,,,WoRMS
-Foraminifera,Not yet represented,12000,9000,,,Hayward 2020
-Apicomplexa,Not yet represented,10000,6000,,,CoL
-Ciliates,Not yet represented,40000,4500,,,Foissner 2008
+Fish,Vertebrates,36288,36288,31347,,none published (= described count)
+Squamates,Vertebrates,16467,12252,9754,,Li et al. 2025 (Sci. Adv. 11: eadz3071)
+Birds,Vertebrates,11185,11185,10824,,none published (described count)
+Amphibians,Vertebrates,15372,9088,7238,,Button et al. 2026 (FROGLOG 32(1))
+Mammals,Vertebrates,7500,6887,5911,,"Reeder, Helgen & Wilson 2007 (Occas. Pap. Mus. Texas Tech Univ. 269)"
+Sharks,Vertebrates,1331,1331,1192,,none published (= described count)
+Turtles,Vertebrates,359,359,283,,none published (= described count)
+Crocodilians,Vertebrates,28,27,25,,"IUCN-SSC Crocodile Specialist Group (species page, 2026)"
+Seed plants,Plants,354303,354303,348886,,none published (= described count)
+Bryophytes,Plants,19273,19273,533,,"Medina, Draper & Lara 2011 (high only); low and central = described count"
+Ferns,Plants,14933,11999,6216,,Bebber et al. 2007 (Proc. R. Soc. B 274: 1651)
+Insects,Arthropods,5500000,929676,,53373,Stork et al. 2015
+Crustaceans,Arthropods,150000,67735,,95,Chapman 2009
+Spiders,Arthropods,120000,54244,1431,,"Agnarsson et al. 2013 (central); Adis & Harvey 2000 as cited by Agnarsson et al. 2013 (low, high)"
+Gastropods,Other animals,150000,76288,40,,Torres et al. 2024
+Nematodes,Other animals,10000000,28415,,156,Hodda & Khudhir 2026 (central); Hodda 2022a (range)
+Cnidaria,Other animals,11597,11597,289,,none published (described count)
+Bivalves,Other animals,10043,10043,,73,none published (described count)
+Sponges,Other animals,26201,9864,119,,Appeltans et al. 2012 (central: geometric midpoint of the stated range)
+Echinoderms,Other animals,11289,7749,65,,Appeltans et al. 2012 (central: geometric midpoint of the stated range)
+Bryozoa,Other animals,6613,6613,,565,none published (described count)
+Cephalopods,Other animals,868,868,81,,none published (described count)
+Fungi,Microbes & protists,2500000,156891,,1620,Niskanen et al. 2023
+Bacteria,Microbes & protists,4000000,136646,,136646,Curtis et al. 2002 (central)
+Diatoms,Microbes & protists,100000,16427,1113,,Mann & Vanormelingen 2013; high Mann & Droop 1996
+Archaea,Microbes & protists,6968,6968,,6968,none (set to described count)
+Hagfish,Not yet represented,93,93,,,none published (= described count)
+Lampreys,Not yet represented,49,49,,,none published (= described count)
+Other vertebrates,Not yet represented,9,9,,,none published (= described count)
+Green algae,Not yet represented,22000,11791,,,"Guiry 2012 (J. Phycol. 48: 1057), Table 1 phylum totals"
+Rhodophyta,Not yet represented,14000,7276,,,Guiry 2012 (central); Metting 1996 as cited by Chapman 2009 (high)
+Lycophytes,Not yet represented,1467,1467,,,none published (= described count)
+Acari,Not yet represented,500000,54908,,,Halliday et al. 2000 (central); Chapman 2009 (low); Stork 2018 (high)
+Myriapods,Not yet represented,16072,16072,,,none published (described count)
+Other arachnids,Not yet represented,12765,12765,,,none published (set to the described count)
+Other hexapods,Not yet represented,52000,10138,,,Chapman 2009
+Scorpiones,Not yet represented,5292,2954,,,Prendini in Parry 2012 (low); Prendini 2012 (high) (central: geometric midpoint of the stated range)
+Pycnogonida,Not yet represented,2974,1431,,,Appeltans et al. 2012 (central: geometric midpoint of the stated range)
+Flatworms,Not yet represented,80000,29487,,,Chapman 2009
+Annelids,Not yet represented,30000,17340,,,Chapman 2009
+Other phyla,Not yet represented,3863,3863,,,none published (described count)
+Tunicates,Not yet represented,4844,3020,,,Appeltans et al. 2012 (central: geometric midpoint of the stated range)
+Myxozoa,Not yet represented,3012,3012,,,none published (described count)
+Other Mollusca,Not yet represented,2199,2199,,,none published (described count)
+Rotifera,Not yet represented,2030,2030,,,none published (described count)
+Tardigrada,Not yet represented,2081,1505,,,Bartels et al. 2016
+Acanthocephala,Not yet represented,6223,1325,,,Carlson et al. 2020 (central; high with cryptic species); low = described count
+Nemerteans,Not yet represented,9567,1275,,,Maslakova et al. 2025 (central: geometric midpoint of the stated range)
+Ctenophores,Not yet represented,397,186,,,Appeltans et al. 2012 (central: geometric midpoint of the stated range)
+Foraminifera,Not yet represented,15000,8972,,,Adl et al. 2007 (via Chapman 2009); low = described count
+Apicomplexa,Not yet represented,6000,6000,,,none published (described count)
+Ciliates,Not yet represented,32863,4500,,,Foissner et al. 2008 (central: geometric midpoint of the stated range)
 Other protists,Not yet represented,3353,3353,,,none published (described count)
-Amoebozoa,Not yet represented,10000,2400,,,Adl 2007
-Dinoflagellates,Not yet represented,5000,2300,,,Gomez 2012
-Brown algae,Not yet represented,2500,2000,,,Guiry 2024
-Cercozoa,Not yet represented,5000,2000,,,CoL
-Euglenozoa,Not yet represented,5000,2000,,,CoL
-Oomycetes,Not yet represented,2000,1673,,,CoL
-Chrysophyta,Not yet represented,3000,1200,,,AlgaeBase
-Haptophytes,Not yet represented,2000,760,,,de Vargas 2007
-Choanoflagellates,Not yet represented,300,300,,,Carr 2008
+Amoebozoa,Not yet represented,2400,2400,,,none (set to described count)
+Dinoflagellates,Not yet represented,2377,2377,,,no published estimate (described count)
+Brown algae,Not yet represented,2094,2094,,,"none published (set to described count, AlgaeBase via Guiry 2024)"
+Oomycetes,Not yet represented,1673,1673,,,no published estimate (described count)
+Euglenozoa,Not yet represented,1520,1520,,,no published estimate (described count)
+Chrysophyta,Not yet represented,1216,1216,,,none published (set to described count)
+Cercozoa,Not yet represented,600,600,,,none published (set to described count)
+Haptophytes,Not yet represented,517,517,,,no published estimate above the described count (described count)
+Choanoflagellates,Not yet represented,244,244,,,none published (set to described count)

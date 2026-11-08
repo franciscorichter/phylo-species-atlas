@@ -4,35 +4,29 @@ category: Microbes & protists
 
 estimate:
   described: 156891
-  low: 2200000
-  total: 3000000
-  high: 3800000
+  low: 2000000
+  total: 2500000
+  high: 3000000
   confidence: Low
   source:
-    key: Hawksworth 2017
-    doi: 10.1128/9781555819583.ch4
-    pdf: null
-    url: null
+    key: Niskanen et al. 2023
+    type: published-range
+    note: 'niskanen2023pushing, Annu Rev Environ Resour 48: 149-176, abstract: ''a revised estimate of
+      2–3 million fungal species with a “best estimate” at 2.5 million''.'
   interval_provenance:
     described:
       type: database
-      source: Catalogue of Life 2025 (Species Fungorum)
-      verbatim_quote: null
+      source: Catalogue of Life COL26.9 (Species Fungorum Plus; Microsporidia)
+      release: COL26.9, 2026-09-11 (ChecklistBank 316321, doi:10.48580/dgz5n)
+      note: 'col2026v269, ChecklistBank API taxon F: 157,044 accepted species minus 153 extinct = 156,891
+        (Species Fungorum Plus 155,869 + Microsporidia 1,222).'
     estimated_total:
-      type: paper-published
-      source: Hawksworth 2017
-      verbatim_quote: '2.2 to 3.8 Million Species'
-    estimated_low:
-      type: paper-published
-      source: Hawksworth 2017
-      verbatim_quote: null
-    estimated_high:
-      type: paper-published
-      source: Hawksworth 2017
-      verbatim_quote: null
-    overall_classification: paper-published-range
-    auditor_note: "Microbe diversity estimates carry extreme uncertainty (orders of magnitude). Hawksworth 2017 provides paper-published bounds."
-
+      type: published-range
+      source: Niskanen et al. 2023
+      note: 'niskanen2023pushing, Annu Rev Environ Resour 48: 149-176, abstract: ''a revised estimate
+        of 2–3 million fungal species with a “best estimate” at 2.5 million''.'
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/fungi/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree:
   file: tree.nwk
   ntips: 1602                                # atlas-derived: one tip per species (pruned from 1672)

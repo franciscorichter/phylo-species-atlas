@@ -9,33 +9,24 @@ estimate:
   high: 7800000
   confidence: Low
   source:
-    key: Stork 2018
-    doi: 10.1146/annurev-ento-020117-043348
-    pdf: papers/estimate.pdf
-    url: https://www.annualreviews.org/doi/10.1146/annurev-ento-020117-043348
+    key: Stork et al. 2015
+    type: published-range
+    note: 'stork2015new PNAS 112: 7519 abstract ''mean: 5.5 million species (range 2.6-7.8 million)'';
+      adopted by Stork 2018 p. 37'
   interval_provenance:
     described:
       type: database
-      source: Catalogue of Life 2025
-      verbatim_quote: null
+      source: Catalogue of Life COL26.9
+      release: COL26.9 base, ChecklistBank 316321, doi:10.48580/dgz5n, issued 2026-09-11
+      note: col2026base API TAXON_ID=H6 species accepted 943,497 minus extinct=true 13,821 = 929,676;
+        equals col_base
     estimated_total:
-      type: paper-published
-      source: Stork 2018
-      verbatim_quote: "globally there are approximately 1.5 million, 5.5 million, and 7 million species of beetles, insects, and terrestrial arthropods, respectively"
-      note: "Stork 2018's own central estimate of ~5.5 million insect species."
-    estimated_low:
-      type: paper-published
-      source: Stork 2018 (review of higher-taxonomic-ratio estimates)
-      verbatim_quote: null
-      note: "2.6M from Stork's review table — higher taxonomic ratio extrapolation."
-    estimated_high:
-      type: paper-published
-      source: Stork 2018 (review of prior literature)
-      verbatim_quote: null
-      note: "7.8M from Stork's review of prior estimates (Hamilton 2010, 2013 — 7.8M with CI 2.9-13.7)."
-    overall_classification: paper-published-range
-    auditor_note: "Range 2.6M-5.5M-7.8M is meta-range across Stork 2018's review of multiple primary estimates. Stork's OWN central is ~5.5M. The breadth honestly reflects deep uncertainty in insect diversity estimation."
-
+      type: published-range
+      source: Stork et al. 2015
+      note: 'stork2015new PNAS 112: 7519 abstract ''mean: 5.5 million species (range 2.6-7.8 million)'';
+        adopted by Stork 2018 p. 37'
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/insects/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree:
   file: tree.nwk
   ntips: 53596

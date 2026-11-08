@@ -4,35 +4,28 @@ category: Other animals
 
 estimate:
   described: 17340
-  low: 17340
-  total: 35000
-  high: 50000
+  low: 25000
+  total: 30000
+  high: 30000
   confidence: Medium
   source:
-    key: Appeltans 2012
-    doi: 10.1016/j.cub.2012.09.036
-    pdf: null
-    url: null
+    key: Chapman 2009
+    type: expert-opinion
+    note: chapman2009numbers; Annelida page p. 34 (PDF p. 37), 'World Estimate' 25,000-30,000; summary
+      table PDF p. 11 row Annelida '~30,000'
   interval_provenance:
     described:
       type: database
-      source: Appeltans 2012
-      verbatim_quote: null
+      source: Catalogue of Life COL26.9
+      release: 'COL26.9 (fixed by D66: Annelida minus Echiura)'
+      note: D66; Data/col_denominators.csv row Annelids col_filled 17,340
     estimated_total:
-      type: heuristic
-      source: Appeltans 2012
-      verbatim_quote: 'there may be 0.7-1.0 million marine species (226,000 eukaryotic species currently described; 58,000-72,000 collected but undescribed; 482,000-741,000 yet to be sampled)'
-    estimated_low:
-      type: derived-from-described
-      source: Appeltans 2012
-      verbatim_quote: null
-    estimated_high:
-      type: paper-published
-      source: Appeltans 2012
-      verbatim_quote: null
-    overall_classification: partly-heuristic
-    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
-
+      type: expert-opinion
+      source: Chapman 2009
+      note: chapman2009numbers; Annelida page p. 34 (PDF p. 37), 'World Estimate' 25,000-30,000; summary
+        table PDF p. 11 row Annelida '~30,000'
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/annelids/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree: null
 caveats:
   - severity: medium

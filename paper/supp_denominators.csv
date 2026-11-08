@@ -1,61 +1,61 @@
 partition,category,described,described_source,col_count,col_filled_from,named_pct,named_col_pct,named_all_trees_pct
-Fish,Vertebrates,36280,Eschmeyer's Catalog of Fishes (21 Sep. 2026),35750,Holostei base 9 < 0.50 x XR 56,85.4,86.6,85.9
-Squamates,Vertebrates,12108,"Reptile Database, September 2025 release (Uetz et al. 2025)",12251,,73.9,73.1,74.0
-Birds,Vertebrates,11195,IUCN Red List 2025,10868,,93.5,96.3,96.1
-Amphibians,Vertebrates,8863,AmphibiaWeb 2025,8916,,78.4,77.9,88.1
-Mammals,Vertebrates,6736,"Mammal Diversity Database (MDD, 2024+)",6362,,83.5,88.4,85.0
-Sharks,Vertebrates,1282,Chondrichthyan Tree of Life,1355,Chondrichthyes (no class) base 0 < 0.50 x XR 1,89.7,84.9,89.7
-Turtles,Vertebrates,364,TTWG 2025 (10th edition),370,,70.3,69.2,75.0
-Hagfish,Vertebrates,82,Fernholm 2013,93,,,,
-Lampreys,Vertebrates,48,Potter 2015,49,,,,
-Crocodilians,Vertebrates,27,IUCN Crocodile Specialist Group,27,,74.1,74.1,74.1
-Other vertebrates,Vertebrates,9,"sum of tuatara (1), coelacanths (2) and lungfishes (6)",25,Actinistia (no class) base 2 < 0.50 x XR 16; Sphenodontida base 1 < 0.50 x XR 3,,,
-Seed plants,Plants,383671,World Flora Online 2025,354308,Ginkgoopsida base 1 < 0.50 x XR 3; Tracheophyta (no class) base 0 < 0.50 x XR 3,72.7,78.8,72.8
+Fish,Vertebrates,36288,Eschmeyer's Catalog of Fishes (21 Sep. 2026),35750,Holostei base 9 < 0.50 x XR 56,85.4,86.6,85.9
+Squamates,Vertebrates,12252,"Reptile Database, June 2026 release (Uetz et al.)",12251,,73.1,73.1,73.2
+Birds,Vertebrates,11185,"IUCN Red List 2026-1, Table 1a (HBW-BirdLife v10)",10868,,93.6,96.3,96.2
+Amphibians,Vertebrates,9088,AmphibiaWeb (11 Sep. 2026),8916,,76.4,77.9,85.9
+Mammals,Vertebrates,6887,Mammal Diversity Database v2.5 (2026),6362,,81.7,88.4,83.2
+Sharks,Vertebrates,1331,Eschmeyer's Catalog of Fishes (21 Sep. 2026),1355,Chondrichthyes (no class) base 0 < 0.50 x XR 1,86.4,84.9,86.4
+Turtles,Vertebrates,359,"Turtle Taxonomy Working Group 2025 (10th ed.), living species",370,,71.3,69.2,76.0
+Hagfish,Vertebrates,93,Eschmeyer's Catalog of Fishes (20 Oct. 2026),93,,,,
+Lampreys,Vertebrates,49,Eschmeyer's Catalog of Fishes (21 Sep. 2026),49,,,,
+Crocodilians,Vertebrates,27,"The Reptile Database, June 2026 (via COL26.9)",27,,74.1,74.1,74.1
+Other vertebrates,Vertebrates,9,The Reptile Database (Jun. 2026) and Eschmeyer's Catalog of Fishes (21 Sep. 2026),25,Actinistia (no class) base 2 < 0.50 x XR 16; Sphenodontida base 1 < 0.50 x XR 3,,,
+Seed plants,Plants,354303,"World Flora Online, as in COL26.9 (2026-09-11)",354308,Ginkgoopsida base 1 < 0.50 x XR 3; Tracheophyta (no class) base 0 < 0.50 x XR 3,78.8,78.8,78.8
 Bryophytes,Plants,19273,Catalogue of Life COL26.9,19273,,2.6,2.6,2.6
-Green algae,Plants,11000,Guiry 2012,4912,Charophyceae base 0 < 0.50 x XR 160; Chlorodendrophyceae base 0 < 0.50 x XR 21; Chlorophyceae base 0 < 0.50 x XR 1538; Coleochaetophyceae base 0 < 0.50 x XR 23; Klebsormidiophyceae base 0 < 0.50 x XR 34; Mamiellophyceae base 0 < 0.50 x XR 18; Mesostigmatophyceae base 0 < 0.50 x XR 1; Nephroselmidophyceae base 0 < 0.50 x XR 12; Pedinophyceae base 0 < 0.50 x XR 8; Pyramimonadophyceae base 0 < 0.50 x XR 67; Trebouxiophyceae base 0 < 0.50 x XR 483; Ulvophyceae base 0 < 0.50 x XR 945; Zygnematophyceae base 0 < 0.50 x XR 1602,,,
-Ferns,Plants,10578,PPG I 2016,12457,,57.6,48.9,57.6
-Rhodophyta,Plants,7000,AlgaeBase,3546,Bangiophyceae base 0 < 0.50 x XR 97; Compsopogonophyceae base 0 < 0.50 x XR 49; Cyanidiophyceae base 0 < 0.50 x XR 4; Florideophyceae base 0 < 0.50 x XR 3356; Porphyridiophyceae base 0 < 0.50 x XR 9; Rhodellophyceae base 0 < 0.50 x XR 7; Stylonematophyceae base 0 < 0.50 x XR 24,,,
-Lycophytes,Plants,1338,PPG I 2016,1503,,,,
+Ferns,Plants,11999,"PPG II, pteridogroup/ppg v2.0.0 (15 Sep. 2026)",12457,,50.8,48.9,50.8
+Green algae,Plants,11791,"AlgaeBase via Guiry 2024 (counts to Sep. 2023), extant",4912,Charophyceae base 0 < 0.50 x XR 160; Chlorodendrophyceae base 0 < 0.50 x XR 21; Chlorophyceae base 0 < 0.50 x XR 1538; Coleochaetophyceae base 0 < 0.50 x XR 23; Klebsormidiophyceae base 0 < 0.50 x XR 34; Mamiellophyceae base 0 < 0.50 x XR 18; Mesostigmatophyceae base 0 < 0.50 x XR 1; Nephroselmidophyceae base 0 < 0.50 x XR 12; Pedinophyceae base 0 < 0.50 x XR 8; Pyramimonadophyceae base 0 < 0.50 x XR 67; Trebouxiophyceae base 0 < 0.50 x XR 483; Ulvophyceae base 0 < 0.50 x XR 945; Zygnematophyceae base 0 < 0.50 x XR 1602,,,
+Rhodophyta,Plants,7276,"AlgaeBase via Guiry 2024 (1 Nov. 2023), living species",3546,Bangiophyceae base 0 < 0.50 x XR 97; Compsopogonophyceae base 0 < 0.50 x XR 49; Cyanidiophyceae base 0 < 0.50 x XR 4; Florideophyceae base 0 < 0.50 x XR 3356; Porphyridiophyceae base 0 < 0.50 x XR 9; Rhodellophyceae base 0 < 0.50 x XR 7; Stylonematophyceae base 0 < 0.50 x XR 24,,,
+Lycophytes,Plants,1467,"PPG II, pteridogroup/ppg v2.0.0 (15 Sep. 2026)",1503,,,,
 Insects,Arthropods,929676,Catalogue of Life COL26.9,929676,,4.5,4.5,4.8
-Crustaceans,Arthropods,77000,World Register of Marine Species (WoRMS),70596,Branchiura base 0 < 0.50 x XR 165; Crustacea (no class) base 0 < 0.50 x XR 43; Pentastomida base 0 < 0.50 x XR 89; Thecostraca base 0 < 0.50 x XR 1883,0.08,0.09,0.08
-Acari,Arthropods,55000,Zhang 2013,28874,,,,
-Spiders,Arthropods,52249,World Spider Catalog 2025,53379,,1.7,1.7,1.7
-Myriapods,Arthropods,17000,Chapman 2009,17349,Euthycarcinoidea base 0 < 0.50 x XR 18,,,
+Crustaceans,Arthropods,67735,Zhang 2013 (Zootaxa 3703),70596,Branchiura base 0 < 0.50 x XR 165; Crustacea (no class) base 0 < 0.50 x XR 43; Pentastomida base 0 < 0.50 x XR 89; Thecostraca base 0 < 0.50 x XR 1883,0.10,0.09,0.10
+Acari,Arthropods,54908,"Zhang 2013 (Zootaxa 3703), extant species",28874,,,,
+Spiders,Arthropods,54244,World Spider Catalog v27 (read 4 Nov. 2026),53379,,1.6,1.7,1.6
+Myriapods,Arthropods,16072,Chapman 2009,17349,Euthycarcinoidea base 0 < 0.50 x XR 18,,,
 Other arachnids,Arthropods,12765,Catalogue of Life COL26.9,12765,,,,
 Other hexapods,Arthropods,10138,Catalogue of Life COL26.9,10138,Diplura base 0 < 0.50 x XR 470,,,
-Scorpiones,Arthropods,2700,Rein 2024,2940,,,,
-Pycnogonida,Arthropods,1400,WoRMS,1420,,,,
-Gastropods,Other animals,65000,WoRMS / Appeltans 2012,76288,,0.06,0.05,0.06
+Scorpiones,Arthropods,2954,The Scorpion Files (Rein; Wayback 3 Oct. 2026),2940,,,,
+Pycnogonida,Arthropods,1431,WoRMS (Pycnobase) 2026-10-01,1420,,,,
+Gastropods,Other animals,76288,"MolluscaBase, in Catalogue of Life COL26.9",76288,,0.05,0.05,0.05
 Flatworms,Other animals,29487,"Zhang 2013 (29,488 species including 1 fossil)",27037,,,,
-Nematodes,Other animals,28537,WoRMS / Hodda 2022,19598,,0.35,0.52,0.35
+Nematodes,Other animals,28415,"Hodda 2022a (28,537 species including at least 122 fossil)",19598,,0.36,0.52,0.36
 Annelids,Other animals,17340,Catalogue of Life COL26.9,17340,Annelida (no class) base 0 < 0.50 x XR 3,,,
-Cnidaria,Other animals,11800,WoRMS / Appeltans 2012,11582,Cnidaria (no class) base 0 < 0.50 x XR 20,2.2,2.2,2.2
+Cnidaria,Other animals,11597,WoRMS (accessed 4 Nov. 2026),11582,Cnidaria (no class) base 0 < 0.50 x XR 20,2.2,2.2,2.2
 Bivalves,Other animals,10043,"MolluscaBase, in Catalogue of Life COL26.9",10043,,0.44,0.44,0.44
-Sponges,Other animals,9470,WoRMS / Appeltans 2012,9873,Porifera (no class) base 0 < 0.50 x XR 1; Stromatoporoidea base 0 < 0.50 x XR 1,0.91,0.87,0.91
-Echinoderms,Other animals,7550,WoRMS / Appeltans 2012,7737,Echinodermata (no class) base 0 < 0.50 x XR 7,0.82,0.80,0.82
-Bryozoa,Other animals,6000,WoRMS / Appeltans 2012,5418,,5.6,6.2,5.6
+Sponges,Other animals,9864,World Porifera Database (15 Aug. 2026),9873,Porifera (no class) base 0 < 0.50 x XR 1; Stromatoporoidea base 0 < 0.50 x XR 1,0.87,0.87,0.87
+Echinoderms,Other animals,7749,WoRMS (accessed 4 Nov. 2026),7737,Echinodermata (no class) base 0 < 0.50 x XR 7,0.80,0.80,0.80
+Bryozoa,Other animals,6613,WoRMS (accessed 4 Nov. 2026),5418,,5.1,6.2,5.1
 Other phyla,Other animals,3863,Catalogue of Life COL26.9,3863,Chaetognatha (no class) base 0 < 0.50 x XR 1; Hemichordata (no class) base 0 < 0.50 x XR 8; Nectonematoida base 0 < 0.50 x XR 6; Strophomenata base 0 < 0.50 x XR 6,,,
-Tunicates,Other animals,3145,Appeltans 2012,3146,,,,
-Myxozoa,Other animals,2400,WoRMS,3012,,,,
-Rotifera,Other animals,2200,Segers 2007,2471,Rotifera (no class) base 0 < 0.50 x XR 4,,,
-Other Mollusca,Other animals,1500,WoRMS,2204,Rostroconchia base 0 < 0.50 x XR 1,,,
-Tardigrada,Other animals,1488,Bartels 2016,1451,,,,
+Tunicates,Other animals,3020,Appeltans et al. 2012,3146,,,,
+Myxozoa,Other animals,3012,"World List of Myxozoa (WoRMS), in Catalogue of Life COL26.9",3012,,,,
+Other Mollusca,Other animals,2199,"MolluscaBase, in Catalogue of Life COL26.9",2204,Rostroconchia base 0 < 0.50 x XR 1,,,
+Rotifera,Other animals,2030,"Segers 2007 (about 2,030)",2471,Rotifera (no class) base 0 < 0.50 x XR 4,,,
+Tardigrada,Other animals,1505,"Degma & Guidetti, Actual checklist of Tardigrada species (2025)",1451,,,,
 Acanthocephala,Other animals,1325,Catalogue of Life COL26.9,1325,,,,
-Nemerteans,Other animals,1300,Kajihara 2008,1364,,,,
-Cephalopods,Other animals,800,WoRMS / WoRMS,868,,10.0,9.2,10.0
-Ctenophores,Other animals,200,WoRMS,182,,,,
-Fungi,Microbes & protists,156891,Catalogue of Life COL26.9 (Species Fungorum),156891,,0.89,0.89,0.89
-Diatoms,Microbes & protists,20000,AlgaeBase 2025,6723,Bacillariophyceae base 1099 < 0.50 x XR 6723,0.20,0.58,0.20
-Foraminifera,Microbes & protists,9000,Hayward 2020,8928,,,,
-Apicomplexa,Microbes & protists,6000,"rounded figure, source not traced (COL26.9 lists 169)",169,Apicomonadea base 0 < 0.50 x XR 1; Conoidasida base 0 < 0.50 x XR 147,,,
-Ciliates,Microbes & protists,4500,Foissner 2008,8556,Phyllopharyngea base 14 < 0.50 x XR 63,,,
+Nemerteans,Other animals,1275,Kajihara et al. 2008,1364,,,,
+Cephalopods,Other animals,868,"MolluscaBase, in Catalogue of Life COL26.9",868,,9.2,9.2,9.2
+Ctenophores,Other animals,186,WoRMS (accessed 4 Nov. 2026),182,,,,
+Fungi,Microbes & protists,156891,Catalogue of Life COL26.9 (Species Fungorum Plus; Microsporidia),156891,,0.89,0.89,0.89
+Diatoms,Microbes & protists,16427,AlgaeBase (Guiry 2024),6723,Bacillariophyceae base 1099 < 0.50 x XR 6723,0.24,0.58,0.24
+Foraminifera,Microbes & protists,8972,World Foraminifera Database / WoRMS (4 Nov. 2026),8928,,,,
+Apicomplexa,Microbes & protists,6000,Morrison 2008,169,Apicomonadea base 0 < 0.50 x XR 1; Conoidasida base 0 < 0.50 x XR 147,,,
+Ciliates,Microbes & protists,4500,Foissner et al. 2008,8556,Phyllopharyngea base 14 < 0.50 x XR 63,,,
 Other protists,Microbes & protists,3353,"Pawlowski et al. 2012 (PLoS Biol 10: e1001419), Table S1: 29 lineages in no other group",555,Acantharia base 0 < 0.50 x XR 58; Carpomonadea base 0 < 0.50 x XR 3; Eopharyngea base 0 < 0.50 x XR 15; Glaucophyceae base 0 < 0.50 x XR 12; Heterolobosea base 0 < 0.50 x XR 4; Jakobea base 0 < 0.50 x XR 1; Percolatea base 0 < 0.50 x XR 6; Trichomonadea base 0 < 0.50 x XR 9; Trichonymphea base 0 < 0.50 x XR 3,,,
-Amoebozoa,Microbes & protists,2400,Adl 2007,1847,Amoebozoa (no class) base 0 < 0.50 x XR 17; Archamoebea base 0 < 0.50 x XR 57; Cutosea base 0 < 0.50 x XR 2; Discosea base 0 < 0.50 x XR 154; Tubulinea base 0 < 0.50 x XR 254; Variosea base 0 < 0.50 x XR 26,,,
-Dinoflagellates,Microbes & protists,2300,Gomez 2012,1425,Dinophyceae base 228 < 0.50 x XR 1425,,,
-Brown algae,Microbes & protists,2000,Guiry 2024,1097,Phaeophyceae base 0 < 0.50 x XR 1097,,,
-Cercozoa,Microbes & protists,2000,"rounded figure, source not traced (COL26.9 lists 183)",183,Ascetosporea base 0 < 0.50 x XR 10; Cercozoa (no class) base 0 < 0.50 x XR 4; Chlorarachnea base 0 < 0.50 x XR 2; Granofilosea base 0 < 0.50 x XR 3; Imbricatea base 0 < 0.50 x XR 30; Metromonadea base 0 < 0.50 x XR 1; Proteomyxidea base 0 < 0.50 x XR 40; Sarcomonadea base 0 < 0.50 x XR 2; Thecofilosea base 0 < 0.50 x XR 35; Vampyrellidea base 0 < 0.50 x XR 4,,,
-Euglenozoa,Microbes & protists,2000,"rounded figure, source not traced (COL26.9 lists 578)",578,Diplonemea base 0 < 0.50 x XR 2; Entosiphonea base 0 < 0.50 x XR 8; Euglenophyceae base 0 < 0.50 x XR 387; Kinetoplastea base 0 < 0.50 x XR 49; Peranemea base 0 < 0.50 x XR 92; Ploeotarea base 0 < 0.50 x XR 1; Postgaardea base 0 < 0.50 x XR 1; Stavomonadea base 0 < 0.50 x XR 38,,,
-Oomycetes,Microbes & protists,1673,Catalogue of Life COL26.9,1673,,,,
-Chrysophyta,Microbes & protists,1200,AlgaeBase,611,Chrysophyceae base 0 < 0.50 x XR 611,,,
-Haptophytes,Microbes & protists,760,de Vargas 2007,287,Coccolithophyceae base 0 < 0.50 x XR 276; Pavlovophyceae base 0 < 0.50 x XR 10; Rappephyceae base 0 < 0.50 x XR 1,,,
-Choanoflagellates,Microbes & protists,300,Carr 2008,140,Choanoflagellatea base 0 < 0.50 x XR 140,,,
+Amoebozoa,Microbes & protists,2400,Pawlowski et al. 2012,1847,Amoebozoa (no class) base 0 < 0.50 x XR 17; Archamoebea base 0 < 0.50 x XR 57; Cutosea base 0 < 0.50 x XR 2; Discosea base 0 < 0.50 x XR 154; Tubulinea base 0 < 0.50 x XR 254; Variosea base 0 < 0.50 x XR 26,,,
+Dinoflagellates,Microbes & protists,2377,Gómez 2012 checklist (CICIMAR Oceánides 27: 65-140),1425,Dinophyceae base 228 < 0.50 x XR 1425,,,
+Brown algae,Microbes & protists,2094,AlgaeBase (Guiry 2024),1097,Phaeophyceae base 0 < 0.50 x XR 1097,,,
+Oomycetes,Microbes & protists,1673,Catalogue of Life COL26.9 (Species Fungorum Plus),1673,,,,
+Euglenozoa,Microbes & protists,1520,"CBOL Protist Working Group (Pawlowski et al. 2012), Table S1",578,Diplonemea base 0 < 0.50 x XR 2; Entosiphonea base 0 < 0.50 x XR 8; Euglenophyceae base 0 < 0.50 x XR 387; Kinetoplastea base 0 < 0.50 x XR 49; Peranemea base 0 < 0.50 x XR 92; Ploeotarea base 0 < 0.50 x XR 1; Postgaardea base 0 < 0.50 x XR 1; Stavomonadea base 0 < 0.50 x XR 38,,,
+Chrysophyta,Microbes & protists,1216,AlgaeBase (Guiry 2024),611,Chrysophyceae base 0 < 0.50 x XR 611,,,
+Cercozoa,Microbes & protists,600,"Pawlowski et al. 2012 (CBOL ProWG, Table S1)",183,Ascetosporea base 0 < 0.50 x XR 10; Cercozoa (no class) base 0 < 0.50 x XR 4; Chlorarachnea base 0 < 0.50 x XR 2; Granofilosea base 0 < 0.50 x XR 3; Imbricatea base 0 < 0.50 x XR 30; Metromonadea base 0 < 0.50 x XR 1; Proteomyxidea base 0 < 0.50 x XR 40; Sarcomonadea base 0 < 0.50 x XR 2; Thecofilosea base 0 < 0.50 x XR 35; Vampyrellidea base 0 < 0.50 x XR 4,,,
+Haptophytes,Microbes & protists,517,"AlgaeBase (Guiry 2024; living species, 1 Nov. 2023)",287,Coccolithophyceae base 0 < 0.50 x XR 276; Pavlovophyceae base 0 < 0.50 x XR 10; Rappephyceae base 0 < 0.50 x XR 1,,,
+Choanoflagellates,Microbes & protists,244,Carr et al. 2008 ('over 244'),140,Choanoflagellatea base 0 < 0.50 x XR 140,,,

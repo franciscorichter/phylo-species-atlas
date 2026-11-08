@@ -4,37 +4,28 @@ category: Other animals
 
 estimate:
   described: 29487
-  low: 44000
-  total: 100000
-  high: 200000
+  low: 29487
+  total: 80000
+  high: 80000
   confidence: Low
   source:
-    key: Zhang 2013
-    doi: 10.11646/zootaxa.3703.1.1
-    study: "Zhang Z-Q (ed.) 2013 — Animal Biodiversity Outline (Zootaxa 3703). Platyhelminthes chapter by Caira, Jensen, Healy."
-    pdf: null
-    url: https://doi.org/10.11646/zootaxa.3703.1.1
-    note: "Zhang 2013 series; Zhang 2013 (Zootaxa 3703, p. 11): Platyhelminthes 29,488 species including 1 fossil; bilateral estimates 44k-200k from extrapolation of host-parasite diversity ratios."
+    key: Chapman 2009
+    type: expert-opinion
+    note: chapman2009numbers; Platyhelminthes section p. 38 (PDF p. 40) 'over 80,000'; summary table PDF
+      p. 11 '(~80,000)'
   interval_provenance:
     described:
       type: database
-      source: Zhang 2013
-      verbatim_quote: null
+      source: Zhang 2013 (29,488 species including 1 fossil)
+      release: 'Zhang 2013, Zootaxa 3703: 5-11 (extant: 29,488 minus 1 fossil)'
+      note: 'zhang2013update; Zootaxa 3703: 5 (abstract) and p. 8 (row and footnote 37); doi:10.11646/zootaxa.3703.1.3'
     estimated_total:
-      type: paper-published
-      source: Zhang 2013
-      verbatim_quote: null
-    estimated_low:
-      type: paper-published
-      source: Zhang 2013
-      verbatim_quote: null
-    estimated_high:
-      type: paper-published
-      source: Zhang 2013
-      verbatim_quote: null
-    overall_classification: partly-heuristic
-    auditor_note: "Zhang 2013 platyhelminth volume (Animal Biodiversity Outline). Not abstract-indexed. Bounds 44k-100k-200k not verified."
-
+      type: expert-opinion
+      source: Chapman 2009
+      note: chapman2009numbers; Platyhelminthes section p. 38 (PDF p. 40) 'over 80,000'; summary table
+        PDF p. 11 '(~80,000)'
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/flatworms/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree: null
 caveats:
   - severity: medium

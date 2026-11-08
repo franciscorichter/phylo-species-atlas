@@ -3,36 +3,29 @@ slug: gastropods
 category: Other animals
 
 estimate:
-  described: 65000
-  low: 70000
-  total: 100000
+  described: 76288
+  low: 76288
+  total: 150000
   high: 150000
   confidence: Medium
   source:
-    key: Appeltans 2012
-    doi: 10.1016/j.cub.2012.09.036
-    pdf: null
-    url: https://www.cell.com/current-biology/fulltext/S0960-9822(12)01142-1
+    key: Torres et al. 2024
+    type: expert-opinion
+    note: 'torres2024global; Biodivers Conserv 33: 2926, Introduction (Naturalis repository copy p. 2):
+      ''current estimates ... reach'' 150,000'
   interval_provenance:
     described:
       type: database
-      source: WoRMS / Appeltans 2012
-      verbatim_quote: null
+      source: MolluscaBase, in Catalogue of Life COL26.9
+      release: COL26.9 base (ChecklistBank 316321, issued 2026-09-11; MolluscaBase sector)
+      note: 'col2026v269; ChecklistBank API dataset 316321 TAXON_ID=7NF3Y: 110,642 accepted - 34,354 extinct'
     estimated_total:
-      type: paper-published
-      source: Appeltans 2012
-      verbatim_quote: 'there may be 0.7-1.0 million marine species (226,000 eukaryotic species currently described; 58,000-72,000 collected but undescribed; 482,000-741,000 yet to be sampled)'
-    estimated_low:
-      type: paper-published
-      source: Appeltans 2012
-      verbatim_quote: null
-    estimated_high:
-      type: paper-published
-      source: Appeltans 2012
-      verbatim_quote: null
-    overall_classification: paper-published-range
-    auditor_note: "Appeltans 2012 provides bilateral paper-published range for Gastropods."
-
+      type: expert-opinion
+      source: Torres et al. 2024
+      note: 'torres2024global; Biodivers Conserv 33: 2926, Introduction (Naturalis repository copy p.
+        2): ''current estimates ... reach'' 150,000'
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/gastropods/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree:
   file: tree.nwk
   ntips: 54

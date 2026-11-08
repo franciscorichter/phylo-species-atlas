@@ -4,36 +4,29 @@ category: Microbes & protists
 
 estimate:
   described: 2400
-  low: 4000
-  total: 10000
-  high: 20000
+  low: 2400
+  total: 2400
+  high: 2400
   confidence: Low
   source:
-    key: Adl 2007
-    doi: 10.1111/j.1550-7408.2007.00263.x
-    pdf: null
-    url: null
-    note: "Adl SM, Simpson AGB, Farmer MA, Andersen RA, Anderson OR, Barta JR et al. (2007) — Diversity, nomenclature, and taxonomy of protists. Syst Biol 56:684-689. Foundational eukaryote classification used as basis for Amoebozoa species counts."
+    key: none (set to described count)
+    type: none-published
+    note: No source states an Amoebozoa-wide total; Adl 2007 Table 1 gives subgroup potentials only (OCR
+      reading) and none of 4,000/10,000/20,000
   interval_provenance:
     described:
       type: database
-      source: Adl 2007
-      verbatim_quote: null
+      source: Pawlowski et al. 2012
+      release: 'Pawlowski et al. 2012, PLoS Biol 10: e1001419 (single publication)'
+      note: 'pawlowski2012cbol: text ''catalogued for Amoebozoa (∼2,400)'' and Table S1 rows (sum 2,394
+        without Breviatea)'
     estimated_total:
-      type: paper-published
-      source: Adl 2007
-      verbatim_quote: null
-    estimated_low:
-      type: paper-published
-      source: Adl 2007
-      verbatim_quote: null
-    estimated_high:
-      type: paper-published
-      source: Adl 2007
-      verbatim_quote: null
-    overall_classification: partly-heuristic
-    auditor_note: "Adl 2007 'Diversity, nomenclature, and taxonomy of protists' (Syst Biol). No abstract indexed; bounds 4k-10k-20k not verified."
-
+      type: none-published
+      source: none (set to described count)
+      note: No source states an Amoebozoa-wide total; Adl 2007 Table 1 gives subgroup potentials only
+        (OCR reading) and none of 4,000/10,000/20,000
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/amoebozoa/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree: null
 caveats:
   - severity: medium

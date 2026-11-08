@@ -3,37 +3,30 @@ slug: pycnogonida
 category: Arthropods
 
 estimate:
-  described: 1400
-  low: 1400
-  total: 2000
-  high: 3000
+  described: 1431
+  low: 2486
+  total: 2974
+  high: 3557
   confidence: Medium
   source:
-    key: WoRMS
-    doi: null
-    pdf: null
-    url: https://www.marinespecies.org/pycnobase/
-    note: "PycnoBase (a WoRMS thematic subset) — authoritative live catalog of pycnogonid species. ~1,400 valid species across 86 genera and 11 families."
+    key: 'Appeltans et al. 2012 (central: geometric midpoint of the stated range)'
+    type: published-range (components include a description-rate extrapolation)
+    note: 'appeltans2012magnitude Table 2 row Pycnogonida: described 1,307 + total unknown (experts) 1,179-2,250
+      = 2,486-3,557; ''% known 37-53'' reproduces it'
   interval_provenance:
     described:
       type: database
-      source: WoRMS
-      verbatim_quote: null
+      source: WoRMS (Pycnobase) 2026-10-01
+      release: WoRMS in ChecklistBank, dataset 2011, version 2026-10-01, doi:10.48580/d4fd
+      note: worms2026clb API TAXON_ID=1302 species accepted 1,444 minus extinct=true 13 = 1,431 (card
+        comparison_checklistbank)
     estimated_total:
-      type: heuristic
-      source: WoRMS
-      verbatim_quote: null
-    estimated_low:
-      type: derived-from-described
-      source: WoRMS
-      verbatim_quote: null
-    estimated_high:
-      type: paper-published
-      source: WoRMS
-      verbatim_quote: null
-    overall_classification: partly-heuristic
-    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
-
+      type: published-range (components include a description-rate extrapolation)
+      source: 'Appeltans et al. 2012 (central: geometric midpoint of the stated range)'
+      note: 'appeltans2012magnitude Table 2 row Pycnogonida: described 1,307 + total unknown (experts)
+        1,179-2,250 = 2,486-3,557; ''% known 37-53'' reproduces it'
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/pycnogonida/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree: null
 caveats:
   - severity: medium

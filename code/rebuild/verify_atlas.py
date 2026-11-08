@@ -6383,6 +6383,37 @@ def check_numbermacros(ctx):
     w["SensUnionCOneHighPct"] = _mpct(100.0 * u["C1_union_high"] / D)
     w["AnyCZeroN"] = _mint(u["C0_union"])            # D66 headline
     w["AnyCZeroPct"] = _mpct(100.0 * u["C0_union"] / D)
+    # D66: the partition sensitivity (scripts/partition_sensitivity.py).
+    # Independent of it: estimand A at the named level is the union bound's
+    # count under every partition, and B over the paper's groups is the
+    # reference trees' count; B never exceeds A.
+    if HERE not in sys.path:
+        sys.path.insert(0, HERE)
+    import partition_sensitivity as _PS
+    ps = _PS.compute(ROOT)
+    for r in ps:
+        if r["level"] == "named":
+            R.eq("D66 %s: any-tree named count = the union bound's C0"
+                 % r["partition"], r["A_any_tree"], u["C0_union"])
+        R.eq("D66 %s %s: one tree per group <= any tree"
+             % (r["partition"], r["level"]),
+             r["B_best_tree"] <= r["A_any_tree"], True)
+    R.eq("D66 groups: one-tree-per-group named count = the reference trees' C0",
+         [r["B_best_tree"] for r in ps if r["partition"] == "groups"
+          and r["level"] == "named"], [u["C0_canonical"]])
+    R.eq("D66 Supplement table supp_partition = the rows recomputed",
+         [tuple(str(v) for v in r.values()) for r in ps],
+         [tuple(r[k] for k in _PS.HEADER) for r in _supp_csv("supp_partition")])
+    fine = [r for r in ps if r["partition"] != "phylum" and r["A_any_tree"]]
+    w["PartitionMaxGapPct"] = _mpct(max(
+        100.0 * (r["A_any_tree"] - r["B_best_tree"]) / r["A_any_tree"]
+        for r in fine))
+    phy = {r["level"]: r for r in ps if r["partition"] == "phylum"}
+    w["PartitionPhylumNamedPct"] = _mpct(
+        100.0 * phy["named"]["B_best_tree"] / phy["named"]["A_any_tree"])
+    w["PartitionPhylumUncPct"] = _mpct(
+        100.0 * phy["uncertainty"]["B_best_tree"]
+        / phy["uncertainty"]["A_any_tree"])
     prod = s["c1_definition"]["product"]
     for key, nm in names[1:3]:
         w["SensProduct%sPct" % nm] = _mpct(100.0 * prod[key]["numerator_sum"]

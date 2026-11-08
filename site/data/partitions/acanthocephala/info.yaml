@@ -4,36 +4,29 @@ category: Other animals
 
 estimate:
   described: 1325
-  low: 1300
-  total: 2000
-  high: 3000
+  low: 1325
+  total: 6223
+  high: 22404
   confidence: Medium
   source:
-    key: CoL
-    doi: null
-    pdf: null
-    url: https://www.catalogueoflife.org/
-    note: "Catalogue of Life live database. ~1,300 described thorny-headed worms (parasites of vertebrates)."
+    key: Carlson et al. 2020 (central; high with cryptic species); low = described count
+    type: published-point
+    note: 'carlson2020what; Proc R Soc B 287: 20201841, sec. 4(c) and Table 1 (6,223), sec. 4(e) (22,404),
+      PMC7739500'
   interval_provenance:
     described:
       type: database
-      source: CoL
-      verbatim_quote: null
+      source: Catalogue of Life COL26.9
+      release: COL26.9 base (ChecklistBank 316321, issued 2026-09-11; ITIS sector 2026-08-26)
+      note: col2026v269; ChecklistBank API dataset 316321 TAXON_ID=622BD rank=species status=accepted
+        (5 provisionally accepted not counted)
     estimated_total:
-      type: heuristic
-      source: CoL
-      verbatim_quote: null
-    estimated_low:
-      type: derived-from-described
-      source: CoL
-      verbatim_quote: null
-    estimated_high:
-      type: paper-published
-      source: CoL
-      verbatim_quote: null
-    overall_classification: partly-heuristic
-    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
-
+      type: published-point
+      source: Carlson et al. 2020 (central; high with cryptic species); low = described count
+      note: 'carlson2020what; Proc R Soc B 287: 20201841, sec. 4(c) and Table 1 (6,223), sec. 4(e) (22,404),
+        PMC7739500'
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/acanthocephala/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree: null
 caveats:
   - severity: medium

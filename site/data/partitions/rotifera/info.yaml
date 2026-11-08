@@ -3,37 +3,29 @@ slug: rotifera
 category: Other animals
 
 estimate:
-  described: 2200
-  low: 2200
-  total: 2200
-  high: 2500
+  described: 2030
+  low: 2030
+  total: 2030
+  high: 2030
   confidence: High
   source:
-    key: Segers 2007
-    doi: 10.11646/zootaxa.1564.1.1
-    pdf: null
-    url: null
-    note: "Segers H (2007) — Annotated checklist of the rotifers (Phylum Rotifera), with notes on nomenclature, taxonomy and distribution. Zootaxa 1564:1-104. (Doi to Hydrobiologia preface; the Zootaxa monograph itself is paywalled.)"
+    key: none published (described count)
+    type: none-published
+    note: 'card estimated_total: no estimate of the total found; Segers 2011 gives a multiplier, no number'
   interval_provenance:
     described:
       type: database
-      source: Segers 2007
-      verbatim_quote: null
+      source: Segers 2007 (about 2,030)
+      release: 'Segers 2007, Zootaxa 1564: 1-104 (31 Aug. 2007)'
+      note: 'segers2007annotated; Zootaxa 1564: 1, abstract ''about 2030'' (Seisonida 3 + Monogononta
+        1,570 + Bdelloidea 461 = 2,034)'
     estimated_total:
-      type: heuristic
-      source: Segers 2007
-      verbatim_quote: 'Phylum Rotifera comprises about 2030 known species (Segers 2007 Zootaxa annotated checklist)'
-    estimated_low:
-      type: derived-from-described
-      source: Segers 2007
-      verbatim_quote: null
-    estimated_high:
-      type: paper-published
-      source: Segers 2007
-      verbatim_quote: null
-    overall_classification: fully-heuristic
-    auditor_note: "Segers 2007''s verbatim is ~2030 species (the annotated checklist count). The atlas''s 2200 described is a minor update; the 2500 high is heuristic."
-
+      type: none-published
+      source: none published (described count)
+      note: 'card estimated_total: no estimate of the total found; Segers 2011 gives a multiplier, no
+        number'
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/rotifera/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree: null
 caveats:
   - severity: medium

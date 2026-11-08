@@ -4,38 +4,29 @@ category: Plants
 
 estimate:
   described: 19273
-  low: 24000
-  total: 24000
-  high: 28000
+  low: 19273
+  total: 19273
+  high: 25000
   confidence: Medium
   source:
-    key: CoL 2025
-    doi: null
-    type: database
-    pdf: null
-    url: https://www.catalogueoflife.org/
+    key: Medina, Draper & Lara 2011 (high only); low and central = described count
+    type: expert-opinion
+    note: 'medina2011biogeography, ch. 11 p. 209: ''around 18 000 species, although estimates range from
+      14 000 to 25 000'''
   interval_provenance:
     described:
       type: database
-      source: Catalogue of Life 2025
-      verbatim_quote: null
+      source: Catalogue of Life COL26.9
+      release: COL26.9, ChecklistBank 316321, issued 2026-09-11
+      note: 'col2026v26_9; ChecklistBank API accepted & extinct=false: Bryophyta 11,733 + Marchantiophyta
+        7,316 + Anthocerotophyta 224'
     estimated_total:
-      type: derived
-      source: CoL 2025
-      verbatim_quote: null
-      note: "Set equal to described — no true-diversity estimate published."
-    estimated_low:
-      type: derived-from-described
-      source: CoL 2025
-      verbatim_quote: null
-    estimated_high:
-      type: heuristic
-      source: atlas-derived
-      verbatim_quote: null
-      note: "28,000 allows ~17% undescribed. CoL doesn't publish a range."
-    overall_classification: fully-heuristic
-    auditor_note: "Bryophyte true diversity is poorly constrained; species concepts are taxonomically contested. Heuristic upper bound."
-
+      type: expert-opinion
+      source: Medina, Draper & Lara 2011 (high only); low and central = described count
+      note: 'medina2011biogeography, ch. 11 p. 209: ''around 18 000 species, although estimates range
+        from 14 000 to 25 000'''
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/bryophytes/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree:
   file: tree.nwk
   ntips: 533

@@ -1,9 +1,9 @@
 cff-version: 1.2.0
 message: "If you use this dataset, please cite the paper and the Zenodo release you used."
 title: "Phylogenetic Species Atlas: species-level phylogenies of eukaryotes and the coverage of described species"
-version: 1.1.3
+version: 1.1.4
 doi: "10.5281/zenodo.20127157"
-date-released: 2026-11-07
+date-released: 2026-11-08
 url: "https://github.com/franciscorichter/phylo-species-atlas"
 repository-code: "https://github.com/franciscorichter/phylo-species-atlas"
 license: CC-BY-4.0
@@ -35,4 +35,4 @@ keywords:
   - sampling fraction
   - tree of life
 
-abstract: "A catalogue of 263 published species-level phylogenies: the largest species-level tree found for each of 24 groups of described eukaryotes and for Bacteria and Archaea, and 237 other trees. 255 of them are redistributed as Newick files with numeric tip ids, each under the licence of its source (LICENSE-trees.md); the other 8, whose sources state no licence (cephalopods, frogs, gastropods, insects, primates, seed plants, sharks and sponges), are listed in registers/withheld_trees.csv with the source to download each from. A name layer resolves every tip id to a standardized name and every reference-tree tip to a Catalogue of Life (COL26.9) accepted name. Registers record, for each reference tree, its molecular tips, whether it is a chronogram in absolute time, and the divergence-time interval its source archive carries, from which the coverage of the 2,085,607 described eukaryotic species is counted at four levels: named, placed with molecular data, dated, and dated with date uncertainty a user can propagate (a tree set or node intervals). scripts/reproduce_paper.py recomputes every number of the accompanying paper from these files. The source deposits remain in their original archives; the TimeTree of Life is cited and not redistributed."
+abstract: "A catalogue of 263 published species-level phylogenies: the largest species-level tree found for each of 24 groups of described eukaryotes and for Bacteria and Archaea, and 237 other trees. 255 of them are redistributed as Newick files with numeric tip ids, each under the licence of its source (LICENSE-trees.md); the other 8, whose sources state no licence (cephalopods, frogs, gastropods, insects, primates, seed plants, sharks and sponges), are listed in registers/withheld_trees.csv with the source to download each from. A name layer resolves every tip id to a standardized name and every reference-tree tip to a Catalogue of Life (COL26.9) accepted name. Registers record, for each reference tree, its molecular tips, whether it is a chronogram in absolute time, and the divergence-time interval its source archive carries, from which the coverage of the 2,059,063 described eukaryotic species is counted at four levels: named, placed with molecular data, dated, and dated with date uncertainty a user can propagate (a tree set or node intervals). scripts/reproduce_paper.py recomputes every number of the accompanying paper from these files. The source deposits remain in their original archives; the TimeTree of Life is cited and not redistributed."

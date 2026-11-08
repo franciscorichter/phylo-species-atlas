@@ -3,37 +3,28 @@ slug: cephalopods
 category: Other animals
 
 estimate:
-  described: 800
-  low: 900
-  total: 1200
-  high: 1500
+  described: 868
+  low: 868
+  total: 868
+  high: 868
   confidence: Medium
   source:
-    key: WoRMS
-    doi: null
-    pdf: null
-    url: https://www.marinespecies.org/aphia.php?p=taxdetails&id=11707
-    note: "World Register of Marine Species (WoRMS) — Cephalopoda. ~800 accepted living species across Octopoda + Decapodiformes + Nautilida + Sepiida + Vampyromorpha."
+    key: none published (described count)
+    type: none-published
+    note: 'card estimated_total: no published estimate of the total found; WoRMS gives none'
   interval_provenance:
     described:
       type: database
-      source: WoRMS / WoRMS
-      verbatim_quote: null
+      source: MolluscaBase, in Catalogue of Life COL26.9
+      release: COL26.9 base (ChecklistBank 316321, issued 2026-09-11; MolluscaBase sector)
+      note: 'col2026v269; ChecklistBank API dataset 316321 TAXON_ID=7NF3H: 12,905 accepted - 12,037 extinct
+        (=col_denominators col_base)'
     estimated_total:
-      type: paper-published
-      source: WoRMS
-      verbatim_quote: null
-    estimated_low:
-      type: paper-published
-      source: WoRMS
-      verbatim_quote: null
-    estimated_high:
-      type: paper-published
-      source: WoRMS
-      verbatim_quote: null
-    overall_classification: partly-heuristic
-    auditor_note: "WoRMS is a database (World Register of Marine Species), not a paper publishing a true-diversity range. The atlas''s 900-1200-1500 bounds extend above WoRMS''s described count (~800) but the upper bounds aren''t paper-published."
-
+      type: none-published
+      source: none published (described count)
+      note: 'card estimated_total: no published estimate of the total found; WoRMS gives none'
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/cephalopods/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree:
   file: tree.nwk
   ntips: 81

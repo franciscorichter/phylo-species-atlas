@@ -4,36 +4,28 @@ category: Microbes & protists
 
 estimate:
   described: 4500
-  low: 20000
-  total: 40000
-  high: 100000
+  low: 27000
+  total: 32863
+  high: 40000
   confidence: Low
   source:
-    key: Foissner 2008
-    doi: 10.1023/A:1014957800759
-    pdf: null
-    url: null
-    note: "Foissner W, Chao A, Katz LA (2008) — Diversity and geographic distribution of ciliates (Protista: Ciliophora). Biodiv Conserv 17:345-363. ~4,500 described but extrapolations suggest 20k-100k species."
+    key: 'Foissner et al. 2008 (central: geometric midpoint of the stated range)'
+    type: published-range
+    note: 'foissner2008diversity p. 345 and p. 347: ''27,000 to 40,000 free-living, biological ciliate
+      species''; no figure of 20,000 or 100,000 in the source.'
   interval_provenance:
     described:
       type: database
-      source: Foissner 2008
-      verbatim_quote: null
+      source: Foissner et al. 2008
+      release: 'Foissner, Chao & Katz 2008, Biodivers Conserv 17: 345-363'
+      note: 'foissner2008diversity, p. 345 abstract and p. 347: about 4,500 valid free-living morphospecies.'
     estimated_total:
-      type: paper-published
-      source: Foissner 2008
-      verbatim_quote: null
-    estimated_low:
-      type: paper-published
-      source: Foissner 2008
-      verbatim_quote: null
-    estimated_high:
-      type: paper-published
-      source: Foissner 2008
-      verbatim_quote: null
-    overall_classification: partly-heuristic
-    auditor_note: "Foissner 2008 is a book chapter on protist diversity. Not abstract-indexed. Bounds 20k-40k-100k not verified."
-
+      type: published-range
+      source: 'Foissner et al. 2008 (central: geometric midpoint of the stated range)'
+      note: 'foissner2008diversity p. 345 and p. 347: ''27,000 to 40,000 free-living, biological ciliate
+        species''; no figure of 20,000 or 100,000 in the source.'
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/ciliates/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree: null
 caveats:
   - severity: medium

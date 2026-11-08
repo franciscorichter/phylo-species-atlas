@@ -3,36 +3,30 @@ slug: ferns
 category: Plants
 
 estimate:
-  described: 12000
-  low: 12000
-  total: 13500
-  high: 15000
+  described: 11999
+  low: 14890
+  total: 14933
+  high: 15162
   confidence: High
   source:
-    key: PPG I 2016
-    doi: 10.1111/jse.12229
-    pdf: null
-    url: https://onlinelibrary.wiley.com/doi/10.1111/jse.12229
+    key: 'Bebber et al. 2007 (Proc. R. Soc. B 274: 1651)'
+    type: extrapolation
+    note: 'bebber2007predicting; Table 1 row ''ferns'', subset 0.95-1.0 (1990-2000): N_tot 14,933, 95%
+      limits 14,890-15,162'
   interval_provenance:
     described:
-      type: paper
-      source: PPG I 2016
-      verbatim_quote: null
+      type: database
+      source: PPG II, pteridogroup/ppg v2.0.0 (15 Sep. 2026)
+      release: PPG II, pteridogroup/ppg release v2.0.0, 2026-09-15 (Zenodo 10.5281/zenodo.22760361)
+      note: 'ppg2026v200; count of data/ppg.csv v2.0.0: accepted species under Polypodiopsida 12,667 -
+        667 nothospecies - 1 fossil'
     estimated_total:
-      type: heuristic
-      source: atlas-derived
-      verbatim_quote: null
-    estimated_low:
-      type: derived-from-described
-      source: PPG I 2016
-      verbatim_quote: null
-    estimated_high:
-      type: heuristic
-      source: atlas-derived
-      verbatim_quote: null
-    overall_classification: fully-heuristic
-    auditor_note: "PPG I 2016 is the Pteridophyte Phylogeny Group classification (taxonomic authority). Round-number bounds (13500, 15000) are atlas placeholders."
-
+      type: extrapolation
+      source: 'Bebber et al. 2007 (Proc. R. Soc. B 274: 1651)'
+      note: 'bebber2007predicting; Table 1 row ''ferns'', subset 0.95-1.0 (1990-2000): N_tot 14,933, 95%
+        limits 14,890-15,162'
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/ferns/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree:
   file: tree.nwk
   ntips: 6234

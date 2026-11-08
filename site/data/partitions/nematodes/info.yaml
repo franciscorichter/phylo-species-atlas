@@ -3,36 +3,31 @@ slug: nematodes
 category: Other animals
 
 estimate:
-  described: 28537
+  described: 28415
   low: 500000
-  total: 1000000
+  total: 10000000
   high: 10000000
   confidence: Medium
   source:
-    key: Hodda 2022
-    doi: 10.11646/zootaxa.5114.1.1
-    pdf: null
-    url: null
+    key: Hodda & Khudhir 2026 (central); Hodda 2022a (range)
+    type: published-point (central); published-range (low, high)
+    note: 'hodda2026species; Marine Biodiversity 56: 65, Discussion pp. 8-9 (10 million); hodda2022classification
+      Zootaxa 5114: 1, Introduction (500,000 to 10 million)'
   interval_provenance:
     described:
       type: database
-      source: WoRMS / Hodda 2022
-      verbatim_quote: null
+      source: Hodda 2022a (28,537 species including at least 122 fossil)
+      release: 'Hodda 2022a, Zootaxa 5114: 1-289 (valid species published before 2020); extant = 28,537
+        minus 122 species marked Fossil'
+      note: 'hodda2022classification; Zootaxa 5114: 1 (abstract), p. 4, p. 187 endnote 583 and fossil
+        endnotes 12, 104, 511, 528, 532, 552, 561 + 39 genus notes'
     estimated_total:
-      type: fully-heuristic
-      source: atlas-derived
-      verbatim_quote: null
-    estimated_low:
-      type: fully-heuristic
-      source: atlas-derived
-      verbatim_quote: null
-    estimated_high:
-      type: fully-heuristic
-      source: atlas-derived
-      verbatim_quote: null
-    overall_classification: fully-heuristic
-    auditor_note: "Hodda 2022 is a CLASSIFICATION paper reporting 28,537 valid described species in Nematoda (its census), NOT a published true-diversity estimate. The atlas's 500k-1M-10M range is entirely atlas-derived heuristic. Reclassified from paper-published-range -> fully-heuristic."
-
+      type: published-point (central); published-range (low, high)
+      source: Hodda & Khudhir 2026 (central); Hodda 2022a (range)
+      note: 'hodda2026species; Marine Biodiversity 56: 65, Discussion pp. 8-9 (10 million); hodda2022classification
+        Zootaxa 5114: 1, Introduction (500,000 to 10 million)'
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/nematodes/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree:
   file: tree.nwk
   ntips: 166

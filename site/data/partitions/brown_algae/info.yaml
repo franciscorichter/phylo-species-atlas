@@ -3,37 +3,32 @@ slug: brown_algae
 category: Microbes & protists
 
 estimate:
-  described: 2000
-  low: 2000
-  total: 2500
-  high: 4000
+  described: 2094
+  low: 2094
+  total: 2094
+  high: 2094
   confidence: Medium
   source:
-    key: Guiry 2024
-    doi: null
-    pdf: null
-    url: https://www.algaebase.org/
-    note: "AlgaeBase live catalog (Guiry & Guiry). ~2,000 accepted brown algae species across 17 orders. Kelp, sargassum, fucus."
+    key: none published (set to described count, AlgaeBase via Guiry 2024)
+    type: none-published
+    note: Guiry 2024 gives no total; Adl et al. 2007 world 2,000 (via Chapman 2009) and Appeltans et al.
+      2012 marine 2,000-2,050 are both at or below the 2023 described count; no source for atlas 2,500
+      or 4,000.
   interval_provenance:
     described:
       type: database
-      source: Guiry 2024
-      verbatim_quote: null
+      source: AlgaeBase (Guiry 2024)
+      release: 'AlgaeBase as of 1 Nov 2023, published in Guiry 2024 (J. Phycol. 60: 214-228)'
+      note: 'guiry2024howmany, Table 6 row Phaeophyceae (J. Phycol. p. 219): 2,124 species, 30 fossil,
+        2,094 extant; extant count per CARD.md scope.'
     estimated_total:
-      type: heuristic
-      source: Guiry 2024
-      verbatim_quote: 'Heterokontophyta — 21,052 living species (dominated by diatoms 16,427 living + 2,239 fossil); brown algae sub-clade is part of this phylum'
-    estimated_low:
-      type: derived-from-described
-      source: Guiry 2024
-      verbatim_quote: null
-    estimated_high:
-      type: paper-published
-      source: Guiry 2024
-      verbatim_quote: null
-    overall_classification: partly-heuristic
-    auditor_note: "Deferred audit — no shipped tree. Interval bounds classified from low/total/high pattern."
-
+      type: none-published
+      source: none published (set to described count, AlgaeBase via Guiry 2024)
+      note: Guiry 2024 gives no total; Adl et al. 2007 world 2,000 (via Chapman 2009) and Appeltans et
+        al. 2012 marine 2,000-2,050 are both at or below the 2023 described count; no source for atlas
+        2,500 or 4,000.
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/brown_algae/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree: null
 caveats:
   - severity: medium

@@ -3,36 +3,31 @@ slug: cnidaria
 category: Other animals
 
 estimate:
-  described: 11800
-  low: 12000
-  total: 16000
-  high: 25000
+  described: 11597
+  low: 11597
+  total: 11597
+  high: 11597
   confidence: Medium
   source:
-    key: Appeltans 2012
-    doi: 10.1016/j.cub.2012.09.036
-    pdf: null
-    url: https://www.cell.com/current-biology/fulltext/S0960-9822(12)01142-1
+    key: none published (described count)
+    type: none-published
+    note: 'card estimated_total: Appeltans et al. 2012 Table 2 gives only class rows for marine Cnidaria
+      (card''s sums 14,592-18,401); DeBiasse 2022 states no total'
   interval_provenance:
     described:
       type: database
-      source: WoRMS / Appeltans 2012
-      verbatim_quote: null
+      source: WoRMS (accessed 4 Nov. 2026)
+      release: 'WoRMS live, read 2026-11-04: extant Cnidaria (marine 12,672 + non-marine 1,945) minus
+        3,020 accepted Myxozoa'
+      note: worms2026cnidaria; aphia.php?p=stats row Cnidaria/Extant + WoRMS REST from Endocnidozoa (AphiaID
+        1740314)
     estimated_total:
-      type: paper-published
-      source: Appeltans 2012
-      verbatim_quote: 'there may be 0.7-1.0 million marine species (226,000 eukaryotic species currently described; 58,000-72,000 collected but undescribed; 482,000-741,000 yet to be sampled)'
-    estimated_low:
-      type: paper-published
-      source: Appeltans 2012
-      verbatim_quote: null
-    estimated_high:
-      type: paper-published
-      source: Appeltans 2012
-      verbatim_quote: null
-    overall_classification: paper-published-range
-    auditor_note: "Appeltans 2012 provides bilateral paper-published range for Cnidaria."
-
+      type: none-published
+      source: none published (described count)
+      note: 'card estimated_total: Appeltans et al. 2012 Table 2 gives only class rows for marine Cnidaria
+        (card''s sums 14,592-18,401); DeBiasse 2022 states no total'
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/cnidaria/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree:
   file: tree.nwk
   ntips: 289

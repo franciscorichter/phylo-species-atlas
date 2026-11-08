@@ -3,45 +3,33 @@ slug: archaea
 category: Microbes & protists
 
 estimate:
-  described: 17245
-  low: 20000
-  total: 50000
-  high: 500000
+  described: 6968
+  low: 6968
+  total: 6968
+  high: 6968
   confidence: Low
   source:
-    key: Louca 2019
-    doi: 10.1371/journal.pbio.3000106
-    pdf: null
-    url: https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.3000106
-    note: "Louca et al. 2019 PLOS Biology — 'A census-based estimate of Earth's bacterial and archaeal diversity'. Reports ~0.8–1.6 million prokaryotic OTUs GLOBALLY (combined bacteria + archaea), not per-domain."
+    key: none (set to described count)
+    type: none-published
+    note: No estimate in GTDB species clusters; Louca et al. 2019 gives archaeal 16S V4 OTU richness only
+      as Fig 1D bars (not printed; unit mismatch) and 0.8-1.6M for prokaryotes (wider taxon); none of
+      20,000/50,000/500,000 is in any source
   interval_provenance:
     described:
       type: database
-      source: GTDB R10
-      verbatim_quote: null
+      source: GTDB R10-RS226 species clusters
+      release: GTDB R10-RS226 (released 2025-04-16); kept for D12 though R11-RS232 (2026-04-15) is nearer
+        2026-09-11
+      note: 'parks2025gtdb abstract: ''17 245 archaeal genomes organized into ... 6968 archaeal species
+        clusters''; gtdb.ecogenomic.org/stats/r226'
     estimated_total:
-      type: atlas-derived
-      source: atlas-derived
-      verbatim_quote: null
-      note: "50,000 total is NOT Louca's number. Louca 2019 reports combined prokaryote diversity (0.8-1.6M), not separate archaea-only estimate."
-    estimated_low:
-      type: atlas-derived
-      source: atlas-derived
-      verbatim_quote: null
-      note: "20,000 low is atlas-derived above the GTDB described count."
-    estimated_high:
-      type: atlas-derived
-      source: atlas-derived
-      verbatim_quote: null
-      note: "500,000 high is atlas-derived — represents roughly archaea's share of Louca's 0.8-1.6M prokaryote total if archaea are ~30%, but the split isn't paper-published."
-    overall_classification: partly-heuristic
-    auditor_note: |
-      Louca 2019 publishes a paper-derived prokaryote total (0.8-1.6M
-      OTUs); the atlas's archaea-specific interval is an atlas-derived
-      partitioning of that figure, not directly quoted from Louca. Honest
-      reclassification: partly-heuristic (cited paper supports the order
-      of magnitude; the precise archaea-only bounds don't come from it).
-
+      type: none-published
+      source: none (set to described count)
+      note: No estimate in GTDB species clusters; Louca et al. 2019 gives archaeal 16S V4 OTU richness
+        only as Fig 1D bars (not printed; unit mismatch) and 0.8-1.6M for prokaryotes (wider taxon); none
+        of 20,000/50,000/500,000 is in any source
+    decision: 'D67 (Paper/revision-2026-10/DECISIONS.md); card: Data/experts/partitions/archaea/card.yaml;
+      resolution: Data/experts/_card_resolution.csv'
 tree:
   file: tree.nwk
   ntips: 6968
