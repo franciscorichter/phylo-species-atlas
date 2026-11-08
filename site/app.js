@@ -50,7 +50,7 @@ async function loadData() {
       described: r.described_species, described_text: r.described_text, described_source: r.described_source,
       levels: Object.fromEntries(LEVELS.filter(k => L[k]).map(k => [k, { n: L[k].n, n_text: L[k].n_text, pct: L[k].pct_text }])),
       dated: !!r.dated, est_low: r.estimated_low, est_high: r.estimated_high, est_total: r.estimated_total,
-      est_cls: (r.interval_provenance || {}).overall_classification,
+      est_kind: r.estimate_kind || null,
       file: r.filename, tips: r.tips, year: tr.year, study: tr.study, doi: tr.doi,
       in_package: !!tr.in_package, names_file: tr.names_file, dots: dots[r.group],
       withheld: tr.withheld || null,      // not redistributed: source link, never fetched
@@ -89,7 +89,7 @@ const EST = {
   low: euk.reduce((a, g) => a + (g.est_low ?? g.described), 0),
   total: euk.reduce((a, g) => a + (g.est_total ?? g.described), 0),
   high: euk.reduce((a, g) => a + (g.est_high ?? g.described), 0),
-  published: euk.filter(g => g.est_cls === "paper-published-range").length,
+  published: euk.filter(g => g.est_kind && g.est_kind !== "none-published").length,
 };
 EST.lowDots = Math.round(EST.low / DATA.scale);
 const describedDots = euk.reduce((a, g) => a + g.dots.all, 0);
@@ -128,7 +128,7 @@ const STEPS = [
     cifra: () => `${(EST.low / 1e6).toFixed(1)}–${(EST.high / 1e6).toFixed(1)}<span style="font-size:.5em"> million</span>`,
     sub: () => `estimated species of eukaryotes; ${DATA.described_euk_text} described, ${(100 * DATA.described_euk / EST.high).toFixed(0)}–${(100 * DATA.described_euk / EST.low).toFixed(0)}% of the estimate`,
     frase: () => `At the same scale, one dot for ${fmt.format(DATA.scale)} species. The dark disc is the described species; its brass centre, the ${lv.named.n_text} named in a reference tree (${(100 * lv.named.n / EST.high).toFixed(1)}–${(100 * lv.named.n / EST.low).toFixed(1)}% of the estimate). The faint dots fill out to the low estimate, ${mio(EST.low)}; the thin circle encloses the central estimates, ${mio(EST.total)}; the dotted circle, the high estimates, ${mio(EST.high)}.`,
-    nota: () => `Each total is the sum over the 60 eukaryotic groups of the group's low, central or high estimate in the release. ${EST.published} of the 60 ranges come from a published study; in the others at least one bound is the described count or a heuristic. Bacteria and Archaea are left out, as in every eukaryotic number.` },
+    nota: () => `Each total is the sum over the ${euk.length} eukaryotic groups of the group's low, central or high estimate in the release. For ${EST.published} of the ${euk.length} groups a published source states an estimate of the total; for the others the estimate is the described count, and a bound no source states is the described count too. Bacteria and Archaea are left out, as in every eukaryotic number.` },
 ];
 
 const state = { step: 0, group: null, treeView: null, hover: null };

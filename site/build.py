@@ -277,6 +277,9 @@ def build() -> dict:
                 "estimate_source": est.get("estimate_source") or None,
                 "estimate_confidence": est.get("confidence") or None,
             })
+        kind = ((((notes.get(part) or {}).get("estimate") or {}).get("source")) or {}).get("type")
+        if kind:
+            row["estimate_kind"] = kind      # D67: published-range, published-point, ..., none-published
         ip = ((notes.get(part) or {}).get("estimate") or {}).get("interval_provenance")
         if ip:
             row["interval_provenance"] = ip
