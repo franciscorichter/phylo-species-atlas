@@ -6383,6 +6383,25 @@ def check_numbermacros(ctx):
     w["SensUnionCOneHighPct"] = _mpct(100.0 * u["C1_union_high"] / D)
     w["AnyCZeroN"] = _mint(u["C0_union"])            # D66 headline
     w["AnyCZeroPct"] = _mpct(100.0 * u["C0_union"] / D)
+    # D67: the groups' estimates of their total species, re-summed from the
+    # Figure 3 data file (a group with no estimate counts its described species)
+    eukp = {r["partition"] for r in euk}
+    bars = [r for r in read_csv(FIG1_BARS) if r["group"] in eukp]
+    R.eq("fig1_coverage_bars.csv has one row per eukaryotic group",
+         len(bars), len(eukp))
+    e_low = sum(as_int(r["estimated_low"], 0) or as_int(r["described"], 0)
+                for r in bars)
+    e_tot = sum(as_int(r["estimated_total"], 0) or as_int(r["described"], 0)
+                for r in bars)
+    e_high = sum(as_int(r["estimated_high"], 0) or as_int(r["described"], 0)
+                 for r in bars)
+    big = max(bars, key=lambda r: as_int(r["estimated_total"], 0))
+    w["EstEukLowM"] = "%.1f" % (e_low / 1e6)
+    w["EstEukCentralM"] = "%.1f" % (e_tot / 1e6)
+    w["EstEukHighM"] = "%.1f" % (e_high / 1e6)
+    w["EstEukCentralLargestName"] = big["group"]
+    w["EstEukCentralLargestSharePct"] = _mpct(
+        100.0 * as_int(big["estimated_total"], 0) / e_tot)
     # D66: the partition sensitivity (scripts/partition_sensitivity.py).
     # Independent of it: estimand A at the named level is the union bound's
     # count under every partition, and B over the paper's groups is the

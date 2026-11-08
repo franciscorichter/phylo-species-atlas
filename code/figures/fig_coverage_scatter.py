@@ -82,11 +82,12 @@ if unknown:
     raise SystemExit(f"unknown topology_assembly value(s): {sorted(unknown)}")
 
 CAT_COLOR = {
-    "Vertebrates": "#0072B2",
-    "Plants": "#009E73",
-    "Arthropods": "#D55E00",
-    "Other animals": "#CC79A7",
-    "Microbes & protists": "#E69F00",
+    # category is not a concept of the palette: no colour; the labels name the groups
+    "Vertebrates": afc.INK,
+    "Plants": afc.INK,
+    "Arthropods": afc.INK,
+    "Other animals": afc.INK,
+    "Microbes & protists": afc.INK,
 }
 max_desc = max(r["described"] for r in rows)
 AREA_MAX = 600.0  # points^2 of the largest partition (a drawing width)
@@ -165,14 +166,10 @@ ax.set_xlabel("Molecular fraction (sequenced tips / tips of the reference tree)"
 ax.set_ylabel("Named coverage (% of the group's described species, log scale)")
 ax.set_yticks([0.1, 1, 10, 100])
 ax.set_yticklabels(["0.1", "1", "10", "100"])
-ax.grid(color="#e5e5e5", linewidth=0.5, zorder=0)
+ax.grid(color=afc.LINE, linewidth=0.5, zorder=0)
 ax.set_axisbelow(True)
 
 handles = []
-for cat, col in CAT_COLOR.items():
-    if any(r["category"] == cat for r in rows):
-        handles.append(mlines.Line2D([], [], marker="o", linewidth=0,
-                                     color=col, markersize=6, label=cat))
 for key, mk in SHAPE.items():
     if any(r["assembly"] == key for r in rows):
         handles.append(mlines.Line2D([], [], marker=mk, linewidth=0,
@@ -185,7 +182,7 @@ handles.append(mlines.Line2D([], [], marker="o", linewidth=0,
                              markerfacecolor="white", color="#555555",
                              markersize=6, label="not a chronogram in absolute time (hollow)"))
 ax.legend(handles=handles, loc="lower left", fontsize=6.5, frameon=False,
-          ncol=2)
+          ncol=1)
 
 afc.savefig(plt, afc.FIGURES_DIR, "figure_coverage_scatter")
 print(f"points: {len(rows)}; measured chronograms: "

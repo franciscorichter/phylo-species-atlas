@@ -3868,6 +3868,26 @@ def compute_headline(truth, basis, shipped, mol, ledger, pt, warnings):
                 ("n_partitions", len(euk_rows)),
                 ("described", den_euk),
                 ("note", "THE denominator for every rung."),
+                # D67: the groups' estimates of their total species, summed;
+                # a group with no estimate counts its described species, as
+                # the catalogue's site does.  Figure 3e only.
+                ("estimated_low",
+                 sum(as_int(truth.species[r["partition"]].get("estimated_low"), 0)
+                     or as_int(truth.species[r["partition"]].get("described"), 0)
+                     for r in euk_rows)),
+                ("estimated_total",
+                 sum(pt.estimated_total(r["partition"])
+                     or as_int(truth.species[r["partition"]].get("described"), 0)
+                     for r in euk_rows)),
+                ("estimated_high",
+                 sum(as_int(truth.species[r["partition"]].get("estimated_high"), 0)
+                     or as_int(truth.species[r["partition"]].get("described"), 0)
+                     for r in euk_rows)),
+                ("estimated_total_largest_partition",
+                 max(euk_rows, key=lambda r: pt.estimated_total(r["partition"])
+                     or 0)["partition"]),
+                ("estimated_total_largest",
+                 max(pt.estimated_total(r["partition"]) or 0 for r in euk_rows)),
             ])),
             ("prokaryotic", OrderedDict([
                 ("n_partitions", len(prok_rows)),
@@ -4552,6 +4572,14 @@ def build_number_macros(head, basis, warnings):
     # D66: named coverage is counted over every tree of the catalogue
     m["AnyCZeroN"] = macro_int(u["C0_union"])
     m["AnyCZeroPct"] = macro_pct(u["C0_union_pct"])
+    # D67: the sums of the groups' estimates of their total species (Fig. 3e)
+    e = den["eukaryotic"]
+    m["EstEukLowM"] = "%.1f" % (e["estimated_low"] / 1e6)
+    m["EstEukCentralM"] = "%.1f" % (e["estimated_total"] / 1e6)
+    m["EstEukHighM"] = "%.1f" % (e["estimated_high"] / 1e6)
+    m["EstEukCentralLargestName"] = e["estimated_total_largest_partition"]
+    m["EstEukCentralLargestSharePct"] = macro_pct(
+        100.0 * e["estimated_total_largest"] / e["estimated_total"])
     # D66: how much the one-tree-per-group count depends on the partition
     ps = partition_sensitivity.compute(ROOT)
     fine = [r for r in ps if r["partition"] != "phylum" and r["A_any_tree"]]

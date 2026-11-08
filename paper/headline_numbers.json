@@ -27,7 +27,12 @@
     "eukaryotic": {
       "n_partitions": 60,
       "described": 2059063,
-      "note": "THE denominator for every rung."
+      "note": "THE denominator for every rung.",
+      "estimated_low": 6198021,
+      "estimated_total": 19904444,
+      "estimated_high": 23454353,
+      "estimated_total_largest_partition": "Nematodes",
+      "estimated_total_largest": 10000000
     },
     "prokaryotic": {
       "n_partitions": 2,

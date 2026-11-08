@@ -27,15 +27,15 @@ SET_KINDS = ("posterior_sample", "bootstrap_dating_sample",
 # colour, marker and legend label of each status; the marker separates the
 # classes without relying on hue (R2-39)
 STATUS = OrderedDict([
-    ("set", ("#0072B2", "o",
+    ("set", (afc.INK, "o",
              "uncertainty available: dated tree set")),
-    ("summary", ("#009E73", "D",
+    ("summary", (afc.INK, "D",
                  "uncertainty available: intervals on a summary tree")),
-    ("draw", ("#E69F00", "s",
+    ("draw", (afc.INK, "s",
               "uncertainty available: dates drawn from published studies")),
-    ("placement", ("#56B4E9", "^",
+    ("placement", (afc.SOFT, "^",
                    "tree set varies only the placement of added tips")),
-    ("none", ("#999999", "x", "no interval archived")),
+    ("none", (afc.FAINT, "x", "no interval archived")),
 ])
 
 rows = []
@@ -84,7 +84,7 @@ ax.set_yticklabels([f"{r['partition']} ({r['clade'].split(' (')[0]})"
                     for r in rows], fontsize=6.3)
 ax.set_xlabel("Crown age (Ma)")
 ax.invert_xaxis()
-ax.grid(axis="x", color="#e5e5e5", linewidth=0.5)
+ax.grid(axis="x", color=afc.LINE, linewidth=0.5)
 ax.set_axisbelow(True)
 ax.spines[["top", "right"]].set_visible(False)
 handles = [mlines.Line2D([], [], color=c, marker=mk, linewidth=2.2

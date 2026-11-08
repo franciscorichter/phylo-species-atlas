@@ -44,7 +44,7 @@ redistributed (see *Trees not redistributed*).
 | `paper/` | The paper's generated numbers, tables and figure data, as the manuscript prints them. |
 | `scripts/reproduce_paper.py` | Recomputes the paper's numbers from `standardized/` and `registers/` and compares them with `paper/`. Python 3, standard library only. |
 | `code/rebuild/` | The pipeline that wrote `standardized/`, `registers/` and `paper/`, with a map from its paths to this repository. See [`code/rebuild/README.md`](code/rebuild/README.md). |
-| `code/figures/` | The scripts of the five main-text figures (matplotlib). |
+| `code/figures/` | The scripts of the six main-text figures (matplotlib). |
 | `phyloatlas/` | An R package that loads any tree by name. |
 | `site/`, `audits/` | The browser site and its per-group audit log (see *The browser site* below). |
 | `data_provenance.csv`, `data_estimates.csv`, `data_sources.csv` | Per-dataset tables of the source studies, read by the R package (`data_provenance.csv`) and for the download links of the site; their coverage, described-species, crown-age and estimate columns are not the paper's numbers, which are in `registers/` and `paper/`. |
@@ -114,7 +114,7 @@ pipeline, and checks:
   losses between levels, every sensitivity analysis the paper prints, the crown ages and the interval
   classification, the Open Tree comparison, and the inputs of the worked example;
 - every number printed in the text (all macros of `paper/*_macros.tex`), the three main-text
-  tables cell by cell, and the data of Figures 1 to 5;
+  tables cell by cell, and the data of Figures 1 to 6;
 - every table of Supplement S1 to S10 cell by cell (`paper/supp_*.csv`, with the counts its
   `.tex` twin prints) and every number the Supplement's text prints (`paper/supp_macros.tex`).
 
@@ -142,8 +142,8 @@ its `source` column gives under a `Data/` directory beside a copy of this reposi
 | Birds | date-assignment sets, 100 trees each | AvesData release 1.3, `github.com/McTavishLab/AvesData`, `Tree_versions/Aves_1.3/Clements2021` (McTavish et al. 2025) |
 | Sharks | 10-fossil set (10,000 trees) and the 500-tree set of sequenced species of the same scenario | VertLife, `data.vertlife.org/sharktree` (Stein et al. 2018) |
 
-The figures: `python3 code/figures/fig_coverage_cascade.py` and the four other scripts in
-`code/figures/` write Figures 1 to 5 to `paper/figures/`.
+The figures: the six scripts in `code/figures/` (`python3 code/figures/fig_dot_field.py` and
+the others) write Figures 1 to 6 to `paper/figures/`; two read the site's files (`site/`).
 
 ## Trees not redistributed
 
@@ -216,9 +216,9 @@ A withheld tree (see *Trees not redistributed*) cannot be loaded: from phyloatla
 `load_atlas_tree()` stops with the address of its source, read from
 `registers/withheld_trees.csv`.
 
-The tag `v1.1.4` is created on GitHub when this release is published. From then on the option
+The tag `v1.1.5` is created on GitHub when this release is published. From then on the option
 can name the tag instead of a clone,
-`"https://raw.githubusercontent.com/franciscorichter/phylo-species-atlas/v1.1.4"`; before
+`"https://raw.githubusercontent.com/franciscorichter/phylo-species-atlas/v1.1.5"`; before
 publication that address returns HTTP 404.
 
 ## The browser site

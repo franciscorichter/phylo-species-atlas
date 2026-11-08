@@ -1624,6 +1624,23 @@ def main(argv=None):
     # D66: named coverage over every tree of the catalogue, the headline
     R.macro(macros, "AnyCZeroN", fmt_int(lad["C0"]["sum"] + n_add))
     R.macro(macros, "AnyCZeroPct", fmt_pct(pct(lad["C0"]["sum"] + n_add, den)))
+    # D67: the groups' estimates of their total species, summed over the
+    # eukaryotic groups of paper/fig1_coverage_bars.csv (a group with no
+    # estimate counts its described species); Figure 3e
+    eukp = {r["partition"] for r in euk}
+    ebars = [r for r in read_csv(path("paper", "fig1_coverage_bars.csv"))
+             if r["group"] in eukp]
+    R.eq("fig1_coverage_bars.csv: one row per eukaryotic group", len(ebars), len(eukp))
+    e_low = sum(as_int(r["estimated_low"]) or as_int(r["described"]) for r in ebars)
+    e_tot = sum(as_int(r["estimated_total"]) or as_int(r["described"]) for r in ebars)
+    e_high = sum(as_int(r["estimated_high"]) or as_int(r["described"]) for r in ebars)
+    big = max(ebars, key=lambda r: as_int(r["estimated_total"]))
+    R.macro(macros, "EstEukLowM", "%.1f" % (e_low / 1e6))
+    R.macro(macros, "EstEukCentralM", "%.1f" % (e_tot / 1e6))
+    R.macro(macros, "EstEukHighM", "%.1f" % (e_high / 1e6))
+    R.macro(macros, "EstEukCentralLargestName", big["group"])
+    R.macro(macros, "EstEukCentralLargestSharePct",
+            fmt_pct(100.0 * as_int(big["estimated_total"]) / e_tot))
     # D66: the partition table (paper/supp_partition.csv, written by
     # code/rebuild/partition_sensitivity.py).  At the named level the any-tree
     # count is the count just recomputed under every partition; over the

@@ -65,18 +65,33 @@ HEADLINE_JSON = INPUTS_DIR / "headline_numbers.json"
 RUNGS = ("C0", "C1", "C1d", "C1u")
 
 # ── Palette ────────────────────────────────────────────────────────────────
-# Okabe-Ito, colour-blind safe.  One palette for the whole figure set so a
-# rung keeps its colour from one panel to the next.
+# The palette of the Species Phylogenies Catalogue (release/files/site/style.css):
+# ink, brass, soft and faint greys on white.  One palette for the whole figure
+# set, the site's figures and the paper's alike.  The four levels are a ramp that
+# darkens as the level becomes stricter (each level is contained in the one
+# before), from the site's brass to ink.
+INK, BRASS, BRONZE = "#1f2328", "#b08d4f", "#7d6233"
+LIGHT_BRASS, SOFT, FAINT, LINE = "#d4bd8f", "#8b9098", "#a3a8b0", "#e3e5e8"
 RUNG_COLOR = {
-    "C0":  "#0072B2",   # blue     -- NAMED
-    "C1":  "#E69F00",   # orange   -- MOLECULAR
-    "C1d": "#009E73",   # green    -- DATED
-    "C1u": "#56B4E9",   # sky blue -- UNCERTAINTY AVAILABLE
+    "C0":  BRASS,        # NAMED
+    "C1":  BRONZE,       # MOLECULAR
+    "C1d": "#4a3b22",    # DATED
+    "C1u": INK,          # UNCERTAINTY AVAILABLE
 }
-DESCRIBED_COLOR = "#333333"
-INTERVAL_COLOR = "#7f9dbf"
-BAND_COLOR = "#999999"
-PROKARYOTE_COLOR = "#7d7d7d"
+DESCRIBED_COLOR = INK
+INTERVAL_COLOR = SOFT
+BAND_COLOR = FAINT
+PROKARYOTE_COLOR = SOFT
+# One meaning per colour across the figure set:
+#   BRASS  species at the level a figure or panel shows (named, molecular, ...)
+#   INK    described species, marks and text; pale ink (alpha ~0.25) = described
+#          species not at the level shown, as on the site
+#   SOFT / FAINT  absent or unavailable (no tree, no interval, outside the count)
+# Concepts the palette does not hold take a colour outside it, never a palette
+# colour that already means something:
+PERSON = "#3a5a9c"   # a step decided by a person (living-catalogue diagram)
+ERROR = "#b3245a"    # the misapplied full-tree sampling fraction (worked example)
+UNLIT_ALPHA = 0.24
 
 RUNG_SHORT = {
     "C0":  "NAMED",

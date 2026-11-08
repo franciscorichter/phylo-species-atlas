@@ -33,8 +33,8 @@ if sorted(r["partition"] for r in rows) != sorted(
     raise SystemExit("table_worked_example.csv disagrees with the eligible set")
 rows.sort(key=lambda r: float(r["eps_molecular"]))
 
-C_MATCH, C_NAMED = "#0072B2", "#D55E00"
-C_FULL, C_MOL = "#555555", "#009E73"
+C_MATCH, C_NAMED = afc.INK, afc.ERROR
+C_FULL, C_MOL = afc.SOFT, afc.INK
 off = 0.17
 fig, (ax, bx) = plt.subplots(1, 2, figsize=(7.2, 2.9), sharey=True,
                              constrained_layout=True)
@@ -77,7 +77,7 @@ ax.set_xlabel(r"Extinction fraction $\varepsilon = \mu/\lambda$, pruned tree")
 ax.set_xlim(left=-0.03)
 bx.set_xlabel(r"Net diversification $r = \lambda - \mu$ (per Myr)")
 for a in (ax, bx):
-    a.grid(axis="x", color="#e5e5e5", linewidth=0.5)
+    a.grid(axis="x", color=afc.LINE, linewidth=0.5)
     a.set_axisbelow(True)
     a.spines[["top", "right"]].set_visible(False)
 ax.set_title("(a) Same tree, two sampling fractions", loc="left", fontsize=7.5)
