@@ -65,7 +65,7 @@ def fmt(n):
 
 
 # ── Geometry (millimetres at print size) ───────────────────────────────────
-W, H = 180, 62
+W, H = 180, 66
 fig = plt.figure(figsize=(W / 25.4, H / 25.4))
 ax = fig.add_axes([0, 0, 1, 1])
 ax.set_xlim(0, W)
@@ -74,7 +74,7 @@ ax.set_aspect("equal")
 ax.axis("off")
 fig.patch.set_facecolor("white")
 
-Y = 33                           # the main line
+Y = 35                           # the main line
 LW = 1.0
 NODE_R, GATE_R = 1.8, 2.5
 X_ARCH = 13                      # the archives
@@ -146,8 +146,6 @@ node(X_IN, yw, "code")
 node(X_IN, ys, "code")
 title(X_IN, yw + 3.6, "1  Watch")
 title(X_IN, ys - 3.6, "2  Search", va="top")
-note(X_IN + 4.6, yw + 0.2, "last month's deposits", ha="left", va="center")
-note(X_IN + 4.6, ys - 0.2, "the whole history", ha="left", va="center")
 arrow((X_IN, yw), (X_SCREEN, Y), gap0=NODE_R + 0.7, gap1=NODE_R + 0.7)
 arrow((X_IN, ys), (X_SCREEN, Y), gap0=NODE_R + 0.7, gap1=NODE_R + 0.7)
 
@@ -158,11 +156,13 @@ arrow((X_SCREEN, Y), (X_CURATE, Y), gap0=NODE_R + 0.7, gap1=NODE_R + 1.0)
 title((X_SCREEN + X_CURATE) / 2, Y + 4.8, "3  Screen and curation")
 
 # the scheduled part: watch, search and screen run each month on a timer
-xb0, xb1, yb = X_IN - 6, X_SCREEN + 3, Y + DY + 7.7
-ax.plot([xb0, xb1], [yb, yb], color=LINE, lw=1.2, zorder=0)
-ax.plot([xb0, xb0], [yb, yb - 1.4], color=LINE, lw=1.2, zorder=0)
-ax.plot([xb1, xb1], [yb, yb - 1.4], color=LINE, lw=1.2, zorder=0)
-note((xb0 + xb1) / 2, yb + 0.9, "runs each month on a timer; changes no count",
+from matplotlib.patches import FancyBboxPatch
+xb0, xb1 = X_IN - 7.5, X_SCREEN + 4.6
+yb0, yb1 = Y - DY - 7.7, Y + DY + 7.7
+ax.add_patch(FancyBboxPatch((xb0, yb0), xb1 - xb0, yb1 - yb0,
+                            boxstyle="round,pad=0,rounding_size=2.5",
+                            facecolor="#f7f8f9", edgecolor=LINE, lw=0.9, zorder=0))
+note((xb0 + xb1) / 2, yb1 + 0.8, "runs each month on a timer; changes no count",
      va="bottom")
 
 # an adopted tree enters a rebuild, which writes the release

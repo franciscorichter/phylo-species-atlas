@@ -297,9 +297,8 @@ ax.text(ex - Rhigh + 6, top + 12.5,
         "Described species against the estimated total, at the same scale",
         fontsize=7, color=INK, va="bottom")
 ax.text(ex - Rhigh + 6, top + 11.6,
-        f"Each estimate sums the {n_groups} groups' low, central or high values;\n"
-        f"{n_pub} groups have an estimate above their described count;\n"
-        f"the others count their described species.",
+        f"Each estimate sums the {n_groups} groups' values; "
+        f"a group with no published estimate counts its described species.",
         fontsize=6, color=INK, va="top", linespacing=1.25)
 
 
@@ -326,16 +325,16 @@ def label(y_text, r_from, ang, head, body, col):
 
 
 Rnamed, Rdesc = rad(n_named), rad(n_desc)
-label(ey + 17.0, Rnamed * 0.7, math.radians(40), "Named",
-      f"{int(tot['C0']):,}\n{share(tot['C0'])}", BRASS)
-label(ey + 0.0, Rdesc * 0.92, math.radians(8), "Described",
-      f"{denom:,}\n{share(denom)}", INK)
-label(ey - 17.0, Rlow * 0.97, math.radians(-30), "Low estimate",
-      f"{mio(EST['low'])}\n(faint dots)", SOFT)
+label(ey + 14.0, Rnamed * 0.7, math.radians(40), "Named",
+      f"{int(tot['C0']):,}", BRASS)
+label(ey + 1.0, Rdesc * 0.92, math.radians(8), "Described",
+      f"{denom:,}", INK)
+label(ey - 12.0, Rlow * 0.97, math.radians(-30), "Low estimate",
+      f"{mio(EST['low'])}", SOFT)
 # the two circles, labelled inside the central circle: central at the top,
 # high at the bottom with a leader across the thin circle to the dotted one
-for rr, txt, sign in ((Rtot, f"Central estimate, {mio(EST['total'])} (thin circle)", 1),
-                      (Rhigh, f"High estimate, {mio(EST['high'])} (dotted circle)", -1)):
+for rr, txt, sign in ((Rtot, f"Central estimate, {mio(EST['total'])}", 1),
+                      (Rhigh, f"High estimate, {mio(EST['high'])}", -1)):
     qy = ey + sign * (Rtot - 6.0)
     ax.plot([ex, ex], [qy + sign * 1.4, ey + sign * rr], color=SOFT, lw=0.35)
     ax.text(ex, qy, txt, fontsize=6, color=INK, ha="center", va="center")
