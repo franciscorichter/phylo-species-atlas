@@ -162,7 +162,7 @@ yb0, yb1 = Y - DY - 7.7, Y + DY + 7.7
 ax.add_patch(FancyBboxPatch((xb0, yb0), xb1 - xb0, yb1 - yb0,
                             boxstyle="round,pad=0,rounding_size=2.5",
                             facecolor="#f7f8f9", edgecolor=LINE, lw=0.9, zorder=0))
-note((xb0 + xb1) / 2, yb1 + 0.8, "runs each month on a timer; changes no count",
+note((xb0 + xb1) / 2, yb1 + 0.8, "runs on a schedule; changes no count",
      va="bottom")
 
 # an adopted tree enters a rebuild, which writes the release
