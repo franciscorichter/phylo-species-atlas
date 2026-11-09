@@ -190,6 +190,8 @@ ax.text(X_REL, Y - 0.2, release_tag, ha="center", va="center", fontsize=9.5,
         color="white", fontweight="bold", zorder=3)
 ax.text(X_REL, Y - 4.4, f"{fmt(trees['n_shipped'])} trees", ha="center",
         va="center", fontsize=6.0, color="white", zorder=3)
+# what the release holds besides the trees (Supplement S10, release README)
+note(X_REL, Y - R_REL - 2.0, "trees, name layer, registers,\nthe paper's numbers, code", va="top")
 
 # the author approves the release; then it is published
 arrow((X_REL + R_REL, Y), (X_GATE, Y), gap0=0.3, gap1=GATE_R + 0.7)
