@@ -511,8 +511,9 @@ def place_direct(skip, placed):
     todo = [n for n in candidates if n not in skip]
     with_tree = [n for n in todo if G[n]["has_tree"]]
     # groups with a tree first, on their arc or else beside it; then the others
+    no_tree = [n for n in todo if not G[n]["has_tree"]]
     for group, beside in ((with_tree, False), (with_tree, True),
-                          ([n for n in todo if not G[n]["has_tree"]], False)):
+                          (no_tree, False), (no_tree, True)):
         for n in group:
             if n not in out:
                 hit = direct_label(n, placed, beside)
