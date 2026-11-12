@@ -203,7 +203,7 @@ ax.set_aspect("equal")
 ax.axis("off")
 
 LEVEL_NAME = {"C0": "Named in a reference tree", "C1": "Placed with molecular data",
-              "C1d": "Dated in absolute time", "C1u": "Date uncertainty archived"}
+              "C1d": "Dated in absolute time", "C1u": "Date uncertainty available"}
 cells = {"C0": (23.0, 97.0), "C1": (66.0, 97.0),
          "C1d": (23.0, 39.0), "C1u": (66.0, 39.0)}
 for letter, k in zip("abcd", afc.RUNGS):
