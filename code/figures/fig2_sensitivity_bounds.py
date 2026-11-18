@@ -40,7 +40,7 @@ import matplotlib.lines as mlines
 from matplotlib.patches import Rectangle
 
 # ── Paths ──
-PAPER_ROOT = pathlib.Path("/Users/pancho/System/Research/phylo-atlas/Paper")
+PAPER_ROOT = pathlib.Path("/Users/pancho/System/Academic/Research/phylo-atlas/Paper")
 csv_path = PAPER_ROOT / "figure2-3-rework-2026-05-31" / "c0c1c2_per_partition.csv"
 outdir = PAPER_ROOT / "figures"
 

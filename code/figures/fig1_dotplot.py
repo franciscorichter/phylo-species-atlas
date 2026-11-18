@@ -33,7 +33,7 @@ from matplotlib.patches import Rectangle
 # script (Code/.../code/figures and System/.../Paper/code/figures) both read
 # the same absolute source so behaviour is identical regardless of which copy
 # is invoked.
-PAPER_ROOT = pathlib.Path("/Users/pancho/System/Research/phylo-atlas/Paper")
+PAPER_ROOT = pathlib.Path("/Users/pancho/System/Academic/Research/phylo-atlas/Paper")
 csv_path = PAPER_ROOT / "inputs" / "fig1_coverage_bars.csv"
 overlay_csv_path = PAPER_ROOT / "figure1-molecular-overlay-2026-05-31" / "figure1_molecular_overlay.csv"
 outdir = PAPER_ROOT / "figures"
