@@ -2,7 +2,7 @@
 atlas files directly; nothing is taken on trust from the manuscript."""
 import csv, os, re
 
-ATLAS = os.path.expanduser("~/System/Research/Diversity/phylo-atlas")
+ATLAS = os.path.expanduser("~/System/Academic/Research/Diversity/phylo-atlas")
 FIGS = os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir, "figs")
 
 INK, GREY = "#22303C", "#8B96A0"
