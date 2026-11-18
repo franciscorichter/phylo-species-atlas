@@ -150,7 +150,7 @@ curl https://api.openalex.org/works?search=<clade>+phylogeny
 # Stage tree + papers
 mkdir -p site/data/partitions/<slug>/papers
 cp standardized/trees/<file>.nwk site/data/partitions/<slug>/tree.nwk
-cp ~/Dropbox/.../papers/<paper>.pdf site/data/partitions/<slug>/papers/tree.pdf
+cp <downloaded-paper>.pdf site/data/partitions/<slug>/papers/tree.pdf
 # Write info.yaml + papers/sources.json
 ```
 
